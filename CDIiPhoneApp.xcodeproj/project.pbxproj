@@ -37,6 +37,7 @@
 		187F501F1734EAD8006B46A3 /* mp_selection_proj1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 187F500C1734EAD8006B46A3 /* mp_selection_proj1@2x.png */; };
 		187F50201734EAD8006B46A3 /* mp_selection_proj2.png in Resources */ = {isa = PBXBuildFile; fileRef = 187F500D1734EAD8006B46A3 /* mp_selection_proj2.png */; };
 		187F50211734EAD8006B46A3 /* mp_selection_proj2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 187F500E1734EAD8006B46A3 /* mp_selection_proj2@2x.png */; };
+		187F50781734EF25006B46A3 /* mp_selection_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 187F50771734EF25006B46A3 /* mp_selection_bg@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		187F500C1734EAD8006B46A3 /* mp_selection_proj1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mp_selection_proj1@2x.png"; sourceTree = "<group>"; };
 		187F500D1734EAD8006B46A3 /* mp_selection_proj2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp_selection_proj2.png; sourceTree = "<group>"; };
 		187F500E1734EAD8006B46A3 /* mp_selection_proj2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mp_selection_proj2@2x.png"; sourceTree = "<group>"; };
+		187F50771734EF25006B46A3 /* mp_selection_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mp_selection_bg@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				187F50031734EAD8006B46A3 /* mp_selection_activity1@2x.png */,
 				187F50041734EAD8006B46A3 /* mp_selection_activity2.png */,
 				187F50051734EAD8006B46A3 /* mp_selection_activity2@2x.png */,
+				187F50771734EF25006B46A3 /* mp_selection_bg@2x.png */,
 				187F50061734EAD8006B46A3 /* mp_selection_activity3.png */,
 				187F50071734EAD8006B46A3 /* mp_selection_activity3@2x.png */,
 				187F50081734EAD8006B46A3 /* mp_selection_bg.png */,
@@ -296,6 +299,7 @@
 				187F501F1734EAD8006B46A3 /* mp_selection_proj1@2x.png in Resources */,
 				187F50201734EAD8006B46A3 /* mp_selection_proj2.png in Resources */,
 				187F50211734EAD8006B46A3 /* mp_selection_proj2@2x.png in Resources */,
+				187F50781734EF25006B46A3 /* mp_selection_bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

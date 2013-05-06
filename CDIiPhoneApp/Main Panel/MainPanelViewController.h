@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MPCellTableViewController.h"
 
-@interface MainPanelViewController : UIViewController
+@interface MainPanelViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MPCellTableViewControllerDelegate>
 
 @end

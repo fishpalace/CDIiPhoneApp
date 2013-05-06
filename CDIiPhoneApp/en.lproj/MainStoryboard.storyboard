@@ -13,17 +13,18 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UhI-Ek-EkG"/>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="182" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DZN-xk-0Gm">
+                            <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DZN-xk-0Gm">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="182" id="3j4-3y-Hod">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="182"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MPTableViewCell" rowHeight="200" id="3j4-3y-Hod" customClass="MPTableViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="181"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="0.0" green="0.5568627451" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -46,12 +47,70 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="UhI-Ek-EkG" id="ZBr-Lr-qda"/>
+                        <outlet property="tableView" destination="DZN-xk-0Gm" id="FqX-Dc-oaQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Cell Table View Controller-->
+        <scene sceneID="B33-bW-gwC">
+            <objects>
+                <tableViewController storyboardIdentifier="MPCellTableViewController" id="qUL-zn-NPO" customClass="MPCellTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="206" sectionHeaderHeight="22" sectionFooterHeight="22" id="zC1-YK-1Xi">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MPCellTableViewCell" rowHeight="206" id="2LO-4G-Iog" customClass="MPCellTableViewCell">
+                                <rect key="frame" x="0.0" y="22" width="200" height="206"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="205"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" image="mp_selection_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="LE8-cO-ral"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" image="mp_selection_proj1.png" translatesAutoresizingMaskIntoConstraints="NO" id="LL8-eI-Vsm"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" image="mp_selection_cover.png" translatesAutoresizingMaskIntoConstraints="NO" id="zez-Ik-TWX"/>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="LE8-cO-ral" firstAttribute="top" secondItem="2LO-4G-Iog" secondAttribute="top" constant="-12" id="45r-Hz-0cK"/>
+                                    <constraint firstItem="LL8-eI-Vsm" firstAttribute="centerX" secondItem="LE8-cO-ral" secondAttribute="centerX" type="default" id="BBw-hh-DwC"/>
+                                    <constraint firstItem="LL8-eI-Vsm" firstAttribute="top" secondItem="2LO-4G-Iog" secondAttribute="top" constant="15" id="GPJ-81-85q"/>
+                                    <constraint firstItem="zez-Ik-TWX" firstAttribute="top" secondItem="LL8-eI-Vsm" secondAttribute="top" type="default" id="Q8C-8h-9ep"/>
+                                    <constraint firstItem="LL8-eI-Vsm" firstAttribute="leading" secondItem="zez-Ik-TWX" secondAttribute="leading" type="default" id="qHZ-CS-9Mb"/>
+                                    <constraint firstItem="LL8-eI-Vsm" firstAttribute="centerX" secondItem="2LO-4G-Iog" secondAttribute="centerX" type="default" id="sxY-8D-Mad"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="backgroundImageView" destination="LE8-cO-ral" id="vOe-Re-JmE"/>
+                                    <outlet property="contentImageView" destination="LL8-eI-Vsm" id="fko-m6-PPT"/>
+                                    <outlet property="coverImageView" destination="zez-Ik-TWX" id="9Xu-Ot-ubP"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qUL-zn-NPO" id="rb2-ln-MlS"/>
+                            <outlet property="delegate" destination="qUL-zn-NPO" id="Oeq-R8-TnF"/>
+                        </connections>
+                    </tableView>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mfy-ee-PPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="899" y="124"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="mp_selection_bg.png" width="241" height="241"/>
+        <image name="mp_selection_cover.png" width="170" height="170"/>
+        <image name="mp_selection_proj1.png" width="170" height="170"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

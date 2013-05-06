@@ -14,7 +14,6 @@
 		180BD0A717334D6E00BA2A98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 180BD0A617334D6E00BA2A98 /* main.m */; };
 		180BD0AB17334D6E00BA2A98 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 180BD0AA17334D6E00BA2A98 /* AppDelegate.m */; };
 		180BD0B417334D6E00BA2A98 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180BD0B217334D6E00BA2A98 /* MainStoryboard.storyboard */; };
-		180BD0B717334D6E00BA2A98 /* MainPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180BD0B617334D6E00BA2A98 /* MainPanelViewController.m */; };
 		180BD0C217334DF900BA2A98 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180BD0BF17334DF900BA2A98 /* Default-568h@2x.png */; };
 		180BD0C317334DF900BA2A98 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 180BD0C017334DF900BA2A98 /* Default.png */; };
 		180BD0C417334DF900BA2A98 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180BD0C117334DF900BA2A98 /* Default@2x.png */; };
@@ -38,6 +37,13 @@
 		187F50201734EAD8006B46A3 /* mp_selection_proj2.png in Resources */ = {isa = PBXBuildFile; fileRef = 187F500D1734EAD8006B46A3 /* mp_selection_proj2.png */; };
 		187F50211734EAD8006B46A3 /* mp_selection_proj2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 187F500E1734EAD8006B46A3 /* mp_selection_proj2@2x.png */; };
 		187F50781734EF25006B46A3 /* mp_selection_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 187F50771734EF25006B46A3 /* mp_selection_bg@2x.png */; };
+		187F507C1734F25A006B46A3 /* MPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F507B1734F25A006B46A3 /* MPTableViewCell.m */; };
+		187F507F1734F277006B46A3 /* MainPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F507E1734F277006B46A3 /* MainPanelViewController.m */; };
+		187F50821734F33C006B46A3 /* MPCellTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F50811734F33C006B46A3 /* MPCellTableViewController.m */; };
+		187F50851734F628006B46A3 /* MPCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F50841734F628006B46A3 /* MPCellTableViewCell.m */; };
+		187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F50871734FC80006B46A3 /* UIStoryboard+Addition.m */; };
+		187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508B1735068F006B46A3 /* UIView+Addition.m */; };
+		187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508D1735068F006B46A3 /* UIView+Resize.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,8 +58,6 @@
 		180BD0A917334D6E00BA2A98 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		180BD0AA17334D6E00BA2A98 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		180BD0B317334D6E00BA2A98 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		180BD0B517334D6E00BA2A98 /* MainPanelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainPanelViewController.h; sourceTree = "<group>"; };
-		180BD0B617334D6E00BA2A98 /* MainPanelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainPanelViewController.m; sourceTree = "<group>"; };
 		180BD0BF17334DF900BA2A98 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		180BD0C017334DF900BA2A98 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		180BD0C117334DF900BA2A98 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -77,6 +81,20 @@
 		187F500D1734EAD8006B46A3 /* mp_selection_proj2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp_selection_proj2.png; sourceTree = "<group>"; };
 		187F500E1734EAD8006B46A3 /* mp_selection_proj2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mp_selection_proj2@2x.png"; sourceTree = "<group>"; };
 		187F50771734EF25006B46A3 /* mp_selection_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mp_selection_bg@2x.png"; sourceTree = "<group>"; };
+		187F507A1734F25A006B46A3 /* MPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPTableViewCell.h; path = "Main Panel/MPTableViewCell.h"; sourceTree = "<group>"; };
+		187F507B1734F25A006B46A3 /* MPTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPTableViewCell.m; path = "Main Panel/MPTableViewCell.m"; sourceTree = "<group>"; };
+		187F507D1734F277006B46A3 /* MainPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainPanelViewController.h; path = "Main Panel/MainPanelViewController.h"; sourceTree = "<group>"; };
+		187F507E1734F277006B46A3 /* MainPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainPanelViewController.m; path = "Main Panel/MainPanelViewController.m"; sourceTree = "<group>"; };
+		187F50801734F33C006B46A3 /* MPCellTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPCellTableViewController.h; path = "Main Panel/MPCellTableViewController.h"; sourceTree = "<group>"; };
+		187F50811734F33C006B46A3 /* MPCellTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPCellTableViewController.m; path = "Main Panel/MPCellTableViewController.m"; sourceTree = "<group>"; };
+		187F50831734F628006B46A3 /* MPCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPCellTableViewCell.h; path = "Main Panel/MPCellTableViewCell.h"; sourceTree = "<group>"; };
+		187F50841734F628006B46A3 /* MPCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPCellTableViewCell.m; path = "Main Panel/MPCellTableViewCell.m"; sourceTree = "<group>"; };
+		187F50861734FC80006B46A3 /* UIStoryboard+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIStoryboard+Addition.h"; path = "Category/UIStoryboard+Addition.h"; sourceTree = "<group>"; };
+		187F50871734FC80006B46A3 /* UIStoryboard+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIStoryboard+Addition.m"; path = "Category/UIStoryboard+Addition.m"; sourceTree = "<group>"; };
+		187F508A1735068F006B46A3 /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Addition.h"; path = "Category/UIView+Addition.h"; sourceTree = "<group>"; };
+		187F508B1735068F006B46A3 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Addition.m"; path = "Category/UIView+Addition.m"; sourceTree = "<group>"; };
+		187F508C1735068F006B46A3 /* UIView+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Resize.h"; path = "Category/UIView+Resize.h"; sourceTree = "<group>"; };
+		187F508D1735068F006B46A3 /* UIView+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Resize.m"; path = "Category/UIView+Resize.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				187F4FF91734E977006B46A3 /* Basic */,
+				187F50891734FC84006B46A3 /* Category */,
 				187F4FFA1734E989006B46A3 /* Main Panel */,
 			);
 			path = CDIiPhoneApp;
@@ -181,8 +200,14 @@
 		187F4FFA1734E989006B46A3 /* Main Panel */ = {
 			isa = PBXGroup;
 			children = (
-				180BD0B517334D6E00BA2A98 /* MainPanelViewController.h */,
-				180BD0B617334D6E00BA2A98 /* MainPanelViewController.m */,
+				187F507D1734F277006B46A3 /* MainPanelViewController.h */,
+				187F507E1734F277006B46A3 /* MainPanelViewController.m */,
+				187F507A1734F25A006B46A3 /* MPTableViewCell.h */,
+				187F507B1734F25A006B46A3 /* MPTableViewCell.m */,
+				187F50801734F33C006B46A3 /* MPCellTableViewController.h */,
+				187F50811734F33C006B46A3 /* MPCellTableViewController.m */,
+				187F50831734F628006B46A3 /* MPCellTableViewCell.h */,
+				187F50841734F628006B46A3 /* MPCellTableViewCell.m */,
 			);
 			name = "Main Panel";
 			sourceTree = "<group>";
@@ -222,6 +247,19 @@
 				180BD0C117334DF900BA2A98 /* Default@2x.png */,
 			);
 			name = Default;
+			sourceTree = "<group>";
+		};
+		187F50891734FC84006B46A3 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				187F508A1735068F006B46A3 /* UIView+Addition.h */,
+				187F508B1735068F006B46A3 /* UIView+Addition.m */,
+				187F508C1735068F006B46A3 /* UIView+Resize.h */,
+				187F508D1735068F006B46A3 /* UIView+Resize.m */,
+				187F50861734FC80006B46A3 /* UIStoryboard+Addition.h */,
+				187F50871734FC80006B46A3 /* UIStoryboard+Addition.m */,
+			);
+			name = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,7 +350,13 @@
 			files = (
 				180BD0A717334D6E00BA2A98 /* main.m in Sources */,
 				180BD0AB17334D6E00BA2A98 /* AppDelegate.m in Sources */,
-				180BD0B717334D6E00BA2A98 /* MainPanelViewController.m in Sources */,
+				187F507C1734F25A006B46A3 /* MPTableViewCell.m in Sources */,
+				187F507F1734F277006B46A3 /* MainPanelViewController.m in Sources */,
+				187F50821734F33C006B46A3 /* MPCellTableViewController.m in Sources */,
+				187F50851734F628006B46A3 /* MPCellTableViewCell.m in Sources */,
+				187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */,
+				187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */,
+				187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

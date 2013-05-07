@@ -46,6 +46,8 @@
 		187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508D1735068F006B46A3 /* UIView+Resize.m */; };
 		18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA8A173897CB006EFF51 /* MPDragIndicatorView.m */; };
 		18E0EA8D1738981C006EFF51 /* MPDragIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E0EA8C1738981C006EFF51 /* MPDragIndicatorView.xib */; };
+		18E0EA8F1738C670006EFF51 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E0EA8E1738C670006EFF51 /* QuartzCore.framework */; };
+		18E0EA921738CDA8006EFF51 /* GYPositionBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA911738CDA8006EFF51 /* GYPositionBounceAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,9 @@
 		18E0EA89173897CB006EFF51 /* MPDragIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPDragIndicatorView.h; path = "Main Panel/MPDragIndicatorView.h"; sourceTree = "<group>"; };
 		18E0EA8A173897CB006EFF51 /* MPDragIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPDragIndicatorView.m; path = "Main Panel/MPDragIndicatorView.m"; sourceTree = "<group>"; };
 		18E0EA8C1738981C006EFF51 /* MPDragIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MPDragIndicatorView.xib; path = "User Interface/MPDragIndicatorView.xib"; sourceTree = SOURCE_ROOT; };
+		18E0EA8E1738C670006EFF51 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		18E0EA901738CDA7006EFF51 /* GYPositionBounceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GYPositionBounceAnimation.h; path = "Main Panel/GYPositionBounceAnimation.h"; sourceTree = "<group>"; };
+		18E0EA911738CDA8006EFF51 /* GYPositionBounceAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GYPositionBounceAnimation.m; path = "Main Panel/GYPositionBounceAnimation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E0EA8F1738C670006EFF51 /* QuartzCore.framework in Frameworks */,
 				180BD09B17334D6E00BA2A98 /* UIKit.framework in Frameworks */,
 				180BD09D17334D6E00BA2A98 /* Foundation.framework in Frameworks */,
 				180BD09F17334D6E00BA2A98 /* CoreGraphics.framework in Frameworks */,
@@ -137,6 +143,7 @@
 		180BD09917334D6E00BA2A98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18E0EA8E1738C670006EFF51 /* QuartzCore.framework */,
 				180BD09A17334D6E00BA2A98 /* UIKit.framework */,
 				180BD09C17334D6E00BA2A98 /* Foundation.framework */,
 				180BD09E17334D6E00BA2A98 /* CoreGraphics.framework */,
@@ -216,6 +223,8 @@
 				18E0EA89173897CB006EFF51 /* MPDragIndicatorView.h */,
 				18E0EA8A173897CB006EFF51 /* MPDragIndicatorView.m */,
 				18E0EA8C1738981C006EFF51 /* MPDragIndicatorView.xib */,
+				18E0EA901738CDA7006EFF51 /* GYPositionBounceAnimation.h */,
+				18E0EA911738CDA8006EFF51 /* GYPositionBounceAnimation.m */,
 			);
 			name = "Main Panel";
 			sourceTree = "<group>";
@@ -367,6 +376,7 @@
 				187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */,
 				187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */,
 				18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */,
+				18E0EA921738CDA8006EFF51 /* GYPositionBounceAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

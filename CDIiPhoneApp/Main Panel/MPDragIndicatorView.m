@@ -8,6 +8,8 @@
 
 #import "MPDragIndicatorView.h"
 #import "UIView+Resize.h"
+#import <QuartzCore/QuartzCore.h>
+#import "GYPositionBounceAnimation.h"
 
 #define kUpperBarOriginY  20
 #define kMiddleBarOriginY 26
@@ -19,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *middleBarImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *lowerBarImageView;
 @property (weak, nonatomic) UITableView *tableView;
+@property (assign, nonatomic) BOOL animationPlayed;
 
 @end
 
@@ -41,15 +44,31 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-  if ([keyPath isEqualToString:@"contentOffset"]) {
+  if ([keyPath isEqualToString:@"contentOffset"] && !self.animationPlayed) {
     CGFloat offsetY = self.tableView.contentOffset.y;
     offsetY = offsetY < 0 ? offsetY : 0;
 
-    [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY];
-    [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY * 2 / 3];
-    [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY / 3];
+    if (offsetY > -100) {
+      [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY];
+      [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY * 2 / 3];
+      [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY / 3];
+    } else {
+      [self view:self.upperBarImageView playAnimationToValue:kUpperBarOriginY];
+      [self view:self.middleBarImageView playAnimationToValue:kMiddleBarOriginY];
+      [self view:self.lowerBarImageView playAnimationToValue:kLowerBarOriginY];
+    }
   }
 }
 
+- (void)view:(UIView *)view playAnimationToValue:(CGFloat)value;
+{
+  self.animationPlayed = YES;
+  GYPositionBounceAnimation *animation = [GYPositionBounceAnimation animationWithKeyPath:@"position.y"];
+  animation.duration = 0.7;
+  animation.numberOfBounces = 4;
+  [animation setValueArrayForStartValue:view.frame.origin.y endValue:value];
+  [view.layer setValue:[NSNumber numberWithFloat:value] forKeyPath:animation.keyPath];
+  [view.layer addAnimation:animation forKey:@"bounce"];
+}
 
 @end

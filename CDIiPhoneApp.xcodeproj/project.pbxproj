@@ -48,6 +48,8 @@
 		18E0EA8D1738981C006EFF51 /* MPDragIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E0EA8C1738981C006EFF51 /* MPDragIndicatorView.xib */; };
 		18E0EA8F1738C670006EFF51 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E0EA8E1738C670006EFF51 /* QuartzCore.framework */; };
 		18E0EA921738CDA8006EFF51 /* GYPositionBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA911738CDA8006EFF51 /* GYPositionBounceAnimation.m */; };
+		18E0EA961738DAE4006EFF51 /* MenuPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA951738DAE4006EFF51 /* MenuPanelViewController.m */; };
+		18E0EA991738DBE7006EFF51 /* UIApplication+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA981738DBE7006EFF51 /* UIApplication+Addition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +107,10 @@
 		18E0EA8E1738C670006EFF51 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		18E0EA901738CDA7006EFF51 /* GYPositionBounceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GYPositionBounceAnimation.h; path = "Main Panel/GYPositionBounceAnimation.h"; sourceTree = "<group>"; };
 		18E0EA911738CDA8006EFF51 /* GYPositionBounceAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GYPositionBounceAnimation.m; path = "Main Panel/GYPositionBounceAnimation.m"; sourceTree = "<group>"; };
+		18E0EA941738DAE4006EFF51 /* MenuPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuPanelViewController.h; path = "Menu Panel/MenuPanelViewController.h"; sourceTree = "<group>"; };
+		18E0EA951738DAE4006EFF51 /* MenuPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuPanelViewController.m; path = "Menu Panel/MenuPanelViewController.m"; sourceTree = "<group>"; };
+		18E0EA971738DBE7006EFF51 /* UIApplication+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIApplication+Addition.h"; path = "Category/UIApplication+Addition.h"; sourceTree = "<group>"; };
+		18E0EA981738DBE7006EFF51 /* UIApplication+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+Addition.m"; path = "Category/UIApplication+Addition.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +163,7 @@
 				187F4FF91734E977006B46A3 /* Basic */,
 				187F50891734FC84006B46A3 /* Category */,
 				187F4FFA1734E989006B46A3 /* Main Panel */,
+				18E0EA931738DA89006EFF51 /* Menu Panel */,
 			);
 			path = CDIiPhoneApp;
 			sourceTree = "<group>";
@@ -275,8 +282,19 @@
 				187F508D1735068F006B46A3 /* UIView+Resize.m */,
 				187F50861734FC80006B46A3 /* UIStoryboard+Addition.h */,
 				187F50871734FC80006B46A3 /* UIStoryboard+Addition.m */,
+				18E0EA971738DBE7006EFF51 /* UIApplication+Addition.h */,
+				18E0EA981738DBE7006EFF51 /* UIApplication+Addition.m */,
 			);
 			name = Category;
+			sourceTree = "<group>";
+		};
+		18E0EA931738DA89006EFF51 /* Menu Panel */ = {
+			isa = PBXGroup;
+			children = (
+				18E0EA941738DAE4006EFF51 /* MenuPanelViewController.h */,
+				18E0EA951738DAE4006EFF51 /* MenuPanelViewController.m */,
+			);
+			name = "Menu Panel";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +395,8 @@
 				187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */,
 				18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */,
 				18E0EA921738CDA8006EFF51 /* GYPositionBounceAnimation.m in Sources */,
+				18E0EA961738DAE4006EFF51 /* MenuPanelViewController.m in Sources */,
+				18E0EA991738DBE7006EFF51 /* UIApplication+Addition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

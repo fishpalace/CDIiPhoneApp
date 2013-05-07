@@ -105,38 +105,47 @@
             </objects>
             <point key="canvasLocation" x="899" y="124"/>
         </scene>
+        <!--Menu Panel View Controller-->
+        <scene sceneID="F0S-XL-Xah">
+            <objects>
+                <viewController storyboardIdentifier="MenuPanelViewController" id="X8Q-6Y-pVX" customClass="MenuPanelViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eKw-Hh-PhQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Under Construction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTw-JW-xGd">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="247" id="QXX-am-vZ9"/>
+                                    <constraint firstAttribute="height" constant="299" id="XS6-9e-Qts"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" red="0.0" green="0.5568627451" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nTw-JW-xGd" firstAttribute="centerX" secondItem="eKw-Hh-PhQ" secondAttribute="centerX" type="default" id="WuE-8T-c7g"/>
+                            <constraint firstItem="nTw-JW-xGd" firstAttribute="centerY" secondItem="eKw-Hh-PhQ" secondAttribute="centerY" type="default" id="bfS-AX-F8k"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8l8-TW-Ktz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="554" y="-541"/>
+        </scene>
     </scenes>
     <resources>
         <image name="mp_selection_bg.png" width="241" height="241"/>
         <image name="mp_selection_cover.png" width="170" height="170"/>
         <image name="mp_selection_proj1.png" width="170" height="170"/>
     </resources>
-    <classes>
-        <class className="MPCellTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="contentImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="coverImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MPCellTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewController.h"/>
-        </class>
-        <class className="MPTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPTableViewCell.h"/>
-        </class>
-        <class className="MainPanelViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainPanelViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

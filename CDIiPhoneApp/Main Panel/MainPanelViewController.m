@@ -9,13 +9,16 @@
 #import "MainPanelViewController.h"
 #import "MPTableViewCell.h"
 #import "MPDragIndicatorView.h"
+#import "MenuPanelViewController.h"
 #import "UIView+Resize.h"
+#import "UIApplication+Addition.h"
 
 @interface MainPanelViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) MPDragIndicatorView *dragIndicatorView;
+@property (strong, nonatomic) MenuPanelViewController *menuPanelViewController;
 @property (assign, nonatomic) NSInteger currentActiveRow;
 
 @end
@@ -36,8 +39,10 @@
   
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
-  [self.dragIndicatorView configureTableView:self.tableView];
   [self.tableView setTableHeaderView:self.dragIndicatorView];
+  self.dragIndicatorView.stretchLimitHeight = 120;
+  self.dragIndicatorView.delegate = self;
+  [self.dragIndicatorView configureTableView:self.tableView];
 }
 
 - (void)viewDidLayoutSubviews
@@ -87,6 +92,23 @@
   return self.currentActiveRow == row;
 }
 
+#pragma mark - Drag View Delegate
+- (void)dragIndicatorViewDidStrecth:(MPDragIndicatorView *)view
+{
+  [self showMenuPanel];
+}
+
+- (void)showMenuPanel
+{
+  self.tableView.userInteractionEnabled = NO;
+  [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [self.tableView resetOriginYByOffset:kCurrentScreenHeight];
+    [self.menuPanelViewController.view resetOriginYByOffset:kCurrentScreenHeight];
+  } completion:^(BOOL finished) {
+    self.tableView.userInteractionEnabled = YES;
+  }];
+}
+
 #pragma mark - Property
 - (MPDragIndicatorView *)dragIndicatorView
 {
@@ -97,6 +119,17 @@
     _dragIndicatorView = [nibs objectAtIndex:0];
   }
   return _dragIndicatorView;
+}
+
+- (MenuPanelViewController *)menuPanelViewController
+{
+  if (!_menuPanelViewController) {
+    _menuPanelViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuPanelViewController"];
+    [_menuPanelViewController.view resetOrigin:CGPointMake(0, -kCurrentScreenHeight)];
+    [_menuPanelViewController.view resetSize:kCurrentScreenSize];
+    [self.view addSubview:_menuPanelViewController.view];
+  }
+  return _menuPanelViewController;
 }
 
 @end

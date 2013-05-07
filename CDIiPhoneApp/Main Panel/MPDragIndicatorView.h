@@ -8,7 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class MPDragIndicatorView;
+
+@protocol MPDragIndicatorViewDelegate <NSObject>
+
+- (void)dragIndicatorViewDidStrecth:(MPDragIndicatorView *)view;
+
+@end
+
 @interface MPDragIndicatorView : UIView
+
+@property (nonatomic, assign) CGFloat stretchLimitHeight;
+@property (nonatomic, assign) BOOL    readyForStretch;
+@property (nonatomic, weak) id<MPDragIndicatorViewDelegate> delegate;
 
 - (void)configureTableView:(UITableView *)tableView;
 

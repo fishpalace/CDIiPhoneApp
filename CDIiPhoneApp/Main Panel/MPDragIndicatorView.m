@@ -39,20 +39,25 @@
 - (void)configureTableView:(UITableView *)tableView
 {
   self.tableView = tableView;
+  self.readyForStretch = YES;
   [self.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:NULL];
   [self addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:NULL];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-  if ([keyPath isEqualToString:@"contentOffset"] && !self.animationPlayed) {
+  if ([keyPath isEqualToString:@"contentOffset"] && self.readyForStretch) {
     CGFloat offsetY = self.tableView.contentOffset.y;
     offsetY = offsetY < 0 ? offsetY : 0;
 
-    if (offsetY > -100) {
+    if (offsetY > -self.stretchLimitHeight) {
       [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY];
       [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY * 2 / 3];
       [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY / 3];
     } else {
+      if ([self.delegate respondsToSelector:@selector(dragIndicatorViewDidStrecth:)]) {
+        [self.delegate dragIndicatorViewDidStrecth:self];
+        self.readyForStretch = NO;
+      }
       [self view:self.upperBarImageView playAnimationToValue:kUpperBarOriginY];
       [self view:self.middleBarImageView playAnimationToValue:kMiddleBarOriginY];
       [self view:self.lowerBarImageView playAnimationToValue:kLowerBarOriginY];
@@ -62,7 +67,6 @@
 
 - (void)view:(UIView *)view playAnimationToValue:(CGFloat)value;
 {
-  self.animationPlayed = YES;
   GYPositionBounceAnimation *animation = [GYPositionBounceAnimation animationWithKeyPath:@"position.y"];
   animation.duration = 0.7;
   animation.numberOfBounces = 4;

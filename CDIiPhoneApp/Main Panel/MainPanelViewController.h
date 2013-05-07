@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MPCellTableViewController.h"
+#import "MPDragIndicatorView.h"
 
-@interface MainPanelViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MPCellTableViewControllerDelegate>
+@interface MainPanelViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,
+    MPCellTableViewControllerDelegate, MPDragIndicatorViewDelegate, UIScrollViewDelegate>
 
 @end

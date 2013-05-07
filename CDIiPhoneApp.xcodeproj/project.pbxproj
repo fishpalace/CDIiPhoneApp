@@ -44,6 +44,8 @@
 		187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F50871734FC80006B46A3 /* UIStoryboard+Addition.m */; };
 		187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508B1735068F006B46A3 /* UIView+Addition.m */; };
 		187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508D1735068F006B46A3 /* UIView+Resize.m */; };
+		18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA8A173897CB006EFF51 /* MPDragIndicatorView.m */; };
+		18E0EA8D1738981C006EFF51 /* MPDragIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E0EA8C1738981C006EFF51 /* MPDragIndicatorView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,9 @@
 		187F508B1735068F006B46A3 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Addition.m"; path = "Category/UIView+Addition.m"; sourceTree = "<group>"; };
 		187F508C1735068F006B46A3 /* UIView+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Resize.h"; path = "Category/UIView+Resize.h"; sourceTree = "<group>"; };
 		187F508D1735068F006B46A3 /* UIView+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Resize.m"; path = "Category/UIView+Resize.m"; sourceTree = "<group>"; };
+		18E0EA89173897CB006EFF51 /* MPDragIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPDragIndicatorView.h; path = "Main Panel/MPDragIndicatorView.h"; sourceTree = "<group>"; };
+		18E0EA8A173897CB006EFF51 /* MPDragIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPDragIndicatorView.m; path = "Main Panel/MPDragIndicatorView.m"; sourceTree = "<group>"; };
+		18E0EA8C1738981C006EFF51 /* MPDragIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MPDragIndicatorView.xib; path = "User Interface/MPDragIndicatorView.xib"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +213,9 @@
 				187F50811734F33C006B46A3 /* MPCellTableViewController.m */,
 				187F50831734F628006B46A3 /* MPCellTableViewCell.h */,
 				187F50841734F628006B46A3 /* MPCellTableViewCell.m */,
+				18E0EA89173897CB006EFF51 /* MPDragIndicatorView.h */,
+				18E0EA8A173897CB006EFF51 /* MPDragIndicatorView.m */,
+				18E0EA8C1738981C006EFF51 /* MPDragIndicatorView.xib */,
 			);
 			name = "Main Panel";
 			sourceTree = "<group>";
@@ -338,6 +346,7 @@
 				187F50201734EAD8006B46A3 /* mp_selection_proj2.png in Resources */,
 				187F50211734EAD8006B46A3 /* mp_selection_proj2@2x.png in Resources */,
 				187F50781734EF25006B46A3 /* mp_selection_bg@2x.png in Resources */,
+				18E0EA8D1738981C006EFF51 /* MPDragIndicatorView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +366,7 @@
 				187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */,
 				187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */,
 				187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */,
+				18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

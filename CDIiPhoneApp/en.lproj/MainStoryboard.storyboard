@@ -31,14 +31,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UhI-Ek-EkG" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="0Hp-ue-qOX"/>
-                            <constraint firstItem="DZN-xk-0Gm" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="0WV-eV-548"/>
-                            <constraint firstItem="UhI-Ek-EkG" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="CQB-cz-rvq"/>
-                            <constraint firstItem="DZN-xk-0Gm" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="GWw-xk-6Ko"/>
-                            <constraint firstItem="DZN-xk-0Gm" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="LN0-Pt-o72"/>
-                            <constraint firstItem="UhI-Ek-EkG" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="T6Q-9E-ZjJ"/>
-                            <constraint firstItem="UhI-Ek-EkG" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="kbe-tP-1Gq"/>
-                            <constraint firstItem="DZN-xk-0Gm" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="qCW-n6-cGs"/>
+                            <constraint firstItem="DZN-xk-0Gm" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="QqU-Rv-nNC"/>
+                            <constraint firstItem="DZN-xk-0Gm" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="RBy-R9-V4I"/>
+                            <constraint firstItem="DZN-xk-0Gm" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="bAR-aQ-Q05"/>
+                            <constraint firstItem="UhI-Ek-EkG" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="bGf-lL-IXl"/>
+                            <constraint firstItem="DZN-xk-0Gm" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="iLO-Sp-KWg"/>
+                            <constraint firstItem="UhI-Ek-EkG" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="ich-V3-Ki0"/>
+                            <constraint firstItem="UhI-Ek-EkG" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="rg6-yH-W6g"/>
+                            <constraint firstItem="UhI-Ek-EkG" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="rvo-BZ-vwE"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -76,12 +76,12 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="LE8-cO-ral" firstAttribute="top" secondItem="2LO-4G-Iog" secondAttribute="top" constant="-12" id="45r-Hz-0cK"/>
-                                    <constraint firstItem="LL8-eI-Vsm" firstAttribute="centerX" secondItem="LE8-cO-ral" secondAttribute="centerX" type="default" id="BBw-hh-DwC"/>
-                                    <constraint firstItem="LL8-eI-Vsm" firstAttribute="top" secondItem="2LO-4G-Iog" secondAttribute="top" constant="15" id="GPJ-81-85q"/>
-                                    <constraint firstItem="zez-Ik-TWX" firstAttribute="top" secondItem="LL8-eI-Vsm" secondAttribute="top" type="default" id="Q8C-8h-9ep"/>
-                                    <constraint firstItem="LL8-eI-Vsm" firstAttribute="leading" secondItem="zez-Ik-TWX" secondAttribute="leading" type="default" id="qHZ-CS-9Mb"/>
-                                    <constraint firstItem="LL8-eI-Vsm" firstAttribute="centerX" secondItem="2LO-4G-Iog" secondAttribute="centerX" type="default" id="sxY-8D-Mad"/>
+                                    <constraint firstItem="zez-Ik-TWX" firstAttribute="top" secondItem="LL8-eI-Vsm" secondAttribute="top" type="default" id="C77-Lm-e7M"/>
+                                    <constraint firstItem="LE8-cO-ral" firstAttribute="centerX" secondItem="LL8-eI-Vsm" secondAttribute="centerX" type="default" id="M6b-uP-Xvg"/>
+                                    <constraint firstItem="LE8-cO-ral" firstAttribute="top" secondItem="2LO-4G-Iog" secondAttribute="top" constant="-12" id="XKZ-PI-lai"/>
+                                    <constraint firstItem="LL8-eI-Vsm" firstAttribute="leading" secondItem="zez-Ik-TWX" secondAttribute="leading" type="default" id="h2w-hU-2Pr"/>
+                                    <constraint firstItem="zez-Ik-TWX" firstAttribute="top" secondItem="2LO-4G-Iog" secondAttribute="top" constant="15" id="hpM-0W-JL8"/>
+                                    <constraint firstItem="LL8-eI-Vsm" firstAttribute="centerX" secondItem="2LO-4G-Iog" secondAttribute="centerX" type="default" id="wwL-bJ-XMv"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="backgroundImageView" destination="LE8-cO-ral" id="vOe-Re-JmE"/>
@@ -111,6 +111,32 @@
         <image name="mp_selection_cover.png" width="170" height="170"/>
         <image name="mp_selection_proj1.png" width="170" height="170"/>
     </resources>
+    <classes>
+        <class className="MPCellTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="contentImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="coverImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="MPCellTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewController.h"/>
+        </class>
+        <class className="MPTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPTableViewCell.h"/>
+        </class>
+        <class className="MainPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainPanelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

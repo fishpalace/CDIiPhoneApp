@@ -50,7 +50,6 @@
   CGPoint currentOffset = self.tableView.contentOffset;
   CGPoint targetPoint = CGPointMake(currentOffset.x, currentOffset.y + offset);
   [self.tableView setContentOffset:targetPoint];
-  NSLog(@"row:%d, offset:%f", self.row, self.tableView.contentOffset.y);
 }
 
 #pragma mark - Table view data source

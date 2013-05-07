@@ -8,11 +8,14 @@
 
 #import "MainPanelViewController.h"
 #import "MPTableViewCell.h"
+#import "MPDragIndicatorView.h"
+#import "UIView+Resize.h"
 
 @interface MainPanelViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) MPDragIndicatorView *dragIndicatorView;
 @property (assign, nonatomic) NSInteger currentActiveRow;
 
 @end
@@ -33,6 +36,13 @@
   
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
+  [self.dragIndicatorView configureTableView:self.tableView];
+  [self.tableView setTableHeaderView:self.dragIndicatorView];
+}
+
+- (void)viewDidLayoutSubviews
+{
+  [self.dragIndicatorView resetHeight:44];
 }
 
 #pragma mark - Table View Data Source
@@ -75,6 +85,18 @@
 - (BOOL)isActiveForRow:(NSInteger)row
 {
   return self.currentActiveRow == row;
+}
+
+#pragma mark - Property
+- (MPDragIndicatorView *)dragIndicatorView
+{
+  if (!_dragIndicatorView) {
+    NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"MPDragIndicatorView"
+                                                  owner:self
+                                                options:nil];
+    _dragIndicatorView = [nibs objectAtIndex:0];
+  }
+  return _dragIndicatorView;
 }
 
 @end

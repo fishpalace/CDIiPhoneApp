@@ -32,17 +32,12 @@
   [super viewDidLoad];
 }
 
-- (void)didReceiveMemoryWarning
-{
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
-}
-
 - (void)setUpWithRow:(NSInteger)row delegate:(id<MPCellTableViewControllerDelegate>)delegate
 {
   [self.view resetOrigin:CGPointZero];
   self.row = row;
   self.delegate = delegate;
+  self.tableView.contentOffset = CGPointMake(0.0, 0.5);
 }
 
 - (void)moveByOffset:(CGFloat)offset
@@ -143,6 +138,17 @@
   if (shouldAffectOtherCells && [self.delegate respondsToSelector:@selector(cellForRow:didMoveByOffset:)]) {
     [self.delegate cellForRow:self.row didMoveByOffset:scrollView.contentOffset.y - self.prevOffset];
     self.prevOffset = scrollView.contentOffset.y;
+  }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+  CGFloat maxOffsetY = scrollView.contentSize.height - scrollView.frame.size.width;
+  CGFloat minOffsetY = 0;
+  if (scrollView.contentOffset.y == minOffsetY) {
+    scrollView.contentOffset = CGPointMake(0.0, minOffsetY + 0.5);
+  } else if (scrollView.contentOffset.y == maxOffsetY) {
+    scrollView.contentOffset = CGPointMake(0.0, maxOffsetY - 0.5);
   }
 }
 

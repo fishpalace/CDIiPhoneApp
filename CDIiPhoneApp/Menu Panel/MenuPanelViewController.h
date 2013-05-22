@@ -10,4 +10,6 @@
 
 @interface MenuPanelViewController : UIViewController
 
+- (void)setUp;
+
 @end

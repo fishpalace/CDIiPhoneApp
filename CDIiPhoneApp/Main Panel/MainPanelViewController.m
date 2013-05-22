@@ -12,6 +12,9 @@
 #import "MenuPanelViewController.h"
 #import "UIView+Resize.h"
 #import "UIApplication+Addition.h"
+#import <QuartzCore/QuartzCore.h>
+
+#define kDragIndicatorViewHeight 32
 
 @interface MainPanelViewController ()
 
@@ -20,6 +23,11 @@
 @property (strong, nonatomic) MPDragIndicatorView *dragIndicatorView;
 @property (strong, nonatomic) MenuPanelViewController *menuPanelViewController;
 @property (assign, nonatomic) NSInteger currentActiveRow;
+@property (weak, nonatomic) IBOutlet UIView *tableViewContainerView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTopSpaceConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewTopSpaceConstraint;
 
 @end
 
@@ -43,11 +51,31 @@
   self.dragIndicatorView.stretchLimitHeight = 120;
   self.dragIndicatorView.delegate = self;
   [self.dragIndicatorView configureTableView:self.tableView];
+  
+  [self.menuPanelViewController setUp];
 }
 
-- (void)viewDidLayoutSubviews
+- (void)viewDidAppear:(BOOL)animated
 {
-  [self.dragIndicatorView resetHeight:44];
+  [self.dragIndicatorView resetHeight:kDragIndicatorViewHeight];
+  [self.menuPanelViewController.view resetOrigin:CGPointZero];
+  [self.menuPanelViewController.view resetSize:kCurrentScreenSize];
+}
+
+- (void)updateViewConstraints
+{
+  [super updateViewConstraints];
+  self.tableViewHeightConstraint.constant = kCurrentScreenHeight;
+  self.tableViewTopSpaceConstraint.constant = kCurrentScreenHeight;
+  self.containerViewTopSpaceConstraint.constant = -kCurrentScreenHeight;
+}
+
+- (IBAction)clickButton:(id)sender
+{
+  NSLog(@"container, %@", NSStringFromCGRect(self.tableViewContainerView.frame));
+  NSLog(@"menupanel, %@", NSStringFromCGRect(self.menuPanelViewController.view.frame));
+  NSLog(@"tableview, %@", NSStringFromCGRect(self.tableView.frame));
+  NSLog(@"headerview, %@", NSStringFromCGRect(self.dragIndicatorView.frame));
 }
 
 #pragma mark - Table View Data Source
@@ -67,6 +95,11 @@
   MPTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
   [cell.contentTableViewController setUpWithRow:indexPath.row delegate:self];
   return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return 200;
 }
 
 #pragma mark - MPCell Table View Delegate
@@ -100,12 +133,14 @@
 
 - (void)showMenuPanel
 {
-  self.tableView.userInteractionEnabled = NO;
+  [self.tableView resetOriginY:kCurrentScreenHeight - self.tableView.contentOffset.y];
+  self.tableView.scrollEnabled = NO;
+  self.tableView.scrollEnabled = YES;
+
   [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-    [self.tableView resetOriginYByOffset:kCurrentScreenHeight];
-    [self.menuPanelViewController.view resetOriginYByOffset:kCurrentScreenHeight];
+    [self.tableViewContainerView resetOriginY:0];
   } completion:^(BOOL finished) {
-    self.tableView.userInteractionEnabled = YES;
+    [self.tableView resetOriginY:kCurrentScreenHeight];
   }];
 }
 
@@ -117,6 +152,7 @@
                                                   owner:self
                                                 options:nil];
     _dragIndicatorView = [nibs objectAtIndex:0];
+    [_dragIndicatorView resetHeight:32];
   }
   return _dragIndicatorView;
 }
@@ -125,9 +161,7 @@
 {
   if (!_menuPanelViewController) {
     _menuPanelViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuPanelViewController"];
-    [_menuPanelViewController.view resetOrigin:CGPointMake(0, -kCurrentScreenHeight)];
-    [_menuPanelViewController.view resetSize:kCurrentScreenSize];
-    [self.view addSubview:_menuPanelViewController.view];
+    [self.tableViewContainerView addSubview:_menuPanelViewController.view];
   }
   return _menuPanelViewController;
 }

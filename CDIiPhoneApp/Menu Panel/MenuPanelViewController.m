@@ -7,6 +7,7 @@
 //
 
 #import "MenuPanelViewController.h"
+#import "UIView+Resize.h"
 
 @interface MenuPanelViewController ()
 
@@ -27,6 +28,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)setUp
+{
+  //Set up
 }
 
 @end

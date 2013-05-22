@@ -11,9 +11,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "GYPositionBounceAnimation.h"
 
-#define kUpperBarOriginY  20
-#define kMiddleBarOriginY 26
-#define kLowerBarOriginY  32
+#define kBarBaseOffset    8
+#define kUpperBarOriginY  kBarBaseOffset
+#define kMiddleBarOriginY kBarBaseOffset + 6
+#define kLowerBarOriginY  kBarBaseOffset + 12
 
 @interface MPDragIndicatorView ()
 
@@ -50,9 +51,9 @@
     offsetY = offsetY < 0 ? offsetY : 0;
 
     if (offsetY > -self.stretchLimitHeight) {
-      [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY];
-      [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY * 2 / 3];
-      [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY / 3];
+      [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY * 3 / 4];
+      [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY / 2];
+      [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY / 4];
     } else {
       if ([self.delegate respondsToSelector:@selector(dragIndicatorViewDidStrecth:)]) {
         [self.delegate dragIndicatorViewDidStrecth:self];

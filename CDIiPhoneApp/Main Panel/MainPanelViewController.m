@@ -13,6 +13,7 @@
 #import "UIView+Resize.h"
 #import "UIApplication+Addition.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GYPositionBounceAnimation.h"
 
 #define kDragIndicatorViewHeight 32
 
@@ -137,11 +138,31 @@
   self.tableView.scrollEnabled = NO;
   self.tableView.scrollEnabled = YES;
 
-  [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-    [self.tableViewContainerView resetOriginY:0];
-  } completion:^(BOOL finished) {
-    [self.tableView resetOriginY:kCurrentScreenHeight];
-  }];
+  [self playAnimationWithDirectionUp:NO completion:nil];
+//  [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+//    [self.tableViewContainerView resetOriginY:0];
+//  } completion:^(BOOL finished) {
+//    [self.tableView resetOriginY:kCurrentScreenHeight];
+//  }];
+}
+
+- (void)playAnimationWithDirectionUp:(BOOL)isDirectionUp completion:(void (^)(BOOL finished))completion
+{
+  CGFloat startingValue = self.tableViewContainerView.frame.origin.y + kCurrentScreenHeight;
+  CGFloat value = isDirectionUp ? 0 : kCurrentScreenHeight;
+  GYPositionBounceAnimation *animation = [GYPositionBounceAnimation animationWithKeyPath:@"position.y"];
+  animation.duration = 2.0;
+  animation.delegate = self;
+  animation.numberOfBounces = 4;
+  
+  [animation setValueArrayForStartValue:startingValue endValue:value];
+  [self.tableViewContainerView.layer setValue:[NSNumber numberWithFloat:value] forKeyPath:animation.keyPath];
+  [self.tableViewContainerView.layer addAnimation:animation forKey:@"bounce"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+  [self.tableView resetOriginY:kCurrentScreenHeight];
 }
 
 #pragma mark - Property

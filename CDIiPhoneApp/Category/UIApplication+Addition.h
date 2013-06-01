@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#define kCurrentScreenHeight  [UIApplication currentScreenHeight]
-#define kCurrentScreenSize    [UIApplication currentScreenSize]
+#define kCurrentScreenHeight  [UIScreen mainScreen].bounds.size.height
+#define kCurrentScreenSize    [UIScreen mainScreen].bounds.size
 
 @interface UIApplication (Addition)
 
-+ (CGFloat)currentScreenHeight;
-+ (CGSize)currentScreenSize;
++ (void)showCover;
 
 @end

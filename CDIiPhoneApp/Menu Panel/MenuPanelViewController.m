@@ -52,9 +52,9 @@
 {
   [super viewDidLoad];
   [self.containerScrollview addSubview:self.dragIndicatorView];
-  self.dragIndicatorView.stretchLimitHeight = 80;
-  self.dragIndicatorView.delegate = self;
   [self.dragIndicatorView configureScrollView:self.containerScrollview];
+  self.dragIndicatorView.stretchLimitHeight = 60;
+  self.dragIndicatorView.delegate = self;
 }
 
 - (void)setUp
@@ -68,17 +68,13 @@
   [self.containerScrollview setContentOffset:CGPointZero];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-  [self.containerScrollview setContentOffset:CGPointMake(0, 88)];
-}
-
 - (void)viewDidLayoutSubviews
 {
   [self.dragIndicatorView resetOriginY:kContentSize.height - kDragIndicatorViewHeight - kBottomGap];
   [self.dragIndicatorView resetHeight:kDragIndicatorViewHeight];
   [self.dragIndicatorView resetWidth:320];
   [self.containerScrollview setContentSize:kContentSize];
+  [self.containerScrollview setContentOffset:CGPointMake(0, 88) animated:NO];
 }
 
 - (void)dragIndicatorViewDidStrecth:(MPDragIndicatorView *)view
@@ -94,8 +90,6 @@
                                                 options:nil];
     _dragIndicatorView = [nibs objectAtIndex:0];
     _dragIndicatorView.isReversed = YES;
-//    _dragIndicatorView.layer.borderColor = [UIColor redColor].CGColor;
-//    _dragIndicatorView.layer.borderWidth = 2;
   }
   return _dragIndicatorView;
 }

@@ -7,17 +7,21 @@
 //
 
 #import "UIApplication+Addition.h"
+#import "AppDelegate.h"
 
 @implementation UIApplication (Addition)
 
-+ (CGFloat)currentScreenHeight
++ (void)showCover
 {
-  return [UIScreen mainScreen].bounds.size.height;
-}
-
-+ (CGSize)currentScreenSize
-{
-  return [UIScreen mainScreen].bounds.size;
+  UIImageView *topImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 12)];
+  UIImageView *bottomImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, kCurrentScreenHeight - 12, 320, 12)];
+  topImageView.image = [UIImage imageNamed:@"top_cover"];
+  bottomImageView.image = [UIImage imageNamed:@"bottom_cover"];
+  
+  AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+  [appDelegate.window makeKeyAndVisible];
+  [appDelegate.window addSubview:topImageView];
+  [appDelegate.window addSubview:bottomImageView];
 }
 
 @end

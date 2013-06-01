@@ -139,11 +139,6 @@
   self.tableView.scrollEnabled = YES;
 
   [self playAnimationWithDirectionUp:NO completion:nil];
-//  [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-//    [self.tableViewContainerView resetOriginY:0];
-//  } completion:^(BOOL finished) {
-//    [self.tableView resetOriginY:kCurrentScreenHeight];
-//  }];
 }
 
 - (void)playAnimationWithDirectionUp:(BOOL)isDirectionUp completion:(void (^)(BOOL finished))completion
@@ -173,7 +168,7 @@
                                                   owner:self
                                                 options:nil];
     _dragIndicatorView = [nibs objectAtIndex:0];
-    [_dragIndicatorView resetHeight:32];
+    _dragIndicatorView.isReversed = NO;
   }
   return _dragIndicatorView;
 }

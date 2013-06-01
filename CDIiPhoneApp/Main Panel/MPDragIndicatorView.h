@@ -20,6 +20,7 @@
 
 @property (nonatomic, assign) CGFloat stretchLimitHeight;
 @property (nonatomic, assign) BOOL    readyForStretch;
+@property (nonatomic, assign) BOOL    isReversed;
 @property (nonatomic, weak) id<MPDragIndicatorViewDelegate> delegate;
 
 - (void)configureTableView:(UITableView *)tableView;

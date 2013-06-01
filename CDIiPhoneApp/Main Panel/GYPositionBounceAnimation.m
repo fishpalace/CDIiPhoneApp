@@ -31,21 +31,20 @@
   
 	CGFloat oscillationComponent;
 	CGFloat coefficient;
+  
+  NSLog(@"alpha: %f, omega: %f", alpha, omega);
+  alpha = -0.05;    //弹性幅度
+  omega = 0.1;      //恢复速率
 	
 	// conforms to y = A * e^(-alpha*t)*cos(omega*t)
 	for (NSInteger t = 0; t < steps; t++) {
-    if (self.shake) {
-			oscillationComponent =  sin(omega*t);
-		} else {
-			oscillationComponent =  cos(omega*t);
-		}
+    oscillationComponent =  cos(omega * t);
 		coefficient =  (startValue - endValue);
-		value = coefficient * pow(2.71, alpha*t) * oscillationComponent + endValue;
+		value = coefficient * pow(2.71, alpha * t) * oscillationComponent + endValue;
 		[values addObject:[NSNumber numberWithFloat:value]];
 	}
   
   self.values = values;
-//  self.timingFunction = @"kCAMediaTimingFunctionLinear";
 }
 
 - (BOOL)shake

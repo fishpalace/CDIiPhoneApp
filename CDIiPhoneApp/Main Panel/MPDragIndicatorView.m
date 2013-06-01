@@ -48,20 +48,21 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
   if ([keyPath isEqualToString:@"contentOffset"] && self.readyForStretch) {
     CGFloat offsetY = self.tableView.contentOffset.y;
-    offsetY = offsetY < 0 ? offsetY : 0;
-
-    if (offsetY > -self.stretchLimitHeight) {
-      [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY * 3 / 4];
-      [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY / 2];
-      [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY / 4];
-    } else {
-      if ([self.delegate respondsToSelector:@selector(dragIndicatorViewDidStrecth:)]) {
-        [self.delegate dragIndicatorViewDidStrecth:self];
-        self.readyForStretch = NO;
+    if (!self.isReversed) {
+      offsetY = offsetY < 0 ? offsetY : 0;
+      if (offsetY > -self.stretchLimitHeight) {
+        [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY * 3 / 4];
+        [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY / 2];
+        [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY / 4];
+      } else {
+        if ([self.delegate respondsToSelector:@selector(dragIndicatorViewDidStrecth:)]) {
+          [self.delegate dragIndicatorViewDidStrecth:self];
+          self.readyForStretch = NO;
+        }
+        [self view:self.upperBarImageView playAnimationToValue:kUpperBarOriginY];
+        [self view:self.middleBarImageView playAnimationToValue:kMiddleBarOriginY];
+        [self view:self.lowerBarImageView playAnimationToValue:kLowerBarOriginY];
       }
-      [self view:self.upperBarImageView playAnimationToValue:kUpperBarOriginY];
-      [self view:self.middleBarImageView playAnimationToValue:kMiddleBarOriginY];
-      [self view:self.lowerBarImageView playAnimationToValue:kLowerBarOriginY];
     }
   }
 }

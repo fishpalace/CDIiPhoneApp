@@ -14,7 +14,7 @@
 {
 	NSInteger steps = 60 * self.duration; //60 fps desired
 
-  CGFloat alpha = -0.08;                //弹性幅度，越大幅度越大
+  CGFloat alpha = -0.09;                //弹性幅度，越大幅度越大
   CGFloat omega = 0.15;                 //恢复速率，越大速度越快
   
   NSMutableArray *values = [NSMutableArray arrayWithCapacity:steps];

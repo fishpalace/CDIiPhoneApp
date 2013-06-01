@@ -147,27 +147,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fxx-Ge-Cgc"/>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Under Construction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTw-JW-xGd">
-                                <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fxx-Ge-Cgc">
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Under Construction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTw-JW-xGd">
+                                        <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="299" id="axY-lt-7nf"/>
+                                            <constraint firstAttribute="width" constant="247" id="suM-VC-XiX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <color key="textColor" red="0.0" green="0.5568627451" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
+                                        <size key="shadowOffset" width="0.0" height="1"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="299" id="axY-lt-7nf"/>
-                                    <constraint firstAttribute="width" constant="247" id="suM-VC-XiX"/>
+                                    <constraint firstAttribute="bottom" secondItem="nTw-JW-xGd" secondAttribute="bottom" constant="134" id="rEY-Vs-0Ge"/>
+                                    <constraint firstItem="nTw-JW-xGd" firstAttribute="leading" secondItem="Fxx-Ge-Cgc" secondAttribute="leading" constant="36" id="tsy-7n-Ycl"/>
+                                    <constraint firstAttribute="trailing" secondItem="nTw-JW-xGd" secondAttribute="trailing" constant="37" id="uGZ-UL-ghe"/>
+                                    <constraint firstItem="nTw-JW-xGd" firstAttribute="centerY" secondItem="Fxx-Ge-Cgc" secondAttribute="centerY" type="default" id="zzb-5t-mfC"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" red="0.0" green="0.5568627451" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
-                                <size key="shadowOffset" width="0.0" height="1"/>
-                            </label>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nTw-JW-xGd" firstAttribute="centerY" secondItem="Fxx-Ge-Cgc" secondAttribute="centerY" type="default" id="3Bp-kz-aPn"/>
                             <constraint firstItem="Fxx-Ge-Cgc" firstAttribute="bottom" secondItem="eKw-Hh-PhQ" secondAttribute="bottom" type="default" id="94x-hH-8vR"/>
                             <constraint firstItem="Fxx-Ge-Cgc" firstAttribute="trailing" secondItem="eKw-Hh-PhQ" secondAttribute="trailing" type="default" id="R7c-kl-tdp"/>
                             <constraint firstItem="Fxx-Ge-Cgc" firstAttribute="top" secondItem="eKw-Hh-PhQ" secondAttribute="top" type="default" id="Zl6-ak-yUh"/>
-                            <constraint firstItem="nTw-JW-xGd" firstAttribute="centerX" secondItem="Fxx-Ge-Cgc" secondAttribute="centerX" type="default" id="hEj-Tf-YwA"/>
                             <constraint firstItem="Fxx-Ge-Cgc" firstAttribute="leading" secondItem="eKw-Hh-PhQ" secondAttribute="leading" type="default" id="oxV-gS-dCu"/>
                         </constraints>
                     </view>
@@ -175,6 +182,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="containerScrollview" destination="Fxx-Ge-Cgc" id="KvV-jo-onz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8l8-TW-Ktz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,40 +196,6 @@
         <image name="mp_selection_cover.png" width="170" height="170"/>
         <image name="mp_selection_proj1.png" width="170" height="170"/>
     </resources>
-    <classes>
-        <class className="MPCellTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="contentImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="coverImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MPCellTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewController.h"/>
-        </class>
-        <class className="MPTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPTableViewCell.h"/>
-        </class>
-        <class className="MainPanelViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainPanelViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="clickButton:"/>
-                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="containerViewTopSpaceConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tableViewContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tableViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="tableViewTopSpaceConstraint" candidateClass="NSLayoutConstraint"/>
-            </relationships>
-        </class>
-        <class className="MenuPanelViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuPanelViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -14,8 +14,7 @@
 #import "UIApplication+Addition.h"
 #import <QuartzCore/QuartzCore.h>
 #import "GYPositionBounceAnimation.h"
-
-#define kDragIndicatorViewHeight 32
+#import "NSNotificationCenter+Addition.h"
 
 @interface MainPanelViewController ()
 
@@ -38,6 +37,8 @@
 {
   [super viewDidLoad];
   [self configureBasicViews];
+  [NSNotificationCenter registerShouldBounceDownNotificationWithSelector:@selector(bounceDown) target:self];
+  [NSNotificationCenter registerShouldBounceUpNotificationWithSelector:@selector(bounceUp) target:self];
 }
 
 #pragma mark - View Setup Methods
@@ -51,7 +52,7 @@
   [self.tableView setTableHeaderView:self.dragIndicatorView];
   self.dragIndicatorView.stretchLimitHeight = 120;
   self.dragIndicatorView.delegate = self;
-  [self.dragIndicatorView configureTableView:self.tableView];
+  [self.dragIndicatorView configureScrollView:self.tableView];
   
   [self.menuPanelViewController setUp];
 }
@@ -139,6 +140,16 @@
   self.tableView.scrollEnabled = YES;
 
   [self playAnimationWithDirectionUp:NO completion:nil];
+}
+
+- (void)bounceDown
+{
+//  [self playAnimationWithDirectionUp:NO completion:nil];
+}
+
+- (void)bounceUp
+{
+  [self playAnimationWithDirectionUp:YES completion:nil];
 }
 
 - (void)playAnimationWithDirectionUp:(BOOL)isDirectionUp completion:(void (^)(BOOL finished))completion

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define kDragIndicatorViewHeight 32
+
 @class MPDragIndicatorView;
 
 @protocol MPDragIndicatorViewDelegate <NSObject>
@@ -23,6 +25,6 @@
 @property (nonatomic, assign) BOOL    isReversed;
 @property (nonatomic, weak) id<MPDragIndicatorViewDelegate> delegate;
 
-- (void)configureTableView:(UITableView *)tableView;
+- (void)configureScrollView:(UIScrollView *)scrollView;
 
 @end

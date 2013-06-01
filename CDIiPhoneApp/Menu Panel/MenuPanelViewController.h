@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MPDragIndicatorView.h"
 
-@interface MenuPanelViewController : UIViewController
+@interface MenuPanelViewController : UIViewController <MPDragIndicatorViewDelegate>
 
 - (void)setUp;
 

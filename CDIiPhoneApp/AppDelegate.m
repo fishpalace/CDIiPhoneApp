@@ -7,13 +7,24 @@
 //
 
 #import "AppDelegate.h"
+#import "UIView+Resize.h"
+#import "UIApplication+Addition.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    return YES;
+  UIImageView *topImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 12)];
+  UIImageView *bottomImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, kCurrentScreenHeight - 12, 320, 12)];
+  topImageView.image = [UIImage imageNamed:@"top_cover"];
+  bottomImageView.image = [UIImage imageNamed:@"bottom_cover"];
+  
+  [self.window makeKeyAndVisible];
+  [self.window addSubview:topImageView];
+  [self.window addSubview:bottomImageView];
+  
+  return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

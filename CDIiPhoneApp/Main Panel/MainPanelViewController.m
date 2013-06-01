@@ -15,6 +15,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "GYPositionBounceAnimation.h"
 #import "NSNotificationCenter+Addition.h"
+#import "AppDelegate.h"
 
 @interface MainPanelViewController ()
 

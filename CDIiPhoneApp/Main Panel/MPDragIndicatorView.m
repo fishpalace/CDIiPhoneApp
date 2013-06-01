@@ -47,34 +47,26 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
   if ([keyPath isEqualToString:@"contentOffset"] && self.readyForStretch) {
-    CGFloat offsetY = self.tableView.contentOffset.y;
-    if (!self.isReversed) {
-      offsetY = offsetY < 0 ? offsetY : 0;
-      if (offsetY > -self.stretchLimitHeight) {
-        [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY * 3 / 4];
-        [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY / 2];
-        [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY / 4];
-      } else {
-        if ([self.delegate respondsToSelector:@selector(dragIndicatorViewDidStrecth:)]) {
-          [self.delegate dragIndicatorViewDidStrecth:self];
-          self.readyForStretch = NO;
-        }
-        [self view:self.upperBarImageView playAnimationToValue:kUpperBarOriginY];
-        [self view:self.middleBarImageView playAnimationToValue:kMiddleBarOriginY];
-        [self view:self.lowerBarImageView playAnimationToValue:kLowerBarOriginY];
-      }
-    }
+    [self handleDragEvent];
   }
 }
 
-- (void)view:(UIView *)view playAnimationToValue:(CGFloat)value;
+- (void)handleDragEvent
 {
-  GYPositionBounceAnimation *animation = [GYPositionBounceAnimation animationWithKeyPath:@"position.y"];
-  animation.duration = 0.7;
-  animation.numberOfBounces = 4;
-  [animation setValueArrayForStartValue:view.frame.origin.y endValue:value];
-  [view.layer setValue:[NSNumber numberWithFloat:value] forKeyPath:animation.keyPath];
-  [view.layer addAnimation:animation forKey:@"bounce"];
+  CGFloat offsetY = self.tableView.contentOffset.y;
+//  if (!self.isReversed) {
+    offsetY = offsetY < 0 ? offsetY : 0;
+    if (offsetY > -self.stretchLimitHeight) {
+      [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY * 3 / 4];
+      [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY / 2];
+      [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY / 4];
+    } else {
+      if ([self.delegate respondsToSelector:@selector(dragIndicatorViewDidStrecth:)]) {
+        [self.delegate dragIndicatorViewDidStrecth:self];
+        self.readyForStretch = NO;
+      }
+    }
+//  }
 }
 
 @end

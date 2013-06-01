@@ -10,8 +10,6 @@
 
 @interface GYPositionBounceAnimation : CAKeyframeAnimation
 
-@property (nonatomic, assign) NSInteger numberOfBounces;
-
 - (void)setValueArrayForStartValue:(CGFloat)startValue endValue:(CGFloat)endValue;
 
 @end

@@ -148,7 +148,6 @@
   GYPositionBounceAnimation *animation = [GYPositionBounceAnimation animationWithKeyPath:@"position.y"];
   animation.duration = 2.0;
   animation.delegate = self;
-  animation.numberOfBounces = 4;
   
   [animation setValueArrayForStartValue:startingValue endValue:value];
   [self.tableViewContainerView.layer setValue:[NSNumber numberWithFloat:value] forKeyPath:animation.keyPath];

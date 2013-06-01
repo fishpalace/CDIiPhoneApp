@@ -12,13 +12,28 @@
 #import <QuartzCore/QuartzCore.h>
 #import "NSNotificationCenter+Addition.h"
 
-#define kContentSize  CGSizeMake(320, 568)
+#define kContentSize  CGSizeMake(320, 569)
 #define kBottomGap    5
 
 @interface MenuPanelViewController ()
 
 @property (nonatomic, weak) IBOutlet UIScrollView *containerScrollview;
 @property (nonatomic, strong) MPDragIndicatorView *dragIndicatorView;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet UIButton *checkScheduleButton;
+@property (weak, nonatomic) IBOutlet UIButton *checkReservationButton;
+@property (weak, nonatomic) IBOutlet UIButton *checkNewsButton;
+@property (weak, nonatomic) IBOutlet UIButton *checkProjectButton;
+@property (weak, nonatomic) IBOutlet UIButton *checkPeopleButton;
+@property (weak, nonatomic) IBOutlet UIButton *checkRoomA;
+@property (weak, nonatomic) IBOutlet UIButton *checkRoomB;
+@property (weak, nonatomic) IBOutlet UIButton *checkRoomC;
+@property (weak, nonatomic) IBOutlet UIButton *checkRoomD;
+@property (weak, nonatomic) IBOutlet UIImageView *roomStatusAImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *roomStatusBImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *roomStatusCImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *roomStatusDImageView;
+
 
 @end
 
@@ -37,14 +52,25 @@
 {
   [super viewDidLoad];
   [self.containerScrollview addSubview:self.dragIndicatorView];
-  self.dragIndicatorView.stretchLimitHeight = 120;
+  self.dragIndicatorView.stretchLimitHeight = 80;
   self.dragIndicatorView.delegate = self;
   [self.dragIndicatorView configureScrollView:self.containerScrollview];
 }
 
 - (void)setUp
 {
-  //Set up
+  self.avatarImageView.layer.borderColor = [UIColor blackColor].CGColor;
+  self.avatarImageView.layer.borderWidth = 1;
+}
+
+- (void)refresh
+{
+  [self.containerScrollview setContentOffset:CGPointZero];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [self.containerScrollview setContentOffset:CGPointMake(0, 88)];
 }
 
 - (void)viewDidLayoutSubviews
@@ -68,6 +94,8 @@
                                                 options:nil];
     _dragIndicatorView = [nibs objectAtIndex:0];
     _dragIndicatorView.isReversed = YES;
+//    _dragIndicatorView.layer.borderColor = [UIColor redColor].CGColor;
+//    _dragIndicatorView.layer.borderWidth = 2;
   }
   return _dragIndicatorView;
 }

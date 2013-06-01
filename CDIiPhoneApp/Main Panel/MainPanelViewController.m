@@ -50,7 +50,7 @@
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
   [self.tableView setTableHeaderView:self.dragIndicatorView];
-  self.dragIndicatorView.stretchLimitHeight = 120;
+  self.dragIndicatorView.stretchLimitHeight = 80;
   self.dragIndicatorView.delegate = self;
   [self.dragIndicatorView configureScrollView:self.tableView];
   
@@ -138,6 +138,7 @@
   [self.tableView resetOriginY:kCurrentScreenHeight - self.tableView.contentOffset.y];
   self.tableView.scrollEnabled = NO;
   self.tableView.scrollEnabled = YES;
+  [self.menuPanelViewController refresh];
 
   [self playAnimationWithDirectionUp:NO completion:nil];
 }

@@ -1,4 +1,4 @@
-//
+ //
 //  MPDragIndicatorView.m
 //  CDIiPhoneApp
 //
@@ -37,6 +37,15 @@
   self = [super initWithFrame:frame];
   if (self) {
     // Initialization code
+  }
+  return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+  self = [super initWithCoder:aDecoder];
+  if (self) {
+    
   }
   return self;
 }
@@ -83,19 +92,44 @@
     if ([self.delegate respondsToSelector:@selector(dragIndicatorViewDidStrecth:)]) {
       [self.delegate dragIndicatorViewDidStrecth:self];
       self.readyForStretch = NO;
-      [self.upperBarImageView resetOriginY:kUpperBarOriginY];
-      [self.middleBarImageView resetOriginY:kMiddleBarOriginY];
-      [self.lowerBarImageView resetOriginY:kLowerBarOriginY];
-      [self.arrowImageView resetOriginY:kArrowOriginY];
+      [self resetPositions];
       [self performSelector:@selector(refreshStatus) withObject:nil afterDelay:0.7];
     }
   }
 }
 
+- (void)setIsReversed:(BOOL)isReversed
+{
+  _isReversed = isReversed;
+  UIImage *topImage = nil;
+  UIImage *bottomImage = nil;
+  if (isReversed) {
+    topImage = [UIImage imageNamed:@"mp_menu_arrow_reverse"];
+    bottomImage = [UIImage imageNamed:@"mp_menu_bar"];
+  } else {
+    topImage = [UIImage imageNamed:@"mp_menu_bar"];
+    bottomImage = [UIImage imageNamed:@"mp_menu_arrow"];
+  }
+  
+  self.upperBarImageView.image = topImage;
+  self.middleBarImageView.image = [UIImage imageNamed:@"mp_menu_bar"];
+  self.lowerBarImageView.image = [UIImage imageNamed:@"mp_menu_bar"];
+  self.arrowImageView.image = bottomImage;
+  
+  [self resetPositions];
+}
+
+- (void)resetPositions
+{
+  [self.upperBarImageView resetOriginY:kUpperBarOriginY];
+  [self.middleBarImageView resetOriginY:kMiddleBarOriginY];
+  [self.lowerBarImageView resetOriginY:kLowerBarOriginY];
+  [self.arrowImageView resetOriginY:kArrowOriginY];
+}
+
 - (void)refreshStatus
 {
   self.readyForStretch = YES;
-  [self.scrollView setContentOffset:CGPointZero];
 }
 
 @end

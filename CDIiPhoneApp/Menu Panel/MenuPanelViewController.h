@@ -12,5 +12,6 @@
 @interface MenuPanelViewController : UIViewController <MPDragIndicatorViewDelegate>
 
 - (void)setUp;
+- (void)refresh;
 
 @end

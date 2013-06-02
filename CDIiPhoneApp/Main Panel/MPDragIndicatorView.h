@@ -26,5 +26,5 @@
 @property (nonatomic, weak) id<MPDragIndicatorViewDelegate> delegate;
 
 - (void)configureScrollView:(UIScrollView *)scrollView;
-
+- (void)resetPositions;
 @end

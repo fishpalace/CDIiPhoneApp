@@ -432,7 +432,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
       [layer setShadowColor:shadowColor.CGColor];
     }
   }
-  [layer setLineWidth:2.0];
+  [layer setLineWidth:1.0];
   [layer setFillColor:fillColor.CGColor];
   [layer setStrokeColor:strokeColor.CGColor];
 }

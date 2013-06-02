@@ -117,6 +117,11 @@ static CDIDataSource *sharedDataSource;
   return [[CDIDataSource sharedDataSource] setUpTomorrowTimeZonesWithRoomID:roomID];
 }
 
++ (NSInteger)availablePercentageWithRoomID:(NSInteger)roomID isToday:(BOOL)isToday
+{
+  return [[CDIDataSource sharedDataSource] availablePercentageWithRoomID:roomID isToday:isToday];
+}
+
 + (NSInteger)futureEventCount
 {
   NSInteger futureEventCount = 0;
@@ -305,6 +310,29 @@ static CDIDataSource *sharedDataSource;
   }
 }
 
+- (NSInteger)availablePercentageWithRoomID:(NSInteger)roomID isToday:(BOOL)isToday
+{
+  NSMutableArray *timeZones = nil;
+  if (isToday) {
+    timeZones = [NSMutableArray arrayWithArray:[self setUpTodayTimeZonesWithRoomID:roomID]];
+    TimeZone *timeZone = timeZones[0];
+    if (timeZone.length != 0) {
+      [timeZones removeObjectAtIndex:0];
+    }
+  }
+  CGFloat availableValue = 0;
+  CGFloat unavailableValue = 0;
+  
+  for (TimeZone *timeZone in timeZones) {
+    if (timeZone.available) {
+      availableValue += timeZone.length;
+    } else {
+      unavailableValue += timeZone.length;
+    }
+  }
+  
+  return (NSInteger)(availableValue * 100 / (availableValue + unavailableValue));
+}
 
 #pragma mark - Properties
 + (NSInteger)currentRoomID

@@ -24,4 +24,6 @@
 
 + (NSArray *)tomorrowTimeZonesWithRoomID:(NSInteger)roomID;
 
++ (NSInteger)availablePercentageWithRoomID:(NSInteger)roomID isToday:(BOOL)isToday;
+
 @end

@@ -79,80 +79,6 @@
   }
 }
 
-//- (void)setUpTodayTimeZones
-//{
-//  _currentTimeZones = [NSMutableArray array];
-//  NSArray *todayEvents = [CDIDataSource todayEventsForRoomID:self.roomID];
-//  self.events = [NSArray arrayWithArray:todayEvents];
-//  
-//  NSInteger todayStartValue = [[NSDate todayDateStartingFromHour:8] integerValueForTimePanel];
-//  NSInteger currentValue = [[NSDate date] integerValueForTimePanel];
-//  
-//  if (currentValue < 0) {
-//    currentValue = 0;
-//  }
-//  
-//  TimeZone *passedTimeZone = [[TimeZone alloc] initWithStartValue:todayStartValue
-//                                                         endValue:currentValue
-//                                                        available:NO];
-//  
-//  [self handleOccupiedTimeZones:_currentTimeZones
-//                     withEvents:todayEvents
-//                 passedTimeZone:passedTimeZone];
-//}
-//
-//- (void)setUpTomorrowTimeZones
-//{
-//  _currentTimeZones = [NSMutableArray array];
-//  NSArray *tomorrowEvents = [CDIDataSource tomorrowEventsForRoomID:self.roomID];
-//  self.events = [NSArray arrayWithArray:tomorrowEvents];
-//  
-//  NSInteger tomorrowStartingTimeValue = [[NSDate todayDateStartingFromHour:8] integerValueForTimePanel];
-//  TimeZone *passedTimeZone = [[TimeZone alloc] initWithStartValue:tomorrowStartingTimeValue
-//                                                         endValue:tomorrowStartingTimeValue
-//                                                        available:NO];
-//  [self handleOccupiedTimeZones:_currentTimeZones
-//                     withEvents:tomorrowEvents
-//                 passedTimeZone:passedTimeZone];
-//}
-//
-//- (void)handleOccupiedTimeZones:(NSMutableArray *)occupiedTimeZones
-//                     withEvents:(NSArray *)events
-//                 passedTimeZone:(TimeZone *)passedTimeZone
-//{
-//  if (passedTimeZone.startingValue != passedTimeZone.endValue) {
-//    [occupiedTimeZones addObject:passedTimeZone];
-//  }
-//  TimeZone *temp = passedTimeZone;
-//  
-//  for (CDIEvent *event in events) {
-//    if (!event.passed) {
-//      if (temp.endValue >= event.endValue) {
-//        continue;
-//      } else if (temp.endValue >= event.startValue && temp.endValue < event.endValue) {
-//        temp.endValue = event.endValue;
-//      } else if (temp.endValue < event.startValue) {
-//        TimeZone *availableTimeZone = [[TimeZone alloc] initWithStartValue:temp.endValue
-//                                                                  endValue:event.startValue
-//                                                                 available:YES];
-//        [occupiedTimeZones addObject:availableTimeZone];
-//        temp = [[TimeZone alloc] initWithStartValue:event.startValue
-//                                           endValue:event.endValue
-//                                          available:NO];
-//        [occupiedTimeZones addObject:temp];
-//      }
-//    }
-//  }
-//  
-//  temp = [occupiedTimeZones lastObject];
-//  if ([temp endValue] < _totalValue) {
-//    TimeZone *lastAvailableTimeZone = [[TimeZone alloc] initWithStartValue:temp.endValue
-//                                                                  endValue:_totalValue
-//                                                                 available:YES];
-//    [occupiedTimeZones addObject:lastAvailableTimeZone];
-//  }
-//}
-
 - (void)configureWithDate:(BOOL)isToday
 {
   //TODO 
@@ -167,7 +93,7 @@
   }
   self.eventNumberLabel.text = eventNumberString;
   
-  NSInteger percentageNumber = [self availablePercentage];
+  NSInteger percentageNumber = [CDIDataSource availablePercentageWithRoomID:self.roomID isToday:self.isToday];
   NSString *percentageString = [NSString stringWithFormat:@"%d%%", percentageNumber];
   self.percentageLabel.text = percentageString;
 }
@@ -185,29 +111,6 @@
     result = self.events.count;
   }
   return result;
-}
-
-- (NSInteger)availablePercentage
-{
-  NSMutableArray *timeZones = [NSMutableArray arrayWithArray:self.currentTimeZones];
-  if (self.isToday) {
-    TimeZone *timeZone = timeZones[0];
-    if (timeZone.length != 0) {
-      [timeZones removeObjectAtIndex:0];
-    }
-  }
-  CGFloat availableValue = 0;
-  CGFloat unavailableValue = 0;
-  
-  for (TimeZone *timeZone in timeZones) {
-    if (timeZone.available) {
-      availableValue += timeZone.length;
-    } else {
-      unavailableValue += timeZone.length;
-    }
-  }
-  
-  return (NSInteger)(availableValue * 100 / (availableValue + unavailableValue));
 }
 
 #pragma mark - Pie Chart Delegate Methods

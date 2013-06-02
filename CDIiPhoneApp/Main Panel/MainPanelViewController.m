@@ -51,7 +51,7 @@
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
   [self.tableView setTableHeaderView:self.dragIndicatorView];
-  self.dragIndicatorView.stretchLimitHeight = 60;
+  self.dragIndicatorView.stretchLimitHeight = 100;
   self.dragIndicatorView.delegate = self;
   [self.dragIndicatorView configureScrollView:self.tableView];
   

@@ -53,7 +53,7 @@
   [super viewDidLoad];
   [self.containerScrollview addSubview:self.dragIndicatorView];
   [self.dragIndicatorView configureScrollView:self.containerScrollview];
-  self.dragIndicatorView.stretchLimitHeight = 60;
+  self.dragIndicatorView.stretchLimitHeight = 100;
   self.dragIndicatorView.delegate = self;
 }
 

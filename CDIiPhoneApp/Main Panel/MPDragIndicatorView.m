@@ -72,19 +72,20 @@
     offsetY = offsetY < 0 ? offsetY : 0;
     didStrech = offsetY <= -self.stretchLimitHeight;
     if (!didStrech) {
-      [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY * 3 / 4];
-      [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY / 2];
-      [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY / 4];
+      [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY * 11 / 13];
+      [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY * 10 / 13];
+      [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY * 9 / 13];
+      [self.arrowImageView resetOriginY:kArrowOriginY + offsetY * 8 / 13];
     }
   } else {
     CGFloat baseOffset = self.scrollView.contentSize.height - kCurrentScreenHeight;
     offsetY -= baseOffset;
     didStrech = offsetY >= self.stretchLimitHeight;
     if (offsetY < self.stretchLimitHeight && offsetY > 0) {
-      [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY - offsetY * 4 / 5];
-      [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY - offsetY * 3 / 5];
-      [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY - offsetY * 2 / 5];
-      [self.arrowImageView resetOriginY:kArrowOriginY + offsetY - offsetY / 5];
+      [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY * 8 / 13];
+      [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY * 9 / 13];
+      [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY * 10 / 13];
+      [self.arrowImageView resetOriginY:kArrowOriginY + offsetY * 11 / 13];
     }
   }
   

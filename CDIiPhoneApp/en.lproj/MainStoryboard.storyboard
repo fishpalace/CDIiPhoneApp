@@ -147,6 +147,86 @@
             </objects>
             <point key="canvasLocation" x="344" y="732"/>
         </scene>
+        <!--Time Display Panel View Controller-->
+        <scene sceneID="JsA-Mc-fkM">
+            <objects>
+                <viewController storyboardIdentifier="TimeDisplayPanelViewController" id="gdO-U8-XOx" customClass="TimeDisplayPanelViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="INa-wa-zxq">
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="400"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" image="time_topbar_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="KDf-nY-kQe">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="fvw-Av-cUS"/>
+                                </constraints>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JF-WV-pqG">
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="jJe-kY-Jpf"/>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="jJe-kY-Jpf" firstAttribute="centerX" secondItem="9JF-WV-pqG" secondAttribute="centerX" type="default" id="25m-Ij-8k6"/>
+                                    <constraint firstAttribute="trailing" secondItem="jJe-kY-Jpf" secondAttribute="trailing" constant="116" id="G0x-iV-bqL"/>
+                                    <constraint firstAttribute="bottom" secondItem="jJe-kY-Jpf" secondAttribute="bottom" constant="19" id="eh1-wr-The"/>
+                                    <constraint firstItem="jJe-kY-Jpf" firstAttribute="top" secondItem="9JF-WV-pqG" secondAttribute="top" constant="284" id="r6C-HV-w9j"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9JF-WV-pqG" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" constant="60" id="20h-4k-hbq"/>
+                            <constraint firstItem="KDf-nY-kQe" firstAttribute="trailing" secondItem="INa-wa-zxq" secondAttribute="trailing" type="default" id="9nI-uS-hAl"/>
+                            <constraint firstItem="KDf-nY-kQe" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" type="default" id="FsM-4c-qU6"/>
+                            <constraint firstItem="KDf-nY-kQe" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" type="default" id="Kla-Ug-YWT"/>
+                            <constraint firstItem="9JF-WV-pqG" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" type="default" id="MVw-B0-ZQg"/>
+                            <constraint firstItem="9JF-WV-pqG" firstAttribute="bottom" secondItem="INa-wa-zxq" secondAttribute="bottom" type="default" id="NG3-10-F02"/>
+                            <constraint firstItem="9JF-WV-pqG" firstAttribute="trailing" secondItem="INa-wa-zxq" secondAttribute="trailing" type="default" id="hMH-CD-AC1"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="scrollView" destination="9JF-WV-pqG" id="AoV-jL-Ea2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ce-3w-bto" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="705" y="732"/>
+        </scene>
+        <!--Time Detail View Controller-->
+        <scene sceneID="GuZ-Z2-hBR">
+            <objects>
+                <viewController storyboardIdentifier="TimeDetailViewController" id="Qkl-mc-1Zu" customClass="TimeDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SLC-ZK-FV3">
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="340"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ffg-cn-YgM" customClass="GYPieChart">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Ffg-cn-YgM" secondAttribute="bottom" constant="51" id="Iej-uc-paE"/>
+                            <constraint firstItem="Ffg-cn-YgM" firstAttribute="centerX" secondItem="SLC-ZK-FV3" secondAttribute="centerX" type="default" id="JDm-Ne-AXo"/>
+                            <constraint firstItem="Ffg-cn-YgM" firstAttribute="leading" secondItem="SLC-ZK-FV3" secondAttribute="leading" constant="19" id="Pjq-LW-ptQ"/>
+                            <constraint firstItem="Ffg-cn-YgM" firstAttribute="top" secondItem="SLC-ZK-FV3" secondAttribute="top" constant="56" id="XS0-zP-Eu2"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="pieChart" destination="Ffg-cn-YgM" id="chC-Aa-hRu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a4T-lY-XOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1012" y="792"/>
+        </scene>
         <!--Cell Table View Controller-->
         <scene sceneID="B33-bW-gwC">
             <objects>
@@ -515,68 +595,8 @@
         <image name="mp_selection_bg.png" width="241" height="241"/>
         <image name="mp_selection_cover.png" width="170" height="170"/>
         <image name="mp_selection_proj1.png" width="170" height="170"/>
+        <image name="time_topbar_bg.png" width="271" height="61"/>
     </resources>
-    <classes>
-        <class className="MPCellTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="contentImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="coverImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MPCellTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewController.h"/>
-        </class>
-        <class className="MPTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPTableViewCell.h"/>
-        </class>
-        <class className="MainPanelViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainPanelViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="clickButton:"/>
-                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="containerViewTopSpaceConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tableViewContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tableViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="tableViewTopSpaceConstraint" candidateClass="NSLayoutConstraint"/>
-            </relationships>
-        </class>
-        <class className="MenuPanelViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuPanelViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="didClickCheckRoomButton:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="checkNewsButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkPeopleButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkProjectButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkReservationButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkRoomA" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkRoomB" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkRoomC" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkRoomD" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkScheduleButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="containerScrollview" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="roomStatusAImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="roomStatusBImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="roomStatusCImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="roomStatusDImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="ModelPanelViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModelPanelViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="didClickCloseButton:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="contentBGImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="modelBGImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UIApplication+Addition.h"
+#import "CDIDataSource.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation AppDelegate
@@ -15,6 +16,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   [UIApplication showCover];
+  [CDIDataSource fetchDataWithCompletion:nil];
   return YES;
 }
 							

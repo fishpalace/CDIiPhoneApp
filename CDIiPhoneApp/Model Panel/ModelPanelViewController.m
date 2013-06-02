@@ -94,6 +94,10 @@ static ModelPanelViewController *sharedModelPanelViewController;
 - (IBAction)didClickCloseButton:(UIButton *)sender
 {
   [self hide];
+  [self.contentViewController willMoveToParentViewController:nil];  // 1
+  [self.contentViewController.view removeFromSuperview];            // 2
+  [self.contentViewController removeFromParentViewController];      // 3
+  self.contentViewController = nil;
 }
 
 #pragma mark - View Hierarchy Methods

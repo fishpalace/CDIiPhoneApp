@@ -14,6 +14,11 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UILabel *roomIdentifier;
+@property (weak, nonatomic) IBOutlet UIImageView *statusImageView;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *roomNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (nonatomic, strong) TimeDetailViewController *todayViewController;
 @property (nonatomic, strong) TimeDetailViewController *tomorrowViewController;
 
@@ -42,9 +47,25 @@
   _pageControl.currentPage = 0;
 }
 
+- (void)removeFromParentViewController
+{
+  [self.todayViewController willMoveToParentViewController:nil];
+  [self.todayViewController.view removeFromSuperview];
+  [self.todayViewController removeFromParentViewController];
+  self.todayViewController = nil;
+  
+  [self.tomorrowViewController willMoveToParentViewController:nil];
+  [self.tomorrowViewController.view removeFromSuperview];
+  [self.tomorrowViewController removeFromParentViewController];
+  self.tomorrowViewController = nil;
+  
+  [super removeFromParentViewController];
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-  _pageControl.currentPage = self.scrollView.contentOffset.x > 0 ? 1 : 0;
+  self.pageControl.currentPage = self.scrollView.contentOffset.x > 0 ? 1 : 0;
+  self.dateLabel.text = self.scrollView.contentOffset.x > 0 ? @"Tomorrow" : @"Today";
 }
 
 #pragma mark - Properties

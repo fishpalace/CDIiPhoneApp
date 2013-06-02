@@ -169,6 +169,24 @@
                                     <constraint firstAttribute="width" constant="270" type="user" id="8cz-ie-Blt"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" image="menu_room_clear.png" translatesAutoresizingMaskIntoConstraints="NO" id="FYK-SD-BGq"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Interaction Design Lab" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8S-TH-GAc">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="3QG-7z-8QV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUc-63-mQw">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="CYx-HM-iUe"/>
+                                    <constraint firstAttribute="height" constant="21" id="tEH-ug-R6j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.047058823529411764" green="0.76078431372549016" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JF-WV-pqG">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="270" type="user" id="bhY-D3-xJ6"/>
@@ -176,15 +194,58 @@
                                 </constraints>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="jJe-kY-Jpf"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyg-EF-Lca">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="fOQ-Y2-WPy"/>
+                                    <constraint firstAttribute="width" constant="42" id="q8z-vC-h0c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Available" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Knk-oV-855">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="93" id="UPH-E4-bab"/>
+                                    <constraint firstAttribute="height" constant="21" id="f2e-CT-3Ku"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.67450980392156867" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jE-i5-tSs">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="1el-Gq-wEp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="menu_button_schedule.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9JF-WV-pqG" firstAttribute="bottom" secondItem="INa-wa-zxq" secondAttribute="bottom" type="default" id="0sr-uZ-Gr0"/>
+                            <constraint firstItem="FYK-SD-BGq" firstAttribute="top" secondItem="fyg-EF-Lca" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="16I-J0-baS"/>
+                            <constraint firstItem="fyg-EF-Lca" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" constant="24" id="27h-pZ-1Rg"/>
+                            <constraint firstItem="z8S-TH-GAc" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" constant="74" id="5p7-Rf-Haj"/>
+                            <constraint firstItem="Knk-oV-855" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" constant="35" id="Bqi-w9-UIJ"/>
                             <constraint firstItem="KDf-nY-kQe" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" type="default" id="FsM-4c-qU6"/>
                             <constraint firstItem="KDf-nY-kQe" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" type="default" id="JXe-Tn-9Z2"/>
+                            <constraint firstAttribute="trailing" secondItem="z8S-TH-GAc" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Mnc-3S-0Qi"/>
                             <constraint firstItem="9JF-WV-pqG" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" type="default" id="N5R-7G-Hgw"/>
+                            <constraint firstItem="1jE-i5-tSs" firstAttribute="trailing" secondItem="INa-wa-zxq" secondAttribute="trailing" type="default" id="QhZ-iT-97J"/>
                             <constraint firstItem="jJe-kY-Jpf" firstAttribute="bottom" secondItem="INa-wa-zxq" secondAttribute="bottom" type="default" id="SJq-CN-wEl"/>
-                            <constraint firstItem="jJe-kY-Jpf" firstAttribute="centerX" secondItem="9JF-WV-pqG" secondAttribute="centerX" type="default" id="jQS-g4-I7Y"/>
+                            <constraint firstItem="jJe-kY-Jpf" firstAttribute="centerX" secondItem="z8S-TH-GAc" secondAttribute="centerX" type="default" id="WSK-8H-kTO"/>
+                            <constraint firstItem="9JF-WV-pqG" firstAttribute="top" secondItem="1jE-i5-tSs" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ewG-3J-Gyt"/>
+                            <constraint firstItem="FYK-SD-BGq" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" constant="17" id="fO2-fM-4vb"/>
+                            <constraint firstItem="9JF-WV-pqG" firstAttribute="top" secondItem="FYK-SD-BGq" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="gC9-gJ-9OH"/>
+                            <constraint firstItem="IUc-63-mQw" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="onm-oz-AUd"/>
+                            <constraint firstItem="z8S-TH-GAc" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="rvf-Gz-A7m"/>
+                            <constraint firstItem="IUc-63-mQw" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" constant="99" id="t34-eI-BLB"/>
+                            <constraint firstItem="Knk-oV-855" firstAttribute="leading" secondItem="FYK-SD-BGq" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="zqk-wE-FMY"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -192,8 +253,13 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="dateLabel" destination="IUc-63-mQw" id="25m-ZL-OhD"/>
                         <outlet property="pageControl" destination="jJe-kY-Jpf" id="bhq-M1-fyk"/>
+                        <outlet property="roomIdentifier" destination="fyg-EF-Lca" id="kct-Ih-mh2"/>
+                        <outlet property="roomNameLabel" destination="z8S-TH-GAc" id="4tM-2W-n81"/>
                         <outlet property="scrollView" destination="9JF-WV-pqG" id="AoV-jL-Ea2"/>
+                        <outlet property="statusImageView" destination="FYK-SD-BGq" id="Nyl-JN-tW7"/>
+                        <outlet property="statusLabel" destination="Knk-oV-855" id="j6X-9m-990"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ce-3w-bto" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -248,15 +314,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="FkN-au-6A0" firstAttribute="trailing" secondItem="L3G-jB-Aja" secondAttribute="trailing" type="default" id="00K-ib-aOX"/>
-                            <constraint firstItem="Ffg-cn-YgM" firstAttribute="top" secondItem="SLC-ZK-FV3" secondAttribute="top" constant="56" id="5RI-yX-0jE"/>
+                            <constraint firstAttribute="bottom" secondItem="L3G-jB-Aja" secondAttribute="bottom" constant="134" id="J4H-ih-rm2"/>
                             <constraint firstItem="xqc-fk-Exa" firstAttribute="leading" secondItem="Ffg-cn-YgM" secondAttribute="leading" type="default" id="LC7-6d-y8q"/>
+                            <constraint firstItem="xqc-fk-Exa" firstAttribute="centerX" secondItem="FkN-au-6A0" secondAttribute="centerX" type="default" id="Oky-w4-vj7"/>
                             <constraint firstItem="FkN-au-6A0" firstAttribute="leading" secondItem="L3G-jB-Aja" secondAttribute="leading" type="default" id="Vcc-Sf-dhB"/>
-                            <constraint firstItem="FkN-au-6A0" firstAttribute="centerX" secondItem="Ffg-cn-YgM" secondAttribute="centerX" type="default" id="gwb-MP-yph"/>
+                            <constraint firstItem="Ffg-cn-YgM" firstAttribute="top" secondItem="SLC-ZK-FV3" secondAttribute="top" constant="67" id="YlY-xQ-LYL"/>
+                            <constraint firstItem="FkN-au-6A0" firstAttribute="top" secondItem="SLC-ZK-FV3" secondAttribute="top" constant="167" id="aKm-Zs-c0W"/>
                             <constraint firstItem="Ffg-cn-YgM" firstAttribute="centerX" secondItem="SLC-ZK-FV3" secondAttribute="centerX" priority="1" type="user" id="hIK-qk-TXh"/>
                             <constraint firstItem="xqc-fk-Exa" firstAttribute="top" secondItem="Ffg-cn-YgM" secondAttribute="top" type="default" id="iYh-Ct-deB"/>
                             <constraint firstItem="xqc-fk-Exa" firstAttribute="trailing" secondItem="Ffg-cn-YgM" secondAttribute="trailing" type="default" id="oqp-E8-sCc"/>
-                            <constraint firstItem="FkN-au-6A0" firstAttribute="top" secondItem="SLC-ZK-FV3" secondAttribute="top" constant="156" id="wVv-go-Mto"/>
-                            <constraint firstAttribute="bottom" secondItem="L3G-jB-Aja" secondAttribute="bottom" constant="145" id="zec-NJ-MHY"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -644,6 +710,89 @@
         <image name="time_panel_cover.png" width="230" height="136"/>
         <image name="time_topbar_bg.png" width="271" height="61"/>
     </resources>
+    <classes>
+        <class className="GYPieChart" superclassName="XYPieChart">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYPieChart.h"/>
+        </class>
+        <class className="MPCellTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="contentImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="coverImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="MPCellTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewController.h"/>
+        </class>
+        <class className="MPTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPTableViewCell.h"/>
+        </class>
+        <class className="MainPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainPanelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="containerViewTopSpaceConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="tableViewContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tableViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="tableViewTopSpaceConstraint" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="MenuPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuPanelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="checkNewsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkPeopleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkProjectButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkReservationButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkRoomA" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkRoomB" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkRoomC" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkRoomD" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkScheduleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="containerScrollview" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="roomStatusAImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="roomStatusBImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="roomStatusCImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="roomStatusDImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ModelPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModelPanelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="contentBGImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="modelBGImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="TimeDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="pieChart" candidateClass="GYPieChart"/>
+            </relationships>
+        </class>
+        <class className="TimeDisplayPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeDisplayPanelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="roomIdentifier" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="roomNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="statusImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="XYPieChart" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/XYPieChart.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

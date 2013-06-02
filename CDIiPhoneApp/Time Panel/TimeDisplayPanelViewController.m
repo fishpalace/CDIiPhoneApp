@@ -76,10 +76,10 @@
 {
   if (!_todayViewController) {
     _todayViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TimeDetailViewController"];
+    _todayViewController.roomID = self.roomID;
     _todayViewController.isToday = YES;
     [_todayViewController.view resetSize:kTimeDetailPanelSize];
     [_todayViewController.view resetOrigin:CGPointZero];
-    _todayViewController.roomID = self.roomID;
     [self.scrollView addSubview:_todayViewController.view];
   }
   return _todayViewController;
@@ -89,10 +89,10 @@
 {
   if (!_tomorrowViewController) {
     _tomorrowViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TimeDetailViewController"];
+    _tomorrowViewController.roomID = self.roomID;
     _tomorrowViewController.isToday = NO;
     [_tomorrowViewController.view resetSize:kTimeDetailPanelSize];
     [_tomorrowViewController.view resetOrigin:CGPointMake(kTimeDetailPanelSize.width, 0)];
-    _tomorrowViewController.roomID = self.roomID;
     [self.scrollView addSubview:_tomorrowViewController.view];
   }
   return _tomorrowViewController;

@@ -107,8 +107,6 @@
   [self handleOccupiedTimeZones:_currentTimeZones
                      withEvents:tomorrowEvents
                  passedTimeZone:passedTimeZone];
-  
-  [_currentTimeZones removeObjectAtIndex:0];
 }
 
 - (void)handleOccupiedTimeZones:(NSMutableArray *)occupiedTimeZones
@@ -119,6 +117,8 @@
     [occupiedTimeZones addObject:passedTimeZone];
   }
   TimeZone *temp = passedTimeZone;
+  
+  NSLog(@"\n %d, %d", temp.startingValue, temp.endValue);
   
   for (CDIEvent *event in events) {
     if (!event.passed) {
@@ -135,6 +135,8 @@
                                            endValue:event.endValue
                                           available:NO];
         [occupiedTimeZones addObject:temp];
+        
+        NSLog(@"%d, %d", temp.startingValue, temp.endValue);
       }
     }
   }
@@ -144,6 +146,8 @@
     TimeZone *lastAvailableTimeZone = [[TimeZone alloc] initWithStartValue:temp.endValue
                                                                   endValue:_totalValue
                                                                  available:YES];
+    
+    NSLog(@"%d, %d", lastAvailableTimeZone.startingValue, lastAvailableTimeZone.endValue);
     [occupiedTimeZones addObject:lastAvailableTimeZone];
   }
 }

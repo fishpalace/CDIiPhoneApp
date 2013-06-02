@@ -26,6 +26,8 @@
 - (void)getRoomInfoByRoomId:(int)roomID
                  completion:(void (^)(BOOL succeeded, id responseData))completion;
 
+- (void)getAllRoomInfoCompletion:(void (^)(BOOL succeeded, id responseData))completion;
+
 - (void)createEvent:(CDIEvent *)event
          completion:(void (^)(BOOL succeeded, id responseData))completion;
 

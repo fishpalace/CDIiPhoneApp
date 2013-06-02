@@ -13,7 +13,6 @@
 #import "CDIEvent.h"
 
 #define kBaseURLString @"http://cdi.tongji.edu.cn/cdisoul/webservice/"
-//#define kBaseURLString @"http://192.168.1.222/cdisoul/webservice/"
 
 static CDINetClient *sharedClient;
 
@@ -48,6 +47,12 @@ static CDINetClient *sharedClient;
                  completion:(void (^)(BOOL succeeded, id responseData))completion
 {
   NSString *path = [NSString stringWithFormat:@"room/getRoomById/%d", roomID];
+  [self getPath:path completion:completion];
+}
+
+- (void)getAllRoomInfoCompletion:(void (^)(BOOL succeeded, id responseData))completion
+{
+  NSString *path = [NSString stringWithFormat:@"room/getRoomListByStatus/*"];
   [self getPath:path completion:completion];
 }
 

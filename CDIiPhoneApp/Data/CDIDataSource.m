@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSString *currentRoomName;
 @property (nonatomic, assign) NSInteger currentRoomID;
 @property (nonatomic, assign) NSInteger totalValue;
+@property (nonatomic, strong) NSMutableDictionary *roomNameDict;
 
 @end
 
@@ -122,6 +123,12 @@ static CDIDataSource *sharedDataSource;
   return [[CDIDataSource sharedDataSource] availablePercentageWithRoomID:roomID isToday:isToday];
 }
 
++ (NSString *)nameForRoomID:(NSInteger)roomID
+{
+  NSMutableDictionary *dict = [[CDIDataSource sharedDataSource] roomNameDict];
+  return [dict objectForKey:[NSNumber numberWithInteger:roomID]];
+}
+
 + (CDIRoomStatus)statusForRoom:(NSInteger)roomID isToday:(BOOL)isToday
 {
   CDIRoomStatus status = CDIRoomStatusAvailable;
@@ -169,6 +176,25 @@ static CDIDataSource *sharedDataSource;
   
   [client getRoomInfoByRoomId:[CDIDataSource currentRoomID]
                    completion:handleData];
+  
+  void (^handleData2)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+    if ([responseData isKindOfClass:[NSDictionary class]]) {
+      NSDictionary *dict = responseData;
+      if ([dict[@"data"] isKindOfClass:[NSArray class]]) {
+        NSArray *array = dict[@"data"];
+        [self.roomNameDict removeAllObjects];
+        for (NSDictionary *dict in array) {
+          NSString *roomID = dict[@"id"];
+          NSString *roomName = dict[@"name"];
+          [self.roomNameDict setValue:roomName forKey:roomID];
+        }
+      }
+    } else {
+      [weakSelf fetchRoomInfo:nil];
+    }
+  };
+  
+  [client getAllRoomInfoCompletion:handleData2];
 }
 
 + (void)fetchDataWithCompletion:(void (^)(BOOL succeeded, id responseData))completion
@@ -416,6 +442,14 @@ static CDIDataSource *sharedDataSource;
     _roomDtomorrowEvents = [NSMutableArray array];
   }
   return _roomDtomorrowEvents;
+}
+
+- (NSMutableDictionary *)roomNameDict
+{
+  if (!_roomNameDict) {
+    _roomNameDict = [NSMutableDictionary dictionary];
+  }
+  return _roomNameDict;
 }
 
 - (NSTimer *)eventTimer

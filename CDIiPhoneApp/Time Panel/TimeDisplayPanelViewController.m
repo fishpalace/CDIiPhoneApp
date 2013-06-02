@@ -47,6 +47,7 @@
   _pageControl.numberOfPages = 2;
   _pageControl.currentPage = 0;
   _roomIdentifier.text = self.roomTitle;
+  _roomNameLabel.text = [CDIDataSource nameForRoomID:self.roomID];
 }
 
 - (void)removeFromParentViewController
@@ -68,7 +69,7 @@
 {
   BOOL isToday = self.scrollView.contentOffset.x == 0;
   self.pageControl.currentPage = isToday ? 1 : 0;
-  self.dateLabel.text = isToday > 0 ? @"Tomorrow" : @"Today";
+  self.dateLabel.text = isToday > 0 ? @"Today" : @"Tomorrow";
   
   NSString *imageName = nil;
   NSString *statusString = nil;

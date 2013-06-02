@@ -96,6 +96,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OuJ-dZ-jUO"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="model_bg_gloom.png" translatesAutoresizingMaskIntoConstraints="NO" id="1L8-xt-yNx"/>
                             <imageView userInteractionEnabled="NO" contentMode="bottom" image="model_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="FhY-KI-DNX">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="491" id="Ge8-w9-ANH"/>
@@ -125,10 +126,12 @@
                             <constraint firstItem="OuJ-dZ-jUO" firstAttribute="leading" secondItem="wD4-OO-TO1" secondAttribute="leading" type="default" id="KVA-rd-eCR"/>
                             <constraint firstItem="Ftf-MM-Yyh" firstAttribute="leading" secondItem="wD4-OO-TO1" secondAttribute="leading" constant="8" id="L6o-MD-pn6"/>
                             <constraint firstItem="OuJ-dZ-jUO" firstAttribute="trailing" secondItem="wD4-OO-TO1" secondAttribute="trailing" type="default" id="OhN-Yu-ian"/>
-                            <constraint firstItem="FhY-KI-DNX" firstAttribute="centerX" secondItem="OuJ-dZ-jUO" secondAttribute="centerX" type="default" id="R1N-Cv-LaB"/>
+                            <constraint firstItem="1L8-xt-yNx" firstAttribute="leading" secondItem="wD4-OO-TO1" secondAttribute="leading" type="default" id="bGl-7z-8st"/>
                             <constraint firstItem="FhY-KI-DNX" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" constant="38" id="hsi-Rq-Qtm"/>
                             <constraint firstItem="Ftf-MM-Yyh" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" constant="66" id="mb3-LP-xTd"/>
                             <constraint firstItem="OuJ-dZ-jUO" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" type="default" id="pRc-Qu-7en"/>
+                            <constraint firstItem="1L8-xt-yNx" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" type="default" id="rbt-Dk-mSR"/>
+                            <constraint firstItem="FhY-KI-DNX" firstAttribute="centerX" secondItem="1L8-xt-yNx" secondAttribute="centerX" type="default" id="wzG-s9-8F7"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -168,7 +171,7 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="zez-Ik-TWX" firstAttribute="leading" secondItem="LL8-eI-Vsm" secondAttribute="leading" type="default" id="Bk2-pd-30k"/>
-                                    <constraint firstItem="LL8-eI-Vsm" firstAttribute="centerX" secondItem="2LO-4G-Iog" secondAttribute="centerX" type="default" id="IZ3-qp-zfp"/>
+                                    <constraint firstItem="zez-Ik-TWX" firstAttribute="centerX" secondItem="2LO-4G-Iog" secondAttribute="centerX" type="default" id="EwN-Eg-dCp"/>
                                     <constraint firstAttribute="bottom" secondItem="zez-Ik-TWX" secondAttribute="bottom" constant="20" type="default" id="RTB-LW-3WU"/>
                                     <constraint firstItem="LE8-cO-ral" firstAttribute="leading" secondItem="2LO-4G-Iog" secondAttribute="leading" constant="-21" id="Yf7-Pv-D8D"/>
                                     <constraint firstItem="LE8-cO-ral" firstAttribute="top" secondItem="2LO-4G-Iog" secondAttribute="top" constant="-17" id="i9k-Dq-XEZ"/>
@@ -506,6 +509,7 @@
         <image name="menu_section_info.png" width="302" height="318"/>
         <image name="menu_section_schedule.png" width="302" height="123"/>
         <image name="model_bg.png" width="341" height="471"/>
+        <image name="model_bg_gloom.png" width="320" height="568"/>
         <image name="model_button_close.png" width="26" height="26"/>
         <image name="mp_selection_activity2.png" width="170" height="170"/>
         <image name="mp_selection_bg.png" width="241" height="241"/>

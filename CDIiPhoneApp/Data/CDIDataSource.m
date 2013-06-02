@@ -14,8 +14,14 @@
 
 @interface CDIDataSource ()
 
-@property (nonatomic, strong) NSMutableArray *todayEvents;
-@property (nonatomic, strong) NSMutableArray *tomorrowEvents;
+@property (nonatomic, strong) NSMutableArray *roomAtodayEvents;
+@property (nonatomic, strong) NSMutableArray *roomAtomorrowEvents;
+@property (nonatomic, strong) NSMutableArray *roomBtodayEvents;
+@property (nonatomic, strong) NSMutableArray *roomBtomorrowEvents;
+@property (nonatomic, strong) NSMutableArray *roomCtodayEvents;
+@property (nonatomic, strong) NSMutableArray *roomCtomorrowEvents;
+@property (nonatomic, strong) NSMutableArray *roomDtodayEvents;
+@property (nonatomic, strong) NSMutableArray *roomDtomorrowEvents;
 @property (nonatomic, strong) NSTimer *eventTimer;
 @property (nonatomic, strong) NSTimer *roomInfoTimer;
 @property (nonatomic, strong) NSString *currentRoomName;
@@ -50,20 +56,58 @@ static CDIDataSource *sharedDataSource;
   return self;
 }
 
-+ (NSArray *)todayEvents
++ (NSArray *)todayEventsForRoomID:(NSInteger)roomID
 {
-  return [[CDIDataSource sharedDataSource] todayEvents];
+  CDIDataSource *dataSource = [CDIDataSource sharedDataSource];
+  NSArray *result = nil;
+  switch (roomID) {
+    case 1:
+      result = dataSource.roomAtodayEvents;
+      break;
+    case 2:
+      result = dataSource.roomBtodayEvents;
+      break;
+    case 3:
+      result = dataSource.roomCtodayEvents;
+      break;
+    case 4:
+      result = dataSource.roomDtodayEvents;
+      break;
+    default:
+      result = dataSource.roomAtodayEvents;
+      break;
+  }
+  return result;
 }
 
-+ (NSArray *)tomorrowEvents
++ (NSArray *)tomorrowEventsForRoomID:(NSInteger)roomID
 {
-  return [[CDIDataSource sharedDataSource] tomorrowEvents];
+  CDIDataSource *dataSource = [CDIDataSource sharedDataSource];
+  NSArray *result = nil;
+  switch (roomID) {
+    case 1:
+      result = dataSource.roomAtomorrowEvents;
+      break;
+    case 2:
+      result = dataSource.roomBtomorrowEvents;
+      break;
+    case 3:
+      result = dataSource.roomCtomorrowEvents;
+      break;
+    case 4:
+      result = dataSource.roomDtomorrowEvents;
+      break;
+    default:
+      result = dataSource.roomAtomorrowEvents;
+      break;
+  }
+  return result;
 }
 
 + (NSInteger)futureEventCount
 {
   NSInteger futureEventCount = 0;
-  NSArray *events = [CDIDataSource todayEvents];
+  NSArray *events = [CDIDataSource todayEventsForRoomID:1];
   for (CDIEvent *event in events) {
     if (!event.passed) {
       futureEventCount++;
@@ -74,7 +118,7 @@ static CDIDataSource *sharedDataSource;
 
 - (void)fetchData:(NSTimer *)timer
 {
-  [CDIDataSource fetchDataWithCompletion:nil];
+  [self fetchDataWithCompletion:nil];
 }
 
 - (void)fetchRoomInfo:(NSTimer *)timer
@@ -99,6 +143,21 @@ static CDIDataSource *sharedDataSource;
 
 + (void)fetchDataWithCompletion:(void (^)(BOOL succeeded, id responseData))completion
 {
+  [[CDIDataSource sharedDataSource] fetchDataWithCompletion:completion];
+}
+
+- (void)fetchDataWithCompletion:(void (^)(BOOL succeeded, id responseData))completion
+{
+  [self fetchDataForID:1 todayArray:self.roomAtodayEvents tomorrowArray:self.roomAtomorrowEvents];
+  [self fetchDataForID:2 todayArray:self.roomBtodayEvents tomorrowArray:self.roomBtomorrowEvents];
+  [self fetchDataForID:3 todayArray:self.roomCtodayEvents tomorrowArray:self.roomCtomorrowEvents];
+  [self fetchDataForID:4 todayArray:self.roomDtodayEvents tomorrowArray:self.roomDtomorrowEvents];
+}
+
+- (void)fetchDataForID:(NSInteger)roomID
+            todayArray:(NSMutableArray *)todayArray
+         tomorrowArray:(NSMutableArray *)tomorrowArray
+{
   NSString *toDate = [NSDate stringOfDateWithIntervalFromCurrentDate:0];
   NSString *fromDate = [NSDate stringOfDateWithIntervalFromCurrentDate:3600 * 24];
   CDINetClient *client = [CDINetClient client];
@@ -106,15 +165,12 @@ static CDIDataSource *sharedDataSource;
     if ([responseData isKindOfClass:[NSDictionary class]]) {
       NSDictionary *dict = responseData;
       if ([dict[@"data"] isKindOfClass:[NSArray class]]) {
-        [sharedDataSource setUpEventsForToday:dict[@"data"]];
+        [self setUpEventsForToday:dict[@"data"] array:todayArray];
       }
-    }
-    if (completion) {
-      completion(succeeded, responseData);
     }
   };
   
-  [client getEventListByRoomId:[CDIDataSource currentRoomID]
+  [client getEventListByRoomId:roomID
                       fromDate:fromDate
                         toDate:toDate
                     completion:handleData];
@@ -125,24 +181,24 @@ static CDIDataSource *sharedDataSource;
     if ([responseData isKindOfClass:[NSDictionary class]]) {
       NSDictionary *dict = responseData;
       if ([dict[@"data"] isKindOfClass:[NSArray class]]) {
-        [sharedDataSource setUpEventsForTomorrow:dict[@"data"]];
+        [self setUpEventsForTomorrow:dict[@"data"] array:tomorrowArray];
       }
     }
   };
   
-  [client getEventListByRoomId:[CDIDataSource currentRoomID]
+  [client getEventListByRoomId:roomID
                       fromDate:fromDateForTomorrow
                         toDate:toDateForTomorrow
                     completion:handleData2];
 }
 
-- (void)setUpEventsForToday:(NSArray *)array
+- (void)setUpEventsForToday:(NSArray *)array array:(NSMutableArray *)todayArray
 {
-  [self.todayEvents removeAllObjects];
+  [todayArray removeAllObjects];
   for (NSDictionary *dict in array) {
     CDIEvent *event = [[CDIEvent alloc] initWithDictionary:dict];
     if (!event.abandoned) {
-      [self.todayEvents addObject:event];
+      [todayArray addObject:event];
     }
   }
 //  [NSNotificationCenter postDidFetchNewEventsNotification];
@@ -150,13 +206,13 @@ static CDIDataSource *sharedDataSource;
 
 }
 
-- (void)setUpEventsForTomorrow:(NSArray *)array
+- (void)setUpEventsForTomorrow:(NSArray *)array array:(NSMutableArray *)tomorrowArray
 {
-  [self.tomorrowEvents removeAllObjects];
+  [tomorrowArray removeAllObjects];
   for (NSDictionary *dict in array) {
     CDIEvent *event = [[CDIEvent alloc] initWithDictionary:dict];
     if (!event.abandoned) {
-      [self.tomorrowEvents addObject:event];
+      [tomorrowArray addObject:event];
     }
   }
 }
@@ -167,20 +223,68 @@ static CDIDataSource *sharedDataSource;
   return 1;
 }
 
-- (NSMutableArray *)todayEvents
+- (NSMutableArray *)roomAtodayEvents
 {
-  if (!_todayEvents) {
-    _todayEvents = [NSMutableArray array];
+  if (!_roomAtodayEvents) {
+    _roomAtodayEvents = [NSMutableArray array];
   }
-  return _todayEvents;
+  return _roomAtodayEvents;
 }
 
-- (NSMutableArray *)tomorrowEvents
+- (NSMutableArray *)roomAtomorrowEvents
 {
-  if (!_tomorrowEvents) {
-    _tomorrowEvents = [NSMutableArray array];
+  if (!_roomAtomorrowEvents) {
+    _roomAtomorrowEvents = [NSMutableArray array];
   }
-  return _tomorrowEvents;
+  return _roomAtomorrowEvents;
+}
+
+- (NSMutableArray *)roomBtodayEvents
+{
+  if (!_roomBtodayEvents) {
+    _roomBtodayEvents = [NSMutableArray array];
+  }
+  return _roomBtodayEvents;
+}
+
+- (NSMutableArray *)roomBtomorrowEvents
+{
+  if (!_roomBtomorrowEvents) {
+    _roomBtomorrowEvents = [NSMutableArray array];
+  }
+  return _roomBtomorrowEvents;
+}
+
+- (NSMutableArray *)roomCtodayEvents
+{
+  if (!_roomCtodayEvents) {
+    _roomCtodayEvents = [NSMutableArray array];
+  }
+  return _roomCtodayEvents;
+}
+
+- (NSMutableArray *)roomCtomorrowEvents
+{
+  if (!_roomCtomorrowEvents) {
+    _roomCtomorrowEvents = [NSMutableArray array];
+  }
+  return _roomCtomorrowEvents;
+}
+
+- (NSMutableArray *)roomDtodayEvents
+{
+  if (!_roomDtodayEvents) {
+    _roomDtodayEvents = [NSMutableArray array];
+  }
+  return _roomDtodayEvents;
+}
+
+- (NSMutableArray *)roomDtomorrowEvents
+{
+  if (!_roomDtomorrowEvents) {
+    _roomDtomorrowEvents = [NSMutableArray array];
+  }
+  return _roomDtomorrowEvents;
 }
 
 - (NSTimer *)eventTimer

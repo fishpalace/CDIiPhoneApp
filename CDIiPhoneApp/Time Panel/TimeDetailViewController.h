@@ -13,6 +13,9 @@
 
 @interface TimeDetailViewController : UIViewController <XYPieChartDataSource>
 
+@property (nonatomic, assign) NSInteger roomID;
+@property (nonatomic, assign) BOOL isToday;
+
 - (void)configureWithDate:(BOOL)isToday;
 
 @end

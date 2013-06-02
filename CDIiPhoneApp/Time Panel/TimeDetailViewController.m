@@ -24,7 +24,6 @@
 @property (nonatomic, assign) NSInteger minimalValue;
 @property (nonatomic, assign) NSInteger selectionStartValue;
 @property (nonatomic, assign) NSInteger selectionEndValue;
-@property (nonatomic, assign) BOOL isToday;
 
 @end
 
@@ -69,8 +68,17 @@
 
 - (void)setUpTimeZones
 {
+  if (self.isToday) {
+    [self setUpTodayTimeZones];
+  } else {
+    [self setUpTomorrowTimeZones];
+  }
+}
+
+- (void)setUpTodayTimeZones
+{
   _currentTimeZones = [NSMutableArray array];
-  NSArray *todayEvents = [CDIDataSource todayEvents];
+  NSArray *todayEvents = [CDIDataSource todayEventsForRoomID:self.roomID];
   NSInteger todayStartValue = [[NSDate todayDateStartingFromHour:8] integerValueForTimePanel];
   NSInteger currentValue = [[NSDate date] integerValueForTimePanel];
   
@@ -85,6 +93,22 @@
   [self handleOccupiedTimeZones:_currentTimeZones
                      withEvents:todayEvents
                  passedTimeZone:passedTimeZone];
+}
+
+- (void)setUpTomorrowTimeZones
+{
+  _currentTimeZones = [NSMutableArray array];
+  NSArray *tomorrowEvents = [CDIDataSource tomorrowEventsForRoomID:self.roomID];
+  
+  NSInteger tomorrowStartingTimeValue = [[NSDate todayDateStartingFromHour:8] integerValueForTimePanel];
+  TimeZone *passedTimeZone = [[TimeZone alloc] initWithStartValue:tomorrowStartingTimeValue
+                                                         endValue:tomorrowStartingTimeValue
+                                                        available:NO];
+  [self handleOccupiedTimeZones:_currentTimeZones
+                     withEvents:tomorrowEvents
+                 passedTimeZone:passedTimeZone];
+  
+  [_currentTimeZones removeObjectAtIndex:0];
 }
 
 - (void)handleOccupiedTimeZones:(NSMutableArray *)occupiedTimeZones

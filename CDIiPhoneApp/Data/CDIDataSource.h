@@ -12,9 +12,9 @@
 
 + (void)fetchDataWithCompletion:(void (^)(BOOL succeeded, id responseData))completion;
 
-+ (NSArray *)todayEvents;
++ (NSArray *)todayEventsForRoomID:(NSInteger)roomID;
 
-+ (NSArray *)tomorrowEvents;
++ (NSArray *)tomorrowEventsForRoomID:(NSInteger)roomID;
 
 + (NSInteger)futureEventCount;
 

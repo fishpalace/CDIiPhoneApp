@@ -12,15 +12,16 @@
 #import "NSDate+Addition.h"
 #import "TImeZone.h"
 #import "CDIEvent.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface TimeDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet GYPieChart *pieChart;
 
+@property (nonatomic, strong) NSMutableArray *currentTimeZones;
 @property (nonatomic, assign) NSInteger totalValue;
 @property (nonatomic, assign) NSInteger startingValue;
 @property (nonatomic, assign) NSInteger minimalValue;
-@property (nonatomic, weak)   NSMutableArray *currentTimeZones;
 @property (nonatomic, assign) NSInteger selectionStartValue;
 @property (nonatomic, assign) NSInteger selectionEndValue;
 @property (nonatomic, assign) BOOL isToday;
@@ -45,6 +46,11 @@
   [self setUpTimeZones];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+  [_pieChart reloadData];
+}
+
 #pragma mark - Data Configuration
 
 - (void)configurePieChart
@@ -52,12 +58,11 @@
   [_pieChart setDataSource:self];
   [_pieChart setStartPieAngle:M_PI * 3 / 2];
   [_pieChart setAnimationSpeed:1.0];
-  [_pieChart setPieRadius:233.0];
-  [_pieChart setPieCenter:CGPointMake(233.0, 233.0)];
+  [_pieChart setPieRadius:113];
+  [_pieChart setPieCenter:CGPointMake(116, 116)];
   [_pieChart setUserInteractionEnabled:NO];
   [_pieChart setMinPieAngle:M_PI * 2 * 2  / (4 * 14)];
   [_pieChart setMaxPieAngle:M_PI * 2 * 8 / (4 * 14)];
-  
   _startingValue = 8;
   _totalValue = 4 * 14;
 }
@@ -142,7 +147,7 @@
   UIColor *fillColor = nil;
   TimeZone *timeZone = self.currentTimeZones[index];
   if (timeZone.available) {
-    fillColor = [UIColor colorWithRed:207.0/255.0 green:207.0/255.0 blue:207.0/255.0 alpha:1.0];
+    fillColor = [UIColor colorWithRed:216.0/255.0 green:216.0/255.0 blue:216.0/255.0 alpha:1.0];
   } else {
     fillColor = [UIColor clearColor];
   }
@@ -154,7 +159,7 @@
   UIColor *strokeColor = nil;
   TimeZone *timeZone = self.currentTimeZones[index];
   if (timeZone.available) {
-    strokeColor = [UIColor colorWithRed:231.0/255.0 green:231.0/255.0 blue:231.0/255.0 alpha:1];
+    strokeColor = [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:239.0/255.0 alpha:1];
   } else {
     strokeColor = [UIColor clearColor];
   }

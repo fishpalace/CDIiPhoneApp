@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "GYPieChart.h"
 
+#define kTimeDetailPanelSize CGSizeMake(270, 340)
+
 @interface TimeDetailViewController : UIViewController <XYPieChartDataSource>
 
 - (void)configureWithDate:(BOOL)isToday;

@@ -8,6 +8,7 @@
 
 #import "TimeDisplayPanelViewController.h"
 #import "TimeDetailViewController.h"
+#import "UIView+Resize.h"
 
 @interface TimeDisplayPanelViewController ()
 
@@ -31,6 +32,8 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  self.scrollView.contentSize = kTimeDetailPanelSize;
   [self.todayViewController configureWithDate:YES];
 }
 
@@ -45,6 +48,8 @@
 {
   if (!_todayViewController) {
     _todayViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TimeDetailViewController"];
+    [_todayViewController.view resetSize:kTimeDetailPanelSize];
+    [_todayViewController.view resetOrigin:CGPointZero];
     [self.scrollView addSubview:_todayViewController.view];
   }
   return _todayViewController;

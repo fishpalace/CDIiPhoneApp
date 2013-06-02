@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "NSNotificationCenter+Addition.h"
 #import "ModelPanelViewController.h"
+#import "TimeDisplayPanelViewController.h"
 
 #define kContentSize  CGSizeMake(320, 569)
 #define kBottomGap    5
@@ -86,7 +87,13 @@
 #pragma mark - IBActions
 - (IBAction)didClickCheckRoomButton:(UIButton *)sender
 {
-  [ModelPanelViewController displayModelPanelWithViewController:nil];
+  [self displayModelPanelWithRoomID:1];
+}
+
+- (void)displayModelPanelWithRoomID:(NSInteger)roomID
+{
+  TimeDisplayPanelViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TimeDisplayPanelViewController"];
+  [ModelPanelViewController displayModelPanelWithViewController:vc];
 }
 
 #pragma mark - Properties

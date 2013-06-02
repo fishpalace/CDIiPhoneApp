@@ -9,6 +9,8 @@
 #import "UIApplication+Addition.h"
 #import "AppDelegate.h"
 
+#define kCoverIndex   1
+
 @implementation UIApplication (Addition)
 
 + (void)showCover
@@ -20,8 +22,14 @@
   
   AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
   [appDelegate.window makeKeyAndVisible];
-  [appDelegate.window addSubview:topImageView];
-  [appDelegate.window addSubview:bottomImageView];
+  [appDelegate.window insertSubview:topImageView atIndex:kCoverIndex];
+  [appDelegate.window insertSubview:bottomImageView atIndex:kCoverIndex];
+}
+
++ (void)insertViewUnderCover:(UIView *)view
+{
+  AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+  [appDelegate.window insertSubview:view atIndex:100];
 }
 
 @end

@@ -14,5 +14,6 @@
 @interface UIApplication (Addition)
 
 + (void)showCover;
++ (void)insertViewUnderCover:(UIView *)view;
 
 @end

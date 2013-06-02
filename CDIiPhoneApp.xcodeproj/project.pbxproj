@@ -44,6 +44,13 @@
 		187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F50871734FC80006B46A3 /* UIStoryboard+Addition.m */; };
 		187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508B1735068F006B46A3 /* UIView+Addition.m */; };
 		187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508D1735068F006B46A3 /* UIView+Resize.m */; };
+		18B7437E175AE3B500585CF5 /* UIImage+ScreenShoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7437B175AE3B500585CF5 /* UIImage+ScreenShoot.m */; };
+		18B7437F175AE3B500585CF5 /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7437D175AE3B500585CF5 /* UIImage+StackBlur.m */; };
+		18B74383175AE50600585CF5 /* ModelPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B74382175AE50600585CF5 /* ModelPanelViewController.m */; };
+		18B74389175AEAA900585CF5 /* model_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B74385175AEAA900585CF5 /* model_bg.png */; };
+		18B7438A175AEAA900585CF5 /* model_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B74386175AEAA900585CF5 /* model_bg@2x.png */; };
+		18B7438B175AEAA900585CF5 /* model_button_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B74387175AEAA900585CF5 /* model_button_close.png */; };
+		18B7438C175AEAA900585CF5 /* model_button_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B74388175AEAA900585CF5 /* model_button_close@2x.png */; };
 		18B995841759CB7A0010B9D4 /* NSNotificationCenter+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B995831759CB7A0010B9D4 /* NSNotificationCenter+Addition.m */; };
 		18B995981759EA190010B9D4 /* menu_button_schedule.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B995861759EA190010B9D4 /* menu_button_schedule.png */; };
 		18B995991759EA190010B9D4 /* menu_button_schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B995871759EA190010B9D4 /* menu_button_schedule@2x.png */; };
@@ -126,6 +133,16 @@
 		187F508B1735068F006B46A3 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Addition.m"; path = "Category/UIView+Addition.m"; sourceTree = "<group>"; };
 		187F508C1735068F006B46A3 /* UIView+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Resize.h"; path = "Category/UIView+Resize.h"; sourceTree = "<group>"; };
 		187F508D1735068F006B46A3 /* UIView+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Resize.m"; path = "Category/UIView+Resize.m"; sourceTree = "<group>"; };
+		18B7437A175AE3B500585CF5 /* UIImage+ScreenShoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ScreenShoot.h"; path = "Category/UIImage+ScreenShoot.h"; sourceTree = "<group>"; };
+		18B7437B175AE3B500585CF5 /* UIImage+ScreenShoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ScreenShoot.m"; path = "Category/UIImage+ScreenShoot.m"; sourceTree = "<group>"; };
+		18B7437C175AE3B500585CF5 /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+StackBlur.h"; path = "Category/UIImage+StackBlur.h"; sourceTree = "<group>"; };
+		18B7437D175AE3B500585CF5 /* UIImage+StackBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+StackBlur.m"; path = "Category/UIImage+StackBlur.m"; sourceTree = "<group>"; };
+		18B74381175AE50600585CF5 /* ModelPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelPanelViewController.h; path = "Model Panel/ModelPanelViewController.h"; sourceTree = "<group>"; };
+		18B74382175AE50600585CF5 /* ModelPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModelPanelViewController.m; path = "Model Panel/ModelPanelViewController.m"; sourceTree = "<group>"; };
+		18B74385175AEAA900585CF5 /* model_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = model_bg.png; sourceTree = "<group>"; };
+		18B74386175AEAA900585CF5 /* model_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "model_bg@2x.png"; sourceTree = "<group>"; };
+		18B74387175AEAA900585CF5 /* model_button_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = model_button_close.png; sourceTree = "<group>"; };
+		18B74388175AEAA900585CF5 /* model_button_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "model_button_close@2x.png"; sourceTree = "<group>"; };
 		18B995821759CB7A0010B9D4 /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+Addition.h"; path = "Category/NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
 		18B995831759CB7A0010B9D4 /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNotificationCenter+Addition.m"; path = "Category/NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
 		18B995861759EA190010B9D4 /* menu_button_schedule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button_schedule.png; sourceTree = "<group>"; };
@@ -215,6 +232,7 @@
 				187F50891734FC84006B46A3 /* Category */,
 				187F4FFA1734E989006B46A3 /* Main Panel */,
 				18E0EA931738DA89006EFF51 /* Menu Panel */,
+				18B74380175AE43100585CF5 /* Model Panel */,
 			);
 			path = CDIiPhoneApp;
 			sourceTree = "<group>";
@@ -247,6 +265,7 @@
 				187F50221734EAE5006B46A3 /* Default */,
 				187F4FFB1734EAD8006B46A3 /* Main Panel */,
 				18B995851759EA190010B9D4 /* Menu Panel */,
+				18B74384175AEAA900585CF5 /* Model Panel */,
 			);
 			path = "Image Resource";
 			sourceTree = "<group>";
@@ -334,6 +353,10 @@
 		187F50891734FC84006B46A3 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				18B7437A175AE3B500585CF5 /* UIImage+ScreenShoot.h */,
+				18B7437B175AE3B500585CF5 /* UIImage+ScreenShoot.m */,
+				18B7437C175AE3B500585CF5 /* UIImage+StackBlur.h */,
+				18B7437D175AE3B500585CF5 /* UIImage+StackBlur.m */,
 				187F508A1735068F006B46A3 /* UIView+Addition.h */,
 				187F508B1735068F006B46A3 /* UIView+Addition.m */,
 				187F508C1735068F006B46A3 /* UIView+Resize.h */,
@@ -346,6 +369,26 @@
 				18B995831759CB7A0010B9D4 /* NSNotificationCenter+Addition.m */,
 			);
 			name = Category;
+			sourceTree = "<group>";
+		};
+		18B74380175AE43100585CF5 /* Model Panel */ = {
+			isa = PBXGroup;
+			children = (
+				18B74381175AE50600585CF5 /* ModelPanelViewController.h */,
+				18B74382175AE50600585CF5 /* ModelPanelViewController.m */,
+			);
+			name = "Model Panel";
+			sourceTree = "<group>";
+		};
+		18B74384175AEAA900585CF5 /* Model Panel */ = {
+			isa = PBXGroup;
+			children = (
+				18B74385175AEAA900585CF5 /* model_bg.png */,
+				18B74386175AEAA900585CF5 /* model_bg@2x.png */,
+				18B74387175AEAA900585CF5 /* model_button_close.png */,
+				18B74388175AEAA900585CF5 /* model_button_close@2x.png */,
+			);
+			path = "Model Panel";
 			sourceTree = "<group>";
 		};
 		18B995851759EA190010B9D4 /* Menu Panel */ = {
@@ -484,6 +527,10 @@
 				18B995B3175A0E230010B9D4 /* bottom_cover@2x.png in Resources */,
 				18B995B4175A0E230010B9D4 /* top_cover.png in Resources */,
 				18B995B5175A0E230010B9D4 /* top_cover@2x.png in Resources */,
+				18B74389175AEAA900585CF5 /* model_bg.png in Resources */,
+				18B7438A175AEAA900585CF5 /* model_bg@2x.png in Resources */,
+				18B7438B175AEAA900585CF5 /* model_button_close.png in Resources */,
+				18B7438C175AEAA900585CF5 /* model_button_close@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +555,9 @@
 				18E0EA961738DAE4006EFF51 /* MenuPanelViewController.m in Sources */,
 				18E0EA991738DBE7006EFF51 /* UIApplication+Addition.m in Sources */,
 				18B995841759CB7A0010B9D4 /* NSNotificationCenter+Addition.m in Sources */,
+				18B7437E175AE3B500585CF5 /* UIImage+ScreenShoot.m in Sources */,
+				18B7437F175AE3B500585CF5 /* UIImage+StackBlur.m in Sources */,
+				18B74383175AE50600585CF5 /* ModelPanelViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -87,6 +87,63 @@
             </objects>
             <point key="canvasLocation" x="344" y="48"/>
         </scene>
+        <!--Model Panel View Controller-->
+        <scene sceneID="snF-GP-TIn">
+            <objects>
+                <viewController storyboardIdentifier="ModelPanelViewController" id="xKe-th-rTT" customClass="ModelPanelViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wD4-OO-TO1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OuJ-dZ-jUO"/>
+                            <imageView userInteractionEnabled="NO" contentMode="bottom" image="model_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="FhY-KI-DNX">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="491" id="Ge8-w9-ANH"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ftf-MM-Yyh">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="RAN-ef-Vsc"/>
+                                    <constraint firstAttribute="width" constant="44" id="oYX-9F-VGF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="model_button_close.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickCloseButton:" destination="xKe-th-rTT" eventType="touchUpInside" id="tPN-Ur-UB0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OuJ-dZ-jUO" firstAttribute="bottom" secondItem="wD4-OO-TO1" secondAttribute="bottom" type="default" id="3L6-xi-8St"/>
+                            <constraint firstItem="OuJ-dZ-jUO" firstAttribute="leading" secondItem="wD4-OO-TO1" secondAttribute="leading" type="default" id="KVA-rd-eCR"/>
+                            <constraint firstItem="Ftf-MM-Yyh" firstAttribute="leading" secondItem="wD4-OO-TO1" secondAttribute="leading" constant="8" id="L6o-MD-pn6"/>
+                            <constraint firstItem="OuJ-dZ-jUO" firstAttribute="trailing" secondItem="wD4-OO-TO1" secondAttribute="trailing" type="default" id="OhN-Yu-ian"/>
+                            <constraint firstItem="FhY-KI-DNX" firstAttribute="centerX" secondItem="OuJ-dZ-jUO" secondAttribute="centerX" type="default" id="R1N-Cv-LaB"/>
+                            <constraint firstItem="FhY-KI-DNX" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" constant="38" id="hsi-Rq-Qtm"/>
+                            <constraint firstItem="Ftf-MM-Yyh" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" constant="66" id="mb3-LP-xTd"/>
+                            <constraint firstItem="OuJ-dZ-jUO" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" type="default" id="pRc-Qu-7en"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="closeButton" destination="Ftf-MM-Yyh" id="gv1-yj-0yM"/>
+                        <outlet property="contentBGImageView" destination="FhY-KI-DNX" id="67n-Uc-wxY"/>
+                        <outlet property="modelBGImageView" destination="OuJ-dZ-jUO" id="gil-0h-vla"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gze-R4-w8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="344" y="732"/>
+        </scene>
         <!--Cell Table View Controller-->
         <scene sceneID="B33-bW-gwC">
             <objects>
@@ -137,7 +194,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mfy-ee-PPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708" y="38"/>
+            <point key="canvasLocation" x="705" y="296"/>
         </scene>
         <!--Menu Panel View Controller-->
         <scene sceneID="F0S-XL-Xah">
@@ -247,6 +304,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didClickCheckRoomButton:" destination="X8Q-6Y-pVX" eventType="touchUpInside" id="JGW-2K-3Vu"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbb-r5-8vk">
                                         <constraints>
@@ -260,6 +320,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didClickCheckRoomButton:" destination="X8Q-6Y-pVX" eventType="touchUpInside" id="qWN-PW-Egz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHf-Hz-Zd5">
                                         <constraints>
@@ -273,6 +336,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didClickCheckRoomButton:" destination="X8Q-6Y-pVX" eventType="touchUpInside" id="Tu8-c8-bxb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vfx-eC-iGG">
                                         <constraints>
@@ -286,6 +352,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didClickCheckRoomButton:" destination="X8Q-6Y-pVX" eventType="touchUpInside" id="DjK-XB-gjo"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="menu_room_unavailable.png" translatesAutoresizingMaskIntoConstraints="NO" id="n1j-Jj-1Au"/>
                                     <imageView userInteractionEnabled="NO" contentMode="center" image="menu_room_available.png" translatesAutoresizingMaskIntoConstraints="NO" id="50d-Wd-zJ3"/>
@@ -436,6 +505,8 @@
         <image name="menu_schedule_indicator.png" width="32" height="32"/>
         <image name="menu_section_info.png" width="302" height="318"/>
         <image name="menu_section_schedule.png" width="302" height="123"/>
+        <image name="model_bg.png" width="341" height="471"/>
+        <image name="model_button_close.png" width="26" height="26"/>
         <image name="mp_selection_activity2.png" width="170" height="170"/>
         <image name="mp_selection_bg.png" width="241" height="241"/>
         <image name="mp_selection_cover.png" width="170" height="170"/>
@@ -471,6 +542,7 @@
         <class className="MenuPanelViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuPanelViewController.h"/>
             <relationships>
+                <relationship kind="action" name="didClickCheckRoomButton:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="checkNewsButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="checkPeopleButton" candidateClass="UIButton"/>
@@ -486,6 +558,15 @@
                 <relationship kind="outlet" name="roomStatusBImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="roomStatusCImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="roomStatusDImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ModelPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModelPanelViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didClickCloseButton:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="contentBGImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="modelBGImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">

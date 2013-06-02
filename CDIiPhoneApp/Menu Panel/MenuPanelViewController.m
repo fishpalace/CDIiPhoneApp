@@ -11,6 +11,7 @@
 #import "MPDragIndicatorView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "NSNotificationCenter+Addition.h"
+#import "ModelPanelViewController.h"
 
 #define kContentSize  CGSizeMake(320, 569)
 #define kBottomGap    5
@@ -82,6 +83,13 @@
   [NSNotificationCenter postShouldBounceUpNotification];
 }
 
+#pragma mark - IBActions
+- (IBAction)didClickCheckRoomButton:(UIButton *)sender
+{
+  [ModelPanelViewController displayModelPanelWithViewController:nil];
+}
+
+#pragma mark - Properties
 - (MPDragIndicatorView *)dragIndicatorView
 {
   if (!_dragIndicatorView) {

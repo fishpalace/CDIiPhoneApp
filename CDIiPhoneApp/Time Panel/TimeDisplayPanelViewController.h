@@ -10,4 +10,7 @@
 
 @interface TimeDisplayPanelViewController : UIViewController <UIScrollViewDelegate>
 
+@property (nonatomic, assign) NSInteger roomID;
+@property (nonatomic, strong) NSString *roomTitle;
+
 @end

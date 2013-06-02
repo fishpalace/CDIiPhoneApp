@@ -45,6 +45,7 @@
   _scrollView.delegate = self;
   _pageControl.numberOfPages = 2;
   _pageControl.currentPage = 0;
+  _roomIdentifier.text = self.roomTitle;
 }
 
 - (void)removeFromParentViewController
@@ -68,6 +69,8 @@
   self.dateLabel.text = self.scrollView.contentOffset.x > 0 ? @"Tomorrow" : @"Today";
 }
 
+
+
 #pragma mark - Properties
 - (TimeDetailViewController *)todayViewController
 {
@@ -89,6 +92,12 @@
     [self.scrollView addSubview:_tomorrowViewController.view];
   }
   return _tomorrowViewController;
+}
+
+- (NSString *)roomTitle
+{
+  char title = 'A' + self.roomID - 1;
+  return [NSString stringWithFormat:@"%c", title];
 }
 
 @end

@@ -303,6 +303,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="3 Events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3G-jB-Aja">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="0fT-nM-Fhw"/>
+                                    <constraint firstAttribute="width" constant="66" id="4tW-7v-XxT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -313,13 +314,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FkN-au-6A0" firstAttribute="trailing" secondItem="L3G-jB-Aja" secondAttribute="trailing" type="default" id="00K-ib-aOX"/>
+                            <constraint firstItem="L3G-jB-Aja" firstAttribute="centerX" secondItem="xqc-fk-Exa" secondAttribute="centerX" type="default" id="Cm2-ae-6fb"/>
                             <constraint firstAttribute="bottom" secondItem="L3G-jB-Aja" secondAttribute="bottom" constant="134" id="J4H-ih-rm2"/>
                             <constraint firstItem="xqc-fk-Exa" firstAttribute="leading" secondItem="Ffg-cn-YgM" secondAttribute="leading" type="default" id="LC7-6d-y8q"/>
-                            <constraint firstItem="xqc-fk-Exa" firstAttribute="centerX" secondItem="FkN-au-6A0" secondAttribute="centerX" type="default" id="Oky-w4-vj7"/>
-                            <constraint firstItem="FkN-au-6A0" firstAttribute="leading" secondItem="L3G-jB-Aja" secondAttribute="leading" type="default" id="Vcc-Sf-dhB"/>
                             <constraint firstItem="Ffg-cn-YgM" firstAttribute="top" secondItem="SLC-ZK-FV3" secondAttribute="top" constant="67" id="YlY-xQ-LYL"/>
                             <constraint firstItem="FkN-au-6A0" firstAttribute="top" secondItem="SLC-ZK-FV3" secondAttribute="top" constant="167" id="aKm-Zs-c0W"/>
+                            <constraint firstItem="FkN-au-6A0" firstAttribute="leading" secondItem="SLC-ZK-FV3" secondAttribute="leading" constant="103" id="gbr-lK-gVW"/>
                             <constraint firstItem="Ffg-cn-YgM" firstAttribute="centerX" secondItem="SLC-ZK-FV3" secondAttribute="centerX" priority="1" type="user" id="hIK-qk-TXh"/>
                             <constraint firstItem="xqc-fk-Exa" firstAttribute="top" secondItem="Ffg-cn-YgM" secondAttribute="top" type="default" id="iYh-Ct-deB"/>
                             <constraint firstItem="xqc-fk-Exa" firstAttribute="trailing" secondItem="Ffg-cn-YgM" secondAttribute="trailing" type="default" id="oqp-E8-sCc"/>
@@ -330,6 +330,8 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="eventNumberLabel" destination="L3G-jB-Aja" id="lVI-Sa-tFM"/>
+                        <outlet property="percentageLabel" destination="FkN-au-6A0" id="Z7b-CC-DA8"/>
                         <outlet property="pieChart" destination="Ffg-cn-YgM" id="chC-Aa-hRu"/>
                     </connections>
                 </viewController>

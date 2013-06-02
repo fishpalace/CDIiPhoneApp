@@ -24,6 +24,9 @@
 @property (nonatomic, assign) NSInteger minimalValue;
 @property (nonatomic, assign) NSInteger selectionStartValue;
 @property (nonatomic, assign) NSInteger selectionEndValue;
+@property (nonatomic, strong) NSArray *events;
+@property (weak, nonatomic) IBOutlet UILabel *percentageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventNumberLabel;
 
 @end
 
@@ -43,6 +46,7 @@
   [super viewDidLoad];
   [self configurePieChart];
   [self setUpTimeZones];
+  [self updateLabels];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -79,6 +83,8 @@
 {
   _currentTimeZones = [NSMutableArray array];
   NSArray *todayEvents = [CDIDataSource todayEventsForRoomID:self.roomID];
+  self.events = [NSArray arrayWithArray:todayEvents];
+  
   NSInteger todayStartValue = [[NSDate todayDateStartingFromHour:8] integerValueForTimePanel];
   NSInteger currentValue = [[NSDate date] integerValueForTimePanel];
   
@@ -99,6 +105,7 @@
 {
   _currentTimeZones = [NSMutableArray array];
   NSArray *tomorrowEvents = [CDIDataSource tomorrowEventsForRoomID:self.roomID];
+  self.events = [NSArray arrayWithArray:tomorrowEvents];
   
   NSInteger tomorrowStartingTimeValue = [[NSDate todayDateStartingFromHour:8] integerValueForTimePanel];
   TimeZone *passedTimeZone = [[TimeZone alloc] initWithStartValue:tomorrowStartingTimeValue
@@ -118,8 +125,6 @@
   }
   TimeZone *temp = passedTimeZone;
   
-  NSLog(@"\n %d, %d", temp.startingValue, temp.endValue);
-  
   for (CDIEvent *event in events) {
     if (!event.passed) {
       if (temp.endValue >= event.endValue) {
@@ -135,8 +140,6 @@
                                            endValue:event.endValue
                                           available:NO];
         [occupiedTimeZones addObject:temp];
-        
-        NSLog(@"%d, %d", temp.startingValue, temp.endValue);
       }
     }
   }
@@ -146,8 +149,6 @@
     TimeZone *lastAvailableTimeZone = [[TimeZone alloc] initWithStartValue:temp.endValue
                                                                   endValue:_totalValue
                                                                  available:YES];
-    
-    NSLog(@"%d, %d", lastAvailableTimeZone.startingValue, lastAvailableTimeZone.endValue);
     [occupiedTimeZones addObject:lastAvailableTimeZone];
   }
 }
@@ -155,6 +156,58 @@
 - (void)configureWithDate:(BOOL)isToday
 {
   //TODO 
+}
+
+- (void)updateLabels
+{
+  NSInteger eventNumber = [self eventNumber];
+  NSString *eventNumberString = [NSString stringWithFormat:@"%d Event", [self eventNumber]];
+  if (eventNumber > 1) {
+    eventNumberString = [eventNumberString stringByAppendingString:@"s"];
+  }
+  self.eventNumberLabel.text = eventNumberString;
+  
+  NSInteger percentageNumber = [self availablePercentage];
+  NSString *percentageString = [NSString stringWithFormat:@"%d%%", percentageNumber];
+  self.percentageLabel.text = percentageString;
+}
+
+- (NSInteger)eventNumber
+{
+  NSInteger result = 0;
+  if (self.isToday) {
+    for (CDIEvent *event in self.events) {
+      if (!event.passed) {
+        result++;
+      }
+    }
+  } else {
+    result = self.events.count;
+  }
+  return result;
+}
+
+- (NSInteger)availablePercentage
+{
+  NSMutableArray *timeZones = [NSMutableArray arrayWithArray:self.currentTimeZones];
+  if (self.isToday) {
+    TimeZone *timeZone = timeZones[0];
+    if (timeZone.length != 0) {
+      [timeZones removeObjectAtIndex:0];
+    }
+  }
+  CGFloat availableValue = 0;
+  CGFloat unavailableValue = 0;
+  
+  for (TimeZone *timeZone in timeZones) {
+    if (timeZone.available) {
+      availableValue += timeZone.length;
+    } else {
+      unavailableValue += timeZone.length;
+    }
+  }
+  
+  return (NSInteger)(availableValue * 100 / (availableValue + unavailableValue));
 }
 
 #pragma mark - Pie Chart Delegate Methods

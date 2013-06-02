@@ -15,8 +15,9 @@
 #import "UIApplication+Addition.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define kRelativeGapOfCloseButton 30
-#define kContentViewControllerFrame CGRectMake(25, 40, 270, 400)
+#define kCloseButtonGap 30
+#define kContentViewGap     47
+#define kContentViewControllerFrame CGRectMake(0, 0, 270, 400)
 
 static ModelPanelViewController *sharedModelPanelViewController;
 
@@ -25,6 +26,7 @@ static ModelPanelViewController *sharedModelPanelViewController;
 @property (weak, nonatomic) IBOutlet UIImageView *modelBGImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *contentBGImageView;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) UIViewController *contentViewController;
 
 @end
@@ -55,7 +57,9 @@ static ModelPanelViewController *sharedModelPanelViewController;
 - (void)viewDidLayoutSubviews
 {
   self.contentBGImageView.center = self.view.center;
-  [self.closeButton resetOriginY:self.contentBGImageView.frame.origin.y + kRelativeGapOfCloseButton];
+  CGFloat relativeOriginYBase = self.contentBGImageView.frame.origin.y;
+  [self.closeButton resetOriginY:relativeOriginYBase + kCloseButtonGap];
+  [self.containerView resetOriginY:relativeOriginYBase + kContentViewGap];
 }
 
 - (void)displayModelPanelWithViewController:(UIViewController *)vc
@@ -63,10 +67,11 @@ static ModelPanelViewController *sharedModelPanelViewController;
   self.contentViewController = vc;
   void (^completion)(UIImage *bgImage) = ^(UIImage *bgImage) {
     self.modelBGImageView.image = bgImage;
-    [self addChildViewController:self.contentViewController];                 // 1
-    self.contentViewController.view.frame = kContentViewControllerFrame;
-    [self.view addSubview:self.contentViewController.view];
-    [self.contentViewController didMoveToParentViewController:self];          // 3
+    
+    [self addChildViewController:self.contentViewController];
+    [self.contentViewController.view setFrame:kContentViewControllerFrame];
+    [self.containerView addSubview:self.contentViewController.view];
+    [self.contentViewController didMoveToParentViewController:self];
     [self.view fadeIn];
   };
   

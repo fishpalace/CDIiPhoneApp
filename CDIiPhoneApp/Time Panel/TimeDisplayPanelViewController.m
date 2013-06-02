@@ -32,15 +32,15 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
-  self.scrollView.contentSize = kTimeDetailPanelSize;
   [self.todayViewController configureWithDate:YES];
+  [self.tomorrowViewController configureWithDate:NO];
+  self.scrollView.contentSize = CGSizeMake(kTimeDetailPanelSize.width * 2 + 1, kTimeDetailPanelSize.height);
+  [self.scrollView setContentOffset:CGPointMake(1, 0)];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewDidLayoutSubviews
 {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+  NSLog(@"%@", NSStringFromCGSize(self.scrollView.frame.size));
 }
 
 #pragma mark - Properties
@@ -53,6 +53,17 @@
     [self.scrollView addSubview:_todayViewController.view];
   }
   return _todayViewController;
+}
+
+- (TimeDetailViewController *)tomorrowViewController
+{
+  if (!_tomorrowViewController) {
+    _tomorrowViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TimeDetailViewController"];
+    [_tomorrowViewController.view resetSize:kTimeDetailPanelSize];
+    [_tomorrowViewController.view resetOrigin:CGPointMake(kTimeDetailPanelSize.width, 0)];
+    [self.scrollView addSubview:_tomorrowViewController.view];
+  }
+  return _tomorrowViewController;
 }
 
 @end

@@ -102,6 +102,9 @@
                                     <constraint firstAttribute="height" constant="491" id="Ge8-w9-ANH"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DL9-jM-ZlH">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ftf-MM-Yyh">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="RAN-ef-Vsc"/>
@@ -120,18 +123,22 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OuJ-dZ-jUO" firstAttribute="bottom" secondItem="wD4-OO-TO1" secondAttribute="bottom" type="default" id="3L6-xi-8St"/>
+                            <constraint firstItem="DL9-jM-ZlH" firstAttribute="centerX" secondItem="OuJ-dZ-jUO" secondAttribute="centerX" type="default" id="6Ya-L4-MIW"/>
                             <constraint firstItem="OuJ-dZ-jUO" firstAttribute="leading" secondItem="wD4-OO-TO1" secondAttribute="leading" type="default" id="KVA-rd-eCR"/>
-                            <constraint firstItem="Ftf-MM-Yyh" firstAttribute="leading" secondItem="wD4-OO-TO1" secondAttribute="leading" constant="8" id="L6o-MD-pn6"/>
+                            <constraint firstItem="Ftf-MM-Yyh" firstAttribute="leading" secondItem="wD4-OO-TO1" secondAttribute="leading" constant="8" id="M5W-nQ-D7t"/>
                             <constraint firstItem="OuJ-dZ-jUO" firstAttribute="trailing" secondItem="wD4-OO-TO1" secondAttribute="trailing" type="default" id="OhN-Yu-ian"/>
+                            <constraint firstItem="FhY-KI-DNX" firstAttribute="centerX" secondItem="DL9-jM-ZlH" secondAttribute="centerX" type="default" id="QJI-J4-17Z"/>
                             <constraint firstItem="1L8-xt-yNx" firstAttribute="leading" secondItem="wD4-OO-TO1" secondAttribute="leading" type="default" id="bGl-7z-8st"/>
+                            <constraint firstItem="DL9-jM-ZlH" firstAttribute="leading" secondItem="wD4-OO-TO1" secondAttribute="leading" constant="25" id="fUF-IG-owB"/>
                             <constraint firstItem="FhY-KI-DNX" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" constant="38" id="hsi-Rq-Qtm"/>
                             <constraint firstItem="Ftf-MM-Yyh" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" constant="66" id="mb3-LP-xTd"/>
                             <constraint firstItem="OuJ-dZ-jUO" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" type="default" id="pRc-Qu-7en"/>
                             <constraint firstItem="1L8-xt-yNx" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" type="default" id="rbt-Dk-mSR"/>
-                            <constraint firstItem="FhY-KI-DNX" firstAttribute="centerX" secondItem="1L8-xt-yNx" secondAttribute="centerX" type="default" id="wzG-s9-8F7"/>
+                            <constraint firstItem="DL9-jM-ZlH" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" constant="86" id="vTJ-4j-brM"/>
+                            <constraint firstAttribute="bottom" secondItem="DL9-jM-ZlH" secondAttribute="bottom" constant="82" id="wZb-2G-mAn"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -139,6 +146,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="closeButton" destination="Ftf-MM-Yyh" id="gv1-yj-0yM"/>
+                        <outlet property="containerView" destination="DL9-jM-ZlH" id="6xE-jg-6C3"/>
                         <outlet property="contentBGImageView" destination="FhY-KI-DNX" id="67n-Uc-wxY"/>
                         <outlet property="modelBGImageView" destination="OuJ-dZ-jUO" id="gil-0h-vla"/>
                     </connections>
@@ -157,30 +165,30 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" image="time_topbar_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="KDf-nY-kQe">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="fvw-Av-cUS"/>
+                                    <constraint firstAttribute="height" constant="60" type="user" id="3SV-Fl-77D"/>
+                                    <constraint firstAttribute="width" constant="270" type="user" id="8cz-ie-Blt"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JF-WV-pqG">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JF-WV-pqG">
                                 <subviews>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="jJe-kY-Jpf"/>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="jJe-kY-Jpf" firstAttribute="centerX" secondItem="9JF-WV-pqG" secondAttribute="centerX" type="default" id="25m-Ij-8k6"/>
-                                    <constraint firstAttribute="trailing" secondItem="jJe-kY-Jpf" secondAttribute="trailing" constant="116" id="G0x-iV-bqL"/>
-                                    <constraint firstAttribute="bottom" secondItem="jJe-kY-Jpf" secondAttribute="bottom" constant="19" id="eh1-wr-The"/>
+                                    <constraint firstAttribute="width" constant="270" type="user" id="bhY-D3-xJ6"/>
+                                    <constraint firstAttribute="height" constant="340" type="user" id="mDE-2f-gZT"/>
+                                    <constraint firstAttribute="bottom" secondItem="jJe-kY-Jpf" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="nEZ-sO-AAU"/>
                                     <constraint firstItem="jJe-kY-Jpf" firstAttribute="top" secondItem="9JF-WV-pqG" secondAttribute="top" constant="284" id="r6C-HV-w9j"/>
+                                    <constraint firstAttribute="trailing" secondItem="jJe-kY-Jpf" secondAttribute="trailing" constant="116" id="z2R-0J-N6i"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9JF-WV-pqG" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" constant="60" id="20h-4k-hbq"/>
-                            <constraint firstItem="KDf-nY-kQe" firstAttribute="trailing" secondItem="INa-wa-zxq" secondAttribute="trailing" type="default" id="9nI-uS-hAl"/>
+                            <constraint firstItem="9JF-WV-pqG" firstAttribute="bottom" secondItem="INa-wa-zxq" secondAttribute="bottom" type="default" id="0sr-uZ-Gr0"/>
                             <constraint firstItem="KDf-nY-kQe" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" type="default" id="FsM-4c-qU6"/>
-                            <constraint firstItem="KDf-nY-kQe" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" type="default" id="Kla-Ug-YWT"/>
-                            <constraint firstItem="9JF-WV-pqG" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" type="default" id="MVw-B0-ZQg"/>
-                            <constraint firstItem="9JF-WV-pqG" firstAttribute="bottom" secondItem="INa-wa-zxq" secondAttribute="bottom" type="default" id="NG3-10-F02"/>
-                            <constraint firstItem="9JF-WV-pqG" firstAttribute="trailing" secondItem="INa-wa-zxq" secondAttribute="trailing" type="default" id="hMH-CD-AC1"/>
+                            <constraint firstItem="KDf-nY-kQe" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" type="default" id="JXe-Tn-9Z2"/>
+                            <constraint firstItem="9JF-WV-pqG" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" type="default" id="N5R-7G-Hgw"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -199,7 +207,7 @@
         <scene sceneID="GuZ-Z2-hBR">
             <objects>
                 <viewController storyboardIdentifier="TimeDetailViewController" id="Qkl-mc-1Zu" customClass="TimeDetailViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SLC-ZK-FV3">
+                    <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" id="SLC-ZK-FV3">
                         <rect key="frame" x="0.0" y="0.0" width="270" height="340"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -692,6 +700,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ModelPanelViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="contentBGImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="modelBGImageView" candidateClass="UIImageView"/>
             </relationships>

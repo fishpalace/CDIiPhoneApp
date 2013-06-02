@@ -13,6 +13,7 @@
 @interface TimeDisplayPanelViewController ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) TimeDetailViewController *todayViewController;
 @property (nonatomic, strong) TimeDetailViewController *tomorrowViewController;
 
@@ -34,13 +35,16 @@
   [super viewDidLoad];
   [self.todayViewController configureWithDate:YES];
   [self.tomorrowViewController configureWithDate:NO];
-  self.scrollView.contentSize = CGSizeMake(kTimeDetailPanelSize.width * 2 + 1, kTimeDetailPanelSize.height);
-  [self.scrollView setContentOffset:CGPointMake(1, 0)];
+  _scrollView.contentSize = CGSizeMake(kTimeDetailPanelSize.width * 2, kTimeDetailPanelSize.height);
+  [_scrollView setContentOffset:CGPointZero];
+  _scrollView.delegate = self;
+  _pageControl.numberOfPages = 2;
+  _pageControl.currentPage = 0;
 }
 
-- (void)viewDidLayoutSubviews
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-  NSLog(@"%@", NSStringFromCGSize(self.scrollView.frame.size));
+  _pageControl.currentPage = self.scrollView.contentOffset.x > 0 ? 1 : 0;
 }
 
 #pragma mark - Properties

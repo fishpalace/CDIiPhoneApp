@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TimeDisplayPanelViewController : UIViewController
+@interface TimeDisplayPanelViewController : UIViewController <UIScrollViewDelegate>
 
 @end

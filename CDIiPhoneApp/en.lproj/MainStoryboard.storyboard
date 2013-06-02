@@ -169,19 +169,13 @@
                                     <constraint firstAttribute="width" constant="270" type="user" id="8cz-ie-Blt"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JF-WV-pqG">
-                                <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="jJe-kY-Jpf"/>
-                                </subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JF-WV-pqG">
                                 <constraints>
-                                    <constraint firstItem="jJe-kY-Jpf" firstAttribute="centerX" secondItem="9JF-WV-pqG" secondAttribute="centerX" type="default" id="25m-Ij-8k6"/>
                                     <constraint firstAttribute="width" constant="270" type="user" id="bhY-D3-xJ6"/>
                                     <constraint firstAttribute="height" constant="340" type="user" id="mDE-2f-gZT"/>
-                                    <constraint firstAttribute="bottom" secondItem="jJe-kY-Jpf" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="nEZ-sO-AAU"/>
-                                    <constraint firstItem="jJe-kY-Jpf" firstAttribute="top" secondItem="9JF-WV-pqG" secondAttribute="top" constant="284" id="r6C-HV-w9j"/>
-                                    <constraint firstAttribute="trailing" secondItem="jJe-kY-Jpf" secondAttribute="trailing" constant="116" id="z2R-0J-N6i"/>
                                 </constraints>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="jJe-kY-Jpf"/>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -189,6 +183,8 @@
                             <constraint firstItem="KDf-nY-kQe" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" type="default" id="FsM-4c-qU6"/>
                             <constraint firstItem="KDf-nY-kQe" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" type="default" id="JXe-Tn-9Z2"/>
                             <constraint firstItem="9JF-WV-pqG" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" type="default" id="N5R-7G-Hgw"/>
+                            <constraint firstItem="jJe-kY-Jpf" firstAttribute="bottom" secondItem="INa-wa-zxq" secondAttribute="bottom" type="default" id="SJq-CN-wEl"/>
+                            <constraint firstItem="jJe-kY-Jpf" firstAttribute="centerX" secondItem="9JF-WV-pqG" secondAttribute="centerX" type="default" id="jQS-g4-I7Y"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -196,6 +192,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="pageControl" destination="jJe-kY-Jpf" id="bhq-M1-fyk"/>
                         <outlet property="scrollView" destination="9JF-WV-pqG" id="AoV-jL-Ea2"/>
                     </connections>
                 </viewController>
@@ -647,83 +644,6 @@
         <image name="time_panel_cover.png" width="230" height="136"/>
         <image name="time_topbar_bg.png" width="271" height="61"/>
     </resources>
-    <classes>
-        <class className="GYPieChart" superclassName="XYPieChart">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYPieChart.h"/>
-        </class>
-        <class className="MPCellTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="contentImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="coverImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MPCellTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewController.h"/>
-        </class>
-        <class className="MPTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPTableViewCell.h"/>
-        </class>
-        <class className="MainPanelViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainPanelViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="containerViewTopSpaceConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tableViewContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tableViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="tableViewTopSpaceConstraint" candidateClass="NSLayoutConstraint"/>
-            </relationships>
-        </class>
-        <class className="MenuPanelViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuPanelViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="checkNewsButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkPeopleButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkProjectButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkReservationButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkRoomA" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkRoomB" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkRoomC" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkRoomD" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="checkScheduleButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="containerScrollview" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="roomStatusAImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="roomStatusBImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="roomStatusCImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="roomStatusDImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="ModelPanelViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModelPanelViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="contentBGImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="modelBGImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="TimeDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="pieChart" candidateClass="GYPieChart"/>
-            </relationships>
-        </class>
-        <class className="TimeDisplayPanelViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeDisplayPanelViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="XYPieChart" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/XYPieChart.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

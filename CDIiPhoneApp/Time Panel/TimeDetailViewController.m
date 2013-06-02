@@ -101,14 +101,17 @@
 - (NSInteger)eventNumber
 {
   NSInteger result = 0;
+  NSArray *events = nil;
   if (self.isToday) {
-    for (CDIEvent *event in self.events) {
+    events = [CDIDataSource todayEventsForRoomID:self.roomID];
+    for (CDIEvent *event in events) {
       if (!event.passed) {
         result++;
       }
     }
   } else {
-    result = self.events.count;
+    events = [CDIDataSource tomorrowEventsForRoomID:self.roomID];
+    result = events.count;
   }
   return result;
 }

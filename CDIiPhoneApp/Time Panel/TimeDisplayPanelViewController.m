@@ -9,6 +9,7 @@
 #import "TimeDisplayPanelViewController.h"
 #import "TimeDetailViewController.h"
 #import "UIView+Resize.h"
+#import "CDIDataSource.h"
 
 @interface TimeDisplayPanelViewController ()
 
@@ -65,11 +66,31 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-  self.pageControl.currentPage = self.scrollView.contentOffset.x > 0 ? 1 : 0;
-  self.dateLabel.text = self.scrollView.contentOffset.x > 0 ? @"Tomorrow" : @"Today";
+  BOOL isToday = self.scrollView.contentOffset.x == 0;
+  self.pageControl.currentPage = isToday ? 1 : 0;
+  self.dateLabel.text = isToday > 0 ? @"Tomorrow" : @"Today";
+  
+  NSString *imageName = nil;
+  NSString *statusString = nil;
+  UIColor *color = nil;
+  CDIRoomStatus status = [CDIDataSource statusForRoom:self.roomID isToday:isToday];
+  if (status == CDIRoomStatusAvailable) {
+    imageName = @"menu_room_clear";
+    statusString = @"Available";
+    color = [UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:65.0/255.0 alpha:1.0];
+  } else if (status == CDIRoomStatusBusy) {
+    imageName = @"menu_room_available";
+    statusString = @"Busy";
+    color = [UIColor colorWithRed:250.0/255.0 green:140.0/255.0 blue:20.0/255.0 alpha:1.0];
+  } else {
+    imageName = @"menu_room_unavailable";
+    statusString = @"Unavailable";
+    color = [UIColor colorWithRed:190.0/255.0 green:190.0/255.0 blue:190.0/255.0 alpha:1.0];
+  }
+  self.statusImageView.image = [UIImage imageNamed:imageName];
+  self.statusLabel.text = statusString;
+  self.statusLabel.textColor = color;
 }
-
-
 
 #pragma mark - Properties
 - (TimeDetailViewController *)todayViewController

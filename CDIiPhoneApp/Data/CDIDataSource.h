@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+  CDIRoomStatusAvailable,
+  CDIRoomStatusBusy,
+  CDIRoomStatusUnavailable,
+} CDIRoomStatus;
+
 @interface CDIDataSource : NSObject
 
 + (void)fetchDataWithCompletion:(void (^)(BOOL succeeded, id responseData))completion;
@@ -25,5 +31,7 @@
 + (NSArray *)tomorrowTimeZonesWithRoomID:(NSInteger)roomID;
 
 + (NSInteger)availablePercentageWithRoomID:(NSInteger)roomID isToday:(BOOL)isToday;
+
++ (CDIRoomStatus)statusForRoom:(NSInteger)roomID isToday:(BOOL)isToday;
 
 @end

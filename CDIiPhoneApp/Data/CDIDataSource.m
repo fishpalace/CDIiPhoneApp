@@ -122,6 +122,18 @@ static CDIDataSource *sharedDataSource;
   return [[CDIDataSource sharedDataSource] availablePercentageWithRoomID:roomID isToday:isToday];
 }
 
++ (CDIRoomStatus)statusForRoom:(NSInteger)roomID isToday:(BOOL)isToday
+{
+  CDIRoomStatus status = CDIRoomStatusAvailable;
+  NSInteger percentage = [CDIDataSource availablePercentageWithRoomID:roomID isToday:isToday];
+  if (percentage == 0) {
+    status = CDIRoomStatusUnavailable;
+  } else if (percentage < 80) {
+    status = CDIRoomStatusBusy;
+  }
+  return status;
+}
+
 + (NSInteger)futureEventCount
 {
   NSInteger futureEventCount = 0;
@@ -319,6 +331,8 @@ static CDIDataSource *sharedDataSource;
     if (timeZone.length != 0) {
       [timeZones removeObjectAtIndex:0];
     }
+  } else {
+    timeZones = [NSMutableArray arrayWithArray:[self setUpTomorrowTimeZonesWithRoomID:roomID]];
   }
   CGFloat availableValue = 0;
   CGFloat unavailableValue = 0;

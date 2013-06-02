@@ -13,6 +13,7 @@
 #import "NSNotificationCenter+Addition.h"
 #import "ModelPanelViewController.h"
 #import "TimeDisplayPanelViewController.h"
+#import "CDIDataSource.h"
 
 #define kContentSize  CGSizeMake(320, 569)
 #define kBottomGap    5
@@ -68,6 +69,29 @@
 - (void)refresh
 {
   [self.containerScrollview setContentOffset:CGPointZero];
+  [self updateStatus];
+}
+
+- (void)updateStatus
+{
+  self.roomStatusAImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:1]];
+  self.roomStatusBImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:2]];
+  self.roomStatusCImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:3]];
+  self.roomStatusDImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:4]];
+}
+
+- (NSString *)imageNameForStatusWithRoomID:(NSInteger)roomID
+{
+  NSString *imageName = nil;
+  CDIRoomStatus status = [CDIDataSource statusForRoom:roomID isToday:YES];
+  if (status == CDIRoomStatusAvailable) {
+    imageName = @"menu_room_clear";
+  } else if (status == CDIRoomStatusBusy) {
+    imageName = @"menu_room_available";
+  } else {
+    imageName = @"menu_room_unavailable";
+  }
+  return imageName;
 }
 
 - (void)viewDidLayoutSubviews

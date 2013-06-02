@@ -72,11 +72,12 @@
 
 - (void)viewDidLayoutSubviews
 {
+  [self.containerScrollview setContentSize:kContentSize];
+  [self.containerScrollview setContentOffset:CGPointMake(0, 88) animated:NO];
   [self.dragIndicatorView resetOriginY:kContentSize.height - kDragIndicatorViewHeight - kBottomGap];
   [self.dragIndicatorView resetHeight:kDragIndicatorViewHeight];
   [self.dragIndicatorView resetWidth:320];
-  [self.containerScrollview setContentSize:kContentSize];
-  [self.containerScrollview setContentOffset:CGPointMake(0, 88) animated:NO];
+  [self.dragIndicatorView resetPositions];
 }
 
 - (void)dragIndicatorViewDidStrecth:(MPDragIndicatorView *)view

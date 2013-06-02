@@ -68,7 +68,7 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
   BOOL isToday = self.scrollView.contentOffset.x == 0;
-  self.pageControl.currentPage = isToday ? 1 : 0;
+  self.pageControl.currentPage = isToday ? 0 : 1;
   self.dateLabel.text = isToday > 0 ? @"Today" : @"Tomorrow";
   
   NSString *imageName = nil;

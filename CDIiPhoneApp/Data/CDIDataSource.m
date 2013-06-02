@@ -354,7 +354,7 @@ static CDIDataSource *sharedDataSource;
   if (isToday) {
     timeZones = [NSMutableArray arrayWithArray:[self setUpTodayTimeZonesWithRoomID:roomID]];
     TimeZone *timeZone = timeZones[0];
-    if (timeZone.length != 0) {
+    if (timeZone.length != 0 && !timeZone.available) {
       [timeZones removeObjectAtIndex:0];
     }
   } else {

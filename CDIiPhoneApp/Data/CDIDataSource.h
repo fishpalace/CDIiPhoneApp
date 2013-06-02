@@ -20,4 +20,8 @@
 
 + (NSString *)currentRoomName;
 
++ (NSArray *)todayTimeZonesWithRoomID:(NSInteger)roomID;
+
++ (NSArray *)tomorrowTimeZonesWithRoomID:(NSInteger)roomID;
+
 @end

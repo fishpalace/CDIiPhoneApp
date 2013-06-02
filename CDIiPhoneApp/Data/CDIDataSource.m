@@ -11,6 +11,7 @@
 #import "CDIEvent.h"
 #import "CDINetClient.h"
 #import "NSNotificationCenter+Addition.h"
+#import "TImeZone.h"
 
 @interface CDIDataSource ()
 
@@ -26,6 +27,7 @@
 @property (nonatomic, strong) NSTimer *roomInfoTimer;
 @property (nonatomic, strong) NSString *currentRoomName;
 @property (nonatomic, assign) NSInteger currentRoomID;
+@property (nonatomic, assign) NSInteger totalValue;
 
 @end
 
@@ -37,6 +39,7 @@ static CDIDataSource *sharedDataSource;
 {
   if (!sharedDataSource) {
     sharedDataSource = [[CDIDataSource alloc] init];
+    sharedDataSource.totalValue = 4 * 14;
   }
   return sharedDataSource;
 }
@@ -102,6 +105,16 @@ static CDIDataSource *sharedDataSource;
       break;
   }
   return result;
+}
+
++ (NSArray *)todayTimeZonesWithRoomID:(NSInteger)roomID
+{
+  return [[CDIDataSource sharedDataSource] setUpTodayTimeZonesWithRoomID:roomID];
+}
+
++ (NSArray *)tomorrowTimeZonesWithRoomID:(NSInteger)roomID
+{
+  return [[CDIDataSource sharedDataSource] setUpTomorrowTimeZonesWithRoomID:roomID];
 }
 
 + (NSInteger)futureEventCount
@@ -216,6 +229,82 @@ static CDIDataSource *sharedDataSource;
     }
   }
 }
+
+- (NSArray *)setUpTodayTimeZonesWithRoomID:(NSInteger)roomID
+{
+  NSMutableArray *currentTimeZones = [NSMutableArray array];
+  NSArray *todayEvents = [CDIDataSource todayEventsForRoomID:roomID];
+  
+  NSInteger todayStartValue = [[NSDate todayDateStartingFromHour:8] integerValueForTimePanel];
+  NSInteger currentValue = [[NSDate date] integerValueForTimePanel];
+  
+  if (currentValue < 0) {
+    currentValue = 0;
+  }
+  
+  TimeZone *passedTimeZone = [[TimeZone alloc] initWithStartValue:todayStartValue
+                                                         endValue:currentValue
+                                                        available:NO];
+  
+  [self handleOccupiedTimeZones:currentTimeZones
+                     withEvents:todayEvents
+                 passedTimeZone:passedTimeZone];
+  return currentTimeZones;
+}
+
+- (NSArray *)setUpTomorrowTimeZonesWithRoomID:(NSInteger)roomID
+{
+  NSMutableArray *currentTimeZones = [NSMutableArray array];
+  NSArray *tomorrowEvents = [CDIDataSource tomorrowEventsForRoomID:roomID];
+  
+  NSInteger tomorrowStartingTimeValue = [[NSDate todayDateStartingFromHour:8] integerValueForTimePanel];
+  TimeZone *passedTimeZone = [[TimeZone alloc] initWithStartValue:tomorrowStartingTimeValue
+                                                         endValue:tomorrowStartingTimeValue
+                                                        available:NO];
+  [self handleOccupiedTimeZones:currentTimeZones
+                     withEvents:tomorrowEvents
+                 passedTimeZone:passedTimeZone];
+  
+  return currentTimeZones;
+}
+
+- (void)handleOccupiedTimeZones:(NSMutableArray *)occupiedTimeZones
+                     withEvents:(NSArray *)events
+                 passedTimeZone:(TimeZone *)passedTimeZone
+{
+  if (passedTimeZone.startingValue != passedTimeZone.endValue) {
+    [occupiedTimeZones addObject:passedTimeZone];
+  }
+  TimeZone *temp = passedTimeZone;
+  
+  for (CDIEvent *event in events) {
+    if (!event.passed) {
+      if (temp.endValue >= event.endValue) {
+        continue;
+      } else if (temp.endValue >= event.startValue && temp.endValue < event.endValue) {
+        temp.endValue = event.endValue;
+      } else if (temp.endValue < event.startValue) {
+        TimeZone *availableTimeZone = [[TimeZone alloc] initWithStartValue:temp.endValue
+                                                                  endValue:event.startValue
+                                                                 available:YES];
+        [occupiedTimeZones addObject:availableTimeZone];
+        temp = [[TimeZone alloc] initWithStartValue:event.startValue
+                                           endValue:event.endValue
+                                          available:NO];
+        [occupiedTimeZones addObject:temp];
+      }
+    }
+  }
+  
+  temp = [occupiedTimeZones lastObject];
+  if ([temp endValue] < self.totalValue) {
+    TimeZone *lastAvailableTimeZone = [[TimeZone alloc] initWithStartValue:temp.endValue
+                                                                  endValue:self.totalValue
+                                                                 available:YES];
+    [occupiedTimeZones addObject:lastAvailableTimeZone];
+  }
+}
+
 
 #pragma mark - Properties
 + (NSInteger)currentRoomID

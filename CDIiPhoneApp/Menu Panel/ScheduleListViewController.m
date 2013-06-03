@@ -11,7 +11,7 @@
 #import "UIView+Resize.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define kScrollViewWidth 302
+#define kScrollViewWidth 320
 
 @interface ScheduleListViewController ()
 
@@ -45,7 +45,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-  [super viewDidLayoutSubviews];
   self.scrollView.contentSize = CGSizeMake(kScrollViewWidth * 2, self.scrollView.frame.size.height);
   [self.scrollView setContentOffset:CGPointZero];
   self.scrollView.delegate = self;
@@ -69,7 +68,7 @@
   if (!_todayScheduleViewController) {
     _todayScheduleViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SLDetailTableViewController"];
     [self addChildViewController:_todayScheduleViewController];
-    [_todayScheduleViewController.view resetOrigin:CGPointZero];
+    [_todayScheduleViewController.view resetOrigin:CGPointMake(9, 0)];
     [self.scrollView addSubview:_todayScheduleViewController.view];
     [_todayScheduleViewController didMoveToParentViewController:self];
   }
@@ -81,7 +80,7 @@
   if (!_tomorrowScheduleViewController) {
     _tomorrowScheduleViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SLDetailTableViewController"];
     [self addChildViewController:_tomorrowScheduleViewController];
-    [_tomorrowScheduleViewController.view resetOrigin:CGPointMake(kScrollViewWidth, 0)];
+    [_tomorrowScheduleViewController.view resetOrigin:CGPointMake(kScrollViewWidth + 9, 0)];
     [self.scrollView addSubview:_tomorrowScheduleViewController.view];
     [_tomorrowScheduleViewController didMoveToParentViewController:self];
   }

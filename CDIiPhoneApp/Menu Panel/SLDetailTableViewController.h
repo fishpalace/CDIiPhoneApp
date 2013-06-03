@@ -10,6 +10,8 @@
 
 @interface SLDetailTableViewController : UIViewController
 
+@property (nonatomic, assign) BOOL isToday;
+
 - (void)configureSubviews;
 
 @end

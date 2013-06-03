@@ -147,9 +147,9 @@
   NSString *todayOrTomorrowString = nil;
   NSDate *todayDate = [[NSDate date] dateWithoutTime];
   if ([todayDate isEqualToDate:[self dateWithoutTime]]) {
-    todayOrTomorrowString = @"今天";
+    todayOrTomorrowString = @"Today";
   } else {
-    todayOrTomorrowString = @"明天";
+    todayOrTomorrowString = @"Tomorrow";
   }
   return todayOrTomorrowString;
 }

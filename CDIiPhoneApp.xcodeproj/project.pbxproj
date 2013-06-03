@@ -35,6 +35,7 @@
 		187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F50871734FC80006B46A3 /* UIStoryboard+Addition.m */; };
 		187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508B1735068F006B46A3 /* UIView+Addition.m */; };
 		187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508D1735068F006B46A3 /* UIView+Resize.m */; };
+		18948CB8175C521A004E07EB /* ScheduleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18948CB7175C521A004E07EB /* ScheduleListViewController.m */; };
 		18B7437E175AE3B500585CF5 /* UIImage+ScreenShoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7437B175AE3B500585CF5 /* UIImage+ScreenShoot.m */; };
 		18B7437F175AE3B500585CF5 /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7437D175AE3B500585CF5 /* UIImage+StackBlur.m */; };
 		18B74383175AE50600585CF5 /* ModelPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B74382175AE50600585CF5 /* ModelPanelViewController.m */; };
@@ -176,6 +177,8 @@
 		187F508B1735068F006B46A3 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Addition.m"; path = "Category/UIView+Addition.m"; sourceTree = "<group>"; };
 		187F508C1735068F006B46A3 /* UIView+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Resize.h"; path = "Category/UIView+Resize.h"; sourceTree = "<group>"; };
 		187F508D1735068F006B46A3 /* UIView+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Resize.m"; path = "Category/UIView+Resize.m"; sourceTree = "<group>"; };
+		18948CB6175C521A004E07EB /* ScheduleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleListViewController.h; path = "Menu Panel/ScheduleListViewController.h"; sourceTree = "<group>"; };
+		18948CB7175C521A004E07EB /* ScheduleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleListViewController.m; path = "Menu Panel/ScheduleListViewController.m"; sourceTree = "<group>"; };
 		18B7437A175AE3B500585CF5 /* UIImage+ScreenShoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ScreenShoot.h"; path = "Category/UIImage+ScreenShoot.h"; sourceTree = "<group>"; };
 		18B7437B175AE3B500585CF5 /* UIImage+ScreenShoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ScreenShoot.m"; path = "Category/UIImage+ScreenShoot.m"; sourceTree = "<group>"; };
 		18B7437C175AE3B500585CF5 /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+StackBlur.h"; path = "Category/UIImage+StackBlur.h"; sourceTree = "<group>"; };
@@ -369,6 +372,7 @@
 				18E0EA931738DA89006EFF51 /* Menu Panel */,
 				18B74380175AE43100585CF5 /* Model Panel */,
 				18B743D8175B069F00585CF5 /* Time Panel */,
+				18948CB5175C51B6004E07EB /* TableView */,
 			);
 			path = CDIiPhoneApp;
 			sourceTree = "<group>";
@@ -535,6 +539,13 @@
 			name = Category;
 			sourceTree = "<group>";
 		};
+		18948CB5175C51B6004E07EB /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
 		18B74380175AE43100585CF5 /* Model Panel */ = {
 			isa = PBXGroup;
 			children = (
@@ -677,6 +688,8 @@
 			children = (
 				18E0EA941738DAE4006EFF51 /* MenuPanelViewController.h */,
 				18E0EA951738DAE4006EFF51 /* MenuPanelViewController.m */,
+				18948CB6175C521A004E07EB /* ScheduleListViewController.h */,
+				18948CB7175C521A004E07EB /* ScheduleListViewController.m */,
 			);
 			name = "Menu Panel";
 			sourceTree = "<group>";
@@ -863,6 +876,7 @@
 				18B7441F175B105100585CF5 /* UIImageView+AFNetworking.m in Sources */,
 				18B74422175B109E00585CF5 /* NSString+Encrypt.m in Sources */,
 				18B7442C175B15CC00585CF5 /* CDIViewControllerFactory.m in Sources */,
+				18948CB8175C521A004E07EB /* ScheduleListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

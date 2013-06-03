@@ -24,6 +24,7 @@
 @property (strong, nonatomic) MPDragIndicatorView *dragIndicatorView;
 @property (strong, nonatomic) MenuPanelViewController *menuPanelViewController;
 @property (assign, nonatomic) NSInteger currentActiveRow;
+@property (strong, nonatomic) UINavigationController *menuPanelContainerViewController;
 @property (weak, nonatomic) IBOutlet UIView *tableViewContainerView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
@@ -61,6 +62,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
   [self.dragIndicatorView resetHeight:kDragIndicatorViewHeight];
+  [self.menuPanelContainerViewController.view resetOrigin:CGPointZero];
+  [self.menuPanelContainerViewController.view resetSize:kCurrentScreenSize];
   [self.menuPanelViewController.view resetOrigin:CGPointZero];
   [self.menuPanelViewController.view resetSize:kCurrentScreenSize];
 }
@@ -188,8 +191,12 @@
 - (MenuPanelViewController *)menuPanelViewController
 {
   if (!_menuPanelViewController) {
-    _menuPanelViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuPanelViewController"];
-    [self.tableViewContainerView addSubview:_menuPanelViewController.view];
+    _menuPanelContainerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuPanelViewControllerNaviController"];
+//    _menuPanelViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuPanelViewController"];
+    _menuPanelViewController = _menuPanelContainerViewController.viewControllers[0];
+    _menuPanelContainerViewController.view.clipsToBounds = NO;
+    
+    [self.tableViewContainerView addSubview:_menuPanelContainerViewController.view];
   }
   return _menuPanelViewController;
 }

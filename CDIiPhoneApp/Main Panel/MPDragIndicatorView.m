@@ -81,6 +81,8 @@
     CGFloat baseOffset = self.scrollView.contentSize.height - kCurrentScreenHeight;
     offsetY -= baseOffset;
     didStrech = offsetY >= self.stretchLimitHeight;
+    
+    NSLog(@"%f", self.upperBarImageView.frame.origin.y);
     if (offsetY < self.stretchLimitHeight && offsetY > 0) {
       [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY * 8 / 13];
       [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY * 9 / 13];

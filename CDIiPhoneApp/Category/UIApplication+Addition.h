@@ -10,6 +10,7 @@
 
 #define kCurrentScreenHeight  [UIScreen mainScreen].bounds.size.height
 #define kCurrentScreenSize    [UIScreen mainScreen].bounds.size
+#define kIsiPhone5            kCurrentScreenHeight == 568
 
 @interface UIApplication (Addition)
 

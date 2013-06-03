@@ -712,10 +712,10 @@
             </objects>
             <point key="canvasLocation" x="345" y="-619"/>
         </scene>
-        <!--View Controller-->
+        <!--Schedule List View Controller-->
         <scene sceneID="7on-hD-0Tx">
             <objects>
-                <viewController id="J40-4n-nsT" sceneMemberID="viewController">
+                <viewController id="J40-4n-nsT" customClass="ScheduleListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qr7-8T-6OU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -744,6 +744,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didClickBackButton:" destination="J40-4n-nsT" eventType="touchUpInside" id="Ch0-Zx-Hbz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbz-uR-cQB">
                                 <constraints>
@@ -758,7 +761,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rka-g1-KGe"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rka-g1-KGe"/>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="moS-zQ-4tg">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="38" id="Dub-oE-DOZ"/>
@@ -788,15 +791,21 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="backButton" destination="fv0-HR-H0Y" id="Co4-No-XaC"/>
+                        <outlet property="pageControl" destination="moS-zQ-4tg" id="XLy-Ye-mdf"/>
+                        <outlet property="scheduleButton" destination="wbz-uR-cQB" id="Sve-Hk-JyP"/>
+                        <outlet property="scrollView" destination="rka-g1-KGe" id="W5f-Ek-XCn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQJ-Qb-K9P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1131" y="-616"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Table View Controller-->
         <scene sceneID="pXd-Sq-JMK">
             <objects>
-                <viewController id="VmL-i0-byx" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SLDetailTableViewController" id="VmL-i0-byx" customClass="SLDetailTableViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mPg-f4-Hw6">
                         <rect key="frame" x="0.0" y="0.0" width="302" height="468"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -806,7 +815,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tomorrow" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rd6-Wn-bKr">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="aqb-JQ-IQN"/>
-                                    <constraint firstAttribute="height" constant="19" id="tht-3r-APt"/>
+                                    <constraint firstAttribute="height" constant="19" type="user" id="tht-3r-APt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
@@ -816,7 +825,7 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tuesday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwX-wh-Qtc">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="19" id="ARp-2N-dsX"/>
+                                    <constraint firstAttribute="height" constant="19" type="user" id="ARp-2N-dsX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.63529411764705879" green="0.63529411764705879" blue="0.63529411764705879" alpha="1" colorSpace="calibratedRGB"/>
@@ -826,7 +835,7 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2013-6-3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96N-Xl-rlQ">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="6E5-eB-qYf"/>
+                                    <constraint firstAttribute="height" constant="21" type="user" id="6E5-eB-qYf"/>
                                     <constraint firstAttribute="width" constant="81" id="MRg-Yy-Fod"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -835,20 +844,20 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10:55" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foI-Fu-yuK">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="OaQ-sT-PtQ"/>
+                                    <constraint firstAttribute="height" constant="22" type="user" id="OaQ-sT-PtQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lby-pc-lQl">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lby-pc-lQl">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="420" type="user" id="eTx-fj-HAa"/>
                                     <constraint firstAttribute="height" constant="420" type="user" id="sh7-QC-Qp9"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="80" id="0Lw-B6-gBK">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SLDetailTableViewCell" rowHeight="80" id="0Lw-B6-gBK" customClass="SLDetailTableViewCell">
                                         <rect key="frame" x="0.0" y="22" width="299" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -932,24 +941,27 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="foI-Fu-yuK" firstAttribute="top" secondItem="mPg-f4-Hw6" secondAttribute="top" constant="20" type="user" id="22C-zX-jpj"/>
                             <constraint firstItem="foI-Fu-yuK" firstAttribute="trailing" secondItem="96N-Xl-rlQ" secondAttribute="trailing" type="default" id="28H-LC-WGj"/>
-                            <constraint firstItem="IOh-vJ-jYv" firstAttribute="leading" secondItem="mPg-f4-Hw6" secondAttribute="leading" type="default" id="4yD-wo-109"/>
+                            <constraint firstItem="IOh-vJ-jYv" firstAttribute="leading" secondItem="mPg-f4-Hw6" secondAttribute="leading" type="user" id="4yD-wo-109"/>
                             <constraint firstItem="EwX-wh-Qtc" firstAttribute="leading" secondItem="rd6-Wn-bKr" secondAttribute="leading" type="default" id="9xJ-EJ-jA3"/>
-                            <constraint firstItem="foI-Fu-yuK" firstAttribute="top" secondItem="mPg-f4-Hw6" secondAttribute="top" constant="20" symbolic="YES" type="default" id="CbN-s9-pnR"/>
-                            <constraint firstItem="foI-Fu-yuK" firstAttribute="baseline" secondItem="EwX-wh-Qtc" secondAttribute="baseline" type="default" id="DDA-eb-WOc"/>
+                            <constraint firstItem="foI-Fu-yuK" firstAttribute="baseline" secondItem="EwX-wh-Qtc" secondAttribute="baseline" type="user" id="DDA-eb-WOc"/>
                             <constraint firstAttribute="trailing" secondItem="96N-Xl-rlQ" secondAttribute="trailing" constant="13" id="DcC-7a-2v3"/>
                             <constraint firstItem="foI-Fu-yuK" firstAttribute="leading" secondItem="96N-Xl-rlQ" secondAttribute="leading" type="default" id="HYE-3B-UQs"/>
                             <constraint firstItem="IOh-vJ-jYv" firstAttribute="top" secondItem="mPg-f4-Hw6" secondAttribute="top" type="default" id="Iba-OH-a0e"/>
                             <constraint firstItem="Lby-pc-lQl" firstAttribute="leading" secondItem="U8B-HC-vsc" secondAttribute="leading" type="default" id="MiC-cX-EDb"/>
+                            <constraint firstItem="96N-Xl-rlQ" firstAttribute="top" secondItem="mPg-f4-Hw6" secondAttribute="top" constant="7" type="user" id="Vfx-lg-BlM"/>
                             <constraint firstItem="rd6-Wn-bKr" firstAttribute="leading" secondItem="mPg-f4-Hw6" secondAttribute="leading" constant="16" id="Xn3-Hu-2XT"/>
                             <constraint firstItem="U8B-HC-vsc" firstAttribute="top" secondItem="mPg-f4-Hw6" secondAttribute="top" constant="46" id="atW-Oa-Eu0"/>
+                            <constraint firstItem="rd6-Wn-bKr" firstAttribute="top" secondItem="mPg-f4-Hw6" secondAttribute="top" constant="9" type="user" id="bDK-EE-MW9"/>
                             <constraint firstItem="EwX-wh-Qtc" firstAttribute="trailing" secondItem="rd6-Wn-bKr" secondAttribute="trailing" type="default" id="e30-AE-NJo"/>
                             <constraint firstItem="U8B-HC-vsc" firstAttribute="trailing" secondItem="Lby-pc-lQl" secondAttribute="trailing" type="default" id="f0T-Pj-BAf"/>
                             <constraint firstItem="Lby-pc-lQl" firstAttribute="bottom" secondItem="U8B-HC-vsc" secondAttribute="bottom" type="user" id="fEe-ls-ptu"/>
                             <constraint firstItem="Lby-pc-lQl" firstAttribute="top" secondItem="U8B-HC-vsc" secondAttribute="top" type="user" id="gxb-fk-BnU"/>
-                            <constraint firstItem="96N-Xl-rlQ" firstAttribute="baseline" secondItem="rd6-Wn-bKr" secondAttribute="baseline" type="default" id="i49-Ly-cYr"/>
+                            <constraint firstItem="EwX-wh-Qtc" firstAttribute="top" secondItem="mPg-f4-Hw6" secondAttribute="top" constant="23" type="user" id="gyi-I9-haY"/>
+                            <constraint firstItem="96N-Xl-rlQ" firstAttribute="baseline" secondItem="rd6-Wn-bKr" secondAttribute="baseline" type="user" id="i49-Ly-cYr"/>
+                            <constraint firstItem="IOh-vJ-jYv" firstAttribute="leading" secondItem="mPg-f4-Hw6" secondAttribute="leading" type="user" id="upK-vU-Zdg"/>
                             <constraint firstItem="U8B-HC-vsc" firstAttribute="centerX" secondItem="IOh-vJ-jYv" secondAttribute="centerX" type="default" id="waL-mC-18r"/>
-                            <constraint firstItem="96N-Xl-rlQ" firstAttribute="top" secondItem="mPg-f4-Hw6" secondAttribute="top" constant="7" id="x0q-ik-YRP"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -960,7 +972,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQP-U7-bOt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1471" y="-517"/>
+            <point key="canvasLocation" x="1484" y="-518"/>
         </scene>
     </scenes>
     <resources>
@@ -1051,6 +1063,21 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SLDetailTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLDetailTableViewCell.h"/>
+        </class>
+        <class className="SLDetailTableViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLDetailTableViewController.h"/>
+        </class>
+        <class className="ScheduleListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScheduleListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="scheduleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
         </class>
         <class className="TimeDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeDetailViewController.h"/>

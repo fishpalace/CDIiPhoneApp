@@ -1,5 +1,5 @@
 //
-//  ScheduleListViewController.h
+//  SLDetailTableViewCell.h
 //  CDIiPhoneApp
 //
 //  Created by Gabriel Yeah on 13-6-3.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScheduleListViewController : UIViewController <UIScrollViewDelegate>
+@interface SLDetailTableViewCell : UITableViewCell
 
 @end

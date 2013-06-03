@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *weekdayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) NSTimer *timer;
 
 @end
 
@@ -40,20 +41,14 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-	// Do any additional setup after loading the view.
+  [self updateLabels];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-  NSLog(@"%@", NSStringFromCGRect(self.topBGImageView.frame));
-  NSLog(@"%@", NSStringFromCGRect(self.bottomBGImageView.frame));
   self.topBGImageView.image = [[UIImage imageNamed:@"tableview_bg_back"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 10, 20, 10) resizingMode:UIImageResizingModeTile];
   
   self.bottomBGImageView.image = [[UIImage imageNamed:@"tableview_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 10, 20, 10) resizingMode:UIImageResizingModeTile];
-//  self.topBGImageView.layer.borderColor = [UIColor redColor].CGColor;
-//  self.topBGImageView.layer.borderWidth = 2;
-//  self.bottomBGImageView.layer.borderColor = [UIColor greenColor].CGColor;
-//  self.bottomBGImageView.layer.borderWidth = 3;
 }
 
 - (void)configureSubviews
@@ -64,17 +59,42 @@
 - (void)updateLabels
 {
   NSDate *date = [NSDate date];
-  if (self.isToday) {
+  if (!self.isToday) {
     date = [date dateByAddingTimeInterval:3600 * 24];
+    self.timeLabel.hidden = YES;
+    [self.dateLabel resetOriginYByOffset:10];
   }
   self.todayIndicatorLabel.text = _isToday ? @"Today" : @"Tomorrow";
-//  self.weekdayLabel.text = [date ];
+  self.weekdayLabel.text = [NSDate weekdayStringForDate:date];
+  self.dateLabel.text = [NSDate stringOfDate:date];
+  [self.timer fire];
+}
+
+- (void)updateTime:(NSTimer *)timer
+{
+	NSDate *now = [NSDate date];
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"HH:mm"];
+	NSString *timeString = [dateFormatter stringFromDate:now];
+  [self.timeLabel setText:timeString];
 }
 
 - (CGFloat)tableViewHeight
 {
   CGFloat offset = kIsiPhone5 ? 0 : -88;
   return kSLDetailTableViewHeight + offset;
+}
+
+- (NSTimer *)timer
+{
+  if (!_timer) {
+    _timer = [NSTimer scheduledTimerWithTimeInterval:60.0
+                                              target:self
+                                            selector:@selector(updateTime:)
+                                            userInfo:nil
+                                             repeats:YES];
+  }
+  return _timer;
 }
 
 @end

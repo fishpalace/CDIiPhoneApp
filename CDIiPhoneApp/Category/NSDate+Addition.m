@@ -25,6 +25,13 @@
   return [dateFormatter stringFromDate:[NSDate date]];
 }
 
++ (NSString *)stringOfDate:(NSDate *)date
+{
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+  return [dateFormatter stringFromDate:date];
+}
+
 - (NSString *)stringExpression
 {
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -165,6 +172,31 @@
   }
 
   return intervalString;
+}
+
++ (NSString *)weekdayStringForDate:(NSDate *)date
+{
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  dateFormatter.timeZone = [NSTimeZone localTimeZone];
+  
+  NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+  NSDateComponents *components = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit)
+                                              fromDate:date];
+  
+  
+  NSString *weekdayString = nil;
+  switch ([components weekday]) {
+    case 1: weekdayString = @"Sunday"; break;
+    case 2: weekdayString = @"Monday"; break;
+    case 3: weekdayString = @"Tuesday"; break;
+    case 4: weekdayString = @"Wednesday"; break;
+    case 5: weekdayString = @"Thursday"; break;
+    case 6: weekdayString = @"Friday"; break;
+    case 7: weekdayString = @"Saturday"; break;
+    default:
+      break;
+  }
+  return weekdayString;
 }
 
 - (BOOL)earilierThanDate:(NSDate *)date

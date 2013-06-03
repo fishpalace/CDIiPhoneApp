@@ -38,4 +38,8 @@
 
 - (BOOL)earilierThanDate:(NSDate *)date;
 
++ (NSString *)weekdayStringForDate:(NSDate *)date;
+
++ (NSString *)stringOfDate:(NSDate *)date;
+
 @end

@@ -67,6 +67,7 @@
 {
   if (!_todayScheduleViewController) {
     _todayScheduleViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SLDetailTableViewController"];
+    _todayScheduleViewController.isToday = YES;
     [self addChildViewController:_todayScheduleViewController];
     [_todayScheduleViewController.view resetOrigin:CGPointMake(9, 0)];
     [self.scrollView addSubview:_todayScheduleViewController.view];
@@ -79,6 +80,7 @@
 {
   if (!_tomorrowScheduleViewController) {
     _tomorrowScheduleViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SLDetailTableViewController"];
+    _tomorrowScheduleViewController.isToday = NO;
     [self addChildViewController:_tomorrowScheduleViewController];
     [_tomorrowScheduleViewController.view resetOrigin:CGPointMake(kScrollViewWidth + 9, 0)];
     [self.scrollView addSubview:_tomorrowScheduleViewController.view];

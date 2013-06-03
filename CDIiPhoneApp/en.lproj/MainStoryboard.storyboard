@@ -950,14 +950,13 @@
                             <constraint firstItem="IOh-vJ-jYv" firstAttribute="top" secondItem="mPg-f4-Hw6" secondAttribute="top" type="user" id="Iba-OH-a0e"/>
                             <constraint firstItem="U8B-HC-vsc" firstAttribute="top" secondItem="mPg-f4-Hw6" secondAttribute="top" constant="46" type="user" id="LKO-hW-PjN"/>
                             <constraint firstItem="Lby-pc-lQl" firstAttribute="leading" secondItem="U8B-HC-vsc" secondAttribute="leading" type="default" id="MiC-cX-EDb"/>
-                            <constraint firstItem="96N-Xl-rlQ" firstAttribute="top" secondItem="mPg-f4-Hw6" secondAttribute="top" constant="7" type="user" id="Vfx-lg-BlM"/>
+                            <constraint firstItem="96N-Xl-rlQ" firstAttribute="baseline" secondItem="rd6-Wn-bKr" secondAttribute="baseline" priority="1" type="user" id="VSi-xv-weA"/>
                             <constraint firstItem="rd6-Wn-bKr" firstAttribute="leading" secondItem="mPg-f4-Hw6" secondAttribute="leading" constant="16" id="Xn3-Hu-2XT"/>
                             <constraint firstItem="rd6-Wn-bKr" firstAttribute="top" secondItem="mPg-f4-Hw6" secondAttribute="top" constant="9" type="user" id="bDK-EE-MW9"/>
                             <constraint firstItem="EwX-wh-Qtc" firstAttribute="trailing" secondItem="rd6-Wn-bKr" secondAttribute="trailing" type="default" id="e30-AE-NJo"/>
                             <constraint firstItem="U8B-HC-vsc" firstAttribute="trailing" secondItem="Lby-pc-lQl" secondAttribute="trailing" type="default" id="f0T-Pj-BAf"/>
                             <constraint firstItem="Lby-pc-lQl" firstAttribute="centerX" secondItem="IOh-vJ-jYv" secondAttribute="centerX" type="default" id="g8H-AS-mOU"/>
                             <constraint firstItem="EwX-wh-Qtc" firstAttribute="top" secondItem="mPg-f4-Hw6" secondAttribute="top" constant="23" type="user" id="gyi-I9-haY"/>
-                            <constraint firstItem="96N-Xl-rlQ" firstAttribute="baseline" secondItem="rd6-Wn-bKr" secondAttribute="baseline" type="user" id="i49-Ly-cYr"/>
                             <constraint firstItem="IOh-vJ-jYv" firstAttribute="bottom" secondItem="mPg-f4-Hw6" secondAttribute="bottom" type="user" id="lVD-uQ-onF"/>
                             <constraint firstAttribute="bottom" secondItem="U8B-HC-vsc" secondAttribute="bottom" constant="2" type="user" id="nQr-tN-cRa"/>
                             <constraint firstItem="IOh-vJ-jYv" firstAttribute="leading" secondItem="mPg-f4-Hw6" secondAttribute="leading" type="user" id="upK-vU-Zdg"/>
@@ -979,7 +978,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQP-U7-bOt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1484" y="-518"/>
+            <point key="canvasLocation" x="1498" y="-602"/>
         </scene>
     </scenes>
     <resources>

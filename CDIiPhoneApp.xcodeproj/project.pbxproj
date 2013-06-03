@@ -58,6 +58,23 @@
 		18948CEB175CF83D004E07EB /* test_avatar_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CDF175CF83D004E07EB /* test_avatar_5@2x.png */; };
 		18948CEC175CF83D004E07EB /* test_avatar_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CE0175CF83D004E07EB /* test_avatar_6.png */; };
 		18948CED175CF83D004E07EB /* test_avatar_6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CE1175CF83D004E07EB /* test_avatar_6@2x.png */; };
+		18948CFA175D05ED004E07EB /* menu_button_write.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CEE175D05ED004E07EB /* menu_button_write.png */; };
+		18948CFB175D05ED004E07EB /* menu_button_write@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CEF175D05ED004E07EB /* menu_button_write@2x.png */; };
+		18948CFC175D05ED004E07EB /* people_info_dribble.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CF0175D05ED004E07EB /* people_info_dribble.png */; };
+		18948CFD175D05ED004E07EB /* people_info_dribble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CF1175D05ED004E07EB /* people_info_dribble@2x.png */; };
+		18948CFE175D05ED004E07EB /* people_info_homepage.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CF2175D05ED004E07EB /* people_info_homepage.png */; };
+		18948CFF175D05ED004E07EB /* people_info_homepage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CF3175D05ED004E07EB /* people_info_homepage@2x.png */; };
+		18948D00175D05ED004E07EB /* people_info_linkedin.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CF4175D05ED004E07EB /* people_info_linkedin.png */; };
+		18948D01175D05ED004E07EB /* people_info_linkedin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CF5175D05ED004E07EB /* people_info_linkedin@2x.png */; };
+		18948D02175D05ED004E07EB /* people_info_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CF6175D05ED004E07EB /* people_info_twitter.png */; };
+		18948D03175D05ED004E07EB /* people_info_twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CF7175D05ED004E07EB /* people_info_twitter@2x.png */; };
+		18948D04175D05ED004E07EB /* people_info_weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CF8175D05ED004E07EB /* people_info_weibo.png */; };
+		18948D05175D05ED004E07EB /* people_info_weibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CF9175D05ED004E07EB /* people_info_weibo@2x.png */; };
+		18948D08175D06AA004E07EB /* PeopleInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18948D07175D06A9004E07EB /* PeopleInfoViewController.m */; };
+		18948D0D175D0911004E07EB /* people_info_avatar_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948D09175D0911004E07EB /* people_info_avatar_cover.png */; };
+		18948D0E175D0911004E07EB /* people_info_avatar_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948D0A175D0911004E07EB /* people_info_avatar_cover@2x.png */; };
+		18948D0F175D0911004E07EB /* people_info_fade_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948D0B175D0911004E07EB /* people_info_fade_cover.png */; };
+		18948D10175D0911004E07EB /* people_info_fade_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948D0C175D0911004E07EB /* people_info_fade_cover@2x.png */; };
 		18B7437E175AE3B500585CF5 /* UIImage+ScreenShoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7437B175AE3B500585CF5 /* UIImage+ScreenShoot.m */; };
 		18B7437F175AE3B500585CF5 /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7437D175AE3B500585CF5 /* UIImage+StackBlur.m */; };
 		18B74383175AE50600585CF5 /* ModelPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B74382175AE50600585CF5 /* ModelPanelViewController.m */; };
@@ -227,6 +244,24 @@
 		18948CDF175CF83D004E07EB /* test_avatar_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test_avatar_5@2x.png"; sourceTree = "<group>"; };
 		18948CE0175CF83D004E07EB /* test_avatar_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_avatar_6.png; sourceTree = "<group>"; };
 		18948CE1175CF83D004E07EB /* test_avatar_6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test_avatar_6@2x.png"; sourceTree = "<group>"; };
+		18948CEE175D05ED004E07EB /* menu_button_write.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_button_write.png; path = "Image Resource/Model Panel/menu_button_write.png"; sourceTree = SOURCE_ROOT; };
+		18948CEF175D05ED004E07EB /* menu_button_write@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu_button_write@2x.png"; path = "Image Resource/Model Panel/menu_button_write@2x.png"; sourceTree = SOURCE_ROOT; };
+		18948CF0175D05ED004E07EB /* people_info_dribble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = people_info_dribble.png; path = "Image Resource/Model Panel/people_info_dribble.png"; sourceTree = SOURCE_ROOT; };
+		18948CF1175D05ED004E07EB /* people_info_dribble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "people_info_dribble@2x.png"; path = "Image Resource/Model Panel/people_info_dribble@2x.png"; sourceTree = SOURCE_ROOT; };
+		18948CF2175D05ED004E07EB /* people_info_homepage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = people_info_homepage.png; path = "Image Resource/Model Panel/people_info_homepage.png"; sourceTree = SOURCE_ROOT; };
+		18948CF3175D05ED004E07EB /* people_info_homepage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "people_info_homepage@2x.png"; path = "Image Resource/Model Panel/people_info_homepage@2x.png"; sourceTree = SOURCE_ROOT; };
+		18948CF4175D05ED004E07EB /* people_info_linkedin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = people_info_linkedin.png; path = "Image Resource/Model Panel/people_info_linkedin.png"; sourceTree = SOURCE_ROOT; };
+		18948CF5175D05ED004E07EB /* people_info_linkedin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "people_info_linkedin@2x.png"; path = "Image Resource/Model Panel/people_info_linkedin@2x.png"; sourceTree = SOURCE_ROOT; };
+		18948CF6175D05ED004E07EB /* people_info_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = people_info_twitter.png; path = "Image Resource/Model Panel/people_info_twitter.png"; sourceTree = SOURCE_ROOT; };
+		18948CF7175D05ED004E07EB /* people_info_twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "people_info_twitter@2x.png"; path = "Image Resource/Model Panel/people_info_twitter@2x.png"; sourceTree = SOURCE_ROOT; };
+		18948CF8175D05ED004E07EB /* people_info_weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = people_info_weibo.png; path = "Image Resource/Model Panel/people_info_weibo.png"; sourceTree = SOURCE_ROOT; };
+		18948CF9175D05ED004E07EB /* people_info_weibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "people_info_weibo@2x.png"; path = "Image Resource/Model Panel/people_info_weibo@2x.png"; sourceTree = SOURCE_ROOT; };
+		18948D06175D06A9004E07EB /* PeopleInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeopleInfoViewController.h; path = "Menu Panel/PeopleInfoViewController.h"; sourceTree = "<group>"; };
+		18948D07175D06A9004E07EB /* PeopleInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeopleInfoViewController.m; path = "Menu Panel/PeopleInfoViewController.m"; sourceTree = "<group>"; };
+		18948D09175D0911004E07EB /* people_info_avatar_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = people_info_avatar_cover.png; path = "Image Resource/Model Panel/people_info_avatar_cover.png"; sourceTree = SOURCE_ROOT; };
+		18948D0A175D0911004E07EB /* people_info_avatar_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "people_info_avatar_cover@2x.png"; path = "Image Resource/Model Panel/people_info_avatar_cover@2x.png"; sourceTree = SOURCE_ROOT; };
+		18948D0B175D0911004E07EB /* people_info_fade_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = people_info_fade_cover.png; path = "Image Resource/Model Panel/people_info_fade_cover.png"; sourceTree = SOURCE_ROOT; };
+		18948D0C175D0911004E07EB /* people_info_fade_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "people_info_fade_cover@2x.png"; path = "Image Resource/Model Panel/people_info_fade_cover@2x.png"; sourceTree = SOURCE_ROOT; };
 		18B7437A175AE3B500585CF5 /* UIImage+ScreenShoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ScreenShoot.h"; path = "Category/UIImage+ScreenShoot.h"; sourceTree = "<group>"; };
 		18B7437B175AE3B500585CF5 /* UIImage+ScreenShoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ScreenShoot.m"; path = "Category/UIImage+ScreenShoot.m"; sourceTree = "<group>"; };
 		18B7437C175AE3B500585CF5 /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+StackBlur.h"; path = "Category/UIImage+StackBlur.h"; sourceTree = "<group>"; };
@@ -631,6 +666,22 @@
 		18B74384175AEAA900585CF5 /* Model Panel */ = {
 			isa = PBXGroup;
 			children = (
+				18948CEE175D05ED004E07EB /* menu_button_write.png */,
+				18948D09175D0911004E07EB /* people_info_avatar_cover.png */,
+				18948D0A175D0911004E07EB /* people_info_avatar_cover@2x.png */,
+				18948D0B175D0911004E07EB /* people_info_fade_cover.png */,
+				18948D0C175D0911004E07EB /* people_info_fade_cover@2x.png */,
+				18948CEF175D05ED004E07EB /* menu_button_write@2x.png */,
+				18948CF0175D05ED004E07EB /* people_info_dribble.png */,
+				18948CF1175D05ED004E07EB /* people_info_dribble@2x.png */,
+				18948CF2175D05ED004E07EB /* people_info_homepage.png */,
+				18948CF3175D05ED004E07EB /* people_info_homepage@2x.png */,
+				18948CF4175D05ED004E07EB /* people_info_linkedin.png */,
+				18948CF5175D05ED004E07EB /* people_info_linkedin@2x.png */,
+				18948CF6175D05ED004E07EB /* people_info_twitter.png */,
+				18948CF7175D05ED004E07EB /* people_info_twitter@2x.png */,
+				18948CF8175D05ED004E07EB /* people_info_weibo.png */,
+				18948CF9175D05ED004E07EB /* people_info_weibo@2x.png */,
 				18B743BF175B018C00585CF5 /* model_bg_gloom.png */,
 				18B743C0175B018C00585CF5 /* model_bg_gloom@2x.png */,
 				18B743C1175B018C00585CF5 /* model_bg.png */,
@@ -773,6 +824,8 @@
 				18948CCC175CB465004E07EB /* PeopleListViewController.m */,
 				18948CD3175CE2C7004E07EB /* PeopleListCollectionViewCell.h */,
 				18948CD4175CE2C8004E07EB /* PeopleListCollectionViewCell.m */,
+				18948D06175D06A9004E07EB /* PeopleInfoViewController.h */,
+				18948D07175D06A9004E07EB /* PeopleInfoViewController.m */,
 			);
 			name = "Menu Panel";
 			sourceTree = "<group>";
@@ -928,6 +981,22 @@
 				18948CEB175CF83D004E07EB /* test_avatar_5@2x.png in Resources */,
 				18948CEC175CF83D004E07EB /* test_avatar_6.png in Resources */,
 				18948CED175CF83D004E07EB /* test_avatar_6@2x.png in Resources */,
+				18948CFA175D05ED004E07EB /* menu_button_write.png in Resources */,
+				18948CFB175D05ED004E07EB /* menu_button_write@2x.png in Resources */,
+				18948CFC175D05ED004E07EB /* people_info_dribble.png in Resources */,
+				18948CFD175D05ED004E07EB /* people_info_dribble@2x.png in Resources */,
+				18948CFE175D05ED004E07EB /* people_info_homepage.png in Resources */,
+				18948CFF175D05ED004E07EB /* people_info_homepage@2x.png in Resources */,
+				18948D00175D05ED004E07EB /* people_info_linkedin.png in Resources */,
+				18948D01175D05ED004E07EB /* people_info_linkedin@2x.png in Resources */,
+				18948D02175D05ED004E07EB /* people_info_twitter.png in Resources */,
+				18948D03175D05ED004E07EB /* people_info_twitter@2x.png in Resources */,
+				18948D04175D05ED004E07EB /* people_info_weibo.png in Resources */,
+				18948D05175D05ED004E07EB /* people_info_weibo@2x.png in Resources */,
+				18948D0D175D0911004E07EB /* people_info_avatar_cover.png in Resources */,
+				18948D0E175D0911004E07EB /* people_info_avatar_cover@2x.png in Resources */,
+				18948D0F175D0911004E07EB /* people_info_fade_cover.png in Resources */,
+				18948D10175D0911004E07EB /* people_info_fade_cover@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,6 +1051,7 @@
 				18948CBE175C5FAC004E07EB /* SLDetailTableViewCell.m in Sources */,
 				18948CCD175CB465004E07EB /* PeopleListViewController.m in Sources */,
 				18948CD5175CE2C8004E07EB /* PeopleListCollectionViewCell.m in Sources */,
+				18948D08175D06AA004E07EB /* PeopleInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

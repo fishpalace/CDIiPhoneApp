@@ -8,6 +8,8 @@
 
 #import "PeopleListViewController.h"
 #import "PeopleListCollectionViewCell.h"
+#import "PeopleInfoViewController.h"
+#import "ModelPanelViewController.h"
 #import "CDIUser.h"
 
 @interface PeopleListViewController ()
@@ -62,6 +64,14 @@
   cell.avatarImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"test_avatar_%d", indexPath.row + 1]];
 
   return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+  PeopleInfoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleInfoViewController"];
+  vc.user = [self.userArray objectAtIndex:indexPath.row];
+  vc.index = indexPath.row;
+  [ModelPanelViewController displayModelPanelWithViewController:vc];
 }
 
 - (NSMutableArray *)userArray

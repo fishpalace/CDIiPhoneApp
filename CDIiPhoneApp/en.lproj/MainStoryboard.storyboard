@@ -264,7 +264,227 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ce-3w-bto" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="732"/>
+            <point key="canvasLocation" x="712" y="743"/>
+        </scene>
+        <!--People Info View Controller-->
+        <scene sceneID="1DC-lT-bnv">
+            <objects>
+                <viewController storyboardIdentifier="PeopleInfoViewController" id="vlt-ON-Np7" customClass="PeopleInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zaf-m5-Ifu">
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="400"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="tableview_bg_back.png" translatesAutoresizingMaskIntoConstraints="NO" id="fOl-ts-8We">
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="1" constant="93" type="user" id="2Ym-fQ-uAR"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="tableview_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="p3I-ea-Lrc">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="251" type="user" id="cdu-cH-i3O"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" image="time_topbar_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="ifv-jO-G4G">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" type="user" id="EHb-1o-daZ"/>
+                                    <constraint firstAttribute="width" constant="270" type="user" id="ney-qq-vON"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Related Projects" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="169" translatesAutoresizingMaskIntoConstraints="NO" id="7Hk-hN-KAf">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="169" id="4GO-eI-Ad7"/>
+                                    <constraint firstAttribute="height" constant="24" id="zMo-jr-C4O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <color key="textColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Alex Yan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="hB5-p1-S0Z">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="e7K-qS-mL9"/>
+                                    <constraint firstAttribute="width" constant="124" id="fO9-df-515"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Student" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fE5-og-s7r">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="qWB-NW-OnG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWf-KA-Mlx">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="66" id="grQ-4b-Dj6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="menu_button_write.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Web Engineer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDH-hw-1fD">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="124" id="Zws-FO-61k"/>
+                                    <constraint firstAttribute="height" constant="14" id="xaw-4O-UjE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <color key="textColor" red="0.047058823530000002" green="0.76078431369999999" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkz-kf-XVF">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" type="user" id="DrF-FE-g0d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="people_info_homepage.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJ0-bx-Cuw">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" type="user" id="XAP-1F-aTB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="people_info_dribble.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hi-00-Ufv">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" type="user" id="ZdK-1Z-jjo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="people_info_weibo.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEs-SO-mJf">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" type="user" id="UpV-oc-f4I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="people_info_linkedin.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lud-ah-ChE">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" type="user" id="vYa-cW-Sq4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="people_info_twitter.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQV-5T-2xm">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="UpC-Jn-g6M"/>
+                                    <constraint firstAttribute="width" constant="40" id="bht-UI-fC3"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="people_info_avatar_cover.png" translatesAutoresizingMaskIntoConstraints="NO" id="ok9-c5-qsO"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="people_info_fade_cover.png" translatesAutoresizingMaskIntoConstraints="NO" id="u2u-Rd-Yvj"/>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lud-ah-ChE" firstAttribute="top" secondItem="zaf-m5-Ifu" secondAttribute="top" constant="94" type="user" id="0AE-3u-zfi"/>
+                            <constraint firstItem="JQV-5T-2xm" firstAttribute="top" secondItem="zaf-m5-Ifu" secondAttribute="top" constant="8" id="0r1-Mh-ZuY"/>
+                            <constraint firstItem="dEs-SO-mJf" firstAttribute="top" secondItem="zaf-m5-Ifu" secondAttribute="top" constant="94" type="user" id="32b-iL-qH9"/>
+                            <constraint firstItem="p3I-ea-Lrc" firstAttribute="trailing" secondItem="zaf-m5-Ifu" secondAttribute="trailing" type="default" id="3pb-0u-MWd"/>
+                            <constraint firstItem="uJ0-bx-Cuw" firstAttribute="leading" secondItem="vkz-kf-XVF" secondAttribute="trailing" constant="-3" type="user" id="AUj-nu-4rw"/>
+                            <constraint firstItem="p3I-ea-Lrc" firstAttribute="leading" secondItem="zaf-m5-Ifu" secondAttribute="leading" type="user" id="AjG-Y3-quI"/>
+                            <constraint firstItem="ok9-c5-qsO" firstAttribute="top" secondItem="zaf-m5-Ifu" secondAttribute="top" constant="7" id="Awr-9U-96H"/>
+                            <constraint firstItem="iDH-hw-1fD" firstAttribute="trailing" secondItem="zaf-m5-Ifu" secondAttribute="trailing" type="default" id="BHd-pP-ega"/>
+                            <constraint firstItem="uJ0-bx-Cuw" firstAttribute="top" secondItem="iDH-hw-1fD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ETG-z2-2Bb"/>
+                            <constraint firstItem="fE5-og-s7r" firstAttribute="leading" secondItem="hB5-p1-S0Z" secondAttribute="leading" type="default" id="Ioc-f9-0QI"/>
+                            <constraint firstItem="2hi-00-Ufv" firstAttribute="leading" secondItem="uJ0-bx-Cuw" secondAttribute="trailing" constant="-3" type="user" id="K7o-hA-oZl"/>
+                            <constraint firstAttribute="bottom" secondItem="fOl-ts-8We" secondAttribute="bottom" type="user" id="KXE-cW-uwh"/>
+                            <constraint firstItem="ifv-jO-G4G" firstAttribute="leading" secondItem="zaf-m5-Ifu" secondAttribute="leading" type="user" id="LAU-7p-05n"/>
+                            <constraint firstItem="lud-ah-ChE" firstAttribute="top" secondItem="zaf-m5-Ifu" secondAttribute="top" constant="94" type="user" id="Ypl-Cz-jzE"/>
+                            <constraint firstAttribute="bottom" secondItem="u2u-Rd-Yvj" secondAttribute="bottom" type="user" id="ZOv-dL-7f5"/>
+                            <constraint firstItem="fOl-ts-8We" firstAttribute="top" secondItem="zaf-m5-Ifu" secondAttribute="top" type="user" id="aIO-4j-ceE"/>
+                            <constraint firstItem="fOl-ts-8We" firstAttribute="leading" secondItem="zaf-m5-Ifu" secondAttribute="leading" type="user" id="aL0-Ld-N0o"/>
+                            <constraint firstAttribute="trailing" secondItem="fOl-ts-8We" secondAttribute="trailing" type="user" id="b93-zy-b1L"/>
+                            <constraint firstItem="aWf-KA-Mlx" firstAttribute="top" secondItem="ok9-c5-qsO" secondAttribute="top" type="default" id="bGw-ng-lqF"/>
+                            <constraint firstItem="lud-ah-ChE" firstAttribute="leading" secondItem="dEs-SO-mJf" secondAttribute="trailing" constant="-3" type="user" id="cI9-Y4-t9t"/>
+                            <constraint firstItem="dEs-SO-mJf" firstAttribute="leading" secondItem="2hi-00-Ufv" secondAttribute="trailing" constant="-3" type="user" id="eC5-iq-BUS"/>
+                            <constraint firstItem="vkz-kf-XVF" firstAttribute="leading" secondItem="zaf-m5-Ifu" secondAttribute="leading" constant="7" id="fTG-AU-kbO"/>
+                            <constraint firstItem="fE5-og-s7r" firstAttribute="trailing" secondItem="hB5-p1-S0Z" secondAttribute="trailing" type="default" id="gLD-eW-DlB"/>
+                            <constraint firstItem="aWf-KA-Mlx" firstAttribute="trailing" secondItem="zaf-m5-Ifu" secondAttribute="trailing" type="default" id="gr0-bH-eZl"/>
+                            <constraint firstItem="lud-ah-ChE" firstAttribute="top" secondItem="2hi-00-Ufv" secondAttribute="top" type="user" id="hC1-5I-TLH"/>
+                            <constraint firstItem="vkz-kf-XVF" firstAttribute="top" secondItem="zaf-m5-Ifu" secondAttribute="top" constant="94" type="user" id="hFw-6w-VkJ"/>
+                            <constraint firstItem="hB5-p1-S0Z" firstAttribute="top" secondItem="zaf-m5-Ifu" secondAttribute="top" constant="13" id="hGT-8q-sK5"/>
+                            <constraint firstAttribute="centerX" secondItem="fOl-ts-8We" secondAttribute="centerX" type="user" id="hNa-tj-vto"/>
+                            <constraint firstAttribute="trailing" secondItem="u2u-Rd-Yvj" secondAttribute="trailing" type="user" id="jFm-uU-ghR"/>
+                            <constraint firstItem="2hi-00-Ufv" firstAttribute="top" secondItem="iDH-hw-1fD" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="kl3-O3-YvO"/>
+                            <constraint firstItem="2hi-00-Ufv" firstAttribute="top" secondItem="zaf-m5-Ifu" secondAttribute="top" constant="94" type="user" id="ldq-rv-n0c"/>
+                            <constraint firstItem="ifv-jO-G4G" firstAttribute="top" secondItem="zaf-m5-Ifu" secondAttribute="top" type="default" id="njv-5l-lMx"/>
+                            <constraint firstItem="ok9-c5-qsO" firstAttribute="leading" secondItem="zaf-m5-Ifu" secondAttribute="leading" constant="6" id="o3N-eG-3UW"/>
+                            <constraint firstItem="ifv-jO-G4G" firstAttribute="leading" secondItem="zaf-m5-Ifu" secondAttribute="leading" type="user" id="p2r-mW-8Ec"/>
+                            <constraint firstItem="JQV-5T-2xm" firstAttribute="centerX" secondItem="ok9-c5-qsO" secondAttribute="centerX" type="default" id="ppv-VM-Chm"/>
+                            <constraint firstItem="7Hk-hN-KAf" firstAttribute="top" secondItem="zaf-m5-Ifu" secondAttribute="top" constant="163" id="qlB-T5-Cen"/>
+                            <constraint firstItem="fOl-ts-8We" firstAttribute="top" secondItem="aWf-KA-Mlx" secondAttribute="bottom" priority="1" constant="8" symbolic="YES" type="user" id="qru-EJ-SdC"/>
+                            <constraint firstItem="7Hk-hN-KAf" firstAttribute="trailing" secondItem="fE5-og-s7r" secondAttribute="trailing" type="default" id="r1v-yH-sHc"/>
+                            <constraint firstItem="u2u-Rd-Yvj" firstAttribute="leading" secondItem="zaf-m5-Ifu" secondAttribute="leading" type="user" id="rjV-kQ-4sv"/>
+                            <constraint firstItem="hB5-p1-S0Z" firstAttribute="leading" secondItem="zaf-m5-Ifu" secondAttribute="leading" constant="55" type="user" id="ruc-Nb-0RX"/>
+                            <constraint firstItem="p3I-ea-Lrc" firstAttribute="top" secondItem="zaf-m5-Ifu" secondAttribute="top" constant="153" id="sxx-Ci-FAk"/>
+                            <constraint firstItem="fE5-og-s7r" firstAttribute="top" secondItem="zaf-m5-Ifu" secondAttribute="top" constant="31" id="tnC-Tq-gsZ"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="avatarImageView" destination="JQV-5T-2xm" id="hlB-Ll-fxU"/>
+                        <outlet property="infoDribbleButton" destination="uJ0-bx-Cuw" id="fGo-yc-qLo"/>
+                        <outlet property="infoHomepageButton" destination="vkz-kf-XVF" id="4dy-Ld-JRO"/>
+                        <outlet property="infoLinkedinButton" destination="dEs-SO-mJf" id="ScB-Sj-5Z9"/>
+                        <outlet property="infoTwitterButton" destination="lud-ah-ChE" id="7BH-tl-ots"/>
+                        <outlet property="infoWeiboButton" destination="2hi-00-Ufv" id="qSC-yc-wZp"/>
+                        <outlet property="lowerBGImageView" destination="p3I-ea-Lrc" id="XnK-iC-efj"/>
+                        <outlet property="upperBGImageView" destination="fOl-ts-8We" id="ZQ2-aQ-81X"/>
+                        <outlet property="userNameLabel" destination="hB5-p1-S0Z" id="1k9-Fe-f5R"/>
+                        <outlet property="userPositionLabel" destination="iDH-hw-1fD" id="mt8-yu-EL9"/>
+                        <outlet property="userTitleLabel" destination="fE5-og-s7r" id="Wii-2s-38K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GkL-D1-ENX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="710" y="1232"/>
         </scene>
         <!--Time Detail View Controller-->
         <scene sceneID="GuZ-Z2-hBR">
@@ -1153,6 +1373,7 @@
         <image name="menu_button_schedule.png" width="43" height="44"/>
         <image name="menu_button_schedule_dark.png" width="44" height="44"/>
         <image name="menu_button_setting.png" width="45" height="44"/>
+        <image name="menu_button_write.png" width="44" height="44"/>
         <image name="menu_login_bg.png" width="300" height="44"/>
         <image name="menu_room_available.png" width="31" height="10"/>
         <image name="menu_room_clear.png" width="31" height="10"/>
@@ -1168,6 +1389,13 @@
         <image name="mp_selection_cover.png" width="170" height="170"/>
         <image name="mp_selection_proj1.png" width="170" height="170"/>
         <image name="people_cell_bg.png" width="211" height="271"/>
+        <image name="people_info_avatar_cover.png" width="44" height="44"/>
+        <image name="people_info_dribble.png" width="44" height="44"/>
+        <image name="people_info_fade_cover.png" width="268" height="38"/>
+        <image name="people_info_homepage.png" width="44" height="44"/>
+        <image name="people_info_linkedin.png" width="44" height="44"/>
+        <image name="people_info_twitter.png" width="44" height="44"/>
+        <image name="people_info_weibo.png" width="44" height="44"/>
         <image name="tableview_bg.png" width="299" height="75"/>
         <image name="tableview_bg_back.png" width="302" height="62"/>
         <image name="tableview_cell_bg.png" width="299" height="81"/>
@@ -1178,6 +1406,163 @@
         <image name="time_panel_cover.png" width="230" height="136"/>
         <image name="time_topbar_bg.png" width="271" height="61"/>
     </resources>
+    <classes>
+        <class className="GYPieChart" superclassName="XYPieChart">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYPieChart.h"/>
+        </class>
+        <class className="MPCellTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="contentImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="coverImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="MPCellTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewController.h"/>
+        </class>
+        <class className="MPTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPTableViewCell.h"/>
+        </class>
+        <class className="MainPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainPanelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="containerViewTopSpaceConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="tableViewContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tableViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="tableViewTopSpaceConstraint" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="MenuPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuPanelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="checkNewsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkPeopleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkProjectButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkReservationButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkRoomA" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkRoomB" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkRoomC" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkRoomD" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkScheduleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="containerScrollview" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="roomStatusAImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="roomStatusBImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="roomStatusCImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="roomStatusDImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ModelPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModelPanelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="contentBGImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="modelBGImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PeopleInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PeopleInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="infoDribbleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="infoHomepageButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="infoLinkedinButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="infoTwitterButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="infoWeiboButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lowerBGImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="upperBGImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userPositionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userTitleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PeopleListCollectionViewCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PeopleListCollectionViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userPositionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userTitleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PeopleListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PeopleListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="filterButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SLDetailTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLDetailTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="eventName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventRelatedInfo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="roomName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startingTime" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SLDetailTableViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLDetailTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bottomBGImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="todayIndicatorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="topBGImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="weekdayLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ScheduleListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScheduleListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="scheduleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="TimeDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="eventNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="percentageLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pieChart" candidateClass="GYPieChart"/>
+            </relationships>
+        </class>
+        <class className="TimeDisplayPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeDisplayPanelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="roomIdentifier" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="roomNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="statusImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="XYPieChart" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/XYPieChart.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -44,6 +44,10 @@
 		18948CC6175CABD6004E07EB /* people_cell_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CC2175CABD6004E07EB /* people_cell_cover@2x.png */; };
 		18948CC9175CABDE004E07EB /* menu_button_filter.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CC7175CABDE004E07EB /* menu_button_filter.png */; };
 		18948CCA175CABDE004E07EB /* menu_button_filter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CC8175CABDE004E07EB /* menu_button_filter@2x.png */; };
+		18948CCD175CB465004E07EB /* PeopleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18948CCC175CB465004E07EB /* PeopleListViewController.m */; };
+		18948CD1175CE088004E07EB /* test_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CCF175CE088004E07EB /* test_avatar.png */; };
+		18948CD2175CE088004E07EB /* test_avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CD0175CE088004E07EB /* test_avatar@2x.png */; };
+		18948CD5175CE2C8004E07EB /* PeopleListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18948CD4175CE2C8004E07EB /* PeopleListCollectionViewCell.m */; };
 		18B7437E175AE3B500585CF5 /* UIImage+ScreenShoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7437B175AE3B500585CF5 /* UIImage+ScreenShoot.m */; };
 		18B7437F175AE3B500585CF5 /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7437D175AE3B500585CF5 /* UIImage+StackBlur.m */; };
 		18B74383175AE50600585CF5 /* ModelPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B74382175AE50600585CF5 /* ModelPanelViewController.m */; };
@@ -197,6 +201,12 @@
 		18948CC2175CABD6004E07EB /* people_cell_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people_cell_cover@2x.png"; sourceTree = "<group>"; };
 		18948CC7175CABDE004E07EB /* menu_button_filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button_filter.png; sourceTree = "<group>"; };
 		18948CC8175CABDE004E07EB /* menu_button_filter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_button_filter@2x.png"; sourceTree = "<group>"; };
+		18948CCB175CB465004E07EB /* PeopleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeopleListViewController.h; path = "Menu Panel/PeopleListViewController.h"; sourceTree = "<group>"; };
+		18948CCC175CB465004E07EB /* PeopleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeopleListViewController.m; path = "Menu Panel/PeopleListViewController.m"; sourceTree = "<group>"; };
+		18948CCF175CE088004E07EB /* test_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_avatar.png; sourceTree = "<group>"; };
+		18948CD0175CE088004E07EB /* test_avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test_avatar@2x.png"; sourceTree = "<group>"; };
+		18948CD3175CE2C7004E07EB /* PeopleListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeopleListCollectionViewCell.h; path = "Menu Panel/PeopleListCollectionViewCell.h"; sourceTree = "<group>"; };
+		18948CD4175CE2C8004E07EB /* PeopleListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeopleListCollectionViewCell.m; path = "Menu Panel/PeopleListCollectionViewCell.m"; sourceTree = "<group>"; };
 		18B7437A175AE3B500585CF5 /* UIImage+ScreenShoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ScreenShoot.h"; path = "Category/UIImage+ScreenShoot.h"; sourceTree = "<group>"; };
 		18B7437B175AE3B500585CF5 /* UIImage+ScreenShoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ScreenShoot.m"; path = "Category/UIImage+ScreenShoot.m"; sourceTree = "<group>"; };
 		18B7437C175AE3B500585CF5 /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+StackBlur.h"; path = "Category/UIImage+StackBlur.h"; sourceTree = "<group>"; };
@@ -420,6 +430,7 @@
 		180BD0BE17334DF900BA2A98 /* Image Resource */ = {
 			isa = PBXGroup;
 			children = (
+				18948CCE175CE088004E07EB /* test */,
 				183AE760175C38CD008310BF /* TableView */,
 				187F50221734EAE5006B46A3 /* Default */,
 				187F4FFB1734EAD8006B46A3 /* Main Panel */,
@@ -567,6 +578,16 @@
 			);
 			name = TableView;
 			sourceTree = "<group>";
+		};
+		18948CCE175CE088004E07EB /* test */ = {
+			isa = PBXGroup;
+			children = (
+				18948CCF175CE088004E07EB /* test_avatar.png */,
+				18948CD0175CE088004E07EB /* test_avatar@2x.png */,
+			);
+			name = test;
+			path = "Image Resource/test";
+			sourceTree = SOURCE_ROOT;
 		};
 		18B74380175AE43100585CF5 /* Model Panel */ = {
 			isa = PBXGroup;
@@ -718,6 +739,10 @@
 				18948CBA175C5F80004E07EB /* SLDetailTableViewController.m */,
 				18948CBC175C5FAC004E07EB /* SLDetailTableViewCell.h */,
 				18948CBD175C5FAC004E07EB /* SLDetailTableViewCell.m */,
+				18948CCB175CB465004E07EB /* PeopleListViewController.h */,
+				18948CCC175CB465004E07EB /* PeopleListViewController.m */,
+				18948CD3175CE2C7004E07EB /* PeopleListCollectionViewCell.h */,
+				18948CD4175CE2C8004E07EB /* PeopleListCollectionViewCell.m */,
 			);
 			name = "Menu Panel";
 			sourceTree = "<group>";
@@ -861,6 +886,8 @@
 				18948CC6175CABD6004E07EB /* people_cell_cover@2x.png in Resources */,
 				18948CC9175CABDE004E07EB /* menu_button_filter.png in Resources */,
 				18948CCA175CABDE004E07EB /* menu_button_filter@2x.png in Resources */,
+				18948CD1175CE088004E07EB /* test_avatar.png in Resources */,
+				18948CD2175CE088004E07EB /* test_avatar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -913,6 +940,8 @@
 				18948CB8175C521A004E07EB /* ScheduleListViewController.m in Sources */,
 				18948CBB175C5F80004E07EB /* SLDetailTableViewController.m in Sources */,
 				18948CBE175C5FAC004E07EB /* SLDetailTableViewCell.m in Sources */,
+				18948CCD175CB465004E07EB /* PeopleListViewController.m in Sources */,
+				18948CD5175CE2C8004E07EB /* PeopleListCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

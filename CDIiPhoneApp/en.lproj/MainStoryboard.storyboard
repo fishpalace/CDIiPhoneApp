@@ -805,10 +805,10 @@
             </objects>
             <point key="canvasLocation" x="1196" y="-850"/>
         </scene>
-        <!--View Controller-->
+        <!--People List View Controller-->
         <scene sceneID="Y58-aI-fKS">
             <objects>
-                <viewController id="L8x-HJ-AD3" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PeopleListViewController" id="L8x-HJ-AD3" customClass="PeopleListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mBD-aT-Ocb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -851,10 +851,12 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="didClickBackButton:" destination="L8x-HJ-AD3" eventType="touchUpInside" id="Hui-2e-gxJ"/>
                                     <action selector="didClickBackButton:" destination="J40-4n-nsT" eventType="touchUpInside" id="Sp1-Oz-sI1"/>
                                 </connections>
                             </button>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9ZE-AX-e1t">
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9ZE-AX-e1t">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e2k-cq-X9Z">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -862,32 +864,80 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mZS-09-5cn">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PeopleListCollectionViewCell" id="IBW-Ke-caE" customClass="PeopleListCollectionViewCell">
+                                        <rect key="frame" x="75" y="0.0" width="160" height="220"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" image="people_cell_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="uPd-ez-1Db">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="225" id="C80-qC-kbL"/>
+                                                        <constraint firstAttribute="width" constant="150" id="xd9-br-lLb"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="test_avatar.png" translatesAutoresizingMaskIntoConstraints="NO" id="olv-sX-y6C"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Alex Yan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="tWf-ZF-j18">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="4TI-9G-lIf"/>
+                                                        <constraint firstAttribute="width" constant="124" id="ok7-Yi-mqp"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <color key="textColor" red="0.41568627450980389" green="0.41568627450980389" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Student" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSX-F0-dQ3">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="rKP-8x-POK"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Web Engineer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gz2-Lb-lps">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <color key="textColor" red="0.047058823530000002" green="0.76078431369999999" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="uPd-ez-1Db" firstAttribute="top" secondItem="IBW-Ke-caE" secondAttribute="top" type="default" id="1Z6-AA-nH0"/>
+                                            <constraint firstAttribute="bottom" secondItem="CSX-F0-dQ3" secondAttribute="bottom" priority="1" constant="35" type="user" id="3uy-cx-AEO"/>
+                                            <constraint firstAttribute="bottom" secondItem="tWf-ZF-j18" secondAttribute="bottom" constant="52" id="5Vu-jr-fr8"/>
+                                            <constraint firstAttribute="bottom" secondItem="CSX-F0-dQ3" secondAttribute="bottom" constant="40" id="ABl-x5-jab"/>
+                                            <constraint firstItem="olv-sX-y6C" firstAttribute="centerX" secondItem="uPd-ez-1Db" secondAttribute="centerX" type="default" id="I5Q-KD-Fzc"/>
+                                            <constraint firstItem="olv-sX-y6C" firstAttribute="top" secondItem="IBW-Ke-caE" secondAttribute="top" constant="5" id="S3C-eB-wsh"/>
+                                            <constraint firstItem="CSX-F0-dQ3" firstAttribute="trailing" secondItem="Gz2-Lb-lps" secondAttribute="trailing" type="default" id="Sg7-1s-hIb"/>
+                                            <constraint firstItem="CSX-F0-dQ3" firstAttribute="leading" secondItem="Gz2-Lb-lps" secondAttribute="leading" type="default" id="Wvj-n1-DSv"/>
+                                            <constraint firstItem="uPd-ez-1Db" firstAttribute="leading" secondItem="IBW-Ke-caE" secondAttribute="leading" type="default" id="eEO-ky-XQM"/>
+                                            <constraint firstAttribute="centerX" secondItem="CSX-F0-dQ3" secondAttribute="centerX" type="user" id="m4g-xc-TRa"/>
+                                            <constraint firstAttribute="bottom" secondItem="Gz2-Lb-lps" secondAttribute="bottom" constant="25" id="qhg-x7-gRD"/>
+                                            <constraint firstItem="CSX-F0-dQ3" firstAttribute="leading" secondItem="tWf-ZF-j18" secondAttribute="leading" type="default" id="uyx-ZZ-lZJ"/>
+                                            <constraint firstItem="CSX-F0-dQ3" firstAttribute="trailing" secondItem="tWf-ZF-j18" secondAttribute="trailing" type="default" id="v9i-CG-ezo"/>
+                                        </constraints>
+                                        <size key="customSize" width="160" height="220"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zJW-tR-MkQ" firstAttribute="leading" secondItem="mBD-aT-Ocb" secondAttribute="leading" constant="10" type="user" id="0Na-6Z-9Cg"/>
                             <constraint firstItem="POC-Bs-vS2" firstAttribute="leading" secondItem="mBD-aT-Ocb" secondAttribute="leading" type="default" id="2aq-vN-MaJ"/>
                             <constraint firstItem="9ZE-AX-e1t" firstAttribute="top" secondItem="mBD-aT-Ocb" secondAttribute="top" constant="64" type="user" id="4gX-2Y-wl7"/>
                             <constraint firstItem="bX4-6x-pOf" firstAttribute="centerX" secondItem="zJW-tR-MkQ" secondAttribute="centerX" type="default" id="9NU-mA-FUE"/>
-                            <constraint firstAttribute="trailing" secondItem="9ZE-AX-e1t" secondAttribute="trailing" constant="10" type="user" id="LBT-Sh-CW8"/>
+                            <constraint firstAttribute="trailing" secondItem="9ZE-AX-e1t" secondAttribute="trailing" constant="5" type="user" id="LBT-Sh-CW8"/>
                             <constraint firstItem="bX4-6x-pOf" firstAttribute="top" secondItem="mBD-aT-Ocb" secondAttribute="top" constant="20" symbolic="YES" type="default" id="LfR-H9-LxW"/>
                             <constraint firstItem="POC-Bs-vS2" firstAttribute="top" secondItem="zJW-tR-MkQ" secondAttribute="top" type="default" id="M4X-xh-D7D"/>
-                            <constraint firstItem="9ZE-AX-e1t" firstAttribute="leading" secondItem="zJW-tR-MkQ" secondAttribute="leading" type="default" id="VK2-3b-BXw"/>
                             <constraint firstAttribute="bottom" secondItem="9ZE-AX-e1t" secondAttribute="bottom" type="user" id="WHQ-sj-DIl"/>
-                            <constraint firstItem="9ZE-AX-e1t" firstAttribute="leading" secondItem="mBD-aT-Ocb" secondAttribute="leading" constant="10" type="user" id="dqy-oo-52m"/>
+                            <constraint firstItem="9ZE-AX-e1t" firstAttribute="leading" secondItem="mBD-aT-Ocb" secondAttribute="leading" constant="5" type="user" id="dqy-oo-52m"/>
                             <constraint firstItem="XE6-mS-SxU" firstAttribute="top" secondItem="zJW-tR-MkQ" secondAttribute="top" type="default" id="itY-sE-9Zh"/>
                             <constraint firstItem="XE6-mS-SxU" firstAttribute="leading" secondItem="mBD-aT-Ocb" secondAttribute="leading" constant="252" id="pNU-oX-T9R"/>
                             <constraint firstItem="POC-Bs-vS2" firstAttribute="top" secondItem="mBD-aT-Ocb" secondAttribute="top" constant="10" id="phI-GC-mla"/>
+                            <constraint firstAttribute="trailing" secondItem="zJW-tR-MkQ" secondAttribute="trailing" constant="10" type="user" id="tlR-ht-EDH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7gM-Hr-SUB"/>
@@ -895,6 +945,11 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="backButton" destination="POC-Bs-vS2" id="AFG-xH-ehX"/>
+                        <outlet property="collectionView" destination="9ZE-AX-e1t" id="CNX-7V-phY"/>
+                        <outlet property="filterButton" destination="XE6-mS-SxU" id="raW-FY-Smq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cjb-rm-Nbz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1106,10 +1161,12 @@
         <image name="mp_selection_bg.png" width="241" height="241"/>
         <image name="mp_selection_cover.png" width="170" height="170"/>
         <image name="mp_selection_proj1.png" width="170" height="170"/>
+        <image name="people_cell_bg.png" width="211" height="271"/>
         <image name="tableview_bg.png" width="299" height="75"/>
         <image name="tableview_bg_back.png" width="302" height="62"/>
         <image name="tableview_cell_bg.png" width="299" height="81"/>
         <image name="tableview_icon_calendar.png" width="19" height="19"/>
+        <image name="test_avatar.png" width="140" height="140"/>
         <image name="time_center_cover.png" width="101" height="101"/>
         <image name="time_panel_bg.png" width="233" height="233"/>
         <image name="time_panel_cover.png" width="230" height="136"/>
@@ -1175,6 +1232,17 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PeopleListCollectionViewCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PeopleListCollectionViewCell.h"/>
+        </class>
+        <class className="PeopleListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PeopleListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="filterButton" candidateClass="UIButton"/>
+            </relationships>
         </class>
         <class className="SLDetailTableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLDetailTableViewCell.h"/>

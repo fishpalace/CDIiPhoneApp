@@ -32,4 +32,15 @@ static CDIUser *currentUser;
   user.sessionKey = sessionKey;
 }
 
+- (id)initWithName:(NSString *)name title:(NSString *)title position:(NSString *)position
+{
+  self = [super init];
+  if (self) {
+    self.userName = name;
+    self.title = title;
+    self.position = position;
+  }
+  return self;
+}
+
 @end

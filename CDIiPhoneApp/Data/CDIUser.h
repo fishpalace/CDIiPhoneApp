@@ -16,9 +16,12 @@
 @property (nonatomic, strong) NSString *avatarMidURL;
 @property (nonatomic, strong) NSString *avatarSmallURL;
 @property (nonatomic, strong) NSString *sessionKey;
+@property (nonatomic, strong) NSString *position;
+@property (nonatomic, strong) NSString *title;
 
 + (CDIUser *)currentUser;
 + (void)updateCurrentUserWithDictionary:(NSDictionary *)dict
                              sessionKey:(NSString *)sessionKey;
+- (id)initWithName:(NSString *)name title:(NSString *)title position:(NSString *)position;
 
 @end

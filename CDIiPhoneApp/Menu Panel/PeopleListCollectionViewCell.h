@@ -10,4 +10,9 @@
 
 @interface PeopleListCollectionViewCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userPositionLabel;
+
 @end

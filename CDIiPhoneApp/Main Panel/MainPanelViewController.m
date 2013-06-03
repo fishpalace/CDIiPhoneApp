@@ -192,10 +192,7 @@
 {
   if (!_menuPanelViewController) {
     _menuPanelContainerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuPanelViewControllerNaviController"];
-//    _menuPanelViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuPanelViewController"];
     _menuPanelViewController = _menuPanelContainerViewController.viewControllers[0];
-    _menuPanelContainerViewController.view.clipsToBounds = NO;
-    
     [self.tableViewContainerView addSubview:_menuPanelContainerViewController.view];
   }
   return _menuPanelViewController;

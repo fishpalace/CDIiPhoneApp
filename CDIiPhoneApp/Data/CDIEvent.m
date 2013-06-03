@@ -45,6 +45,7 @@ static CDIEvent *sharedNewEvent;
   sharedEvent.endValue = event.endValue;
   sharedEvent.accessKey = event.accessKey;
   sharedEvent.abandoned = event.abandoned;
+  sharedEvent.roomID = event.roomID;
 }
 
 - (id)eventCopy
@@ -62,6 +63,7 @@ static CDIEvent *sharedNewEvent;
   eventCopy.endValue = self.endValue;
   eventCopy.accessKey = self.accessKey;
   eventCopy.abandoned = self.abandoned;
+  eventCopy.roomID = self.roomID;
   return eventCopy;
 }
 

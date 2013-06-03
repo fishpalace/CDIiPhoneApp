@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SLDetailTableViewController : UIViewController
+@interface SLDetailTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, assign) BOOL isToday;
 

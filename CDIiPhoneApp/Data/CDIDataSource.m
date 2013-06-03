@@ -221,7 +221,7 @@ static CDIDataSource *sharedDataSource;
     if ([responseData isKindOfClass:[NSDictionary class]]) {
       NSDictionary *dict = responseData;
       if ([dict[@"data"] isKindOfClass:[NSArray class]]) {
-        [self setUpEventsForToday:dict[@"data"] array:todayArray];
+        [self setUpEventsForToday:dict[@"data"] array:todayArray roomID:roomID];
       }
     }
   };
@@ -237,7 +237,7 @@ static CDIDataSource *sharedDataSource;
     if ([responseData isKindOfClass:[NSDictionary class]]) {
       NSDictionary *dict = responseData;
       if ([dict[@"data"] isKindOfClass:[NSArray class]]) {
-        [self setUpEventsForTomorrow:dict[@"data"] array:tomorrowArray];
+        [self setUpEventsForTomorrow:dict[@"data"] array:tomorrowArray roomID:roomID];
       }
     }
   };
@@ -248,11 +248,14 @@ static CDIDataSource *sharedDataSource;
                     completion:handleData2];
 }
 
-- (void)setUpEventsForToday:(NSArray *)array array:(NSMutableArray *)todayArray
+- (void)setUpEventsForToday:(NSArray *)array
+                      array:(NSMutableArray *)todayArray
+                     roomID:(NSInteger)roomID
 {
   [todayArray removeAllObjects];
   for (NSDictionary *dict in array) {
     CDIEvent *event = [[CDIEvent alloc] initWithDictionary:dict];
+    event.roomID = roomID;
     if (!event.abandoned) {
       [todayArray addObject:event];
     }
@@ -262,11 +265,14 @@ static CDIDataSource *sharedDataSource;
 
 }
 
-- (void)setUpEventsForTomorrow:(NSArray *)array array:(NSMutableArray *)tomorrowArray
+- (void)setUpEventsForTomorrow:(NSArray *)array
+                         array:(NSMutableArray *)tomorrowArray
+                        roomID:(NSInteger)roomID
 {
   [tomorrowArray removeAllObjects];
   for (NSDictionary *dict in array) {
     CDIEvent *event = [[CDIEvent alloc] initWithDictionary:dict];
+    event.roomID = roomID;
     if (!event.abandoned) {
       [tomorrowArray addObject:event];
     }

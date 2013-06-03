@@ -42,4 +42,6 @@
 
 + (NSString *)stringOfDate:(NSDate *)date;
 
++ (NSString *)stringOfTime:(NSDate *)date;
+
 @end

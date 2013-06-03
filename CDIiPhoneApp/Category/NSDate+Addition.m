@@ -32,6 +32,13 @@
   return [dateFormatter stringFromDate:date];
 }
 
++ (NSString *)stringOfTime:(NSDate *)date
+{
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"HH:mm"];
+  return [dateFormatter stringFromDate:date];
+}
+
 - (NSString *)stringExpression
 {
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

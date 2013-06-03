@@ -23,6 +23,7 @@
 @property (nonatomic, assign) NSInteger endValue;
 @property (nonatomic, strong) NSString *creatorSessionKey;
 @property (nonatomic, strong) NSString *accessKey;
+@property (nonatomic, assign) NSInteger roomID;
 
 + (CDIEvent *)sharedNewEvent;
 + (void)updateSharedNewEvent:(CDIEvent *)event;

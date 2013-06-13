@@ -31,4 +31,27 @@
 - (id)eventCopy;
 - (id)initWithDictionary:(NSDictionary *)dict;
 
+//private Long id;
+//private String name;
+//private String name_en;
+//
+//private WorkStatusEnum status;
+//private WorkTypeEnum type;
+//
+//private String imageUrl;
+//private String videoUrl;
+//private String linkUrl;
+//
+//private Long creatorId;
+//
+//private Date startDate;
+//private Date estimatedEndDate;
+//private Date endDate;
+//
+//private String description;
+//private String description_en;
+//
+////----------------------------------
+//private String previewImageUrl;
+
 @end

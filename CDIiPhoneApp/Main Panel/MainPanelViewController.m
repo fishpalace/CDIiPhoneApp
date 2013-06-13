@@ -76,14 +76,6 @@
   self.containerViewTopSpaceConstraint.constant = -kCurrentScreenHeight;
 }
 
-- (IBAction)clickButton:(id)sender
-{
-  NSLog(@"container, %@", NSStringFromCGRect(self.tableViewContainerView.frame));
-  NSLog(@"menupanel, %@", NSStringFromCGRect(self.menuPanelViewController.view.frame));
-  NSLog(@"tableview, %@", NSStringFromCGRect(self.tableView.frame));
-  NSLog(@"headerview, %@", NSStringFromCGRect(self.dragIndicatorView.frame));
-}
-
 #pragma mark - Table View Data Source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

@@ -8,6 +8,7 @@
 
 #import "MPCellTableViewCell.h"
 #import "UIView+Resize.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MPCellTableViewCell ()
 

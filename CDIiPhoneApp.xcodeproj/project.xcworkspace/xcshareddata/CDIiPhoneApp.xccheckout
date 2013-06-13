@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>63A3B046-1086-4929-B1EE-7602DF1466A5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CDIiPhoneApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D514A6F2-1117-4D5A-8C3A-1DD5258D66B2</key>
+		<string>https://github.com/fishpalace/CDIiPhoneApp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CDIiPhoneApp.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D514A6F2-1117-4D5A-8C3A-1DD5258D66B2</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/fishpalace/CDIiPhoneApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D514A6F2-1117-4D5A-8C3A-1DD5258D66B2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D514A6F2-1117-4D5A-8C3A-1DD5258D66B2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CDIiPhoneApp</string>
+		</dict>
+	</array>
+</dict>
+</plist>

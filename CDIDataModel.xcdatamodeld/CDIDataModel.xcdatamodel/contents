@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="CDIEvent" syncable="YES">
+        <attribute name="abandoned" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="accessKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="endValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="eventID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isPlaceHolder" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passed" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="relatedInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="roomID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDIUser" inverseName="events" inverseEntity="CDIUser" syncable="YES"/>
+    </entity>
+    <entity name="CDINews" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="creator" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CDIUser" inverseName="news" inverseEntity="CDIUser" syncable="YES"/>
+    </entity>
+    <entity name="CDIRoom" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="roomID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="roomInfo" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CDIUser" syncable="YES">
+        <attribute name="avatarLargeURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatarMidURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatarSmallURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dribbleURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="homePageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="linkedInURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="realName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="twitterURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weiboURL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDIEvent" inverseName="creator" inverseEntity="CDIEvent" syncable="YES"/>
+        <relationship name="news" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDINews" inverseName="creator" inverseEntity="CDINews" syncable="YES"/>
+        <relationship name="relatedWork" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDIWork" inverseName="involvedUser" inverseEntity="CDIWork" syncable="YES"/>
+        <relationship name="work" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDIWork" inverseName="creator" inverseEntity="CDIWork" syncable="YES"/>
+    </entity>
+    <entity name="CDIWork" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="estimatedEndDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="imgURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="linkURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nameEn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="previewImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="videoURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workInfoEn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workType" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDIUser" inverseName="work" inverseEntity="CDIUser" syncable="YES"/>
+        <relationship name="involvedUser" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDIUser" inverseName="relatedWork" inverseEntity="CDIUser" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CDIEvent" positionX="-36326" positionY="5544" width="128" height="255"/>
+        <element name="CDINews" positionX="-36011" positionY="5544" width="128" height="103"/>
+        <element name="CDIRoom" positionX="-36324" positionY="5859" width="128" height="88"/>
+        <element name="CDIUser" positionX="-36171" positionY="5544" width="128" height="283"/>
+        <element name="CDIWork" positionX="-36000" positionY="5679" width="128" height="268"/>
+    </elements>
+</model>

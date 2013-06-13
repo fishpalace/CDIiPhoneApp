@@ -9,6 +9,7 @@
 #import "MPCellTableViewController.h"
 #import "MPCellTableViewCell.h"
 #import "UIView+Resize.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MPCellTableViewController ()
 
@@ -56,13 +57,27 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return 3;
+  return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   static NSString *CellIdentifier = @"MPCellTableViewCell";
   MPCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+  NSString *imageNameBase = nil;
+  if (self.row == 0) {
+    imageNameBase = @"test_proj_";
+  } else if (self.row == 1) {
+    imageNameBase = @"test_activity_";
+  } else {
+    imageNameBase = @"test_news_";
+  }
+  
+  cell.contentImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%d", imageNameBase, indexPath.row + 1]];
+  
+  cell.contentImageView.layer.cornerRadius = 5;
+  cell.contentImageView.layer.masksToBounds = YES;
+
   
   return cell;
 }

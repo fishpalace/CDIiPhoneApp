@@ -14,6 +14,7 @@
 		180BD0A717334D6E00BA2A98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 180BD0A617334D6E00BA2A98 /* main.m */; };
 		180BD0AB17334D6E00BA2A98 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 180BD0AA17334D6E00BA2A98 /* AppDelegate.m */; };
 		180BD0B417334D6E00BA2A98 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180BD0B217334D6E00BA2A98 /* MainStoryboard.storyboard */; };
+		180D9FF71769905300E7E4F2 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180D9FF61769905300E7E4F2 /* Media.xcassets */; };
 		183AE76B175C38CD008310BF /* tableview_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE761175C38CD008310BF /* tableview_bg.png */; };
 		183AE76C175C38CD008310BF /* tableview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE762175C38CD008310BF /* tableview_bg@2x.png */; };
 		183AE76D175C38CD008310BF /* tableview_bg_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE763175C38CD008310BF /* tableview_bg_back.png */; };
@@ -145,9 +146,7 @@
 		18B743E9175B096C00585CF5 /* time_panel_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B743E7175B096C00585CF5 /* time_panel_bg@2x.png */; };
 		18B743EC175B0B3F00585CF5 /* TimeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B743EB175B0B3F00585CF5 /* TimeDetailViewController.m */; };
 		18B743F6175B0C9D00585CF5 /* CDIDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B743EF175B0C9C00585CF5 /* CDIDataSource.m */; };
-		18B743F7175B0C9D00585CF5 /* CDIEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B743F1175B0C9D00585CF5 /* CDIEvent.m */; };
 		18B743F8175B0C9D00585CF5 /* CDINetClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B743F3175B0C9D00585CF5 /* CDINetClient.m */; };
-		18B743F9175B0C9D00585CF5 /* CDIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B743F5175B0C9D00585CF5 /* CDIUser.m */; };
 		18B743FC175B0E9500585CF5 /* NSDate+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B743FB175B0E9500585CF5 /* NSDate+Addition.m */; };
 		18B743FF175B0ED500585CF5 /* TImeZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B743FE175B0ED500585CF5 /* TImeZone.m */; };
 		18B74416175B105100585CF5 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B74402175B105100585CF5 /* AFHTTPClient.m */; };
@@ -193,6 +192,12 @@
 		18B995B3175A0E230010B9D4 /* bottom_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B995AF175A0E230010B9D4 /* bottom_cover@2x.png */; };
 		18B995B4175A0E230010B9D4 /* top_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B995B0175A0E230010B9D4 /* top_cover.png */; };
 		18B995B5175A0E230010B9D4 /* top_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B995B1175A0E230010B9D4 /* top_cover@2x.png */; };
+		18BACD62176EE6F80058042D /* CoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD61176EE63A0058042D /* CoreDataViewController.m */; };
+		18BACD6B176EE8640058042D /* CDINews.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD6A176EE8640058042D /* CDINews.m */; };
+		18BACD6E176EE8640058042D /* CDIRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD6D176EE8640058042D /* CDIRoom.m */; };
+		18BACD71176EE8640058042D /* CDIWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD70176EE8640058042D /* CDIWork.m */; };
+		18BACD74176EEC590058042D /* CDIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD73176EEC1F0058042D /* CDIUser.m */; };
+		18BACD77176EEEB50058042D /* CDIEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD76176EEEB50058042D /* CDIEvent.m */; };
 		18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA8A173897CB006EFF51 /* MPDragIndicatorView.m */; };
 		18E0EA8D1738981C006EFF51 /* MPDragIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E0EA8C1738981C006EFF51 /* MPDragIndicatorView.xib */; };
 		18E0EA8F1738C670006EFF51 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E0EA8E1738C670006EFF51 /* QuartzCore.framework */; };
@@ -213,6 +218,7 @@
 		180BD0A917334D6E00BA2A98 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		180BD0AA17334D6E00BA2A98 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		180BD0B317334D6E00BA2A98 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		180D9FF61769905300E7E4F2 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = CDIiPhoneApp/Media.xcassets; sourceTree = "<group>"; };
 		183AE761175C38CD008310BF /* tableview_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg.png; sourceTree = "<group>"; };
 		183AE762175C38CD008310BF /* tableview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_bg@2x.png"; sourceTree = "<group>"; };
 		183AE763175C38CD008310BF /* tableview_bg_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg_back.png; sourceTree = "<group>"; };
@@ -365,12 +371,8 @@
 		18B743EB175B0B3F00585CF5 /* TimeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeDetailViewController.m; path = "Time Panel/TimeDetailViewController.m"; sourceTree = "<group>"; };
 		18B743EE175B0C9C00585CF5 /* CDIDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIDataSource.h; path = Data/CDIDataSource.h; sourceTree = "<group>"; };
 		18B743EF175B0C9C00585CF5 /* CDIDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIDataSource.m; path = Data/CDIDataSource.m; sourceTree = "<group>"; };
-		18B743F0175B0C9D00585CF5 /* CDIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIEvent.h; path = Data/CDIEvent.h; sourceTree = "<group>"; };
-		18B743F1175B0C9D00585CF5 /* CDIEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIEvent.m; path = Data/CDIEvent.m; sourceTree = "<group>"; };
 		18B743F2175B0C9D00585CF5 /* CDINetClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDINetClient.h; path = Data/CDINetClient.h; sourceTree = "<group>"; };
 		18B743F3175B0C9D00585CF5 /* CDINetClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDINetClient.m; path = Data/CDINetClient.m; sourceTree = "<group>"; };
-		18B743F4175B0C9D00585CF5 /* CDIUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIUser.h; path = Data/CDIUser.h; sourceTree = "<group>"; };
-		18B743F5175B0C9D00585CF5 /* CDIUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIUser.m; path = Data/CDIUser.m; sourceTree = "<group>"; };
 		18B743FA175B0E9400585CF5 /* NSDate+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Addition.h"; path = "Category/NSDate+Addition.h"; sourceTree = "<group>"; };
 		18B743FB175B0E9500585CF5 /* NSDate+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Addition.m"; path = "Category/NSDate+Addition.m"; sourceTree = "<group>"; };
 		18B743FD175B0ED500585CF5 /* TImeZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TImeZone.h; path = Data/TImeZone.h; sourceTree = "<group>"; };
@@ -432,6 +434,18 @@
 		18B995AF175A0E230010B9D4 /* bottom_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bottom_cover@2x.png"; path = "Image Resource/Main Panel/bottom_cover@2x.png"; sourceTree = SOURCE_ROOT; };
 		18B995B0175A0E230010B9D4 /* top_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = top_cover.png; path = "Image Resource/Main Panel/top_cover.png"; sourceTree = SOURCE_ROOT; };
 		18B995B1175A0E230010B9D4 /* top_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "top_cover@2x.png"; path = "Image Resource/Main Panel/top_cover@2x.png"; sourceTree = SOURCE_ROOT; };
+		18BACD60176EE63A0058042D /* CoreDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataViewController.h; sourceTree = "<group>"; };
+		18BACD61176EE63A0058042D /* CoreDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataViewController.m; sourceTree = "<group>"; };
+		18BACD69176EE8640058042D /* CDINews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDINews.h; path = Data/CDINews.h; sourceTree = "<group>"; };
+		18BACD6A176EE8640058042D /* CDINews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDINews.m; path = Data/CDINews.m; sourceTree = "<group>"; };
+		18BACD6C176EE8640058042D /* CDIRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIRoom.h; path = Data/CDIRoom.h; sourceTree = "<group>"; };
+		18BACD6D176EE8640058042D /* CDIRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIRoom.m; path = Data/CDIRoom.m; sourceTree = "<group>"; };
+		18BACD6F176EE8640058042D /* CDIWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIWork.h; path = Data/CDIWork.h; sourceTree = "<group>"; };
+		18BACD70176EE8640058042D /* CDIWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIWork.m; path = Data/CDIWork.m; sourceTree = "<group>"; };
+		18BACD72176EEC1F0058042D /* CDIUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDIUser.h; path = Data/CDIUser.h; sourceTree = "<group>"; };
+		18BACD73176EEC1F0058042D /* CDIUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CDIUser.m; path = Data/CDIUser.m; sourceTree = "<group>"; };
+		18BACD75176EEEB50058042D /* CDIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDIEvent.h; sourceTree = "<group>"; };
+		18BACD76176EEEB50058042D /* CDIEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDIEvent.m; sourceTree = "<group>"; };
 		18E0EA89173897CB006EFF51 /* MPDragIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPDragIndicatorView.h; path = "Main Panel/MPDragIndicatorView.h"; sourceTree = "<group>"; };
 		18E0EA8A173897CB006EFF51 /* MPDragIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPDragIndicatorView.m; path = "Main Panel/MPDragIndicatorView.m"; sourceTree = "<group>"; };
 		18E0EA8C1738981C006EFF51 /* MPDragIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MPDragIndicatorView.xib; path = "User Interface/MPDragIndicatorView.xib"; sourceTree = SOURCE_ROOT; };
@@ -464,6 +478,7 @@
 		180BD08E17334D6D00BA2A98 = {
 			isa = PBXGroup;
 			children = (
+				180D9FF61769905300E7E4F2 /* Media.xcassets */,
 				18B74437175B3EAA00585CF5 /* icon@2x.png */,
 				18B74435175B3E9E00585CF5 /* icon.png */,
 				180BD0A017334D6E00BA2A98 /* CDIiPhoneApp */,
@@ -582,6 +597,8 @@
 			children = (
 				180BD0A917334D6E00BA2A98 /* AppDelegate.h */,
 				180BD0AA17334D6E00BA2A98 /* AppDelegate.m */,
+				18BACD60176EE63A0058042D /* CoreDataViewController.h */,
+				18BACD61176EE63A0058042D /* CoreDataViewController.m */,
 				18B7442A175B15CC00585CF5 /* CDIViewControllerFactory.h */,
 				18B7442B175B15CC00585CF5 /* CDIViewControllerFactory.m */,
 			);
@@ -809,14 +826,20 @@
 			isa = PBXGroup;
 			children = (
 				18B74400175B105100585CF5 /* AFNetworking */,
+				18BACD6F176EE8640058042D /* CDIWork.h */,
+				18BACD70176EE8640058042D /* CDIWork.m */,
+				18BACD6C176EE8640058042D /* CDIRoom.h */,
+				18BACD6D176EE8640058042D /* CDIRoom.m */,
+				18BACD69176EE8640058042D /* CDINews.h */,
+				18BACD6A176EE8640058042D /* CDINews.m */,
+				18BACD75176EEEB50058042D /* CDIEvent.h */,
+				18BACD76176EEEB50058042D /* CDIEvent.m */,
+				18BACD72176EEC1F0058042D /* CDIUser.h */,
+				18BACD73176EEC1F0058042D /* CDIUser.m */,
 				18B743EE175B0C9C00585CF5 /* CDIDataSource.h */,
 				18B743EF175B0C9C00585CF5 /* CDIDataSource.m */,
-				18B743F0175B0C9D00585CF5 /* CDIEvent.h */,
-				18B743F1175B0C9D00585CF5 /* CDIEvent.m */,
 				18B743F2175B0C9D00585CF5 /* CDINetClient.h */,
 				18B743F3175B0C9D00585CF5 /* CDINetClient.m */,
-				18B743F4175B0C9D00585CF5 /* CDIUser.h */,
-				18B743F5175B0C9D00585CF5 /* CDIUser.m */,
 				18B743FD175B0ED500585CF5 /* TImeZone.h */,
 				18B743FE175B0ED500585CF5 /* TImeZone.m */,
 			);
@@ -933,6 +956,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Gabriel Yeah";
+				TargetAttributes = {
+					180BD09617334D6E00BA2A98 = {
+						DevelopmentTeam = QYBQ942P7G;
+					};
+				};
 			};
 			buildConfigurationList = 180BD09217334D6D00BA2A98 /* Build configuration list for PBXProject "CDIiPhoneApp" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1014,6 +1042,7 @@
 				18B743CA175B018C00585CF5 /* model_button_close@2x.png in Resources */,
 				18B743CF175B04D100585CF5 /* time_center_cover.png in Resources */,
 				18B743D0175B04D100585CF5 /* time_panel_cover.png in Resources */,
+				180D9FF71769905300E7E4F2 /* Media.xcassets in Resources */,
 				18B743D1175B04D100585CF5 /* time_topbar_bg@2x.png in Resources */,
 				18B743D5175B04FB00585CF5 /* time_center_cover@2x.png in Resources */,
 				18B743D6175B04FB00585CF5 /* time_panel_cover@2x.png in Resources */,
@@ -1112,6 +1141,8 @@
 				187F507F1734F277006B46A3 /* MainPanelViewController.m in Sources */,
 				187F50821734F33C006B46A3 /* MPCellTableViewController.m in Sources */,
 				187F50851734F628006B46A3 /* MPCellTableViewCell.m in Sources */,
+				18BACD6E176EE8640058042D /* CDIRoom.m in Sources */,
+				18BACD74176EEC590058042D /* CDIUser.m in Sources */,
 				187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */,
 				187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */,
 				187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */,
@@ -1128,13 +1159,13 @@
 				18B743E5175B083900585CF5 /* XYPieChart.m in Sources */,
 				18B743EC175B0B3F00585CF5 /* TimeDetailViewController.m in Sources */,
 				18B743F6175B0C9D00585CF5 /* CDIDataSource.m in Sources */,
-				18B743F7175B0C9D00585CF5 /* CDIEvent.m in Sources */,
 				18B743F8175B0C9D00585CF5 /* CDINetClient.m in Sources */,
-				18B743F9175B0C9D00585CF5 /* CDIUser.m in Sources */,
+				18BACD71176EE8640058042D /* CDIWork.m in Sources */,
 				18B743FC175B0E9500585CF5 /* NSDate+Addition.m in Sources */,
 				18B743FF175B0ED500585CF5 /* TImeZone.m in Sources */,
 				18B74416175B105100585CF5 /* AFHTTPClient.m in Sources */,
 				18B74417175B105100585CF5 /* AFHTTPRequestOperation.m in Sources */,
+				18BACD77176EEEB50058042D /* CDIEvent.m in Sources */,
 				18B74418175B105100585CF5 /* AFImageRequestOperation.m in Sources */,
 				18B74419175B105100585CF5 /* AFJSONRequestOperation.m in Sources */,
 				18B7441A175B105100585CF5 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -1144,6 +1175,8 @@
 				18B7441E175B105100585CF5 /* JSONKit.m in Sources */,
 				18B7441F175B105100585CF5 /* UIImageView+AFNetworking.m in Sources */,
 				18B74422175B109E00585CF5 /* NSString+Encrypt.m in Sources */,
+				18BACD6B176EE8640058042D /* CDINews.m in Sources */,
+				18BACD62176EE6F80058042D /* CoreDataViewController.m in Sources */,
 				18B7442C175B15CC00585CF5 /* CDIViewControllerFactory.m in Sources */,
 				18948CB8175C521A004E07EB /* ScheduleListViewController.m in Sources */,
 				18948CBB175C5F80004E07EB /* SLDetailTableViewController.m in Sources */,
@@ -1189,7 +1222,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xie Cheng (AXP8APNT95)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xie Cheng (AXP8APNT95)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1220,7 +1254,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xie Cheng (AXP8APNT95)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xie Cheng (AXP8APNT95)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1236,9 +1271,12 @@
 		180BD0BB17334D6E00BA2A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CDIiPhoneApp/CDIiPhoneApp-Prefix.pch";
 				INFOPLIST_FILE = "CDIiPhoneApp/CDIiPhoneApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1247,9 +1285,12 @@
 		180BD0BC17334D6E00BA2A98 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CDIiPhoneApp/CDIiPhoneApp-Prefix.pch";
 				INFOPLIST_FILE = "CDIiPhoneApp/CDIiPhoneApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

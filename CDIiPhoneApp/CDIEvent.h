@@ -28,4 +28,10 @@
 @property (nonatomic, retain) NSNumber * startValue;
 @property (nonatomic, retain) CDIUser *creator;
 
++ (CDIEvent *)sharedNewEvent;
++ (void)updateSharedNewEvent:(CDIEvent *)event;
++ (id)eventInstanceWithTitle:(NSString *)title;
+- (id)eventCopy;
+- (id)initWithDictionary:(NSDictionary *)dict;
+
 @end

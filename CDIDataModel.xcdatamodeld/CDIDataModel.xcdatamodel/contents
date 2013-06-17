@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="CDIEvent" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3381.3" systemVersion="13A476u" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="CDIEvent" representedClassName="CDIEvent" syncable="YES">
         <attribute name="abandoned" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="accessKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -16,18 +16,18 @@
         <attribute name="startValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDIUser" inverseName="events" inverseEntity="CDIUser" syncable="YES"/>
     </entity>
-    <entity name="CDINews" syncable="YES">
+    <entity name="CDINews" representedClassName="CDINews" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="creator" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CDIUser" inverseName="news" inverseEntity="CDIUser" syncable="YES"/>
     </entity>
-    <entity name="CDIRoom" syncable="YES">
+    <entity name="CDIRoom" representedClassName="CDIRoom" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="roomID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="roomInfo" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="CDIUser" syncable="YES">
+    <entity name="CDIUser" representedClassName="CDIUser" syncable="YES">
         <attribute name="avatarLargeURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="avatarMidURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="avatarSmallURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,6 +37,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="realName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sessionKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weiboURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -45,7 +46,7 @@
         <relationship name="relatedWork" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDIWork" inverseName="involvedUser" inverseEntity="CDIWork" syncable="YES"/>
         <relationship name="work" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDIWork" inverseName="creator" inverseEntity="CDIWork" syncable="YES"/>
     </entity>
-    <entity name="CDIWork" syncable="YES">
+    <entity name="CDIWork" representedClassName="CDIWork" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="estimatedEndDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="imgURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -63,10 +64,10 @@
         <relationship name="involvedUser" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDIUser" inverseName="relatedWork" inverseEntity="CDIUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CDIEvent" positionX="-36326" positionY="5544" width="128" height="255"/>
-        <element name="CDINews" positionX="-36011" positionY="5544" width="128" height="103"/>
-        <element name="CDIRoom" positionX="-36324" positionY="5859" width="128" height="88"/>
-        <element name="CDIUser" positionX="-36171" positionY="5544" width="128" height="283"/>
-        <element name="CDIWork" positionX="-36000" positionY="5679" width="128" height="268"/>
+        <element name="CDIEvent" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDINews" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDIRoom" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDIUser" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDIWork" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

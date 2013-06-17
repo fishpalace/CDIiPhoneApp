@@ -80,7 +80,6 @@ static CDINetClient *sharedClient;
                          @"startDate" : @(event.startDate.timeIntervalSince1970 * 1000),
                          @"endDate" : @(event.endDate.timeIntervalSince1970 * 1000),
                          @"firstRoomId" : @"1"};
-  CDIUser *eventCreator = event.creator;
   NSString *path = [NSString stringWithFormat:@"event/addEvent/%@", event.creator.sessionKey];
   [self putPath:path dictionary:dict completion:^(BOOL succeeded, id responseData) {
     if (completion) {

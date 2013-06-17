@@ -39,7 +39,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  _userNameLabel.text = self.user.userName;
+  _userNameLabel.text = self.user.name;
   _userPositionLabel.text = self.user.position;
   _userTitleLabel.text = self.user.title;
   _avatarImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"test_avatar_%d", self.index + 1]];

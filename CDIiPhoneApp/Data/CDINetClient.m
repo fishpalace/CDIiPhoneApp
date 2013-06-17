@@ -11,6 +11,7 @@
 #import "JSONKit.h"
 #import "NSString+Encrypt.h"
 #import "CDIEvent.h"
+#import "CDIUser.h"
 
 #define kBaseURLString @"http://cdi.tongji.edu.cn/cdisoul/webservice/"
 
@@ -72,14 +73,15 @@ static CDINetClient *sharedClient;
 - (void)createEvent:(CDIEvent *)event
          completion:(void (^)(BOOL succeeded, id responseData))completion
 {
-  NSDictionary *dict = @{@"title" : event.title,
+  NSDictionary *dict = @{@"title" : event.name,
                          @"relatedInfo" : event.relatedInfo,
                          @"type" : @"DISCUSSION",
                          @"status" : @"INACTIVE",
                          @"startDate" : @(event.startDate.timeIntervalSince1970 * 1000),
                          @"endDate" : @(event.endDate.timeIntervalSince1970 * 1000),
                          @"firstRoomId" : @"1"};
-  NSString *path = [NSString stringWithFormat:@"event/addEvent/%@", event.creatorSessionKey];
+  CDIUser *eventCreator = event.creator;
+  NSString *path = [NSString stringWithFormat:@"event/addEvent/%@", event.creator.sessionKey];
   [self putPath:path dictionary:dict completion:^(BOOL succeeded, id responseData) {
     if (completion) {
       completion(succeeded, responseData);

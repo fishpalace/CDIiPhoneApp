@@ -1,16 +1,37 @@
 //
 //  CDIUser.m
-//  CDI_iPad_App
+//  CDIiPhoneApp
 //
-//  Created by Gabriel Yeah on 13-4-1.
+//  Created by Gabriel Yeah on 13-6-17.
 //  Copyright (c) 2013年 Gabriel Yeah. All rights reserved.
 //
 
 #import "CDIUser.h"
+#import "CDIEvent.h"
+#import "CDINews.h"
+#import "CDIWork.h"
 
 static CDIUser *currentUser;
 
 @implementation CDIUser
+
+@dynamic avatarLargeURL;
+@dynamic avatarMidURL;
+@dynamic avatarSmallURL;
+@dynamic dribbleURL;
+@dynamic homePageURL;
+@dynamic linkedInURL;
+@dynamic name;
+@dynamic position;
+@dynamic realName;
+@dynamic title;
+@dynamic twitterURL;
+@dynamic weiboURL;
+@dynamic sessionKey;
+@dynamic events;
+@dynamic news;
+@dynamic relatedWork;
+@dynamic work;
 
 + (CDIUser *)currentUser
 {
@@ -24,8 +45,8 @@ static CDIUser *currentUser;
                              sessionKey:(NSString *)sessionKey
 {
   CDIUser *user = [CDIUser currentUser];
-  user.userName = [dict[@"name"] isKindOfClass:[NSNull class]] ? @"" : dict[@"name"];
-  user.userRealName = [dict[@"realName"] isKindOfClass:[NSNull class]] ? @"" : dict[@"realName"];
+  user.name = [dict[@"name"] isKindOfClass:[NSNull class]] ? @"" : dict[@"name"];
+  user.realName = [dict[@"realName"] isKindOfClass:[NSNull class]] ? @"" : dict[@"realName"];
   user.avatarLargeURL = [dict[@"avatarLargeUrl"] isKindOfClass:[NSNull class]] ? @"" : dict[@"avatarLargeUrl"];
   user.avatarMidURL = [dict[@"avatarMiddleUrl"] isKindOfClass:[NSNull class]] ? @"" : dict[@"avatarMiddleUrl"];
   user.avatarSmallURL = [dict[@"avatarSmallUrl"] isKindOfClass:[NSNull class]] ? @"" : dict[@"avatarSmallUrl"];
@@ -36,7 +57,7 @@ static CDIUser *currentUser;
 {
   self = [super init];
   if (self) {
-    self.userName = name;
+    self.name = name;
     self.title = title;
     self.position = position;
   }

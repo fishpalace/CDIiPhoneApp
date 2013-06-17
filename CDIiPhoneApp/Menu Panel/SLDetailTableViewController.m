@@ -123,8 +123,8 @@
   CDIEvent *event = [self.eventArray objectAtIndex:indexPath.row];
   NSString *reuseIdentifier = @"SLDetailTableViewCell";
   SLDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-  cell.eventName.text = event.title;
-  cell.roomName.text = [CDIDataSource nameForRoomID:event.roomID];
+  cell.eventName.text = event.name;
+  cell.roomName.text = [CDIDataSource nameForRoomID:event.roomID.integerValue];
   cell.eventRelatedInfo.text = event.relatedInfo;
   cell.startingTime.text = [NSDate stringOfTime:event.startDate];
   return cell;
@@ -133,7 +133,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   CDIEvent *event = [self.eventArray objectAtIndex:indexPath.row];
-  CGSize size = [event.title sizeWithFont:[UIFont boldSystemFontOfSize:17]
+  CGSize size = [event.name sizeWithFont:[UIFont boldSystemFontOfSize:17]
                         constrainedToSize:CGSizeMake(169, 1000)
                             lineBreakMode:NSLineBreakByCharWrapping];
   return kSLDetailTableViewCellStandardHeight + size.height - kSingleLineHeight;

@@ -255,7 +255,7 @@ static CDIDataSource *sharedDataSource;
   [todayArray removeAllObjects];
   for (NSDictionary *dict in array) {
     CDIEvent *event = [[CDIEvent alloc] initWithDictionary:dict];
-    event.roomID = roomID;
+    event.roomID = @(roomID);
     if (!event.abandoned) {
       [todayArray addObject:event];
     }
@@ -272,7 +272,7 @@ static CDIDataSource *sharedDataSource;
   [tomorrowArray removeAllObjects];
   for (NSDictionary *dict in array) {
     CDIEvent *event = [[CDIEvent alloc] initWithDictionary:dict];
-    event.roomID = roomID;
+    event.roomID = @(roomID);
     if (!event.abandoned) {
       [tomorrowArray addObject:event];
     }
@@ -328,17 +328,17 @@ static CDIDataSource *sharedDataSource;
   
   for (CDIEvent *event in events) {
     if (!event.passed) {
-      if (temp.endValue >= event.endValue) {
+      if (temp.endValue >= event.endValue.integerValue) {
         continue;
-      } else if (temp.endValue >= event.startValue && temp.endValue < event.endValue) {
-        temp.endValue = event.endValue;
-      } else if (temp.endValue < event.startValue) {
+      } else if (temp.endValue >= event.startValue.integerValue && temp.endValue < event.endValue.integerValue) {
+        temp.endValue = event.endValue.integerValue;
+      } else if (temp.endValue < event.startValue.integerValue) {
         TimeZone *availableTimeZone = [[TimeZone alloc] initWithStartValue:temp.endValue
-                                                                  endValue:event.startValue
+                                                                  endValue:event.startValue.integerValue
                                                                  available:YES];
         [occupiedTimeZones addObject:availableTimeZone];
-        temp = [[TimeZone alloc] initWithStartValue:event.startValue
-                                           endValue:event.endValue
+        temp = [[TimeZone alloc] initWithStartValue:event.startValue.integerValue
+                                           endValue:event.endValue.integerValue
                                           available:NO];
         [occupiedTimeZones addObject:temp];
       }

@@ -58,7 +58,7 @@
   PeopleListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
   
   CDIUser *user = [self.userArray objectAtIndex:indexPath.row];
-  cell.userNameLabel.text = user.userName;
+  cell.userNameLabel.text = user.name;
   cell.userPositionLabel.text = user.position;
   cell.userTitleLabel.text = user.title;
   cell.avatarImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"test_avatar_%d", indexPath.row + 1]];

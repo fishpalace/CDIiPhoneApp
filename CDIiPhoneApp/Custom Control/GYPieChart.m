@@ -55,6 +55,8 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     [_selectionLayer setIsForPresentation:YES];
     
     [self.layer addSublayer:_selectionLayer];
+    self.showPercentage = NO;
+    self.showLabel = NO;
     
     [self configurePanGestureRecognizers];
     [self configurePullers];

@@ -19,7 +19,7 @@
 
 @interface MainPanelViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+//@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) MPDragIndicatorView *dragIndicatorView;
 @property (strong, nonatomic) MenuPanelViewController *menuPanelViewController;
@@ -46,8 +46,8 @@
 #pragma mark - View Setup Methods
 - (void)configureBasicViews
 {
-  UIImage *backgroundImage = [[UIImage imageNamed:@"mp_bg"] resizableImageWithCapInsets:UIEdgeInsetsZero];
-  [self.backgroundImageView setImage:backgroundImage];
+//  UIImage *backgroundImage = [[UIImage imageNamed:@"mp_bg"] resizableImageWithCapInsets:UIEdgeInsetsZero];
+//  [self.backgroundImageView setImage:backgroundImage];
   
   self.tableView.delegate = self;
   self.tableView.dataSource = self;

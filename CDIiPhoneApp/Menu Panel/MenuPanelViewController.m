@@ -69,16 +69,16 @@
 - (void)refresh
 {
   [self.containerScrollview setContentOffset:CGPointZero];
-  [self updateStatus];
+//  [self updateStatus];
 }
 
-- (void)updateStatus
-{
-  self.roomStatusAImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:1]];
-  self.roomStatusBImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:2]];
-  self.roomStatusCImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:3]];
-  self.roomStatusDImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:4]];
-}
+//- (void)updateStatus
+//{
+//  self.roomStatusAImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:1]];
+//  self.roomStatusBImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:2]];
+//  self.roomStatusCImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:3]];
+//  self.roomStatusDImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:4]];
+//}
 
 - (NSString *)imageNameForStatusWithRoomID:(NSInteger)roomID
 {
@@ -112,14 +112,14 @@
 #pragma mark - IBActions
 - (IBAction)didClickCheckRoomButton:(UIButton *)sender
 {
-  [self displayModelPanelWithRoomID:sender.tag];
+//  [self displayModelPanelWithRoomID:sender.tag];
 }
 
 - (void)displayModelPanelWithRoomID:(NSInteger)roomID
 {
-  TimeDisplayPanelViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TimeDisplayPanelViewController"];
-  vc.roomID = roomID;
-  [ModelPanelViewController displayModelPanelWithViewController:vc];
+//  TimeDisplayPanelViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TimeDisplayPanelViewController"];
+//  vc.roomID = roomID;
+//  [ModelPanelViewController displayModelPanelWithViewController:vc];
 }
 
 #pragma mark - Properties

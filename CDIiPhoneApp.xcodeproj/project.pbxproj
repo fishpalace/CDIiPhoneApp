@@ -35,6 +35,8 @@
 		18256B56177055390079D24B /* menu_icon_people@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B4C177055390079D24B /* menu_icon_people@2x.png */; };
 		18256B57177055390079D24B /* menu_icon_proj.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B4D177055390079D24B /* menu_icon_proj.png */; };
 		18256B58177055390079D24B /* menu_icon_proj@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B4E177055390079D24B /* menu_icon_proj@2x.png */; };
+		182B301D1771BC2B00EB6DFB /* tableview_now_indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B301B1771BC2B00EB6DFB /* tableview_now_indicator.png */; };
+		182B301E1771BC2B00EB6DFB /* tableview_now_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */; };
 		183AE76B175C38CD008310BF /* tableview_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE761175C38CD008310BF /* tableview_bg.png */; };
 		183AE76C175C38CD008310BF /* tableview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE762175C38CD008310BF /* tableview_bg@2x.png */; };
 		183AE76D175C38CD008310BF /* tableview_bg_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE763175C38CD008310BF /* tableview_bg_back.png */; };
@@ -261,6 +263,8 @@
 		18256B4C177055390079D24B /* menu_icon_people@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_icon_people@2x.png"; sourceTree = "<group>"; };
 		18256B4D177055390079D24B /* menu_icon_proj.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon_proj.png; sourceTree = "<group>"; };
 		18256B4E177055390079D24B /* menu_icon_proj@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_icon_proj@2x.png"; sourceTree = "<group>"; };
+		182B301B1771BC2B00EB6DFB /* tableview_now_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_now_indicator.png; sourceTree = "<group>"; };
+		182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_now_indicator@2x.png"; sourceTree = "<group>"; };
 		183AE761175C38CD008310BF /* tableview_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg.png; sourceTree = "<group>"; };
 		183AE762175C38CD008310BF /* tableview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_bg@2x.png"; sourceTree = "<group>"; };
 		183AE763175C38CD008310BF /* tableview_bg_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg_back.png; sourceTree = "<group>"; };
@@ -611,6 +615,8 @@
 		183AE760175C38CD008310BF /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				182B301B1771BC2B00EB6DFB /* tableview_now_indicator.png */,
+				182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */,
 				18948CBF175CABD6004E07EB /* people_cell_bg.png */,
 				18948CC0175CABD6004E07EB /* people_cell_bg@2x.png */,
 				18948CC1175CABD6004E07EB /* people_cell_cover.png */,
@@ -1076,6 +1082,7 @@
 				18B995A51759EA190010B9D4 /* menu_schedule_indicator@2x.png in Resources */,
 				18B995A61759EA190010B9D4 /* menu_section_info.png in Resources */,
 				18B995A71759EA190010B9D4 /* menu_section_info@2x.png in Resources */,
+				182B301D1771BC2B00EB6DFB /* tableview_now_indicator.png in Resources */,
 				18B995A81759EA190010B9D4 /* menu_section_schedule.png in Resources */,
 				18B995A91759EA190010B9D4 /* menu_section_schedule@2x.png in Resources */,
 				18B995AC175A03F80010B9D4 /* mp_menu_arrow_reverse.png in Resources */,
@@ -1113,6 +1120,7 @@
 				18B743C5175B018C00585CF5 /* model_bg_gloom.png in Resources */,
 				18B743C6175B018C00585CF5 /* model_bg_gloom@2x.png in Resources */,
 				18B743C7175B018C00585CF5 /* model_bg.png in Resources */,
+				182B301E1771BC2B00EB6DFB /* tableview_now_indicator@2x.png in Resources */,
 				18256B56177055390079D24B /* menu_icon_people@2x.png in Resources */,
 				18B743C8175B018C00585CF5 /* model_bg@2x.png in Resources */,
 				18B743C9175B018C00585CF5 /* model_button_close.png in Resources */,

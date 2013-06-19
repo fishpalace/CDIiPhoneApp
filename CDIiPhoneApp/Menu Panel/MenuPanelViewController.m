@@ -150,6 +150,21 @@
   return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  NSString *segueID = @"";
+  if (indexPath.section == 0) {
+    if (indexPath.row == 0) {
+      segueID = @"MenuScheduleSegue";
+    }
+  } else {
+    if (indexPath.row == 2) {
+      segueID = @"MenuPeopleSegue";
+    }
+  }
+  [self performSegueWithIdentifier:segueID sender:self];
+}
+
 #pragma mark - IBActions
 - (IBAction)didClickCheckRoomButton:(UIButton *)sender
 {

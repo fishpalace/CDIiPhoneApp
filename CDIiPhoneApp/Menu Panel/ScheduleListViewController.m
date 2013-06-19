@@ -9,7 +9,7 @@
 #import "ScheduleListViewController.h"
 #import "SLDetailTableViewController.h"
 #import "UIView+Resize.h"
-#import <QuartzCore/QuartzCore.h>
+#import "SLDetailTableViewCell.h"
 
 #define kScrollViewWidth 320
 
@@ -17,11 +17,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *scheduleButton;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-
-@property (nonatomic, strong) SLDetailTableViewController *todayScheduleViewController;
-@property (nonatomic, strong) SLDetailTableViewController *tomorrowScheduleViewController;
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
@@ -39,20 +37,59 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self.todayScheduleViewController configureSubviews];
-  [self.tomorrowScheduleViewController configureSubviews];
+  _tableview.delegate = self;
+  _tableview.dataSource = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-  self.scrollView.contentSize = CGSizeMake(kScrollViewWidth * 2, self.scrollView.frame.size.height);
-  [self.scrollView setContentOffset:CGPointZero];
-  self.scrollView.delegate = self;
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
   
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  return 5;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+  CGFloat height = 0;
+  if (section == 1) {
+    height = 30;
+  }
+  return height;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  SLDetailTableViewCell *cell = [self.tableview dequeueReusableCellWithIdentifier:@"SLDetailTableViewCell"];
+  return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+  UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+  headerView.backgroundColor = [UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1.0];
+
+  UILabel *tomorrowLabel = [[UILabel alloc] initWithFrame:CGRectMake(14, 7, 100, 14)];
+  tomorrowLabel.textColor = [UIColor colorWithRed:186.0/255.0 green:186.0/255.0 blue:186.0/255.0 alpha:1.0];
+  tomorrowLabel.font = [UIFont systemFontOfSize:12];
+  tomorrowLabel.backgroundColor = [UIColor clearColor];
+  tomorrowLabel.text = @"Tomorrow";
+  
+  [headerView addSubview:tomorrowLabel];
+  
+  return headerView;
 }
 
 #pragma mark - IBActions
@@ -63,30 +100,6 @@
 }
 
 #pragma mark - Properties
-- (SLDetailTableViewController *)todayScheduleViewController
-{
-  if (!_todayScheduleViewController) {
-    _todayScheduleViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SLDetailTableViewController"];
-    _todayScheduleViewController.isToday = YES;
-    [self addChildViewController:_todayScheduleViewController];
-    [_todayScheduleViewController.view resetOrigin:CGPointMake(9, 0)];
-    [self.scrollView addSubview:_todayScheduleViewController.view];
-    [_todayScheduleViewController didMoveToParentViewController:self];
-  }
-  return _todayScheduleViewController;
-}
-
-- (SLDetailTableViewController *)tomorrowScheduleViewController
-{
-  if (!_tomorrowScheduleViewController) {
-    _tomorrowScheduleViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SLDetailTableViewController"];
-    _tomorrowScheduleViewController.isToday = NO;
-    [self addChildViewController:_tomorrowScheduleViewController];
-    [_tomorrowScheduleViewController.view resetOrigin:CGPointMake(kScrollViewWidth + 9, 0)];
-    [self.scrollView addSubview:_tomorrowScheduleViewController.view];
-    [_tomorrowScheduleViewController didMoveToParentViewController:self];
-  }
-  return _tomorrowScheduleViewController;
-}
+\
 
 @end

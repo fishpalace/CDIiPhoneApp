@@ -52,8 +52,6 @@
   self.dragIndicatorView.delegate = self;
   _tableView.delegate = self;
   _tableView.dataSource = self;
-  self.dragIndicatorView.layer.borderColor = [UIColor redColor].CGColor;
-  self.dragIndicatorView.layer.borderWidth = 2;
 }
 
 - (void)setUp

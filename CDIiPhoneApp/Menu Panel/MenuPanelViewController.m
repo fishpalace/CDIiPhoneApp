@@ -138,7 +138,13 @@
   if (indexPath.section == 1 && indexPath.row == 3) {
     cell = [tableView dequeueReusableCellWithIdentifier:@"MenuRoomInfoCell"];
   } else {
-    cell = [tableView dequeueReusableCellWithIdentifier:@"MenuItemCell"];
+    NSInteger index = indexPath.section == 1 ? indexPath.row + 2 : indexPath.row;
+    MenuItemCell *detailCell = [tableView dequeueReusableCellWithIdentifier:@"MenuItemCell"];
+    detailCell.iconImageView.image = [UIImage imageNamed:self.iconImageNameArray[index]];
+    detailCell.titleLabel.text = self.titleArray[index];
+    detailCell.functionButton.hidden = indexPath.row != 0 || indexPath.section == 1;
+    detailCell.displayButton.hidden = indexPath.row != 1 || indexPath.section == 1;
+    cell = detailCell;
   }
 
   return cell;
@@ -168,6 +174,24 @@
     _dragIndicatorView.isReversed = YES;
   }
   return _dragIndicatorView;
+}
+
+- (NSMutableArray *)iconImageNameArray
+{
+  if (!_iconImageNameArray) {
+    _iconImageNameArray = [NSMutableArray arrayWithObjects:@"menu_icon_cal", @"menu_icon_key",
+                           @"menu_icon_news", @"menu_icon_proj", @"menu_icon_people", nil];
+  }
+  return _iconImageNameArray;
+}
+
+- (NSMutableArray *)titleArray
+{
+    if (!_titleArray) {
+      _titleArray = [NSMutableArray arrayWithObjects:@"Schedule", @"My Reservations",
+                     @"News", @"Projects", @"People", nil];
+  }
+    return _titleArray;
 }
 
 @end

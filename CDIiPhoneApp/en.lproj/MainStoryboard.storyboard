@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A476u" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
+        <development version="5000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
     </dependencies>
     <scenes>
@@ -739,15 +740,15 @@
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_icon_cal.png" translatesAutoresizingMaskIntoConstraints="NO" id="SYC-Gd-ufz">
-                                                    <rect key="frame" x="20" y="15" width="23" height="23"/>
+                                                    <rect key="frame" x="20" y="17" width="23" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqr-qY-1kx">
-                                                    <rect key="frame" x="261" y="9" width="44" height="43"/>
+                                                    <rect key="frame" x="261" y="9" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="44" id="3bp-SM-XCC"/>
-                                                        <constraint firstAttribute="height" constant="43" id="S7g-v6-m5H"/>
+                                                        <constraint firstAttribute="height" constant="44" id="S7g-v6-m5H"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" image="menu_button_schedule.png">
@@ -766,6 +767,22 @@
                                                         <constraint firstAttribute="height" constant="1" id="7a7-je-3Ec"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZx-zr-SAo">
+                                                    <rect key="frame" x="260" y="9" width="44" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="IPa-0F-HCH"/>
+                                                        <constraint firstAttribute="width" constant="44" id="Pyd-2d-457"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="3" backgroundImage="menu_schedule_indicator.png">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -776,15 +793,18 @@
                                             <constraint firstAttribute="centerX" secondItem="kQM-XK-KmY" secondAttribute="centerX" constant="2" id="Axg-gQ-Oxg"/>
                                             <constraint firstItem="SYC-Gd-ufz" firstAttribute="leading" secondItem="HNK-14-JEL" secondAttribute="leading" constant="20" id="MHF-JE-rDH"/>
                                             <constraint firstAttribute="centerY" secondItem="kQM-XK-KmY" secondAttribute="centerY" constant="3" id="S2n-dH-Flo"/>
+                                            <constraint firstAttribute="trailing" secondItem="gZx-zr-SAo" secondAttribute="trailing" constant="16" id="WrL-2Z-aFW"/>
                                             <constraint firstItem="x7m-jH-Rr6" firstAttribute="leading" secondItem="HNK-14-JEL" secondAttribute="leading" id="bsR-gK-Zb1"/>
                                             <constraint firstAttribute="centerY" secondItem="xqr-qY-1kx" secondAttribute="centerY" constant="0.5" id="ebX-ts-oIq"/>
+                                            <constraint firstAttribute="centerY" secondItem="gZx-zr-SAo" secondAttribute="centerY" id="f3i-Ut-Zs2"/>
                                             <constraint firstAttribute="bottom" secondItem="x7m-jH-Rr6" secondAttribute="bottom" constant="-0.5" id="fd8-ox-kT5"/>
-                                            <constraint firstItem="SYC-Gd-ufz" firstAttribute="centerY" secondItem="kQM-XK-KmY" secondAttribute="centerY" constant="-1" id="wAo-Fl-aWA"/>
+                                            <constraint firstItem="SYC-Gd-ufz" firstAttribute="centerY" secondItem="kQM-XK-KmY" secondAttribute="centerY" id="wAo-Fl-aWA"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="displayButton" destination="gZx-zr-SAo" id="KfC-8w-mqB"/>
                                             <outlet property="functionButton" destination="xqr-qY-1kx" id="qGP-NT-ow4"/>
-                                            <outlet property="iconImage" destination="SYC-Gd-ufz" id="uTb-O1-qlr"/>
-                                            <outlet property="title" destination="kQM-XK-KmY" id="6gS-Je-iOw"/>
+                                            <outlet property="iconImageView" destination="SYC-Gd-ufz" id="3um-lh-1pl"/>
+                                            <outlet property="titleLabel" destination="kQM-XK-KmY" id="jtG-TG-eVw"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuRoomInfoCell" rowHeight="143" id="mi8-X4-jL5" customClass="MenuRoomInfoCell">
@@ -1453,6 +1473,7 @@
         <image name="menu_icon_cal.png" width="23" height="23"/>
         <image name="menu_login_bg.png" width="320" height="64"/>
         <image name="menu_room_clear.png" width="31" height="10"/>
+        <image name="menu_schedule_indicator.png" width="44" height="44"/>
         <image name="menu_status_green.png" width="58" height="58"/>
         <image name="model_bg.png" width="341" height="471"/>
         <image name="model_bg_gloom.png" width="320" height="568"/>
@@ -1510,9 +1531,10 @@
         <class className="MenuItemCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuItemCell.h"/>
             <relationships>
+                <relationship kind="outlet" name="displayButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="functionButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="MenuPanelViewController" superclassName="UIViewController">
@@ -1533,6 +1555,7 @@
         <class className="ModelPanelViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ModelPanelViewController.h"/>
             <relationships>
+                <relationship kind="action" name="didClickCloseButton:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="contentBGImageView" candidateClass="UIImageView"/>
@@ -1634,6 +1657,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="XYPieChart" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/XYPieChart.h"/>

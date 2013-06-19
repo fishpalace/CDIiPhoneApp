@@ -14,29 +14,21 @@
 #import "ModelPanelViewController.h"
 #import "TimeDisplayPanelViewController.h"
 #import "CDIDataSource.h"
-
-#define kContentSize  CGSizeMake(320, 569)
-#define kBottomGap    5
+#import "MenuItemCell.h"
 
 @interface MenuPanelViewController ()
 
-@property (nonatomic, weak) IBOutlet UIScrollView *containerScrollview;
 @property (nonatomic, strong) MPDragIndicatorView *dragIndicatorView;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
-@property (weak, nonatomic) IBOutlet UIButton *checkScheduleButton;
-@property (weak, nonatomic) IBOutlet UIButton *checkReservationButton;
-@property (weak, nonatomic) IBOutlet UIButton *checkNewsButton;
-@property (weak, nonatomic) IBOutlet UIButton *checkProjectButton;
-@property (weak, nonatomic) IBOutlet UIButton *checkPeopleButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *checkRoomA;
 @property (weak, nonatomic) IBOutlet UIButton *checkRoomB;
 @property (weak, nonatomic) IBOutlet UIButton *checkRoomC;
 @property (weak, nonatomic) IBOutlet UIButton *checkRoomD;
-@property (weak, nonatomic) IBOutlet UIImageView *roomStatusAImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *roomStatusBImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *roomStatusCImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *roomStatusDImageView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic, strong) NSMutableArray *titleArray;
+@property (nonatomic, strong) NSMutableArray *iconImageNameArray;
 
 @end
 
@@ -54,10 +46,14 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self.containerScrollview addSubview:self.dragIndicatorView];
-  [self.dragIndicatorView configureScrollView:self.containerScrollview];
+  [self.tableView setTableFooterView:self.dragIndicatorView];
+  [self.dragIndicatorView configureScrollView:self.tableView];
   self.dragIndicatorView.stretchLimitHeight = 100;
   self.dragIndicatorView.delegate = self;
+  _tableView.delegate = self;
+  _tableView.dataSource = self;
+  self.dragIndicatorView.layer.borderColor = [UIColor redColor].CGColor;
+  self.dragIndicatorView.layer.borderWidth = 2;
 }
 
 - (void)setUp
@@ -68,17 +64,11 @@
 
 - (void)refresh
 {
-  [self.containerScrollview setContentOffset:CGPointZero];
-//  [self updateStatus];
+  [self.tableView setContentOffset:CGPointZero];
+  [self.dragIndicatorView resetHeight:kDragIndicatorViewHeight];
+  [self.dragIndicatorView resetWidth:320];
+  [self.dragIndicatorView resetPositions];
 }
-
-//- (void)updateStatus
-//{
-//  self.roomStatusAImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:1]];
-//  self.roomStatusBImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:2]];
-//  self.roomStatusCImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:3]];
-//  self.roomStatusDImageView.image = [UIImage imageNamed:[self imageNameForStatusWithRoomID:4]];
-//}
 
 - (NSString *)imageNameForStatusWithRoomID:(NSInteger)roomID
 {
@@ -94,19 +84,66 @@
   return imageName;
 }
 
-- (void)viewDidLayoutSubviews
-{
-  [self.containerScrollview setContentSize:kContentSize];
-  [self.containerScrollview setContentOffset:CGPointMake(0, 88) animated:NO];
-  [self.dragIndicatorView resetOriginY:kContentSize.height - kDragIndicatorViewHeight - kBottomGap];
-  [self.dragIndicatorView resetHeight:kDragIndicatorViewHeight];
-  [self.dragIndicatorView resetWidth:320];
-  [self.dragIndicatorView resetPositions];
-}
-
 - (void)dragIndicatorViewDidStrecth:(MPDragIndicatorView *)view
 {
   [NSNotificationCenter postShouldBounceUpNotification];
+}
+
+#pragma mark - Table View Delegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  return 2;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+  UIView *view = nil;
+  if (section == 0) {
+    view = [[UIView alloc] initWithFrame:CGRectMake(0, -1, 320, 15)];
+    view.backgroundColor = [UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1.0];
+  }
+  return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  CGFloat height = 60;
+  if (indexPath.section == 1 && indexPath.row == 3) {
+    height = 143;
+  }
+  return height;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+  CGFloat height = 0;
+  if (section == 0) {
+    height = 15;
+  }
+  return height;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  NSInteger numberOfRows = 0;
+  if (section == 0) {
+    numberOfRows = 2;
+  } else {
+    numberOfRows = 4;
+  }
+  return numberOfRows;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  UITableViewCell *cell = nil;
+  if (indexPath.section == 1 && indexPath.row == 3) {
+    cell = [tableView dequeueReusableCellWithIdentifier:@"MenuRoomInfoCell"];
+  } else {
+    cell = [tableView dequeueReusableCellWithIdentifier:@"MenuItemCell"];
+  }
+
+  return cell;
 }
 
 #pragma mark - IBActions

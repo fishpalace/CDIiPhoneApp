@@ -12,7 +12,7 @@
 #import "GYPositionBounceAnimation.h"
 #import "UIApplication+Addition.h"
 
-#define kBarBaseOffset    8
+#define kBarBaseOffset    15
 #define kUpperBarOriginY  kBarBaseOffset
 #define kMiddleBarOriginY kBarBaseOffset + 6
 #define kLowerBarOriginY  kBarBaseOffset + 12
@@ -78,11 +78,11 @@
       [self.arrowImageView resetOriginY:kArrowOriginY + offsetY * 8 / 13];
     }
   } else {
-    CGFloat baseOffset = self.scrollView.contentSize.height - kCurrentScreenHeight;
+    CGFloat baseOffset = self.scrollView.contentSize.height - self.scrollView.frame.size.height + 5;
     offsetY -= baseOffset;
     didStrech = offsetY >= self.stretchLimitHeight;
     
-    if (offsetY < self.stretchLimitHeight && offsetY > 0) {
+    if (offsetY < self.stretchLimitHeight && offsetY > 0) {      
       [self.upperBarImageView resetOriginY:kUpperBarOriginY + offsetY * 8 / 13];
       [self.middleBarImageView resetOriginY:kMiddleBarOriginY + offsetY * 9 / 13];
       [self.lowerBarImageView resetOriginY:kLowerBarOriginY + offsetY * 10 / 13];

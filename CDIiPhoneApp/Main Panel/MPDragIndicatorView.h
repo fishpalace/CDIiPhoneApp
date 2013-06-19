@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define kDragIndicatorViewHeight 32
+#define kDragIndicatorViewHeight 50
 
 @class MPDragIndicatorView;
 

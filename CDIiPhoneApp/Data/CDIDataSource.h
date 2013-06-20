@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@import CoreData;
 
 typedef enum {
   CDIRoomStatusAvailable,
@@ -14,7 +15,7 @@ typedef enum {
   CDIRoomStatusUnavailable,
 } CDIRoomStatus;
 
-@interface CDIDataSource : NSObject
+@interface CDIDataSource : NSObject <NSFetchedResultsControllerDelegate>
 
 + (void)fetchDataWithCompletion:(void (^)(BOOL succeeded, id responseData))completion;
 

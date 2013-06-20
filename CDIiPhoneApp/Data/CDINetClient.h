@@ -23,6 +23,10 @@
                       toDate:(NSString *)toDate
                   completion:(void (^)(BOOL succeeded, id responseData))completion;
 
+- (void)getEventListfromDate:(NSString *)fromDate
+                      toDate:(NSString *)toDate
+                  completion:(void (^)(BOOL succeeded, id responseData))completion;
+
 - (void)getRoomInfoByRoomId:(int)roomID
                  completion:(void (^)(BOOL succeeded, id responseData))completion;
 

@@ -32,4 +32,10 @@
 @property (nonatomic, retain) NSNumber * occupiedByD;
 @property (nonatomic, retain) CDIUser *creator;
 
++ (CDIEvent *)sharedNewEvent;
++ (id)eventInstanceWithTitle:(NSString *)title;
+- (id)eventCopy;
+- (id)initWithDictionary:(NSDictionary *)dict;
++ (CDIEvent *)insertUserInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end

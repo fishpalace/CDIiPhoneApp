@@ -9,6 +9,10 @@
         <attribute name="eventID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isPlaceHolder" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="occupiedByA" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="occupiedByB" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="occupiedByC" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="occupiedByD" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="passed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="relatedInfo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="roomID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>

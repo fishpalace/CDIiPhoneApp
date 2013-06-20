@@ -44,6 +44,15 @@ static CDINetClient *sharedClient;
   [self getPath:path completion:completion];
 }
 
+- (void)getEventListfromDate:(NSString *)fromDate
+                      toDate:(NSString *)toDate
+                  completion:(void (^)(BOOL succeeded, id responseData))completion
+
+{
+  NSString *path = [NSString stringWithFormat:@"event/getEventListWithRoomInfoByDateAndTypeAndStatus/%@/%@/*/*/100/1", fromDate, toDate];
+  [self getPath:path completion:completion];
+}
+
 - (void)getRoomInfoByRoomId:(int)roomID
                  completion:(void (^)(BOOL succeeded, id responseData))completion
 {

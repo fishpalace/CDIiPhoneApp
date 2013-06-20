@@ -60,7 +60,6 @@
 		187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508B1735068F006B46A3 /* UIView+Addition.m */; };
 		187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508D1735068F006B46A3 /* UIView+Resize.m */; };
 		18948CB8175C521A004E07EB /* ScheduleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18948CB7175C521A004E07EB /* ScheduleListViewController.m */; };
-		18948CBB175C5F80004E07EB /* SLDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18948CBA175C5F80004E07EB /* SLDetailTableViewController.m */; };
 		18948CBE175C5FAC004E07EB /* SLDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18948CBD175C5FAC004E07EB /* SLDetailTableViewCell.m */; };
 		18948CC3175CABD6004E07EB /* people_cell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CBF175CABD6004E07EB /* people_cell_bg.png */; };
 		18948CC4175CABD6004E07EB /* people_cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CC0175CABD6004E07EB /* people_cell_bg@2x.png */; };
@@ -297,8 +296,6 @@
 		187F508D1735068F006B46A3 /* UIView+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Resize.m"; path = "Category/UIView+Resize.m"; sourceTree = "<group>"; };
 		18948CB6175C521A004E07EB /* ScheduleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleListViewController.h; path = "Menu Panel/ScheduleListViewController.h"; sourceTree = "<group>"; };
 		18948CB7175C521A004E07EB /* ScheduleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleListViewController.m; path = "Menu Panel/ScheduleListViewController.m"; sourceTree = "<group>"; };
-		18948CB9175C5F80004E07EB /* SLDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLDetailTableViewController.h; path = "Menu Panel/SLDetailTableViewController.h"; sourceTree = "<group>"; };
-		18948CBA175C5F80004E07EB /* SLDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLDetailTableViewController.m; path = "Menu Panel/SLDetailTableViewController.m"; sourceTree = "<group>"; };
 		18948CBC175C5FAC004E07EB /* SLDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLDetailTableViewCell.h; path = "Menu Panel/SLDetailTableViewCell.h"; sourceTree = "<group>"; };
 		18948CBD175C5FAC004E07EB /* SLDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLDetailTableViewCell.m; path = "Menu Panel/SLDetailTableViewCell.m"; sourceTree = "<group>"; };
 		18948CBF175CABD6004E07EB /* people_cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = people_cell_bg.png; sourceTree = "<group>"; };
@@ -990,8 +987,6 @@
 				189871C617718D6B004059A3 /* MenuRoomInfoCell.m */,
 				18948CB6175C521A004E07EB /* ScheduleListViewController.h */,
 				18948CB7175C521A004E07EB /* ScheduleListViewController.m */,
-				18948CB9175C5F80004E07EB /* SLDetailTableViewController.h */,
-				18948CBA175C5F80004E07EB /* SLDetailTableViewController.m */,
 				18948CBC175C5FAC004E07EB /* SLDetailTableViewCell.h */,
 				18948CBD175C5FAC004E07EB /* SLDetailTableViewCell.m */,
 				18948CCB175CB465004E07EB /* PeopleListViewController.h */,
@@ -1279,7 +1274,6 @@
 				18BACD62176EE6F80058042D /* CoreDataViewController.m in Sources */,
 				18B7442C175B15CC00585CF5 /* CDIViewControllerFactory.m in Sources */,
 				18948CB8175C521A004E07EB /* ScheduleListViewController.m in Sources */,
-				18948CBB175C5F80004E07EB /* SLDetailTableViewController.m in Sources */,
 				18948CBE175C5FAC004E07EB /* SLDetailTableViewCell.m in Sources */,
 				18948CCD175CB465004E07EB /* PeopleListViewController.m in Sources */,
 				18948CD5175CE2C8004E07EB /* PeopleListCollectionViewCell.m in Sources */,

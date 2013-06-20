@@ -1194,6 +1194,12 @@
                                             <constraint firstItem="xrs-3v-Jgf" firstAttribute="top" secondItem="wzN-SN-Jyc" secondAttribute="bottom" constant="5" id="w3B-D6-Z3n"/>
                                             <constraint firstItem="Cdg-c6-fev" firstAttribute="leading" secondItem="EyC-Yu-par" secondAttribute="leading" constant="6" id="ySP-tF-Ci9"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="eventName" destination="GbF-xn-R5Q" id="dTo-8V-0XC"/>
+                                            <outlet property="eventRelatedInfo" destination="wzN-SN-Jyc" id="1Q2-MX-Euw"/>
+                                            <outlet property="roomName" destination="xrs-3v-Jgf" id="4XF-jh-Dbc"/>
+                                            <outlet property="startingTime" destination="3g0-Ek-POa" id="C5M-My-QcT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

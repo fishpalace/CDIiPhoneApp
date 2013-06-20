@@ -2,7 +2,7 @@
 //  CDIEvent.h
 //  CDIiPhoneApp
 //
-//  Created by Gabriel Yeah on 13-6-17.
+//  Created by Gabriel Yeah on 13-6-20.
 //  Copyright (c) 2013年 Gabriel Yeah. All rights reserved.
 //
 
@@ -26,12 +26,10 @@
 @property (nonatomic, retain) NSNumber * roomID;
 @property (nonatomic, retain) NSDate * startDate;
 @property (nonatomic, retain) NSNumber * startValue;
+@property (nonatomic, retain) NSNumber * occupiedByA;
+@property (nonatomic, retain) NSNumber * occupiedByB;
+@property (nonatomic, retain) NSNumber * occupiedByC;
+@property (nonatomic, retain) NSNumber * occupiedByD;
 @property (nonatomic, retain) CDIUser *creator;
-
-+ (CDIEvent *)sharedNewEvent;
-+ (void)updateSharedNewEvent:(CDIEvent *)event;
-+ (id)eventInstanceWithTitle:(NSString *)title;
-- (id)eventCopy;
-- (id)initWithDictionary:(NSDictionary *)dict;
 
 @end

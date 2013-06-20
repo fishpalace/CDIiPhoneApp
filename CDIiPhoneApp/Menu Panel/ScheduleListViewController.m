@@ -7,7 +7,6 @@
 //
 
 #import "ScheduleListViewController.h"
-#import "SLDetailTableViewController.h"
 #import "UIView+Resize.h"
 #import "SLDetailTableViewCell.h"
 

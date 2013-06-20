@@ -90,7 +90,7 @@ static CDIUser *currentUser;
 {
   NSFetchRequest *request = [[NSFetchRequest alloc] init];
   
-  [request setEntity:[NSEntityDescription entityForName:@"User" inManagedObjectContext:context]];
+  [request setEntity:[NSEntityDescription entityForName:@"CDIUser" inManagedObjectContext:context]];
   [request setPredicate:[NSPredicate predicateWithFormat:@"name == %@ ", userName]];
   
   NSArray *items = [context executeFetchRequest:request error:NULL];

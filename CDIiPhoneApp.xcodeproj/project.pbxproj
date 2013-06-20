@@ -52,6 +52,14 @@
 		183AE77B175C38DA008310BF /* menu_button_schedule_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE777175C38DA008310BF /* menu_button_schedule_dark.png */; };
 		183AE77C175C38DA008310BF /* menu_button_schedule_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE778175C38DA008310BF /* menu_button_schedule_dark@2x.png */; };
 		184227E817716B86009A37BB /* MenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184227E717716B86009A37BB /* MenuItemCell.m */; };
+		1872230817731FBE000B5F17 /* time_schedule_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230617731FBE000B5F17 /* time_schedule_list.png */; };
+		1872230917731FBE000B5F17 /* time_schedule_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230717731FBE000B5F17 /* time_schedule_list@2x.png */; };
+		1872230C17732243000B5F17 /* tableview_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230A17732243000B5F17 /* tableview_banner.png */; };
+		1872230D17732243000B5F17 /* tableview_banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230B17732243000B5F17 /* tableview_banner@2x.png */; };
+		1872231217732F78000B5F17 /* model_button_schedule.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230E17732F78000B5F17 /* model_button_schedule.png */; };
+		1872231317732F78000B5F17 /* model_button_schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230F17732F78000B5F17 /* model_button_schedule@2x.png */; };
+		1872231417732F78000B5F17 /* model_button_write.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872231017732F78000B5F17 /* model_button_write.png */; };
+		1872231517732F78000B5F17 /* model_button_write@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872231117732F78000B5F17 /* model_button_write@2x.png */; };
 		187F507C1734F25A006B46A3 /* MPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F507B1734F25A006B46A3 /* MPTableViewCell.m */; };
 		187F507F1734F277006B46A3 /* MainPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F507E1734F277006B46A3 /* MainPanelViewController.m */; };
 		187F50821734F33C006B46A3 /* MPCellTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F50811734F33C006B46A3 /* MPCellTableViewController.m */; };
@@ -281,6 +289,14 @@
 		183AE778175C38DA008310BF /* menu_button_schedule_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_button_schedule_dark@2x.png"; sourceTree = "<group>"; };
 		184227E617716B86009A37BB /* MenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuItemCell.h; path = "Menu Panel/MenuItemCell.h"; sourceTree = "<group>"; };
 		184227E717716B86009A37BB /* MenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuItemCell.m; path = "Menu Panel/MenuItemCell.m"; sourceTree = "<group>"; };
+		1872230617731FBE000B5F17 /* time_schedule_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time_schedule_list.png; path = "Image Resource/Model Panel/time_schedule_list.png"; sourceTree = SOURCE_ROOT; };
+		1872230717731FBE000B5F17 /* time_schedule_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "time_schedule_list@2x.png"; path = "Image Resource/Model Panel/time_schedule_list@2x.png"; sourceTree = SOURCE_ROOT; };
+		1872230A17732243000B5F17 /* tableview_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_banner.png; sourceTree = "<group>"; };
+		1872230B17732243000B5F17 /* tableview_banner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_banner@2x.png"; sourceTree = "<group>"; };
+		1872230E17732F78000B5F17 /* model_button_schedule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = model_button_schedule.png; path = "Image Resource/Model Panel/model_button_schedule.png"; sourceTree = SOURCE_ROOT; };
+		1872230F17732F78000B5F17 /* model_button_schedule@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "model_button_schedule@2x.png"; path = "Image Resource/Model Panel/model_button_schedule@2x.png"; sourceTree = SOURCE_ROOT; };
+		1872231017732F78000B5F17 /* model_button_write.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = model_button_write.png; path = "Image Resource/Model Panel/model_button_write.png"; sourceTree = SOURCE_ROOT; };
+		1872231117732F78000B5F17 /* model_button_write@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "model_button_write@2x.png"; path = "Image Resource/Model Panel/model_button_write@2x.png"; sourceTree = SOURCE_ROOT; };
 		187F507A1734F25A006B46A3 /* MPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPTableViewCell.h; path = "Main Panel/MPTableViewCell.h"; sourceTree = "<group>"; };
 		187F507B1734F25A006B46A3 /* MPTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPTableViewCell.m; path = "Main Panel/MPTableViewCell.m"; sourceTree = "<group>"; };
 		187F507D1734F277006B46A3 /* MainPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainPanelViewController.h; path = "Main Panel/MainPanelViewController.h"; sourceTree = "<group>"; };
@@ -615,6 +631,8 @@
 		183AE760175C38CD008310BF /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				1872230A17732243000B5F17 /* tableview_banner.png */,
+				1872230B17732243000B5F17 /* tableview_banner@2x.png */,
 				182B301B1771BC2B00EB6DFB /* tableview_now_indicator.png */,
 				182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */,
 				18948CBF175CABD6004E07EB /* people_cell_bg.png */,
@@ -812,6 +830,12 @@
 		18B74384175AEAA900585CF5 /* Model Panel */ = {
 			isa = PBXGroup;
 			children = (
+				1872230E17732F78000B5F17 /* model_button_schedule.png */,
+				1872230F17732F78000B5F17 /* model_button_schedule@2x.png */,
+				1872231017732F78000B5F17 /* model_button_write.png */,
+				1872231117732F78000B5F17 /* model_button_write@2x.png */,
+				1872230617731FBE000B5F17 /* time_schedule_list.png */,
+				1872230717731FBE000B5F17 /* time_schedule_list@2x.png */,
 				18948CEE175D05ED004E07EB /* menu_button_write.png */,
 				18948D09175D0911004E07EB /* people_info_avatar_cover.png */,
 				18948D0A175D0911004E07EB /* people_info_avatar_cover@2x.png */,
@@ -1061,7 +1085,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				180BD0A517334D6E00BA2A98 /* InfoPlist.strings in Resources */,
+				1872230917731FBE000B5F17 /* time_schedule_list@2x.png in Resources */,
 				180BD0B417334D6E00BA2A98 /* MainStoryboard.storyboard in Resources */,
+				1872231317732F78000B5F17 /* model_button_schedule@2x.png in Resources */,
 				18256B3F17704C530079D24B /* menu_status_green.png in Resources */,
 				18E0EA8D1738981C006EFF51 /* MPDragIndicatorView.xib in Resources */,
 				18B995981759EA190010B9D4 /* menu_button_schedule.png in Resources */,
@@ -1070,6 +1096,7 @@
 				18B9959B1759EA190010B9D4 /* menu_button_setting@2x.png in Resources */,
 				18256B4F177055390079D24B /* menu_icon_cal.png in Resources */,
 				18B9959C1759EA190010B9D4 /* menu_login_bg.png in Resources */,
+				1872230D17732243000B5F17 /* tableview_banner@2x.png in Resources */,
 				18B9959D1759EA190010B9D4 /* menu_login_bg@2x.png in Resources */,
 				18B9959E1759EA190010B9D4 /* menu_room_available.png in Resources */,
 				18B9959F1759EA190010B9D4 /* menu_room_available@2x.png in Resources */,
@@ -1103,6 +1130,7 @@
 				18256B4117704C570079D24B /* menu_status_red.png in Resources */,
 				18B743AC175B016200585CF5 /* mp_selection_activity1@2x.png in Resources */,
 				18B743AD175B016200585CF5 /* mp_selection_activity2.png in Resources */,
+				1872231517732F78000B5F17 /* model_button_write@2x.png in Resources */,
 				18B743AE175B016200585CF5 /* mp_selection_activity2@2x.png in Resources */,
 				18B743AF175B016200585CF5 /* mp_selection_activity3.png in Resources */,
 				18B743B0175B016200585CF5 /* mp_selection_activity3@2x.png in Resources */,
@@ -1110,6 +1138,7 @@
 				18B743B2175B016200585CF5 /* mp_selection_bg@2x.png in Resources */,
 				18B743B3175B016200585CF5 /* mp_selection_cover.png in Resources */,
 				18B743B4175B016200585CF5 /* mp_selection_cover@2x.png in Resources */,
+				1872230C17732243000B5F17 /* tableview_banner.png in Resources */,
 				18B743B5175B016200585CF5 /* mp_selection_proj1.png in Resources */,
 				18B743B6175B016200585CF5 /* mp_selection_proj1@2x.png in Resources */,
 				18B743B7175B016200585CF5 /* mp_selection_proj2.png in Resources */,
@@ -1149,7 +1178,9 @@
 				183AE770175C38CD008310BF /* tableview_cell_bg@2x.png in Resources */,
 				18256B371770441D0079D24B /* menu_avatar_bg@2x.png in Resources */,
 				183AE771175C38CD008310BF /* tableview_icon_calendar.png in Resources */,
+				1872231217732F78000B5F17 /* model_button_schedule.png in Resources */,
 				183AE772175C38CD008310BF /* tableview_icon_calendar@2x.png in Resources */,
+				1872231417732F78000B5F17 /* model_button_write.png in Resources */,
 				18256B4417704C5D0079D24B /* menu_status_yellow@2x.png in Resources */,
 				183AE773175C38CD008310BF /* tableview_icon_calendar_hl.png in Resources */,
 				183AE774175C38CD008310BF /* tableview_icon_calendar_hl@2x.png in Resources */,
@@ -1223,6 +1254,7 @@
 				189E4CA4175F924A00E7BA21 /* test_proj_3@2x.png in Resources */,
 				189E4CA5175F924A00E7BA21 /* test_proj_4.png in Resources */,
 				189E4CA6175F924A00E7BA21 /* test_proj_4@2x.png in Resources */,
+				1872230817731FBE000B5F17 /* time_schedule_list.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

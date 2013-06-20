@@ -17,7 +17,7 @@
 
 #define kCloseButtonGap 30
 #define kContentViewGap     47
-#define kContentViewControllerFrame CGRectMake(0, 0, 270, 400)
+#define kContentViewControllerFrame CGRectMake(0, 0, 320, 450)
 
 static ModelPanelViewController *sharedModelPanelViewController;
 

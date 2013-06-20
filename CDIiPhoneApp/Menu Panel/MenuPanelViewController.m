@@ -168,14 +168,14 @@
 #pragma mark - IBActions
 - (IBAction)didClickCheckRoomButton:(UIButton *)sender
 {
-//  [self displayModelPanelWithRoomID:sender.tag];
+  [self displayModelPanelWithRoomID:sender.tag];
 }
 
 - (void)displayModelPanelWithRoomID:(NSInteger)roomID
 {
-//  TimeDisplayPanelViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TimeDisplayPanelViewController"];
-//  vc.roomID = roomID;
-//  [ModelPanelViewController displayModelPanelWithViewController:vc];
+  TimeDisplayPanelViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TimeDisplayPanelViewController"];
+  vc.roomID = roomID;
+  [ModelPanelViewController displayModelPanelWithViewController:vc];
 }
 
 #pragma mark - Properties

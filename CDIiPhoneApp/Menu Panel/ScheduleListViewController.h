@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataViewController.h"
 
-@interface ScheduleListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ScheduleListViewController : CoreDataViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

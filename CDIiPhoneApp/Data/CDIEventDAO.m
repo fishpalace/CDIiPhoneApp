@@ -8,6 +8,7 @@
 
 #import "CDIEventDAO.h"
 #import "CDIUser.h"
+#import "CDIEvent.h"
 
 #import "NSDate+Addition.h"
 
@@ -30,6 +31,25 @@ static CDIEventDAO *sharedNewEvent;
   event.isPlaceHolder = @YES;
   event.passed = NO;
   return event;
+}
+
++ (id)eventDAOInstanceWithEvent:(CDIEvent *)event
+{
+  CDIEventDAO *eventCopy = [[CDIEventDAO alloc] init];
+  eventCopy.eventID = event.eventID;
+  eventCopy.name = event.name;
+  eventCopy.relatedInfo = event.relatedInfo;
+  eventCopy.startDate = event.startDate;
+  eventCopy.endDate = event.endDate;
+  eventCopy.passed = event.passed;
+  eventCopy.active = event.active;
+  eventCopy.isPlaceHolder = event.isPlaceHolder;
+  eventCopy.startValue = event.startValue;
+  eventCopy.endValue = event.endValue;
+  eventCopy.accessKey = event.accessKey;
+  eventCopy.abandoned = event.abandoned;
+  eventCopy.roomID = event.roomID;
+  return eventCopy;
 }
 
 + (void)updateSharedNewEvent:(CDIEventDAO *)event
@@ -110,6 +130,5 @@ static CDIEventDAO *sharedNewEvent;
 {
   return [dict[key] isKindOfClass:[NSNull class]] ? @"" : dict[key];
 }
-
 
 @end

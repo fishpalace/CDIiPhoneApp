@@ -27,6 +27,7 @@
 @property (nonatomic, strong) CDIUser *creator;
 
 + (CDIEventDAO *)sharedNewEvent;
++ (id)eventDAOInstanceWithEvent:(CDIEvent *)event;
 + (id)eventInstanceWithTitle:(NSString *)title;
 - (id)eventCopy;
 - (id)initWithDictionary:(NSDictionary *)dict;

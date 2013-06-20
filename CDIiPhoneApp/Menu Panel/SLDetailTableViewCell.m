@@ -26,4 +26,16 @@
     // Configure the view for the selected state
 }
 
+- (void)setIsPlaceHolder:(BOOL)isPlaceHolder
+{
+  self.eventName.hidden = isPlaceHolder;
+  self.roomName.hidden = isPlaceHolder;
+  self.eventRelatedInfo.hidden = isPlaceHolder;
+  self.startingTime.hidden = isPlaceHolder;
+  self.nowIndicatorLabel.hidden = YES;
+  self.calendarButton.hidden = isPlaceHolder;
+  self.noEventLabel.hidden = !isPlaceHolder;
+  _isPlaceHolder = isPlaceHolder;
+}
+
 @end

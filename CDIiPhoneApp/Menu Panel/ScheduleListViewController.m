@@ -9,8 +9,14 @@
 #import "ScheduleListViewController.h"
 #import "UIView+Resize.h"
 #import "SLDetailTableViewCell.h"
+#import "CDIEventDAO.h"
+#import "CDIEvent.h"
+#import "NSDate+Addition.h"
+#import "CDIDataSource.h"
 
-#define kScrollViewWidth 320
+#define kSLDetailTableViewCellStandardHeight  80
+#define kSingleLineHeight                     21
+#define kScrollViewWidth                      320
 
 @interface ScheduleListViewController ()
 
@@ -19,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
+@property (nonatomic, strong) NSMutableArray *todayArray;
+@property (nonatomic, strong) NSMutableArray *tomorrowArray;
 
 @end
 
@@ -50,6 +59,15 @@
   
 }
 
+- (void)configureRequest:(NSFetchRequest *)request
+{
+  request.entity = [NSEntityDescription entityForName:@"CDIEvent"
+                               inManagedObjectContext:self.managedObjectContext];
+  NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES];
+//  request.predicate = [NSPredicate predicateWithFormat:@"operatedBy == %@ && currentUserID == %@",self.coreDataIdentifier, self.currentUser.userID];
+  request.sortDescriptors = @[sortDescriptor];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
   return 2;
@@ -57,7 +75,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return 5;
+  NSInteger numberOfRows = 0;
+  if (section == 0) {
+    numberOfRows = self.todayArray.count;
+  } else {
+    numberOfRows = self.tomorrowArray.count;
+  }
+  numberOfRows = numberOfRows == 0 ? 1 : numberOfRows;
+  return numberOfRows;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -72,6 +97,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   SLDetailTableViewCell *cell = [self.tableview dequeueReusableCellWithIdentifier:@"SLDetailTableViewCell"];
+  NSArray *eventArray = nil;
+  if (indexPath.section == 0) {
+    eventArray = self.todayArray;
+  } else {
+    eventArray = self.tomorrowArray;
+  }
+  
+  cell.isPlaceHolder = eventArray.count == 0;
+  if (!cell.isPlaceHolder) {
+    CDIEventDAO *eventDAO = eventArray[indexPath.row];
+    cell.eventName.text = eventDAO.name;
+    cell.roomName.text = [CDIDataSource nameForRoomID:eventDAO.roomID.integerValue];
+    cell.eventRelatedInfo.text = eventDAO.relatedInfo;
+    cell.startingTime.text = [NSDate stringOfTime:eventDAO.startDate];
+  }
   return cell;
 }
 
@@ -91,6 +131,26 @@
   return headerView;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  NSArray *eventArray = nil;
+  if (indexPath.section == 0) {
+    eventArray = self.todayArray;
+  } else {
+    eventArray = self.tomorrowArray;
+  }
+  
+  CGFloat height = kSLDetailTableViewCellStandardHeight;
+  if (eventArray.count != 0) {
+    CDIEventDAO *event = [eventArray objectAtIndex:indexPath.row];
+    CGSize size = [event.name sizeWithFont:[UIFont boldSystemFontOfSize:17]
+                         constrainedToSize:CGSizeMake(169, 1000)
+                             lineBreakMode:NSLineBreakByCharWrapping];
+    height = kSLDetailTableViewCellStandardHeight + size.height - kSingleLineHeight;
+  }
+  return height;
+}
+
 #pragma mark - IBActions
 
 - (IBAction)didClickBackButton:(id)sender
@@ -99,6 +159,34 @@
 }
 
 #pragma mark - Properties
-\
+- (NSMutableArray *)todayArray
+{
+  if (!_todayArray) {
+    _todayArray = [NSMutableArray array];
+    NSDate *tomorrowDate = [[NSDate todayDateStartingFromHour:0] dateByAddingTimeInterval:3600 * 24];
+    for (CDIEvent *event in self.fetchedResultsController.fetchedObjects) {
+      if ([[event.startDate laterDate:tomorrowDate] isEqualToDate:tomorrowDate]) {
+        CDIEventDAO *eventDAO = [CDIEventDAO eventDAOInstanceWithEvent:event];
+        [_todayArray addObject:eventDAO];
+      }
+    }
+  }
+  return _todayArray;
+}
+
+- (NSMutableArray *)tomorrowArray
+{
+  if (!_tomorrowArray) {
+    _tomorrowArray = [NSMutableArray array];
+    NSDate *tomorrowDate = [[NSDate todayDateStartingFromHour:0] dateByAddingTimeInterval:3600 * 24];
+    for (CDIEvent *event in self.fetchedResultsController.fetchedObjects) {
+      if ([[event.startDate earlierDate:tomorrowDate] isEqualToDate:tomorrowDate]) {
+        CDIEventDAO *eventDAO = [CDIEventDAO eventDAOInstanceWithEvent:event];
+        [_tomorrowArray addObject:eventDAO];
+      }
+    }
+  }
+  return _tomorrowArray;
+}
 
 @end

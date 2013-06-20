@@ -77,11 +77,18 @@ static CDIUser *currentUser;
     user = [NSEntityDescription insertNewObjectForEntityForName:@"CDIUser" inManagedObjectContext:context];
   }
 
-  user.name = [dict[@"name"] isKindOfClass:[NSNull class]] ? @"" : dict[@"name"];
-  user.realName = [dict[@"realName"] isKindOfClass:[NSNull class]] ? @"" : dict[@"realName"];
-  user.avatarLargeURL = [dict[@"avatarLargeUrl"] isKindOfClass:[NSNull class]] ? @"" : dict[@"avatarLargeUrl"];
-  user.avatarMidURL = [dict[@"avatarMiddleUrl"] isKindOfClass:[NSNull class]] ? @"" : dict[@"avatarMiddleUrl"];
-  user.avatarSmallURL = [dict[@"avatarSmallUrl"] isKindOfClass:[NSNull class]] ? @"" : dict[@"avatarSmallUrl"];
+  user.name = [user stringForDict:dict key:@"name"];
+  user.realName = [user stringForDict:dict key:@"realName_en"];
+  user.avatarLargeURL = [user stringForDict:dict key:@"avatarLargeUrl"];
+  user.avatarMidURL = [user stringForDict:dict key:@"avatarMiddleUrl"];
+  user.avatarSmallURL = [user stringForDict:dict key:@"avatarSmallUrl"];
+  user.dribbleURL = [user stringForDict:dict key:@"dribbbleId"];
+  user.homePageURL = [user stringForDict:dict key:@"personalSite"];
+  user.linkedInURL = [user stringForDict:dict key:@"linkedInId"];
+  user.position = [user stringForDict:dict key:@"title_en"];
+  user.title = [user stringForDict:dict key:@"category"];
+  user.twitterURL = [user stringForDict:dict key:@"twitterId"];
+  user.weiboURL = [user stringForDict:dict key:@"weiboId"];
   
   return user;
 }
@@ -97,6 +104,16 @@ static CDIUser *currentUser;
   CDIUser *res = [items lastObject];
   
   return res;
+}
+
+- (NSString *)stringForDict:(NSDictionary *)dict key:(NSString *)key
+{
+  NSObject *result = [dict[key] isKindOfClass:[NSNull class]] ? @"" : dict[key];
+  NSString *stringValue = (NSString *)result;
+  if ([result isKindOfClass:[NSNumber class]]) {
+    stringValue = ((NSNumber *)result).stringValue;
+  }
+  return stringValue;
 }
 
 @end

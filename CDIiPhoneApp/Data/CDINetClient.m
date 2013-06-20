@@ -124,6 +124,12 @@ static CDINetClient *sharedClient;
   [self getPath:path completion:completion];
 }
 
+- (void)getUserListWithCompletion:(void (^)(BOOL, id))completion
+{
+  NSString *path = [NSString stringWithFormat:@"user/getUserListByCategoryAndPriority/*/*/100/1"];
+  [self getPath:path completion:completion];
+}
+
 #pragma mark - Basic Methods
 - (void)getPath:(NSString *)path
      completion:(void (^)(BOOL succeeded, id responseData))completion

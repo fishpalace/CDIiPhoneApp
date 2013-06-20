@@ -11,6 +11,7 @@
 #import "PeopleInfoViewController.h"
 #import "ModelPanelViewController.h"
 #import "CDIUser.h"
+#import "CDINetClient.h"
 
 @interface PeopleListViewController ()
 
@@ -39,6 +40,35 @@
   _collectionView.delegate = self;
   _collectionView.dataSource = self;
   _collectionView.collectionViewLayout = self.layout;
+  [self loadData];
+}
+
+- (void)loadData
+{
+  CDINetClient *client = [CDINetClient client];
+  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+    NSDictionary *rawDict = responseData;
+    if ([responseData isKindOfClass:[NSDictionary class]]) {
+      NSArray *peopleArray = rawDict[@"data"];
+      for (NSDictionary *dict in peopleArray) {
+        [CDIUser insertUserInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
+      }
+      [self.managedObjectContext processPendingChanges];
+      [self.fetchedResultsController performFetch:nil];
+      
+      [self.collectionView reloadData];
+    }
+  };
+  
+  [client getUserListWithCompletion:handleData];
+}
+
+- (void)configureRequest:(NSFetchRequest *)request
+{
+  request.entity = [NSEntityDescription entityForName:@"CDIUser"
+                               inManagedObjectContext:self.managedObjectContext];
+  NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+  request.sortDescriptors = @[sortDescriptor];
 }
 
 - (IBAction)didClickBackButton:(UIButton *)sender
@@ -48,7 +78,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-  return self.userArray.count;
+  return self.fetchedResultsController.fetchedObjects.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -57,7 +87,7 @@
   
   PeopleListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
   
-  CDIUser *user = [self.userArray objectAtIndex:indexPath.row];
+  CDIUser *user = self.fetchedResultsController.fetchedObjects[indexPath.row];
   cell.userNameLabel.text = user.name;
   cell.userPositionLabel.text = user.position;
   cell.userTitleLabel.text = user.title;
@@ -68,10 +98,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  PeopleInfoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleInfoViewController"];
-  vc.user = [self.userArray objectAtIndex:indexPath.row];
-  vc.index = indexPath.row;
-  [ModelPanelViewController displayModelPanelWithViewController:vc];
+//  PeopleInfoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleInfoViewController"];
+//  vc.user = [self.userArray objectAtIndex:indexPath.row];
+//  vc.index = indexPath.row;
+//  [ModelPanelViewController displayModelPanelWithViewController:vc];
 }
 
 - (NSMutableArray *)userArray

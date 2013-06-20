@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PeopleListViewController : UIViewController <UICollectionViewDataSource,
+@interface PeopleListViewController : CoreDataViewController <UICollectionViewDataSource,
     UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @end

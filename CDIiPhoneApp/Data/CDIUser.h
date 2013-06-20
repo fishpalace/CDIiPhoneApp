@@ -35,6 +35,7 @@
 + (void)updateCurrentUserWithDictionary:(NSDictionary *)dict
                              sessionKey:(NSString *)sessionKey;
 - (id)initWithName:(NSString *)name title:(NSString *)title position:(NSString *)position;
++ (CDIUser *)insertUserInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end
 

@@ -47,4 +47,6 @@
                                          date:(NSString *)date
                                    completion:(void (^)(BOOL succeeded, id responseData))completion;
 
+- (void)getUserListWithCompletion:(void (^)(BOOL succeeded, id responseData))completion;
+
 @end

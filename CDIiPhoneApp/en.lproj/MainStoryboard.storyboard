@@ -1629,11 +1629,15 @@
                                                         <constraint firstAttribute="width" constant="150" id="xd9-br-lLb"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="test_avatar_3.png" translatesAutoresizingMaskIntoConstraints="NO" id="olv-sX-y6C">
-                                                    <rect key="frame" x="10" y="5" width="140" height="140"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="test_avatar_3.png" translatesAutoresizingMaskIntoConstraints="NO" id="olv-sX-y6C">
+                                                    <rect key="frame" x="10" y="12" width="140" height="140"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="140" id="caC-ZK-xaW"/>
+                                                        <constraint firstAttribute="height" constant="140" id="jPt-ik-Zg1"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Alex Yan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="tWf-ZF-j18">
-                                                    <rect key="frame" x="18" y="147" width="124" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Alex Yan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="tWf-ZF-j18">
+                                                    <rect key="frame" x="18" y="156" width="124" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="4TI-9G-lIf"/>
                                                         <constraint firstAttribute="width" constant="124" id="ok7-Yi-mqp"/>
@@ -1643,7 +1647,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Student" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="CSX-F0-dQ3">
-                                                    <rect key="frame" x="18" y="165" width="124" height="15"/>
+                                                    <rect key="frame" x="18" y="169" width="124" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="rKP-8x-POK"/>
                                                     </constraints>
@@ -1652,7 +1656,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Web Engineer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="Gz2-Lb-lps">
-                                                    <rect key="frame" x="18" y="180" width="124" height="15"/>
+                                                    <rect key="frame" x="18" y="188" width="124" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1661,20 +1665,18 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="centerY" secondItem="Gz2-Lb-lps" secondAttribute="centerY" constant="-77.5" id="0Sl-FV-G13"/>
                                             <constraint firstItem="uPd-ez-1Db" firstAttribute="top" secondItem="IBW-Ke-caE" secondAttribute="top" id="1Z6-AA-nH0"/>
-                                            <constraint firstAttribute="bottom" secondItem="tWf-ZF-j18" secondAttribute="bottom" constant="52" id="5Vu-jr-fr8"/>
-                                            <constraint firstAttribute="bottom" secondItem="CSX-F0-dQ3" secondAttribute="bottom" constant="40" id="ABl-x5-jab"/>
                                             <constraint firstItem="olv-sX-y6C" firstAttribute="centerX" secondItem="uPd-ez-1Db" secondAttribute="centerX" id="I5Q-KD-Fzc"/>
                                             <constraint firstAttribute="centerX" secondItem="olv-sX-y6C" secondAttribute="centerX" id="IkW-wd-kjx"/>
-                                            <constraint firstItem="olv-sX-y6C" firstAttribute="top" secondItem="IBW-Ke-caE" secondAttribute="top" constant="5" id="S3C-eB-wsh"/>
-                                            <constraint firstItem="CSX-F0-dQ3" firstAttribute="trailing" secondItem="Gz2-Lb-lps" secondAttribute="trailing" id="Sg7-1s-hIb"/>
-                                            <constraint firstItem="CSX-F0-dQ3" firstAttribute="leading" secondItem="Gz2-Lb-lps" secondAttribute="leading" id="Wvj-n1-DSv"/>
-                                            <constraint firstAttribute="centerX" secondItem="Gz2-Lb-lps" secondAttribute="centerX" id="eOc-F6-MtJ"/>
+                                            <constraint firstItem="Gz2-Lb-lps" firstAttribute="leading" secondItem="CSX-F0-dQ3" secondAttribute="leading" id="XRP-lv-0t2"/>
+                                            <constraint firstItem="Gz2-Lb-lps" firstAttribute="trailing" secondItem="CSX-F0-dQ3" secondAttribute="trailing" id="b5U-Tp-JXz"/>
+                                            <constraint firstAttribute="bottom" secondItem="Gz2-Lb-lps" secondAttribute="bottom" constant="17" id="bo4-sD-xpL"/>
                                             <constraint firstAttribute="centerX" secondItem="CSX-F0-dQ3" secondAttribute="centerX" id="m4g-xc-TRa"/>
-                                            <constraint firstAttribute="bottom" secondItem="Gz2-Lb-lps" secondAttribute="bottom" constant="25" id="qhg-x7-gRD"/>
+                                            <constraint firstItem="CSX-F0-dQ3" firstAttribute="top" secondItem="olv-sX-y6C" secondAttribute="bottom" constant="17" id="p2K-2n-nce"/>
+                                            <constraint firstItem="Gz2-Lb-lps" firstAttribute="top" secondItem="CSX-F0-dQ3" secondAttribute="bottom" constant="4" id="uNx-CF-G2q"/>
                                             <constraint firstItem="CSX-F0-dQ3" firstAttribute="leading" secondItem="tWf-ZF-j18" secondAttribute="leading" id="uyx-ZZ-lZJ"/>
                                             <constraint firstItem="CSX-F0-dQ3" firstAttribute="trailing" secondItem="tWf-ZF-j18" secondAttribute="trailing" id="v9i-CG-ezo"/>
+                                            <constraint firstAttribute="bottom" secondItem="CSX-F0-dQ3" secondAttribute="bottom" constant="36" id="ytc-qD-6Fp"/>
                                         </constraints>
                                         <size key="customSize" width="160" height="220"/>
                                         <connections>

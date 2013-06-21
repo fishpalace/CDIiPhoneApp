@@ -12,6 +12,7 @@
 #import "ModelPanelViewController.h"
 #import "CDIUser.h"
 #import "CDINetClient.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface PeopleListViewController ()
 
@@ -91,7 +92,7 @@
   cell.userNameLabel.text = user.name;
   cell.userPositionLabel.text = user.position;
   cell.userTitleLabel.text = user.title;
-  cell.avatarImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"test_avatar_%d", indexPath.row + 1]];
+  [cell.avatarImageView setImageWithURL:[NSURL URLWithString:user.avatarMidURL]];
 
   return cell;
 }

@@ -228,6 +228,11 @@
 		18BACD6E176EE8640058042D /* CDIRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD6D176EE8640058042D /* CDIRoom.m */; };
 		18BACD71176EE8640058042D /* CDIWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD70176EE8640058042D /* CDIWork.m */; };
 		18BACD74176EEC590058042D /* CDIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD73176EEC1F0058042D /* CDIUser.m */; };
+		18CDE7B21774204000711E2A /* time_button_graph.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CDE7B01774204000711E2A /* time_button_graph.png */; };
+		18CDE7B31774204000711E2A /* time_button_graph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CDE7B11774204000711E2A /* time_button_graph@2x.png */; };
+		18CDE7B91774218900711E2A /* TPScheduleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CDE7B81774218900711E2A /* TPScheduleListViewController.m */; };
+		18CDE7BC17742A9D00711E2A /* time_schedule_list_hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CDE7BA17742A9D00711E2A /* time_schedule_list_hl.png */; };
+		18CDE7BD17742A9D00711E2A /* time_schedule_list_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CDE7BB17742A9D00711E2A /* time_schedule_list_hl@2x.png */; };
 		18CEE9831772D8C9005BDA1D /* CDIEventDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEE9821772D8C3005BDA1D /* CDIEventDAO.m */; };
 		18CEE9891772E1D5005BDA1D /* CDIEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEE9881772E1D5005BDA1D /* CDIEvent.m */; };
 		18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA8A173897CB006EFF51 /* MPDragIndicatorView.m */; };
@@ -508,6 +513,12 @@
 		18BACD70176EE8640058042D /* CDIWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIWork.m; path = Data/CDIWork.m; sourceTree = "<group>"; };
 		18BACD72176EEC1F0058042D /* CDIUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDIUser.h; path = Data/CDIUser.h; sourceTree = "<group>"; };
 		18BACD73176EEC1F0058042D /* CDIUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CDIUser.m; path = Data/CDIUser.m; sourceTree = "<group>"; };
+		18CDE7B01774204000711E2A /* time_button_graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_button_graph.png; sourceTree = "<group>"; };
+		18CDE7B11774204000711E2A /* time_button_graph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_button_graph@2x.png"; sourceTree = "<group>"; };
+		18CDE7B71774218900711E2A /* TPScheduleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPScheduleListViewController.h; path = "Time Panel/TPScheduleListViewController.h"; sourceTree = "<group>"; };
+		18CDE7B81774218900711E2A /* TPScheduleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPScheduleListViewController.m; path = "Time Panel/TPScheduleListViewController.m"; sourceTree = "<group>"; };
+		18CDE7BA17742A9D00711E2A /* time_schedule_list_hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time_schedule_list_hl.png; path = "Image Resource/Model Panel/time_schedule_list_hl.png"; sourceTree = SOURCE_ROOT; };
+		18CDE7BB17742A9D00711E2A /* time_schedule_list_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "time_schedule_list_hl@2x.png"; path = "Image Resource/Model Panel/time_schedule_list_hl@2x.png"; sourceTree = SOURCE_ROOT; };
 		18CEE9811772D8C3005BDA1D /* CDIEventDAO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDIEventDAO.h; path = Data/CDIEventDAO.h; sourceTree = "<group>"; };
 		18CEE9821772D8C3005BDA1D /* CDIEventDAO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CDIEventDAO.m; path = Data/CDIEventDAO.m; sourceTree = "<group>"; };
 		18CEE9871772E1D5005BDA1D /* CDIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIEvent.h; path = Data/CDIEvent.h; sourceTree = "<group>"; };
@@ -830,6 +841,8 @@
 		18B74384175AEAA900585CF5 /* Model Panel */ = {
 			isa = PBXGroup;
 			children = (
+				18CDE7BA17742A9D00711E2A /* time_schedule_list_hl.png */,
+				18CDE7BB17742A9D00711E2A /* time_schedule_list_hl@2x.png */,
 				1872230E17732F78000B5F17 /* model_button_schedule.png */,
 				1872230F17732F78000B5F17 /* model_button_schedule@2x.png */,
 				1872231017732F78000B5F17 /* model_button_write.png */,
@@ -865,6 +878,8 @@
 		18B743CB175B04D100585CF5 /* Time Panel */ = {
 			isa = PBXGroup;
 			children = (
+				18CDE7B01774204000711E2A /* time_button_graph.png */,
+				18CDE7B11774204000711E2A /* time_button_graph@2x.png */,
 				18B743E6175B096C00585CF5 /* time_panel_bg.png */,
 				18B743E7175B096C00585CF5 /* time_panel_bg@2x.png */,
 				18B743CC175B04D100585CF5 /* time_center_cover.png */,
@@ -885,6 +900,8 @@
 				18B743DD175B077700585CF5 /* TimeDisplayPanelViewController.m */,
 				18B743EA175B0B3F00585CF5 /* TimeDetailViewController.h */,
 				18B743EB175B0B3F00585CF5 /* TimeDetailViewController.m */,
+				18CDE7B71774218900711E2A /* TPScheduleListViewController.h */,
+				18CDE7B81774218900711E2A /* TPScheduleListViewController.m */,
 			);
 			name = "Time Panel";
 			sourceTree = "<group>";
@@ -1108,6 +1125,7 @@
 				18B995A41759EA190010B9D4 /* menu_schedule_indicator.png in Resources */,
 				18B995A51759EA190010B9D4 /* menu_schedule_indicator@2x.png in Resources */,
 				18B995A61759EA190010B9D4 /* menu_section_info.png in Resources */,
+				18CDE7BD17742A9D00711E2A /* time_schedule_list_hl@2x.png in Resources */,
 				18B995A71759EA190010B9D4 /* menu_section_info@2x.png in Resources */,
 				182B301D1771BC2B00EB6DFB /* tableview_now_indicator.png in Resources */,
 				18B995A81759EA190010B9D4 /* menu_section_schedule.png in Resources */,
@@ -1135,6 +1153,7 @@
 				18B743AF175B016200585CF5 /* mp_selection_activity3.png in Resources */,
 				18B743B0175B016200585CF5 /* mp_selection_activity3@2x.png in Resources */,
 				18B743B1175B016200585CF5 /* mp_selection_bg.png in Resources */,
+				18CDE7BC17742A9D00711E2A /* time_schedule_list_hl.png in Resources */,
 				18B743B2175B016200585CF5 /* mp_selection_bg@2x.png in Resources */,
 				18B743B3175B016200585CF5 /* mp_selection_cover.png in Resources */,
 				18B743B4175B016200585CF5 /* mp_selection_cover@2x.png in Resources */,
@@ -1231,6 +1250,7 @@
 				189E4C90175F924A00E7BA21 /* test_activity_1@2x.png in Resources */,
 				189E4C91175F924A00E7BA21 /* test_activity_2.png in Resources */,
 				18256B4317704C5B0079D24B /* menu_status_yellow.png in Resources */,
+				18CDE7B31774204000711E2A /* time_button_graph@2x.png in Resources */,
 				189E4C92175F924A00E7BA21 /* test_activity_2@2x.png in Resources */,
 				189E4C93175F924A00E7BA21 /* test_activity_3.png in Resources */,
 				189E4C94175F924A00E7BA21 /* test_activity_3@2x.png in Resources */,
@@ -1251,6 +1271,7 @@
 				189E4CA2175F924A00E7BA21 /* test_proj_2@2x.png in Resources */,
 				189E4CA3175F924A00E7BA21 /* test_proj_3.png in Resources */,
 				18256B57177055390079D24B /* menu_icon_proj.png in Resources */,
+				18CDE7B21774204000711E2A /* time_button_graph.png in Resources */,
 				189E4CA4175F924A00E7BA21 /* test_proj_3@2x.png in Resources */,
 				189E4CA5175F924A00E7BA21 /* test_proj_4.png in Resources */,
 				189E4CA6175F924A00E7BA21 /* test_proj_4@2x.png in Resources */,
@@ -1275,6 +1296,7 @@
 				187F50851734F628006B46A3 /* MPCellTableViewCell.m in Sources */,
 				18BACD6E176EE8640058042D /* CDIRoom.m in Sources */,
 				18BACD74176EEC590058042D /* CDIUser.m in Sources */,
+				18CDE7B91774218900711E2A /* TPScheduleListViewController.m in Sources */,
 				187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */,
 				187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */,
 				187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */,

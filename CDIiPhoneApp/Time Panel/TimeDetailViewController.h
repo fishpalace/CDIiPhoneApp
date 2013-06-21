@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GYPieChart.h"
 
-#define kTimeDetailPanelSize CGSizeMake(270, 340)
+#define kTimeDetailPanelSize CGSizeMake(320, 330)
 
 @interface TimeDetailViewController : UIViewController <XYPieChartDataSource>
 

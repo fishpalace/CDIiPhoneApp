@@ -29,7 +29,7 @@
 + (void)insertViewUnderCover:(UIView *)view
 {
   AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-  [appDelegate.window insertSubview:view atIndex:100];
+  [appDelegate.window insertSubview:view atIndex:kCoverIndex];
 }
 
 @end

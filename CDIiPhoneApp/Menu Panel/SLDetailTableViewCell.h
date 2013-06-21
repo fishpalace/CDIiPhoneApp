@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define kSLDetailTableViewCellStandardHeight  80
+#define kSingleLineHeight                     21
+
 @interface SLDetailTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *eventName;

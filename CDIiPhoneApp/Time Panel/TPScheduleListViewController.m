@@ -1,41 +1,38 @@
 //
-//  ScheduleListViewController.m
+//  TPScheduleListViewController.m
 //  CDIiPhoneApp
 //
-//  Created by Gabriel Yeah on 13-6-3.
+//  Created by Gabriel Yeah on 13-6-21.
 //  Copyright (c) 2013年 Gabriel Yeah. All rights reserved.
 //
 
-#import "ScheduleListViewController.h"
-#import "UIView+Resize.h"
+#import "TPScheduleListViewController.h"
 #import "SLDetailTableViewCell.h"
+#import "NSDate+Addition.h"
 #import "CDIEventDAO.h"
 #import "CDIEvent.h"
-#import "NSDate+Addition.h"
 #import "CDIDataSource.h"
 
-@interface ScheduleListViewController ()
+@interface TPScheduleListViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
-@property (weak, nonatomic) IBOutlet UIButton *scheduleButton;
-@property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-
+@property (weak, nonatomic) IBOutlet UIButton *showGraphButton;
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (nonatomic, strong) NSMutableArray *todayArray;
 @property (nonatomic, strong) NSMutableArray *tomorrowArray;
 
 @end
 
-@implementation ScheduleListViewController
+@implementation TPScheduleListViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self) {
+    // Custom initialization
+  }
+  return self;
 }
 
 - (void)viewDidLoad
@@ -45,22 +42,13 @@
   _tableview.dataSource = self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-  
-}
-
 - (void)configureRequest:(NSFetchRequest *)request
 {
   request.entity = [NSEntityDescription entityForName:@"CDIEvent"
                                inManagedObjectContext:self.managedObjectContext];
   NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES];
-//  request.predicate = [NSPredicate predicateWithFormat:@"operatedBy == %@ && currentUserID == %@",self.coreDataIdentifier, self.currentUser.userID];
+  NSString *roomFilter = [NSString stringWithFormat:@"occupiedBy%@", self.roomTitle];
+  request.predicate = [NSPredicate predicateWithFormat:@"%@ == %@", roomFilter, @YES];
   request.sortDescriptors = @[sortDescriptor];
 }
 
@@ -115,7 +103,7 @@
 {
   UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
   headerView.backgroundColor = [UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1.0];
-
+  
   UILabel *tomorrowLabel = [[UILabel alloc] initWithFrame:CGRectMake(14, 7, 100, 14)];
   tomorrowLabel.textColor = [UIColor colorWithRed:186.0/255.0 green:186.0/255.0 blue:186.0/255.0 alpha:1.0];
   tomorrowLabel.font = [UIFont systemFontOfSize:12];
@@ -184,5 +172,6 @@
   }
   return _tomorrowArray;
 }
+
 
 @end

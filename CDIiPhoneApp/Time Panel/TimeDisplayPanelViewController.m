@@ -8,18 +8,25 @@
 
 #import "TimeDisplayPanelViewController.h"
 #import "TimeDetailViewController.h"
+#import "TPScheduleListViewController.h"
 #import "UIView+Resize.h"
 #import "CDIDataSource.h"
+
+#define kTPScheduleListOriginY 70
 
 @interface TimeDisplayPanelViewController ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-@property (weak, nonatomic) IBOutlet UILabel *roomIdentifier;
-@property (weak, nonatomic) IBOutlet UIImageView *statusImageView;
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-@property (weak, nonatomic) IBOutlet UILabel *roomNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *scheduleButton;
+@property (weak, nonatomic) IBOutlet UIImageView *nowIndicatorImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nextEventTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nextEventTitleLabel;
+
+@property (nonatomic, readwrite) BOOL scheduleListDisplayed;
+
+@property (nonatomic, strong) TPScheduleListViewController *scheduleListViewController;
 @property (nonatomic, strong) TimeDetailViewController *todayViewController;
 @property (nonatomic, strong) TimeDetailViewController *tomorrowViewController;
 
@@ -46,8 +53,7 @@
   _scrollView.delegate = self;
   _pageControl.numberOfPages = 2;
   _pageControl.currentPage = 0;
-  _roomIdentifier.text = self.roomTitle;
-  _roomNameLabel.text = [CDIDataSource nameForRoomID:self.roomID];
+  _scheduleListDisplayed = NO;
 }
 
 - (void)removeFromParentViewController
@@ -71,26 +77,36 @@
   self.pageControl.currentPage = isToday ? 0 : 1;
   self.dateLabel.text = isToday > 0 ? @"Today" : @"Tomorrow";
   
-  NSString *imageName = nil;
-  NSString *statusString = nil;
-  UIColor *color = nil;
-  CDIRoomStatus status = [CDIDataSource statusForRoom:self.roomID isToday:isToday];
-  if (status == CDIRoomStatusAvailable) {
-    imageName = @"menu_room_clear";
-    statusString = @"Available";
-    color = [UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:65.0/255.0 alpha:1.0];
-  } else if (status == CDIRoomStatusBusy) {
-    imageName = @"menu_room_available";
-    statusString = @"Busy";
-    color = [UIColor colorWithRed:250.0/255.0 green:140.0/255.0 blue:20.0/255.0 alpha:1.0];
-  } else {
-    imageName = @"menu_room_unavailable";
-    statusString = @"Unavailable";
-    color = [UIColor colorWithRed:190.0/255.0 green:190.0/255.0 blue:190.0/255.0 alpha:1.0];
-  }
-  self.statusImageView.image = [UIImage imageNamed:imageName];
-  self.statusLabel.text = statusString;
-  self.statusLabel.textColor = color;
+
+//  CDIRoomStatus status = [CDIDataSource statusForRoom:self.roomID isToday:isToday];
+//  if (status == CDIRoomStatusAvailable) {
+//    imageName = @"menu_room_clear";
+//    statusString = @"Available";
+//    color = [UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:65.0/255.0 alpha:1.0];
+//  } else if (status == CDIRoomStatusBusy) {
+//    imageName = @"menu_room_available";
+//    statusString = @"Busy";
+//    color = [UIColor colorWithRed:250.0/255.0 green:140.0/255.0 blue:20.0/255.0 alpha:1.0];
+//  } else {
+//    imageName = @"menu_room_unavailable";
+//    statusString = @"Unavailable";
+//    color = [UIColor colorWithRed:190.0/255.0 green:190.0/255.0 blue:190.0/255.0 alpha:1.0];
+//  }
+//  self.statusImageView.image = [UIImage imageNamed:imageName];
+//  self.statusLabel.text = statusString;
+//  self.statusLabel.textColor = color;
+}
+
+- (IBAction)didClickScheduleButton:(UIButton *)sender
+{
+  self.scheduleListDisplayed = !self.scheduleListDisplayed;
+  self.scheduleButton.selected = self.scheduleListDisplayed;
+  CGFloat targetOriginY = self.scheduleListDisplayed ? kTPScheduleListOriginY : self.view.frame.size.height;
+  [UIView animateWithDuration:0.7 animations:^{
+    [self.scheduleListViewController.view resetOriginY:targetOriginY];
+  } completion:^(BOOL finished) {
+    //TODO: 
+  }];
 }
 
 #pragma mark - Properties
@@ -118,6 +134,21 @@
     [self.scrollView addSubview:_tomorrowViewController.view];
   }
   return _tomorrowViewController;
+}
+
+- (TPScheduleListViewController *)scheduleListViewController
+{
+  if (!_scheduleListViewController) {
+    _scheduleListViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TPScheduleListViewController"];
+    _scheduleListViewController.roomTitle = self.roomTitle;
+    
+    [self addChildViewController:_scheduleListViewController];
+    [_scheduleListViewController.view resetSize:kTPScheduleListViewSize];
+    [_scheduleListViewController.view resetOrigin:CGPointMake(0, self.view.frame.size.height)];
+    [self.view addSubview:_scheduleListViewController.view];
+    [_scheduleListViewController didMoveToParentViewController:self];
+  }
+  return _scheduleListViewController;
 }
 
 - (NSString *)roomTitle

@@ -105,7 +105,7 @@
   if (self.isToday) {
     events = [CDIDataSource todayEventsForRoomID:self.roomID];
     for (CDIEvent *event in events) {
-      if (!event.passed) {
+      if (!event.passed.boolValue) {
         result++;
       }
     }

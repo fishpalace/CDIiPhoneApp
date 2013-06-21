@@ -13,19 +13,20 @@
 #import "NSNotificationCenter+Addition.h"
 #import "TImeZone.h"
 #import "AppDelegate.h"
+#import "CDIEventDAO.h"
 
 @interface CDIDataSource ()
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-//@property (nonatomic, strong) NSMutableArray *roomAtodayEvents;
-//@property (nonatomic, strong) NSMutableArray *roomAtomorrowEvents;
-//@property (nonatomic, strong) NSMutableArray *roomBtodayEvents;
-//@property (nonatomic, strong) NSMutableArray *roomBtomorrowEvents;
-//@property (nonatomic, strong) NSMutableArray *roomCtodayEvents;
-//@property (nonatomic, strong) NSMutableArray *roomCtomorrowEvents;
-//@property (nonatomic, strong) NSMutableArray *roomDtodayEvents;
-//@property (nonatomic, strong) NSMutableArray *roomDtomorrowEvents;
+@property (nonatomic, strong) NSMutableArray *roomAtodayEvents;
+@property (nonatomic, strong) NSMutableArray *roomAtomorrowEvents;
+@property (nonatomic, strong) NSMutableArray *roomBtodayEvents;
+@property (nonatomic, strong) NSMutableArray *roomBtomorrowEvents;
+@property (nonatomic, strong) NSMutableArray *roomCtodayEvents;
+@property (nonatomic, strong) NSMutableArray *roomCtomorrowEvents;
+@property (nonatomic, strong) NSMutableArray *roomDtodayEvents;
+@property (nonatomic, strong) NSMutableArray *roomDtomorrowEvents;
 @property (nonatomic, strong) NSTimer *eventTimer;
 @property (nonatomic, strong) NSTimer *roomInfoTimer;
 @property (nonatomic, strong) NSString *currentRoomName;
@@ -67,23 +68,23 @@ static CDIDataSource *sharedDataSource;
 {
   CDIDataSource *dataSource = [CDIDataSource sharedDataSource];
   NSArray *result = nil;
-//  switch (roomID) {
-//    case 1:
-//      result = dataSource.roomAtodayEvents;
-//      break;
-//    case 2:
-//      result = dataSource.roomBtodayEvents;
-//      break;
-//    case 3:
-//      result = dataSource.roomCtodayEvents;
-//      break;
-//    case 4:
-//      result = dataSource.roomDtodayEvents;
-//      break;
-//    default:
-//      result = dataSource.roomAtodayEvents;
-//      break;
-//  }
+  switch (roomID) {
+    case 1:
+      result = dataSource.roomAtodayEvents;
+      break;
+    case 2:
+      result = dataSource.roomBtodayEvents;
+      break;
+    case 3:
+      result = dataSource.roomCtodayEvents;
+      break;
+    case 4:
+      result = dataSource.roomDtodayEvents;
+      break;
+    default:
+      result = dataSource.roomAtodayEvents;
+      break;
+  }
   return result;
 }
 
@@ -91,23 +92,23 @@ static CDIDataSource *sharedDataSource;
 {
   CDIDataSource *dataSource = [CDIDataSource sharedDataSource];
   NSArray *result = nil;
-//  switch (roomID) {
-//    case 1:
-//      result = dataSource.roomAtomorrowEvents;
-//      break;
-//    case 2:
-//      result = dataSource.roomBtomorrowEvents;
-//      break;
-//    case 3:
-//      result = dataSource.roomCtomorrowEvents;
-//      break;
-//    case 4:
-//      result = dataSource.roomDtomorrowEvents;
-//      break;
-//    default:
-//      result = dataSource.roomAtomorrowEvents;
-//      break;
-//  }
+  switch (roomID) {
+    case 1:
+      result = dataSource.roomAtomorrowEvents;
+      break;
+    case 2:
+      result = dataSource.roomBtomorrowEvents;
+      break;
+    case 3:
+      result = dataSource.roomCtomorrowEvents;
+      break;
+    case 4:
+      result = dataSource.roomDtomorrowEvents;
+      break;
+    default:
+      result = dataSource.roomAtomorrowEvents;
+      break;
+  }
   return result;
 }
 
@@ -217,86 +218,55 @@ static CDIDataSource *sharedDataSource;
         for (NSDictionary *eventDict in dict[@"data"]) {
           [CDIEvent insertUserInfoWithDict:eventDict inManagedObjectContext:self.managedObjectContext];
         }
-//        [self setUpEventsForToday:dict[@"data"] array:todayArray roomID:roomID];
       }
+      
+      [self.managedObjectContext processPendingChanges];
+      [self.fetchedResultsController performFetch:nil];
+      [self updateLocalEventsArray];
     }
   };
   
   [client getEventListfromDate:fromDate
                         toDate:toDate
                     completion:handleData];
-//  [self fetchDataForID:1 todayArray:self.roomAtodayEvents tomorrowArray:self.roomAtomorrowEvents];
-//  [self fetchDataForID:2 todayArray:self.roomBtodayEvents tomorrowArray:self.roomBtomorrowEvents];
-//  [self fetchDataForID:3 todayArray:self.roomCtodayEvents tomorrowArray:self.roomCtomorrowEvents];
-//  [self fetchDataForID:4 todayArray:self.roomDtodayEvents tomorrowArray:self.roomDtomorrowEvents];
 }
 
-- (void)fetchDataForID:(NSInteger)roomID
-            todayArray:(NSMutableArray *)todayArray
-         tomorrowArray:(NSMutableArray *)tomorrowArray
+- (void)updateLocalEventsArray
 {
-  NSString *toDate = [NSDate stringOfDateWithIntervalFromCurrentDate:0];
-  NSString *fromDate = [NSDate stringOfDateWithIntervalFromCurrentDate:3600 * 24];
-  CDINetClient *client = [CDINetClient client];
-  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
-    if ([responseData isKindOfClass:[NSDictionary class]]) {
-      NSDictionary *dict = responseData;
-      if ([dict[@"data"] isKindOfClass:[NSArray class]]) {
-        [self setUpEventsForToday:dict[@"data"] array:todayArray roomID:roomID];
-      }
-    }
-  };
+  [self.roomAtodayEvents removeAllObjects];
+  [self.roomAtomorrowEvents removeAllObjects];
+  [self.roomBtodayEvents removeAllObjects];
+  [self.roomBtomorrowEvents removeAllObjects];
+  [self.roomCtodayEvents removeAllObjects];
+  [self.roomCtomorrowEvents removeAllObjects];
+  [self.roomDtodayEvents removeAllObjects];
+  [self.roomDtomorrowEvents removeAllObjects];
   
-  [client getEventListByRoomId:roomID
-                      fromDate:fromDate
-                        toDate:toDate
-                    completion:handleData];
-  
-  NSString *toDateForTomorrow = [NSDate stringOfDateWithIntervalFromCurrentDate:3600 * 24];
-  NSString *fromDateForTomorrow = [NSDate stringOfDateWithIntervalFromCurrentDate:7200 * 24];
-  void (^handleData2)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
-    if ([responseData isKindOfClass:[NSDictionary class]]) {
-      NSDictionary *dict = responseData;
-      if ([dict[@"data"] isKindOfClass:[NSArray class]]) {
-        [self setUpEventsForTomorrow:dict[@"data"] array:tomorrowArray roomID:roomID];
-      }
+  NSDate *tomorrowDate = [[NSDate todayDateStartingFromHour:0] dateByAddingTimeInterval:3600 * 24];
+  for (CDIEvent *event in self.fetchedResultsController.fetchedObjects) {
+    CDIEventDAO *eventDAO = [CDIEventDAO eventDAOInstanceWithEvent:event];
+    BOOL isToday = [[event.startDate laterDate:tomorrowDate] isEqualToDate:tomorrowDate];
+    NSMutableArray *array = nil;
+    switch (eventDAO.roomID.integerValue) {
+      case 1:
+        array = isToday ? self.roomAtodayEvents : self.roomAtomorrowEvents;
+        break;
+      case 2:
+        array = isToday ? self.roomBtodayEvents : self.roomBtomorrowEvents;
+        break;
+      case 3:
+        array = isToday ? self.roomCtodayEvents :  self.roomCtomorrowEvents;
+        break;
+      case 4:
+        array = isToday ? self.roomDtodayEvents :  self.roomDtomorrowEvents;
+        break;
+      default:
+        break;
     }
-  };
-  
-  [client getEventListByRoomId:roomID
-                      fromDate:fromDateForTomorrow
-                        toDate:toDateForTomorrow
-                    completion:handleData2];
-}
-
-- (void)setUpEventsForToday:(NSArray *)array
-                      array:(NSMutableArray *)todayArray
-                     roomID:(NSInteger)roomID
-{
-  [todayArray removeAllObjects];
-  for (NSDictionary *dict in array) {
-    CDIEvent *event = [[CDIEvent alloc] initWithDictionary:dict];
-    event.roomID = @(roomID);
-    if (!event.abandoned) {
-      [todayArray addObject:event];
+    if (isToday) {
+      [array addObject:eventDAO];
     }
-  }
-//  [NSNotificationCenter postDidFetchNewEventsNotification];
-  //TODO Send fetch new events notification
 
-}
-
-- (void)setUpEventsForTomorrow:(NSArray *)array
-                         array:(NSMutableArray *)tomorrowArray
-                        roomID:(NSInteger)roomID
-{
-  [tomorrowArray removeAllObjects];
-  for (NSDictionary *dict in array) {
-    CDIEvent *event = [[CDIEvent alloc] initWithDictionary:dict];
-    event.roomID = @(roomID);
-    if (!event.abandoned) {
-      [tomorrowArray addObject:event];
-    }
   }
 }
 
@@ -347,8 +317,8 @@ static CDIDataSource *sharedDataSource;
   }
   TimeZone *temp = passedTimeZone;
   
-  for (CDIEvent *event in events) {
-    if (!event.passed) {
+  for (CDIEventDAO *event in events) {
+    if (!event.passed.boolValue) {
       if (temp.endValue >= event.endValue.integerValue) {
         continue;
       } else if (temp.endValue >= event.startValue.integerValue && temp.endValue < event.endValue.integerValue) {
@@ -407,69 +377,69 @@ static CDIDataSource *sharedDataSource;
   return 1;
 }
 
-//- (NSMutableArray *)roomAtodayEvents
-//{
-//  if (!_roomAtodayEvents) {
-//    _roomAtodayEvents = [NSMutableArray array];
-//  }
-//  return _roomAtodayEvents;
-//}
-//
-//- (NSMutableArray *)roomAtomorrowEvents
-//{
-//  if (!_roomAtomorrowEvents) {
-//    _roomAtomorrowEvents = [NSMutableArray array];
-//  }
-//  return _roomAtomorrowEvents;
-//}
-//
-//- (NSMutableArray *)roomBtodayEvents
-//{
-//  if (!_roomBtodayEvents) {
-//    _roomBtodayEvents = [NSMutableArray array];
-//  }
-//  return _roomBtodayEvents;
-//}
-//
-//- (NSMutableArray *)roomBtomorrowEvents
-//{
-//  if (!_roomBtomorrowEvents) {
-//    _roomBtomorrowEvents = [NSMutableArray array];
-//  }
-//  return _roomBtomorrowEvents;
-//}
-//
-//- (NSMutableArray *)roomCtodayEvents
-//{
-//  if (!_roomCtodayEvents) {
-//    _roomCtodayEvents = [NSMutableArray array];
-//  }
-//  return _roomCtodayEvents;
-//}
-//
-//- (NSMutableArray *)roomCtomorrowEvents
-//{
-//  if (!_roomCtomorrowEvents) {
-//    _roomCtomorrowEvents = [NSMutableArray array];
-//  }
-//  return _roomCtomorrowEvents;
-//}
-//
-//- (NSMutableArray *)roomDtodayEvents
-//{
-//  if (!_roomDtodayEvents) {
-//    _roomDtodayEvents = [NSMutableArray array];
-//  }
-//  return _roomDtodayEvents;
-//}
-//
-//- (NSMutableArray *)roomDtomorrowEvents
-//{
-//  if (!_roomDtomorrowEvents) {
-//    _roomDtomorrowEvents = [NSMutableArray array];
-//  }
-//  return _roomDtomorrowEvents;
-//}
+- (NSMutableArray *)roomAtodayEvents
+{
+  if (!_roomAtodayEvents) {
+    _roomAtodayEvents = [NSMutableArray array];
+  }
+  return _roomAtodayEvents;
+}
+
+- (NSMutableArray *)roomAtomorrowEvents
+{
+  if (!_roomAtomorrowEvents) {
+    _roomAtomorrowEvents = [NSMutableArray array];
+  }
+  return _roomAtomorrowEvents;
+}
+
+- (NSMutableArray *)roomBtodayEvents
+{
+  if (!_roomBtodayEvents) {
+    _roomBtodayEvents = [NSMutableArray array];
+  }
+  return _roomBtodayEvents;
+}
+
+- (NSMutableArray *)roomBtomorrowEvents
+{
+  if (!_roomBtomorrowEvents) {
+    _roomBtomorrowEvents = [NSMutableArray array];
+  }
+  return _roomBtomorrowEvents;
+}
+
+- (NSMutableArray *)roomCtodayEvents
+{
+  if (!_roomCtodayEvents) {
+    _roomCtodayEvents = [NSMutableArray array];
+  }
+  return _roomCtodayEvents;
+}
+
+- (NSMutableArray *)roomCtomorrowEvents
+{
+  if (!_roomCtomorrowEvents) {
+    _roomCtomorrowEvents = [NSMutableArray array];
+  }
+  return _roomCtomorrowEvents;
+}
+
+- (NSMutableArray *)roomDtodayEvents
+{
+  if (!_roomDtodayEvents) {
+    _roomDtodayEvents = [NSMutableArray array];
+  }
+  return _roomDtodayEvents;
+}
+
+- (NSMutableArray *)roomDtomorrowEvents
+{
+  if (!_roomDtomorrowEvents) {
+    _roomDtomorrowEvents = [NSMutableArray array];
+  }
+  return _roomDtomorrowEvents;
+}
 
 - (NSMutableDictionary *)roomNameDict
 {
@@ -530,7 +500,7 @@ static CDIDataSource *sharedDataSource;
     
     fetchRequest.entity = [NSEntityDescription entityForName:@"CDIEvent"
                                       inManagedObjectContext:self.managedObjectContext];
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"updateDate" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES];
 //    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"operatedBy == %@ && currentUserID == %@",self.coreDataIdentifier, self.currentUser.userID];
     fetchRequest.sortDescriptors = @[sortDescriptor];
         

@@ -61,6 +61,7 @@
         <attribute name="previewImageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="videoURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="workInfo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="workInfoEn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="workStatus" optional="YES" attributeType="String" syncable="YES"/>

@@ -9,6 +9,9 @@
 #import "PeopleInfoViewController.h"
 #import "PeopleInfoWorkListCell.h"
 #import "CDIUser.h"
+#import "CDINetClient.h"
+#import "CDIWork.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface PeopleInfoViewController ()
 
@@ -45,6 +48,31 @@
   _userTitleLabel.layer.masksToBounds = YES;
   _userPositionLabel.layer.cornerRadius = 5;
   _userPositionLabel.layer.masksToBounds = YES;
+  
+  [self loadData];
+}
+
+- (void)loadData
+{
+  CDINetClient *client = [CDINetClient client];
+  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+    if ([responseData isKindOfClass:[NSDictionary class]]) {
+      NSDictionary *dict = responseData;
+      NSArray *dataArray = dict[@"data"];
+      for (NSDictionary *workDict in dataArray) {
+        CDIWork *work = [CDIWork insertWorkInfoWithDict:workDict inManagedObjectContext:self.managedObjectContext];
+        [work addInvolvedUserObject:self.user];
+        [self.user addRelatedWorkObject:work];
+      }
+      
+      [self.managedObjectContext processPendingChanges];
+      [self.fetchedResultsController performFetch:nil];
+      
+      [self.tableview reloadData];
+    }
+  };
+  
+  [client getWorkListWithUserID:self.user.userID completion:handleData];
 }
 
 - (void)configureRequest:(NSFetchRequest *)request
@@ -74,7 +102,10 @@
   
   cell.isPlaceHolder = self.fetchedResultsController.fetchedObjects.count == 0;
   if (!cell.isPlaceHolder) {
-
+    CDIWork *work = self.fetchedResultsController.fetchedObjects[indexPath.row];
+    cell.workNameLabel.text = work.nameEn;
+    cell.workTypeLabel.text = work.workType;
+    [cell.workPicImageView setImageWithURL:[NSURL URLWithString:work.imgURL]];
   }
   return cell;
 }

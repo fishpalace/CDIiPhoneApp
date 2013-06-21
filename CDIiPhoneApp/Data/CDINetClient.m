@@ -130,10 +130,10 @@ static CDINetClient *sharedClient;
   [self getPath:path completion:completion];
 }
 
-- (void)getWorkListWithUserName:(NSString *)userName
-                     completion:(void (^)(BOOL succeeded, id responseData))completion
+- (void)getWorkListWithUserID:(NSString *)userID
+                   completion:(void (^)(BOOL succeeded, id responseData))completion
 {
-  NSString *path = [NSString stringWithFormat:@"user/getUserListByCategoryAndPriority/*/*/100/1"];
+  NSString *path = [NSString stringWithFormat:@"work/getWorkListByUserIdAndStatusAndType/%@/*/*/100/1", userID];
   [self getPath:path completion:completion];
 }
 

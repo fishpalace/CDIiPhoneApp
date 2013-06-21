@@ -11,6 +11,8 @@
 #import "CDINews.h"
 #import "CDIWork.h"
 
+#import "NSString+Dictionary.h"
+
 static CDIUser *currentUser;
 
 @implementation CDIUser
@@ -78,19 +80,19 @@ static CDIUser *currentUser;
     user = [NSEntityDescription insertNewObjectForEntityForName:@"CDIUser" inManagedObjectContext:context];
   }
   
-  user.userID = [user stringForDict:dict key:@"id"];
-  user.name = [user stringForDict:dict key:@"name"];
-  user.realName = [user stringForDict:dict key:@"realName_en"];
-  user.avatarLargeURL = [user stringForDict:dict key:@"avatarLargeUrl"];
-  user.avatarMidURL = [user stringForDict:dict key:@"avatarMiddleUrl"];
-  user.avatarSmallURL = [user stringForDict:dict key:@"avatarSmallUrl"];
-  user.dribbleURL = [user stringForDict:dict key:@"dribbbleId"];
-  user.homePageURL = [user stringForDict:dict key:@"personalSite"];
-  user.linkedInURL = [user stringForDict:dict key:@"linkedInId"];
-  user.position = [user stringForDict:dict key:@"title_en"];
-  user.title = [user stringForDict:dict key:@"category"];
-  user.twitterURL = [user stringForDict:dict key:@"twitterId"];
-  user.weiboURL = [user stringForDict:dict key:@"weiboId"];
+  user.userID = [NSString stringForDict:dict key:@"id"];
+  user.name = [NSString stringForDict:dict key:@"name"];
+  user.realName = [NSString stringForDict:dict key:@"realName_en"];
+  user.avatarLargeURL = [NSString stringForDict:dict key:@"avatarLargeUrl"];
+  user.avatarMidURL = [NSString stringForDict:dict key:@"avatarMiddleUrl"];
+  user.avatarSmallURL = [NSString stringForDict:dict key:@"avatarSmallUrl"];
+  user.dribbleURL = [NSString stringForDict:dict key:@"dribbbleId"];
+  user.homePageURL = [NSString stringForDict:dict key:@"personalSite"];
+  user.linkedInURL = [NSString stringForDict:dict key:@"linkedInId"];
+  user.position = [NSString stringForDict:dict key:@"title_en"];
+  user.title = [NSString stringForDict:dict key:@"category"];
+  user.twitterURL = [NSString stringForDict:dict key:@"twitterId"];
+  user.weiboURL = [NSString stringForDict:dict key:@"weiboId"];
   
   return user;
 }
@@ -106,16 +108,6 @@ static CDIUser *currentUser;
   CDIUser *res = [items lastObject];
   
   return res;
-}
-
-- (NSString *)stringForDict:(NSDictionary *)dict key:(NSString *)key
-{
-  NSObject *result = [dict[key] isKindOfClass:[NSNull class]] ? @"" : dict[key];
-  NSString *stringValue = (NSString *)result;
-  if ([result isKindOfClass:[NSNumber class]]) {
-    stringValue = ((NSNumber *)result).stringValue;
-  }
-  return stringValue;
 }
 
 

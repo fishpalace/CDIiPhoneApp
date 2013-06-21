@@ -2,7 +2,7 @@
 //  CDIWork.h
 //  CDIiPhoneApp
 //
-//  Created by Gabriel Yeah on 13-6-17.
+//  Created by Gabriel Yeah on 13-6-21.
 //  Copyright (c) 2013年 Gabriel Yeah. All rights reserved.
 //
 
@@ -26,8 +26,13 @@
 @property (nonatomic, retain) NSString * workInfoEn;
 @property (nonatomic, retain) NSString * workStatus;
 @property (nonatomic, retain) NSString * workType;
+@property (nonatomic, retain) NSString * workID;
 @property (nonatomic, retain) CDIUser *creator;
 @property (nonatomic, retain) NSSet *involvedUser;
+
++ (CDIWork *)insertWorkInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context;
++ (CDIWork *)workWithWorkID:(NSString *)workID inManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end
 
 @interface CDIWork (CoreDataGeneratedAccessors)

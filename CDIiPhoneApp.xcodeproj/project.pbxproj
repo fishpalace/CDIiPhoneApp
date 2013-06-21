@@ -54,6 +54,8 @@
 		184227E817716B86009A37BB /* MenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184227E717716B86009A37BB /* MenuItemCell.m */; };
 		18533D19177454D500A61679 /* PeopleInfoWorkListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18533D18177454D500A61679 /* PeopleInfoWorkListCell.m */; };
 		1859E7CF17745BE30029B46F /* CDIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859E7CE17745BE30029B46F /* CDIUser.m */; };
+		1859E7D2177476910029B46F /* NSString+Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859E7D1177476910029B46F /* NSString+Dictionary.m */; };
+		1859E7D5177477170029B46F /* CDIWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859E7D4177477170029B46F /* CDIWork.m */; };
 		1872230817731FBE000B5F17 /* time_schedule_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230617731FBE000B5F17 /* time_schedule_list.png */; };
 		1872230917731FBE000B5F17 /* time_schedule_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230717731FBE000B5F17 /* time_schedule_list@2x.png */; };
 		1872230C17732243000B5F17 /* tableview_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230A17732243000B5F17 /* tableview_banner.png */; };
@@ -226,7 +228,6 @@
 		18BACD62176EE6F80058042D /* CoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD61176EE63A0058042D /* CoreDataViewController.m */; };
 		18BACD6B176EE8640058042D /* CDINews.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD6A176EE8640058042D /* CDINews.m */; };
 		18BACD6E176EE8640058042D /* CDIRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD6D176EE8640058042D /* CDIRoom.m */; };
-		18BACD71176EE8640058042D /* CDIWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD70176EE8640058042D /* CDIWork.m */; };
 		18CDE7B21774204000711E2A /* time_button_graph.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CDE7B01774204000711E2A /* time_button_graph.png */; };
 		18CDE7B31774204000711E2A /* time_button_graph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CDE7B11774204000711E2A /* time_button_graph@2x.png */; };
 		18CDE7B91774218900711E2A /* TPScheduleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CDE7B81774218900711E2A /* TPScheduleListViewController.m */; };
@@ -297,6 +298,10 @@
 		18533D18177454D500A61679 /* PeopleInfoWorkListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeopleInfoWorkListCell.m; path = "Menu Panel/PeopleInfoWorkListCell.m"; sourceTree = "<group>"; };
 		1859E7CD17745BE30029B46F /* CDIUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIUser.h; path = Data/CDIUser.h; sourceTree = "<group>"; };
 		1859E7CE17745BE30029B46F /* CDIUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIUser.m; path = Data/CDIUser.m; sourceTree = "<group>"; };
+		1859E7D0177476910029B46F /* NSString+Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Dictionary.h"; path = "Category/NSString+Dictionary.h"; sourceTree = "<group>"; };
+		1859E7D1177476910029B46F /* NSString+Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Dictionary.m"; path = "Category/NSString+Dictionary.m"; sourceTree = "<group>"; };
+		1859E7D3177477170029B46F /* CDIWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIWork.h; path = Data/CDIWork.h; sourceTree = "<group>"; };
+		1859E7D4177477170029B46F /* CDIWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIWork.m; path = Data/CDIWork.m; sourceTree = "<group>"; };
 		1872230617731FBE000B5F17 /* time_schedule_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time_schedule_list.png; path = "Image Resource/Model Panel/time_schedule_list.png"; sourceTree = SOURCE_ROOT; };
 		1872230717731FBE000B5F17 /* time_schedule_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "time_schedule_list@2x.png"; path = "Image Resource/Model Panel/time_schedule_list@2x.png"; sourceTree = SOURCE_ROOT; };
 		1872230A17732243000B5F17 /* tableview_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_banner.png; sourceTree = "<group>"; };
@@ -510,8 +515,6 @@
 		18BACD6A176EE8640058042D /* CDINews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDINews.m; path = Data/CDINews.m; sourceTree = "<group>"; };
 		18BACD6C176EE8640058042D /* CDIRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIRoom.h; path = Data/CDIRoom.h; sourceTree = "<group>"; };
 		18BACD6D176EE8640058042D /* CDIRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIRoom.m; path = Data/CDIRoom.m; sourceTree = "<group>"; };
-		18BACD6F176EE8640058042D /* CDIWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIWork.h; path = Data/CDIWork.h; sourceTree = "<group>"; };
-		18BACD70176EE8640058042D /* CDIWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIWork.m; path = Data/CDIWork.m; sourceTree = "<group>"; };
 		18CDE7B01774204000711E2A /* time_button_graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_button_graph.png; sourceTree = "<group>"; };
 		18CDE7B11774204000711E2A /* time_button_graph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_button_graph@2x.png"; sourceTree = "<group>"; };
 		18CDE7B71774218900711E2A /* TPScheduleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPScheduleListViewController.h; path = "Time Panel/TPScheduleListViewController.h"; sourceTree = "<group>"; };
@@ -769,6 +772,8 @@
 				18E0EA981738DBE7006EFF51 /* UIApplication+Addition.m */,
 				18B995821759CB7A0010B9D4 /* NSNotificationCenter+Addition.h */,
 				18B995831759CB7A0010B9D4 /* NSNotificationCenter+Addition.m */,
+				1859E7D0177476910029B46F /* NSString+Dictionary.h */,
+				1859E7D1177476910029B46F /* NSString+Dictionary.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -918,8 +923,8 @@
 			isa = PBXGroup;
 			children = (
 				18B74400175B105100585CF5 /* AFNetworking */,
-				18BACD6F176EE8640058042D /* CDIWork.h */,
-				18BACD70176EE8640058042D /* CDIWork.m */,
+				1859E7D3177477170029B46F /* CDIWork.h */,
+				1859E7D4177477170029B46F /* CDIWork.m */,
 				18BACD6C176EE8640058042D /* CDIRoom.h */,
 				18BACD6D176EE8640058042D /* CDIRoom.m */,
 				18BACD69176EE8640058042D /* CDINews.h */,
@@ -1302,6 +1307,7 @@
 				18E0EA991738DBE7006EFF51 /* UIApplication+Addition.m in Sources */,
 				18B995841759CB7A0010B9D4 /* NSNotificationCenter+Addition.m in Sources */,
 				18B7437E175AE3B500585CF5 /* UIImage+ScreenShoot.m in Sources */,
+				1859E7D2177476910029B46F /* NSString+Dictionary.m in Sources */,
 				18B7437F175AE3B500585CF5 /* UIImage+StackBlur.m in Sources */,
 				18B74383175AE50600585CF5 /* ModelPanelViewController.m in Sources */,
 				18B743DE175B077700585CF5 /* TimeDisplayPanelViewController.m in Sources */,
@@ -1312,7 +1318,7 @@
 				184227E817716B86009A37BB /* MenuItemCell.m in Sources */,
 				18B743F6175B0C9D00585CF5 /* CDIDataSource.m in Sources */,
 				18B743F8175B0C9D00585CF5 /* CDINetClient.m in Sources */,
-				18BACD71176EE8640058042D /* CDIWork.m in Sources */,
+				1859E7D5177477170029B46F /* CDIWork.m in Sources */,
 				18B743FC175B0E9500585CF5 /* NSDate+Addition.m in Sources */,
 				1859E7CF17745BE30029B46F /* CDIUser.m in Sources */,
 				18B743FF175B0ED500585CF5 /* TImeZone.m in Sources */,

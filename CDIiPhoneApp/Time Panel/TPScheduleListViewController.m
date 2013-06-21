@@ -12,6 +12,7 @@
 #import "CDIEventDAO.h"
 #import "CDIEvent.h"
 #import "CDIDataSource.h"
+#import "CDINetClient.h"
 
 @interface TPScheduleListViewController ()
 

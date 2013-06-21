@@ -67,14 +67,6 @@ static ModelPanelViewController *sharedModelPanelViewController;
   _titleImageView.layer.masksToBounds = YES;
 }
 
-//- (void)viewDidLayoutSubviews
-//{
-//  self.contentBGImageView.center = self.view.center;
-//  CGFloat relativeOriginYBase = self.contentBGImageView.frame.origin.y;
-//  [self.closeButton resetOriginY:relativeOriginYBase + kCloseButtonGap];
-//  [self.containerView resetOriginY:relativeOriginYBase + kContentViewGap];
-//}
-
 - (void)displayModelPanelWithViewController:(UIViewController *)vc
                               withTitleName:(NSString *)titleName
                          functionButtonName:(NSString *)functionButtonName

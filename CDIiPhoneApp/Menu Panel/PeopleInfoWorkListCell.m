@@ -26,4 +26,14 @@
     // Configure the view for the selected state
 }
 
+- (void)setIsPlaceHolder:(BOOL)isPlaceHolder
+{
+  self.noItemIndicatorLabel.hidden = !isPlaceHolder;
+  self.workNameLabel.hidden = isPlaceHolder;
+  self.workTypeLabel.hidden = isPlaceHolder;
+  self.workPicImageView.hidden = isPlaceHolder;
+  self.workPicCoverImageView.hidden = isPlaceHolder;
+  _isPlaceHolder = isPlaceHolder;
+}
+
 @end

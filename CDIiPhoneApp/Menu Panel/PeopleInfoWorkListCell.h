@@ -10,4 +10,11 @@
 
 @interface PeopleInfoWorkListCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *noItemIndicatorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *workNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *workTypeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *workPicImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *workPicCoverImageView;
+@property (nonatomic, readwrite) BOOL isPlaceHolder;
+
 @end

@@ -52,6 +52,7 @@
 		183AE77B175C38DA008310BF /* menu_button_schedule_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE777175C38DA008310BF /* menu_button_schedule_dark.png */; };
 		183AE77C175C38DA008310BF /* menu_button_schedule_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE778175C38DA008310BF /* menu_button_schedule_dark@2x.png */; };
 		184227E817716B86009A37BB /* MenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184227E717716B86009A37BB /* MenuItemCell.m */; };
+		18533D19177454D500A61679 /* PeopleInfoWorkListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18533D18177454D500A61679 /* PeopleInfoWorkListCell.m */; };
 		1872230817731FBE000B5F17 /* time_schedule_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230617731FBE000B5F17 /* time_schedule_list.png */; };
 		1872230917731FBE000B5F17 /* time_schedule_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230717731FBE000B5F17 /* time_schedule_list@2x.png */; };
 		1872230C17732243000B5F17 /* tableview_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230A17732243000B5F17 /* tableview_banner.png */; };
@@ -194,8 +195,6 @@
 		18B74427175B11FE00585CF5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B74426175B11FE00585CF5 /* SystemConfiguration.framework */; };
 		18B74429175B121800585CF5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B74428175B121800585CF5 /* MobileCoreServices.framework */; };
 		18B7442C175B15CC00585CF5 /* CDIViewControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7442B175B15CC00585CF5 /* CDIViewControllerFactory.m */; };
-		18B74433175B3E8800585CF5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B74431175B3E8800585CF5 /* icon.png */; };
-		18B74434175B3E8800585CF5 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B74432175B3E8800585CF5 /* icon@2x.png */; };
 		18B74436175B3E9E00585CF5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B74435175B3E9E00585CF5 /* icon.png */; };
 		18B74438175B3EAA00585CF5 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B74437175B3EAA00585CF5 /* icon@2x.png */; };
 		18B995841759CB7A0010B9D4 /* NSNotificationCenter+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B995831759CB7A0010B9D4 /* NSNotificationCenter+Addition.m */; };
@@ -294,6 +293,8 @@
 		183AE778175C38DA008310BF /* menu_button_schedule_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_button_schedule_dark@2x.png"; sourceTree = "<group>"; };
 		184227E617716B86009A37BB /* MenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuItemCell.h; path = "Menu Panel/MenuItemCell.h"; sourceTree = "<group>"; };
 		184227E717716B86009A37BB /* MenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuItemCell.m; path = "Menu Panel/MenuItemCell.m"; sourceTree = "<group>"; };
+		18533D17177454D500A61679 /* PeopleInfoWorkListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeopleInfoWorkListCell.h; path = "Menu Panel/PeopleInfoWorkListCell.h"; sourceTree = "<group>"; };
+		18533D18177454D500A61679 /* PeopleInfoWorkListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeopleInfoWorkListCell.m; path = "Menu Panel/PeopleInfoWorkListCell.m"; sourceTree = "<group>"; };
 		1872230617731FBE000B5F17 /* time_schedule_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time_schedule_list.png; path = "Image Resource/Model Panel/time_schedule_list.png"; sourceTree = SOURCE_ROOT; };
 		1872230717731FBE000B5F17 /* time_schedule_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "time_schedule_list@2x.png"; path = "Image Resource/Model Panel/time_schedule_list@2x.png"; sourceTree = SOURCE_ROOT; };
 		1872230A17732243000B5F17 /* tableview_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_banner.png; sourceTree = "<group>"; };
@@ -473,8 +474,6 @@
 		18B74428175B121800585CF5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		18B7442A175B15CC00585CF5 /* CDIViewControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDIViewControllerFactory.h; sourceTree = "<group>"; };
 		18B7442B175B15CC00585CF5 /* CDIViewControllerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDIViewControllerFactory.m; sourceTree = "<group>"; };
-		18B74431175B3E8800585CF5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = "Image Resource/icon.png"; sourceTree = SOURCE_ROOT; };
-		18B74432175B3E8800585CF5 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Image Resource/icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		18B74435175B3E9E00585CF5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		18B74437175B3EAA00585CF5 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		18B995821759CB7A0010B9D4 /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+Addition.h"; path = "Category/NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
@@ -742,8 +741,6 @@
 		187F50221734EAE5006B46A3 /* Default */ = {
 			isa = PBXGroup;
 			children = (
-				18B74431175B3E8800585CF5 /* icon.png */,
-				18B74432175B3E8800585CF5 /* icon@2x.png */,
 				18B743B9175B017500585CF5 /* Default-568h@2x.png */,
 				18B743BA175B017500585CF5 /* Default.png */,
 				18B743BB175B017500585CF5 /* Default@2x.png */,
@@ -1041,6 +1038,8 @@
 				18948CD4175CE2C8004E07EB /* PeopleListCollectionViewCell.m */,
 				18948D06175D06A9004E07EB /* PeopleInfoViewController.h */,
 				18948D07175D06A9004E07EB /* PeopleInfoViewController.m */,
+				18533D17177454D500A61679 /* PeopleInfoWorkListCell.h */,
+				18533D18177454D500A61679 /* PeopleInfoWorkListCell.m */,
 			);
 			name = "Menu Panel";
 			sourceTree = "<group>";
@@ -1183,8 +1182,6 @@
 				18B743D7175B04FB00585CF5 /* time_topbar_bg.png in Resources */,
 				18B743E8175B096C00585CF5 /* time_panel_bg.png in Resources */,
 				18B743E9175B096C00585CF5 /* time_panel_bg@2x.png in Resources */,
-				18B74433175B3E8800585CF5 /* icon.png in Resources */,
-				18B74434175B3E8800585CF5 /* icon@2x.png in Resources */,
 				18B74436175B3E9E00585CF5 /* icon.png in Resources */,
 				18B74438175B3EAA00585CF5 /* icon@2x.png in Resources */,
 				183AE76B175C38CD008310BF /* tableview_bg.png in Resources */,
@@ -1311,6 +1308,7 @@
 				18B743DE175B077700585CF5 /* TimeDisplayPanelViewController.m in Sources */,
 				18B743E4175B083900585CF5 /* GYPieChart.m in Sources */,
 				18B743E5175B083900585CF5 /* XYPieChart.m in Sources */,
+				18533D19177454D500A61679 /* PeopleInfoWorkListCell.m in Sources */,
 				18B743EC175B0B3F00585CF5 /* TimeDetailViewController.m in Sources */,
 				184227E817716B86009A37BB /* MenuItemCell.m in Sources */,
 				18B743F6175B0C9D00585CF5 /* CDIDataSource.m in Sources */,

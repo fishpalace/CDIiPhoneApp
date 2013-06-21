@@ -7,7 +7,7 @@
 //
 
 #import "PeopleInfoViewController.h"
-#import "PIWorkListCell.h"
+#import "PeopleInfoWorkListCell.h"
 #import "CDIUser.h"
 
 @interface PeopleInfoViewController ()
@@ -70,7 +70,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  PIWorkListCell *cell = [self.tableview dequeueReusableCellWithIdentifier:@"PIWorkListCell"];
+  PeopleInfoWorkListCell *cell = [self.tableview dequeueReusableCellWithIdentifier:@"PeopleInfoWorkListCell"];
   
   cell.isPlaceHolder = self.fetchedResultsController.fetchedObjects.count == 0;
   if (!cell.isPlaceHolder) {

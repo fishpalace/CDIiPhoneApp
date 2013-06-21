@@ -456,51 +456,50 @@
                                 <color key="textColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0Hz-yg-RBa">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="97" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0Hz-yg-RBa">
                                 <rect key="frame" x="0.0" y="125" width="320" height="275"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="PIWorkListCell" id="pMp-kD-Sa3" customClass="PIWorkListCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="80"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="PeopleInfoWorkListCell" rowHeight="97" id="pMp-kD-Sa3" customClass="PeopleInfoWorkListCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="97"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="menu_avatar_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="9RY-Zh-yeR">
-                                                    <rect key="frame" x="17" y="4" width="38" height="38"/>
+                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No projects" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-SD-ARl">
+                                                    <rect key="frame" x="0.0" y="38" width="320" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="38" id="32i-2V-S9L"/>
-                                                        <constraint firstAttribute="height" constant="38" id="fYB-Li-fZr"/>
+                                                        <constraint firstAttribute="height" constant="21" id="XIW-Sv-uJd"/>
                                                     </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_avatar_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="9RY-Zh-yeR">
+                                                    <rect key="frame" x="10" y="25" width="38" height="38"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P2P-B2-BLQ">
-                                                    <rect key="frame" x="17" y="4" width="38" height="38"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P2P-B2-BLQ">
+                                                    <rect key="frame" x="10" y="25" width="38" height="38"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="38" id="NnN-ak-gIR"/>
                                                         <constraint firstAttribute="height" constant="38" id="hyy-8M-xRb"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No projects" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-SD-ARl">
-                                                    <rect key="frame" x="7" y="16" width="320" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smart Campus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="df6-bj-Cnu">
-                                                    <rect key="frame" x="76" y="4" width="231" height="17"/>
+                                                    <rect key="frame" x="69" y="25" width="112" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Application" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJ0-eQ-lBU">
-                                                    <rect key="frame" x="76" y="21" width="62" height="15"/>
+                                                    <rect key="frame" x="69" y="46" width="62" height="15"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="RKb-63-5Dg"/>
@@ -513,14 +512,27 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="P2P-B2-BLQ" secondAttribute="trailing" constant="265" id="3hV-6C-keA"/>
-                                            <constraint firstItem="9RY-Zh-yeR" firstAttribute="top" secondItem="df6-bj-Cnu" secondAttribute="top" id="4tu-IB-N5A"/>
+                                            <constraint firstItem="XRp-SD-ARl" firstAttribute="leading" secondItem="pMp-kD-Sa3" secondAttribute="leading" id="8jT-a2-cw8"/>
+                                            <constraint firstItem="P2P-B2-BLQ" firstAttribute="trailing" secondItem="9RY-Zh-yeR" secondAttribute="trailing" id="9qo-KU-1pE"/>
                                             <constraint firstItem="dJ0-eQ-lBU" firstAttribute="leading" secondItem="df6-bj-Cnu" secondAttribute="leading" id="Ant-pw-iJt"/>
-                                            <constraint firstAttribute="centerY" secondItem="9RY-Zh-yeR" secondAttribute="centerY" constant="17" id="LQt-sC-0j3"/>
-                                            <constraint firstAttribute="centerX" secondItem="P2P-B2-BLQ" secondAttribute="centerX" constant="124" id="NOa-bj-4Bs"/>
+                                            <constraint firstAttribute="trailing" secondItem="XRp-SD-ARl" secondAttribute="trailing" id="CVx-4C-pdv"/>
+                                            <constraint firstAttribute="centerY" secondItem="P2P-B2-BLQ" secondAttribute="centerY" constant="5" id="Cnl-5q-Fin"/>
+                                            <constraint firstItem="P2P-B2-BLQ" firstAttribute="leading" secondItem="pMp-kD-Sa3" secondAttribute="leading" constant="10" id="PWR-eu-pVa"/>
                                             <constraint firstItem="dJ0-eQ-lBU" firstAttribute="top" secondItem="df6-bj-Cnu" secondAttribute="bottom" id="VNz-Co-W8P"/>
+                                            <constraint firstItem="df6-bj-Cnu" firstAttribute="top" secondItem="P2P-B2-BLQ" secondAttribute="top" id="apZ-rU-Bf4"/>
+                                            <constraint firstItem="P2P-B2-BLQ" firstAttribute="top" secondItem="9RY-Zh-yeR" secondAttribute="top" id="cl2-aU-cCJ"/>
+                                            <constraint firstAttribute="centerY" secondItem="XRp-SD-ARl" secondAttribute="centerY" id="mkp-uO-Yxu"/>
+                                            <constraint firstItem="P2P-B2-BLQ" firstAttribute="bottom" secondItem="9RY-Zh-yeR" secondAttribute="bottom" id="oyJ-nx-ptz"/>
                                             <constraint firstItem="df6-bj-Cnu" firstAttribute="leading" secondItem="P2P-B2-BLQ" secondAttribute="trailing" constant="21" id="xus-lv-nel"/>
+                                            <constraint firstItem="P2P-B2-BLQ" firstAttribute="leading" secondItem="9RY-Zh-yeR" secondAttribute="leading" id="zaD-ge-I05"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="noItemIndicatorLabel" destination="XRp-SD-ARl" id="PBc-ug-aEf"/>
+                                            <outlet property="workNameLabel" destination="df6-bj-Cnu" id="gL2-aH-Xoq"/>
+                                            <outlet property="workPicCoverImageView" destination="9RY-Zh-yeR" id="EGb-3j-AVe"/>
+                                            <outlet property="workPicImageView" destination="P2P-B2-BLQ" id="MnG-Mw-3J7"/>
+                                            <outlet property="workTypeLabel" destination="dJ0-eQ-lBU" id="9Ye-RF-UQ0"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1797,12 +1809,6 @@
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
-        <class className="PIWorkListCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIWorkListCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="noItemIndicatorLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
         <class className="PeopleInfoViewController" superclassName="CoreDataViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PeopleInfoViewController.h"/>
             <relationships>
@@ -1814,6 +1820,16 @@
                 <relationship kind="outlet" name="tableview" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="userPositionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="userTitleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PeopleInfoWorkListCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PeopleInfoWorkListCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="noItemIndicatorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="workNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="workPicCoverImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="workPicImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="workTypeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="PeopleListCollectionViewCell" superclassName="UICollectionViewCell">
@@ -1876,7 +1892,6 @@
         <class className="TimeDisplayPanelViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeDisplayPanelViewController.h"/>
             <relationships>
-                <relationship kind="action" name="didClickScheduleButton:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="nextEventTimeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="nextEventTitleLabel" candidateClass="UILabel"/>

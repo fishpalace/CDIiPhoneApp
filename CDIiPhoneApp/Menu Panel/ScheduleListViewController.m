@@ -60,7 +60,7 @@
   request.entity = [NSEntityDescription entityForName:@"CDIEvent"
                                inManagedObjectContext:self.managedObjectContext];
   NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES];
-//  request.predicate = [NSPredicate predicateWithFormat:@"operatedBy == %@ && currentUserID == %@",self.coreDataIdentifier, self.currentUser.userID];
+
   request.sortDescriptors = @[sortDescriptor];
 }
 

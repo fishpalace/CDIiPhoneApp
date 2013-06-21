@@ -140,7 +140,7 @@
 {
   if (!_scheduleListViewController) {
     _scheduleListViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TPScheduleListViewController"];
-    _scheduleListViewController.roomTitle = self.roomTitle;
+    _scheduleListViewController.roomID = self.roomID;
     
     [self addChildViewController:_scheduleListViewController];
     [_scheduleListViewController.view resetSize:kTPScheduleListViewSize];

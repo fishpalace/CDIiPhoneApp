@@ -12,6 +12,6 @@
 
 @interface TPScheduleListViewController : CoreDataViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSString *roomTitle;
+@property (nonatomic, readwrite) NSInteger roomID;
 
 @end

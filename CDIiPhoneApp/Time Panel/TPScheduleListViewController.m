@@ -47,8 +47,25 @@
   request.entity = [NSEntityDescription entityForName:@"CDIEvent"
                                inManagedObjectContext:self.managedObjectContext];
   NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES];
-  NSString *roomFilter = [NSString stringWithFormat:@"occupiedBy%@", self.roomTitle];
-  request.predicate = [NSPredicate predicateWithFormat:@"%@ == %@", roomFilter, @YES];
+  if (self.roomID == 1) {
+    
+  }
+  switch (self.roomID) {
+    case 1:
+      request.predicate = [NSPredicate predicateWithFormat:@"occupiedByA == 1"];
+      break;
+    case 2:
+      request.predicate = [NSPredicate predicateWithFormat:@"occupiedByB == 1"];
+      break;
+    case 3:
+      request.predicate = [NSPredicate predicateWithFormat:@"occupiedByC == 1"];
+      break;
+    case 4:
+      request.predicate = [NSPredicate predicateWithFormat:@"occupiedByD == 1"];
+      break;      
+    default:
+      break;
+  }
   request.sortDescriptors = @[sortDescriptor];
 }
 

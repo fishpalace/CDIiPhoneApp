@@ -175,7 +175,15 @@
 {
   TimeDisplayPanelViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TimeDisplayPanelViewController"];
   vc.roomID = roomID;
-  [ModelPanelViewController displayModelPanelWithViewController:vc];
+  
+  char title = 'A' + roomID - 1;
+  NSString *roomTitle = [NSString stringWithFormat:@"%c %@", title, [CDIDataSource nameForRoomID:roomID]];
+  
+  [ModelPanelViewController displayModelPanelWithViewController:vc
+                                                  withTitleName:roomTitle
+                                             functionButtonName:@"Reserve"
+                                                       imageURL:@""
+                                                           type:ModelPanelTypeRoomInfo];
 }
 
 #pragma mark - Properties

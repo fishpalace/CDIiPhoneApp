@@ -53,6 +53,7 @@
 		183AE77C175C38DA008310BF /* menu_button_schedule_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE778175C38DA008310BF /* menu_button_schedule_dark@2x.png */; };
 		184227E817716B86009A37BB /* MenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184227E717716B86009A37BB /* MenuItemCell.m */; };
 		18533D19177454D500A61679 /* PeopleInfoWorkListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18533D18177454D500A61679 /* PeopleInfoWorkListCell.m */; };
+		1859E7CF17745BE30029B46F /* CDIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859E7CE17745BE30029B46F /* CDIUser.m */; };
 		1872230817731FBE000B5F17 /* time_schedule_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230617731FBE000B5F17 /* time_schedule_list.png */; };
 		1872230917731FBE000B5F17 /* time_schedule_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230717731FBE000B5F17 /* time_schedule_list@2x.png */; };
 		1872230C17732243000B5F17 /* tableview_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230A17732243000B5F17 /* tableview_banner.png */; };
@@ -226,7 +227,6 @@
 		18BACD6B176EE8640058042D /* CDINews.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD6A176EE8640058042D /* CDINews.m */; };
 		18BACD6E176EE8640058042D /* CDIRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD6D176EE8640058042D /* CDIRoom.m */; };
 		18BACD71176EE8640058042D /* CDIWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD70176EE8640058042D /* CDIWork.m */; };
-		18BACD74176EEC590058042D /* CDIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD73176EEC1F0058042D /* CDIUser.m */; };
 		18CDE7B21774204000711E2A /* time_button_graph.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CDE7B01774204000711E2A /* time_button_graph.png */; };
 		18CDE7B31774204000711E2A /* time_button_graph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CDE7B11774204000711E2A /* time_button_graph@2x.png */; };
 		18CDE7B91774218900711E2A /* TPScheduleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CDE7B81774218900711E2A /* TPScheduleListViewController.m */; };
@@ -295,6 +295,8 @@
 		184227E717716B86009A37BB /* MenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuItemCell.m; path = "Menu Panel/MenuItemCell.m"; sourceTree = "<group>"; };
 		18533D17177454D500A61679 /* PeopleInfoWorkListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeopleInfoWorkListCell.h; path = "Menu Panel/PeopleInfoWorkListCell.h"; sourceTree = "<group>"; };
 		18533D18177454D500A61679 /* PeopleInfoWorkListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeopleInfoWorkListCell.m; path = "Menu Panel/PeopleInfoWorkListCell.m"; sourceTree = "<group>"; };
+		1859E7CD17745BE30029B46F /* CDIUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIUser.h; path = Data/CDIUser.h; sourceTree = "<group>"; };
+		1859E7CE17745BE30029B46F /* CDIUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIUser.m; path = Data/CDIUser.m; sourceTree = "<group>"; };
 		1872230617731FBE000B5F17 /* time_schedule_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time_schedule_list.png; path = "Image Resource/Model Panel/time_schedule_list.png"; sourceTree = SOURCE_ROOT; };
 		1872230717731FBE000B5F17 /* time_schedule_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "time_schedule_list@2x.png"; path = "Image Resource/Model Panel/time_schedule_list@2x.png"; sourceTree = SOURCE_ROOT; };
 		1872230A17732243000B5F17 /* tableview_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_banner.png; sourceTree = "<group>"; };
@@ -510,8 +512,6 @@
 		18BACD6D176EE8640058042D /* CDIRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIRoom.m; path = Data/CDIRoom.m; sourceTree = "<group>"; };
 		18BACD6F176EE8640058042D /* CDIWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIWork.h; path = Data/CDIWork.h; sourceTree = "<group>"; };
 		18BACD70176EE8640058042D /* CDIWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIWork.m; path = Data/CDIWork.m; sourceTree = "<group>"; };
-		18BACD72176EEC1F0058042D /* CDIUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDIUser.h; path = Data/CDIUser.h; sourceTree = "<group>"; };
-		18BACD73176EEC1F0058042D /* CDIUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CDIUser.m; path = Data/CDIUser.m; sourceTree = "<group>"; };
 		18CDE7B01774204000711E2A /* time_button_graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_button_graph.png; sourceTree = "<group>"; };
 		18CDE7B11774204000711E2A /* time_button_graph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_button_graph@2x.png"; sourceTree = "<group>"; };
 		18CDE7B71774218900711E2A /* TPScheduleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPScheduleListViewController.h; path = "Time Panel/TPScheduleListViewController.h"; sourceTree = "<group>"; };
@@ -928,8 +928,8 @@
 				18CEE9881772E1D5005BDA1D /* CDIEvent.m */,
 				18CEE9811772D8C3005BDA1D /* CDIEventDAO.h */,
 				18CEE9821772D8C3005BDA1D /* CDIEventDAO.m */,
-				18BACD72176EEC1F0058042D /* CDIUser.h */,
-				18BACD73176EEC1F0058042D /* CDIUser.m */,
+				1859E7CD17745BE30029B46F /* CDIUser.h */,
+				1859E7CE17745BE30029B46F /* CDIUser.m */,
 				18B743EE175B0C9C00585CF5 /* CDIDataSource.h */,
 				18B743EF175B0C9C00585CF5 /* CDIDataSource.m */,
 				18B743F2175B0C9D00585CF5 /* CDINetClient.h */,
@@ -1292,7 +1292,6 @@
 				18CEE9831772D8C9005BDA1D /* CDIEventDAO.m in Sources */,
 				187F50851734F628006B46A3 /* MPCellTableViewCell.m in Sources */,
 				18BACD6E176EE8640058042D /* CDIRoom.m in Sources */,
-				18BACD74176EEC590058042D /* CDIUser.m in Sources */,
 				18CDE7B91774218900711E2A /* TPScheduleListViewController.m in Sources */,
 				187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */,
 				187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */,
@@ -1315,6 +1314,7 @@
 				18B743F8175B0C9D00585CF5 /* CDINetClient.m in Sources */,
 				18BACD71176EE8640058042D /* CDIWork.m in Sources */,
 				18B743FC175B0E9500585CF5 /* NSDate+Addition.m in Sources */,
+				1859E7CF17745BE30029B46F /* CDIUser.m in Sources */,
 				18B743FF175B0ED500585CF5 /* TImeZone.m in Sources */,
 				18B74416175B105100585CF5 /* AFHTTPClient.m in Sources */,
 				18B74417175B105100585CF5 /* AFHTTPRequestOperation.m in Sources */,

@@ -2,7 +2,7 @@
 //  CDIUser.h
 //  CDIiPhoneApp
 //
-//  Created by Gabriel Yeah on 13-6-17.
+//  Created by Gabriel Yeah on 13-6-21.
 //  Copyright (c) 2013年 Gabriel Yeah. All rights reserved.
 //
 
@@ -22,10 +22,11 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * position;
 @property (nonatomic, retain) NSString * realName;
+@property (nonatomic, retain) NSString * sessionKey;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * twitterURL;
 @property (nonatomic, retain) NSString * weiboURL;
-@property (nonatomic, retain) NSString * sessionKey;
+@property (nonatomic, retain) NSString * userID;
 @property (nonatomic, retain) NSSet *events;
 @property (nonatomic, retain) NSSet *news;
 @property (nonatomic, retain) NSSet *relatedWork;

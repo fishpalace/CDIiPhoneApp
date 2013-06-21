@@ -49,4 +49,7 @@
 
 - (void)getUserListWithCompletion:(void (^)(BOOL succeeded, id responseData))completion;
 
+- (void)getWorkListWithUserName:(NSString *)userName
+                     completion:(void (^)(BOOL succeeded, id responseData))completion;
+
 @end

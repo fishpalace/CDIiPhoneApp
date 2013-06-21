@@ -2,7 +2,7 @@
 //  CDIUser.m
 //  CDIiPhoneApp
 //
-//  Created by Gabriel Yeah on 13-6-17.
+//  Created by Gabriel Yeah on 13-6-21.
 //  Copyright (c) 2013年 Gabriel Yeah. All rights reserved.
 //
 
@@ -24,10 +24,11 @@ static CDIUser *currentUser;
 @dynamic name;
 @dynamic position;
 @dynamic realName;
+@dynamic sessionKey;
 @dynamic title;
 @dynamic twitterURL;
 @dynamic weiboURL;
-@dynamic sessionKey;
+@dynamic userID;
 @dynamic events;
 @dynamic news;
 @dynamic relatedWork;
@@ -76,7 +77,8 @@ static CDIUser *currentUser;
   if (!user) {
     user = [NSEntityDescription insertNewObjectForEntityForName:@"CDIUser" inManagedObjectContext:context];
   }
-
+  
+  user.userID = [user stringForDict:dict key:@"id"];
   user.name = [user stringForDict:dict key:@"name"];
   user.realName = [user stringForDict:dict key:@"realName_en"];
   user.avatarLargeURL = [user stringForDict:dict key:@"avatarLargeUrl"];
@@ -115,5 +117,6 @@ static CDIUser *currentUser;
   }
   return stringValue;
 }
+
 
 @end

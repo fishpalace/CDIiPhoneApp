@@ -101,7 +101,11 @@
   PeopleInfoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleInfoViewController"];
   vc.user = self.fetchedResultsController.fetchedObjects[indexPath.row];
   vc.index = indexPath.row;
-  [ModelPanelViewController displayModelPanelWithViewController:vc];
+  [ModelPanelViewController displayModelPanelWithViewController:vc
+                                                  withTitleName:vc.user.name
+                                             functionButtonName:@"Write"
+                                                       imageURL:vc.user.avatarSmallURL
+                                                           type:ModelPanelTypePeopleInfo];
 }
 
 - (NSMutableArray *)userArray

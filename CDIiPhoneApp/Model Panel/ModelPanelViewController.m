@@ -13,6 +13,7 @@
 #import "UIImage+StackBlur.h"
 #import "UIImage+ScreenShoot.h"
 #import "UIApplication+Addition.h"
+#import "UIImageView+AFNetworking.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define kCloseButtonGap 30
@@ -24,9 +25,11 @@ static ModelPanelViewController *sharedModelPanelViewController;
 @interface ModelPanelViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *modelBGImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *contentBGImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *titleImageView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIButton *functionButton;
 @property (strong, nonatomic) UIViewController *contentViewController;
 
 @end
@@ -45,13 +48,23 @@ static ModelPanelViewController *sharedModelPanelViewController;
 }
 
 + (void)displayModelPanelWithViewController:(UIViewController *)vc
+                              withTitleName:(NSString *)titleName
+                         functionButtonName:(NSString *)functionButtonName
+                                   imageURL:(NSString *)imageURL
+                                       type:(ModelPanelType)type
 {
-  [[ModelPanelViewController sharedModelPanelViewController] displayModelPanelWithViewController:vc];
+  [[ModelPanelViewController sharedModelPanelViewController] displayModelPanelWithViewController:vc
+                                                                                   withTitleName:titleName
+                                                                              functionButtonName:functionButtonName
+                                                                                        imageURL:imageURL
+                                                                                            type:type];
 }
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  _titleImageView.layer.cornerRadius = 19;
+  _titleImageView.layer.masksToBounds = YES;
 }
 
 //- (void)viewDidLayoutSubviews
@@ -63,19 +76,56 @@ static ModelPanelViewController *sharedModelPanelViewController;
 //}
 
 - (void)displayModelPanelWithViewController:(UIViewController *)vc
+                              withTitleName:(NSString *)titleName
+                         functionButtonName:(NSString *)functionButtonName
+                                   imageURL:(NSString *)imageURL
+                                       type:(ModelPanelType)type
 {
   self.contentViewController = vc;
   void (^completion)(UIImage *bgImage) = ^(UIImage *bgImage) {
     self.modelBGImageView.image = bgImage;
-    
     [self addChildViewController:self.contentViewController];
     [self.contentViewController.view setFrame:kContentViewControllerFrame];
     [self.containerView addSubview:self.contentViewController.view];
     [self.contentViewController didMoveToParentViewController:self];
     [self.view fadeIn];
   };
-  
   [self configureBGImageWithCompletion:completion];
+  
+  self.titleName = titleName;
+  self.functionButtonName = functionButtonName;
+  self.imageURL = imageURL;
+  self.panelType = type;
+  [self updateTitleSection];
+}
+
+- (void)updateTitleSection
+{
+  NSMutableAttributedString *titleAttributedString = [[NSMutableAttributedString alloc] initWithString:self.titleName];
+  if (self.panelType == ModelPanelTypeRoomInfo) {
+    [titleAttributedString addAttribute:NSFontAttributeName
+                                  value:[UIFont boldSystemFontOfSize:14]
+                                  range:NSMakeRange(0, 1)];
+    
+    [titleAttributedString addAttribute:NSFontAttributeName
+                                  value:[UIFont systemFontOfSize:14]
+                                  range:NSMakeRange(1, titleAttributedString.length - 1)];
+  }
+  self.titleLabel.attributedText = titleAttributedString;
+  
+  NSString *buttonBGNamge = @"";
+  if (self.panelType == ModelPanelTypeRoomInfo) {
+    buttonBGNamge = @"model_button_schedule";
+  } else if (self.panelType == ModelPanelTypePeopleInfo) {
+    buttonBGNamge = @"model_button_write";
+  }
+  UIImage *functionButtonBGImage = [UIImage imageNamed:buttonBGNamge];
+  [self.functionButton setBackgroundImage:functionButtonBGImage forState:UIControlStateNormal];
+  [self.functionButton setBackgroundImage:functionButtonBGImage forState:UIControlStateHighlighted];
+  [self.functionButton setTitle:self.functionButtonName forState:UIControlStateNormal];
+  [self.functionButton setTitle:self.functionButtonName forState:UIControlStateHighlighted];
+  self.titleLabel.text = self.titleName;
+  [self.titleImageView setImageWithURL:[NSURL URLWithString:self.imageURL]];
 }
 
 - (void)configureBGImageWithCompletion:(void (^)(UIImage *bgImage))completion

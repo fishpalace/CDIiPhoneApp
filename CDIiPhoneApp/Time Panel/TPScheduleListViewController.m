@@ -47,9 +47,7 @@
   request.entity = [NSEntityDescription entityForName:@"CDIEvent"
                                inManagedObjectContext:self.managedObjectContext];
   NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES];
-  if (self.roomID == 1) {
-    
-  }
+
   switch (self.roomID) {
     case 1:
       request.predicate = [NSPredicate predicateWithFormat:@"occupiedByA == 1"];
@@ -150,13 +148,6 @@
     height = kSLDetailTableViewCellStandardHeight + size.height - kSingleLineHeight;
   }
   return height;
-}
-
-#pragma mark - IBActions
-
-- (IBAction)didClickBackButton:(id)sender
-{
-  [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Properties

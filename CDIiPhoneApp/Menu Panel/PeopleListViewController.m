@@ -98,10 +98,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//  PeopleInfoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleInfoViewController"];
-//  vc.user = [self.userArray objectAtIndex:indexPath.row];
-//  vc.index = indexPath.row;
-//  [ModelPanelViewController displayModelPanelWithViewController:vc];
+  PeopleInfoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleInfoViewController"];
+  vc.user = self.fetchedResultsController.fetchedObjects[indexPath.row];
+  vc.index = indexPath.row;
+  [ModelPanelViewController displayModelPanelWithViewController:vc];
 }
 
 - (NSMutableArray *)userArray

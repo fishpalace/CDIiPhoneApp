@@ -7,12 +7,11 @@
 //
 
 #import "PeopleInfoViewController.h"
+#import "PIWorkListCell.h"
 #import "CDIUser.h"
 
 @interface PeopleInfoViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
-@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userPositionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *infoHomepageButton;
@@ -20,8 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *infoWeiboButton;
 @property (weak, nonatomic) IBOutlet UIButton *infoLinkedinButton;
 @property (weak, nonatomic) IBOutlet UIButton *infoTwitterButton;
-@property (weak, nonatomic) IBOutlet UIImageView *upperBGImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *lowerBGImageView;
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 @end
 
@@ -39,17 +37,51 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  _userNameLabel.text = self.user.name;
   _userPositionLabel.text = self.user.position;
   _userTitleLabel.text = self.user.title;
-  _avatarImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"test_avatar_%d", self.index + 1]];
+  _tableview.delegate = self;
+  _tableview.dataSource = self;
+  _userTitleLabel.layer.cornerRadius = 5;
+  _userTitleLabel.layer.masksToBounds = YES;
+  _userPositionLabel.layer.cornerRadius = 5;
+  _userPositionLabel.layer.masksToBounds = YES;
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)configureRequest:(NSFetchRequest *)request
 {
-  self.upperBGImageView.image = [[UIImage imageNamed:@"tableview_bg_back"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 10, 20, 10) resizingMode:UIImageResizingModeTile];
+  request.entity = [NSEntityDescription entityForName:@"CDIWork"
+                               inManagedObjectContext:self.managedObjectContext];
+  NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"nameEn" ascending:YES];
+  request.predicate = [NSPredicate predicateWithFormat:@"SELF IN %@", self.user.relatedWork];
+  request.sortDescriptors = @[sortDescriptor];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  NSInteger numberOfRows = self.fetchedResultsController.fetchedObjects.count;
+  numberOfRows = numberOfRows == 0 ? 1 : numberOfRows;
+  return numberOfRows;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  PIWorkListCell *cell = [self.tableview dequeueReusableCellWithIdentifier:@"PIWorkListCell"];
   
-  self.lowerBGImageView.image = [[UIImage imageNamed:@"tableview_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 10, 20, 10) resizingMode:UIImageResizingModeTile];
+  cell.isPlaceHolder = self.fetchedResultsController.fetchedObjects.count == 0;
+  if (!cell.isPlaceHolder) {
+
+  }
+  return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return 80;
 }
 
 @end

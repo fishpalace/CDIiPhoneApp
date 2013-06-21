@@ -10,7 +10,7 @@
 
 @class CDIUser;
 
-@interface PeopleInfoViewController : UIViewController
+@interface PeopleInfoViewController : CoreDataViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) CDIUser *user;
 @property (nonatomic, assign) NSInteger index; //For Mock Data

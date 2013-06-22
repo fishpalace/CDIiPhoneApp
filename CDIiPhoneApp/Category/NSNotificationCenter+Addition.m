@@ -8,8 +8,9 @@
 
 #import "NSNotificationCenter+Addition.h"
 
-#define kShouldBounceDown @"kShouldBounceDown"
-#define kShouldBounceUp   @"kShouldBounceUp"
+#define kShouldBounceDown     @"kShouldBounceDown"
+#define kShouldBounceUp       @"kShouldBounceUp"
+#define kDidFetchNewEvents    @"kDidFetchNewEvents"
 
 @implementation NSNotificationCenter (Addition)
 
@@ -22,6 +23,12 @@
 {
   [[NSNotificationCenter defaultCenter] postNotificationName:kShouldBounceUp object:nil userInfo:nil];
 }
+
++ (void)postDidFetchNewEventsNotification
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:kDidFetchNewEvents object:nil userInfo:nil];
+}
+
 
 + (void)registerShouldBounceDownNotificationWithSelector:(SEL)aSelector target:(id)aTarget
 {
@@ -36,6 +43,14 @@
   NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
   [center addObserver:aTarget selector:aSelector
                  name:kShouldBounceUp
+               object:nil];
+}
+
++ (void)registerDidFetchNewEventsNotificationWithSelector:(SEL)aSelector target:(id)aTarget
+{
+  NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+  [center addObserver:aTarget selector:aSelector
+                 name:kDidFetchNewEvents
                object:nil];
 }
 

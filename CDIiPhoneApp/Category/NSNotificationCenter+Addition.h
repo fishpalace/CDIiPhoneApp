@@ -12,9 +12,11 @@
 
 + (void)postShouldBounceDownNotification;
 + (void)postShouldBounceUpNotification;
++ (void)postDidFetchNewEventsNotification;
 
 + (void)registerShouldBounceDownNotificationWithSelector:(SEL)aSelector target:(id)aTarget;
 + (void)registerShouldBounceUpNotificationWithSelector:(SEL)aSelector target:(id)aTarget;
++ (void)registerDidFetchNewEventsNotificationWithSelector:(SEL)aSelector target:(id)aTarget;
 
 + (void)unregister:(id)target;
 @end

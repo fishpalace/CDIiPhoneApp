@@ -223,6 +223,7 @@ static CDIDataSource *sharedDataSource;
       [self.managedObjectContext processPendingChanges];
       [self.fetchedResultsController performFetch:nil];
       [self updateLocalEventsArray];
+      [NSNotificationCenter postDidFetchNewEventsNotification];
     }
   };
   

@@ -244,6 +244,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1804BA271775676E00CBB59C /* ResourceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceList.h; sourceTree = "<group>"; };
 		180BD09717334D6E00BA2A98 /* CDIiPhoneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CDIiPhoneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		180BD09A17334D6E00BA2A98 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		180BD09C17334D6E00BA2A98 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -684,6 +685,7 @@
 				18BACD61176EE63A0058042D /* CoreDataViewController.m */,
 				18B7442A175B15CC00585CF5 /* CDIViewControllerFactory.h */,
 				18B7442B175B15CC00585CF5 /* CDIViewControllerFactory.m */,
+				1804BA271775676E00CBB59C /* ResourceList.h */,
 			);
 			name = Basic;
 			sourceTree = "<group>";

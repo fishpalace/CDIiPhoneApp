@@ -15,6 +15,8 @@
 #import "TimeDisplayPanelViewController.h"
 #import "CDIDataSource.h"
 #import "MenuItemCell.h"
+#import "MenuRoomInfoCell.h"
+#import "NSDate+Addition.h"
 
 @interface MenuPanelViewController ()
 
@@ -52,6 +54,7 @@
   self.dragIndicatorView.delegate = self;
   _tableView.delegate = self;
   _tableView.dataSource = self;
+  [NSNotificationCenter registerDidFetchNewEventsNotificationWithSelector:@selector(reloadTableView) target:self];
 }
 
 - (void)setUp
@@ -66,6 +69,11 @@
   [self.dragIndicatorView resetHeight:kDragIndicatorViewHeight];
   [self.dragIndicatorView resetWidth:320];
   [self.dragIndicatorView resetPositions];
+}
+
+- (void)reloadTableView
+{
+  [self.tableView reloadData];
 }
 
 - (NSString *)imageNameForStatusWithRoomID:(NSInteger)roomID
@@ -136,7 +144,12 @@
 {
   UITableViewCell *cell = nil;
   if (indexPath.section == 1 && indexPath.row == 3) {
-    cell = [tableView dequeueReusableCellWithIdentifier:@"MenuRoomInfoCell"];
+    MenuRoomInfoCell *detailCell = [tableView dequeueReusableCellWithIdentifier:@"MenuRoomInfoCell"];
+    [self configureRoomButton:detailCell.roomAButton label:detailCell.roomALabel roomID:1];
+    [self configureRoomButton:detailCell.roomBButton label:detailCell.roomBLabel roomID:2];
+    [self configureRoomButton:detailCell.roomCButton label:detailCell.roomCLabel roomID:3];
+    [self configureRoomButton:detailCell.roomDButton label:detailCell.roomDLabel roomID:4];
+    cell = detailCell;
   } else {
     NSInteger index = indexPath.section == 1 ? indexPath.row + 2 : indexPath.row;
     MenuItemCell *detailCell = [tableView dequeueReusableCellWithIdentifier:@"MenuItemCell"];
@@ -162,7 +175,33 @@
       segueID = @"MenuPeopleSegue";
     }
   }
-  [self performSegueWithIdentifier:segueID sender:self];
+  if (![segueID isEqualToString:@""]) {
+    [self performSegueWithIdentifier:segueID sender:self];
+  }
+}
+
+- (void)configureRoomButton:(UIButton *)button label:(UILabel *)label roomID:(NSInteger)roomID
+{
+  NSInteger percentage = [CDIDataSource availablePercentageWithRoomID:roomID isToday:YES];
+  NSString *percentageString = [NSString stringWithFormat:@"%d", percentage];
+  NSString *buttonBGImageName = @"";
+  UIColor *color = nil;
+  if (percentage == 0) {
+    buttonBGImageName = @"menu_status_red";
+    color = kRRoomStatusUnvailableColor;
+  } else if (percentage < 50) {
+    percentageString = [percentageString stringByAppendingString:@"%"];
+    buttonBGImageName = @"menu_status_yellow";
+    color = kRRoomStatusAvailableColor;
+  } else {
+    percentageString = [percentageString stringByAppendingString:@"%"];
+    buttonBGImageName = @"menu_status_green";
+    color = kRRoomStatusFreeColor;
+  }
+  [label setText:percentageString];
+  [label setTextColor:color];
+  [label setFont:[UIFont systemFontOfSize:10]];
+  [button setBackgroundImage:[UIImage imageNamed:buttonBGImageName] forState:UIControlStateNormal];
 }
 
 #pragma mark - IBActions

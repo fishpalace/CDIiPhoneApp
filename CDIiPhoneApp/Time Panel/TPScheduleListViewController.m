@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (nonatomic, strong) NSMutableArray *todayArray;
 @property (nonatomic, strong) NSMutableArray *tomorrowArray;
+@property (nonatomic, strong) NSTimer *timer;
 
 @end
 
@@ -41,6 +42,7 @@
   [super viewDidLoad];
   _tableview.delegate = self;
   _tableview.dataSource = self;
+  [self.timer fire];
 }
 
 - (void)configureRequest:(NSFetchRequest *)request
@@ -111,6 +113,23 @@
     cell.roomName.text = [CDIDataSource nameForRoomID:eventDAO.roomID.integerValue];
     cell.eventRelatedInfo.text = eventDAO.relatedInfo;
     cell.startingTime.text = [NSDate stringOfTime:eventDAO.startDate];
+    
+    [cell.eventName setFont:kRSLCellTitleFont];
+    [cell.roomName setFont:kRSLCellRoomFont];
+    [cell.eventRelatedInfo setFont:kRSLCellRelatedInfoFont];
+    [cell.startingTime setFont:kRSLTimeLabelFont];
+    
+    if (eventDAO.passed.boolValue) {
+      [cell.eventName setTextColor:kRSLCellDisabledColor];
+      [cell.roomName setTextColor:kRSLCellDisabledColor];
+      [cell.eventRelatedInfo setTextColor:kRSLCellDisabledColor];
+      [cell.startingTime setTextColor:kRSLCellDisabledColor];
+    } else {
+      [cell.eventName setTextColor:kRSLCellTitleColor];
+      [cell.roomName setTextColor:kRSLCellRoomColor];
+      [cell.eventRelatedInfo setTextColor:kRSLCellRelatedInfoColor];
+      [cell.startingTime setTextColor:kRSLCellTimeColor];
+    }
   }
   return cell;
 }
@@ -151,6 +170,21 @@
   return height;
 }
 
+#pragma mark - UI Configurations
+
+- (void)updateTimeLabel:(NSTimer *)timer
+{
+  NSDate *currentDate = [NSDate date];
+  NSString *weekDayString = [NSDate weekdayStringForDate:currentDate];
+  NSString *dateString = [NSDate stringOfDate:currentDate];
+  [self.dateLabel setText:[NSString stringWithFormat:@"%@ %@", weekDayString, dateString]];
+  [self.timeLabel setText:[NSDate stringOfTime:currentDate]];
+  [self.dateLabel setTextColor:kRSLDateLabelColor];
+  [self.dateLabel setFont:kRSLDateLabelFont];
+  [self.timeLabel setTextColor:kRSLTimeLabelColor];
+  [self.timeLabel setFont:kRSLTimeLabelFont];
+}
+
 #pragma mark - Properties
 - (NSMutableArray *)todayArray
 {
@@ -180,6 +214,18 @@
     }
   }
   return _tomorrowArray;
+}
+
+- (NSTimer *)timer
+{
+  if (!_timer) {
+    _timer = [NSTimer scheduledTimerWithTimeInterval:60.0
+                                              target:self
+                                            selector:@selector(updateTimeLabel:)
+                                            userInfo:nil
+                                             repeats:YES];
+  }
+  return _timer;
 }
 
 

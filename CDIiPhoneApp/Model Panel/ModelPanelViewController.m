@@ -93,6 +93,8 @@ static ModelPanelViewController *sharedModelPanelViewController;
 
 - (void)updateTitleSection
 {
+  [self.titleImageView setImageWithURL:[NSURL URLWithString:self.imageURL]];
+  
   NSMutableAttributedString *titleAttributedString = [[NSMutableAttributedString alloc] initWithString:self.titleName];
   if (self.panelType == ModelPanelTypeRoomInfo) {
     [titleAttributedString addAttribute:NSFontAttributeName
@@ -103,6 +105,17 @@ static ModelPanelViewController *sharedModelPanelViewController;
                                   value:[UIFont systemFontOfSize:14]
                                   range:NSMakeRange(1, titleAttributedString.length - 1)];
   }
+  NSShadow *shadow = [[NSShadow alloc] init];
+  [shadow setShadowColor:kCModelTitleShadow];
+  [shadow setShadowOffset:CGSizeMake(0, 1)];
+  [titleAttributedString addAttribute:NSShadowAttributeName
+                                value:shadow
+                                range:NSMakeRange(0, titleAttributedString.length)];
+  
+  [titleAttributedString addAttribute:NSForegroundColorAttributeName
+                                value:kCModelTitle
+                                range:NSMakeRange(0, titleAttributedString.length)];
+  
   self.titleLabel.attributedText = titleAttributedString;
   
   NSString *buttonBGNamge = @"";
@@ -112,12 +125,10 @@ static ModelPanelViewController *sharedModelPanelViewController;
     buttonBGNamge = @"model_button_write";
   }
   UIImage *functionButtonBGImage = [UIImage imageNamed:buttonBGNamge];
-  [self.functionButton setBackgroundImage:functionButtonBGImage forState:UIControlStateNormal];
-  [self.functionButton setBackgroundImage:functionButtonBGImage forState:UIControlStateHighlighted];
   [self.functionButton setTitle:self.functionButtonName forState:UIControlStateNormal];
-  [self.functionButton setTitle:self.functionButtonName forState:UIControlStateHighlighted];
-  self.titleLabel.text = self.titleName;
-  [self.titleImageView setImageWithURL:[NSURL URLWithString:self.imageURL]];
+  [self.functionButton setBackgroundImage:functionButtonBGImage forState:UIControlStateNormal];
+  [self.functionButton setTitleShadowColor:kCModelTitleShadow forState:UIControlStateNormal];
+  [self.functionButton.titleLabel setShadowOffset:CGSizeMake(0, 1)];
 }
 
 - (void)configureBGImageWithCompletion:(void (^)(UIImage *bgImage))completion

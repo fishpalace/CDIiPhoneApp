@@ -34,4 +34,12 @@
 #define kRSLCellRelatedInfoColor kRTintBlue
 #define kRSLCellDisabledColor [UIColor colorWithRed:186.0/255.0 green:186.0/255.0 blue:186.0/255.0 alpha:1.0]
 
+#pragma mark - Model Panel
+#define kFModelTitle kRFontWitSize(14)
+#define kCModelTitleShadow [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.2]
+#define kCModelTitle [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]
+
+#define kColorForNextEventTimeLabel [UIColor colorWithRed:186.0/255.0 green:186.0/255.0 blue:186.0/255.0 alpha:1.0]
+#define kFontForNextEventTimeLabel kRFontWitSize(12)
+
 #endif

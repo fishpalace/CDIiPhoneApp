@@ -36,24 +36,11 @@ static CDIUser *currentUser;
 @dynamic relatedWork;
 @dynamic work;
 
-+ (CDIUser *)currentUser
++ (CDIUser *)currentUserInContext:(NSManagedObjectContext *)context
 {
-  if (!currentUser) {
-    currentUser = [[CDIUser alloc] init];
-  }
+  NSString *currentUserID = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsCurrentUserID];
+  CDIUser *currentUser = [CDIUser userWithName:currentUserID inManagedObjectContext:context];
   return currentUser;
-}
-
-+ (void)updateCurrentUserWithDictionary:(NSDictionary *)dict
-                             sessionKey:(NSString *)sessionKey
-{
-  CDIUser *user = [CDIUser currentUser];
-  user.name = [dict[@"name"] isKindOfClass:[NSNull class]] ? @"" : dict[@"name"];
-  user.realName = [dict[@"realName"] isKindOfClass:[NSNull class]] ? @"" : dict[@"realName"];
-  user.avatarLargeURL = [dict[@"avatarLargeUrl"] isKindOfClass:[NSNull class]] ? @"" : dict[@"avatarLargeUrl"];
-  user.avatarMidURL = [dict[@"avatarMiddleUrl"] isKindOfClass:[NSNull class]] ? @"" : dict[@"avatarMiddleUrl"];
-  user.avatarSmallURL = [dict[@"avatarSmallUrl"] isKindOfClass:[NSNull class]] ? @"" : dict[@"avatarSmallUrl"];
-  user.sessionKey = sessionKey;
 }
 
 - (id)initWithName:(NSString *)name title:(NSString *)title position:(NSString *)position
@@ -110,5 +97,17 @@ static CDIUser *currentUser;
   return res;
 }
 
++ (CDIUser *)userWithUserID:(NSString *)userID inManagedObjectContext:(NSManagedObjectContext *)context
+{
+  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+  
+  [request setEntity:[NSEntityDescription entityForName:@"CDIUser" inManagedObjectContext:context]];
+  [request setPredicate:[NSPredicate predicateWithFormat:@"userID == %@ ", userID]];
+  
+  NSArray *items = [context executeFetchRequest:request error:NULL];
+  CDIUser *res = [items lastObject];
+  
+  return res;
+}
 
 @end

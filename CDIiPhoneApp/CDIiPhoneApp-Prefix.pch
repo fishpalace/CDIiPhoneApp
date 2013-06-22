@@ -13,6 +13,7 @@
   #import <Foundation/Foundation.h>
   #import "CoreDataViewController.h"
   #import "ResourceList.h"
+  #import "UIApplication+Addition.h"
 
 #define BlockARCWeakObject(o) __weak typeof(o)
 #define BlockARCWeakSelf BlockARCWeakObject(self)

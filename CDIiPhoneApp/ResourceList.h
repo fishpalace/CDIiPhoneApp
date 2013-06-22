@@ -9,10 +9,16 @@
 #ifndef CDIiPhoneApp_ResourceList_h
 #define CDIiPhoneApp_ResourceList_h
 
+#define kUserDefaultsCurrentUserID @"kUserDefaultsCurrentUserID"
+
 #define kRTintBlue [UIColor colorWithRed:0.0/255.0 green:150.0/255.0 blue:218.0/255.0 alpha:1.0]
 #define kRFontWitSize(o) [UIFont systemFontOfSize:o]
 #define kRBoldFontWithSize(o) [UIFont boldSystemFontOfSize:o]
 #define kRLightFontWithSize(o) [UIFont fontWithName:@"Helvetica-Light" size:o]
+
+#pragma mark - Main Panel
+#define kColorCurrentUserNameLabel [UIColor colorWithRed:155.0/255.0 green:155.0/255.0 blue:155.0/255.0 alpha:1.0]
+#define kFontCurrentUserNameLabel kRLightFontWithSize(12)
 
 #pragma mark - Menu Panel
 #define kRRoomStatusFreeColor [UIColor colorWithRed:9.0/255.0 green:187.0/255.0 blue:68.0/255.0 alpha:1.0]

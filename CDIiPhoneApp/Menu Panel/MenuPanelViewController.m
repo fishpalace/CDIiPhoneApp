@@ -17,6 +17,7 @@
 #import "MenuItemCell.h"
 #import "MenuRoomInfoCell.h"
 #import "NSDate+Addition.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface MenuPanelViewController ()
 
@@ -28,7 +29,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *checkRoomC;
 @property (weak, nonatomic) IBOutlet UIButton *checkRoomD;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *currentUserNameLabel;
 
+@property (nonatomic, readwrite) BOOL doesCurrentUserExist;
 @property (nonatomic, strong) NSMutableArray *titleArray;
 @property (nonatomic, strong) NSMutableArray *iconImageNameArray;
 
@@ -48,15 +51,32 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  [self configureCurrentUserSetting];
   [self.tableView setTableFooterView:self.dragIndicatorView];
   [self.dragIndicatorView configureScrollView:self.tableView];
   self.dragIndicatorView.stretchLimitHeight = 100;
   self.dragIndicatorView.delegate = self;
   _tableView.delegate = self;
   _tableView.dataSource = self;
-  _avatarImageView.layer.cornerRadius = 19;
+  _avatarImageView.layer.cornerRadius = 20;
   _avatarImageView.layer.masksToBounds = YES;
   [NSNotificationCenter registerDidFetchNewEventsNotificationWithSelector:@selector(reloadTableView) target:self];
+  
+}
+
+- (void)configureCurrentUserSetting
+{
+  CDIUser *currentUser = [CDIUser currentUserInContext:self.managedObjectContext];
+  self.doesCurrentUserExist = currentUser != nil;
+  if (self.doesCurrentUserExist) {
+    self.currentUserNameLabel.text = currentUser.name;
+    [self.avatarImageView setImageWithURL:[NSURL URLWithString:currentUser.avatarSmallURL]];
+  } else {
+    self.currentUserNameLabel.text = @"Login";
+    self.avatarImageView.image = [UIImage imageNamed:@"menu_avatar_login"];
+  }
+  self.currentUserNameLabel.textColor = kColorCurrentUserNameLabel;
+  self.currentUserNameLabel.font = kFontCurrentUserNameLabel;
 }
 
 - (void)setUp
@@ -118,6 +138,9 @@
   CGFloat height = 60;
   if (indexPath.section == 1 && indexPath.row == 3) {
     height = 143;
+    if (kIsiPhone5 && !self.doesCurrentUserExist) {
+      height += 60;
+    }
   }
   return height;
 }
@@ -133,13 +156,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  NSInteger numberOfRows = 0;
-  if (section == 0) {
-    numberOfRows = 2;
-  } else {
-    numberOfRows = 4;
-  }
-  return numberOfRows;
+  return [self numberOfRowsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -153,7 +170,7 @@
     [self configureRoomButton:detailCell.roomDButton label:detailCell.roomDLabel roomID:4];
     cell = detailCell;
   } else {
-    NSInteger index = indexPath.section == 1 ? indexPath.row + 2 : indexPath.row;
+    NSInteger index = indexPath.section == 1 ? indexPath.row + [self numberOfRowsInSection:0] : indexPath.row;
     MenuItemCell *detailCell = [tableView dequeueReusableCellWithIdentifier:@"MenuItemCell"];
     detailCell.iconImageView.image = [UIImage imageNamed:self.iconImageNameArray[index]];
     detailCell.titleLabel.text = self.titleArray[index];
@@ -245,8 +262,13 @@
 - (NSMutableArray *)iconImageNameArray
 {
   if (!_iconImageNameArray) {
-    _iconImageNameArray = [NSMutableArray arrayWithObjects:@"menu_icon_cal", @"menu_icon_key",
-                           @"menu_icon_news", @"menu_icon_proj", @"menu_icon_people", nil];
+    if (self.doesCurrentUserExist) {
+      _iconImageNameArray = [NSMutableArray arrayWithObjects:@"menu_icon_cal", @"menu_icon_key",
+                             @"menu_icon_device", @"menu_icon_news", @"menu_icon_proj", @"menu_icon_people", nil];
+    } else {
+      _iconImageNameArray = [NSMutableArray arrayWithObjects:@"menu_icon_cal", @"menu_icon_news",
+                             @"menu_icon_proj", @"menu_icon_people", nil];
+    }
   }
   return _iconImageNameArray;
 }
@@ -254,10 +276,26 @@
 - (NSMutableArray *)titleArray
 {
     if (!_titleArray) {
-      _titleArray = [NSMutableArray arrayWithObjects:@"Schedule", @"My Reservations",
-                     @"News", @"Projects", @"People", nil];
+      if (self.doesCurrentUserExist) {
+        _titleArray = [NSMutableArray arrayWithObjects:@"Schedule", @"My Reservations", @"Devices",
+                       @"News", @"Projects", @"People", nil];
+      } else {
+        _titleArray = [NSMutableArray arrayWithObjects:@"Schedule",
+                       @"News", @"Projects", @"People", nil];
+      }
   }
     return _titleArray;
+}
+
+- (NSInteger)numberOfRowsInSection:(NSInteger)section
+{
+  NSInteger numberOfRows = 0;
+  if (section == 0) {
+    numberOfRows = self.doesCurrentUserExist ? 3 : 1;
+  } else {
+    numberOfRows = 4;
+  }
+  return numberOfRows;
 }
 
 @end

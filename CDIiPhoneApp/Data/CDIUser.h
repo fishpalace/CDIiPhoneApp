@@ -32,9 +32,7 @@
 @property (nonatomic, retain) NSSet *relatedWork;
 @property (nonatomic, retain) NSSet *work;
 
-+ (CDIUser *)currentUser;
-+ (void)updateCurrentUserWithDictionary:(NSDictionary *)dict
-                             sessionKey:(NSString *)sessionKey;
++ (CDIUser *)currentUserInContext:(NSManagedObjectContext *)context;
 - (id)initWithName:(NSString *)name title:(NSString *)title position:(NSString *)position;
 + (CDIUser *)insertUserInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context;
 

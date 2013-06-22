@@ -11,6 +11,7 @@
 #import "TPScheduleListViewController.h"
 #import "UIView+Resize.h"
 #import "CDIDataSource.h"
+#import "UIView+Addition.h"
 
 #define kTPScheduleListOriginY 70
 
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *nowIndicatorImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nextEventTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nextEventTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sectionTitleLabel;
 
 @property (nonatomic, readwrite) BOOL scheduleListDisplayed;
 
@@ -54,6 +56,7 @@
   _pageControl.numberOfPages = 2;
   _pageControl.currentPage = 0;
   _scheduleListDisplayed = NO;
+  [_sectionTitleLabel flashOut];
 }
 
 - (void)removeFromParentViewController
@@ -94,6 +97,19 @@
   self.scheduleListDisplayed = !self.scheduleListDisplayed;
   self.scheduleButton.selected = self.scheduleListDisplayed;
   [self updateDateLabel];
+  
+  if (self.scheduleListDisplayed) {
+    [self.sectionTitleLabel fadeIn];
+    [self.nowIndicatorImageView fadeOut];
+    [self.nextEventTimeLabel fadeOut];
+    [self.nextEventTitleLabel fadeOut];
+  } else {
+    [self.sectionTitleLabel fadeOut];
+    [self.nowIndicatorImageView fadeIn];
+    [self.nextEventTimeLabel fadeIn];
+    [self.nextEventTitleLabel fadeIn];
+  }
+  
   CGFloat targetOriginY = self.scheduleListDisplayed ? kTPScheduleListOriginY : self.view.frame.size.height;
   [UIView animateWithDuration:0.7 animations:^{
     [self.scheduleListViewController.view resetOriginY:targetOriginY];

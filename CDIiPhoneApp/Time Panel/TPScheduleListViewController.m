@@ -118,6 +118,7 @@
     [cell.roomName setFont:kRSLCellRoomFont];
     [cell.eventRelatedInfo setFont:kRSLCellRelatedInfoFont];
     [cell.startingTime setFont:kRSLTimeLabelFont];
+    [cell.startingTime setTextAlignment:NSTextAlignmentCenter];
     
     if (eventDAO.passed.boolValue) {
       [cell.eventName setTextColor:kRSLCellDisabledColor];

@@ -599,22 +599,22 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="time_panel_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="xqc-fk-Exa">
-                                <rect key="frame" x="44" y="45" width="233" height="233"/>
+                                <rect key="frame" x="44" y="45" width="232" height="232"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ffg-cn-YgM" customClass="GYPieChart">
-                                <rect key="frame" x="44" y="45" width="233" height="233"/>
+                                <rect key="frame" x="44" y="45" width="232" height="232"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="time_center_cover.png" translatesAutoresizingMaskIntoConstraints="NO" id="3SH-w3-8gC">
-                                        <rect key="frame" x="66" y="66" width="101" height="101"/>
+                                        <rect key="frame" x="64" y="64" width="104" height="104"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="time_panel_cover.png" translatesAutoresizingMaskIntoConstraints="NO" id="NKk-pp-2ME">
-                                        <rect key="frame" x="2" y="0.0" width="230" height="136"/>
+                                        <rect key="frame" x="1" y="1" width="230" height="136"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="NKk-pp-2ME" firstAttribute="top" secondItem="Ffg-cn-YgM" secondAttribute="top" id="0Dq-mU-rqg"/>
-                                    <constraint firstAttribute="height" constant="233" id="VYp-O3-rfj"/>
+                                    <constraint firstItem="NKk-pp-2ME" firstAttribute="top" secondItem="Ffg-cn-YgM" secondAttribute="top" constant="1" id="0Dq-mU-rqg"/>
+                                    <constraint firstAttribute="height" constant="232" id="VYp-O3-rfj"/>
                                     <constraint firstItem="NKk-pp-2ME" firstAttribute="centerX" secondItem="Ffg-cn-YgM" secondAttribute="centerX" id="hC6-OJ-8rr"/>
                                     <constraint firstItem="3SH-w3-8gC" firstAttribute="centerX" secondItem="NKk-pp-2ME" secondAttribute="centerX" id="iG9-Q6-L8b"/>
                                     <constraint firstItem="3SH-w3-8gC" firstAttribute="centerY" secondItem="Ffg-cn-YgM" secondAttribute="centerY" id="nXu-dW-P0Y"/>
@@ -1753,8 +1753,8 @@
         <image name="tableview_now_indicator.png" width="44" height="22"/>
         <image name="test_avatar_3.png" width="140" height="140"/>
         <image name="time_button_graph.png" width="25" height="25"/>
-        <image name="time_center_cover.png" width="101" height="101"/>
-        <image name="time_panel_bg.png" width="233" height="233"/>
+        <image name="time_center_cover.png" width="104" height="104"/>
+        <image name="time_panel_bg.png" width="232" height="232"/>
         <image name="time_panel_cover.png" width="230" height="136"/>
         <image name="time_schedule_list.png" width="21" height="15"/>
         <image name="time_schedule_list_hl.png" width="21" height="15"/>

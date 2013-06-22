@@ -61,7 +61,7 @@
   [_pieChart setDataSource:self];
   [_pieChart setStartPieAngle:M_PI * 3 / 2];
   [_pieChart setAnimationSpeed:1.0];
-  [_pieChart setPieRadius:113];
+  [_pieChart setPieRadius:115];
   [_pieChart setPieCenter:CGPointMake(116, 116)];
   [_pieChart setUserInteractionEnabled:NO];
   [_pieChart setMinPieAngle:M_PI * 2 * 2  / (4 * 14)];
@@ -144,23 +144,11 @@
   UIColor *fillColor = nil;
   TimeZone *timeZone = self.currentTimeZones[index];
   if (timeZone.available) {
-    fillColor = [UIColor colorWithRed:216.0/255.0 green:216.0/255.0 blue:216.0/255.0 alpha:1.0];
+    fillColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
   } else {
     fillColor = [UIColor clearColor];
   }
   return fillColor;
-}
-
-- (UIColor *)pieChart:(XYPieChart *)pieChart colorForStrokeAtIndex:(NSUInteger)index
-{
-  UIColor *strokeColor = nil;
-  TimeZone *timeZone = self.currentTimeZones[index];
-  if (timeZone.available) {
-    strokeColor = [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:239.0/255.0 alpha:1];
-  } else {
-    strokeColor = [UIColor clearColor];
-  }
-  return strokeColor;
 }
 
 - (UIColor *)pieChart:(XYPieChart *)pieChart colorForShadowAtIndex:(NSUInteger)index
@@ -168,7 +156,7 @@
   UIColor *shadowColor = nil;
   TimeZone *timeZone = self.currentTimeZones[index];
   if (timeZone.available) {
-    shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4];
+    shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2];
   } else {
     shadowColor = [UIColor clearColor];
   }

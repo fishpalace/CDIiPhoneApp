@@ -120,7 +120,9 @@
     [cell.startingTime setFont:kRSLTimeLabelFont];
     [cell.startingTime setTextAlignment:NSTextAlignmentCenter];
     
-    if (eventDAO.passed.boolValue) {
+    cell.nowIndicatorLabel.hidden = !eventDAO.active.boolValue || eventDAO.passed.boolValue;
+    
+    if (eventDAO.passed.boolValue || eventDAO.abandoned.boolValue) {
       [cell.eventName setTextColor:kRSLCellDisabledColor];
       [cell.roomName setTextColor:kRSLCellDisabledColor];
       [cell.eventRelatedInfo setTextColor:kRSLCellDisabledColor];

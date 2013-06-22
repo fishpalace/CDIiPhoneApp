@@ -919,13 +919,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="199"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" image="mp_selection_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="LE8-cO-ral">
-                                            <rect key="frame" x="10" y="4" width="180" height="180"/>
-                                        </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="center" image="mp_selection_proj1.png" translatesAutoresizingMaskIntoConstraints="NO" id="LL8-eI-Vsm">
                                             <rect key="frame" x="15" y="7" width="170" height="170"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" image="mp_selection_cover.png" translatesAutoresizingMaskIntoConstraints="NO" id="zez-Ik-TWX">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" image="mp_cell_cover.png" translatesAutoresizingMaskIntoConstraints="NO" id="zez-Ik-TWX">
+                                            <rect key="frame" x="5" y="-2" width="190" height="190"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" image="mp_selection_cover.png" translatesAutoresizingMaskIntoConstraints="NO" id="LE8-cO-ral">
                                             <rect key="frame" x="15" y="7" width="170" height="170"/>
                                         </imageView>
                                     </subviews>
@@ -933,12 +933,12 @@
                                 </view>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="zez-Ik-TWX" firstAttribute="top" secondItem="2LO-4G-Iog" secondAttribute="top" constant="7" id="B8c-DF-aOF"/>
-                                    <constraint firstItem="LL8-eI-Vsm" firstAttribute="leading" secondItem="zez-Ik-TWX" secondAttribute="leading" id="Jte-7x-S1a"/>
-                                    <constraint firstItem="zez-Ik-TWX" firstAttribute="centerX" secondItem="LE8-cO-ral" secondAttribute="centerX" id="WJx-dM-bdL"/>
-                                    <constraint firstItem="LL8-eI-Vsm" firstAttribute="top" secondItem="zez-Ik-TWX" secondAttribute="top" id="asC-eD-JQd"/>
+                                    <constraint firstItem="LE8-cO-ral" firstAttribute="top" secondItem="LL8-eI-Vsm" secondAttribute="top" id="PRo-uW-mhk"/>
+                                    <constraint firstItem="zez-Ik-TWX" firstAttribute="centerX" secondItem="LL8-eI-Vsm" secondAttribute="centerX" id="XRP-u1-FLz"/>
+                                    <constraint firstItem="zez-Ik-TWX" firstAttribute="top" secondItem="2LO-4G-Iog" secondAttribute="top" constant="-2" id="aJb-vz-sFx"/>
                                     <constraint firstItem="LL8-eI-Vsm" firstAttribute="centerX" secondItem="2LO-4G-Iog" secondAttribute="centerX" id="eje-5r-zMX"/>
-                                    <constraint firstItem="LE8-cO-ral" firstAttribute="top" secondItem="2LO-4G-Iog" secondAttribute="top" constant="4" id="tqJ-5F-bDN"/>
+                                    <constraint firstItem="LE8-cO-ral" firstAttribute="top" secondItem="2LO-4G-Iog" secondAttribute="top" constant="7" id="hxA-rz-CmO"/>
+                                    <constraint firstItem="LE8-cO-ral" firstAttribute="leading" secondItem="LL8-eI-Vsm" secondAttribute="leading" id="jrj-PK-3ML"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="backgroundImageView" destination="LE8-cO-ral" id="vOe-Re-JmE"/>
@@ -1771,8 +1771,8 @@
         <image name="model_bg_gloom.png" width="320" height="568"/>
         <image name="model_button_close.png" width="25" height="25"/>
         <image name="model_button_schedule.png" width="60" height="50"/>
+        <image name="mp_cell_cover.png" width="190" height="190"/>
         <image name="mp_selection_activity2.png" width="170" height="170"/>
-        <image name="mp_selection_bg.png" width="180" height="180"/>
         <image name="mp_selection_cover.png" width="170" height="170"/>
         <image name="mp_selection_proj1.png" width="170" height="170"/>
         <image name="people_cell_bg.png" width="143" height="203"/>

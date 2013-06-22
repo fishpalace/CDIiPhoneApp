@@ -70,7 +70,11 @@
     _nextEventTimeLabel.textColor = kColorTimePanelNextEventTime;
     _nextEventTimeLabel.font = kFontTimePanelNextEventTime;
     _nextEventTimeLabel.textAlignment = NSTextAlignmentCenter;
-    _nowIndicatorImageView.hidden = !eventDAO.active.boolValue;
+    _nowIndicatorImageView.hidden = !eventDAO.active.boolValue || eventDAO.passed.boolValue;
+  } else {
+    _nextEventTimeLabel.hidden = YES;
+    _nextEventTitleLabel.hidden = YES;
+    _nowIndicatorImageView.hidden = YES;
   }
 }
 

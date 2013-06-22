@@ -75,8 +75,8 @@
   
   cell.contentImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%d", imageNameBase, indexPath.row + 1]];
   
-  cell.contentImageView.layer.cornerRadius = 5;
-  cell.contentImageView.layer.masksToBounds = YES;
+//  cell.contentImageView.layer.cornerRadius = 5;
+//  cell.contentImageView.layer.masksToBounds = YES;
 
   
   return cell;

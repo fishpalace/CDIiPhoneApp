@@ -382,7 +382,7 @@ static CDIDataSource *sharedDataSource;
   NSArray *todayEvents = [CDIDataSource todayEventsForRoomID:roomID];
   CDIEventDAO *result = nil;
   for (CDIEventDAO *event in todayEvents) {
-    if (!event.passed.boolValue) {
+    if (!event.passed.boolValue && !event.abandoned.boolValue) {
       result = event;
       break;
     }

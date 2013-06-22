@@ -40,14 +40,25 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  _userPositionLabel.text = self.user.position;
-  _userTitleLabel.text = self.user.title;
-  _tableview.delegate = self;
-  _tableview.dataSource = self;
+  NSString *positionString = [NSString stringWithFormat:@"  %@", self.user.position];
+  NSString *titleString = self.user.title;
+  _userPositionLabel.text = positionString;
+  _userTitleLabel.text = [titleString uppercaseString];
+  
   _userTitleLabel.layer.cornerRadius = 5;
   _userTitleLabel.layer.masksToBounds = YES;
   _userPositionLabel.layer.cornerRadius = 5;
   _userPositionLabel.layer.masksToBounds = YES;
+  
+  _userTitleLabel.textAlignment = NSTextAlignmentCenter;
+  
+  _userPositionLabel.textColor = kColorPeopleInfoPositionLabel;
+  _userTitleLabel.textColor = kColorPeopleInfoTitleLabel;
+  _userPositionLabel.font = kFontPeopleInfoPositionLabel;
+  _userTitleLabel.font = kFontPeopleInfoTitleLabel;
+  
+  _tableview.delegate = self;
+  _tableview.dataSource = self;
   
   [self loadData];
 }
@@ -103,9 +114,16 @@
   cell.isPlaceHolder = self.fetchedResultsController.fetchedObjects.count == 0;
   if (!cell.isPlaceHolder) {
     CDIWork *work = self.fetchedResultsController.fetchedObjects[indexPath.row];
+    [cell.workPicImageView setImageWithURL:[NSURL URLWithString:work.imgURL]];
+    cell.workPicCoverImageView.layer.cornerRadius = 19;
+    cell.workPicCoverImageView.layer.masksToBounds = YES;
     cell.workNameLabel.text = work.nameEn;
     cell.workTypeLabel.text = work.workType;
-    [cell.workPicImageView setImageWithURL:[NSURL URLWithString:work.imgURL]];
+    
+    cell.workNameLabel.textColor = kColorPeopleInfoWorkNameLabel;
+    cell.workNameLabel.font = kFontPeopleInfoWorkNameLabel;
+    cell.workTypeLabel.textColor = kColorPeopleInfoWorkTypeLabel;
+    cell.workTypeLabel.font = kFontPeopleInfoWorkTypeLabel;
   }
   return cell;
 }

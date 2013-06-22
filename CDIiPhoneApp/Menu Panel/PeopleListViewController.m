@@ -92,6 +92,14 @@
   cell.userNameLabel.text = user.name;
   cell.userPositionLabel.text = user.position;
   cell.userTitleLabel.text = user.title;
+  
+  cell.userNameLabel.textColor = kColorPeopleInfoCellNameLabel;
+  cell.userNameLabel.font = kFontPeopleInfoCellNameLabel;
+  cell.userPositionLabel.textColor = kColorPeopleInfoCellPositionLabel;
+  cell.userPositionLabel.font = kFontPeopleInfoCellPositionLabel;
+  cell.userTitleLabel.textColor = kColorPeopleInfoCellTitleLabel;
+  cell.userTitleLabel.font = kFontPeopleInfoCellTitleLabel;
+  
   [cell.avatarImageView setImageWithURL:[NSURL URLWithString:user.avatarMidURL]];
 
   return cell;

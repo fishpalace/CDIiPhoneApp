@@ -149,7 +149,7 @@
                                 <rect key="frame" x="109" y="140" width="103" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="900" constant="42" id="Uo4-Za-cuJ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="900" constant="20" id="Uo4-Za-cuJ"/>
                                     <constraint firstAttribute="height" constant="21" id="eSs-e2-pcy"/>
                                 </constraints>
                                 <attributedString key="attributedText">
@@ -519,14 +519,17 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smart Campus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="df6-bj-Cnu">
-                                                    <rect key="frame" x="69" y="25" width="112" height="21"/>
+                                                    <rect key="frame" x="68" y="25" width="232" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="232" id="YWf-kY-RwA"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Application" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJ0-eQ-lBU">
-                                                    <rect key="frame" x="69" y="46" width="62" height="15"/>
+                                                    <rect key="frame" x="68" y="46" width="62" height="15"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="RKb-63-5Dg"/>
@@ -546,11 +549,12 @@
                                             <constraint firstAttribute="centerY" secondItem="P2P-B2-BLQ" secondAttribute="centerY" constant="5" id="Cnl-5q-Fin"/>
                                             <constraint firstItem="P2P-B2-BLQ" firstAttribute="leading" secondItem="pMp-kD-Sa3" secondAttribute="leading" constant="10" id="PWR-eu-pVa"/>
                                             <constraint firstItem="dJ0-eQ-lBU" firstAttribute="top" secondItem="df6-bj-Cnu" secondAttribute="bottom" id="VNz-Co-W8P"/>
+                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="df6-bj-Cnu" secondAttribute="trailing" constant="20" id="ZbN-Cf-S2I"/>
                                             <constraint firstItem="df6-bj-Cnu" firstAttribute="top" secondItem="P2P-B2-BLQ" secondAttribute="top" id="apZ-rU-Bf4"/>
                                             <constraint firstItem="P2P-B2-BLQ" firstAttribute="top" secondItem="9RY-Zh-yeR" secondAttribute="top" id="cl2-aU-cCJ"/>
                                             <constraint firstAttribute="centerY" secondItem="XRp-SD-ARl" secondAttribute="centerY" id="mkp-uO-Yxu"/>
                                             <constraint firstItem="P2P-B2-BLQ" firstAttribute="bottom" secondItem="9RY-Zh-yeR" secondAttribute="bottom" id="oyJ-nx-ptz"/>
-                                            <constraint firstItem="df6-bj-Cnu" firstAttribute="leading" secondItem="P2P-B2-BLQ" secondAttribute="trailing" constant="21" id="xus-lv-nel"/>
+                                            <constraint firstItem="df6-bj-Cnu" firstAttribute="leading" secondItem="P2P-B2-BLQ" secondAttribute="trailing" constant="20" id="xus-lv-nel"/>
                                             <constraint firstItem="P2P-B2-BLQ" firstAttribute="leading" secondItem="9RY-Zh-yeR" secondAttribute="leading" id="zaD-ge-I05"/>
                                         </constraints>
                                         <connections>
@@ -1688,7 +1692,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Student" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="CSX-F0-dQ3">
-                                                    <rect key="frame" x="18" y="169" width="124" height="15"/>
+                                                    <rect key="frame" x="18" y="174" width="124" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="rKP-8x-POK"/>
                                                     </constraints>
@@ -1697,7 +1701,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Web Engineer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="Gz2-Lb-lps">
-                                                    <rect key="frame" x="18" y="188" width="124" height="15"/>
+                                                    <rect key="frame" x="18" y="191" width="124" height="12"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1707,6 +1711,7 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="uPd-ez-1Db" firstAttribute="top" secondItem="IBW-Ke-caE" secondAttribute="top" id="1Z6-AA-nH0"/>
+                                            <constraint firstItem="CSX-F0-dQ3" firstAttribute="top" secondItem="tWf-ZF-j18" secondAttribute="bottom" constant="-3" id="CwJ-lS-rEZ"/>
                                             <constraint firstItem="tWf-ZF-j18" firstAttribute="top" secondItem="olv-sX-y6C" secondAttribute="bottom" constant="4" id="DtN-Pd-th6"/>
                                             <constraint firstItem="olv-sX-y6C" firstAttribute="centerX" secondItem="uPd-ez-1Db" secondAttribute="centerX" id="I5Q-KD-Fzc"/>
                                             <constraint firstAttribute="centerX" secondItem="olv-sX-y6C" secondAttribute="centerX" id="IkW-wd-kjx"/>
@@ -1714,11 +1719,9 @@
                                             <constraint firstItem="Gz2-Lb-lps" firstAttribute="trailing" secondItem="CSX-F0-dQ3" secondAttribute="trailing" id="b5U-Tp-JXz"/>
                                             <constraint firstAttribute="bottom" secondItem="Gz2-Lb-lps" secondAttribute="bottom" constant="17" id="bo4-sD-xpL"/>
                                             <constraint firstAttribute="centerX" secondItem="CSX-F0-dQ3" secondAttribute="centerX" id="m4g-xc-TRa"/>
-                                            <constraint firstItem="CSX-F0-dQ3" firstAttribute="top" secondItem="olv-sX-y6C" secondAttribute="bottom" constant="17" id="p2K-2n-nce"/>
-                                            <constraint firstItem="Gz2-Lb-lps" firstAttribute="top" secondItem="CSX-F0-dQ3" secondAttribute="bottom" constant="4" id="uNx-CF-G2q"/>
+                                            <constraint firstItem="olv-sX-y6C" firstAttribute="top" secondItem="IBW-Ke-caE" secondAttribute="top" constant="12" id="swb-xB-O3L"/>
                                             <constraint firstItem="CSX-F0-dQ3" firstAttribute="leading" secondItem="tWf-ZF-j18" secondAttribute="leading" id="uyx-ZZ-lZJ"/>
                                             <constraint firstItem="CSX-F0-dQ3" firstAttribute="trailing" secondItem="tWf-ZF-j18" secondAttribute="trailing" id="v9i-CG-ezo"/>
-                                            <constraint firstAttribute="bottom" secondItem="CSX-F0-dQ3" secondAttribute="bottom" constant="36" id="ytc-qD-6Fp"/>
                                         </constraints>
                                         <size key="customSize" width="160" height="220"/>
                                         <connections>

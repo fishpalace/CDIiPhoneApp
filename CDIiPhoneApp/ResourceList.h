@@ -47,4 +47,9 @@
 #define kFontTimePanelTitlePercentage kRFontWitSize(20)
 #define kFontTimePanelTitleEvent kRFontWitSize(12)
 
+#define kFontTimePanelNextEventTitle kRFontWitSize(12)
+#define kFontTimePanelNextEventTime  kRFontWitSize(12)
+#define kColorTimePanelNextEventTitle kRTintBlue
+#define kColorTimePanelNextEventTime  kRSLDateLabelColor
+
 #endif

@@ -133,6 +133,11 @@ static CDIDataSource *sharedDataSource;
   return [dict objectForKey:[NSNumber numberWithInteger:roomID]];
 }
 
++ (CDIEventDAO *)nextEventForRoomID:(NSInteger)roomID
+{
+  return [[CDIDataSource sharedDataSource] nextEventForRoomID:roomID];
+}
+
 + (CDIRoomStatus)statusForRoom:(NSInteger)roomID isToday:(BOOL)isToday
 {
   CDIRoomStatus status = CDIRoomStatusAvailable;
@@ -370,6 +375,19 @@ static CDIDataSource *sharedDataSource;
   }
   
   return (NSInteger)(availableValue * 100 / (availableValue + unavailableValue));
+}
+
+- (CDIEventDAO *)nextEventForRoomID:(NSInteger)roomID
+{
+  NSArray *todayEvents = [CDIDataSource todayEventsForRoomID:roomID];
+  CDIEventDAO *result = nil;
+  for (CDIEventDAO *event in todayEvents) {
+    if (!event.passed.boolValue) {
+      result = event;
+      break;
+    }
+  }
+  return result;
 }
 
 #pragma mark - Properties

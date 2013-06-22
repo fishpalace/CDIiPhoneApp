@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CDIEventDAO.h"
 @import CoreData;
 
 typedef enum {
@@ -36,5 +37,7 @@ typedef enum {
 + (NSInteger)availablePercentageWithRoomID:(NSInteger)roomID isToday:(BOOL)isToday;
 
 + (CDIRoomStatus)statusForRoom:(NSInteger)roomID isToday:(BOOL)isToday;
+
++ (CDIEventDAO *)nextEventForRoomID:(NSInteger)roomID;
 
 @end

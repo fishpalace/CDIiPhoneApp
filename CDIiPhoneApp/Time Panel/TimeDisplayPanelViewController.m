@@ -12,6 +12,8 @@
 #import "UIView+Resize.h"
 #import "CDIDataSource.h"
 #import "UIView+Addition.h"
+#import "CDIEventDAO.h"
+#import "NSDate+Addition.h"
 
 #define kTPScheduleListOriginY 70
 
@@ -25,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nextEventTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nextEventTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sectionTitleLabel;
+@property (weak, nonatomic) IBOutlet UIView *coverView;
 
 @property (nonatomic, readwrite) BOOL scheduleListDisplayed;
 
@@ -57,6 +60,18 @@
   _pageControl.currentPage = 0;
   _scheduleListDisplayed = NO;
   [_sectionTitleLabel flashOut];
+  
+  CDIEventDAO *eventDAO = [CDIDataSource nextEventForRoomID:self.roomID];
+  if (eventDAO) {
+    _nextEventTitleLabel.text = eventDAO.name;
+    _nextEventTimeLabel.text = [NSDate stringOfTime:eventDAO.startDate];
+    _nextEventTitleLabel.textColor = kColorTimePanelNextEventTitle;
+    _nextEventTitleLabel.font = kFontTimePanelNextEventTitle;
+    _nextEventTimeLabel.textColor = kColorTimePanelNextEventTime;
+    _nextEventTimeLabel.font = kFontTimePanelNextEventTime;
+    _nextEventTimeLabel.textAlignment = NSTextAlignmentCenter;
+    _nowIndicatorImageView.hidden = !eventDAO.active.boolValue;
+  }
 }
 
 - (void)removeFromParentViewController
@@ -113,6 +128,7 @@
   CGFloat targetOriginY = self.scheduleListDisplayed ? kTPScheduleListOriginY : self.view.frame.size.height;
   [UIView animateWithDuration:0.7 animations:^{
     [self.scheduleListViewController.view resetOriginY:targetOriginY];
+    self.coverView.alpha = self.scheduleListDisplayed ? 0.3 : 0.0;
   } completion:^(BOOL finished) {
     //TODO: 
   }];

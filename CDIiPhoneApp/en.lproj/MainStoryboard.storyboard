@@ -228,6 +228,11 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JF-WV-pqG">
                                 <rect key="frame" x="0.0" y="70" width="320" height="330"/>
                             </scrollView>
+                            <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDF-Uo-kDd">
+                                <rect key="frame" x="0.0" y="70" width="320" height="330"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="jJe-kY-Jpf">
                                 <rect key="frame" x="140" y="342" width="40" height="38"/>
                                 <constraints>
@@ -312,13 +317,16 @@
                             <constraint firstAttribute="centerX" secondItem="vC4-ds-ZMj" secondAttribute="centerX" id="37h-5N-Gfq"/>
                             <constraint firstItem="G9g-KQ-sfl" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" id="9jZ-nn-djm"/>
                             <constraint firstItem="vC4-ds-ZMj" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" constant="40" id="Akh-pd-LUi"/>
+                            <constraint firstAttribute="bottom" secondItem="rDF-Uo-kDd" secondAttribute="bottom" id="Azz-gP-thH"/>
                             <constraint firstItem="V6b-Jy-euD" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" id="KYC-ct-APU"/>
                             <constraint firstItem="v7a-QV-Ppc" firstAttribute="centerY" secondItem="dS9-D3-2nn" secondAttribute="centerY" id="MVj-8Z-fQg"/>
                             <constraint firstItem="9JF-WV-pqG" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" id="N5R-7G-Hgw"/>
                             <constraint firstItem="9JF-WV-pqG" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" constant="70" id="Qvu-2n-lRl"/>
                             <constraint firstItem="jJe-kY-Jpf" firstAttribute="bottom" secondItem="INa-wa-zxq" secondAttribute="bottom" constant="-20" id="SJq-CN-wEl"/>
                             <constraint firstAttribute="centerX" secondItem="jJe-kY-Jpf" secondAttribute="centerX" id="VhZ-DL-hvd"/>
+                            <constraint firstAttribute="trailing" secondItem="rDF-Uo-kDd" secondAttribute="trailing" id="Vsy-2O-xOu"/>
                             <constraint firstItem="V6b-Jy-euD" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" constant="8" id="ag5-DW-acm"/>
+                            <constraint firstItem="rDF-Uo-kDd" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" constant="70" id="bjt-xO-U8I"/>
                             <constraint firstItem="dS9-D3-2nn" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" constant="55" id="cHn-ey-Jla"/>
                             <constraint firstAttribute="trailing" secondItem="9JF-WV-pqG" secondAttribute="trailing" id="fMp-pX-Z3S"/>
                             <constraint firstAttribute="trailing" secondItem="dS9-D3-2nn" secondAttribute="trailing" constant="55" id="n53-DO-WiN"/>
@@ -327,6 +335,7 @@
                             <constraint firstAttribute="trailing" secondItem="G9g-KQ-sfl" secondAttribute="trailing" id="phW-A0-nD5"/>
                             <constraint firstItem="G9g-KQ-sfl" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" constant="10" id="qc4-w0-9as"/>
                             <constraint firstItem="NUV-XY-MHk" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" constant="16" id="qmx-Xv-W4C"/>
+                            <constraint firstItem="rDF-Uo-kDd" firstAttribute="leading" secondItem="INa-wa-zxq" secondAttribute="leading" id="rei-dD-r4e"/>
                             <constraint firstItem="dS9-D3-2nn" firstAttribute="top" secondItem="INa-wa-zxq" secondAttribute="top" constant="9" id="vcN-ZW-4cS"/>
                             <constraint firstItem="vC4-ds-ZMj" firstAttribute="top" secondItem="NUV-XY-MHk" secondAttribute="top" id="zUC-5i-d91"/>
                         </constraints>
@@ -337,6 +346,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="coverView" destination="rDF-Uo-kDd" id="8qc-RR-ZoD"/>
                         <outlet property="dateLabel" destination="NUV-XY-MHk" id="d5F-PQ-4Ap"/>
                         <outlet property="nextEventTimeLabel" destination="V6b-Jy-euD" id="nfg-bO-3Yz"/>
                         <outlet property="nextEventTitleLabel" destination="dS9-D3-2nn" id="0Db-bX-lJk"/>
@@ -349,7 +359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ce-3w-bto" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="690" y="703"/>
+            <point key="canvasLocation" x="703" y="706"/>
         </scene>
         <!--People Info View Controller-->
         <scene sceneID="1DC-lT-bnv">
@@ -683,7 +693,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a4T-lY-XOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1039" y="810"/>
+            <point key="canvasLocation" x="1040" y="804"/>
         </scene>
         <!--Schedule List View Controller-->
         <scene sceneID="TnS-dV-VS7">

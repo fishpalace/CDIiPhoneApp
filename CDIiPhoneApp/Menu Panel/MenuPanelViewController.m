@@ -54,6 +54,8 @@
   self.dragIndicatorView.delegate = self;
   _tableView.delegate = self;
   _tableView.dataSource = self;
+  _avatarImageView.layer.cornerRadius = 19;
+  _avatarImageView.layer.masksToBounds = YES;
   [NSNotificationCenter registerDidFetchNewEventsNotificationWithSelector:@selector(reloadTableView) target:self];
 }
 
@@ -155,6 +157,8 @@
     MenuItemCell *detailCell = [tableView dequeueReusableCellWithIdentifier:@"MenuItemCell"];
     detailCell.iconImageView.image = [UIImage imageNamed:self.iconImageNameArray[index]];
     detailCell.titleLabel.text = self.titleArray[index];
+    detailCell.titleLabel.textColor = kColorItemTitle;
+    detailCell.titleLabel.font = kFontItemTitle;
     detailCell.functionButton.hidden = indexPath.row != 0 || indexPath.section == 1;
     detailCell.displayButton.hidden = indexPath.row != 1 || indexPath.section == 1;
     cell = detailCell;

@@ -18,6 +18,9 @@
 #define kRRoomStatusUnvailableColor [UIColor colorWithRed:234.0/255.0 green:82.0/255.0 blue:81.0/255.0 alpha:1.0]
 #define kRRoomStatusAvailableColor [UIColor colorWithRed:243.0/255.0 green:151.0/255.0 blue:0.0/255.0 alpha:1.0]
 
+#define kColorItemTitle [UIColor colorWithRed:55.0/255.0 green:55.0/255.0 blue:55.0/255.0 alpha:1.0]
+#define kFontItemTitle kRFontWitSize(17)
+
 #pragma mark - Schedule List
 #define kRSLTimeLabelColor [UIColor colorWithRed:0.0/255.0 green:150.0/255.0 blue:218.0/255.0 alpha:1.0]
 #define kRSLDateLabelColor [UIColor colorWithRed:177.0/255.0 green:177.0/255.0 blue:177.0/255.0 alpha:1.0]

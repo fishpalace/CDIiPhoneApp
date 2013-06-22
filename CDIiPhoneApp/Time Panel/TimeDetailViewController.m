@@ -92,10 +92,20 @@
     eventNumberString = [eventNumberString stringByAppendingString:@"s"];
   }
   self.eventNumberLabel.text = eventNumberString;
+  self.eventNumberLabel.textColor = kColorTimePanelTitle;
+  self.eventNumberLabel.font = kFontTimePanelTitleEvent;
+  self.eventNumberLabel.shadowColor = kColorTimePanelTitleShadow;
+  self.eventNumberLabel.shadowOffset = CGSizeMake(0, 1);
+  self.eventNumberLabel.textAlignment = NSTextAlignmentCenter;
   
   NSInteger percentageNumber = [CDIDataSource availablePercentageWithRoomID:self.roomID isToday:self.isToday];
   NSString *percentageString = [NSString stringWithFormat:@"%d%%", percentageNumber];
   self.percentageLabel.text = percentageString;
+  self.percentageLabel.textColor = kColorTimePanelTitle;
+  self.percentageLabel.font = kFontTimePanelTitlePercentage;
+  self.percentageLabel.shadowColor = kColorTimePanelTitleShadow;
+  self.percentageLabel.shadowOffset = CGSizeMake(0, 1);
+  self.percentageLabel.textAlignment = NSTextAlignmentCenter;
 }
 
 - (NSInteger)eventNumber

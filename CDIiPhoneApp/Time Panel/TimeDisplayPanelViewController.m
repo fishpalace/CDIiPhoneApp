@@ -73,18 +73,27 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+  [self updateDateLabel];
+}
+
+- (void)updateDateLabel
+{
   BOOL isToday = self.scrollView.contentOffset.x == 0;
   self.pageControl.currentPage = isToday ? 0 : 1;
-  self.dateLabel.text = isToday > 0 ? @"Today" : @"Tomorrow";
+  if (self.scheduleListDisplayed) {
+    self.dateLabel.text = @"Today";
+  } else {
+    self.dateLabel.text = isToday > 0 ? @"Today" : @"Tomorrow";
+  }
   self.dateLabel.textColor = kColorForNextEventTimeLabel;
   self.dateLabel.font = kFontForNextEventTimeLabel;
-  
 }
 
 - (IBAction)didClickScheduleButton:(UIButton *)sender
 {
   self.scheduleListDisplayed = !self.scheduleListDisplayed;
   self.scheduleButton.selected = self.scheduleListDisplayed;
+  [self updateDateLabel];
   CGFloat targetOriginY = self.scheduleListDisplayed ? kTPScheduleListOriginY : self.view.frame.size.height;
   [UIView animateWithDuration:0.7 animations:^{
     [self.scheduleListViewController.view resetOriginY:targetOriginY];

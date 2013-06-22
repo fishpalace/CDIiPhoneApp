@@ -116,6 +116,12 @@ static ModelPanelViewController *sharedModelPanelViewController;
                                 value:kCModelTitle
                                 range:NSMakeRange(0, titleAttributedString.length)];
   
+//  NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
+//  [mutParaStyle setAlignment:NSTextAlignmentCenter];
+//  [titleAttributedString addAttributes: @{NSParagraphStyleAttributeName : mutParaStyle}
+//                                 range:NSMakeRange(0, titleAttributedString.length)];
+ 
+  
   self.titleLabel.attributedText = titleAttributedString;
   
   NSString *buttonBGNamge = @"";

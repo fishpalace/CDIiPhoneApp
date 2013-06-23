@@ -67,6 +67,8 @@
 		1864F5D2177745490013960C /* menu_login_textfield_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1864F5D0177745490013960C /* menu_login_textfield_bg.png */; };
 		1864F5D3177745490013960C /* menu_login_textfield_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1864F5D1177745490013960C /* menu_login_textfield_bg@2x.png */; };
 		1864F5D6177748B50013960C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864F5D5177748B50013960C /* LoginViewController.m */; };
+		1864F5DA17775EE70013960C /* RPRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864F5D917775EE70013960C /* RPRoomViewController.m */; };
+		1864F5DD17775F370013960C /* RPRoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864F5DC17775F370013960C /* RPRoomCell.m */; };
 		1872230817731FBE000B5F17 /* time_schedule_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230617731FBE000B5F17 /* time_schedule_list.png */; };
 		1872230917731FBE000B5F17 /* time_schedule_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230717731FBE000B5F17 /* time_schedule_list@2x.png */; };
 		1872230C17732243000B5F17 /* tableview_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230A17732243000B5F17 /* tableview_banner.png */; };
@@ -329,6 +331,10 @@
 		1864F5D1177745490013960C /* menu_login_textfield_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_login_textfield_bg@2x.png"; sourceTree = "<group>"; };
 		1864F5D4177748B50013960C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = "Model Panel/LoginViewController.h"; sourceTree = "<group>"; };
 		1864F5D5177748B50013960C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = "Model Panel/LoginViewController.m"; sourceTree = "<group>"; };
+		1864F5D817775EE70013960C /* RPRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPRoomViewController.h; path = "Reserve Panel/RPRoomViewController.h"; sourceTree = "<group>"; };
+		1864F5D917775EE70013960C /* RPRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPRoomViewController.m; path = "Reserve Panel/RPRoomViewController.m"; sourceTree = "<group>"; };
+		1864F5DB17775F370013960C /* RPRoomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPRoomCell.h; path = "Reserve Panel/RPRoomCell.h"; sourceTree = "<group>"; };
+		1864F5DC17775F370013960C /* RPRoomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPRoomCell.m; path = "Reserve Panel/RPRoomCell.m"; sourceTree = "<group>"; };
 		1872230617731FBE000B5F17 /* time_schedule_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time_schedule_list.png; path = "Image Resource/Model Panel/time_schedule_list.png"; sourceTree = SOURCE_ROOT; };
 		1872230717731FBE000B5F17 /* time_schedule_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "time_schedule_list@2x.png"; path = "Image Resource/Model Panel/time_schedule_list@2x.png"; sourceTree = SOURCE_ROOT; };
 		1872230A17732243000B5F17 /* tableview_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_banner.png; sourceTree = "<group>"; };
@@ -628,6 +634,7 @@
 				18E0EA931738DA89006EFF51 /* Menu Panel */,
 				18B74380175AE43100585CF5 /* Model Panel */,
 				18B743D8175B069F00585CF5 /* Time Panel */,
+				1864F5D717775EAE0013960C /* Reserve Panel */,
 				18948CB5175C51B6004E07EB /* TableView */,
 			);
 			path = CDIiPhoneApp;
@@ -695,6 +702,17 @@
 			name = TableView;
 			path = "Image Resource/TableView";
 			sourceTree = SOURCE_ROOT;
+		};
+		1864F5D717775EAE0013960C /* Reserve Panel */ = {
+			isa = PBXGroup;
+			children = (
+				1864F5D817775EE70013960C /* RPRoomViewController.h */,
+				1864F5D917775EE70013960C /* RPRoomViewController.m */,
+				1864F5DB17775F370013960C /* RPRoomCell.h */,
+				1864F5DC17775F370013960C /* RPRoomCell.m */,
+			);
+			name = "Reserve Panel";
+			sourceTree = "<group>";
 		};
 		187F4FF81734E8BF006B46A3 /* User Interface */ = {
 			isa = PBXGroup;
@@ -1365,6 +1383,7 @@
 				187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */,
 				18232641177698B0001E7B88 /* ScheduleListTableViewController.m in Sources */,
 				18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */,
+				1864F5DA17775EE70013960C /* RPRoomViewController.m in Sources */,
 				18E0EA921738CDA8006EFF51 /* GYPositionBounceAnimation.m in Sources */,
 				18E0EA961738DAE4006EFF51 /* MenuPanelViewController.m in Sources */,
 				1864F5D6177748B50013960C /* LoginViewController.m in Sources */,
@@ -1405,6 +1424,7 @@
 				18948CBE175C5FAC004E07EB /* SLDetailTableViewCell.m in Sources */,
 				18948CCD175CB465004E07EB /* PeopleListViewController.m in Sources */,
 				1823263E17769350001E7B88 /* UIImageView+Addition.m in Sources */,
+				1864F5DD17775F370013960C /* RPRoomCell.m in Sources */,
 				18DBB8A91776E2EE00419DE7 /* CDICalendar.m in Sources */,
 				18948CD5175CE2C8004E07EB /* PeopleListCollectionViewCell.m in Sources */,
 				18948D08175D06AA004E07EB /* PeopleInfoViewController.m in Sources */,

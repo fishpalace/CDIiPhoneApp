@@ -260,6 +260,11 @@
   [LoginViewController displayLoginPanel];
 }
 
+- (IBAction)didClickScheduleButton:(UIButton *)sender
+{
+  [self performSegueWithIdentifier:@"MenuReserveSegue" sender:self];
+}
+
 #pragma mark - Properties
 - (MPDragIndicatorView *)dragIndicatorView
 {

@@ -81,4 +81,10 @@
 #define kFontPeopleInfoCellTitleLabel kRFontWitSize(10)
 #define kFontPeopleInfoCellPositionLabel kRFontWitSize(10)
 
+#pragma mark - Reserve Panel
+#define kFontRPRoomNameLabel kRLightFontWithSize(17)
+#define kColorRPRoomNameLabel [UIColor colorWithRed:55.0/255.0 green:55.0/255.0 blue:55.0/255.0 alpha:1.0]
+#define kFontRPEventCountLabel kRFontWitSize(12)
+#define kColorRPEventCountLabel [UIColor colorWithRed:186.0/255.0 green:186.0/255.0 blue:186.0/255.0 alpha:1.0]
+
 #endif

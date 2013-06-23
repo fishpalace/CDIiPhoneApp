@@ -21,6 +21,7 @@ static CDIEvent *sharedNewEvent;
 @dynamic endDate;
 @dynamic endValue;
 @dynamic eventID;
+@dynamic eventStoreID;
 @dynamic isPlaceHolder;
 @dynamic name;
 @dynamic passed;
@@ -32,6 +33,7 @@ static CDIEvent *sharedNewEvent;
 @dynamic occupiedByB;
 @dynamic occupiedByC;
 @dynamic occupiedByD;
+@dynamic updateTime;
 @dynamic creator;
 
 + (CDIEvent *)sharedNewEvent
@@ -88,7 +90,9 @@ static CDIEvent *sharedNewEvent;
   return eventCopy;
 }
 
-+ (CDIEvent *)insertUserInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context
++ (CDIEvent *)insertUserInfoWithDict:(NSDictionary *)dict
+                          updateTime:(NSDate *)updateTime
+              inManagedObjectContext:(NSManagedObjectContext *)context
 {
   if (![dict isKindOfClass:[NSDictionary class]]) {
     return nil;
@@ -106,6 +110,7 @@ static CDIEvent *sharedNewEvent;
   }
   
   [event configureWithDictionary:dict];
+  event.updateTime = updateTime;
   
   return event;
 }
@@ -121,6 +126,29 @@ static CDIEvent *sharedNewEvent;
   CDIEvent *res = [items lastObject];
   
   return res;
+}
+
++ (void)updateEventStoreID:(NSString *)eventStoreID
+            forEventWithID:(NSString *)eventID
+    inManagedObjectContext:(NSManagedObjectContext *)context
+{
+  CDIEvent *event = [CDIEvent eventWithID:eventID inManagedObjectContext:context];
+  event.eventStoreID = eventStoreID;
+  [context processPendingChanges];
+}
+
++ (void)removeEventsOlderThanUpdateDate:(NSDate *)updateDate inManagedObjectContext:(NSManagedObjectContext *)context
+{
+  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+  
+  [request setEntity:[NSEntityDescription entityForName:@"CDIEvent" inManagedObjectContext:context]];
+  NSArray *items = [context executeFetchRequest:request error:NULL];
+  for (CDIEvent *event in items) {
+    if (![event.updateTime isEqualToDate:updateDate]) {
+      [context deleteObject:event];
+    }
+  }
+  [context processPendingChanges];
 }
 
 - (id)initWithDictionary:(NSDictionary *)dict

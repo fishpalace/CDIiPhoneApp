@@ -7,70 +7,110 @@
 //
 
 #import "CDICalendar.h"
-
-@import EventKit;
+#import "NSDate+Addition.h"
 
 static EKEventStore *eventStore = nil;
+static NSMutableArray *eventsArray = nil;
 
 @implementation CDICalendar
 
-+ (void)requestAccess:(void (^)(BOOL granted, NSError *error))callback;
++ (EKEventStore *)sharedEventStore
 {
   if (eventStore == nil) {
     eventStore = [[EKEventStore alloc] init];
   }
+  return eventStore;
+}
+
++ (void)requestAccess:(void (^)(BOOL granted, NSError *error))callback;
+{
   // request permissions
   [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:callback];
 }
 
-+ (BOOL)addEventWithStartDate:(NSDate*)startDate
++ (EKEvent *)addEventWithStartDate:(NSDate*)startDate
                       endDate:(NSDate *)endDate
                     withTitle:(NSString*)title
-                   inLocation:(NSString*)location
-                      eventID:(NSString *)eventID
+                        inLocation:(NSString*)location;
 {
   
   EKEvent *event = [EKEvent eventWithEventStore:eventStore];
-  EKCalendar *calendar = nil;
-//  NSString *calendarIdentifier = [[NSUserDefaults standardUserDefaults] valueForKey:@"my_calendar_identifier"];
-  
-//  // when identifier exists, my calendar probably already exists
-//  // note that user can delete my calendar. In that case I have to create it again.
-//  if (calendarIdentifier) {
-//    calendar = [eventStore calendarWithIdentifier:calendarIdentifier];
+//  EKCalendar *calendar = nil;
+//  
+//  calendar = [eventStore calendarWithIdentifier:@"CDI"];
+//  
+//  if (!calendar) {
+//    calendar = [EKCalendar calendarForEntityType:EKEntityTypeEvent eventStore:eventStore];
+//    
+//    [calendar setTitle:@"CDI"];
+//    
+//    for (EKSource *s in eventStore.sources) {
+//      if (s.sourceType == EKSourceTypeCalDAV && [s.title isEqualToString:@"iCloud"] ) {
+//        calendar.source = s;
+//        break;
+//      }
+//    }
+//
+//    NSError *error = nil;
+//    [eventStore saveCalendar:calendar commit:YES error:&error];
 //  }
   
-  calendar = [eventStore calendarWithIdentifier:@"CDI"];
-  
-  if (!calendar) {
-    calendar = [EKCalendar calendarForEntityType:EKEntityTypeEvent eventStore:eventStore];
-    
-    [calendar setTitle:@"CDI"];
-    
-    for (EKSource *s in eventStore.sources) {
-      if (s.sourceType == EKSourceTypeLocal) {
-        calendar.source = s;
-        break;
-      }
-    }
-
-    NSError *error = nil;
-    [eventStore saveCalendar:calendar commit:YES error:&error];
-  }
-  
-  // assign basic information to the event; location is optional
   event.calendar = [eventStore defaultCalendarForNewEvents];
   event.location = location;
   event.title = title;
-  
-  // set the start date to the current date/time and the event duration to two hours
   event.startDate = startDate;
   event.endDate = endDate;
   
   NSError *error = nil;
-  // save event to the callendar
   BOOL result = [eventStore saveEvent:event span:EKSpanThisEvent error:&error];
-  return result;
+  if (result) {
+    [eventsArray removeAllObjects];
+    eventsArray = nil;
+    [CDICalendar eventsArray];
+  } else {
+    event = nil;
+  }
+  return event;
+}
+
++ (void)deleteEventWitdStoreID:(NSString *)eventStoreID
+{
+  EKEvent *event = [[CDICalendar sharedEventStore] eventWithIdentifier:eventStoreID];
+  NSError *error = nil;
+  if (event) {
+    [[CDICalendar sharedEventStore] removeEvent:event span:EKSpanThisEvent error:&error];
+  }
+}
+
++ (BOOL)doesEventExistInStoreWithID:(NSString *)eventStoreID
+{
+//  NSLog(@"toCheck: %@", eventStoreID);
+//  BOOL result = NO;
+//  for (EKEvent *event in [CDICalendar eventsArray]) {
+//    if ([event.eventIdentifier isEqualToString:eventStoreID]) {
+//      NSLog(@"array: %@", event.eventIdentifier);
+//      result = YES;
+//      break;
+//    }
+//  }
+  EKEvent *event = [[CDICalendar sharedEventStore] eventWithIdentifier:eventStoreID];
+  return event != nil;
+}
+
++ (NSMutableArray *)eventsArray
+{
+  if (!eventsArray) {
+    EKEventStore *eventStore = [CDICalendar sharedEventStore];
+    
+    NSDate *startDate = [NSDate todayDateStartingFromHour:0];
+    NSDate *endDate   = [startDate dateByAddingTimeInterval:3600 * 24 * 2];
+    
+    NSPredicate *predicate = [eventStore predicateForEventsWithStartDate:startDate
+                                                                 endDate:endDate
+                                                               calendars:@[[eventStore defaultCalendarForNewEvents]]];
+    eventsArray = [NSMutableArray arrayWithArray:[eventStore eventsMatchingPredicate:predicate]];
+  }
+  return eventsArray;
 }
 
 @end

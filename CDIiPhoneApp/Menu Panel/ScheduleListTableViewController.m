@@ -118,6 +118,12 @@
       [cell.eventRelatedInfo setTextColor:kRSLCellRelatedInfoColor];
       [cell.startingTime setTextColor:kRSLCellTimeColor];
     }
+    
+    BOOL eventStoreIDExisted = [CDICalendar doesEventExistInStoreWithID:eventDAO.eventStoreID];
+    [cell.calendarButton setSelected:eventStoreIDExisted];
+    if (!eventStoreIDExisted) {
+      [CDIEvent updateEventStoreID:@"" forEventWithID:eventDAO.eventID inManagedObjectContext:self.managedObjectContext];
+    }
   }
   return cell;
 }
@@ -170,13 +176,49 @@
   }
   
   CDIEventDAO *eventDAO = eventArray[indexPath.row];
+  if (cell.calendarButton.selected) {
+    [self removeEvent:eventDAO forCell:cell];
+  } else {
+    [self addEvent:eventDAO forCell:cell];
+  }
+}
+
+- (void)removeEvent:(CDIEventDAO *)eventDAO forCell:(SLDetailTableViewCell *)cell
+{
   [CDICalendar requestAccess:^(BOOL granted, NSError *error) {
     if (granted) {
-      [CDICalendar addEventWithStartDate:eventDAO.startDate
-                                 endDate:eventDAO.endDate
-                               withTitle:eventDAO.name
-                              inLocation:[CDIDataSource nameForRoomID:eventDAO.roomID.integerValue]
-                                 eventID:[NSString stringWithFormat:@"CDIEvent %@", eventDAO.eventID]];
+      
+      [CDICalendar deleteEventWitdStoreID:eventDAO.eventStoreID];
+      eventDAO.eventStoreID = @"";
+      [CDIEvent updateEventStoreID:@""
+                    forEventWithID:eventDAO.eventID
+            inManagedObjectContext:self.managedObjectContext];
+      [self.managedObjectContext processPendingChanges];
+      [cell.calendarButton setSelected:NO];
+    } else {
+      //TODO Report error
+    }
+  }];
+}
+
+- (void)addEvent:(CDIEventDAO *)eventDAO forCell:(SLDetailTableViewCell *)cell
+{
+  [CDICalendar requestAccess:^(BOOL granted, NSError *error) {
+    if (granted) {
+      EKEvent *event = [CDICalendar addEventWithStartDate:eventDAO.startDate
+                                                  endDate:eventDAO.endDate
+                                                withTitle:eventDAO.name
+                                               inLocation:[CDIDataSource nameForRoomID:eventDAO.roomID.integerValue]];
+      if (event) {
+        eventDAO.eventStoreID = event.eventIdentifier;
+        [CDIEvent updateEventStoreID:eventDAO.eventStoreID
+                      forEventWithID:eventDAO.eventID
+              inManagedObjectContext:self.managedObjectContext];
+        [self.managedObjectContext processPendingChanges];
+        [cell.calendarButton setSelected:YES];
+      } else {
+        //TODO Creation Failed
+      }
     } else {
       //TODO Report error
     }

@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSDate * endDate;
 @property (nonatomic, strong) NSNumber * endValue;
 @property (nonatomic, strong) NSString * eventID;
+@property (nonatomic, strong) NSString * eventStoreID;
 @property (nonatomic, strong) NSNumber * isPlaceHolder;
 @property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) NSNumber * passed;
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) NSNumber * roomID;
 @property (nonatomic, strong) NSDate * startDate;
 @property (nonatomic, strong) NSNumber * startValue;
+@property (nonatomic, strong) NSDate * updateTime;
 @property (nonatomic, strong) CDIUser *creator;
 
 + (CDIEventDAO *)sharedNewEvent;

@@ -7,6 +7,7 @@
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="endValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="eventID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventStoreID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isPlaceHolder" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="occupiedByA" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -18,6 +19,7 @@
         <attribute name="roomID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDIUser" inverseName="events" inverseEntity="CDIUser" syncable="YES"/>
     </entity>
     <entity name="CDINews" representedClassName="CDINews" syncable="YES">

@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSDate * endDate;
 @property (nonatomic, retain) NSNumber * endValue;
 @property (nonatomic, retain) NSString * eventID;
+@property (nonatomic, retain) NSString * eventStoreID;
 @property (nonatomic, retain) NSNumber * isPlaceHolder;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * passed;
@@ -30,12 +31,22 @@
 @property (nonatomic, retain) NSNumber * occupiedByB;
 @property (nonatomic, retain) NSNumber * occupiedByC;
 @property (nonatomic, retain) NSNumber * occupiedByD;
+@property (nonatomic, retain) NSDate * updateTime;
 @property (nonatomic, retain) CDIUser *creator;
 
 + (CDIEvent *)sharedNewEvent;
 + (id)eventInstanceWithTitle:(NSString *)title;
 - (id)eventCopy;
 - (id)initWithDictionary:(NSDictionary *)dict;
-+ (CDIEvent *)insertUserInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context;
++ (CDIEvent *)insertUserInfoWithDict:(NSDictionary *)dict
+                          updateTime:(NSDate *)updateTime
+              inManagedObjectContext:(NSManagedObjectContext *)context;
++ (CDIEvent *)eventWithID:(NSString *)eventID inManagedObjectContext:(NSManagedObjectContext *)context;
++ (void)updateEventStoreID:(NSString *)eventStoreID
+            forEventWithID:(NSString *)eventID
+    inManagedObjectContext:(NSManagedObjectContext *)context;
+
++ (void)removeEventsOlderThanUpdateDate:(NSDate *)updateDate
+                 inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

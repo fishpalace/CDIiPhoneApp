@@ -219,12 +219,16 @@ static CDIDataSource *sharedDataSource;
   void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
     if ([responseData isKindOfClass:[NSDictionary class]]) {
       NSDictionary *dict = responseData;
+      NSDate *currentDate = [NSDate date];
       if ([dict[@"data"] isKindOfClass:[NSArray class]]) {
         for (NSDictionary *eventDict in dict[@"data"]) {
-          [CDIEvent insertUserInfoWithDict:eventDict inManagedObjectContext:self.managedObjectContext];
+          [CDIEvent insertUserInfoWithDict:eventDict
+                                updateTime:currentDate
+                    inManagedObjectContext:self.managedObjectContext];
         }
       }
-      
+      [CDIEvent removeEventsOlderThanUpdateDate:currentDate
+                         inManagedObjectContext:self.managedObjectContext];
       [self.managedObjectContext processPendingChanges];
       [self.fetchedResultsController performFetch:nil];
       [self updateLocalEventsArray];

@@ -8,13 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@import EventKit;
+
 @interface CDICalendar : NSObject
 
 + (void)requestAccess:(void (^)(BOOL granted, NSError *error))success;
-+ (BOOL)addEventWithStartDate:(NSDate*)startDate
-                      endDate:(NSDate *)endDate
-                    withTitle:(NSString*)title
-                   inLocation:(NSString*)location
-                      eventID:(NSString *)eventID;
+
++ (EKEvent *)addEventWithStartDate:(NSDate*)startDate
+                           endDate:(NSDate *)endDate
+                         withTitle:(NSString*)title
+                        inLocation:(NSString*)location;
+
++ (void)deleteEventWitdStoreID:(NSString *)eventStoreID;
+
++ (BOOL)doesEventExistInStoreWithID:(NSString *)eventStoreID;
 
 @end

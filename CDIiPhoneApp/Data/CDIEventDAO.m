@@ -37,6 +37,7 @@ static CDIEventDAO *sharedNewEvent;
 {
   CDIEventDAO *eventCopy = [[CDIEventDAO alloc] init];
   eventCopy.eventID = event.eventID;
+  eventCopy.eventStoreID = event.eventStoreID;
   eventCopy.name = event.name;
   eventCopy.relatedInfo = event.relatedInfo;
   eventCopy.startDate = event.startDate;
@@ -49,6 +50,7 @@ static CDIEventDAO *sharedNewEvent;
   eventCopy.accessKey = event.accessKey;
   eventCopy.abandoned = event.abandoned;
   eventCopy.roomID = event.roomID;
+  eventCopy.updateTime = event.updateTime;
   return eventCopy;
 }
 
@@ -68,12 +70,14 @@ static CDIEventDAO *sharedNewEvent;
   sharedEvent.accessKey = event.accessKey;
   sharedEvent.abandoned = event.abandoned;
   sharedEvent.roomID = event.roomID;
+  sharedEvent.updateTime = event.updateTime;
 }
 
 - (id)eventCopy
 {
   CDIEventDAO *eventCopy = [[CDIEventDAO alloc] init];
   eventCopy.eventID = self.eventID;
+  eventCopy.eventStoreID = self.eventStoreID;
   eventCopy.name = self.name;
   eventCopy.relatedInfo = self.relatedInfo;
   eventCopy.startDate = self.startDate;
@@ -86,6 +90,7 @@ static CDIEventDAO *sharedNewEvent;
   eventCopy.accessKey = self.accessKey;
   eventCopy.abandoned = self.abandoned;
   eventCopy.roomID = self.roomID;
+  eventCopy.updateTime = self.updateTime;
   return eventCopy;
 }
 

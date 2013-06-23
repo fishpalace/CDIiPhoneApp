@@ -32,6 +32,10 @@ static ModelPanelViewController *sharedModelPanelViewController;
 @property (weak, nonatomic) IBOutlet UIButton *functionButton;
 @property (strong, nonatomic) UIViewController *contentViewController;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *panelViewHeightConstraint;
+
+
 @end
 
 @implementation ModelPanelViewController
@@ -65,6 +69,13 @@ static ModelPanelViewController *sharedModelPanelViewController;
   [super viewDidLoad];
   _titleImageView.layer.cornerRadius = 19;
   _titleImageView.layer.masksToBounds = YES;
+}
+
+- (void)updateViewConstraints
+{
+  [super updateViewConstraints];
+  self.containerViewHeightConstraint.constant = kIsiPhone5 ? 450 : 400;
+  self.panelViewHeightConstraint.constant = kIsiPhone5 ? 530 : 480;
 }
 
 - (void)displayModelPanelWithViewController:(UIViewController *)vc

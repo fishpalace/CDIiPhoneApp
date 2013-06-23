@@ -130,11 +130,8 @@
   }
   
   CGFloat targetOriginY = self.scheduleListDisplayed ? kTPScheduleListOriginY : self.view.frame.size.height;
-//  [UIView animateWithDuration:0.7 animations:^{
-//  } completion:^(BOOL finished) {
-//    //TODO: 
-//  }];
-  [UIView animateWithDuration:0.7 delay:0.2 options:UIViewAnimationOptionCurveEaseIn animations:^{
+
+  [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
     [self.scheduleListViewController.view resetOriginY:targetOriginY];
     self.coverView.alpha = self.scheduleListDisplayed ? 0.3 : 0.0;
   } completion:nil];

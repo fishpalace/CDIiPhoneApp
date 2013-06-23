@@ -120,7 +120,7 @@
     }
     
     BOOL eventStoreIDExisted = [CDICalendar doesEventExistInStoreWithID:eventDAO.eventStoreID];
-    [cell.calendarButton setSelected:eventStoreIDExisted];
+    [cell setCalendarButtonSelected:eventStoreIDExisted];
     if (!eventStoreIDExisted) {
       [CDIEvent updateEventStoreID:@"" forEventWithID:eventDAO.eventID inManagedObjectContext:self.managedObjectContext];
     }
@@ -176,7 +176,7 @@
   }
   
   CDIEventDAO *eventDAO = eventArray[indexPath.row];
-  if (cell.calendarButton.selected) {
+  if (cell.calendarButtonSelected) {
     [self removeEvent:eventDAO forCell:cell];
   } else {
     [self addEvent:eventDAO forCell:cell];
@@ -193,8 +193,14 @@
       [CDIEvent updateEventStoreID:@""
                     forEventWithID:eventDAO.eventID
             inManagedObjectContext:self.managedObjectContext];
+      [cell setCalendarButtonSelected:NO];
       [self.managedObjectContext processPendingChanges];
-      [cell.calendarButton setSelected:NO];
+//      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:eventDAO.name
+//                                                          message:@"Event removed from Calendar"
+//                                                         delegate:nil
+//                                                cancelButtonTitle:@"OK"
+//                                                otherButtonTitles:nil];
+//      [alertView show];
     } else {
       //TODO Report error
     }
@@ -211,11 +217,17 @@
                                                inLocation:[CDIDataSource nameForRoomID:eventDAO.roomID.integerValue]];
       if (event) {
         eventDAO.eventStoreID = event.eventIdentifier;
+        [cell setCalendarButtonSelected:YES];
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:eventDAO.name
+//                                                            message:@"Event added to Calendar"
+//                                                           delegate:nil
+//                                                  cancelButtonTitle:@"OK"
+//                                                  otherButtonTitles:nil];
+//        [alertView show];
         [CDIEvent updateEventStoreID:eventDAO.eventStoreID
                       forEventWithID:eventDAO.eventID
               inManagedObjectContext:self.managedObjectContext];
         [self.managedObjectContext processPendingChanges];
-        [cell.calendarButton setSelected:YES];
       } else {
         //TODO Creation Failed
       }

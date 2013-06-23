@@ -32,4 +32,8 @@
 @property (nonatomic, readwrite) BOOL isPlaceHolder;
 @property (nonatomic, weak) id<SLDetailTableViewCellDelegate> delegate;
 
+@property (nonatomic, readwrite) BOOL calendarButtonSelected;
+
+- (void)setCalendarButtonSelected:(BOOL)selected;
+
 @end

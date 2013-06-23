@@ -134,7 +134,6 @@ static CDIEvent *sharedNewEvent;
 {
   CDIEvent *event = [CDIEvent eventWithID:eventID inManagedObjectContext:context];
   event.eventStoreID = eventStoreID;
-  [context processPendingChanges];
 }
 
 + (void)removeEventsOlderThanUpdateDate:(NSDate *)updateDate inManagedObjectContext:(NSManagedObjectContext *)context

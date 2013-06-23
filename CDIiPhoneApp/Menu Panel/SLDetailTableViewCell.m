@@ -43,4 +43,13 @@
   }
 }
 
+- (void)setCalendarButtonSelected:(BOOL)selected
+{
+  NSString *imageName = selected ? @"tableview_icon_calendar_hl" : @"tableview_icon_calendar";
+  [self.calendarButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+  _calendarButtonSelected = selected;
+  self.calendarButton.hidden = YES;
+  self.calendarButton.hidden = NO;
+}
+
 @end

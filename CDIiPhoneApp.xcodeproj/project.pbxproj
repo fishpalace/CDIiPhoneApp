@@ -18,6 +18,7 @@
 		18194CFF1775A75C00F99149 /* mp_cell_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 18194CFD1775A75C00F99149 /* mp_cell_cover.png */; };
 		18194D001775A75C00F99149 /* mp_cell_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18194CFE1775A75C00F99149 /* mp_cell_cover@2x.png */; };
 		1823263E17769350001E7B88 /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1823263D17769350001E7B88 /* UIImageView+Addition.m */; };
+		18232641177698B0001E7B88 /* ScheduleListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182326401776981A001E7B88 /* ScheduleListTableViewController.m */; };
 		18256B35177044070079D24B /* menu_preview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B32177038840079D24B /* menu_preview@2x.png */; };
 		18256B361770440A0079D24B /* menu_preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B31177038840079D24B /* menu_preview.png */; };
 		18256B371770441D0079D24B /* menu_avatar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B3417703A220079D24B /* menu_avatar_bg@2x.png */; };
@@ -268,6 +269,8 @@
 		18194CFE1775A75C00F99149 /* mp_cell_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mp_cell_cover@2x.png"; path = "Image Resource/Main Panel/mp_cell_cover@2x.png"; sourceTree = SOURCE_ROOT; };
 		1823263C17769350001E7B88 /* UIImageView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Addition.h"; path = "Category/UIImageView+Addition.h"; sourceTree = "<group>"; };
 		1823263D17769350001E7B88 /* UIImageView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Addition.m"; path = "Category/UIImageView+Addition.m"; sourceTree = "<group>"; };
+		1823263F1776981A001E7B88 /* ScheduleListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ScheduleListTableViewController.h; path = "Menu Panel/ScheduleListTableViewController.h"; sourceTree = "<group>"; };
+		182326401776981A001E7B88 /* ScheduleListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ScheduleListTableViewController.m; path = "Menu Panel/ScheduleListTableViewController.m"; sourceTree = "<group>"; };
 		18256B31177038840079D24B /* menu_preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_preview.png; sourceTree = "<group>"; };
 		18256B32177038840079D24B /* menu_preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_preview@2x.png"; sourceTree = "<group>"; };
 		18256B3317703A220079D24B /* menu_avatar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_avatar_bg.png; sourceTree = "<group>"; };
@@ -1060,6 +1063,8 @@
 				189871C617718D6B004059A3 /* MenuRoomInfoCell.m */,
 				18948CB6175C521A004E07EB /* ScheduleListViewController.h */,
 				18948CB7175C521A004E07EB /* ScheduleListViewController.m */,
+				1823263F1776981A001E7B88 /* ScheduleListTableViewController.h */,
+				182326401776981A001E7B88 /* ScheduleListTableViewController.m */,
 				18948CBC175C5FAC004E07EB /* SLDetailTableViewCell.h */,
 				18948CBD175C5FAC004E07EB /* SLDetailTableViewCell.m */,
 				18948CCB175CB465004E07EB /* PeopleListViewController.h */,
@@ -1332,6 +1337,7 @@
 				187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */,
 				187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */,
 				187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */,
+				18232641177698B0001E7B88 /* ScheduleListTableViewController.m in Sources */,
 				18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */,
 				18E0EA921738CDA8006EFF51 /* GYPositionBounceAnimation.m in Sources */,
 				18E0EA961738DAE4006EFF51 /* MenuPanelViewController.m in Sources */,

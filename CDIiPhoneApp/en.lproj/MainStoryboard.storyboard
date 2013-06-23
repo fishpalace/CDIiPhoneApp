@@ -944,7 +944,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQM-XK-KmY">
-                                                    <rect key="frame" x="68" y="17" width="180" height="22"/>
+                                                    <rect key="frame" x="68" y="20" width="180" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="180" id="Eh2-00-LJ0"/>
@@ -956,7 +956,7 @@
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_icon_cal.png" translatesAutoresizingMaskIntoConstraints="NO" id="SYC-Gd-ufz">
-                                                    <rect key="frame" x="20" y="17" width="23" height="23"/>
+                                                    <rect key="frame" x="20" y="20" width="23" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqr-qY-1kx">
@@ -1008,7 +1008,7 @@
                                             <constraint firstAttribute="trailing" secondItem="xqr-qY-1kx" secondAttribute="trailing" constant="15" id="5A1-sb-G45"/>
                                             <constraint firstAttribute="centerX" secondItem="kQM-XK-KmY" secondAttribute="centerX" constant="2" id="Axg-gQ-Oxg"/>
                                             <constraint firstItem="SYC-Gd-ufz" firstAttribute="leading" secondItem="HNK-14-JEL" secondAttribute="leading" constant="20" id="MHF-JE-rDH"/>
-                                            <constraint firstAttribute="centerY" secondItem="kQM-XK-KmY" secondAttribute="centerY" constant="3" id="S2n-dH-Flo"/>
+                                            <constraint firstAttribute="centerY" secondItem="kQM-XK-KmY" secondAttribute="centerY" id="S2n-dH-Flo"/>
                                             <constraint firstAttribute="trailing" secondItem="gZx-zr-SAo" secondAttribute="trailing" constant="16" id="WrL-2Z-aFW"/>
                                             <constraint firstItem="x7m-jH-Rr6" firstAttribute="leading" secondItem="HNK-14-JEL" secondAttribute="leading" id="bsR-gK-Zb1"/>
                                             <constraint firstAttribute="centerY" secondItem="xqr-qY-1kx" secondAttribute="centerY" constant="0.5" id="ebX-ts-oIq"/>

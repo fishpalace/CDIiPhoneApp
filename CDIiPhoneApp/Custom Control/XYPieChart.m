@@ -426,7 +426,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
   
   if ([self.dataSource respondsToSelector:@selector(pieChart:shouldHaveShadowAtIndex:)]) {
     if ([self.dataSource pieChart:self shouldHaveShadowAtIndex:index]) {
-      [layer setShadowRadius:1.0];
+      [layer setShadowRadius:0.5];
       [layer setShadowOpacity:1.0];
       [layer setShadowOffset:CGSizeMake(0.0, 0.0)];
       [layer setShadowColor:shadowColor.CGColor];

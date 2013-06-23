@@ -171,7 +171,7 @@
     _scheduleListViewController.roomID = self.roomID;
     
     [self addChildViewController:_scheduleListViewController];
-    [_scheduleListViewController.view resetSize:kTPScheduleListViewSize];
+    [_scheduleListViewController.view resetSize:[TPScheduleListViewController sizeAccordingToDevice]];
     [_scheduleListViewController.view resetOrigin:CGPointMake(0, self.view.frame.size.height)];
     [self.view addSubview:_scheduleListViewController.view];
     [_scheduleListViewController didMoveToParentViewController:self];

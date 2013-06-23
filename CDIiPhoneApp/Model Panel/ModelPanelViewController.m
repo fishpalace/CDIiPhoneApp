@@ -24,6 +24,7 @@ static ModelPanelViewController *sharedModelPanelViewController;
 
 @interface ModelPanelViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *coverImageVIew;
 @property (weak, nonatomic) IBOutlet UIImageView *modelBGImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *titleImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -31,9 +32,11 @@ static ModelPanelViewController *sharedModelPanelViewController;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIButton *functionButton;
 @property (strong, nonatomic) UIViewController *contentViewController;
+@property (weak, nonatomic) IBOutlet UIView *panelView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *panelViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpaceConstraint;
 
 
 @end
@@ -85,13 +88,20 @@ static ModelPanelViewController *sharedModelPanelViewController;
                                        type:(ModelPanelType)type
 {
   self.contentViewController = vc;
+  self.bottomSpaceConstraint.constant = -self.panelView.frame.size.height;
   void (^completion)(UIImage *bgImage) = ^(UIImage *bgImage) {
     self.modelBGImageView.image = bgImage;
     [self addChildViewController:self.contentViewController];
     [self.contentViewController.view setFrame:kContentViewControllerFrame];
     [self.containerView addSubview:self.contentViewController.view];
     [self.contentViewController didMoveToParentViewController:self];
+//    [self.coverImageVIew fadeInWithDuration:0.5];
+//    [self.modelBGImageView fadeInWithDuration:0.5];
     [self.view fadeIn];
+    self.bottomSpaceConstraint.constant = 0;
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+      [self.panelView layoutIfNeeded];
+    } completion:nil];
   };
   [self configureBGImageWithCompletion:completion];
   
@@ -164,6 +174,10 @@ static ModelPanelViewController *sharedModelPanelViewController;
 - (IBAction)didClickCloseButton:(UIButton *)sender
 {
   [self hide];
+}
+
+- (void)removeContentViewController
+{
   [self.contentViewController willMoveToParentViewController:nil];  // 1
   [self.contentViewController.view removeFromSuperview];            // 2
   [self.contentViewController removeFromParentViewController];      // 3
@@ -173,9 +187,20 @@ static ModelPanelViewController *sharedModelPanelViewController;
 #pragma mark - View Hierarchy Methods
 - (void)hide
 {
-  [self.view fadeOutWithCompletion:^{
+  self.bottomSpaceConstraint.constant = -self.panelView.frame.size.height;
+  [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+    [self.panelView layoutIfNeeded];
+  } completion:^(BOOL finished) {
+    [self removeContentViewController];
+  }];
+  
+//  [self.modelBGImageView fadeOutWithDuration:0.5 completion:^{
+//    self.modelBGImageView.image = nil;
+//  }];
+//  
+//  [self.coverImageVIew fadeOutWithDuration:0.5];
+  [self.view fadeOutWithDuration:0.5 completion:^{
     self.modelBGImageView.image = nil;
-    //TODO Release the content View Controllers
   }];
 }
 

@@ -14,7 +14,6 @@
 - (void)loadImageFromURL:(NSString *)urlString
               completion:(void (^)(BOOL succeeded))completion
 {
-  
   NSURL *anImageURL = [NSURL URLWithString:urlString];
   BlockARCWeakSelf weakSelf = self;
   [self setImageWithURLRequest:[NSURLRequest requestWithURL:anImageURL] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {

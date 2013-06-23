@@ -15,4 +15,6 @@
 
 @property (nonatomic, readwrite) NSInteger roomID;
 
++ (CGSize)sizeAccordingToDevice;
+
 @end

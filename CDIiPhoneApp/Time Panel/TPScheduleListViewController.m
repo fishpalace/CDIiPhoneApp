@@ -82,6 +82,13 @@
   request.sortDescriptors = @[sortDescriptor];
 }
 
++ (CGSize)sizeAccordingToDevice
+{
+  CGFloat width = 320;
+  CGFloat height = kIsiPhone5 ? 380 : 330;
+  return CGSizeMake(width, height);
+}
+
 #pragma mark - UI Configurations
 
 - (void)updateTimeLabel:(NSTimer *)timer

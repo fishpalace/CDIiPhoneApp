@@ -13,10 +13,12 @@
 + (void)postShouldBounceDownNotification;
 + (void)postShouldBounceUpNotification;
 + (void)postDidFetchNewEventsNotification;
++ (void)postDidChangeCurrentUserNotification;
 
 + (void)registerShouldBounceDownNotificationWithSelector:(SEL)aSelector target:(id)aTarget;
 + (void)registerShouldBounceUpNotificationWithSelector:(SEL)aSelector target:(id)aTarget;
 + (void)registerDidFetchNewEventsNotificationWithSelector:(SEL)aSelector target:(id)aTarget;
++ (void)registerDidChangeCurrentUserNotificationWithSelector:(SEL)aSelector target:(id)aTarget;
 
 + (void)unregister:(id)target;
 @end

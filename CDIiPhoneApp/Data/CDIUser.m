@@ -40,13 +40,14 @@ static CDIUser *currentUser;
 + (CDIUser *)currentUserInContext:(NSManagedObjectContext *)context
 {
   NSString *currentUserID = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsCurrentUserID];
-  CDIUser *currentUser = [CDIUser userWithName:currentUserID inManagedObjectContext:context];
+  CDIUser *currentUser = [CDIUser userWithUserID:currentUserID inManagedObjectContext:context];
   return currentUser;
 }
 
 + (void)updateCurrentUserID:(NSString *)userID
 {
   [[NSUserDefaults standardUserDefaults] setObject:userID forKey:kUserDefaultsCurrentUserID];
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (id)initWithName:(NSString *)name title:(NSString *)title position:(NSString *)position

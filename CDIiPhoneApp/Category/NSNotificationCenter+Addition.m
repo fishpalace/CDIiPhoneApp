@@ -11,6 +11,7 @@
 #define kShouldBounceDown     @"kShouldBounceDown"
 #define kShouldBounceUp       @"kShouldBounceUp"
 #define kDidFetchNewEvents    @"kDidFetchNewEvents"
+#define kDidChangeCurrentUser @"kDidChangeCurrentUser"
 
 @implementation NSNotificationCenter (Addition)
 
@@ -29,6 +30,10 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:kDidFetchNewEvents object:nil userInfo:nil];
 }
 
++ (void)postDidChangeCurrentUserNotification
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:kDidChangeCurrentUser object:nil userInfo:nil];
+}
 
 + (void)registerShouldBounceDownNotificationWithSelector:(SEL)aSelector target:(id)aTarget
 {
@@ -51,6 +56,14 @@
   NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
   [center addObserver:aTarget selector:aSelector
                  name:kDidFetchNewEvents
+               object:nil];
+}
+
++ (void)registerDidChangeCurrentUserNotificationWithSelector:(SEL)aSelector target:(id)aTarget
+{
+  NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+  [center addObserver:aTarget selector:aSelector
+                 name:kDidChangeCurrentUser
                object:nil];
 }
 

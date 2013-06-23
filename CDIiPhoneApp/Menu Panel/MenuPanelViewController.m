@@ -62,7 +62,7 @@
   _avatarImageView.layer.cornerRadius = 20;
   _avatarImageView.layer.masksToBounds = YES;
   [NSNotificationCenter registerDidFetchNewEventsNotificationWithSelector:@selector(reloadTableView) target:self];
-  
+  [NSNotificationCenter registerDidChangeCurrentUserNotificationWithSelector:@selector(updateAfterCurrentUserChanged) target:self];
 }
 
 - (void)configureCurrentUserSetting
@@ -70,7 +70,7 @@
   CDIUser *currentUser = [CDIUser currentUserInContext:self.managedObjectContext];
   self.doesCurrentUserExist = currentUser != nil;
   if (self.doesCurrentUserExist) {
-    self.currentUserNameLabel.text = currentUser.name;
+    self.currentUserNameLabel.text = currentUser.realNameEn;
     [self.avatarImageView setImageWithURL:[NSURL URLWithString:currentUser.avatarSmallURL]];
   } else {
     self.currentUserNameLabel.text = @"Login";
@@ -78,6 +78,14 @@
   }
   self.currentUserNameLabel.textColor = kColorCurrentUserNameLabel;
   self.currentUserNameLabel.font = kFontCurrentUserNameLabel;
+}
+
+- (void)updateAfterCurrentUserChanged
+{
+  [self configureCurrentUserSetting];
+  _titleArray = nil;
+  _iconImageNameArray = nil;
+  [self.tableView reloadData];
 }
 
 - (void)setUp

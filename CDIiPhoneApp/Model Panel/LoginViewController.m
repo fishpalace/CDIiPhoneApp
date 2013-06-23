@@ -12,6 +12,8 @@
 #import "UIImage+ScreenShoot.h"
 #import "CDINetClient.h"
 #import "CDIUser.h"
+#import "NSNotificationCenter+Addition.h"
+#import "NSString+Dictionary.h"
 
 #define kTextfieldShowConstraint 70
 #define kTextfieldHiddenConstraint -254
@@ -136,9 +138,12 @@ static LoginViewController *sharedLoginViewController;
         NSDictionary *dict = responseData[@"data"];
         CDIUser *user = [CDIUser insertUserInfoWithDict:dict
                                  inManagedObjectContext:self.managedObjectContext];
+        user.sessionKey = [NSString stringForDict:responseData key:@"sessionKey"];
         [CDIUser updateCurrentUserID:user.userID];
         [self.managedObjectContext processPendingChanges];
         [self hide];
+        
+        [NSNotificationCenter postDidChangeCurrentUserNotification];
       }
     } else {
       //TODO Report Error

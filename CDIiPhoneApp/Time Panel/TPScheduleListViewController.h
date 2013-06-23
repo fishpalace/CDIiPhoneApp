@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScheduleListTableViewController.h"
 
 #define kTPScheduleListViewSize CGSizeMake(320, 330)
 
-@interface TPScheduleListViewController : CoreDataViewController <UITableViewDataSource, UITableViewDelegate>
+@interface TPScheduleListViewController : CoreDataViewController <ScheduleListTableViewDelegate>
 
 @property (nonatomic, readwrite) NSInteger roomID;
 

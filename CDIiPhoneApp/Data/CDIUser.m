@@ -26,6 +26,7 @@ static CDIUser *currentUser;
 @dynamic name;
 @dynamic position;
 @dynamic realName;
+@dynamic realNameEn;
 @dynamic sessionKey;
 @dynamic title;
 @dynamic twitterURL;
@@ -69,7 +70,8 @@ static CDIUser *currentUser;
   
   user.userID = [NSString stringForDict:dict key:@"id"];
   user.name = [NSString stringForDict:dict key:@"name"];
-  user.realName = [NSString stringForDict:dict key:@"realName_en"];
+  user.realName = [NSString stringForDict:dict key:@"realName"];
+  user.realNameEn = [NSString stringForDict:dict key:@"realName_en"];
   user.avatarLargeURL = [NSString stringForDict:dict key:@"avatarLargeUrl"];
   user.avatarMidURL = [NSString stringForDict:dict key:@"avatarMiddleUrl"];
   user.avatarSmallURL = [NSString stringForDict:dict key:@"avatarSmallUrl"];

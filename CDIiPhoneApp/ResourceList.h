@@ -77,7 +77,7 @@
 #define kColorPeopleInfoCellTitleLabel kColorPeopleInfoCellNameLabel
 #define kColorPeopleInfoCellPositionLabel kRTintBlue
 
-#define kFontPeopleInfoCellNameLabel kRLightFontWithSize(17)
+#define kFontPeopleInfoCellNameLabel kRLightFontWithSize(14)
 #define kFontPeopleInfoCellTitleLabel kRFontWitSize(10)
 #define kFontPeopleInfoCellPositionLabel kRFontWitSize(10)
 

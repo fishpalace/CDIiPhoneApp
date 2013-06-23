@@ -90,7 +90,7 @@
   PeopleListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
   
   CDIUser *user = self.fetchedResultsController.fetchedObjects[indexPath.row];
-  cell.userNameLabel.text = user.name;
+  cell.userNameLabel.text = user.realNameEn;
   cell.userPositionLabel.text = user.position;
   cell.userTitleLabel.text = user.title;
   

@@ -41,6 +41,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="realName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="realNameEn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sessionKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterURL" optional="YES" attributeType="String" syncable="YES"/>

@@ -22,6 +22,7 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * position;
 @property (nonatomic, retain) NSString * realName;
+@property (nonatomic, retain) NSString * realNameEn;
 @property (nonatomic, retain) NSString * sessionKey;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * twitterURL;

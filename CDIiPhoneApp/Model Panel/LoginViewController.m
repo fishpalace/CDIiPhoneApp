@@ -13,6 +13,9 @@
 #import "CDINetClient.h"
 #import "CDIUser.h"
 
+#define kTextfieldShowConstraint 70
+#define kTextfieldHiddenConstraint -254
+
 static LoginViewController *sharedLoginViewController;
 
 @interface LoginViewController ()
@@ -58,6 +61,9 @@ static LoginViewController *sharedLoginViewController;
     [super viewDidLoad];
   _userNameTextfield.delegate = self;
   _passwordTextfield.delegate = self;
+  
+  _textfieldTopMarginConstraint.constant = kTextfieldHiddenConstraint;
+
 }
 
 - (void)displayLoginPanel
@@ -71,6 +77,10 @@ static LoginViewController *sharedLoginViewController;
   };
   
   [self configureBGImageWithCompletion:completion];
+  self.textfieldTopMarginConstraint.constant = kTextfieldShowConstraint;
+  [UIView animateWithDuration:0.3 animations:^{
+    [self.view layoutIfNeeded];
+  }];
   
   [self.view flashIn];
   [self.userNameTextfield becomeFirstResponder];
@@ -104,12 +114,16 @@ static LoginViewController *sharedLoginViewController;
   [self.userNameTextfield resignFirstResponder];
   [self.passwordTextfield resignFirstResponder];
   
+  self.textfieldTopMarginConstraint.constant = kTextfieldHiddenConstraint;
+  
   [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
     [self.view layoutIfNeeded];
   } completion:nil];
   
   [self.view fadeOutWithDuration:0.5 completion:^{
     self.bgImageView.image = nil;
+    self.userNameTextfield.text = @"";
+    self.passwordTextfield.text = @"";
   }];
 }
 

@@ -17,6 +17,7 @@
 		180D9FF71769905300E7E4F2 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180D9FF61769905300E7E4F2 /* Media.xcassets */; };
 		18194CFF1775A75C00F99149 /* mp_cell_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 18194CFD1775A75C00F99149 /* mp_cell_cover.png */; };
 		18194D001775A75C00F99149 /* mp_cell_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18194CFE1775A75C00F99149 /* mp_cell_cover@2x.png */; };
+		1823263E17769350001E7B88 /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1823263D17769350001E7B88 /* UIImageView+Addition.m */; };
 		18256B35177044070079D24B /* menu_preview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B32177038840079D24B /* menu_preview@2x.png */; };
 		18256B361770440A0079D24B /* menu_preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B31177038840079D24B /* menu_preview.png */; };
 		18256B371770441D0079D24B /* menu_avatar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B3417703A220079D24B /* menu_avatar_bg@2x.png */; };
@@ -265,6 +266,8 @@
 		180D9FF61769905300E7E4F2 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = CDIiPhoneApp/Media.xcassets; sourceTree = "<group>"; };
 		18194CFD1775A75C00F99149 /* mp_cell_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mp_cell_cover.png; path = "Image Resource/Main Panel/mp_cell_cover.png"; sourceTree = SOURCE_ROOT; };
 		18194CFE1775A75C00F99149 /* mp_cell_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mp_cell_cover@2x.png"; path = "Image Resource/Main Panel/mp_cell_cover@2x.png"; sourceTree = SOURCE_ROOT; };
+		1823263C17769350001E7B88 /* UIImageView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Addition.h"; path = "Category/UIImageView+Addition.h"; sourceTree = "<group>"; };
+		1823263D17769350001E7B88 /* UIImageView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Addition.m"; path = "Category/UIImageView+Addition.m"; sourceTree = "<group>"; };
 		18256B31177038840079D24B /* menu_preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_preview.png; sourceTree = "<group>"; };
 		18256B32177038840079D24B /* menu_preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_preview@2x.png"; sourceTree = "<group>"; };
 		18256B3317703A220079D24B /* menu_avatar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_avatar_bg.png; sourceTree = "<group>"; };
@@ -770,6 +773,8 @@
 		187F50891734FC84006B46A3 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1823263C17769350001E7B88 /* UIImageView+Addition.h */,
+				1823263D17769350001E7B88 /* UIImageView+Addition.m */,
 				18B74420175B109E00585CF5 /* NSString+Encrypt.h */,
 				18B74421175B109E00585CF5 /* NSString+Encrypt.m */,
 				18B743FA175B0E9400585CF5 /* NSDate+Addition.h */,
@@ -1366,6 +1371,7 @@
 				18948CB8175C521A004E07EB /* ScheduleListViewController.m in Sources */,
 				18948CBE175C5FAC004E07EB /* SLDetailTableViewCell.m in Sources */,
 				18948CCD175CB465004E07EB /* PeopleListViewController.m in Sources */,
+				1823263E17769350001E7B88 /* UIImageView+Addition.m in Sources */,
 				18948CD5175CE2C8004E07EB /* PeopleListCollectionViewCell.m in Sources */,
 				18948D08175D06AA004E07EB /* PeopleInfoViewController.m in Sources */,
 				18AF039D175DB9E600FA1F17 /* CDIDataModel.xcdatamodeld in Sources */,

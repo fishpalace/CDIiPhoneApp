@@ -12,7 +12,8 @@
 #import "ModelPanelViewController.h"
 #import "CDIUser.h"
 #import "CDINetClient.h"
-#import "UIImageView+AFNetworking.h"
+#import "UIImageView+Addition.h"
+#import "UIView+Addition.h"
 
 @interface PeopleListViewController ()
 
@@ -100,9 +101,16 @@
   cell.userTitleLabel.textColor = kColorPeopleInfoCellTitleLabel;
   cell.userTitleLabel.font = kFontPeopleInfoCellTitleLabel;
   
-  [cell.avatarImageView setImageWithURL:[NSURL URLWithString:user.avatarMidURL]];
+  [cell.avatarImageView loadImageFromURL:user.avatarSmallURL completion:^(BOOL succeeded) {
+    [cell.avatarImageView fadeIn];
+  }];
 
   return cell;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+  return UIEdgeInsetsMake(2, 6, 0, 6);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -142,7 +150,7 @@
 {
   if (!_layout) {
     _layout = [[UICollectionViewFlowLayout alloc] init];
-    [_layout setItemSize:CGSizeMake(160, 220)];
+    [_layout setItemSize:CGSizeMake(154, 220)];
     [_layout setMinimumInteritemSpacing:0];
     [_layout setScrollDirection:UICollectionViewScrollDirectionVertical];
   }

@@ -44,6 +44,11 @@ static CDIUser *currentUser;
   return currentUser;
 }
 
++ (void)updateCurrentUserID:(NSString *)userID
+{
+  [[NSUserDefaults standardUserDefaults] setObject:userID forKey:kUserDefaultsCurrentUserID];
+}
+
 - (id)initWithName:(NSString *)name title:(NSString *)title position:(NSString *)position
 {
   self = [super init];
@@ -57,6 +62,10 @@ static CDIUser *currentUser;
 
 + (CDIUser *)insertUserInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context
 {
+  if (!dict || ![dict isKindOfClass:[NSDictionary class]]) {
+    return nil;
+  }
+  
   NSString *userName = [dict[@"name"] isKindOfClass:[NSNull class]] ? @"" : dict[@"name"];
   
   if (!userName || [userName isEqualToString:@""]) {

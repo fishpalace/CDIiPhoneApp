@@ -34,6 +34,7 @@
 @property (nonatomic, retain) NSSet *work;
 
 + (CDIUser *)currentUserInContext:(NSManagedObjectContext *)context;
++ (void)updateCurrentUserID:(NSString *)userID;
 - (id)initWithName:(NSString *)name title:(NSString *)title position:(NSString *)position;
 + (CDIUser *)insertUserInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context;
 

@@ -95,8 +95,6 @@ static ModelPanelViewController *sharedModelPanelViewController;
     [self.contentViewController.view setFrame:kContentViewControllerFrame];
     [self.containerView addSubview:self.contentViewController.view];
     [self.contentViewController didMoveToParentViewController:self];
-//    [self.coverImageVIew fadeInWithDuration:0.5];
-//    [self.modelBGImageView fadeInWithDuration:0.5];
     [self.view fadeIn];
     self.bottomSpaceConstraint.constant = 0;
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
@@ -136,11 +134,6 @@ static ModelPanelViewController *sharedModelPanelViewController;
   [titleAttributedString addAttribute:NSForegroundColorAttributeName
                                 value:kCModelTitle
                                 range:NSMakeRange(0, titleAttributedString.length)];
-  
-//  NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
-//  [mutParaStyle setAlignment:NSTextAlignmentCenter];
-//  [titleAttributedString addAttributes: @{NSParagraphStyleAttributeName : mutParaStyle}
-//                                 range:NSMakeRange(0, titleAttributedString.length)];
  
   
   self.titleLabel.attributedText = titleAttributedString;
@@ -161,7 +154,7 @@ static ModelPanelViewController *sharedModelPanelViewController;
 - (void)configureBGImageWithCompletion:(void (^)(UIImage *bgImage))completion
 {
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-    UIImage *resultImage = [[UIImage screenShoot] stackBlur:6];
+    UIImage *resultImage = [[UIImage screenShoot] stackBlur:10];
     dispatch_async(dispatch_get_main_queue(), ^{
       if (completion) {
         completion(resultImage);
@@ -194,11 +187,6 @@ static ModelPanelViewController *sharedModelPanelViewController;
     [self removeContentViewController];
   }];
   
-//  [self.modelBGImageView fadeOutWithDuration:0.5 completion:^{
-//    self.modelBGImageView.image = nil;
-//  }];
-//  
-//  [self.coverImageVIew fadeOutWithDuration:0.5];
   [self.view fadeOutWithDuration:0.5 completion:^{
     self.modelBGImageView.image = nil;
   }];

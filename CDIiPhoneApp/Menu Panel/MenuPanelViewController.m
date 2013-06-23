@@ -18,6 +18,7 @@
 #import "MenuRoomInfoCell.h"
 #import "NSDate+Addition.h"
 #import "UIImageView+AFNetworking.h"
+#import "LoginViewController.h"
 
 @interface MenuPanelViewController ()
 
@@ -244,6 +245,11 @@
                                              functionButtonName:@"Reserve"
                                                        imageURL:@""
                                                            type:ModelPanelTypeRoomInfo];
+}
+
+- (IBAction)didClickLoginButton:(UIButton *)sender
+{
+  [LoginViewController displayLoginPanel];
 }
 
 #pragma mark - Properties

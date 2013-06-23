@@ -64,6 +64,9 @@
 		1859E7CF17745BE30029B46F /* CDIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859E7CE17745BE30029B46F /* CDIUser.m */; };
 		1859E7D2177476910029B46F /* NSString+Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859E7D1177476910029B46F /* NSString+Dictionary.m */; };
 		1859E7D5177477170029B46F /* CDIWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859E7D4177477170029B46F /* CDIWork.m */; };
+		1864F5D2177745490013960C /* menu_login_textfield_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1864F5D0177745490013960C /* menu_login_textfield_bg.png */; };
+		1864F5D3177745490013960C /* menu_login_textfield_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1864F5D1177745490013960C /* menu_login_textfield_bg@2x.png */; };
+		1864F5D6177748B50013960C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864F5D5177748B50013960C /* LoginViewController.m */; };
 		1872230817731FBE000B5F17 /* time_schedule_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230617731FBE000B5F17 /* time_schedule_list.png */; };
 		1872230917731FBE000B5F17 /* time_schedule_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230717731FBE000B5F17 /* time_schedule_list@2x.png */; };
 		1872230C17732243000B5F17 /* tableview_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230A17732243000B5F17 /* tableview_banner.png */; };
@@ -322,6 +325,10 @@
 		1859E7D1177476910029B46F /* NSString+Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Dictionary.m"; path = "Category/NSString+Dictionary.m"; sourceTree = "<group>"; };
 		1859E7D3177477170029B46F /* CDIWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIWork.h; path = Data/CDIWork.h; sourceTree = "<group>"; };
 		1859E7D4177477170029B46F /* CDIWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIWork.m; path = Data/CDIWork.m; sourceTree = "<group>"; };
+		1864F5D0177745490013960C /* menu_login_textfield_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_login_textfield_bg.png; sourceTree = "<group>"; };
+		1864F5D1177745490013960C /* menu_login_textfield_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_login_textfield_bg@2x.png"; sourceTree = "<group>"; };
+		1864F5D4177748B50013960C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = "Model Panel/LoginViewController.h"; sourceTree = "<group>"; };
+		1864F5D5177748B50013960C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = "Model Panel/LoginViewController.m"; sourceTree = "<group>"; };
 		1872230617731FBE000B5F17 /* time_schedule_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time_schedule_list.png; path = "Image Resource/Model Panel/time_schedule_list.png"; sourceTree = SOURCE_ROOT; };
 		1872230717731FBE000B5F17 /* time_schedule_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "time_schedule_list@2x.png"; path = "Image Resource/Model Panel/time_schedule_list@2x.png"; sourceTree = SOURCE_ROOT; };
 		1872230A17732243000B5F17 /* tableview_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_banner.png; sourceTree = "<group>"; };
@@ -863,6 +870,8 @@
 			children = (
 				18B74381175AE50600585CF5 /* ModelPanelViewController.h */,
 				18B74382175AE50600585CF5 /* ModelPanelViewController.m */,
+				1864F5D4177748B50013960C /* LoginViewController.h */,
+				1864F5D5177748B50013960C /* LoginViewController.m */,
 			);
 			name = "Model Panel";
 			sourceTree = "<group>";
@@ -995,6 +1004,8 @@
 		18B995851759EA190010B9D4 /* Menu Panel */ = {
 			isa = PBXGroup;
 			children = (
+				1864F5D0177745490013960C /* menu_login_textfield_bg.png */,
+				1864F5D1177745490013960C /* menu_login_textfield_bg@2x.png */,
 				18416B331775D792005C7803 /* menu_icon_device.png */,
 				18416B341775D792005C7803 /* menu_icon_device@2x.png */,
 				18416B2F1775D68D005C7803 /* menu_avatar_login.png */,
@@ -1231,6 +1242,7 @@
 				18B743D5175B04FB00585CF5 /* time_center_cover@2x.png in Resources */,
 				18B743D6175B04FB00585CF5 /* time_panel_cover@2x.png in Resources */,
 				18B743D7175B04FB00585CF5 /* time_topbar_bg.png in Resources */,
+				1864F5D2177745490013960C /* menu_login_textfield_bg.png in Resources */,
 				18B743E8175B096C00585CF5 /* time_panel_bg.png in Resources */,
 				18B743E9175B096C00585CF5 /* time_panel_bg@2x.png in Resources */,
 				18B74436175B3E9E00585CF5 /* icon.png in Resources */,
@@ -1323,6 +1335,7 @@
 				189E4CA3175F924A00E7BA21 /* test_proj_3.png in Resources */,
 				18256B57177055390079D24B /* menu_icon_proj.png in Resources */,
 				18CDE7B21774204000711E2A /* time_button_graph.png in Resources */,
+				1864F5D3177745490013960C /* menu_login_textfield_bg@2x.png in Resources */,
 				189E4CA4175F924A00E7BA21 /* test_proj_3@2x.png in Resources */,
 				189E4CA5175F924A00E7BA21 /* test_proj_4.png in Resources */,
 				189E4CA6175F924A00E7BA21 /* test_proj_4@2x.png in Resources */,
@@ -1354,6 +1367,7 @@
 				18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */,
 				18E0EA921738CDA8006EFF51 /* GYPositionBounceAnimation.m in Sources */,
 				18E0EA961738DAE4006EFF51 /* MenuPanelViewController.m in Sources */,
+				1864F5D6177748B50013960C /* LoginViewController.m in Sources */,
 				18E0EA991738DBE7006EFF51 /* UIApplication+Addition.m in Sources */,
 				18B995841759CB7A0010B9D4 /* NSNotificationCenter+Addition.m in Sources */,
 				18B7437E175AE3B500585CF5 /* UIImage+ScreenShoot.m in Sources */,

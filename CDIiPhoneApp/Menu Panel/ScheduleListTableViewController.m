@@ -97,7 +97,7 @@
     [cell.roomName setFont:kRSLCellRoomFont];
     [cell.eventRelatedInfo setFont:kRSLCellRelatedInfoFont];
     [cell.startingTime setFont:kRSLTimeLabelFont];
-    [cell.startingTime setTextAlignment:NSTextAlignmentCenter];
+    [cell.startingTime setTextAlignment:NSTextAlignmentRight];
     
     cell.nowIndicatorLabel.hidden = !eventDAO.active.boolValue || eventDAO.passed.boolValue;
     
@@ -144,8 +144,8 @@
   CGFloat height = kSLDetailTableViewCellStandardHeight;
   if (eventArray.count != 0) {
     CDIEventDAO *event = [eventArray objectAtIndex:indexPath.row];
-    CGSize size = [event.name sizeWithFont:[UIFont boldSystemFontOfSize:17]
-                         constrainedToSize:CGSizeMake(169, 1000)
+    CGSize size = [event.name sizeWithFont:kRLightFontWithSize(17)
+                         constrainedToSize:CGSizeMake(205, 1000)
                              lineBreakMode:NSLineBreakByCharWrapping];
     height = kSLDetailTableViewCellStandardHeight + size.height - kSingleLineHeight;
   }

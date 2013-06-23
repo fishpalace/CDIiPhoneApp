@@ -11,6 +11,14 @@
 #define kSLDetailTableViewCellStandardHeight  80
 #define kSingleLineHeight                     21
 
+@class SLDetailTableViewCell;
+
+@protocol SLDetailTableViewCellDelegate <NSObject>
+
+- (void)cellDidClickAddEventButton:(SLDetailTableViewCell *)cell;
+
+@end
+
 @interface SLDetailTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
@@ -22,5 +30,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *calendarButton;
 
 @property (nonatomic, readwrite) BOOL isPlaceHolder;
+@property (nonatomic, weak) id<SLDetailTableViewCellDelegate> delegate;
 
 @end

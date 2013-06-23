@@ -1412,6 +1412,9 @@
                                             <state key="highlighted">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="didClickAddToCalendarButton:" destination="f3X-NW-6fq" eventType="touchUpInside" id="RZh-e7-I80"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PSA HMI Demo Day" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" preferredMaxLayoutWidth="205" translatesAutoresizingMaskIntoConstraints="NO" id="LbC-4t-7c8">
                                             <rect key="frame" x="60" y="8" width="205" height="28"/>

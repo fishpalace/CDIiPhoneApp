@@ -13,11 +13,15 @@
 #import "CDIDataSource.h"
 #import "NSDate+Addition.h"
 #import "AppDelegate.h"
+#import "CDICalendar.h"
+
+@import EventKit;
 
 @interface ScheduleListTableViewController ()
 
 @property (nonatomic, strong) NSMutableArray  *todayArray;
 @property (nonatomic, strong) NSMutableArray  *tomorrowArray;
+@property (nonatomic, strong) EKEventStore    *eventStore;
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -78,6 +82,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   SLDetailTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"SLDetailTableViewCell"];
+  cell.delegate = self;
+  
   NSArray *eventArray = nil;
   if (indexPath.section == 0) {
     eventArray = self.todayArray;
@@ -150,6 +156,31 @@
     height = kSLDetailTableViewCellStandardHeight + size.height - kSingleLineHeight;
   }
   return height;
+}
+
+#pragma mark - SLDetail Table View Cell Delegate
+- (void)cellDidClickAddEventButton:(SLDetailTableViewCell *)cell
+{
+  NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+  NSArray *eventArray = nil;
+  if (indexPath.section == 0) {
+    eventArray = self.todayArray;
+  } else {
+    eventArray = self.tomorrowArray;
+  }
+  
+  CDIEventDAO *eventDAO = eventArray[indexPath.row];
+  [CDICalendar requestAccess:^(BOOL granted, NSError *error) {
+    if (granted) {
+      [CDICalendar addEventWithStartDate:eventDAO.startDate
+                                 endDate:eventDAO.endDate
+                               withTitle:eventDAO.name
+                              inLocation:[CDIDataSource nameForRoomID:eventDAO.roomID.integerValue]
+                                 eventID:[NSString stringWithFormat:@"CDIEvent %@", eventDAO.eventID]];
+    } else {
+      //TODO Report error
+    }
+  }];
 }
 
 #pragma mark - Properties

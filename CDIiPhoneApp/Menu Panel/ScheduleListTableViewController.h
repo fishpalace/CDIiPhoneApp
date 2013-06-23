@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SLDetailTableViewCell.h"
 
 @class ScheduleListTableViewController;
 
@@ -17,7 +18,7 @@
 
 @end
 
-@interface ScheduleListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface ScheduleListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, SLDetailTableViewCellDelegate>
 
 @property (nonatomic, weak) id<ScheduleListTableViewDelegate> delegate;
 

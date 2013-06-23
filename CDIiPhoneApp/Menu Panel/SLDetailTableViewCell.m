@@ -38,4 +38,11 @@
   _isPlaceHolder = isPlaceHolder;
 }
 
+- (IBAction)didClickAddToCalendarButton:(UIButton *)sender
+{
+  if ([self.delegate respondsToSelector:@selector(cellDidClickAddEventButton:)]) {
+    [self.delegate cellDidClickAddEventButton:self];
+  }
+}
+
 @end

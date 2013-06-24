@@ -103,4 +103,16 @@
 #define kColorRPDateLabel [UIColor colorWithRed:118.0/255.0 green:212.0/255.0 blue:255.0/255.0 alpha:1.0]
 #define kColorRPDateLabelShadow [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.3]
 
+#define kFontRPEventNameLabel kRLightFontWithSize(20)
+#define kColorRPEventNameLabel [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
+
+#define kFontRPEventRelatedinfoLabel kRLightFontWithSize(14)
+#define kColorRPEventRelatedinfoLabel kRTintBlue
+
+#define kFontRPInstructionLabel kRLightFontWithSize(12)
+
+#define kFontRPEventAccessKeyLabel kRLightFontWithSize(36)
+#define kColorRPGreen [UIColor colorWithRed:9.0/255.0 green:187.0/255.0 blue:68.0/255.0 alpha:1.0]
+#define kColorRPGray [UIColor colorWithRed:160.0/255.0 green:160.0/255.0 blue:160.0/255.0 alpha:1.0]
+
 #endif

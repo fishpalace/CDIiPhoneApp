@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RPEnsureViewController : UIViewController
+@interface RPEnsureViewController : CoreDataViewController
 
 @end

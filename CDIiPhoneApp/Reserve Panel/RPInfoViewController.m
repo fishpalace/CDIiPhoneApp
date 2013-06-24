@@ -100,6 +100,7 @@
                                                   updateTime:[NSDate date]
                                       inManagedObjectContext:self.managedObjectContext];
           sharedNewEvent.accessKey = event.accessKey;
+          sharedNewEvent.eventID = event.eventID;
           event.roomID = sharedNewEvent.roomID;
         }
       }

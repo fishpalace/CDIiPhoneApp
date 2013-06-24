@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CDIiPhoneApp/Reserve Panel/RPInfoViewController.m"
-            timestampString = "393753175.701467"
+            filePath = "CDIiPhoneApp/Reserve Panel/RPEnsureViewController.m"
+            timestampString = "393757601.252529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "-createEvent"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "-addEvent:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

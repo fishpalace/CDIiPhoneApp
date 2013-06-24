@@ -195,12 +195,7 @@
             inManagedObjectContext:self.managedObjectContext];
       [cell setCalendarButtonSelected:NO];
       [self.managedObjectContext processPendingChanges];
-//      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:eventDAO.name
-//                                                          message:@"Event removed from Calendar"
-//                                                         delegate:nil
-//                                                cancelButtonTitle:@"OK"
-//                                                otherButtonTitles:nil];
-//      [alertView show];
+
     } else {
       //TODO Report error
     }
@@ -218,12 +213,7 @@
       if (event) {
         eventDAO.eventStoreID = event.eventIdentifier;
         [cell setCalendarButtonSelected:YES];
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:eventDAO.name
-//                                                            message:@"Event added to Calendar"
-//                                                           delegate:nil
-//                                                  cancelButtonTitle:@"OK"
-//                                                  otherButtonTitles:nil];
-//        [alertView show];
+
         [CDIEvent updateEventStoreID:eventDAO.eventStoreID
                       forEventWithID:eventDAO.eventID
               inManagedObjectContext:self.managedObjectContext];

@@ -1636,6 +1636,7 @@
                                     <outlet property="eventRelatedInfo" destination="GGu-7o-eBs" id="QLh-DL-CMu"/>
                                     <outlet property="noEventLabel" destination="Ka4-my-lhb" id="MiH-TE-L7B"/>
                                     <outlet property="nowIndicatorLabel" destination="gza-yd-OAT" id="S8r-Fe-aSz"/>
+                                    <outlet property="relatedInfoHeightConstraint" destination="vsn-pH-8hf" id="UHn-7A-6Ja"/>
                                     <outlet property="roomName" destination="6Wk-qx-BKs" id="Sm4-Ig-kLU"/>
                                     <outlet property="startingTime" destination="Qui-cf-jpH" id="2ld-tW-YzS"/>
                                 </connections>

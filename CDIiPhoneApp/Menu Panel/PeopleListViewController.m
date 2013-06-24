@@ -125,7 +125,7 @@
                                                            type:ModelPanelTypePeopleInfo
                                                        callBack:nil];
 }
-
+ 
 - (NSMutableArray *)userArray
 {
   if (!_userArray) {

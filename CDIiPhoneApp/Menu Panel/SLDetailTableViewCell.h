@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *noEventLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *nowIndicatorLabel;
 @property (weak, nonatomic) IBOutlet UIButton *calendarButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *relatedInfoHeightConstraint;
 
 @property (nonatomic, readwrite) BOOL isPlaceHolder;
 @property (nonatomic, weak) id<SLDetailTableViewCellDelegate> delegate;

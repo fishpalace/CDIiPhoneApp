@@ -15,6 +15,9 @@
 #import "AppDelegate.h"
 #import "CDICalendar.h"
 
+#define kRelatedInfoHeight  12
+#define kRelatedInfoGap     3
+
 @import EventKit;
 
 @interface ScheduleListTableViewController ()
@@ -99,6 +102,12 @@
     cell.eventRelatedInfo.text = eventDAO.relatedInfo;
     cell.startingTime.text = [NSDate stringOfTime:eventDAO.startDate];
     
+    if (eventDAO.relatedInfo.length > 0) {
+      cell.relatedInfoHeightConstraint.constant = kRelatedInfoHeight;
+    } else {
+      cell.relatedInfoHeightConstraint.constant = 0;
+    }
+    
     [cell.eventName setFont:kRSLCellTitleFont];
     [cell.roomName setFont:kRSLCellRoomFont];
     [cell.eventRelatedInfo setFont:kRSLCellRelatedInfoFont];
@@ -160,6 +169,10 @@
                          constrainedToSize:CGSizeMake(205, 1000)
                              lineBreakMode:NSLineBreakByCharWrapping];
     height = kSLDetailTableViewCellStandardHeight + size.height - kSingleLineHeight;
+    
+    if (event.relatedInfo.length == 0) {
+      height -= kRelatedInfoHeight + kRelatedInfoGap;
+    }
   }
   return height;
 }

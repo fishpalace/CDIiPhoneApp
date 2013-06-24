@@ -19,6 +19,7 @@
 #import "NSDate+Addition.h"
 #import "UIImageView+AFNetworking.h"
 #import "LoginViewController.h"
+#import "RPTimeViewController.h"
 
 @interface MenuPanelViewController ()
 
@@ -35,6 +36,7 @@
 @property (nonatomic, readwrite) BOOL doesCurrentUserExist;
 @property (nonatomic, strong) NSMutableArray *titleArray;
 @property (nonatomic, strong) NSMutableArray *iconImageNameArray;
+@property (nonatomic, readwrite) NSInteger selectedRoomID;
 
 @end
 
@@ -63,6 +65,14 @@
   _avatarImageView.layer.masksToBounds = YES;
   [NSNotificationCenter registerDidFetchNewEventsNotificationWithSelector:@selector(reloadTableView) target:self];
   [NSNotificationCenter registerDidChangeCurrentUserNotificationWithSelector:@selector(updateAfterCurrentUserChanged) target:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([segue.identifier isEqualToString:@"RoomInfoTimeSegue"]) {
+    RPTimeViewController *vc = segue.destinationViewController;
+    vc.roomID = self.selectedRoomID;
+  }
 }
 
 - (void)configureCurrentUserSetting
@@ -244,6 +254,7 @@
 {
   TimeDisplayPanelViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TimeDisplayPanelViewController"];
   vc.roomID = roomID;
+  self.selectedRoomID = roomID;
   
   char title = 'A' + roomID - 1;
   NSString *roomTitle = [NSString stringWithFormat:@"%c %@", title, [CDIDataSource nameForRoomID:roomID]];
@@ -252,7 +263,10 @@
                                                   withTitleName:roomTitle
                                              functionButtonName:@"Reserve"
                                                        imageURL:@""
-                                                           type:ModelPanelTypeRoomInfo];
+                                                           type:ModelPanelTypeRoomInfo
+                                                       callBack:^{
+                                                             [self performSegueWithIdentifier:@"RoomInfoTimeSegue" sender:self];
+                                                           }];
 }
 
 - (IBAction)didClickLoginButton:(UIButton *)sender

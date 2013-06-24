@@ -122,7 +122,8 @@
                                                   withTitleName:vc.user.name
                                              functionButtonName:@"Write"
                                                        imageURL:vc.user.avatarSmallURL
-                                                           type:ModelPanelTypePeopleInfo];
+                                                           type:ModelPanelTypePeopleInfo
+                                                       callBack:nil];
 }
 
 - (NSMutableArray *)userArray

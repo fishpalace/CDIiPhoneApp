@@ -59,12 +59,14 @@ static ModelPanelViewController *sharedModelPanelViewController;
                          functionButtonName:(NSString *)functionButtonName
                                    imageURL:(NSString *)imageURL
                                        type:(ModelPanelType)type
+                                   callBack:(MondelPanelFunctionCallback)callback
 {
   [[ModelPanelViewController sharedModelPanelViewController] displayModelPanelWithViewController:vc
                                                                                    withTitleName:titleName
                                                                               functionButtonName:functionButtonName
                                                                                         imageURL:imageURL
-                                                                                            type:type];
+                                                                                            type:type
+                                                                                        callBack:callback];
 }
 
 - (void)viewDidLoad
@@ -86,6 +88,7 @@ static ModelPanelViewController *sharedModelPanelViewController;
                          functionButtonName:(NSString *)functionButtonName
                                    imageURL:(NSString *)imageURL
                                        type:(ModelPanelType)type
+                                   callBack:(MondelPanelFunctionCallback)callback
 {
   self.contentViewController = vc;
   self.bottomSpaceConstraint.constant = -self.panelView.frame.size.height;
@@ -107,6 +110,8 @@ static ModelPanelViewController *sharedModelPanelViewController;
   self.functionButtonName = functionButtonName;
   self.imageURL = imageURL;
   self.panelType = type;
+  _callback = nil;
+  self.callback = callback;
   [self updateTitleSection];
 }
 
@@ -166,8 +171,14 @@ static ModelPanelViewController *sharedModelPanelViewController;
 #pragma mark - IBActions
 - (IBAction)didClickCloseButton:(UIButton *)sender
 {
-  [self hide];
+  [self hideWithCompletion:nil];
 }
+
+- (IBAction)didClickFunctionButton:(UIButton *)sender
+{
+  [self hideWithCompletion:self.callback];
+}
+
 
 - (void)removeContentViewController
 {
@@ -178,13 +189,16 @@ static ModelPanelViewController *sharedModelPanelViewController;
 }
 
 #pragma mark - View Hierarchy Methods
-- (void)hide
+- (void)hideWithCompletion:(MondelPanelFunctionCallback)completion
 {
   self.bottomSpaceConstraint.constant = -self.panelView.frame.size.height;
   [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
     [self.panelView layoutIfNeeded];
   } completion:^(BOOL finished) {
     [self removeContentViewController];
+    if (completion) {
+      completion();
+    }
   }];
   
   [self.view fadeOutWithDuration:0.5 completion:^{

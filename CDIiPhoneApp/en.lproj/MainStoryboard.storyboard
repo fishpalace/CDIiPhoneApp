@@ -132,6 +132,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didClickFunctionButton:" destination="xKe-th-rTT" eventType="touchUpInside" id="m6D-n3-z2Z"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_avatar_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="D2b-8k-3wJ">
                                         <rect key="frame" x="141" y="64" width="38" height="38"/>
@@ -1370,7 +1373,7 @@
                         <segue destination="J40-4n-nsT" kind="push" identifier="MenuScheduleSegue" id="NbZ-B2-GH4"/>
                         <segue destination="L8x-HJ-AD3" kind="push" identifier="MenuPeopleSegue" id="LA5-YL-ipb"/>
                         <segue destination="1uK-P4-xvN" kind="push" identifier="MenuReserveSegue" id="8C6-30-9Bx"/>
-                        <segue destination="is8-2k-Shc" kind="push" id="Rn9-Jj-U8D"/>
+                        <segue destination="is8-2k-Shc" kind="push" identifier="RoomInfoTimeSegue" id="Rn9-Jj-U8D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8l8-TW-Ktz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2696,7 +2699,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Op7-MK-e6o"/>
-        <segue reference="HH4-MM-nLv"/>
+        <segue reference="Rn9-Jj-U8D"/>
+        <segue reference="8C6-30-9Bx"/>
     </inferredMetricsTieBreakers>
 </document>

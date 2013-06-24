@@ -95,7 +95,7 @@
 {
   NSDate *currentDate = [NSDate date];
   NSString *weekDayString = [NSDate weekdayStringForDate:currentDate];
-  NSString *dateString = [NSDate stringOfDate:currentDate];
+  NSString *dateString = [NSDate stringOfDate:currentDate includingYear:YES];
   [self.dateLabel setText:[NSString stringWithFormat:@"%@ %@", weekDayString, dateString]];
   [self.timeLabel setText:[NSDate stringOfTime:currentDate]];
   [self.dateLabel setTextColor:kRSLDateLabelColor];

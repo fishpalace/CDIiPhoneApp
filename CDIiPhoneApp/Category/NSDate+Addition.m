@@ -25,10 +25,14 @@
   return [dateFormatter stringFromDate:[NSDate date]];
 }
 
-+ (NSString *)stringOfDate:(NSDate *)date
++ (NSString *)stringOfDate:(NSDate *)date includingYear:(BOOL)includingYear
 {
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-  [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+  if (includingYear) {
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+  } else {
+    [dateFormatter setDateFormat:@"MM-dd"];
+  }
   return [dateFormatter stringFromDate:date];
 }
 

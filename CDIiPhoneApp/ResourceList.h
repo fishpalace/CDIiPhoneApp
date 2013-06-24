@@ -87,4 +87,20 @@
 #define kFontRPEventCountLabel kRFontWitSize(12)
 #define kColorRPEventCountLabel [UIColor colorWithRed:186.0/255.0 green:186.0/255.0 blue:186.0/255.0 alpha:1.0]
 
+#define kFontRPTimeRoomNameLabel kRLightFontWithSize(17)
+#define kColorRPTimeRoomNameLabel [UIColor colorWithRed:55.0/255.0 green:55.0/255.0 blue:55.0/255.0 alpha:1.0]
+#define kColorRPTimeRoomNameLabelShadow [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.4]
+
+#define kFontRPTimeSpanLabel kRFontWitSize(12)
+#define kColorRPTimeSpanLabelBlue kRTintBlue
+#define kColorRPTimeSpanLabelGray [UIColor colorWithRed:160.0/255.0 green:160.0/255.0 blue:160.0/255.0 alpha:1.0]
+
+#define kFontRPTodayOrTomorrowLabel kRLightFontWithSize(17)
+#define kColorRPTodayOrTomorrowLabel [UIColor whiteColor]
+#define kColorRPTodayOrTomorrowLabelShadow [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.3]
+
+#define kFontRPDateLabel kRLightFontWithSize(10)
+#define kColorRPDateLabel [UIColor colorWithRed:118.0/255.0 green:212.0/255.0 blue:255.0/255.0 alpha:1.0]
+#define kColorRPDateLabelShadow [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.3]
+
 #endif

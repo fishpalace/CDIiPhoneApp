@@ -91,6 +91,9 @@
 		1872231517732F78000B5F17 /* model_button_write@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872231117732F78000B5F17 /* model_button_write@2x.png */; };
 		187963851777FD6B00EC9767 /* rp_accesscode_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 187963831777FD6B00EC9767 /* rp_accesscode_bg.png */; };
 		187963861777FD6B00EC9767 /* rp_accesscode_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 187963841777FD6B00EC9767 /* rp_accesscode_bg@2x.png */; };
+		187963891778025D00EC9767 /* RPTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187963881778025D00EC9767 /* RPTimeViewController.m */; };
+		1879638C1778028400EC9767 /* RPInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879638B1778028400EC9767 /* RPInfoViewController.m */; };
+		1879638F177802A000EC9767 /* RPEnsureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879638E177802A000EC9767 /* RPEnsureViewController.m */; };
 		187F507C1734F25A006B46A3 /* MPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F507B1734F25A006B46A3 /* MPTableViewCell.m */; };
 		187F507F1734F277006B46A3 /* MainPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F507E1734F277006B46A3 /* MainPanelViewController.m */; };
 		187F50821734F33C006B46A3 /* MPCellTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F50811734F33C006B46A3 /* MPCellTableViewController.m */; };
@@ -371,6 +374,12 @@
 		1872231117732F78000B5F17 /* model_button_write@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "model_button_write@2x.png"; path = "Image Resource/Model Panel/model_button_write@2x.png"; sourceTree = SOURCE_ROOT; };
 		187963831777FD6B00EC9767 /* rp_accesscode_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rp_accesscode_bg.png; sourceTree = "<group>"; };
 		187963841777FD6B00EC9767 /* rp_accesscode_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rp_accesscode_bg@2x.png"; sourceTree = "<group>"; };
+		187963871778025C00EC9767 /* RPTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPTimeViewController.h; path = "Reserve Panel/RPTimeViewController.h"; sourceTree = "<group>"; };
+		187963881778025D00EC9767 /* RPTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPTimeViewController.m; path = "Reserve Panel/RPTimeViewController.m"; sourceTree = "<group>"; };
+		1879638A1778028400EC9767 /* RPInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPInfoViewController.h; path = "Reserve Panel/RPInfoViewController.h"; sourceTree = "<group>"; };
+		1879638B1778028400EC9767 /* RPInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPInfoViewController.m; path = "Reserve Panel/RPInfoViewController.m"; sourceTree = "<group>"; };
+		1879638D177802A000EC9767 /* RPEnsureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPEnsureViewController.h; path = "Reserve Panel/RPEnsureViewController.h"; sourceTree = "<group>"; };
+		1879638E177802A000EC9767 /* RPEnsureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPEnsureViewController.m; path = "Reserve Panel/RPEnsureViewController.m"; sourceTree = "<group>"; };
 		187F507A1734F25A006B46A3 /* MPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPTableViewCell.h; path = "Main Panel/MPTableViewCell.h"; sourceTree = "<group>"; };
 		187F507B1734F25A006B46A3 /* MPTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPTableViewCell.m; path = "Main Panel/MPTableViewCell.m"; sourceTree = "<group>"; };
 		187F507D1734F277006B46A3 /* MainPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainPanelViewController.h; path = "Main Panel/MainPanelViewController.h"; sourceTree = "<group>"; };
@@ -761,6 +770,12 @@
 				1864F5D917775EE70013960C /* RPRoomViewController.m */,
 				1864F5DB17775F370013960C /* RPRoomCell.h */,
 				1864F5DC17775F370013960C /* RPRoomCell.m */,
+				187963871778025C00EC9767 /* RPTimeViewController.h */,
+				187963881778025D00EC9767 /* RPTimeViewController.m */,
+				1879638A1778028400EC9767 /* RPInfoViewController.h */,
+				1879638B1778028400EC9767 /* RPInfoViewController.m */,
+				1879638D177802A000EC9767 /* RPEnsureViewController.h */,
+				1879638E177802A000EC9767 /* RPEnsureViewController.m */,
 			);
 			name = "Reserve Panel";
 			sourceTree = "<group>";
@@ -1439,13 +1454,16 @@
 				189871C717718D6B004059A3 /* MenuRoomInfoCell.m in Sources */,
 				187F507F1734F277006B46A3 /* MainPanelViewController.m in Sources */,
 				187F50821734F33C006B46A3 /* MPCellTableViewController.m in Sources */,
+				1879638F177802A000EC9767 /* RPEnsureViewController.m in Sources */,
 				18CEE9831772D8C9005BDA1D /* CDIEventDAO.m in Sources */,
 				187F50851734F628006B46A3 /* MPCellTableViewCell.m in Sources */,
 				18BACD6E176EE8640058042D /* CDIRoom.m in Sources */,
 				18CDE7B91774218900711E2A /* TPScheduleListViewController.m in Sources */,
 				187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */,
+				1879638C1778028400EC9767 /* RPInfoViewController.m in Sources */,
 				187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */,
 				187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */,
+				187963891778025D00EC9767 /* RPTimeViewController.m in Sources */,
 				18232641177698B0001E7B88 /* ScheduleListTableViewController.m in Sources */,
 				18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */,
 				1864F5DA17775EE70013960C /* RPRoomViewController.m in Sources */,

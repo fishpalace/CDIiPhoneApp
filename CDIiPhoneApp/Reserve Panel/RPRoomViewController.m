@@ -9,6 +9,7 @@
 #import "RPRoomViewController.h"
 #import "RPRoomCell.h"
 #import "CDIDataSource.h"
+#import "RPTimeViewController.h"
 
 @interface RPRoomViewController ()
 
@@ -96,6 +97,20 @@
   return 82;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  self.selectedRoomID = indexPath.row + 1;
+  [self performSegueWithIdentifier:@"RoomListTimeSegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([segue.identifier isEqualToString:@"RoomListTimeSegue"]) {
+    RPTimeViewController *vc = segue.destinationViewController;
+    vc.roomID = self.selectedRoomID;
+  }
+}
+
 - (IBAction)didClickBackButton:(UIButton *)sender
 {
   [self.navigationController popViewControllerAnimated:YES];
@@ -111,7 +126,6 @@
       result++;
     }
   }
-  
   return result;
 }
 

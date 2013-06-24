@@ -40,7 +40,7 @@
 
 + (NSString *)weekdayStringForDate:(NSDate *)date;
 
-+ (NSString *)stringOfDate:(NSDate *)date;
++ (NSString *)stringOfDate:(NSDate *)date includingYear:(BOOL)includingYear;
 
 + (NSString *)stringOfTime:(NSDate *)date;
 

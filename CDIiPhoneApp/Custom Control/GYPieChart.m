@@ -12,7 +12,7 @@
 
 #define kPullerDefaultFrame       CGRectMake(0.0, 0.0, 44.0, 100.0)
 #define kLabelDefaultFrame        CGRectMake(-16.0, -80.0, 80.0, 76.0)
-#define kPeriodAvailableColor [[UIColor colorWithRed:12.0/255.0 green:194.0/255.0 blue:203.0/255.0 alpha:0.5] CGColor]
+#define kPeriodAvailableColor [[UIColor colorWithRed:0.0/255.0 green:150.0/255.0 blue:218.0/255.0 alpha:0.5] CGColor]
 #define kPeriodErrorColor [[UIColor colorWithRed:234.0/255.0 green:82.0/255.0 blue:81.0/255.0 alpha:0.5] CGColor]
 #define kStartLableColor  [UIColor colorWithRed:12.0/255.0 green:194.0/255.0 blue:203.0/255.0 alpha:1.0]
 #define kEndLableColor    [UIColor colorWithRed:234.0/255.0 green:82.0/255.0 blue:81.0/255.0 alpha:1.0]
@@ -60,7 +60,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     
     [self configurePanGestureRecognizers];
     [self configurePullers];
-    [self configureLabels];
+//    [self configureLabels];
   }
   return self;
 }

@@ -10,4 +10,6 @@
 
 @interface RPRoomViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, readwrite) NSInteger selectedRoomID;
+
 @end

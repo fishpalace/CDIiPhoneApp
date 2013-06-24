@@ -94,6 +94,8 @@
 		187963891778025D00EC9767 /* RPTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187963881778025D00EC9767 /* RPTimeViewController.m */; };
 		1879638C1778028400EC9767 /* RPInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879638B1778028400EC9767 /* RPInfoViewController.m */; };
 		1879638F177802A000EC9767 /* RPEnsureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879638E177802A000EC9767 /* RPEnsureViewController.m */; };
+		187963921778244100EC9767 /* rp_textfield_error_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 187963901778244100EC9767 /* rp_textfield_error_bg.png */; };
+		187963931778244100EC9767 /* rp_textfield_error_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 187963911778244100EC9767 /* rp_textfield_error_bg@2x.png */; };
 		187F507C1734F25A006B46A3 /* MPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F507B1734F25A006B46A3 /* MPTableViewCell.m */; };
 		187F507F1734F277006B46A3 /* MainPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F507E1734F277006B46A3 /* MainPanelViewController.m */; };
 		187F50821734F33C006B46A3 /* MPCellTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F50811734F33C006B46A3 /* MPCellTableViewController.m */; };
@@ -380,6 +382,8 @@
 		1879638B1778028400EC9767 /* RPInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPInfoViewController.m; path = "Reserve Panel/RPInfoViewController.m"; sourceTree = "<group>"; };
 		1879638D177802A000EC9767 /* RPEnsureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPEnsureViewController.h; path = "Reserve Panel/RPEnsureViewController.h"; sourceTree = "<group>"; };
 		1879638E177802A000EC9767 /* RPEnsureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPEnsureViewController.m; path = "Reserve Panel/RPEnsureViewController.m"; sourceTree = "<group>"; };
+		187963901778244100EC9767 /* rp_textfield_error_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rp_textfield_error_bg.png; sourceTree = "<group>"; };
+		187963911778244100EC9767 /* rp_textfield_error_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rp_textfield_error_bg@2x.png"; sourceTree = "<group>"; };
 		187F507A1734F25A006B46A3 /* MPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPTableViewCell.h; path = "Main Panel/MPTableViewCell.h"; sourceTree = "<group>"; };
 		187F507B1734F25A006B46A3 /* MPTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPTableViewCell.m; path = "Main Panel/MPTableViewCell.m"; sourceTree = "<group>"; };
 		187F507D1734F277006B46A3 /* MainPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainPanelViewController.h; path = "Main Panel/MainPanelViewController.h"; sourceTree = "<group>"; };
@@ -744,6 +748,8 @@
 		183F9C501777F26C00409FE7 /* Reserve Panel */ = {
 			isa = PBXGroup;
 			children = (
+				187963901778244100EC9767 /* rp_textfield_error_bg.png */,
+				187963911778244100EC9767 /* rp_textfield_error_bg@2x.png */,
 				187963831777FD6B00EC9767 /* rp_accesscode_bg.png */,
 				187963841777FD6B00EC9767 /* rp_accesscode_bg@2x.png */,
 				183F9C511777F26C00409FE7 /* rp_button_bottom.png */,
@@ -1360,6 +1366,7 @@
 				183AE774175C38CD008310BF /* tableview_icon_calendar_hl@2x.png in Resources */,
 				18194CFF1775A75C00F99149 /* mp_cell_cover.png in Resources */,
 				183AE779175C38DA008310BF /* menu_button_navi_back.png in Resources */,
+				187963931778244100EC9767 /* rp_textfield_error_bg@2x.png in Resources */,
 				183AE77A175C38DA008310BF /* menu_button_navi_back@2x.png in Resources */,
 				183AE77B175C38DA008310BF /* menu_button_schedule_dark.png in Resources */,
 				183AE77C175C38DA008310BF /* menu_button_schedule_dark@2x.png in Resources */,
@@ -1370,6 +1377,7 @@
 				18256B52177055390079D24B /* menu_icon_key@2x.png in Resources */,
 				18948CC5175CABD6004E07EB /* people_cell_cover.png in Resources */,
 				183F9C671777F26D00409FE7 /* rp_time_puller_start.png in Resources */,
+				187963921778244100EC9767 /* rp_textfield_error_bg.png in Resources */,
 				18948CC6175CABD6004E07EB /* people_cell_cover@2x.png in Resources */,
 				18948CC9175CABDE004E07EB /* menu_button_filter.png in Resources */,
 				18948CCA175CABDE004E07EB /* menu_button_filter@2x.png in Resources */,

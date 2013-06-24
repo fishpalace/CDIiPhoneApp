@@ -181,14 +181,17 @@ static CDIEvent *sharedNewEvent;
   self.isPlaceHolder = NO;
   
   NSArray *roomListArray = dict[@"roomIdList"];
-  for (NSNumber *roomID in roomListArray) {
-    self.roomID = roomID;
+  if ([roomListArray isKindOfClass:[NSArray class]]) {
+    for (NSNumber *roomID in roomListArray) {
+      self.roomID = roomID;
+    }
+    
+    self.occupiedByA = @([roomListArray containsObject:@1]);
+    self.occupiedByB = @([roomListArray containsObject:@2]);
+    self.occupiedByC = @([roomListArray containsObject:@3]);
+    self.occupiedByD = @([roomListArray containsObject:@4]);
   }
-  self.occupiedByA = @([roomListArray containsObject:@1]);
-  self.occupiedByB = @([roomListArray containsObject:@2]);
-  self.occupiedByC = @([roomListArray containsObject:@3]);
-  self.occupiedByD = @([roomListArray containsObject:@4]);
-  
+
   NSInteger startValue = [self.startDate integerValueForTimePanel];
   NSInteger endValue = [self.endDate integerValueForTimePanel];
   self.startValue = [NSNumber numberWithInt:startValue];

@@ -12,6 +12,7 @@
 #import "NSString+Encrypt.h"
 #import "CDIEvent.h"
 #import "CDIUser.h"
+#import "CDIEventDAO.h"
 
 #define kBaseURLString @"http://cdi.tongji.edu.cn/cdisoul/webservice/"
 
@@ -79,7 +80,8 @@ static CDINetClient *sharedClient;
   }];
 }
 
-- (void)createEvent:(CDIEvent *)event
+- (void)createEvent:(CDIEventDAO *)event
+         sessionKey:(NSString *)sessionKey
          completion:(void (^)(BOOL succeeded, id responseData))completion
 {
   NSDictionary *dict = @{@"title" : event.name,
@@ -88,8 +90,8 @@ static CDINetClient *sharedClient;
                          @"status" : @"INACTIVE",
                          @"startDate" : @(event.startDate.timeIntervalSince1970 * 1000),
                          @"endDate" : @(event.endDate.timeIntervalSince1970 * 1000),
-                         @"firstRoomId" : @"1"};
-  NSString *path = [NSString stringWithFormat:@"event/addEvent/%@", event.creator.sessionKey];
+                         @"firstRoomId" : event.roomID};
+  NSString *path = [NSString stringWithFormat:@"event/addEvent/%@", sessionKey];
   [self putPath:path dictionary:dict completion:^(BOOL succeeded, id responseData) {
     if (completion) {
       completion(succeeded, responseData);

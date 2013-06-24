@@ -58,7 +58,7 @@
   [dateFormatter setDateFormat:@"HH:mm"];
   NSString *fromDateString = [dateFormatter stringFromDate:fromDate];
   NSString *toDateString = [dateFormatter stringFromDate:toDate];
-  NSString *connectionString = inChinese ? @"到" : @"-";
+  NSString *connectionString = inChinese ? @"到" : @"to";
   return [NSString stringWithFormat:@"%@ %@ %@", fromDateString, connectionString, toDateString];
 }
 

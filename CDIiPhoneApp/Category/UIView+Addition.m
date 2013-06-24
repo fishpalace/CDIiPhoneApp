@@ -95,4 +95,18 @@
   }
 }
 
+- (void)blinkForRepeatCount:(NSInteger)count duration:(CGFloat)duration
+{
+  CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+  [animation setFromValue:[NSNumber numberWithFloat:0.0]];
+  [animation setToValue:[NSNumber numberWithFloat:1.0]];
+  [animation setDuration:duration];
+  [animation setTimingFunction:[CAMediaTimingFunction
+                                functionWithName:kCAMediaTimingFunctionLinear]];
+  [animation setAutoreverses:YES];
+  [animation setRepeatCount:count];
+  [self.layer addAnimation:animation forKey:@"opacity"];
+}
+
+
 @end

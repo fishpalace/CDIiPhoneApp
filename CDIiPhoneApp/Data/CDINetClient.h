@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class CDIEvent;
+@class CDIEventDAO;
 
 @interface CDINetClient : NSObject
 
@@ -32,7 +32,8 @@
 
 - (void)getAllRoomInfoCompletion:(void (^)(BOOL succeeded, id responseData))completion;
 
-- (void)createEvent:(CDIEvent *)event
+- (void)createEvent:(CDIEventDAO *)event
+         sessionKey:(NSString *)sessionKey
          completion:(void (^)(BOOL succeeded, id responseData))completion;
 
 - (void)ensureEventWithEventID:(NSString *)eventID

@@ -36,4 +36,6 @@
 
 - (void)removeAllSubviews;
 
+- (void)blinkForRepeatCount:(NSInteger)count duration:(CGFloat)duration;
+
 @end

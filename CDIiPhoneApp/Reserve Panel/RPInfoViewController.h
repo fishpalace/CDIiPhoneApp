@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RPInfoViewController : UIViewController
+@interface RPInfoViewController : CoreDataViewController <UITextFieldDelegate>
 
 @end

@@ -297,19 +297,15 @@
                                       forToday:self.isToday];
   
   BlockARCWeakSelf weakSelf = self;
-  
   void (^completion)(BOOL, id) = ^(BOOL succeeded, id responseData) {
     if (succeeded) {
       if ([responseData[@"data"] integerValue] != 0) {
         [weakSelf submitDate];
       } else {
-//        [AlertViewController showErrorMessage:@"已经创建了一个活动" content:@"每天只能创建一个活动。"];
         //TODO Report Error
       }
     }
   };
-  
-  
   [client checkEventCreationLegalWithSessionKey:currentUser.sessionKey
                                            date:[date stringExpression]
                                      completion:completion];
@@ -317,12 +313,14 @@
 
 - (void)submitDate
 {
-//  CDIEvent *sharedNewEvent = [CDIEvent sharedNewEvent];
-//  sharedNewEvent.startDate = [NSDate dateFromeIntegerValue:self.selectionStartValue
-//                                                  forToday:self.isToday];
-//  sharedNewEvent.endDate = [NSDate dateFromeIntegerValue:self.selectionEndValue
-//                                                forToday:self.isToday];
-//  [self performSegueWithIdentifier:@"CDICreateEventTimeSelected" sender:self];
+  CDIEventDAO *sharedNewEvent = [CDIEventDAO sharedNewEvent];
+  sharedNewEvent.startDate = [NSDate dateFromeIntegerValue:self.selectionStartValue
+                                                  forToday:self.isToday];
+  sharedNewEvent.endDate = [NSDate dateFromeIntegerValue:self.selectionEndValue
+                                                forToday:self.isToday];
+  sharedNewEvent.roomID = @(self.roomID);
+  sharedNewEvent.creator = [CDIUser currentUserInContext:self.managedObjectContext];
+  [self performSegueWithIdentifier:@"TimeInfoSegue" sender:self];
 }
 
 - (IBAction)didClickBackButton:(UIButton *)sender

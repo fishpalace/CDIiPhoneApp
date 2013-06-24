@@ -1889,7 +1889,7 @@
                                 <color key="separatorColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="RPRoomCell" rowHeight="82" id="GLR-qW-gUO" customClass="RPRoomCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RPRoomCell" rowHeight="82" id="GLR-qW-gUO" customClass="RPRoomCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="82"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -2210,16 +2210,17 @@
                         <outlet property="switchDayButton" destination="SV0-6x-N8Y" id="INj-Fi-hzs"/>
                         <outlet property="timeSpanLabel" destination="jTE-3d-MdZ" id="zPe-WI-pYe"/>
                         <outlet property="todayOrTomorrowLabel" destination="2AQ-R2-vr2" id="dFL-n1-R4g"/>
+                        <segue destination="nDw-mq-Oud" kind="push" identifier="TimeInfoSegue" id="GbB-6y-LVv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOQ-jt-Xdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2007" y="-178"/>
         </scene>
-        <!--View Controller-->
+        <!--Info View Controller-->
         <scene sceneID="8W8-Uh-01T">
             <objects>
-                <viewController id="nDw-mq-Oud" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RPInfoViewController" id="nDw-mq-Oud" customClass="RPInfoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R1p-Rp-e0j">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2260,6 +2261,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didClickBackButton:" destination="nDw-mq-Oud" eventType="touchUpInside" id="fgI-Vl-sPO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2307,28 +2311,20 @@
                                 <color key="textColor" red="0.0" green="0.58823529409999997" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqJ-G6-oZD">
-                                <rect key="frame" x="10" y="509" width="301" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="301" id="Iti-6I-jyL"/>
-                                    <constraint firstAttribute="height" constant="50" id="ngc-Oc-Nhd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
-                                <state key="normal" title="Reserve" backgroundImage="rp_button_bottom.png">
-                                    <color key="titleColor" red="0.0" green="0.58823529409999997" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rp_textfield_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="bhJ-2T-7eg">
                                 <rect key="frame" x="10" y="123" width="301" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="301" id="BSQ-aD-GpT"/>
                                     <constraint firstAttribute="height" constant="51" id="FM4-Nh-66G"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rp_textfield_error_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="meZ-yL-atr">
+                                <rect key="frame" x="10" y="123" width="301" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="9P1-eo-apc"/>
+                                    <constraint firstAttribute="width" constant="301" id="XzJ-aa-tsO"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l8O-LU-sNp">
@@ -2357,7 +2353,7 @@
                                     <constraint firstAttribute="height" constant="30" id="O5P-DH-oE2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -2367,13 +2363,13 @@
                             <constraint firstItem="hyG-9K-EHl" firstAttribute="top" secondItem="zZQ-qJ-0ia" secondAttribute="bottom" constant="2" id="1h1-cX-mD1"/>
                             <constraint firstItem="zZQ-qJ-0ia" firstAttribute="top" secondItem="TGm-rP-oJL" secondAttribute="bottom" constant="18" id="4OS-SK-00o"/>
                             <constraint firstItem="TGm-rP-oJL" firstAttribute="top" secondItem="R1p-Rp-e0j" secondAttribute="top" id="7xj-v8-pGA"/>
-                            <constraint firstItem="vqJ-G6-oZD" firstAttribute="leading" secondItem="R1p-Rp-e0j" secondAttribute="leading" constant="9.5" id="Ecu-cn-rLX"/>
+                            <constraint firstItem="meZ-yL-atr" firstAttribute="top" secondItem="bhJ-2T-7eg" secondAttribute="top" id="Jbz-lu-KOl"/>
                             <constraint firstItem="Y1s-AW-e8E" firstAttribute="top" secondItem="bhJ-2T-7eg" secondAttribute="bottom" constant="12" id="Jrp-rX-a7K"/>
                             <constraint firstItem="zZQ-qJ-0ia" firstAttribute="leading" secondItem="hyG-9K-EHl" secondAttribute="leading" id="LpD-Oa-VLu"/>
                             <constraint firstAttribute="centerX" secondItem="TGm-rP-oJL" secondAttribute="centerX" id="O2c-Z9-SKB"/>
                             <constraint firstAttribute="trailing" secondItem="l14-a6-jbo" secondAttribute="trailing" id="ReD-ZJ-3eH"/>
                             <constraint firstItem="Y1s-AW-e8E" firstAttribute="centerX" secondItem="bhJ-2T-7eg" secondAttribute="centerX" id="SDq-eo-jWq"/>
-                            <constraint firstAttribute="bottom" secondItem="vqJ-G6-oZD" secondAttribute="bottom" constant="9" id="SJI-h5-Ska"/>
+                            <constraint firstItem="meZ-yL-atr" firstAttribute="leading" secondItem="bhJ-2T-7eg" secondAttribute="leading" id="ZLh-yd-9a5"/>
                             <constraint firstItem="zZQ-qJ-0ia" firstAttribute="leading" secondItem="R1p-Rp-e0j" secondAttribute="leading" constant="20" id="apH-wf-aTf"/>
                             <constraint firstItem="l8O-LU-sNp" firstAttribute="centerX" secondItem="bhJ-2T-7eg" secondAttribute="centerX" id="bts-3u-jlE"/>
                             <constraint firstItem="4oN-EP-4aT" firstAttribute="centerX" secondItem="Y1s-AW-e8E" secondAttribute="centerX" id="gi0-ho-gPo"/>
@@ -2389,15 +2385,23 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="hyG-9K-EHl" id="ign-gW-lne"/>
+                        <outlet property="errorIndicatorImageView" destination="meZ-yL-atr" id="xNb-Z3-uAO"/>
+                        <outlet property="eventRelatedinfoTextfield" destination="4oN-EP-4aT" id="8K0-4O-jbu"/>
+                        <outlet property="eventTitleTextfield" destination="l8O-LU-sNp" id="YqV-dD-FG1"/>
+                        <outlet property="roomTitleLabel" destination="zZQ-qJ-0ia" id="Ze7-j2-nlQ"/>
+                        <segue destination="JZ0-N7-h9h" kind="push" identifier="InfoEnsureSegue" id="9z9-3K-Qwj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4H-T6-9jW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2365" y="-181"/>
+            <point key="canvasLocation" x="2383" y="-181"/>
         </scene>
-        <!--View Controller-->
+        <!--Ensure View Controller-->
         <scene sceneID="BZJ-xD-3DD">
             <objects>
-                <viewController id="JZ0-N7-h9h" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RPEnsureViewController" id="JZ0-N7-h9h" customClass="RPEnsureViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R3D-Rs-74b">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2620,7 +2624,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZX1-k7-IXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2729" y="-180"/>
+            <point key="canvasLocation" x="2759" y="-180"/>
         </scene>
     </scenes>
     <resources>
@@ -2650,6 +2654,7 @@
         <image name="rp_button_bottom.png" width="301" height="51"/>
         <image name="rp_ensure_icon_key.png" width="22" height="22"/>
         <image name="rp_textfield_bg.png" width="301" height="51"/>
+        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
         <image name="rp_time_button_center.png" width="104" height="104"/>
         <image name="tableview_banner.png" width="320" height="30"/>
         <image name="tableview_icon_calendar.png" width="19" height="19"/>
@@ -2663,6 +2668,259 @@
         <image name="time_schedule_list.png" width="21" height="15"/>
         <image name="time_schedule_list_hl.png" width="21" height="15"/>
     </resources>
+    <classes>
+        <class className="CoreDataViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataViewController.h"/>
+        </class>
+        <class className="GYPieChart" superclassName="XYPieChart">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYPieChart.h"/>
+        </class>
+        <class className="LoginViewController" superclassName="CoreDataViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bgImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="coverImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="passwordTextfield" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="textfieldTopMarginConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="userNameTextfield" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MPCellTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="contentImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="coverImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="MPCellTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPCellTableViewController.h"/>
+        </class>
+        <class className="MPTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MPTableViewCell.h"/>
+        </class>
+        <class className="MainPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainPanelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="containerViewTopSpaceConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="tableViewContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tableViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="tableViewTopSpaceConstraint" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="MenuItemCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuItemCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="displayButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="functionButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MenuPanelViewController" superclassName="CoreDataViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuPanelViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didClickCheckRoomButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="didClickLoginButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="didClickScheduleButton:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="checkRoomA" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkRoomB" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkRoomC" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="checkRoomD" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="currentUserNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MenuRoomInfoCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuRoomInfoCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="roomAButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="roomALabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="roomBButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="roomBLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="roomCButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="roomCLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="roomDButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="roomDLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sectionNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ModelPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModelPanelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bottomSpaceConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="containerViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="coverImageVIew" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="functionButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="modelBGImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="panelView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="panelViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="titleImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PeopleInfoViewController" superclassName="CoreDataViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PeopleInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="infoDribbleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="infoHomepageButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="infoLinkedinButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="infoTwitterButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="infoWeiboButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tableview" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="userPositionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userTitleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PeopleInfoWorkListCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PeopleInfoWorkListCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="noItemIndicatorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="workNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="workPicCoverImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="workPicImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="workTypeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PeopleListCollectionViewCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PeopleListCollectionViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userPositionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userTitleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PeopleListViewController" superclassName="CoreDataViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PeopleListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="filterButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="RPEnsureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RPEnsureViewController.h"/>
+        </class>
+        <class className="RPInfoViewController" superclassName="CoreDataViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RPInfoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didClickBackButton:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="errorIndicatorImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="eventRelatedinfoTextfield" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="eventTitleTextfield" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="roomTitleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RPRoomCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RPRoomCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="eventCountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="percentageLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="roomNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="statusButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="RPRoomViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RPRoomViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RPTimeViewController" superclassName="CoreDataViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RPTimeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="pieChart" candidateClass="GYPieChart"/>
+                <relationship kind="outlet" name="pieChartTopMarginConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="roomTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="switchDayButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="timeSpanLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="todayOrTomorrowLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SLDetailTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLDetailTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="calendarButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="eventName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventRelatedInfo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="noEventLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nowIndicatorLabel" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="roomName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startingTime" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ScheduleListTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScheduleListTableViewController.h"/>
+        </class>
+        <class className="ScheduleListViewController" superclassName="CoreDataViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScheduleListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didClickBackButton:"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scheduleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tableview" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TPScheduleListViewController" superclassName="CoreDataViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPScheduleListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="showGraphButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TimeDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="eventNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="percentageLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pieChart" candidateClass="GYPieChart"/>
+            </relationships>
+        </class>
+        <class className="TimeDisplayPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeDisplayPanelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="coverView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nextEventTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nextEventTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nowIndicatorImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="scheduleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="sectionTitleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="XYPieChart" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/XYPieChart.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

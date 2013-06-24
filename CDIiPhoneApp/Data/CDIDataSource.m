@@ -60,6 +60,7 @@ static CDIDataSource *sharedDataSource;
   if (self) {
     [self.eventTimer fire];
     [self.roomInfoTimer fire];
+    [NSNotificationCenter registerShouldChangeLocalDatasourceNotificationWithSelector:@selector(updateLocalEventsArray) target:self];
   }
   return self;
 }
@@ -232,7 +233,6 @@ static CDIDataSource *sharedDataSource;
       [self.managedObjectContext processPendingChanges];
       [self.fetchedResultsController performFetch:nil];
       [self updateLocalEventsArray];
-      [NSNotificationCenter postDidFetchNewEventsNotification];
     }
   };
   
@@ -243,6 +243,8 @@ static CDIDataSource *sharedDataSource;
 
 - (void)updateLocalEventsArray
 {
+  [self.fetchedResultsController performFetch:nil];
+  
   [self.roomAtodayEvents removeAllObjects];
   [self.roomAtomorrowEvents removeAllObjects];
   [self.roomBtodayEvents removeAllObjects];
@@ -276,8 +278,8 @@ static CDIDataSource *sharedDataSource;
     if (isToday) {
       [array addObject:eventDAO];
     }
-
   }
+  [NSNotificationCenter postDidFetchNewEventsNotification];
 }
 
 - (NSArray *)setUpTodayTimeZonesWithRoomID:(NSInteger)roomID

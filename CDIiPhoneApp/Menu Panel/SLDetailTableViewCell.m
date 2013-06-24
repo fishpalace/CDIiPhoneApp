@@ -45,9 +45,14 @@
 
 - (void)setCalendarButtonSelected:(BOOL)selected
 {
+  _calendarButtonSelected = selected;
+  [self performSelectorOnMainThread:@selector(updateCalendarButton) withObject:nil waitUntilDone:NO];
+}
+
+- (void)updateCalendarButton
+{
   NSString *imageName = self.calendarButtonSelected ? @"tableview_icon_calendar_hl" : @"tableview_icon_calendar";
   [self.calendarButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-  _calendarButtonSelected = selected;
   [self.calendarButton setNeedsDisplay];
 }
 

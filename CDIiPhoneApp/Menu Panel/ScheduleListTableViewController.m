@@ -195,6 +195,7 @@
             inManagedObjectContext:self.managedObjectContext];
       [cell setCalendarButtonSelected:NO];
       [self.managedObjectContext processPendingChanges];
+      [self performSelectorOnMainThread:@selector(showRemovedAlertViewWithEvent:) withObject:eventDAO waitUntilDone:NO];
 
     } else {
       //TODO Report error
@@ -213,11 +214,11 @@
       if (event) {
         eventDAO.eventStoreID = event.eventIdentifier;
         [cell setCalendarButtonSelected:YES];
-
         [CDIEvent updateEventStoreID:eventDAO.eventStoreID
                       forEventWithID:eventDAO.eventID
               inManagedObjectContext:self.managedObjectContext];
         [self.managedObjectContext processPendingChanges];
+        [self performSelectorOnMainThread:@selector(showAddedAlertViewWithEvent:) withObject:eventDAO waitUntilDone:NO];
       } else {
         //TODO Creation Failed
       }
@@ -225,6 +226,26 @@
       //TODO Report error
     }
   }];
+}
+
+- (void)showAddedAlertViewWithEvent:(CDIEventDAO *)eventDAO
+{
+  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:eventDAO.name
+                                                      message:@"Event added to calendar."
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+  [alertView show];
+}
+
+- (void)showRemovedAlertViewWithEvent:(CDIEventDAO *)eventDAO
+{
+  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:eventDAO.name
+                                                      message:@"Event removed to calendar."
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+  [alertView show];
 }
 
 #pragma mark - Properties

@@ -13,6 +13,7 @@
 #import "CDINetClient.h"
 #import "CDICalendar.h"
 #import "CDIEvent.h"
+#import "NSNotificationCenter+Addition.h"
 
 @interface RPEnsureViewController ()
 
@@ -27,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *calendarButton;
 
 @property (nonatomic, readwrite) BOOL addedToCalendar;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *accessKeyBGTopMarginConstraint;
 
 @end
 
@@ -45,6 +47,7 @@
 {
   [super viewDidLoad];
   [self updateLabel];
+  _accessKeyBGTopMarginConstraint.constant = kIsiPhone5 ? 105 : 85;
 }
 
 - (void)updateLabel
@@ -130,6 +133,7 @@
 - (IBAction)didClickDoneButton:(UIButton *)sender
 {
   [self.navigationController popToRootViewControllerAnimated:YES];
+  [NSNotificationCenter postShouldChangeLocalDatasourceNotification];
 }
 
 - (void)createCalendarEvent
@@ -153,8 +157,8 @@
       [CDIEvent updateEventStoreID:@""
                     forEventWithID:eventDAO.eventID
             inManagedObjectContext:self.managedObjectContext];
-      [self.calendarButton setSelected:NO];
       [self.managedObjectContext processPendingChanges];
+      [self performSelectorOnMainThread:@selector(showRemovedAlertViewWithEvent:) withObject:eventDAO waitUntilDone:NO];
       
     } else {
       //TODO Report error
@@ -172,11 +176,11 @@
                                                inLocation:[CDIDataSource nameForRoomID:eventDAO.roomID.integerValue]];
       if (event) {
         eventDAO.eventStoreID = event.eventIdentifier;
-        [self.calendarButton setSelected:YES];
         [CDIEvent updateEventStoreID:eventDAO.eventStoreID
                       forEventWithID:eventDAO.eventID
               inManagedObjectContext:self.managedObjectContext];
         [self.managedObjectContext processPendingChanges];
+        [self performSelectorOnMainThread:@selector(showAddedAlertViewWithEvent:) withObject:eventDAO waitUntilDone:NO];
       } else {
         //TODO Creation Failed
       }
@@ -184,6 +188,28 @@
       //TODO Report error
     }
   }];
+}
+
+- (void)showAddedAlertViewWithEvent:(CDIEventDAO *)eventDAO
+{
+  [self.calendarButton setSelected:YES];
+  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:eventDAO.name
+                                                      message:@"Event added to calendar."
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+  [alertView show];
+}
+
+- (void)showRemovedAlertViewWithEvent:(CDIEventDAO *)eventDAO
+{
+  [self.calendarButton setSelected:NO];
+  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:eventDAO.name
+                                                      message:@"Event removed to calendar."
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+  [alertView show];
 }
 
 @end

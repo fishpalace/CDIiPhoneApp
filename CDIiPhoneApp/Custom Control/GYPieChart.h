@@ -20,6 +20,10 @@
 - (NSString *)stringForPercentage:(CGFloat)percentage;
 - (CGFloat)decentPercentageForRawPercentage:(CGFloat)rawPercentage;
 
+- (void)GYPieChart:(GYPieChart *)pieChart
+    didStartDraggingWithFrom:(BOOL)isDraggingFrom;
+- (void)GYPieChartdidEndDragging:(GYPieChart *)pieChart;
+
 @end
 
 @interface GYPieChart : XYPieChart

@@ -41,6 +41,8 @@
 		18256B58177055390079D24B /* menu_icon_proj@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B4E177055390079D24B /* menu_icon_proj@2x.png */; };
 		182B301D1771BC2B00EB6DFB /* tableview_now_indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B301B1771BC2B00EB6DFB /* tableview_now_indicator.png */; };
 		182B301E1771BC2B00EB6DFB /* tableview_now_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */; };
+		182F28CC17A36D7C0035C401 /* time_display_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F28CA17A36D7C0035C401 /* time_display_bg.png */; };
+		182F28CD17A36D7C0035C401 /* time_display_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F28CB17A36D7C0035C401 /* time_display_bg@2x.png */; };
 		183AE76B175C38CD008310BF /* tableview_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE761175C38CD008310BF /* tableview_bg.png */; };
 		183AE76C175C38CD008310BF /* tableview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE762175C38CD008310BF /* tableview_bg@2x.png */; };
 		183AE76D175C38CD008310BF /* tableview_bg_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE763175C38CD008310BF /* tableview_bg_back.png */; };
@@ -318,6 +320,8 @@
 		18256B4E177055390079D24B /* menu_icon_proj@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_icon_proj@2x.png"; sourceTree = "<group>"; };
 		182B301B1771BC2B00EB6DFB /* tableview_now_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_now_indicator.png; sourceTree = "<group>"; };
 		182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_now_indicator@2x.png"; sourceTree = "<group>"; };
+		182F28CA17A36D7C0035C401 /* time_display_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_display_bg.png; sourceTree = "<group>"; };
+		182F28CB17A36D7C0035C401 /* time_display_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_display_bg@2x.png"; sourceTree = "<group>"; };
 		183AE761175C38CD008310BF /* tableview_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg.png; sourceTree = "<group>"; };
 		183AE762175C38CD008310BF /* tableview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_bg@2x.png"; sourceTree = "<group>"; };
 		183AE763175C38CD008310BF /* tableview_bg_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg_back.png; sourceTree = "<group>"; };
@@ -1006,6 +1010,8 @@
 		18B743CB175B04D100585CF5 /* Time Panel */ = {
 			isa = PBXGroup;
 			children = (
+				182F28CA17A36D7C0035C401 /* time_display_bg.png */,
+				182F28CB17A36D7C0035C401 /* time_display_bg@2x.png */,
 				18CDE7B01774204000711E2A /* time_button_graph.png */,
 				18CDE7B11774204000711E2A /* time_button_graph@2x.png */,
 				18B743E6175B096C00585CF5 /* time_panel_bg.png */,
@@ -1285,6 +1291,7 @@
 				18B995A81759EA190010B9D4 /* menu_section_schedule.png in Resources */,
 				18B995A91759EA190010B9D4 /* menu_section_schedule@2x.png in Resources */,
 				18B995AC175A03F80010B9D4 /* mp_menu_arrow_reverse.png in Resources */,
+				182F28CD17A36D7C0035C401 /* time_display_bg@2x.png in Resources */,
 				18B995AD175A03F80010B9D4 /* mp_menu_arrow_reverse@2x.png in Resources */,
 				18B995B2175A0E230010B9D4 /* bottom_cover.png in Resources */,
 				18B995B3175A0E230010B9D4 /* bottom_cover@2x.png in Resources */,
@@ -1325,6 +1332,7 @@
 				18B743C5175B018C00585CF5 /* model_bg_gloom.png in Resources */,
 				18B743C6175B018C00585CF5 /* model_bg_gloom@2x.png in Resources */,
 				18B743C7175B018C00585CF5 /* model_bg.png in Resources */,
+				182F28CC17A36D7C0035C401 /* time_display_bg.png in Resources */,
 				182B301E1771BC2B00EB6DFB /* tableview_now_indicator@2x.png in Resources */,
 				183F9C631777F26D00409FE7 /* rp_time_button_center.png in Resources */,
 				18256B56177055390079D24B /* menu_icon_people@2x.png in Resources */,

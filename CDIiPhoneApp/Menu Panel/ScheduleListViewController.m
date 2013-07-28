@@ -14,6 +14,8 @@
 #import "NSDate+Addition.h"
 #import "CDIDataSource.h"
 #import "NSDate+Addition.h"
+#import "LoginViewController.h"
+#import "NSNotificationCenter+Addition.h"
 
 #define kTopBarHeight 42
 
@@ -86,6 +88,18 @@
 - (IBAction)didClickBackButton:(id)sender
 {
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)didClickReserveButton:(UIButton *)sender
+{
+  if ([CDIUser currentUserInContext:self.managedObjectContext]) {
+    [self performSegueWithIdentifier:@"EventListRoomListSegue" sender:self];
+  } else {
+    [LoginViewController displayLoginPanelWithCallBack:^{
+      [self performSegueWithIdentifier:@"EventListRoomListSegue" sender:self];
+      [NSNotificationCenter postShouldChangeLocalDatasourceNotification];
+    }];
+  }
 }
 
 #pragma mark - Properties

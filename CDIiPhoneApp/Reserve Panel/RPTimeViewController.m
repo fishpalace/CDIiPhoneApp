@@ -13,6 +13,7 @@
 #import "NSDate+Addition.h"
 #import "CDINetClient.h"
 #import "CDIUser.h"
+#import "UIView+Addition.h"
 
 #define kPieChartTopMarginForiPhone4 30
 #define kPieChartTopMarginForiPhone5 76
@@ -28,6 +29,7 @@
 @property (nonatomic, assign) NSInteger selectionStartValue;
 @property (nonatomic, assign) NSInteger selectionEndValue;
 @property (nonatomic, assign) BOOL isToday;
+@property (nonatomic, assign) BOOL isDraggingFromPuller;
 
 @property (weak, nonatomic) IBOutlet GYPieChart *pieChart;
 @property (weak, nonatomic) IBOutlet UILabel *roomTitleLabel;
@@ -38,6 +40,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pieChartTopMarginConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *timeSpanLabel;
+@property (weak, nonatomic) IBOutlet UIView *timeSpanDisplayView;
+@property (weak, nonatomic) IBOutlet UILabel *timeDisplayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeFromToLabel;
 
 @end
 
@@ -58,6 +63,7 @@
   [self configurePieChart];
   [self setUpTimeZones];
   [self updateLabels];
+  [_timeSpanDisplayView flashOut];
   _pieChartTopMarginConstraint.constant = kIsiPhone5 ? kPieChartTopMarginForiPhone5 : kPieChartTopMarginForiPhone4;
 }
 
@@ -277,7 +283,24 @@
   }
   [self updateTimeSpanLabel];
   self.nextButton.enabled = available;
+  CGFloat percentage = self.isDraggingFromPuller ? startPercentage : endPercentage;
+  [self.timeDisplayLabel setText:[self stringForPercentage:percentage]];
   return available;
+}
+
+- (void)GYPieChart:(GYPieChart *)pieChart didStartDraggingWithFrom:(BOOL)isDraggingFrom
+{
+  [self.timeSpanDisplayView fadeIn];
+  self.isDraggingFromPuller = isDraggingFrom;
+  UIColor *fromToColor = isDraggingFrom ? kColorTintBlue : kColorTintRed;
+  NSString *fromToString = isDraggingFrom ? @"From" : @"To";
+  [self.timeFromToLabel setTextColor:fromToColor];
+  [self.timeFromToLabel setText:fromToString];
+}
+
+- (void)GYPieChartdidEndDragging:(GYPieChart *)pieChart
+{
+  [self.timeSpanDisplayView fadeOut];
 }
 
 - (IBAction)didClickSwitchDateButton:(UIButton *)sender

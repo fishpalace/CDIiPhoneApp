@@ -165,10 +165,22 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
 - (void)handlePanGesture:(UIPanGestureRecognizer *)sender
 {
   CGFloat angle = [self angleBetweenCenterAndPoint:[sender locationInView:self]];
-  if ([sender.view isEqual:self.startPuller]) {
+  
+  BOOL isDraggingFrom = [sender.view isEqual:self.startPuller];
+  if (isDraggingFrom) {
     [self didRotateStartPullerToAngle:angle];
   } else if ([sender.view isEqual:self.endPuller]) {
     [self didRotateEndPullerToAngle:angle];
+  }
+  
+  if (sender.state == UIGestureRecognizerStateBegan) {
+    if ([self.delegateForGY respondsToSelector:@selector(GYPieChart:didStartDraggingWithFrom:)]) {
+      [self.delegateForGY GYPieChart:self didStartDraggingWithFrom:isDraggingFrom];
+    }
+  } else if (sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateCancelled) {
+    if ([self.delegateForGY respondsToSelector:@selector(GYPieChartdidEndDragging:)]) {
+      [self.delegateForGY GYPieChartdidEndDragging:self];
+    }
   }
   
   CGFloat startPercentage = self.startPullerAngle / (M_PI * 2);

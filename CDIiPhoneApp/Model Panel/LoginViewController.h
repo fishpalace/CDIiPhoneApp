@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^LoginPanelCallback)(void);
+
 @interface LoginViewController : CoreDataViewController <UITextFieldDelegate>
 
-+ (void)displayLoginPanel;
+@property (nonatomic, strong) LoginPanelCallback callBack;
+
++ (void)displayLoginPanelWithCallBack:(LoginPanelCallback)callBack;
 
 @end

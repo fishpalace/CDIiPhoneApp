@@ -44,9 +44,9 @@ static LoginViewController *sharedLoginViewController;
   return sharedLoginViewController;
 }
 
-+ (void)displayLoginPanel
++ (void)displayLoginPanelWithCallBack:(LoginPanelCallback)callBack
 {
-  [[LoginViewController sharedLoginViewController] displayLoginPanel];
+  [[LoginViewController sharedLoginViewController] displayLoginPanelWithCallBack:callBack];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -68,8 +68,10 @@ static LoginViewController *sharedLoginViewController;
 
 }
 
-- (void)displayLoginPanel
+- (void)displayLoginPanelWithCallBack:(LoginPanelCallback)callBack
 {
+  self.callBack = callBack;
+  
   void (^completion)(UIImage *bgImage) = ^(UIImage *bgImage) {
     self.bgImageView.image = bgImage;
     [self.bgImageView fadeIn];
@@ -107,10 +109,10 @@ static LoginViewController *sharedLoginViewController;
 
 - (IBAction)didClickCloseButton:(UIButton *)sender
 {
-  [self hide];
+  [self hideWithCallBack:nil];
 }
 
-- (void)hide
+- (void)hideWithCallBack:(LoginPanelCallback)callBack
 {
 //  self.textfieldTopMarginConstraint.constant = 0;
   [self.userNameTextfield resignFirstResponder];
@@ -126,6 +128,10 @@ static LoginViewController *sharedLoginViewController;
     self.bgImageView.image = nil;
     self.userNameTextfield.text = @"";
     self.passwordTextfield.text = @"";
+    
+    if (callBack) {
+      callBack();
+    }
   }];
 }
 
@@ -141,7 +147,7 @@ static LoginViewController *sharedLoginViewController;
         user.sessionKey = [NSString stringForDict:responseData key:@"sessionKey"];
         [CDIUser updateCurrentUserID:user.userID];
         [self.managedObjectContext processPendingChanges];
-        [self hide];
+        [self hideWithCallBack:self.callBack];
         
         [NSNotificationCenter postDidChangeCurrentUserNotification];
       }

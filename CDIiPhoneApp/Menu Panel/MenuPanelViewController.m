@@ -271,7 +271,7 @@
 
 - (IBAction)didClickLoginButton:(UIButton *)sender
 {
-  [LoginViewController displayLoginPanel];
+  [LoginViewController displayLoginPanelWithCallBack:nil];
 }
 
 - (IBAction)didClickScheduleButton:(UIButton *)sender

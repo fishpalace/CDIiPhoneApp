@@ -223,6 +223,8 @@
   } else {
     if (indexPath.row == 2) {
       segueID = @"MenuPeopleSegue";
+    } else if (indexPath.row == 0) {
+      segueID = @"MenuNewsSegue";
     }
   }
   if (![segueID isEqualToString:@""]) {

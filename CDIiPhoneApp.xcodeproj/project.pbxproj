@@ -44,6 +44,7 @@
 		182F28CC17A36D7C0035C401 /* time_display_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F28CA17A36D7C0035C401 /* time_display_bg.png */; };
 		182F28CD17A36D7C0035C401 /* time_display_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F28CB17A36D7C0035C401 /* time_display_bg@2x.png */; };
 		182F28D017A4E3A80035C401 /* ReservationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F28CF17A4E3A80035C401 /* ReservationListViewController.m */; };
+		1830DDFF17A562EF0029FA90 /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1830DDFE17A562EF0029FA90 /* NewsListViewController.m */; };
 		183AE76B175C38CD008310BF /* tableview_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE761175C38CD008310BF /* tableview_bg.png */; };
 		183AE76C175C38CD008310BF /* tableview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE762175C38CD008310BF /* tableview_bg@2x.png */; };
 		183AE76D175C38CD008310BF /* tableview_bg_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE763175C38CD008310BF /* tableview_bg_back.png */; };
@@ -271,6 +272,7 @@
 		18CEE9831772D8C9005BDA1D /* CDIEventDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEE9821772D8C3005BDA1D /* CDIEventDAO.m */; };
 		18CEE9891772E1D5005BDA1D /* CDIEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEE9881772E1D5005BDA1D /* CDIEvent.m */; };
 		18DBB8A91776E2EE00419DE7 /* CDICalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DBB8A81776E2D400419DE7 /* CDICalendar.m */; };
+		18DDA40817A5844000026045 /* NewsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DDA40717A5844000026045 /* NewsListTableViewCell.m */; };
 		18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA8A173897CB006EFF51 /* MPDragIndicatorView.m */; };
 		18E0EA8D1738981C006EFF51 /* MPDragIndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E0EA8C1738981C006EFF51 /* MPDragIndicatorView.xib */; };
 		18E0EA8F1738C670006EFF51 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E0EA8E1738C670006EFF51 /* QuartzCore.framework */; };
@@ -325,6 +327,8 @@
 		182F28CB17A36D7C0035C401 /* time_display_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_display_bg@2x.png"; sourceTree = "<group>"; };
 		182F28CE17A4E3A80035C401 /* ReservationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReservationListViewController.h; path = "Menu Panel/ReservationListViewController.h"; sourceTree = "<group>"; };
 		182F28CF17A4E3A80035C401 /* ReservationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReservationListViewController.m; path = "Menu Panel/ReservationListViewController.m"; sourceTree = "<group>"; };
+		1830DDFD17A562EF0029FA90 /* NewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsListViewController.h; path = "Menu Panel/NewsListViewController.h"; sourceTree = "<group>"; };
+		1830DDFE17A562EF0029FA90 /* NewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsListViewController.m; path = "Menu Panel/NewsListViewController.m"; sourceTree = "<group>"; };
 		183AE761175C38CD008310BF /* tableview_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg.png; sourceTree = "<group>"; };
 		183AE762175C38CD008310BF /* tableview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_bg@2x.png"; sourceTree = "<group>"; };
 		183AE763175C38CD008310BF /* tableview_bg_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg_back.png; sourceTree = "<group>"; };
@@ -608,6 +612,8 @@
 		18CEE9881772E1D5005BDA1D /* CDIEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIEvent.m; path = Data/CDIEvent.m; sourceTree = "<group>"; };
 		18DBB8A71776E2D400419DE7 /* CDICalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDICalendar.h; path = Data/CDICalendar.h; sourceTree = "<group>"; };
 		18DBB8A81776E2D400419DE7 /* CDICalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CDICalendar.m; path = Data/CDICalendar.m; sourceTree = "<group>"; };
+		18DDA40617A5844000026045 /* NewsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsListTableViewCell.h; path = "Menu Panel/NewsListTableViewCell.h"; sourceTree = "<group>"; };
+		18DDA40717A5844000026045 /* NewsListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsListTableViewCell.m; path = "Menu Panel/NewsListTableViewCell.m"; sourceTree = "<group>"; };
 		18E0EA89173897CB006EFF51 /* MPDragIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPDragIndicatorView.h; path = "Main Panel/MPDragIndicatorView.h"; sourceTree = "<group>"; };
 		18E0EA8A173897CB006EFF51 /* MPDragIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPDragIndicatorView.m; path = "Main Panel/MPDragIndicatorView.m"; sourceTree = "<group>"; };
 		18E0EA8C1738981C006EFF51 /* MPDragIndicatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MPDragIndicatorView.xib; path = "User Interface/MPDragIndicatorView.xib"; sourceTree = SOURCE_ROOT; };
@@ -1200,6 +1206,10 @@
 				18948D07175D06A9004E07EB /* PeopleInfoViewController.m */,
 				18533D17177454D500A61679 /* PeopleInfoWorkListCell.h */,
 				18533D18177454D500A61679 /* PeopleInfoWorkListCell.m */,
+				1830DDFD17A562EF0029FA90 /* NewsListViewController.h */,
+				1830DDFE17A562EF0029FA90 /* NewsListViewController.m */,
+				18DDA40617A5844000026045 /* NewsListTableViewCell.h */,
+				18DDA40717A5844000026045 /* NewsListTableViewCell.m */,
 			);
 			name = "Menu Panel";
 			sourceTree = "<group>";
@@ -1483,6 +1493,7 @@
 				187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */,
 				1879638C1778028400EC9767 /* RPInfoViewController.m in Sources */,
 				187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */,
+				18DDA40817A5844000026045 /* NewsListTableViewCell.m in Sources */,
 				187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */,
 				182F28D017A4E3A80035C401 /* ReservationListViewController.m in Sources */,
 				187963891778025D00EC9767 /* RPTimeViewController.m in Sources */,
@@ -1534,6 +1545,7 @@
 				18948CD5175CE2C8004E07EB /* PeopleListCollectionViewCell.m in Sources */,
 				18948D08175D06AA004E07EB /* PeopleInfoViewController.m in Sources */,
 				18AF039D175DB9E600FA1F17 /* CDIDataModel.xcdatamodeld in Sources */,
+				1830DDFF17A562EF0029FA90 /* NewsListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

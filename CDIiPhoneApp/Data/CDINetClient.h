@@ -56,6 +56,7 @@
 - (void)getWorkListWithUserID:(NSString *)userID
                    completion:(void (^)(BOOL succeeded, id responseData))completion;
 
+- (void)getNewsListWithCompletion:(void (^)(BOOL succeeded, id responseData))completion;
 
 - (void)loginOutCurrentUserWithID:(NSString *)userID
                        completion:(void (^)(BOOL succeeded, id responseData))completion;

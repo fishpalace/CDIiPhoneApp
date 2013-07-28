@@ -13,9 +13,13 @@
 
 @interface CDINews : NSManagedObject
 
+@property (nonatomic, retain) NSString * newsID;
+@property (nonatomic, retain) NSString * imageURL;
 @property (nonatomic, retain) NSString * content;
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) CDIUser *creator;
+
++ (CDINews *)insertNewsInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

@@ -148,6 +148,12 @@ static CDINetClient *sharedClient;
   [self getPath:path completion:completion];
 }
 
+- (void)getNewsListWithCompletion:(void (^)(BOOL succeeded, id responseData))completion
+{
+  NSString *path = [NSString stringWithFormat:@"news/getNewsList/*/*/1000/1"];
+  [self getPath:path completion:completion];
+}
+
 - (void)loginOutCurrentUserWithID:(NSString *)userID
                        completion:(void (^)(BOOL succeeded, id responseData))completion
 {

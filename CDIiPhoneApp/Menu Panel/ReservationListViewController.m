@@ -8,6 +8,7 @@
 
 #import "ReservationListViewController.h"
 #import "UIView+Resize.h"
+#import "CDIEventDAO.h"
 
 @interface ReservationListViewController ()
 
@@ -45,7 +46,13 @@
   NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES];
   
   request.sortDescriptors = @[sortDescriptor];
-  request.predicate = [NSPredicate predicateWithFormat:@"creator == %@", self.currentUser];
+  request.predicate = [NSPredicate predicateWithFormat:@"creator == %@ && passed == 0", self.currentUser];
+}
+
+- (void)didSelectEvent:(CDIEventDAO *)event
+{
+  [CDIEventDAO updateSharedNewEvent:event];
+  [self performSegueWithIdentifier:@"ReservationInfoSegue" sender:self];
 }
 
 #pragma mark - IBActions

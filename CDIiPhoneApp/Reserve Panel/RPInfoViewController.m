@@ -101,7 +101,10 @@
                                       inManagedObjectContext:self.managedObjectContext];
           sharedNewEvent.accessKey = event.accessKey;
           sharedNewEvent.eventID = event.eventID;
+          sharedNewEvent.eventJustCreated = YES;
+          event.creator = self.currentUser;
           event.roomID = sharedNewEvent.roomID;
+          [self.managedObjectContext processPendingChanges];
         }
       }
       [self performSegueWithIdentifier:@"InfoEnsureSegue" sender:self];

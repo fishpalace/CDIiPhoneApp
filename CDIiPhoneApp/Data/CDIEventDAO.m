@@ -71,6 +71,8 @@ static CDIEventDAO *sharedNewEvent;
   sharedEvent.abandoned = event.abandoned;
   sharedEvent.roomID = event.roomID;
   sharedEvent.updateTime = event.updateTime;
+  
+  sharedNewEvent.eventJustCreated = NO;
 }
 
 - (id)eventCopy

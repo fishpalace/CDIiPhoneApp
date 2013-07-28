@@ -28,6 +28,8 @@ typedef enum {
 
 + (NSString *)currentRoomName;
 
++ (NSInteger)currentReservationCount;
+
 + (NSArray *)todayTimeZonesWithRoomID:(NSInteger)roomID;
 
 + (NSArray *)tomorrowTimeZonesWithRoomID:(NSInteger)roomID;

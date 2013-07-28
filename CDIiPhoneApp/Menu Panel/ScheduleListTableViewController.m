@@ -177,6 +177,19 @@
   return height;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if ([self.delegate respondsToSelector:@selector(didSelectEvent:)]) {
+    CDIEventDAO *event = nil;
+    if (indexPath.section == 0) {
+      event = self.todayArray[indexPath.row];
+    } else {
+      event = self.tomorrowArray[indexPath.row];
+    }
+    [self.delegate didSelectEvent:event];
+  }
+}
+
 #pragma mark - SLDetail Table View Cell Delegate
 - (void)cellDidClickAddEventButton:(SLDetailTableViewCell *)cell
 {

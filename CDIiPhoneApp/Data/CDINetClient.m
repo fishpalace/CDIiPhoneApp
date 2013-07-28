@@ -55,12 +55,11 @@ static CDINetClient *sharedClient;
   [self getPath:path completion:completion];
 }
 
-//TODO 接口待调整
 - (void)getReservationListOfUserID:(NSString *)userID withCompletion:(void (^)(BOOL succeeded, id responseData))completion
 {
   NSString *fromDate = [NSDate stringOfDateWithIntervalFromCurrentDate:0];
   NSString *toDate = [NSDate stringOfDateWithIntervalFromCurrentDate:3600 * 24 * 2];
-  NSString *path = [NSString stringWithFormat:@"event/getEventListByUserIdAndDateAndTypeAndStatus/%@/%@/%@/*/*/100/1", userID, fromDate, toDate];
+  NSString *path = [NSString stringWithFormat:@"event/getEventListByCreatorIdAndDateAndTypeAndStatus/%@/%@/%@/*/*/10/1", userID, fromDate, toDate];
   [self getPath:path completion:completion];
 }
 
@@ -147,6 +146,12 @@ static CDINetClient *sharedClient;
 {
   NSString *path = [NSString stringWithFormat:@"work/getWorkListByUserIdAndStatusAndType/%@/*/*/100/1", userID];
   [self getPath:path completion:completion];
+}
+
+- (void)loginOutCurrentUserWithID:(NSString *)userID
+                       completion:(void (^)(BOOL succeeded, id responseData))completion
+{
+  //TODO: !!
 }
 
 #pragma mark - Basic Methods

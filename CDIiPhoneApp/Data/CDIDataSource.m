@@ -54,6 +54,11 @@ static CDIDataSource *sharedDataSource;
   return [[CDIDataSource sharedDataSource] currentRoomName];
 }
 
++ (NSInteger)currentReservationCount
+{
+  return [[CDIDataSource sharedDataSource] currentReservationCount];
+}
+
 - (id)init
 {
   self = [super init];
@@ -528,6 +533,22 @@ static CDIDataSource *sharedDataSource;
     _currentRoomName = [NSString string];
   }
   return _currentRoomName;
+}
+
+- (NSInteger)currentReservationCount
+{
+  NSInteger count = 0;
+  
+  NSFetchRequest *request = [[NSFetchRequest alloc] init];
+  [request setEntity:[NSEntityDescription entityForName:@"CDIEvent" inManagedObjectContext:self.managedObjectContext]];
+  request.predicate = [NSPredicate predicateWithFormat:@"creator == %@ && passed == 0", [CDIUser currentUserInContext:self.managedObjectContext]];
+  NSArray *items = [self.managedObjectContext executeFetchRequest:request error:NULL];
+  for (CDIEvent *event in items) {
+    if ([event.creator isEqual:[CDIUser currentUserInContext:self.managedObjectContext]]) {
+      count++;
+    }
+  }
+  return count;
 }
 
 

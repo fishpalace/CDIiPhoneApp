@@ -28,7 +28,10 @@
 @property (nonatomic, strong) NSDate * updateTime;
 @property (nonatomic, strong) CDIUser *creator;
 
+@property (nonatomic, readwrite) BOOL eventJustCreated;
+
 + (CDIEventDAO *)sharedNewEvent;
++ (void)updateSharedNewEvent:(CDIEventDAO *)event;
 + (id)eventDAOInstanceWithEvent:(CDIEvent *)event;
 + (id)eventInstanceWithTitle:(NSString *)title;
 - (id)eventCopy;

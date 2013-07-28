@@ -15,6 +15,9 @@
 #import "CDIEvent.h"
 #import "NSNotificationCenter+Addition.h"
 
+#define kUndoButtonGap 8
+#define kUndoButtonHeight 50
+
 @interface RPEnsureViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *roomTitleLabel;
@@ -26,7 +29,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *undoButton;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 @property (weak, nonatomic) IBOutlet UIButton *calendarButton;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *undoButtonPositionConstraint;
 
+@property (nonatomic, readwrite) BOOL eventJustCreated;
 @property (nonatomic, readwrite) BOOL addedToCalendar;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *accessKeyBGTopMarginConstraint;
 
@@ -48,6 +54,12 @@
   [super viewDidLoad];
   [self updateLabel];
   _accessKeyBGTopMarginConstraint.constant = kIsiPhone5 ? 105 : 85;
+}
+
+- (void)updateViewConstraints
+{
+  [super updateViewConstraints];
+  self.undoButtonPositionConstraint.constant = self.eventJustCreated ? kUndoButtonGap : -kUndoButtonHeight;
 }
 
 - (void)updateLabel
@@ -105,6 +117,10 @@
                            range:NSMakeRange(location2, roomName.length)];
   
   self.instructionLabel.attributedText = attributedString;
+  
+  self.eventJustCreated = sharedNewEvent.eventJustCreated;
+  self.backButton.hidden = self.eventJustCreated;
+  self.doneButton.hidden = !self.eventJustCreated;
 }
 
 - (IBAction)didClickCalendarButton:(UIButton *)sender
@@ -132,8 +148,17 @@
 
 - (IBAction)didClickDoneButton:(UIButton *)sender
 {
-  [self.navigationController popToRootViewControllerAnimated:YES];
-  [NSNotificationCenter postShouldChangeLocalDatasourceNotification];
+  if (self.eventJustCreated) {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    [NSNotificationCenter postShouldChangeLocalDatasourceNotification];
+  } else {
+    [self.navigationController popViewControllerAnimated:YES];
+  }
+}
+
+- (IBAction)didClickBackButton:(UIButton *)sender
+{
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)createCalendarEvent

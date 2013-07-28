@@ -10,11 +10,15 @@
 #import "SLDetailTableViewCell.h"
 
 @class ScheduleListTableViewController;
+@class CDIEventDAO;
 
 @protocol ScheduleListTableViewDelegate <NSObject>
 
 @required
 - (void)slTableViewController:(ScheduleListTableViewController *)vc configureRequest:(NSFetchRequest *)request;
+
+@optional
+- (void)didSelectEvent:(CDIEventDAO *)event;
 
 @end
 

@@ -197,6 +197,14 @@
     detailCell.titleLabel.font = kFontItemTitle;
     detailCell.functionButton.hidden = indexPath.row != 0 || indexPath.section == 1;
     detailCell.displayButton.hidden = indexPath.row != 1 || indexPath.section == 1;
+    if (indexPath.section == 0 && indexPath.row == 1) {
+      NSInteger reservationCount = [CDIDataSource currentReservationCount];
+      if (reservationCount == 0) {
+        detailCell.displayButton.hidden = YES;
+      } else {
+        [detailCell.displayButton.titleLabel setText:[NSString stringWithFormat:@"%d", reservationCount]];
+      }
+    }
     cell = detailCell;
   }
 

@@ -2642,11 +2642,31 @@
                                             <action selector="didClickCalendarButton:" destination="JZ0-N7-h9h" eventType="touchUpInside" id="1p9-3S-owi"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFC-se-cbz">
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="0lp-tt-2q1"/>
+                                            <constraint firstAttribute="width" constant="44" id="Pbb-7q-fRP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="menu_button_navi_back.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didClickBackButton:" destination="JZ0-N7-h9h" eventType="touchUpInside" id="DdZ-QR-bDz"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="wFC-se-cbz" secondAttribute="centerY" constant="-1" id="7r0-r1-cMA"/>
                                     <constraint firstAttribute="trailing" secondItem="ll7-lI-P59" secondAttribute="trailing" id="9Xl-g8-8Dt"/>
                                     <constraint firstAttribute="bottom" secondItem="7sH-Ip-uq9" secondAttribute="bottom" constant="-0.5" id="AFu-Zq-crv"/>
+                                    <constraint firstItem="wFC-se-cbz" firstAttribute="leading" secondItem="Wd7-jC-mTF" secondAttribute="leading" id="HNL-Za-ZDa"/>
                                     <constraint firstAttribute="centerX" secondItem="7sH-Ip-uq9" secondAttribute="centerX" id="Iu8-vb-f3r"/>
                                     <constraint firstAttribute="centerY" secondItem="ll7-lI-P59" secondAttribute="centerY" id="PJz-cU-4KZ"/>
                                     <constraint firstAttribute="height" constant="42" id="QXk-Ql-xon"/>
@@ -2823,6 +2843,7 @@
                     <connections>
                         <outlet property="accessKeyBGTopMarginConstraint" destination="73R-qs-ReW" id="YF2-da-9cD"/>
                         <outlet property="accessKeyLabel" destination="eM2-vq-d2E" id="fWH-az-cDl"/>
+                        <outlet property="backButton" destination="wFC-se-cbz" id="Far-vi-okS"/>
                         <outlet property="calendarButton" destination="ll7-lI-P59" id="bbH-wI-i3G"/>
                         <outlet property="dateLabel" destination="Gcv-j7-Lsf" id="xNZ-7g-zL9"/>
                         <outlet property="doneButton" destination="NUd-bF-sfT" id="k2u-bm-PLv"/>
@@ -2831,6 +2852,7 @@
                         <outlet property="instructionLabel" destination="5bS-2o-zL4" id="sON-RA-3Bc"/>
                         <outlet property="roomTitleLabel" destination="zMo-fc-UId" id="beu-N1-xhU"/>
                         <outlet property="undoButton" destination="j82-J5-kIs" id="8dU-pO-Emw"/>
+                        <outlet property="undoButtonPositionConstraint" destination="o9g-vO-fXT" id="Av9-Aq-voP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZX1-k7-IXd" userLabel="First Responder" sceneMemberID="firstResponder"/>

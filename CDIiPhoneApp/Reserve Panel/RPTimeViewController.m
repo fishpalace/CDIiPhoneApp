@@ -15,8 +15,8 @@
 #import "CDIUser.h"
 #import "UIView+Addition.h"
 
-#define kPieChartTopMarginForiPhone4 30
-#define kPieChartTopMarginForiPhone5 76
+#define kPieChartTopMarginForiPhone4 5
+#define kPieChartTopMarginForiPhone5 50
 
 @interface RPTimeViewController ()
 

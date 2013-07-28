@@ -81,7 +81,7 @@
   [_pieChart setStartPieAngle:M_PI * 3 / 2];
   [_pieChart setAnimationSpeed:1.0];
   [_pieChart setPieRadius:115];
-  [_pieChart setPieCenter:CGPointMake(116, 116)];
+  [_pieChart setPieCenter:CGPointMake(141, 141)];
   [_pieChart setUserInteractionEnabled:YES];
   [_pieChart setStartPullerImage:[UIImage imageNamed:@"rp_time_puller_start"]
                   endPullerImage:[UIImage imageNamed:@"rp_time_puller_end"]];

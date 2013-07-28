@@ -239,6 +239,30 @@ static CDIDataSource *sharedDataSource;
   [client getEventListfromDate:fromDate
                         toDate:toDate
                     completion:handleData];
+  
+  if (![CDIUser currentUserInContext:self.managedObjectContext]) {
+    return;
+  }
+  
+  CDINetClient *client2 = [CDINetClient client];
+  void (^handleData2)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+    if ([responseData isKindOfClass:[NSDictionary class]]) {
+      NSDictionary *dict = responseData;
+      NSDate *currentDate = [NSDate date];
+      if ([dict[@"data"] isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *eventDict in dict[@"data"]) {
+          CDIEvent *event = [CDIEvent insertUserInfoWithDict:eventDict
+                                                  updateTime:currentDate
+                                      inManagedObjectContext:self.managedObjectContext];
+          event.creator = [CDIUser currentUserInContext:self.managedObjectContext];
+        }
+      }
+      [self.managedObjectContext processPendingChanges];
+      [self.fetchedResultsController performFetch:nil];
+    }
+  };
+  [client2 getReservationListOfUserID:[CDIUser currentUserInContext:self.managedObjectContext].userID
+                      withCompletion:handleData2];
 }
 
 - (void)updateLocalEventsArray

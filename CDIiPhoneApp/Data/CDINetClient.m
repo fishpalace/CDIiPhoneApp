@@ -13,6 +13,7 @@
 #import "CDIEvent.h"
 #import "CDIUser.h"
 #import "CDIEventDAO.h"
+#import "NSDate+Addition.h"
 
 #define kBaseURLString @"http://cdi.tongji.edu.cn/cdisoul/webservice/"
 
@@ -51,6 +52,15 @@ static CDINetClient *sharedClient;
 
 {
   NSString *path = [NSString stringWithFormat:@"event/getEventListWithRoomInfoByDateAndTypeAndStatus/%@/%@/*/*/100/1", fromDate, toDate];
+  [self getPath:path completion:completion];
+}
+
+//TODO 接口待调整
+- (void)getReservationListOfUserID:(NSString *)userID withCompletion:(void (^)(BOOL succeeded, id responseData))completion
+{
+  NSString *fromDate = [NSDate stringOfDateWithIntervalFromCurrentDate:0];
+  NSString *toDate = [NSDate stringOfDateWithIntervalFromCurrentDate:3600 * 24 * 2];
+  NSString *path = [NSString stringWithFormat:@"event/getEventListByUserIdAndDateAndTypeAndStatus/%@/%@/%@/*/*/100/1", userID, fromDate, toDate];
   [self getPath:path completion:completion];
 }
 

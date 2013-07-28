@@ -27,6 +27,9 @@
                       toDate:(NSString *)toDate
                   completion:(void (^)(BOOL succeeded, id responseData))completion;
 
+- (void)getReservationListOfUserID:(NSString *)userID
+                    withCompletion:(void (^)(BOOL succeeded, id responseData))completion;
+
 - (void)getRoomInfoByRoomId:(int)roomID
                  completion:(void (^)(BOOL succeeded, id responseData))completion;
 

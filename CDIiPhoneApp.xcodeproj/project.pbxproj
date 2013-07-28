@@ -43,6 +43,7 @@
 		182B301E1771BC2B00EB6DFB /* tableview_now_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */; };
 		182F28CC17A36D7C0035C401 /* time_display_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F28CA17A36D7C0035C401 /* time_display_bg.png */; };
 		182F28CD17A36D7C0035C401 /* time_display_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F28CB17A36D7C0035C401 /* time_display_bg@2x.png */; };
+		182F28D017A4E3A80035C401 /* ReservationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182F28CF17A4E3A80035C401 /* ReservationListViewController.m */; };
 		183AE76B175C38CD008310BF /* tableview_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE761175C38CD008310BF /* tableview_bg.png */; };
 		183AE76C175C38CD008310BF /* tableview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE762175C38CD008310BF /* tableview_bg@2x.png */; };
 		183AE76D175C38CD008310BF /* tableview_bg_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE763175C38CD008310BF /* tableview_bg_back.png */; };
@@ -322,6 +323,8 @@
 		182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_now_indicator@2x.png"; sourceTree = "<group>"; };
 		182F28CA17A36D7C0035C401 /* time_display_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_display_bg.png; sourceTree = "<group>"; };
 		182F28CB17A36D7C0035C401 /* time_display_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_display_bg@2x.png"; sourceTree = "<group>"; };
+		182F28CE17A4E3A80035C401 /* ReservationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReservationListViewController.h; path = "Menu Panel/ReservationListViewController.h"; sourceTree = "<group>"; };
+		182F28CF17A4E3A80035C401 /* ReservationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReservationListViewController.m; path = "Menu Panel/ReservationListViewController.m"; sourceTree = "<group>"; };
 		183AE761175C38CD008310BF /* tableview_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg.png; sourceTree = "<group>"; };
 		183AE762175C38CD008310BF /* tableview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_bg@2x.png"; sourceTree = "<group>"; };
 		183AE763175C38CD008310BF /* tableview_bg_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg_back.png; sourceTree = "<group>"; };
@@ -1183,6 +1186,8 @@
 				189871C617718D6B004059A3 /* MenuRoomInfoCell.m */,
 				18948CB6175C521A004E07EB /* ScheduleListViewController.h */,
 				18948CB7175C521A004E07EB /* ScheduleListViewController.m */,
+				182F28CE17A4E3A80035C401 /* ReservationListViewController.h */,
+				182F28CF17A4E3A80035C401 /* ReservationListViewController.m */,
 				1823263F1776981A001E7B88 /* ScheduleListTableViewController.h */,
 				182326401776981A001E7B88 /* ScheduleListTableViewController.m */,
 				18948CBC175C5FAC004E07EB /* SLDetailTableViewCell.h */,
@@ -1479,6 +1484,7 @@
 				1879638C1778028400EC9767 /* RPInfoViewController.m in Sources */,
 				187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */,
 				187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */,
+				182F28D017A4E3A80035C401 /* ReservationListViewController.m in Sources */,
 				187963891778025D00EC9767 /* RPTimeViewController.m in Sources */,
 				18232641177698B0001E7B88 /* ScheduleListTableViewController.m in Sources */,
 				18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */,

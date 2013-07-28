@@ -45,7 +45,7 @@ static CoreDataKernal *kernalInstance = nil;
 }
 
 - (CDIUser *)currentUser {
-    return [CoreDataViewController getCurrentUser];
+    return [CDIUser currentUserInContext:self.managedObjectContext];
 }
 
 + (CDIUser *)getCurrentUser {

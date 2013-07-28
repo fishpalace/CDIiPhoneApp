@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSString *coreDataIdentifier;
+@property (nonatomic, weak)   CDIUser *currentUser;
 
 @end
 

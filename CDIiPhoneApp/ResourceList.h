@@ -117,4 +117,6 @@
 #define kColorRPGreen [UIColor colorWithRed:9.0/255.0 green:187.0/255.0 blue:68.0/255.0 alpha:1.0]
 #define kColorRPGray [UIColor colorWithRed:160.0/255.0 green:160.0/255.0 blue:160.0/255.0 alpha:1.0]
 
+#define kTopBarHeight 42
+
 #endif

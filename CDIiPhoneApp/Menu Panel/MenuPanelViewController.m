@@ -209,6 +209,8 @@
   if (indexPath.section == 0) {
     if (indexPath.row == 0) {
       segueID = @"MenuScheduleSegue";
+    } else if (indexPath.row == 1) {
+      segueID = @"MenuReservationSegue";
     }
   } else {
     if (indexPath.row == 2) {

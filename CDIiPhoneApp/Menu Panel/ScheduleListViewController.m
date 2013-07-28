@@ -17,8 +17,6 @@
 #import "LoginViewController.h"
 #import "NSNotificationCenter+Addition.h"
 
-#define kTopBarHeight 42
-
 @interface ScheduleListViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;

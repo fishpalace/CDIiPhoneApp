@@ -66,6 +66,15 @@
   work.workInfo = [NSString stringForDict:dict key:@"description"];
   work.workInfoEn = [NSString stringForDict:dict key:@"description_en"];
   work.workStatus = [NSString stringForDict:dict key:@"status"];
+  if ([work.workStatus isEqualToString:@"IN_PLAN"]) {
+    work.workStatus = @"In plan";
+  } else if ([work.workStatus isEqualToString:@"IN_PROGRESS"]) {
+    work.workStatus = @"In progress";
+  } else if ([work.workStatus isEqualToString:@"ON_SHOW"]) {
+    work.workStatus = @"On show";
+  } else if ([work.workStatus isEqualToString:@"COMPLETED"]) {
+    work.workStatus = @"Completed";
+  }
   work.workType = [NSString stringForDict:dict key:@"type"];
   
   return work;

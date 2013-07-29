@@ -81,6 +81,8 @@
 		1859E7CF17745BE30029B46F /* CDIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859E7CE17745BE30029B46F /* CDIUser.m */; };
 		1859E7D2177476910029B46F /* NSString+Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859E7D1177476910029B46F /* NSString+Dictionary.m */; };
 		1859E7D5177477170029B46F /* CDIWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859E7D4177477170029B46F /* CDIWork.m */; };
+		1863273D17A6721000A0E2CE /* ProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863273C17A6721000A0E2CE /* ProjectListViewController.m */; };
+		1863274017A68FCF00A0E2CE /* ProjectListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863273F17A68FCF00A0E2CE /* ProjectListTableViewCell.m */; };
 		1864F5D2177745490013960C /* menu_login_textfield_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1864F5D0177745490013960C /* menu_login_textfield_bg.png */; };
 		1864F5D3177745490013960C /* menu_login_textfield_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1864F5D1177745490013960C /* menu_login_textfield_bg@2x.png */; };
 		1864F5D6177748B50013960C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864F5D5177748B50013960C /* LoginViewController.m */; };
@@ -266,6 +268,7 @@
 		18BACD62176EE6F80058042D /* CoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD61176EE63A0058042D /* CoreDataViewController.m */; };
 		18BACD6B176EE8640058042D /* CDINews.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD6A176EE8640058042D /* CDINews.m */; };
 		18BACD6E176EE8640058042D /* CDIRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BACD6D176EE8640058042D /* CDIRoom.m */; };
+		18C6290517A6B0280006EE8D /* ProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C6290417A6B0280006EE8D /* ProjectDetailViewController.m */; };
 		18CDE7B21774204000711E2A /* time_button_graph.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CDE7B01774204000711E2A /* time_button_graph.png */; };
 		18CDE7B31774204000711E2A /* time_button_graph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CDE7B11774204000711E2A /* time_button_graph@2x.png */; };
 		18CDE7B91774218900711E2A /* TPScheduleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CDE7B81774218900711E2A /* TPScheduleListViewController.m */; };
@@ -375,6 +378,10 @@
 		1859E7D1177476910029B46F /* NSString+Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Dictionary.m"; path = "Category/NSString+Dictionary.m"; sourceTree = "<group>"; };
 		1859E7D3177477170029B46F /* CDIWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIWork.h; path = Data/CDIWork.h; sourceTree = "<group>"; };
 		1859E7D4177477170029B46F /* CDIWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIWork.m; path = Data/CDIWork.m; sourceTree = "<group>"; };
+		1863273B17A6721000A0E2CE /* ProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProjectListViewController.h; path = "Menu Panel/ProjectListViewController.h"; sourceTree = "<group>"; };
+		1863273C17A6721000A0E2CE /* ProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectListViewController.m; path = "Menu Panel/ProjectListViewController.m"; sourceTree = "<group>"; };
+		1863273E17A68FCF00A0E2CE /* ProjectListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProjectListTableViewCell.h; path = "Menu Panel/ProjectListTableViewCell.h"; sourceTree = "<group>"; };
+		1863273F17A68FCF00A0E2CE /* ProjectListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectListTableViewCell.m; path = "Menu Panel/ProjectListTableViewCell.m"; sourceTree = "<group>"; };
 		1864F5D0177745490013960C /* menu_login_textfield_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_login_textfield_bg.png; sourceTree = "<group>"; };
 		1864F5D1177745490013960C /* menu_login_textfield_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_login_textfield_bg@2x.png"; sourceTree = "<group>"; };
 		1864F5D4177748B50013960C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = "Model Panel/LoginViewController.h"; sourceTree = "<group>"; };
@@ -608,6 +615,8 @@
 		18BACD6A176EE8640058042D /* CDINews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDINews.m; path = Data/CDINews.m; sourceTree = "<group>"; };
 		18BACD6C176EE8640058042D /* CDIRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIRoom.h; path = Data/CDIRoom.h; sourceTree = "<group>"; };
 		18BACD6D176EE8640058042D /* CDIRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIRoom.m; path = Data/CDIRoom.m; sourceTree = "<group>"; };
+		18C6290317A6B0280006EE8D /* ProjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProjectDetailViewController.h; path = "Menu Panel/ProjectDetailViewController.h"; sourceTree = "<group>"; };
+		18C6290417A6B0280006EE8D /* ProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectDetailViewController.m; path = "Menu Panel/ProjectDetailViewController.m"; sourceTree = "<group>"; };
 		18CDE7B01774204000711E2A /* time_button_graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_button_graph.png; sourceTree = "<group>"; };
 		18CDE7B11774204000711E2A /* time_button_graph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_button_graph@2x.png"; sourceTree = "<group>"; };
 		18CDE7B71774218900711E2A /* TPScheduleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPScheduleListViewController.h; path = "Time Panel/TPScheduleListViewController.h"; sourceTree = "<group>"; };
@@ -1230,6 +1239,12 @@
 				18DDA40717A5844000026045 /* NewsListTableViewCell.m */,
 				180502B917A6343600C80036 /* NewsDetailViewController.h */,
 				180502BA17A6343600C80036 /* NewsDetailViewController.m */,
+				1863273B17A6721000A0E2CE /* ProjectListViewController.h */,
+				1863273C17A6721000A0E2CE /* ProjectListViewController.m */,
+				1863273E17A68FCF00A0E2CE /* ProjectListTableViewCell.h */,
+				1863273F17A68FCF00A0E2CE /* ProjectListTableViewCell.m */,
+				18C6290317A6B0280006EE8D /* ProjectDetailViewController.h */,
+				18C6290417A6B0280006EE8D /* ProjectDetailViewController.m */,
 			);
 			name = "Menu Panel";
 			sourceTree = "<group>";
@@ -1528,6 +1543,7 @@
 				18E0EA991738DBE7006EFF51 /* UIApplication+Addition.m in Sources */,
 				18B995841759CB7A0010B9D4 /* NSNotificationCenter+Addition.m in Sources */,
 				18B7437E175AE3B500585CF5 /* UIImage+ScreenShoot.m in Sources */,
+				1863274017A68FCF00A0E2CE /* ProjectListTableViewCell.m in Sources */,
 				18F6FE1017A6657E00BD9E74 /* NSMutableAttributedString+Size.m in Sources */,
 				1859E7D2177476910029B46F /* NSString+Dictionary.m in Sources */,
 				18B7437F175AE3B500585CF5 /* UIImage+StackBlur.m in Sources */,
@@ -1539,7 +1555,9 @@
 				18B743EC175B0B3F00585CF5 /* TimeDetailViewController.m in Sources */,
 				184227E817716B86009A37BB /* MenuItemCell.m in Sources */,
 				18B743F6175B0C9D00585CF5 /* CDIDataSource.m in Sources */,
+				1863273D17A6721000A0E2CE /* ProjectListViewController.m in Sources */,
 				18B743F8175B0C9D00585CF5 /* CDINetClient.m in Sources */,
+				18C6290517A6B0280006EE8D /* ProjectDetailViewController.m in Sources */,
 				1859E7D5177477170029B46F /* CDIWork.m in Sources */,
 				18B743FC175B0E9500585CF5 /* NSDate+Addition.m in Sources */,
 				1859E7CF17745BE30029B46F /* CDIUser.m in Sources */,

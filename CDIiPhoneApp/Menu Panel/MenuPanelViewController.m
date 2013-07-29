@@ -221,10 +221,12 @@
       segueID = @"MenuReservationSegue";
     }
   } else {
-    if (indexPath.row == 2) {
-      segueID = @"MenuPeopleSegue";
-    } else if (indexPath.row == 0) {
+    if (indexPath.row == 0) {
       segueID = @"MenuNewsSegue";
+    } else if (indexPath.row == 1) {
+      segueID = @"MenuProjectsSegue";
+    } else if (indexPath.row == 2) {
+      segueID = @"MenuPeopleSegue";
     }
   }
   if (![segueID isEqualToString:@""]) {

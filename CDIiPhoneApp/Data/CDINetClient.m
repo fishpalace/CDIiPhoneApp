@@ -154,6 +154,12 @@ static CDINetClient *sharedClient;
   [self getPath:path completion:completion];
 }
 
+- (void)getProjectListWithCompletion:(void (^)(BOOL succeeded, id responseData))completion
+{
+  NSString *path = [NSString stringWithFormat:@"work/getWorkListByTypeAndStatus/*/*/1000/1"];
+  [self getPath:path completion:completion];
+}
+
 - (void)loginOutCurrentUserWithID:(NSString *)userID
                        completion:(void (^)(BOOL succeeded, id responseData))completion
 {

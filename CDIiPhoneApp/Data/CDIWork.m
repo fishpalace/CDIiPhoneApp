@@ -77,6 +77,13 @@
     work.workStatus = @"Completed";
   }
   work.workType = [NSString stringForDict:dict key:@"type"];
+  if ([work.workType isEqualToString:@"TANGIBLE_INTERACTIVE_OBJECTS"]) {
+    work.workType = @"Tangible Interactive Objects";
+  } else if ([work.workType isEqualToString:@"APPLICATION_SYSTEM"]) {
+    work.workType = @"Application System";
+  } else if ([work.workType isEqualToString:@"RESEARCH"]) {
+    work.workType = @"Research";
+  }
   
   return work;
 }

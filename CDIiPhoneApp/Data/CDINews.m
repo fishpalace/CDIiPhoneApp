@@ -37,7 +37,8 @@
   }
   
   news.newsID = newsID;
-  news.content = [NSString stringForDict:dict key:@"content"];
+  NSString *content = [NSString stringForDict:dict key:@"content"];
+  news.content = [content strippedHTMLString];
   news.imageURL = [NSString stringForDict:dict key:@"imageUrl"];
   news.title = [NSString stringForDict:dict key:@"title"];
   NSNumber *date = dict[@"postTimestamp"];
@@ -58,5 +59,7 @@
   
   return res;
 }
+
+
 
 @end

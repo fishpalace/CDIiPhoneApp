@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180502BB17A6343600C80036 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180502BA17A6343600C80036 /* NewsDetailViewController.m */; };
 		180BD09B17334D6E00BA2A98 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BD09A17334D6E00BA2A98 /* UIKit.framework */; };
 		180BD09D17334D6E00BA2A98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BD09C17334D6E00BA2A98 /* Foundation.framework */; };
 		180BD09F17334D6E00BA2A98 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BD09E17334D6E00BA2A98 /* CoreGraphics.framework */; };
@@ -107,6 +108,7 @@
 		187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F50871734FC80006B46A3 /* UIStoryboard+Addition.m */; };
 		187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508B1735068F006B46A3 /* UIView+Addition.m */; };
 		187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508D1735068F006B46A3 /* UIView+Resize.m */; };
+		1883D6B117A63F3800B44CA4 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1883D6B017A63F3800B44CA4 /* TTTAttributedLabel.m */; };
 		18948CB8175C521A004E07EB /* ScheduleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18948CB7175C521A004E07EB /* ScheduleListViewController.m */; };
 		18948CBE175C5FAC004E07EB /* SLDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18948CBD175C5FAC004E07EB /* SLDetailTableViewCell.m */; };
 		18948CC3175CABD6004E07EB /* people_cell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948CBF175CABD6004E07EB /* people_cell_bg.png */; };
@@ -279,10 +281,14 @@
 		18E0EA921738CDA8006EFF51 /* GYPositionBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA911738CDA8006EFF51 /* GYPositionBounceAnimation.m */; };
 		18E0EA961738DAE4006EFF51 /* MenuPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA951738DAE4006EFF51 /* MenuPanelViewController.m */; };
 		18E0EA991738DBE7006EFF51 /* UIApplication+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA981738DBE7006EFF51 /* UIApplication+Addition.m */; };
+		18F6FE1017A6657E00BD9E74 /* NSMutableAttributedString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6FE0F17A6657E00BD9E74 /* NSMutableAttributedString+Size.m */; };
+		18F6FE1317A6667C00BD9E74 /* NSAttributedString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6FE1217A6667C00BD9E74 /* NSAttributedString+Size.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1804BA271775676E00CBB59C /* ResourceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceList.h; sourceTree = "<group>"; };
+		180502B917A6343600C80036 /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsDetailViewController.h; path = "Menu Panel/NewsDetailViewController.h"; sourceTree = "<group>"; };
+		180502BA17A6343600C80036 /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsDetailViewController.m; path = "Menu Panel/NewsDetailViewController.m"; sourceTree = "<group>"; };
 		180BD09717334D6E00BA2A98 /* CDIiPhoneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CDIiPhoneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		180BD09A17334D6E00BA2A98 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		180BD09C17334D6E00BA2A98 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -409,6 +415,8 @@
 		187F508B1735068F006B46A3 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Addition.m"; path = "Category/UIView+Addition.m"; sourceTree = "<group>"; };
 		187F508C1735068F006B46A3 /* UIView+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Resize.h"; path = "Category/UIView+Resize.h"; sourceTree = "<group>"; };
 		187F508D1735068F006B46A3 /* UIView+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Resize.m"; path = "Category/UIView+Resize.m"; sourceTree = "<group>"; };
+		1883D6AF17A63F3800B44CA4 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTAttributedLabel.h; path = "Custom Control/TTTAttributedLabel.h"; sourceTree = "<group>"; };
+		1883D6B017A63F3800B44CA4 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTAttributedLabel.m; path = "Custom Control/TTTAttributedLabel.m"; sourceTree = "<group>"; };
 		18948CB6175C521A004E07EB /* ScheduleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleListViewController.h; path = "Menu Panel/ScheduleListViewController.h"; sourceTree = "<group>"; };
 		18948CB7175C521A004E07EB /* ScheduleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleListViewController.m; path = "Menu Panel/ScheduleListViewController.m"; sourceTree = "<group>"; };
 		18948CBC175C5FAC004E07EB /* SLDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLDetailTableViewCell.h; path = "Menu Panel/SLDetailTableViewCell.h"; sourceTree = "<group>"; };
@@ -624,6 +632,10 @@
 		18E0EA951738DAE4006EFF51 /* MenuPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuPanelViewController.m; path = "Menu Panel/MenuPanelViewController.m"; sourceTree = "<group>"; };
 		18E0EA971738DBE7006EFF51 /* UIApplication+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIApplication+Addition.h"; path = "Category/UIApplication+Addition.h"; sourceTree = "<group>"; };
 		18E0EA981738DBE7006EFF51 /* UIApplication+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+Addition.m"; path = "Category/UIApplication+Addition.m"; sourceTree = "<group>"; };
+		18F6FE0E17A6657E00BD9E74 /* NSMutableAttributedString+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableAttributedString+Size.h"; path = "Category/NSMutableAttributedString+Size.h"; sourceTree = "<group>"; };
+		18F6FE0F17A6657E00BD9E74 /* NSMutableAttributedString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableAttributedString+Size.m"; path = "Category/NSMutableAttributedString+Size.m"; sourceTree = "<group>"; };
+		18F6FE1117A6667C00BD9E74 /* NSAttributedString+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Size.h"; path = "Category/NSAttributedString+Size.h"; sourceTree = "<group>"; };
+		18F6FE1217A6667C00BD9E74 /* NSAttributedString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Size.m"; path = "Category/NSAttributedString+Size.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -911,6 +923,10 @@
 				18B995831759CB7A0010B9D4 /* NSNotificationCenter+Addition.m */,
 				1859E7D0177476910029B46F /* NSString+Dictionary.h */,
 				1859E7D1177476910029B46F /* NSString+Dictionary.m */,
+				18F6FE1117A6667C00BD9E74 /* NSAttributedString+Size.h */,
+				18F6FE1217A6667C00BD9E74 /* NSAttributedString+Size.m */,
+				18F6FE0E17A6657E00BD9E74 /* NSMutableAttributedString+Size.h */,
+				18F6FE0F17A6657E00BD9E74 /* NSMutableAttributedString+Size.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1052,6 +1068,8 @@
 		18B743DF175B081600585CF5 /* Custom Control */ = {
 			isa = PBXGroup;
 			children = (
+				1883D6AF17A63F3800B44CA4 /* TTTAttributedLabel.h */,
+				1883D6B017A63F3800B44CA4 /* TTTAttributedLabel.m */,
 				18B743E0175B083900585CF5 /* GYPieChart.h */,
 				18B743E1175B083900585CF5 /* GYPieChart.m */,
 				18B743E2175B083900585CF5 /* XYPieChart.h */,
@@ -1210,6 +1228,8 @@
 				1830DDFE17A562EF0029FA90 /* NewsListViewController.m */,
 				18DDA40617A5844000026045 /* NewsListTableViewCell.h */,
 				18DDA40717A5844000026045 /* NewsListTableViewCell.m */,
+				180502B917A6343600C80036 /* NewsDetailViewController.h */,
+				180502BA17A6343600C80036 /* NewsDetailViewController.m */,
 			);
 			name = "Menu Panel";
 			sourceTree = "<group>";
@@ -1483,6 +1503,7 @@
 				180BD0AB17334D6E00BA2A98 /* AppDelegate.m in Sources */,
 				187F507C1734F25A006B46A3 /* MPTableViewCell.m in Sources */,
 				189871C717718D6B004059A3 /* MenuRoomInfoCell.m in Sources */,
+				18F6FE1317A6667C00BD9E74 /* NSAttributedString+Size.m in Sources */,
 				187F507F1734F277006B46A3 /* MainPanelViewController.m in Sources */,
 				187F50821734F33C006B46A3 /* MPCellTableViewController.m in Sources */,
 				1879638F177802A000EC9767 /* RPEnsureViewController.m in Sources */,
@@ -1503,9 +1524,11 @@
 				18E0EA921738CDA8006EFF51 /* GYPositionBounceAnimation.m in Sources */,
 				18E0EA961738DAE4006EFF51 /* MenuPanelViewController.m in Sources */,
 				1864F5D6177748B50013960C /* LoginViewController.m in Sources */,
+				180502BB17A6343600C80036 /* NewsDetailViewController.m in Sources */,
 				18E0EA991738DBE7006EFF51 /* UIApplication+Addition.m in Sources */,
 				18B995841759CB7A0010B9D4 /* NSNotificationCenter+Addition.m in Sources */,
 				18B7437E175AE3B500585CF5 /* UIImage+ScreenShoot.m in Sources */,
+				18F6FE1017A6657E00BD9E74 /* NSMutableAttributedString+Size.m in Sources */,
 				1859E7D2177476910029B46F /* NSString+Dictionary.m in Sources */,
 				18B7437F175AE3B500585CF5 /* UIImage+StackBlur.m in Sources */,
 				18B74383175AE50600585CF5 /* ModelPanelViewController.m in Sources */,
@@ -1534,6 +1557,7 @@
 				18B7441F175B105100585CF5 /* UIImageView+AFNetworking.m in Sources */,
 				18B74422175B109E00585CF5 /* NSString+Encrypt.m in Sources */,
 				18BACD6B176EE8640058042D /* CDINews.m in Sources */,
+				1883D6B117A63F3800B44CA4 /* TTTAttributedLabel.m in Sources */,
 				18BACD62176EE6F80058042D /* CoreDataViewController.m in Sources */,
 				18B7442C175B15CC00585CF5 /* CDIViewControllerFactory.m in Sources */,
 				18948CB8175C521A004E07EB /* ScheduleListViewController.m in Sources */,

@@ -11,6 +11,7 @@
 #import "CDINetClient.h"
 #import "CDINews.h"
 #import "NSDate+Addition.h"
+#import "NewsDetailViewController.h"
 
 #define kNewsListTableViewCellStandardHeight 70
 #define kSingleLineHeight 18
@@ -19,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (nonatomic, weak) CDINews *selectedNews;
 
 @end
 
@@ -96,6 +98,18 @@
     height = kNewsListTableViewCellStandardHeight + size.height - kSingleLineHeight;
   }
   return height;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  self.selectedNews = self.fetchedResultsController.fetchedObjects[indexPath.row];
+  [self performSegueWithIdentifier:@"NewsDetailSegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  NewsDetailViewController *vc = segue.destinationViewController;
+  vc.news = self.selectedNews;
 }
 
 #pragma mark - IBActions

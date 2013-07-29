@@ -12,4 +12,6 @@
 
 + (NSString *)stringForDict:(NSDictionary *)dict key:(NSString *)key;
 
+- (NSString *)strippedHTMLString;
+
 @end

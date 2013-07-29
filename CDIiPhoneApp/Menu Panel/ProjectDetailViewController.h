@@ -8,6 +8,10 @@
 
 #import "CoreDataViewController.h"
 
+@class CDIWork;
+
 @interface ProjectDetailViewController : CoreDataViewController
+
+@property (nonatomic, weak) CDIWork *work;
 
 @end

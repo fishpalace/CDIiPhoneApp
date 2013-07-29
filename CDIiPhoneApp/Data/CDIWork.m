@@ -63,7 +63,8 @@
   work.nameEn = [NSString stringForDict:dict key:@"name_en"];
   work.previewImageURL = [NSString stringForDict:dict key:@"previewImageUrl"];
   work.videoURL = [NSString stringForDict:dict key:@"videoUrl"];
-  work.workInfo = [NSString stringForDict:dict key:@"description"];
+  NSString *info = [NSString stringForDict:dict key:@"description"];
+  work.workInfo = [info strippedHTMLString];
   work.workInfoEn = [NSString stringForDict:dict key:@"description_en"];
   work.workStatus = [NSString stringForDict:dict key:@"status"];
   if ([work.workStatus isEqualToString:@"IN_PLAN"]) {

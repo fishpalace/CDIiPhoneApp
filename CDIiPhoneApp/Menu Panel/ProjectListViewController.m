@@ -12,6 +12,7 @@
 #import "CDIWork.h"
 #import "UIImageView+Addition.h"
 #import "UIView+Addition.h"
+#import "ProjectDetailViewController.h"
 
 @interface ProjectListViewController ()
 
@@ -110,14 +111,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//  self.selectedWork = self.fetchedResultsController.fetchedObjects[indexPath.row];
-//  [self performSegueWithIdentifier:@"" sender:self];
+  self.selectedWork = self.fetchedResultsController.fetchedObjects[indexPath.row];
+  [self performSegueWithIdentifier:@"ProjectDetailSegue" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-//  NewsDetailViewController *vc = segue.destinationViewController;
-//  vc.news = self.selectedWork;
+  ProjectDetailViewController *vc = segue.destinationViewController;
+  vc.work = self.selectedWork;
 }
 
 #pragma mark - IBActions

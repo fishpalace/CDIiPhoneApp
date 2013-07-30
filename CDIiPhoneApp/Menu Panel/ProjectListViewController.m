@@ -83,29 +83,16 @@
     CDIWork *work = self.fetchedResultsController.fetchedObjects[indexPath.row];
     [cell.imageView loadImageFromURL:work.previewImageURL completion:^(BOOL succeeded) {
       [cell.imageView fadeIn];
-      [cell updateConstraints];
     }];
     [cell.projectNameLabel setText:work.name];
     [cell.projectStatusLabel setText:work.workStatus];
     [cell.projectTypeLabel setText:work.workType];
-    
-    [cell updateConstraints];
   }
   return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//  CGFloat height = kNewsListTableViewCellStandardHeight;
-//  NSArray *newsArray = self.fetchedResultsController.fetchedObjects;
-//  if (newsArray.count != 0) {
-//    CDINews *news = [newsArray objectAtIndex:indexPath.row];
-//    CGSize size = [news.title sizeWithFont:kRLightFontWithSize(14)
-//                         constrainedToSize:CGSizeMake(292, 1000)
-//                             lineBreakMode:NSLineBreakByCharWrapping];
-//    height = kNewsListTableViewCellStandardHeight + size.height - kSingleLineHeight;
-//  }
-//  return height;
   return 90;
 }
 

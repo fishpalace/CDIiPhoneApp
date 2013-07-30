@@ -37,15 +37,6 @@
     // Configure the view for the selected state
 }
 
-- (void)updateConstraints
-{
-  [super updateConstraints];
-  self.heightConstraint.constant = 90;
-  self.widthConstraint.constant = 90;
-  self.leftConstraint.constant = 0;
-  self.topConstraint.constant = 0;
-}
-
 - (void)setIsPlaceHolder:(BOOL)isPlaceHolder
 {
   self.imageView.hidden = isPlaceHolder;

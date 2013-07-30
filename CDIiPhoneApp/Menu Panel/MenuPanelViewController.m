@@ -219,6 +219,8 @@
       segueID = @"MenuScheduleSegue";
     } else if (indexPath.row == 1) {
       segueID = @"MenuReservationSegue";
+    } else if (indexPath.row == 2) {
+      segueID = @"MenuDeviceSegue";
     }
   } else {
     if (indexPath.row == 0) {

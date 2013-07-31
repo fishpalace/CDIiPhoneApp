@@ -13,6 +13,7 @@
 @interface CDIApplication : NSManagedObject
 
 @property (nonatomic, retain) NSString * deviceID;
+@property (nonatomic, retain) NSString * applicationID;
 @property (nonatomic, retain) NSString * applicationInfo;
 @property (nonatomic, retain) NSString * deviceStatus;
 @property (nonatomic, retain) NSDate * borrowDate;
@@ -24,5 +25,7 @@
 @property (nonatomic, retain) NSString * projectName;
 @property (nonatomic, retain) NSString * deviceName;
 @property (nonatomic, retain) NSString * userRealName;
+
++ (CDIApplication *)insertApplicationInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

@@ -10,6 +10,9 @@
 #import "CDINetClient.h"
 #import "CDIDevice.h"
 #import "DeviceListAllDeviceCell.h"
+#import "DeviceListMyApplicationCell.h"
+#import "CDIApplication.h"
+#import "NSDate+Addition.h"
 
 @interface DeviceListViewController ()
 
@@ -40,14 +43,16 @@
   _allDeviceTableView.dataSource = self;
   _myApplicationTableView.delegate = self;
   _myApplicationTableView.dataSource = self;
-  [self loadData];
   self.myApplicationTableView.hidden = YES;
   self.allDeviceTableView.hidden = NO;
   _segmentAllButton.selected = YES;
   _segmentMyButton.selected = NO;
+  
+  [self loadDeviceData];
+  [self loadApplicationData];
 }
 
-- (void)loadData
+- (void)loadDeviceData
 {
   CDINetClient *client = [CDINetClient client];
   void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
@@ -67,6 +72,27 @@
   [client getDeviceListWithCompletion:handleData];
 }
 
+- (void)loadApplicationData
+{
+  CDINetClient *client = [CDINetClient client];
+  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+    NSDictionary *rawDict = responseData;
+    if ([responseData isKindOfClass:[NSDictionary class]]) {
+      NSArray *peopleArray = rawDict[@"data"];
+      for (NSDictionary *dict in peopleArray) {
+        [CDIApplication insertApplicationInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
+      }
+      [self.managedObjectContext processPendingChanges];
+      [self.myApplicationFetchedResultsController performFetch:nil];
+      
+      [self.myApplicationTableView reloadData];
+    }
+  };
+  
+  [client getDeviceApplicationListWithCurrentUserID:self.currentUser.userID
+                                         completion:handleData];
+}
+
 - (void)configureRequest:(NSFetchRequest *)request
 {
   request.entity = [NSEntityDescription entityForName:@"CDIDevice"
@@ -77,17 +103,36 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
-  NSInteger count = self.fetchedResultsController.fetchedObjects.count;
+  NSInteger count = 0;
+  if ([tableView isEqual:self.allDeviceTableView]) {
+    count = self.fetchedResultsController.fetchedObjects.count;
+  } else if ([tableView isEqual:self.myApplicationTableView]) {
+    count = self.myApplicationFetchedResultsController.fetchedObjects.count;
+  }
+
   return count == 0 ? 1 : count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  UITableViewCell *cell = nil;
+  
+  if ([tableView isEqual:self.allDeviceTableView]) {
+    cell = [self cellOfDeviceForRowAtIndexPath:indexPath];
+  } else if ([tableView isEqual:self.myApplicationTableView]) {
+    cell = [self cellOfApplicationForRowAtIndexPath:indexPath];
+  }
+  
+  return cell;
+}
+
+- (UITableViewCell *)cellOfDeviceForRowAtIndexPath:(NSIndexPath *)indexPath
+{
   DeviceListAllDeviceCell *cell = [self.allDeviceTableView dequeueReusableCellWithIdentifier:@"DeviceListAllDeviceCell"];
   cell.isPlaceHolder = self.fetchedResultsController.fetchedObjects.count == 0;
   if (!cell.isPlaceHolder) {
     CDIDevice *device = self.fetchedResultsController.fetchedObjects[indexPath.row];
-
+    
     [cell.deviceNameLabel setText:device.deviceName];
     [cell.deviceTypeLabel setText:device.deviceType];
     if (device.available.boolValue) {
@@ -95,6 +140,36 @@
     } else {
       cell.deviceStatusImageView.image = [UIImage imageNamed:@"icon_unavailable"];
     }
+  }
+  return cell;
+}
+
+- (UITableViewCell *)cellOfApplicationForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  DeviceListMyApplicationCell *cell = [self.myApplicationTableView dequeueReusableCellWithIdentifier:@"DeviceListMyApplicationCell"];
+  cell.isPlaceHolder = self.myApplicationFetchedResultsController.fetchedObjects.count == 0;
+  if (!cell.isPlaceHolder) {
+    CDIApplication *application = self.myApplicationFetchedResultsController.fetchedObjects[indexPath.row];
+    
+    [cell.deviceNameLabel setText:application.deviceName];
+    UIColor *color = nil;
+    NSString *resultString = @"";
+    NSString *dateString = [NSDate stringOfDate:application.borrowDate includingYear:YES];
+    if ([application.deviceStatus isEqualToString:@"Applying"]) {
+      cell.deviceStatusImageView.image = [UIImage imageNamed:@"icon_pending"];
+      resultString = @"Pending ";
+      color = kColorTintYellow;
+    } else if ([application.deviceStatus isEqualToString:@"Approved"]) {
+      cell.deviceStatusImageView.image = [UIImage imageNamed:@"icon_approved"];
+      resultString = [NSString stringWithFormat:@"Approved %@", dateString];
+      color = kColorTintGreen;
+    } else if ([application.deviceStatus isEqualToString:@"Rejected"]) {
+      cell.deviceStatusImageView.image = [UIImage imageNamed:@"icon_rejected"];
+      resultString = [NSString stringWithFormat:@"Approved %@", dateString];
+      color = kColorTintRed;
+    }
+    [cell.deviceTypeLabel setText:resultString];
+    [cell.deviceTypeLabel setTextColor:color];
   }
   return cell;
 }
@@ -116,18 +191,31 @@
 //  vc.work = self.selectedWork;
 }
 
+#pragma mark - IBActions
 - (IBAction)didClickBackButton:(UIButton *)sender
 {
   [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)didClickSegmentButton:(UIButton *)sender
+{
+  BOOL didClickMyButton = [self.segmentMyButton isEqual:sender];
+  self.segmentMyButton.selected = didClickMyButton;
+  self.segmentMyButton.userInteractionEnabled = !didClickMyButton;
+  self.segmentAllButton.selected = !didClickMyButton;
+  self.segmentAllButton.userInteractionEnabled = didClickMyButton;
+  self.myApplicationTableView.hidden = !didClickMyButton;
+  self.allDeviceTableView.hidden = didClickMyButton;
+}
+
+
 - (NSFetchedResultsController *)myApplicationFetchedResultsController
 {
   if (_myApplicationFetchedResultsController == nil) {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    request.entity = [NSEntityDescription entityForName:@"CDIDevice"
+    request.entity = [NSEntityDescription entityForName:@"CDIApplication"
                                  inManagedObjectContext:self.managedObjectContext];
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"deviceID" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"applicationID" ascending:NO];
     request.sortDescriptors = @[sortDescriptor];
     
     _myApplicationFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request

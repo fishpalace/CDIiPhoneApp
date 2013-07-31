@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *deviceTypeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *deviceStatusImageView;
 
+@property (nonatomic, readwrite) BOOL isPlaceHolder;
+
 @end

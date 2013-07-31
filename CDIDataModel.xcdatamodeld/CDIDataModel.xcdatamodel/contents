@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3389" systemVersion="13A524d" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="CDIApplication" representedClassName="CDIApplication" syncable="YES">
+        <attribute name="applicationID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="applicationInfo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="borrowDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="deviceID" optional="YES" attributeType="String" syncable="YES"/>

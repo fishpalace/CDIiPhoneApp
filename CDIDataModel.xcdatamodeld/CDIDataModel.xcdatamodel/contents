@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3383" systemVersion="13A524d" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3389" systemVersion="13A524d" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="CDIApplication" representedClassName="CDIApplication" syncable="YES">
+        <attribute name="applicationInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="borrowDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deviceID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dueDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="projectID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="returnDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userRealName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CDIDevice" representedClassName="CDIDevice" syncable="YES">
+        <attribute name="available" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="deviceID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="CDIEvent" representedClassName="CDIEvent" syncable="YES">
         <attribute name="abandoned" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="accessKey" optional="YES" attributeType="String" syncable="YES"/>
@@ -80,5 +101,7 @@
         <element name="CDIRoom" positionX="0" positionY="0" width="0" height="0"/>
         <element name="CDIUser" positionX="0" positionY="0" width="0" height="0"/>
         <element name="CDIWork" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDIApplication" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDIDevice" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

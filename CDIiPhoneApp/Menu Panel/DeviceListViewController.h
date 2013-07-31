@@ -8,6 +8,6 @@
 
 #import "CoreDataViewController.h"
 
-@interface DeviceListViewController : CoreDataViewController
+@interface DeviceListViewController : CoreDataViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

@@ -64,6 +64,12 @@
 		183A41CA17A8A70C00D9EAC7 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A41C817A8A70C00D9EAC7 /* settings@2x.png */; };
 		183A41CD17A8A97400D9EAC7 /* button_info.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A41CB17A8A97300D9EAC7 /* button_info.png */; };
 		183A41CE17A8A97400D9EAC7 /* button_info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A41CC17A8A97300D9EAC7 /* button_info@2x.png */; };
+		183A41D117A8B5B400D9EAC7 /* CDIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 183A41D017A8B5B400D9EAC7 /* CDIApplication.m */; };
+		183A41D417A8B5B500D9EAC7 /* CDIDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 183A41D317A8B5B500D9EAC7 /* CDIDevice.m */; };
+		183A41D717A8DF7600D9EAC7 /* devices.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A41D517A8DF7600D9EAC7 /* devices.png */; };
+		183A41D817A8DF7600D9EAC7 /* devices@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A41D617A8DF7600D9EAC7 /* devices@2x.png */; };
+		183A41DB17A8E0A700D9EAC7 /* devices_myapplications.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A41D917A8E0A700D9EAC7 /* devices_myapplications.png */; };
+		183A41DC17A8E0A700D9EAC7 /* devices_myapplications@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A41DA17A8E0A700D9EAC7 /* devices_myapplications@2x.png */; };
 		183AE76B175C38CD008310BF /* tableview_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE761175C38CD008310BF /* tableview_bg.png */; };
 		183AE76C175C38CD008310BF /* tableview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE762175C38CD008310BF /* tableview_bg@2x.png */; };
 		183AE76D175C38CD008310BF /* tableview_bg_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE763175C38CD008310BF /* tableview_bg_back.png */; };
@@ -395,6 +401,14 @@
 		183A41C817A8A70C00D9EAC7 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		183A41CB17A8A97300D9EAC7 /* button_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_info.png; sourceTree = "<group>"; };
 		183A41CC17A8A97300D9EAC7 /* button_info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_info@2x.png"; sourceTree = "<group>"; };
+		183A41CF17A8B5B400D9EAC7 /* CDIApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIApplication.h; path = Data/CDIApplication.h; sourceTree = "<group>"; };
+		183A41D017A8B5B400D9EAC7 /* CDIApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIApplication.m; path = Data/CDIApplication.m; sourceTree = "<group>"; };
+		183A41D217A8B5B500D9EAC7 /* CDIDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDIDevice.h; path = Data/CDIDevice.h; sourceTree = "<group>"; };
+		183A41D317A8B5B500D9EAC7 /* CDIDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDIDevice.m; path = Data/CDIDevice.m; sourceTree = "<group>"; };
+		183A41D517A8DF7600D9EAC7 /* devices.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = devices.png; sourceTree = "<group>"; };
+		183A41D617A8DF7600D9EAC7 /* devices@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "devices@2x.png"; sourceTree = "<group>"; };
+		183A41D917A8E0A700D9EAC7 /* devices_myapplications.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = devices_myapplications.png; sourceTree = "<group>"; };
+		183A41DA17A8E0A700D9EAC7 /* devices_myapplications@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "devices_myapplications@2x.png"; sourceTree = "<group>"; };
 		183AE761175C38CD008310BF /* tableview_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg.png; sourceTree = "<group>"; };
 		183AE762175C38CD008310BF /* tableview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_bg@2x.png"; sourceTree = "<group>"; };
 		183AE763175C38CD008310BF /* tableview_bg_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg_back.png; sourceTree = "<group>"; };
@@ -1031,6 +1045,10 @@
 		18948CCE175CE088004E07EB /* test */ = {
 			isa = PBXGroup;
 			children = (
+				183A41D917A8E0A700D9EAC7 /* devices_myapplications.png */,
+				183A41DA17A8E0A700D9EAC7 /* devices_myapplications@2x.png */,
+				183A41D517A8DF7600D9EAC7 /* devices.png */,
+				183A41D617A8DF7600D9EAC7 /* devices@2x.png */,
 				183A41C717A8A70C00D9EAC7 /* settings.png */,
 				183A41C817A8A70C00D9EAC7 /* settings@2x.png */,
 				183A41BB17A8266F00D9EAC7 /* profile_launch_2.png */,
@@ -1309,6 +1327,10 @@
 		18DBB8A61776E27C00419DE7 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				183A41D217A8B5B500D9EAC7 /* CDIDevice.h */,
+				183A41D317A8B5B500D9EAC7 /* CDIDevice.m */,
+				183A41CF17A8B5B400D9EAC7 /* CDIApplication.h */,
+				183A41D017A8B5B400D9EAC7 /* CDIApplication.m */,
 				1859E7D3177477170029B46F /* CDIWork.h */,
 				1859E7D4177477170029B46F /* CDIWork.m */,
 				18BACD6C176EE8640058042D /* CDIRoom.h */,
@@ -1555,8 +1577,10 @@
 				183AE76E175C38CD008310BF /* tableview_bg_back@2x.png in Resources */,
 				183AE76F175C38CD008310BF /* tableview_cell_bg.png in Resources */,
 				183AE770175C38CD008310BF /* tableview_cell_bg@2x.png in Resources */,
+				183A41D817A8DF7600D9EAC7 /* devices@2x.png in Resources */,
 				18256B371770441D0079D24B /* menu_avatar_bg@2x.png in Resources */,
 				183AE771175C38CD008310BF /* tableview_icon_calendar.png in Resources */,
+				183A41DB17A8E0A700D9EAC7 /* devices_myapplications.png in Resources */,
 				1872231217732F78000B5F17 /* model_button_schedule.png in Resources */,
 				183A41C917A8A70C00D9EAC7 /* settings.png in Resources */,
 				183AE772175C38CD008310BF /* tableview_icon_calendar@2x.png in Resources */,
@@ -1577,6 +1601,7 @@
 				18948CC3175CABD6004E07EB /* people_cell_bg.png in Resources */,
 				183A41C617A8266F00D9EAC7 /* profile_launch@2x.png in Resources */,
 				187963861777FD6B00EC9767 /* rp_accesscode_bg@2x.png in Resources */,
+				183A41DC17A8E0A700D9EAC7 /* devices_myapplications@2x.png in Resources */,
 				18256B381770441F0079D24B /* menu_avatar_bg.png in Resources */,
 				183A41C517A8266F00D9EAC7 /* profile_launch.png in Resources */,
 				18948CC4175CABD6004E07EB /* people_cell_bg@2x.png in Resources */,
@@ -1661,6 +1686,7 @@
 				183A41CA17A8A70C00D9EAC7 /* settings@2x.png in Resources */,
 				189E4CA4175F924A00E7BA21 /* test_proj_3@2x.png in Resources */,
 				189E4CA5175F924A00E7BA21 /* test_proj_4.png in Resources */,
+				183A41D717A8DF7600D9EAC7 /* devices.png in Resources */,
 				189E4CA6175F924A00E7BA21 /* test_proj_4@2x.png in Resources */,
 				1872230817731FBE000B5F17 /* time_schedule_list.png in Resources */,
 			);
@@ -1675,6 +1701,7 @@
 			files = (
 				180BD0A717334D6E00BA2A98 /* main.m in Sources */,
 				180BD0AB17334D6E00BA2A98 /* AppDelegate.m in Sources */,
+				183A41D417A8B5B500D9EAC7 /* CDIDevice.m in Sources */,
 				187F507C1734F25A006B46A3 /* MPTableViewCell.m in Sources */,
 				189871C717718D6B004059A3 /* MenuRoomInfoCell.m in Sources */,
 				18F6FE1317A6667C00BD9E74 /* NSAttributedString+Size.m in Sources */,
@@ -1700,6 +1727,7 @@
 				18E0EA921738CDA8006EFF51 /* GYPositionBounceAnimation.m in Sources */,
 				18E0EA961738DAE4006EFF51 /* MenuPanelViewController.m in Sources */,
 				1864F5D6177748B50013960C /* LoginViewController.m in Sources */,
+				183A41D117A8B5B400D9EAC7 /* CDIApplication.m in Sources */,
 				180502BB17A6343600C80036 /* NewsDetailViewController.m in Sources */,
 				18E0EA991738DBE7006EFF51 /* UIApplication+Addition.m in Sources */,
 				18B995841759CB7A0010B9D4 /* NSNotificationCenter+Addition.m in Sources */,

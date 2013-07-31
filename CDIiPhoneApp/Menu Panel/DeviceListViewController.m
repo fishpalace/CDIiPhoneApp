@@ -8,6 +8,8 @@
 
 #import "DeviceListViewController.h"
 #import "CDINetClient.h"
+#import "CDIDevice.h"
+#import "DeviceListAllDeviceCell.h"
 
 @interface DeviceListViewController ()
 
@@ -33,8 +35,16 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+  [super viewDidLoad];
+  _allDeviceTableView.delegate = self;
+  _allDeviceTableView.dataSource = self;
+  _myApplicationTableView.delegate = self;
+  _myApplicationTableView.dataSource = self;
+  [self loadData];
+  self.myApplicationTableView.hidden = YES;
+  self.allDeviceTableView.hidden = NO;
+  _segmentAllButton.selected = YES;
+  _segmentMyButton.selected = NO;
 }
 
 - (void)loadData
@@ -45,23 +55,23 @@
     if ([responseData isKindOfClass:[NSDictionary class]]) {
       NSArray *peopleArray = rawDict[@"data"];
       for (NSDictionary *dict in peopleArray) {
-//        [CDIWork insertWorkInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
+        [CDIDevice insertDeviceInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
       }
       [self.managedObjectContext processPendingChanges];
       [self.fetchedResultsController performFetch:nil];
       
-//      [self.tableView reloadData];
+      [self.allDeviceTableView reloadData];
     }
   };
   
-  [client getProjectListWithCompletion:handleData];
+  [client getDeviceListWithCompletion:handleData];
 }
 
 - (void)configureRequest:(NSFetchRequest *)request
 {
-  request.entity = [NSEntityDescription entityForName:@"CDIWork"
+  request.entity = [NSEntityDescription entityForName:@"CDIDevice"
                                inManagedObjectContext:self.managedObjectContext];
-  NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"workID" ascending:NO];
+  NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"deviceID" ascending:YES];
   request.sortDescriptors = @[sortDescriptor];
 }
 
@@ -73,23 +83,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//  ProjectListTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ProjectListTableViewCell"];
-//  cell.isPlaceHolder = self.fetchedResultsController.fetchedObjects.count == 0;
-//  if (!cell.isPlaceHolder) {
-//    CDIWork *work = self.fetchedResultsController.fetchedObjects[indexPath.row];
-//    [cell.imageView loadImageFromURL:work.previewImageURL completion:^(BOOL succeeded) {
-//      [cell.imageView fadeIn];
-//    }];
-//    [cell.projectNameLabel setText:work.name];
-//    [cell.projectStatusLabel setText:work.workStatus];
-//    [cell.projectTypeLabel setText:work.workType];
-//  }
-  return nil;
+  DeviceListAllDeviceCell *cell = [self.allDeviceTableView dequeueReusableCellWithIdentifier:@"DeviceListAllDeviceCell"];
+  cell.isPlaceHolder = self.fetchedResultsController.fetchedObjects.count == 0;
+  if (!cell.isPlaceHolder) {
+    CDIDevice *device = self.fetchedResultsController.fetchedObjects[indexPath.row];
+
+    [cell.deviceNameLabel setText:device.deviceName];
+    [cell.deviceTypeLabel setText:device.deviceType];
+    if (device.available.boolValue) {
+      cell.deviceStatusImageView.image = [UIImage imageNamed:@"icon_available"];
+    } else {
+      cell.deviceStatusImageView.image = [UIImage imageNamed:@"icon_unavailable"];
+    }
+  }
+  return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  return 90;
+  return 80;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,16 +123,21 @@
 
 - (NSFetchedResultsController *)myApplicationFetchedResultsController
 {
-  if (_fetchedResultsController == nil) {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [self configureRequest:fetchRequest];
+  if (_myApplicationFetchedResultsController == nil) {
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    request.entity = [NSEntityDescription entityForName:@"CDIDevice"
+                                 inManagedObjectContext:self.managedObjectContext];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"deviceID" ascending:NO];
+    request.sortDescriptors = @[sortDescriptor];
     
-    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-    _fetchedResultsController.delegate = self;
+    _myApplicationFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                                 managedObjectContext:self.managedObjectContext
+                                                                                   sectionNameKeyPath:nil cacheName:nil];
+    _myApplicationFetchedResultsController.delegate = self;
     
-    [_fetchedResultsController performFetch:nil];
+    [_myApplicationFetchedResultsController performFetch:nil];
   }
-  return _fetchedResultsController;
+  return _myApplicationFetchedResultsController;
 }
 
 @end

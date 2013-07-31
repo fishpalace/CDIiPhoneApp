@@ -24,6 +24,7 @@
 @dynamic projectName;
 @dynamic deviceName;
 @dynamic userRealName;
+@dynamic userAvatarURL;
 
 + (CDIApplication *)insertApplicationInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context
 {
@@ -52,10 +53,11 @@
   application.userRealName = [NSString stringForDict:dict key:@"userRealName"];
   application.projectID = [NSString stringForDict:dict key:@"workId"];
   application.projectName = [NSString stringForDict:dict key:@"workName"];
+  application.userAvatarURL = [NSString stringForDict:dict key:@"userAvatarUrl"];
   
   NSString *status = [NSString stringForDict:dict key:@"status"];
   if ([status isEqualToString:@"APPLYING"]) {
-    application.deviceStatus = @"Applying";
+    application.deviceStatus = @"Pending";
   } else if ([status isEqualToString:@"APPROVED"]) {
     application.deviceStatus = @"Approved";
   } else if ([status isEqualToString:@"REJECTED"]) {

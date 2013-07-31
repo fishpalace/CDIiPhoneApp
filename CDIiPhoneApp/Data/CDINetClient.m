@@ -173,6 +173,13 @@ static CDINetClient *sharedClient;
   [self getPath:path completion:completion];
 }
 
+- (void)getDeviceApplicationListWithDeviceID:(NSString *)deviceID
+                                       completion:(void (^)(BOOL succeeded, id responseData))completion
+{
+  NSString *path = [NSString stringWithFormat:@"device/getDeviceApplicationListByDeviceIdAndTypeAndStatus/%@/*/*/1000/1", deviceID];
+  [self getPath:path completion:completion];
+}
+
 - (void)loginOutCurrentUserWithID:(NSString *)userID
                        completion:(void (^)(BOOL succeeded, id responseData))completion
 {

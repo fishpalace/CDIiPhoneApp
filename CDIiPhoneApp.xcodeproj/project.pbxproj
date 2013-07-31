@@ -70,6 +70,8 @@
 		183A41D817A8DF7600D9EAC7 /* devices@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A41D617A8DF7600D9EAC7 /* devices@2x.png */; };
 		183A41DB17A8E0A700D9EAC7 /* devices_myapplications.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A41D917A8E0A700D9EAC7 /* devices_myapplications.png */; };
 		183A41DC17A8E0A700D9EAC7 /* devices_myapplications@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A41DA17A8E0A700D9EAC7 /* devices_myapplications@2x.png */; };
+		183A41DF17A8FF2900D9EAC7 /* DeviceInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183A41DE17A8FF2900D9EAC7 /* DeviceInfoViewController.m */; };
+		183A41E217A91E3200D9EAC7 /* DeviceInfoHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 183A41E117A91E3200D9EAC7 /* DeviceInfoHistoryCell.m */; };
 		183AE76B175C38CD008310BF /* tableview_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE761175C38CD008310BF /* tableview_bg.png */; };
 		183AE76C175C38CD008310BF /* tableview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE762175C38CD008310BF /* tableview_bg@2x.png */; };
 		183AE76D175C38CD008310BF /* tableview_bg_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 183AE763175C38CD008310BF /* tableview_bg_back.png */; };
@@ -409,6 +411,10 @@
 		183A41D617A8DF7600D9EAC7 /* devices@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "devices@2x.png"; sourceTree = "<group>"; };
 		183A41D917A8E0A700D9EAC7 /* devices_myapplications.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = devices_myapplications.png; sourceTree = "<group>"; };
 		183A41DA17A8E0A700D9EAC7 /* devices_myapplications@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "devices_myapplications@2x.png"; sourceTree = "<group>"; };
+		183A41DD17A8FF2900D9EAC7 /* DeviceInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceInfoViewController.h; path = "Menu Panel/DeviceInfoViewController.h"; sourceTree = "<group>"; };
+		183A41DE17A8FF2900D9EAC7 /* DeviceInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceInfoViewController.m; path = "Menu Panel/DeviceInfoViewController.m"; sourceTree = "<group>"; };
+		183A41E017A91E3200D9EAC7 /* DeviceInfoHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceInfoHistoryCell.h; path = "Menu Panel/DeviceInfoHistoryCell.h"; sourceTree = "<group>"; };
+		183A41E117A91E3200D9EAC7 /* DeviceInfoHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceInfoHistoryCell.m; path = "Menu Panel/DeviceInfoHistoryCell.m"; sourceTree = "<group>"; };
 		183AE761175C38CD008310BF /* tableview_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg.png; sourceTree = "<group>"; };
 		183AE762175C38CD008310BF /* tableview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_bg@2x.png"; sourceTree = "<group>"; };
 		183AE763175C38CD008310BF /* tableview_bg_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_bg_back.png; sourceTree = "<group>"; };
@@ -1390,6 +1396,10 @@
 				1872B92117A780F300EC16A1 /* DeviceListAllDeviceCell.m */,
 				1872B92317A7810E00EC16A1 /* DeviceListMyApplicationCell.h */,
 				1872B92417A7810E00EC16A1 /* DeviceListMyApplicationCell.m */,
+				183A41DD17A8FF2900D9EAC7 /* DeviceInfoViewController.h */,
+				183A41DE17A8FF2900D9EAC7 /* DeviceInfoViewController.m */,
+				183A41E017A91E3200D9EAC7 /* DeviceInfoHistoryCell.h */,
+				183A41E117A91E3200D9EAC7 /* DeviceInfoHistoryCell.m */,
 			);
 			name = "Menu Panel";
 			sourceTree = "<group>";
@@ -1763,6 +1773,7 @@
 				18B7441D175B105100585CF5 /* AFXMLRequestOperation.m in Sources */,
 				18B7441E175B105100585CF5 /* JSONKit.m in Sources */,
 				18B7441F175B105100585CF5 /* UIImageView+AFNetworking.m in Sources */,
+				183A41DF17A8FF2900D9EAC7 /* DeviceInfoViewController.m in Sources */,
 				18B74422175B109E00585CF5 /* NSString+Encrypt.m in Sources */,
 				18BACD6B176EE8640058042D /* CDINews.m in Sources */,
 				1883D6B117A63F3800B44CA4 /* TTTAttributedLabel.m in Sources */,
@@ -1777,6 +1788,7 @@
 				18948CD5175CE2C8004E07EB /* PeopleListCollectionViewCell.m in Sources */,
 				18948D08175D06AA004E07EB /* PeopleInfoViewController.m in Sources */,
 				18AF039D175DB9E600FA1F17 /* CDIDataModel.xcdatamodeld in Sources */,
+				183A41E217A91E3200D9EAC7 /* DeviceInfoHistoryCell.m in Sources */,
 				1830DDFF17A562EF0029FA90 /* NewsListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

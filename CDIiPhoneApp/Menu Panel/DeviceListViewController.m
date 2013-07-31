@@ -7,6 +7,7 @@
 //
 
 #import "DeviceListViewController.h"
+#import "DeviceInfoViewController.h"
 #import "CDINetClient.h"
 #import "CDIDevice.h"
 #import "DeviceListAllDeviceCell.h"
@@ -20,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *segmentMyButton;
 @property (weak, nonatomic) IBOutlet UITableView *allDeviceTableView;
 @property (weak, nonatomic) IBOutlet UITableView *myApplicationTableView;
+
+@property (nonatomic, weak) CDIDevice *selectedDevice;
 
 @property (nonatomic, strong) NSFetchedResultsController *myApplicationFetchedResultsController;
 
@@ -155,7 +158,7 @@
     UIColor *color = nil;
     NSString *resultString = @"";
     NSString *dateString = [NSDate stringOfDate:application.borrowDate includingYear:YES];
-    if ([application.deviceStatus isEqualToString:@"Applying"]) {
+    if ([application.deviceStatus isEqualToString:@"Pending"]) {
       cell.deviceStatusImageView.image = [UIImage imageNamed:@"icon_pending"];
       resultString = @"Pending ";
       color = kColorTintYellow;
@@ -166,6 +169,18 @@
     } else if ([application.deviceStatus isEqualToString:@"Rejected"]) {
       cell.deviceStatusImageView.image = [UIImage imageNamed:@"icon_rejected"];
       resultString = [NSString stringWithFormat:@"Approved %@", dateString];
+      color = kColorTintRed;
+    } else if ([application.deviceStatus isEqualToString:@"Overtime"]) {
+      cell.deviceStatusImageView.image = [UIImage imageNamed:@"icon_rejected"];
+      resultString = [NSString stringWithFormat:@"Overtime %@", dateString];
+      color = kColorTintRed;
+    } else if ([application.deviceStatus isEqualToString:@"Returned"]) {
+      cell.deviceStatusImageView.image = [UIImage imageNamed:@"icon_approved"];
+      resultString = [NSString stringWithFormat:@"Approved %@", dateString];
+      color = kColorTintGreen;
+    } else if ([application.deviceStatus isEqualToString:@"Cancelled"]) {
+      cell.deviceStatusImageView.image = [UIImage imageNamed:@"icon_rejected"];
+      resultString = [NSString stringWithFormat:@"Cancelled %@", dateString];
       color = kColorTintRed;
     }
     [cell.deviceTypeLabel setText:resultString];
@@ -181,14 +196,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//  self.selectedWork = self.fetchedResultsController.fetchedObjects[indexPath.row];
-//  [self performSegueWithIdentifier:@"ProjectDetailSegue" sender:self];
+  if ([tableView isEqual:self.allDeviceTableView]) {
+    self.selectedDevice = self.fetchedResultsController.fetchedObjects[indexPath.row];
+    [self performSegueWithIdentifier:@"DeviceInfoSegue" sender:self];
+  }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-//  ProjectDetailViewController *vc = segue.destinationViewController;
-//  vc.work = self.selectedWork;
+  DeviceInfoViewController *vc = segue.destinationViewController;
+  vc.currentDevice = self.selectedDevice;
 }
 
 #pragma mark - IBActions

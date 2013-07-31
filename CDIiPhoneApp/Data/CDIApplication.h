@@ -25,6 +25,7 @@
 @property (nonatomic, retain) NSString * projectName;
 @property (nonatomic, retain) NSString * deviceName;
 @property (nonatomic, retain) NSString * userRealName;
+@property (nonatomic, retain) NSString * userAvatarURL;
 
 + (CDIApplication *)insertApplicationInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context;
 

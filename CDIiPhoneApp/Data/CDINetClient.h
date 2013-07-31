@@ -65,6 +65,9 @@
 - (void)getDeviceApplicationListWithCurrentUserID:(NSString *)userID
                                        completion:(void (^)(BOOL succeeded, id responseData))completion;
 
+- (void)getDeviceApplicationListWithDeviceID:(NSString *)deviceID
+                                  completion:(void (^)(BOOL succeeded, id responseData))completion;
+
 - (void)loginOutCurrentUserWithID:(NSString *)userID
                        completion:(void (^)(BOOL succeeded, id responseData))completion;
 

@@ -32,4 +32,14 @@
     // Configure the view for the selected state
 }
 
+- (void)setIsPlaceHolder:(BOOL)isPlaceHolder
+{
+  
+  self.deviceNameLabel.hidden = isPlaceHolder;
+  self.deviceTypeLabel.hidden = isPlaceHolder;
+  self.deviceStatusImageView.hidden = isPlaceHolder;
+  self.placeHolderLabel.hidden = !isPlaceHolder;
+  _isPlaceHolder = isPlaceHolder;
+}
+
 @end

@@ -16,6 +16,7 @@
 #define kColorTintRed   [UIColor colorWithRed:234.0/255.0 green:82.0/255.0 blue:81.0/255.0 alpha:1.0]
 #define kColorTintYellow [UIColor colorWithRed:243.0/255.0 green:151.0/255.0 blue:0.0/255.0 alpha:1.0]
 #define kColorTintGreen [UIColor colorWithRed:9.0/255.0 green:187.0/255.0 blue:68.0/255.0 alpha:1.0]
+#define kColorTintGray150 [UIColor colorWithRed:150.0/255.0 green:150.0/255.0 blue:150.0/255.0 alpha:1.0]
 #define kRFontWitSize(o) [UIFont systemFontOfSize:o]
 #define kRBoldFontWithSize(o) [UIFont boldSystemFontOfSize:o]
 #define kRLightFontWithSize(o) [UIFont fontWithName:@"Helvetica-Light" size:o]

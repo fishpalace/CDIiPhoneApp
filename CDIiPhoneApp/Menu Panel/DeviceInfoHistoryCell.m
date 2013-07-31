@@ -1,20 +1,21 @@
 //
-//  DeviceListMyApplicationCell.m
+//  DeviceInfoHistoryCell.m
 //  CDIiPhoneApp
 //
-//  Created by Gabriel Yeah on 13-7-30.
+//  Created by Gabriel Yeah on 13-7-31.
 //  Copyright (c) 2013年 Gabriel Yeah. All rights reserved.
 //
 
-#import "DeviceListMyApplicationCell.h"
+#import "DeviceInfoHistoryCell.h"
 
-@interface DeviceListMyApplicationCell ()
+@interface DeviceInfoHistoryCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *placeHolderLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userAvatarBGImageView;
 
 @end
 
-@implementation DeviceListMyApplicationCell
+@implementation DeviceInfoHistoryCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -34,9 +35,11 @@
 
 - (void)setIsPlaceHolder:(BOOL)isPlaceHolder
 {
-  self.deviceNameLabel.hidden = isPlaceHolder;
-  self.deviceTypeLabel.hidden = isPlaceHolder;
-  self.deviceStatusImageView.hidden = isPlaceHolder;
+  self.statusLabel.hidden = isPlaceHolder;
+  self.userAvatarImageView.hidden = isPlaceHolder;
+  self.userAvatarBGImageView.hidden = isPlaceHolder;
+  self.borrowDurationLabel.hidden = isPlaceHolder;
+  self.userNameLabel.hidden = isPlaceHolder;
   self.placeHolderLabel.hidden = !isPlaceHolder;
   _isPlaceHolder = isPlaceHolder;
 }

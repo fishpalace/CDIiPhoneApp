@@ -2744,6 +2744,7 @@
                                 </state>
                                 <connections>
                                     <action selector="didClickNextButton:" destination="is8-2k-Shc" eventType="touchUpInside" id="ult-vF-PSb"/>
+                                    <action selector="didClickReserveButton:" destination="hIf-8T-qrp" eventType="touchUpInside" id="b9A-Dh-WQY"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tB-dp-Cg3">
@@ -2856,6 +2857,7 @@
                         <outlet property="deviceTypeLabel" destination="ElX-pv-Y0P" id="na5-Xg-i0N"/>
                         <outlet property="historyTableView" destination="aYd-sT-RJc" id="U56-Je-lUt"/>
                         <outlet property="reserveButton" destination="hqe-l4-PCu" id="bHI-Pj-hQ0"/>
+                        <segue destination="tVm-Wm-2Hm" kind="push" identifier="DeviceReserveSegue" id="ZKo-7I-6u3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xGG-GZ-sah" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4434,10 +4436,10 @@
             </objects>
             <point key="canvasLocation" x="2701" y="-614"/>
         </scene>
-        <!--View Controller-->
+        <!--Device Reservation View Controller-->
         <scene sceneID="Rla-7c-GMt">
             <objects>
-                <viewController id="tVm-Wm-2Hm" sceneMemberID="viewController">
+                <viewController id="tVm-Wm-2Hm" customClass="DeviceReservationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2rW-Oi-GMZ"/>
                         <viewControllerLayoutGuide type="bottom" id="4Q6-gF-iaD"/>
@@ -4446,7 +4448,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="devices_detail_reserve_preview.png" translatesAutoresizingMaskIntoConstraints="NO" id="a9e-ac-Yvb">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="devices_detail_reserve_preview.png" translatesAutoresizingMaskIntoConstraints="NO" id="a9e-ac-Yvb">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -4481,11 +4483,11 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="didClickBackButton:" destination="tVm-Wm-2Hm" eventType="touchUpInside" id="Dns-60-V0P"/>
+                                            <action selector="didClickBackButton:" destination="tVm-Wm-2Hm" eventType="touchUpInside" id="dO0-Nz-mh5"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Device Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAY-Sr-R0j">
-                                        <rect key="frame" x="110" y="11" width="100" height="20"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reserve Device" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAY-Sr-R0j">
+                                        <rect key="frame" x="100" y="11" width="120" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="fVu-sI-uaP"/>
                                             <constraint firstAttribute="height" constant="20" id="kkj-BA-DuZ"/>
@@ -4618,6 +4620,9 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didClickProjectButton:" destination="tVm-Wm-2Hm" eventType="touchUpInside" id="lId-eD-eOw"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jji-vi-DAc">
                                 <rect key="frame" x="9" y="235" width="301" height="51"/>
@@ -4628,6 +4633,9 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didClickStartDateButton:" destination="tVm-Wm-2Hm" eventType="touchUpInside" id="JwK-rO-yZX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TNP-kB-hHm">
                                 <rect key="frame" x="10" y="320" width="301" height="51"/>
@@ -4638,15 +4646,72 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didClickEndDateButton:" destination="tVm-Wm-2Hm" eventType="touchUpInside" id="dps-Qr-D6I"/>
+                                </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pus-Cs-m0A">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickCoverButton:" destination="tVm-Wm-2Hm" eventType="touchUpInside" id="GTQ-hd-vTG"/>
+                                </connections>
+                            </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="9w9-us-3Dc">
+                                <rect key="frame" x="0.0" y="406" width="320" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="9o0-el-kx8"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="396969024.221632">
+                                    <!--2013-07-31 13:10:24 +0000-->
+                                </date>
+                                <timeZone key="timeZone" name="America/Los_Angeles">
+                                    <mutableData key="data">
+VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+</mutableData>
+                                </timeZone>
+                            </datePicker>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yoi-7X-Bg5">
+                                <rect key="frame" x="0.0" y="406" width="320" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="1Jx-ji-shb"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="a9e-ac-Yvb" secondAttribute="centerY" id="6lg-jb-LAA"/>
+                            <constraint firstItem="4Q6-gF-iaD" firstAttribute="top" secondItem="9w9-us-3Dc" secondAttribute="bottom" id="6qL-jH-hXN"/>
                             <constraint firstItem="Tni-zG-Oi4" firstAttribute="leading" secondItem="hrs-WF-cHO" secondAttribute="leading" id="8bT-Dz-My0"/>
+                            <constraint firstItem="4Q6-gF-iaD" firstAttribute="top" secondItem="Yoi-7X-Bg5" secondAttribute="bottom" id="ArL-kb-o0Y"/>
+                            <constraint firstItem="Pus-Cs-m0A" firstAttribute="top" secondItem="2rW-Oi-GMZ" secondAttribute="bottom" id="D7q-fq-zFc"/>
                             <constraint firstItem="kPH-US-yP4" firstAttribute="leading" secondItem="Ld3-7w-EuL" secondAttribute="leading" id="FSg-e9-DTX"/>
                             <constraint firstItem="Mak-Cx-dj7" firstAttribute="top" secondItem="Jji-vi-DAc" secondAttribute="bottom" constant="10" id="FmS-MB-8wQ"/>
                             <constraint firstItem="4Q6-gF-iaD" firstAttribute="top" secondItem="M5e-xf-KMj" secondAttribute="bottom" constant="8" id="HqS-nz-PVP"/>
+                            <constraint firstAttribute="trailing" secondItem="Pus-Cs-m0A" secondAttribute="trailing" id="Ip2-Vw-KKs"/>
                             <constraint firstItem="XQg-rc-JmB" firstAttribute="leading" secondItem="Jji-vi-DAc" secondAttribute="leading" id="K7n-gO-0hb"/>
                             <constraint firstAttribute="centerX" secondItem="Tdg-1s-GGL" secondAttribute="centerX" id="P3g-bd-zRy"/>
                             <constraint firstItem="Jji-vi-DAc" firstAttribute="top" secondItem="kPH-US-yP4" secondAttribute="bottom" constant="7" id="R1r-yT-5dw"/>
@@ -4655,13 +4720,17 @@
                             <constraint firstItem="kPH-US-yP4" firstAttribute="leading" secondItem="hrs-WF-cHO" secondAttribute="leading" constant="18" id="Ucv-YC-MZU"/>
                             <constraint firstItem="kPH-US-yP4" firstAttribute="top" secondItem="XQg-rc-JmB" secondAttribute="bottom" constant="10" id="VeQ-dn-QEQ"/>
                             <constraint firstAttribute="centerX" secondItem="QEW-p4-GXe" secondAttribute="centerX" id="Xyu-ae-rup"/>
+                            <constraint firstAttribute="centerX" secondItem="9w9-us-3Dc" secondAttribute="centerX" id="YQ9-K6-xRF"/>
                             <constraint firstAttribute="centerX" secondItem="M5e-xf-KMj" secondAttribute="centerX" id="dAu-TQ-2Sm"/>
+                            <constraint firstItem="4Q6-gF-iaD" firstAttribute="top" secondItem="Pus-Cs-m0A" secondAttribute="bottom" id="gYA-Nh-Rog"/>
                             <constraint firstItem="Tni-zG-Oi4" firstAttribute="trailing" secondItem="hrs-WF-cHO" secondAttribute="trailing" id="jr1-pO-3nW"/>
                             <constraint firstItem="XQg-rc-JmB" firstAttribute="leading" secondItem="hrs-WF-cHO" secondAttribute="leading" constant="9" id="lRN-Wn-bXt"/>
                             <constraint firstItem="kPH-US-yP4" firstAttribute="top" secondItem="hrs-WF-cHO" secondAttribute="top" constant="211" id="mh3-Ie-hxa"/>
                             <constraint firstItem="TNP-kB-hHm" firstAttribute="leading" secondItem="M5e-xf-KMj" secondAttribute="leading" id="ovf-oL-gHw"/>
                             <constraint firstItem="TNP-kB-hHm" firstAttribute="top" secondItem="Mak-Cx-dj7" secondAttribute="bottom" constant="7" id="p4L-O9-VVC"/>
+                            <constraint firstItem="Pus-Cs-m0A" firstAttribute="leading" secondItem="hrs-WF-cHO" secondAttribute="leading" id="qcq-2k-sGy"/>
                             <constraint firstItem="XQg-rc-JmB" firstAttribute="top" secondItem="Ld3-7w-EuL" secondAttribute="bottom" constant="7" id="sLR-b3-nQ6"/>
+                            <constraint firstAttribute="centerX" secondItem="Yoi-7X-Bg5" secondAttribute="centerX" id="sPO-Oi-av9"/>
                             <constraint firstAttribute="centerX" secondItem="a9e-ac-Yvb" secondAttribute="centerX" id="teN-0H-glb"/>
                             <constraint firstItem="QEW-p4-GXe" firstAttribute="top" secondItem="Tdg-1s-GGL" secondAttribute="bottom" id="uKC-AP-eSf"/>
                             <constraint firstItem="Tdg-1s-GGL" firstAttribute="top" secondItem="Tni-zG-Oi4" secondAttribute="bottom" id="zHQ-6c-4Ja"/>
@@ -4670,10 +4739,23 @@
                     </view>
                     <navigationItem key="navigationItem" id="FTX-eO-VIY"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="coverButton" destination="Pus-Cs-m0A" id="i8Y-kE-Frs"/>
+                        <outlet property="datePicker" destination="9w9-us-3Dc" id="jbR-jW-MaR"/>
+                        <outlet property="datePickerBottomSpaceConstraint" destination="6qL-jH-hXN" id="V0G-FL-VaA"/>
+                        <outlet property="deviceNameLabel" destination="t6g-zN-NVN" id="aEo-xj-47t"/>
+                        <outlet property="deviceTypeLabel" destination="QS5-D8-aex" id="ied-Qr-QJa"/>
+                        <outlet property="endDateButton" destination="TNP-kB-hHm" id="YjV-rm-lh2"/>
+                        <outlet property="projectButton" destination="XQg-rc-JmB" id="2Du-VO-AeD"/>
+                        <outlet property="projectPicker" destination="Yoi-7X-Bg5" id="daT-K7-UX0"/>
+                        <outlet property="projectPickerBottomSpaceConstraint" destination="ArL-kb-o0Y" id="1Iz-R5-wMQ"/>
+                        <outlet property="reserveButton" destination="M5e-xf-KMj" id="2rT-8L-6dc"/>
+                        <outlet property="startDateButton" destination="Jji-vi-DAc" id="RRm-eT-xit"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQK-1z-awR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2826" y="-1352"/>
+            <point key="canvasLocation" x="2848" y="-1348"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vVP-Zq-pKP">

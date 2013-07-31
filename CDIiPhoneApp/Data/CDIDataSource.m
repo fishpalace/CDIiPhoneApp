@@ -14,6 +14,7 @@
 #import "TImeZone.h"
 #import "AppDelegate.h"
 #import "CDIEventDAO.h"
+#import "CDIWork.h"
 
 @interface CDIDataSource ()
 
@@ -66,8 +67,25 @@ static CDIDataSource *sharedDataSource;
     [self.eventTimer fire];
     [self.roomInfoTimer fire];
     [NSNotificationCenter registerShouldChangeLocalDatasourceNotificationWithSelector:@selector(updateLocalEventsArray) target:self];
+    [self getProjects];
   }
   return self;
+}
+
+- (void)getProjects
+{
+  CDINetClient *client = [CDINetClient client];
+  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+    NSDictionary *rawDict = responseData;
+    if ([responseData isKindOfClass:[NSDictionary class]]) {
+      NSArray *peopleArray = rawDict[@"data"];
+      for (NSDictionary *dict in peopleArray) {
+        [CDIWork insertWorkInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
+      }
+    }
+  };
+  
+  [client getProjectListWithCompletion:handleData];
 }
 
 + (NSArray *)todayEventsForRoomID:(NSInteger)roomID

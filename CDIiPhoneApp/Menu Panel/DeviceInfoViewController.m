@@ -162,6 +162,11 @@
   return 78;
 }
 
+- (IBAction)didClickReserveButton:(UIButton *)sender
+{
+  [self performSegueWithIdentifier:@"DeviceReserveSegue" sender:self];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 //  ProjectDetailViewController *vc = segue.destinationViewController;

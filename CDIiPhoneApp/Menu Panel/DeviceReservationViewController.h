@@ -8,6 +8,6 @@
 
 #import "CoreDataViewController.h"
 
-@interface DeviceReservationViewController : CoreDataViewController
+@interface DeviceReservationViewController : CoreDataViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @end

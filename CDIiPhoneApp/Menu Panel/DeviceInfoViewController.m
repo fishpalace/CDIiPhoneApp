@@ -117,6 +117,8 @@
     [cell.userAvatarImageView loadImageFromURL:application.userAvatarURL completion:^(BOOL succeeded) {
       [cell.userAvatarImageView fadeIn];
     }];
+    cell.userAvatarImageView.layer.masksToBounds = YES;
+    cell.userAvatarImageView.layer.cornerRadius = 19;
     [cell.userNameLabel setText:application.userRealName];
     [cell.statusLabel setText:application.deviceStatus];
     

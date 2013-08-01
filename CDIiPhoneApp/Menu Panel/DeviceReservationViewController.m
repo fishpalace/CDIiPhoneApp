@@ -9,6 +9,9 @@
 #import "DeviceReservationViewController.h"
 #import "NSDate+Addition.h"
 #import "CDIWork.h"
+#import "CDIDevice.h"
+#import "CDINetClient.h"
+#import "DeviceInfoViewController.h"
 
 @interface DeviceReservationViewController ()
 
@@ -208,7 +211,23 @@
 
 - (void)reserveDevice
 {
+  CDINetClient *client = [CDINetClient client];
+  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+    if (succeeded) {
+      [self.prevDeviceInfoViewController loadData];
+      [self.navigationController popViewControllerAnimated:YES];
+    } else {
+      //TODO:  report error
+    }
+  };
   
+  [client reserveDeviceWithSessionKey:self.currentUser.sessionKey
+                           borrowDate:self.startDate
+                              dueDate:self.endDate
+                               userID:self.currentUser.userID
+                               workID:self.selectedProject.workID
+                             deviceID:self.currentDevice.deviceID
+                           completion:handleData];
 }
 
 @end

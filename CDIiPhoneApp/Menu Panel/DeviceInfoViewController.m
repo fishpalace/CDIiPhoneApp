@@ -14,6 +14,7 @@
 #import "UIImageView+Addition.h"
 #import "UIView+Addition.h"
 #import "NSDate+Addition.h"
+#import "DeviceReservationViewController.h"
 
 @interface DeviceInfoViewController ()
 
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *deviceStatusLabel;
 @property (weak, nonatomic) IBOutlet UIButton *reserveButton;
 @property (weak, nonatomic) IBOutlet UITableView *historyTableView;
+@property (nonatomic, weak) CDIDevice *selectedDevice;
 
 @end
 
@@ -169,8 +171,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-//  ProjectDetailViewController *vc = segue.destinationViewController;
-//  vc.work = self.selectedWork;
+  DeviceReservationViewController *vc = segue.destinationViewController;
+  vc.currentDevice = self.currentDevice;
+  vc.prevDeviceInfoViewController = self;
 }
 
 #pragma mark - IBActions

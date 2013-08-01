@@ -180,6 +180,23 @@ static CDINetClient *sharedClient;
   [self getPath:path completion:completion];
 }
 
+- (void)reserveDeviceWithSessionKey:(NSString *)sessionKey
+                         borrowDate:(NSDate *)borrowDate
+                            dueDate:(NSDate *)dueDate
+                             userID:(NSString *)userID
+                             workID:(NSString *)workID
+                           deviceID:(NSString *)deviceID
+                         completion:(void (^)(BOOL succeeded, id responseData))completion
+{
+  NSDictionary *dict = @{@"userId" : userID,
+                         @"workId" : workID,
+                         @"deviceId" : deviceID,
+                         @"shouldReturnDate" : @(dueDate.timeIntervalSince1970 * 1000),
+                         @"borrowDate" : @(borrowDate.timeIntervalSince1970 * 1000)};
+  NSString *path = [NSString stringWithFormat:@"device/applyDevice/%@", sessionKey];
+  [self putPath:path dictionary:dict completion:completion];
+}
+
 - (void)loginOutCurrentUserWithID:(NSString *)userID
                        completion:(void (^)(BOOL succeeded, id responseData))completion
 {

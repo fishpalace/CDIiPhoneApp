@@ -14,4 +14,6 @@
 
 @property (nonatomic, weak) CDIDevice *currentDevice;
 
+- (void)loadData;
+
 @end

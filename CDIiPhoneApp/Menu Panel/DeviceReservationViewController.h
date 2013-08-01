@@ -8,6 +8,12 @@
 
 #import "CoreDataViewController.h"
 
+@class CDIDevice;
+@class DeviceInfoViewController;
+
 @interface DeviceReservationViewController : CoreDataViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+
+@property (nonatomic, weak) CDIDevice *currentDevice;
+@property (nonatomic, weak) DeviceInfoViewController *prevDeviceInfoViewController;
 
 @end

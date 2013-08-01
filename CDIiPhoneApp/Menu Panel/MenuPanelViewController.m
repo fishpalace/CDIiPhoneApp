@@ -287,7 +287,10 @@
 
 - (IBAction)didClickLoginButton:(UIButton *)sender
 {
-  [LoginViewController displayLoginPanelWithCallBack:nil];
+  [LoginViewController displayLoginPanelWithCallBack:^{
+    [self performSegueWithIdentifier:@"MenuSetupSegue" sender:self];
+    [NSNotificationCenter postShouldChangeLocalDatasourceNotification];
+  }];
 }
 
 - (IBAction)didClickScheduleButton:(UIButton *)sender

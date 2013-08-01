@@ -140,6 +140,11 @@
   [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)didClickReserveButton:(UIButton *)sender
+{
+  [self reserveDevice];
+}
+
 - (void)showDatePicker
 {
   self.isDatePicker = NO;
@@ -199,6 +204,11 @@
                                inManagedObjectContext:self.managedObjectContext];
   NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"workID" ascending:NO];
   request.sortDescriptors = @[sortDescriptor];
+}
+
+- (void)reserveDevice
+{
+  
 }
 
 @end

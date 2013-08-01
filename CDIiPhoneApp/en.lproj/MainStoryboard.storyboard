@@ -1549,6 +1549,7 @@
                         <outlet property="scheduleButton" destination="wbz-uR-cQB" id="Sve-Hk-JyP"/>
                         <outlet property="timeLabel" destination="y2P-Ok-UJe" id="EJP-dA-mtr"/>
                         <segue destination="1uK-P4-xvN" kind="push" identifier="EventListRoomListSegue" id="BzR-H2-so3"/>
+                        <segue destination="0xj-kl-HmR" kind="push" identifier="ScheduleDetailSegue" id="qUL-wZ-Ab3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQJ-Qb-K9P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3217,10 +3218,10 @@
             </objects>
             <point key="canvasLocation" x="1693" y="562"/>
         </scene>
-        <!--News Detail View Controller-->
+        <!--Schedule Event Detail View Controller-->
         <scene sceneID="i0G-ei-Jg7">
             <objects>
-                <viewController id="0xj-kl-HmR" customClass="NewsDetailViewController" sceneMemberID="viewController">
+                <viewController id="0xj-kl-HmR" customClass="ScheduleEventDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8yR-4T-MiW"/>
                         <viewControllerLayoutGuide type="bottom" id="jEP-nE-3aT"/>
@@ -3456,12 +3457,18 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="contentLabel" destination="Kdn-g9-4er" id="usq-4a-ggt"/>
+                        <outlet property="imageView" destination="dHC-An-OOL" id="WVo-DW-hwf"/>
+                        <outlet property="scrollView" destination="TkR-4T-srM" id="9ml-Bh-TKz"/>
+                        <outlet property="titleContainerView" destination="rX6-Gh-E6d" id="XR5-f5-owL"/>
                         <outlet property="titleContainerViewHeightConstraint" destination="I4r-WF-8t0" id="W9q-l3-cS2"/>
+                        <outlet property="titleLabel" destination="xvI-dC-aBe" id="LFr-g3-Aca"/>
+                        <outlet property="typeLabel" destination="22f-GE-dHe" id="iLp-vF-iY6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcl-NS-Dva" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-463" y="-1318"/>
+            <point key="canvasLocation" x="1387" y="-2046"/>
         </scene>
         <!--Project Detail View Controller-->
         <scene sceneID="Za4-Mn-CfC">

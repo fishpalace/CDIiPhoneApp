@@ -189,6 +189,7 @@
 		18948D0E175D0911004E07EB /* people_info_avatar_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948D0A175D0911004E07EB /* people_info_avatar_cover@2x.png */; };
 		18948D0F175D0911004E07EB /* people_info_fade_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948D0B175D0911004E07EB /* people_info_fade_cover.png */; };
 		18948D10175D0911004E07EB /* people_info_fade_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18948D0C175D0911004E07EB /* people_info_fade_cover@2x.png */; };
+		1895DCD117AAC4EE0088DFDD /* ScheduleEventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1895DCD017AAC4EE0088DFDD /* ScheduleEventDetailViewController.m */; };
 		189871C717718D6B004059A3 /* MenuRoomInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 189871C617718D6B004059A3 /* MenuRoomInfoCell.m */; };
 		189E4C8F175F924A00E7BA21 /* test_activity_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 189E4C77175F924900E7BA21 /* test_activity_1.png */; };
 		189E4C90175F924A00E7BA21 /* test_activity_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189E4C78175F924900E7BA21 /* test_activity_1@2x.png */; };
@@ -569,6 +570,8 @@
 		18948D0A175D0911004E07EB /* people_info_avatar_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "people_info_avatar_cover@2x.png"; path = "Image Resource/Model Panel/people_info_avatar_cover@2x.png"; sourceTree = SOURCE_ROOT; };
 		18948D0B175D0911004E07EB /* people_info_fade_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = people_info_fade_cover.png; path = "Image Resource/Model Panel/people_info_fade_cover.png"; sourceTree = SOURCE_ROOT; };
 		18948D0C175D0911004E07EB /* people_info_fade_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "people_info_fade_cover@2x.png"; path = "Image Resource/Model Panel/people_info_fade_cover@2x.png"; sourceTree = SOURCE_ROOT; };
+		1895DCCF17AAC4EE0088DFDD /* ScheduleEventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleEventDetailViewController.h; path = "Menu Panel/ScheduleEventDetailViewController.h"; sourceTree = "<group>"; };
+		1895DCD017AAC4EE0088DFDD /* ScheduleEventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleEventDetailViewController.m; path = "Menu Panel/ScheduleEventDetailViewController.m"; sourceTree = "<group>"; };
 		189871C517718D6B004059A3 /* MenuRoomInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuRoomInfoCell.h; path = "Menu Panel/MenuRoomInfoCell.h"; sourceTree = "<group>"; };
 		189871C617718D6B004059A3 /* MenuRoomInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuRoomInfoCell.m; path = "Menu Panel/MenuRoomInfoCell.m"; sourceTree = "<group>"; };
 		189E4C77175F924900E7BA21 /* test_activity_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_activity_1.png; sourceTree = "<group>"; };
@@ -1408,6 +1411,8 @@
 				1863273F17A68FCF00A0E2CE /* ProjectListTableViewCell.m */,
 				18C6290317A6B0280006EE8D /* ProjectDetailViewController.h */,
 				18C6290417A6B0280006EE8D /* ProjectDetailViewController.m */,
+				1895DCCF17AAC4EE0088DFDD /* ScheduleEventDetailViewController.h */,
+				1895DCD017AAC4EE0088DFDD /* ScheduleEventDetailViewController.m */,
 				1872B91D17A77F4500EC16A1 /* DeviceListViewController.h */,
 				1872B91E17A77F4500EC16A1 /* DeviceListViewController.m */,
 				1872B92017A780F300EC16A1 /* DeviceListAllDeviceCell.h */,
@@ -1792,6 +1797,7 @@
 				18B74418175B105100585CF5 /* AFImageRequestOperation.m in Sources */,
 				18B74419175B105100585CF5 /* AFJSONRequestOperation.m in Sources */,
 				18B7441A175B105100585CF5 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				1895DCD117AAC4EE0088DFDD /* ScheduleEventDetailViewController.m in Sources */,
 				18B7441B175B105100585CF5 /* AFPropertyListRequestOperation.m in Sources */,
 				18B7441C175B105100585CF5 /* AFURLConnectionOperation.m in Sources */,
 				18B7441D175B105100585CF5 /* AFXMLRequestOperation.m in Sources */,

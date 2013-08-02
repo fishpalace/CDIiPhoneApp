@@ -22,6 +22,15 @@
 @property (weak, nonatomic) IBOutlet UIImageView *emailErrorImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *mobileErrorImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textfieldBottomSpaceConstraint;
+@property (weak, nonatomic) IBOutlet UIView *configView;
+@property (weak, nonatomic) IBOutlet UIButton *backwardButton;
+@property (weak, nonatomic) IBOutlet UIButton *forwardButton;
+@property (weak, nonatomic) IBOutlet UIButton *hideKeyboardButton;
+
+
+
+@property (nonatomic, weak) UITextField *currentTextfield;
 
 @end
 
@@ -38,8 +47,24 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+  [super viewDidLoad];
+  _emailTextfield.delegate = self;
+  _mobileTextfield.delegate = self;
+  _weiboTextfield.delegate = self;
+  _twitterTextfield.delegate = self;
+  _linkedInTextfield.delegate = self;
+  _dribbleTextfield.delegate = self;
+  _homePageTextfield.delegate = self;
+  
+  NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+  [center addObserver:self
+             selector:@selector(keyboardWillShow:)
+                 name:UIKeyboardWillShowNotification
+               object:nil];
+  [center addObserver:self
+             selector:@selector(keyboardWillHide:)
+                 name:UIKeyboardWillHideNotification
+               object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -65,6 +90,40 @@
 - (IBAction)didClickChangeInfoButton:(UIButton *)sender
 {
   
+}
+
+- (IBAction)didClickBackwardButton:(UIButton *)sender
+{
+  
+}
+
+- (IBAction)didClickForwardButton:(id)sender
+{
+  
+}
+
+- (IBAction)didClickHideKeyboardButton:(UIButton *)sender
+{
+  [self.view endEditing:YES];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+  NSDictionary *info = [notification userInfo];
+  CGRect keyboardBounds = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+  
+  CGFloat keyboardHeight;
+  keyboardHeight = keyboardBounds.size.height;
+  self.textfieldBottomSpaceConstraint.constant = keyboardHeight;
+  [UIView animateWithDuration:0.3 animations:^{
+    [self.configView layoutIfNeeded];
+  }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+  self.textfieldBottomSpaceConstraint.constant = -200;
+  [UIView animateWithDuration:0.3 animations:^{
+    [self.configView layoutIfNeeded];
+  }];
 }
 
 @end

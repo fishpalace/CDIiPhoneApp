@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordConfirmTextfield;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordConfirmErrorImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textfieldBottomSpaceConstraint;
+@property (weak, nonatomic) IBOutlet UIView *configView;
 
 @end
 

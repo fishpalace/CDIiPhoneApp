@@ -118,6 +118,7 @@
 		1864F5D6177748B50013960C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864F5D5177748B50013960C /* LoginViewController.m */; };
 		1864F5DA17775EE70013960C /* RPRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864F5D917775EE70013960C /* RPRoomViewController.m */; };
 		1864F5DD17775F370013960C /* RPRoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864F5DC17775F370013960C /* RPRoomCell.m */; };
+		186CD6B117ABFE59003DB974 /* ProjectDetailUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CD6B017ABFE59003DB974 /* ProjectDetailUserCell.m */; };
 		1872230817731FBE000B5F17 /* time_schedule_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230617731FBE000B5F17 /* time_schedule_list.png */; };
 		1872230917731FBE000B5F17 /* time_schedule_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230717731FBE000B5F17 /* time_schedule_list@2x.png */; };
 		1872230C17732243000B5F17 /* tableview_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872230A17732243000B5F17 /* tableview_banner.png */; };
@@ -480,6 +481,8 @@
 		1864F5D917775EE70013960C /* RPRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPRoomViewController.m; path = "Reserve Panel/RPRoomViewController.m"; sourceTree = "<group>"; };
 		1864F5DB17775F370013960C /* RPRoomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPRoomCell.h; path = "Reserve Panel/RPRoomCell.h"; sourceTree = "<group>"; };
 		1864F5DC17775F370013960C /* RPRoomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPRoomCell.m; path = "Reserve Panel/RPRoomCell.m"; sourceTree = "<group>"; };
+		186CD6AF17ABFE59003DB974 /* ProjectDetailUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProjectDetailUserCell.h; path = "Menu Panel/ProjectDetailUserCell.h"; sourceTree = "<group>"; };
+		186CD6B017ABFE59003DB974 /* ProjectDetailUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectDetailUserCell.m; path = "Menu Panel/ProjectDetailUserCell.m"; sourceTree = "<group>"; };
 		1872230617731FBE000B5F17 /* time_schedule_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time_schedule_list.png; path = "Image Resource/Model Panel/time_schedule_list.png"; sourceTree = SOURCE_ROOT; };
 		1872230717731FBE000B5F17 /* time_schedule_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "time_schedule_list@2x.png"; path = "Image Resource/Model Panel/time_schedule_list@2x.png"; sourceTree = SOURCE_ROOT; };
 		1872230A17732243000B5F17 /* tableview_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_banner.png; sourceTree = "<group>"; };
@@ -1411,6 +1414,8 @@
 				1863273F17A68FCF00A0E2CE /* ProjectListTableViewCell.m */,
 				18C6290317A6B0280006EE8D /* ProjectDetailViewController.h */,
 				18C6290417A6B0280006EE8D /* ProjectDetailViewController.m */,
+				186CD6AF17ABFE59003DB974 /* ProjectDetailUserCell.h */,
+				186CD6B017ABFE59003DB974 /* ProjectDetailUserCell.m */,
 				1895DCCF17AAC4EE0088DFDD /* ScheduleEventDetailViewController.h */,
 				1895DCD017AAC4EE0088DFDD /* ScheduleEventDetailViewController.m */,
 				1872B91D17A77F4500EC16A1 /* DeviceListViewController.h */,
@@ -1815,6 +1820,7 @@
 				1823263E17769350001E7B88 /* UIImageView+Addition.m in Sources */,
 				1864F5DD17775F370013960C /* RPRoomCell.m in Sources */,
 				18DBB8A91776E2EE00419DE7 /* CDICalendar.m in Sources */,
+				186CD6B117ABFE59003DB974 /* ProjectDetailUserCell.m in Sources */,
 				18948CD5175CE2C8004E07EB /* PeopleListCollectionViewCell.m in Sources */,
 				18948D08175D06AA004E07EB /* PeopleInfoViewController.m in Sources */,
 				18AF039D175DB9E600FA1F17 /* CDIDataModel.xcdatamodeld in Sources */,

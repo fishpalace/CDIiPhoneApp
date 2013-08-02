@@ -57,6 +57,9 @@
 
 - (void)getUserListWithCompletion:(void (^)(BOOL succeeded, id responseData))completion;
 
+- (void)getUserListWithWorkID:(NSString *)workID
+                   completion:(void (^)(BOOL succeeded, id responseData))completion;
+
 - (void)getWorkListWithUserID:(NSString *)userID
                    completion:(void (^)(BOOL succeeded, id responseData))completion;
 

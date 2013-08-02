@@ -11,6 +11,12 @@
 #import "CDIWork.h"
 #import "UIImageView+Addition.h"
 #import "UIView+Addition.h"
+#import "ProjectDetailUserCell.h"
+#import "CDIUser.h"
+#import "CDINetClient.h"
+#import "UIImageView+Addition.h"
+#import "ModelPanelViewController.h"
+#import "PeopleInfoViewController.h"
 
 #define kLineSpacing 4
 
@@ -25,6 +31,9 @@
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *projectInfoLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *projectInfoLabelHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITableView *userListTableView;
+
+@property (nonatomic, weak) CDIUser *selectedUser;
 
 @end
 
@@ -58,6 +67,10 @@
                  value:style
                  range:NSMakeRange(0, string.length)];
   [_projectInfoLabel setAttributedText:string];
+  
+  _userListTableView.delegate = self;
+  _userListTableView.dataSource = self;
+  [self loadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -71,6 +84,28 @@
 {
   [super updateViewConstraints];
   [self.projectInfoLabelHeightConstraint setConstant:[self heightForContentLabel]];
+  _userListTableView.transform = CGAffineTransformMakeRotation(-M_PI_2);
+}
+
+- (void)loadData
+{
+  CDINetClient *client = [CDINetClient client];
+  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+    NSDictionary *rawDict = responseData;
+    if ([responseData isKindOfClass:[NSDictionary class]]) {
+      NSArray *peopleArray = rawDict[@"data"];
+      for (NSDictionary *dict in peopleArray) {
+        [CDIUser insertUserInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
+      }
+      [self.managedObjectContext processPendingChanges];
+      [self.fetchedResultsController performFetch:nil];
+      
+      [self.userListTableView reloadData];
+    }
+  };
+  
+  [client getUserListWithWorkID:self.work.workID
+                     completion:handleData];
 }
 
 - (CGFloat)heightForContentLabel
@@ -83,8 +118,52 @@
   
   CFRelease(framesetter);
   return frameSize.height + 25;
+  return 100;
 }
 
+- (void)configureRequest:(NSFetchRequest *)request
+{
+  request.entity = [NSEntityDescription entityForName:@"CDIUser"
+                               inManagedObjectContext:self.managedObjectContext];
+  NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:NO];
+  request.sortDescriptors = @[sortDescriptor];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+{
+  return self.fetchedResultsController.fetchedObjects.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  CDIUser *user = self.fetchedResultsController.fetchedObjects[indexPath.row];
+  ProjectDetailUserCell *cell = [self.userListTableView dequeueReusableCellWithIdentifier:@"ProjectDetailUserCell"];
+  [cell.userAvatarImageVIew loadImageFromURL:user.avatarSmallURL completion:^(BOOL succeeded) {
+    [cell.userAvatarImageVIew fadeIn];
+  }];
+  cell.userAvatarImageVIew.layer.masksToBounds = YES;
+  cell.userAvatarImageVIew.layer.cornerRadius = 20;
+  return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return 50;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  self.selectedUser = self.fetchedResultsController.fetchedObjects[indexPath.row];
+  PeopleInfoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleInfoViewController"];
+  vc.user = self.fetchedResultsController.fetchedObjects[indexPath.row];
+  vc.index = indexPath.row;
+  [ModelPanelViewController displayModelPanelWithViewController:vc
+                                                  withTitleName:vc.user.name
+                                             functionButtonName:@"Write"
+                                                       imageURL:vc.user.avatarSmallURL
+                                                           type:ModelPanelTypePeopleInfo
+                                                       callBack:nil];
+}
 
 - (IBAction)didClickBackButton:(UIButton *)sender
 {

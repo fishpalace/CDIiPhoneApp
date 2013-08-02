@@ -57,7 +57,7 @@
   
   NSString *buttonTitle = @"";
   if (self.currentDevice.available.boolValue) {
-    if ([self.currentDevice.deviceStatus isEqualToString:@"Pending"]) {
+    if ([self.appliedDeviceStrings containsObject:self.currentDevice.deviceID]) {
       buttonTitle = @"Reservation Pending";
       self.reserveButton.enabled = NO;
     } else {

@@ -13,6 +13,7 @@
 @interface DeviceInfoViewController : CoreDataViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) CDIDevice *currentDevice;
+@property (nonatomic, strong) NSMutableArray *appliedDeviceStrings;
 
 - (void)loadData;
 

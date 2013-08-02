@@ -33,6 +33,9 @@
 @property (nonatomic, retain) NSNumber * occupiedByD;
 @property (nonatomic, retain) NSDate * updateTime;
 @property (nonatomic, retain) CDIUser *creator;
+@property (nonatomic, retain) NSString * imageURL;
+@property (nonatomic, retain) NSString * previewImageURL;
+@property (nonatomic, retain) NSString * type;
 
 + (CDIEvent *)sharedNewEvent;
 + (id)eventInstanceWithTitle:(NSString *)title;

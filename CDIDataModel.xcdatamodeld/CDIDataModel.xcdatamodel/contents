@@ -31,6 +31,7 @@
         <attribute name="endValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="eventID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eventStoreID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isPlaceHolder" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="occupiedByA" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -38,10 +39,12 @@
         <attribute name="occupiedByC" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="occupiedByD" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="passed" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="previewImageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="relatedInfo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="roomID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDIUser" inverseName="events" inverseEntity="CDIUser" syncable="YES"/>
     </entity>
@@ -98,12 +101,12 @@
         <relationship name="involvedUser" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDIUser" inverseName="relatedWork" inverseEntity="CDIUser" syncable="YES"/>
     </entity>
     <elements>
+        <element name="CDIApplication" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDIDevice" positionX="0" positionY="0" width="0" height="0"/>
         <element name="CDIEvent" positionX="0" positionY="0" width="0" height="0"/>
         <element name="CDINews" positionX="0" positionY="0" width="0" height="0"/>
         <element name="CDIRoom" positionX="0" positionY="0" width="0" height="0"/>
         <element name="CDIUser" positionX="0" positionY="0" width="0" height="0"/>
         <element name="CDIWork" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="CDIApplication" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="CDIDevice" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

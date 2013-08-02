@@ -35,6 +35,9 @@ static CDIEvent *sharedNewEvent;
 @dynamic occupiedByD;
 @dynamic updateTime;
 @dynamic creator;
+@dynamic imageURL;
+@dynamic previewImageURL;
+@dynamic type;
 
 + (CDIEvent *)sharedNewEvent
 {
@@ -165,6 +168,10 @@ static CDIEvent *sharedNewEvent;
   self.name = [self stringForDict:dict key:@"title"];
   self.relatedInfo = [self stringForDict:dict key:@"relatedInfo"];
   self.accessKey = [self stringForDict:dict key:@"accessKey"];
+  self.imageURL = [self stringForDict:dict key:@"imageUrl"];
+  self.previewImageURL = [self stringForDict:dict key:@"previewImageUrl"];
+  NSString *type = [self stringForDict:dict key:@"type"];
+  self.type = type;
   NSNumber *start = dict[@"startDate"];
   NSNumber *end = dict[@"endDate"];
   self.startDate = [NSDate dateWithTimeIntervalSince1970:start.longLongValue / 1000];

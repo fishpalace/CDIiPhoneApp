@@ -23,6 +23,9 @@
                       toDate:(NSString *)toDate
                   completion:(void (^)(BOOL succeeded, id responseData))completion;
 
+- (void)getSpecialEventListByCount:(int)count
+                        completion:(void (^)(BOOL succeeded, id responseData))completion;
+
 - (void)getEventListfromDate:(NSString *)fromDate
                       toDate:(NSString *)toDate
                         type:(EventType)type

@@ -46,6 +46,14 @@ static CDINetClient *sharedClient;
   [self getPath:path completion:completion];
 }
 
+- (void)getSpecialEventListByCount:(int)count
+                        completion:(void (^)(BOOL succeeded, id responseData))completion
+
+{
+  NSString *path = [NSString stringWithFormat:@"event/getNewEvents/%d", count];
+  [self getPath:path completion:completion];
+}
+
 - (void)getEventListfromDate:(NSString *)fromDate
                       toDate:(NSString *)toDate
                         type:(EventType)type

@@ -147,6 +147,7 @@ static CDIEvent *sharedNewEvent;
   NSFetchRequest *request = [[NSFetchRequest alloc] init];
   
   [request setEntity:[NSEntityDescription entityForName:@"CDIEvent" inManagedObjectContext:context]];
+  request.predicate = [NSPredicate predicateWithFormat:@"typeOrigin == %@", @"DISCUSSION"];
   NSArray *items = [context executeFetchRequest:request error:NULL];
   for (CDIEvent *event in items) {
     if (![event.updateTime isEqualToDate:updateDate]) {
@@ -173,21 +174,26 @@ static CDIEvent *sharedNewEvent;
   self.accessKey = [self stringForDict:dict key:@"accessKey"];
   self.imageURL = [self stringForDict:dict key:@"imageUrl"];
   self.previewImageURL = [self stringForDict:dict key:@"previewImageUrl"];
-  self.typeOrigin = [self stringForDict:dict key:@"type"];
-  if ([self.typeOrigin isEqualToString:@"DISCUSSION"]) {
-    self.eventType = EventTypeDiscussion;
-    self.type = @"Discussion";
-  } else if ([self.typeOrigin isEqualToString:@"EXHIBITION"]) {
-    self.eventType = EventTypeExhibition;
-    self.type = @"Exhibition";
-  } else if ([self.typeOrigin isEqualToString:@"WORKSHOP"]) {
-    self.eventType = EventTypeWorkShop;
-    self.type = @"Workshop";
-  }
+  
   NSNumber *start = dict[@"startDate"];
   NSNumber *end = dict[@"endDate"];
   self.startDate = [NSDate dateWithTimeIntervalSince1970:start.longLongValue / 1000];
   self.endDate = [NSDate dateWithTimeIntervalSince1970:end.longLongValue  / 1000];
+  
+  self.typeOrigin = [self stringForDict:dict key:@"type"];
+  if ([self.typeOrigin isEqualToString:@"DISCUSSION"]) {
+    self.eventType = EventTypeDiscussion;
+    self.type = @"Discussion";
+    NSLog(@"%@, %@, %@", self.name, self.startDate, self.typeOrigin);
+  } else if ([self.typeOrigin isEqualToString:@"EXHIBITION"]) {
+    self.eventType = EventTypeExhibition;
+    self.type = @"Exhibition";
+    NSLog(@"%@, %@, %@", self.name, self.startDate, self.typeOrigin);
+  } else if ([self.typeOrigin isEqualToString:@"WORKSHOP"]) {
+    self.eventType = EventTypeWorkShop;
+    self.type = @"Workshop";
+    NSLog(@"%@, %@, %@", self.name, self.startDate, self.typeOrigin);
+  }
   
   NSString *status = dict[@"status"];
   NSDate *ensureEndDate = [self.startDate dateByAddingTimeInterval:30 * 60];

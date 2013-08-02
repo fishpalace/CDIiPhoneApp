@@ -59,8 +59,12 @@
 
 - (void)configureRequest:(NSFetchRequest *)request
 {
+  NSDate *fromDate = [[NSDate date] dateWithoutTime];
+  NSDate *toDate = [fromDate dateByAddingTimeInterval:3600 * 24 * 2];
+  
   request.entity = [NSEntityDescription entityForName:@"CDIEvent"
                                inManagedObjectContext:self.managedObjectContext];
+  request.predicate = [NSPredicate predicateWithFormat:@"(startDate >= %@ && startDate <= %@) || (startDate <= %@ && endDate >= %@)", fromDate, toDate, fromDate, toDate];
   NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES];
 
   request.sortDescriptors = @[sortDescriptor];

@@ -79,8 +79,6 @@ static CDIDataSource *sharedDataSource;
 #pragma mark - Main Panel Data
 - (void)fetchEvents
 {
-  NSString *fromDate = [[NSDate dateWithTimeIntervalSince1970:0] stringExpression];
-  NSString *toDate = [NSDate stringOfDateWithIntervalFromCurrentDate:3600 * 24 * 2];
   CDINetClient *client = [CDINetClient client];
   void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
     if ([responseData isKindOfClass:[NSDictionary class]]) {
@@ -102,10 +100,8 @@ static CDIDataSource *sharedDataSource;
     }
   };
   
-  [client getEventListfromDate:fromDate
-                        toDate:toDate
-                          type:EventTypeNone
-                    completion:handleData];
+  [client getSpecialEventListByCount:8
+                          completion:handleData];
 }
 
 - (void)fetchNews
@@ -358,8 +354,14 @@ static CDIDataSource *sharedDataSource;
   [self.roomDtodayEvents removeAllObjects];
   [self.roomDtomorrowEvents removeAllObjects];
   
-  NSDate *tomorrowDate = [[NSDate todayDateStartingFromHour:0] dateByAddingTimeInterval:3600 * 24];
+  NSDate *todayDate = [NSDate todayDateStartingFromHour:0];
+  NSDate *tomorrowDate = [[NSDate todayDateStartingFromHour:0] dateByAddingTimeInterval:3600 * 24 * 2];
   for (CDIEvent *event in self.fetchedResultsController.fetchedObjects) {
+    if (![event.typeOrigin isEqualToString:@"DISCUSSION"]) {
+      if ([event.endDate earilierThanDate:todayDate] || [tomorrowDate earilierThanDate:event.startDate]) {
+        continue;
+      }
+    }
     CDIEventDAO *eventDAO = [CDIEventDAO eventDAOInstanceWithEvent:event];
     BOOL isToday = [[event.startDate laterDate:tomorrowDate] isEqualToDate:tomorrowDate];
     NSMutableArray *array = nil;
@@ -657,7 +659,7 @@ static CDIDataSource *sharedDataSource;
     fetchRequest.entity = [NSEntityDescription entityForName:@"CDIEvent"
                                       inManagedObjectContext:self.managedObjectContext];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES];
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"startDate >= %@ && endDate <= %@", fromDate, toDate];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(startDate >= %@ && startDate <= %@) || (startDate <= %@ && endDate >= %@)", fromDate, toDate, fromDate, toDate];
     fetchRequest.sortDescriptors = @[sortDescriptor];
         
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];

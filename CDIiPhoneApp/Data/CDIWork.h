@@ -29,6 +29,7 @@
 @property (nonatomic, retain) NSString * workID;
 @property (nonatomic, retain) CDIUser *creator;
 @property (nonatomic, retain) NSSet *involvedUser;
+@property (nonatomic, retain) NSString * workTypeOrigin;
 
 + (CDIWork *)insertWorkInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context;
 + (CDIWork *)workWithWorkID:(NSString *)workID inManagedObjectContext:(NSManagedObjectContext *)context;

@@ -29,6 +29,7 @@
 @dynamic workID;
 @dynamic creator;
 @dynamic involvedUser;
+@dynamic workTypeOrigin;
 
 + (CDIWork *)insertWorkInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context
 {
@@ -76,12 +77,12 @@
   } else if ([work.workStatus isEqualToString:@"COMPLETED"]) {
     work.workStatus = @"Completed";
   }
-  work.workType = [NSString stringForDict:dict key:@"type"];
-  if ([work.workType isEqualToString:@"TANGIBLE_INTERACTIVE_OBJECTS"]) {
+  work.workTypeOrigin = [NSString stringForDict:dict key:@"type"];
+  if ([work.workTypeOrigin isEqualToString:@"TANGIBLE_INTERACTIVE_OBJECTS"]) {
     work.workType = @"Tangible Interactive Objects";
-  } else if ([work.workType isEqualToString:@"APPLICATION_SYSTEM"]) {
+  } else if ([work.workTypeOrigin isEqualToString:@"APPLICATION_SYSTEM"]) {
     work.workType = @"Application System";
-  } else if ([work.workType isEqualToString:@"RESEARCH"]) {
+  } else if ([work.workTypeOrigin isEqualToString:@"RESEARCH"]) {
     work.workType = @"Research";
   }
   

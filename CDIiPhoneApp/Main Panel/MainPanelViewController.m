@@ -16,6 +16,9 @@
 #import "GYPositionBounceAnimation.h"
 #import "NSNotificationCenter+Addition.h"
 #import "AppDelegate.h"
+#import "CDINews.h"
+#import "CDIWork.h"
+#import "CDIEvent.h"
 
 @interface MainPanelViewController ()
 
@@ -31,6 +34,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTopSpaceConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewTopSpaceConstraint;
 
+@property (nonatomic, strong) NSFetchedResultsController *frEventsController;
+@property (nonatomic, strong) NSFetchedResultsController *frProjectsController;
+@property (nonatomic, strong) NSFetchedResultsController *frNewsController;
+@property (nonatomic, strong) NSFetchedResultsController *frLabController;
+
 @end
 
 @implementation MainPanelViewController
@@ -41,6 +49,7 @@
   [self configureBasicViews];
   [NSNotificationCenter registerShouldBounceDownNotificationWithSelector:@selector(bounceDown) target:self];
   [NSNotificationCenter registerShouldBounceUpNotificationWithSelector:@selector(bounceUp) target:self];
+  [NSNotificationCenter registerDidFetchNewDataNotificationWithSelector:@selector(refresh) target:self];
 }
 
 #pragma mark - View Setup Methods
@@ -84,7 +93,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return 3;
+  return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -121,6 +130,40 @@
 - (BOOL)isActiveForRow:(NSInteger)row
 {
   return self.currentActiveRow == row;
+}
+
+- (NSString *)imageURLForCellAtIndex:(NSInteger)index atRow:(NSInteger)row
+{
+  NSString *imageURL = @"";
+  if (index == 0) {
+    CDIEvent *event = self.frEventsController.fetchedObjects[row];
+    imageURL = event.previewImageURL;
+  } else if (index == 1) {
+    CDIWork *work = self.frProjectsController.fetchedObjects[row];
+    imageURL = work.previewImageURL;
+  } else if (index == 2) {
+    CDINews *news = self.frNewsController.fetchedObjects[row];
+    imageURL = news.imageURL;
+  } else if (index == 3) {
+    CDIWork *work = self.frLabController.fetchedObjects[row];
+    imageURL = work.previewImageURL;
+  }
+  return imageURL;
+}
+
+- (NSInteger)numberOfRowsAtRow:(NSInteger)row
+{
+  NSFetchedResultsController *fc = nil;
+  if (row == 0) {
+    fc = self.frEventsController;
+  } else if (row == 1) {
+    fc = self.frProjectsController;
+  } else if (row == 2) {
+    fc = self.frNewsController;
+  } else if (row == 3) {
+    fc = self.frLabController;
+  }
+  return fc.fetchedObjects.count > 8 ? 8 : fc.fetchedObjects.count;
 }
 
 #pragma mark - Drag View Delegate
@@ -188,6 +231,92 @@
     [self.tableViewContainerView addSubview:_menuPanelContainerViewController.view];
   }
   return _menuPanelViewController;
+}
+
+- (void)refresh
+{
+  [self.frEventsController performFetch:nil];
+  
+  [self.frLabController performFetch:nil];
+  
+  [self.frNewsController performFetch:nil];
+  
+  [self.frProjectsController performFetch:nil];
+}
+
+- (NSFetchedResultsController *)frEventsController
+{
+  if (_frEventsController == nil) {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    fetchRequest.entity = [NSEntityDescription entityForName:@"CDIEvent"
+                                      inManagedObjectContext:self.managedObjectContext];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"typeOrigin != %@", @"DISCUSSION"];
+    fetchRequest.sortDescriptors = @[sortDescriptor];
+    
+    _frEventsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    _frEventsController.delegate = self;
+    
+    [_frEventsController performFetch:nil];
+  }
+  return _frEventsController;
+}
+
+- (NSFetchedResultsController *)frLabController
+{
+  if (_frLabController == nil) {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    fetchRequest.entity = [NSEntityDescription entityForName:@"CDIWork"
+                                      inManagedObjectContext:self.managedObjectContext];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"workTypeOrigin == %@", @"TANGIBLE_INTERACTIVE_OBJECTS"];
+    fetchRequest.sortDescriptors = @[sortDescriptor];
+    
+    _frLabController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    _frLabController.delegate = self;
+    
+    [_frLabController performFetch:nil];
+  }
+  return _frLabController;
+}
+
+- (NSFetchedResultsController *)frNewsController
+{
+  if (_frNewsController == nil) {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    fetchRequest.entity = [NSEntityDescription entityForName:@"CDINews"
+                                      inManagedObjectContext:self.managedObjectContext];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+    fetchRequest.sortDescriptors = @[sortDescriptor];
+    
+    _frNewsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    _frNewsController.delegate = self;
+    
+    [_frNewsController performFetch:nil];
+  }
+  return _frNewsController;
+}
+
+- (NSFetchedResultsController *)frProjectsController
+{
+  if (_frProjectsController == nil) {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    fetchRequest.entity = [NSEntityDescription entityForName:@"CDIWork"
+                                      inManagedObjectContext:self.managedObjectContext];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"workTypeOrigin != %@", @"TANGIBLE_INTERACTIVE_OBJECTS"];
+    fetchRequest.sortDescriptors = @[sortDescriptor];
+    
+    _frProjectsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    _frProjectsController.delegate = self;
+    
+    [_frProjectsController performFetch:nil];
+  }
+  return _frProjectsController;
 }
 
 @end

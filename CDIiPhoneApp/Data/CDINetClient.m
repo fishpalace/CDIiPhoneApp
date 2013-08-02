@@ -48,10 +48,19 @@ static CDINetClient *sharedClient;
 
 - (void)getEventListfromDate:(NSString *)fromDate
                       toDate:(NSString *)toDate
+                        type:(EventType)type
                   completion:(void (^)(BOOL succeeded, id responseData))completion
 
 {
-  NSString *path = [NSString stringWithFormat:@"event/getEventListWithRoomInfoByDateAndTypeAndStatus/%@/%@/*/*/100/1", fromDate, toDate];
+  NSString *typeString = @"*";
+  if (type == EventTypeDiscussion) {
+    typeString = @"DISCUSSION";
+  } else if (type == EventTypeExhibition) {
+    typeString = @"EXHIBITION";
+  } else if (type == EventTypeWorkShop) {
+    typeString = @"WORKSHOP";
+  }
+  NSString *path = [NSString stringWithFormat:@"event/getEventListWithRoomInfoByDateAndTypeAndStatus/%@/%@/%@/*/100/1", fromDate, toDate, typeString];
   [self getPath:path completion:completion];
 }
 

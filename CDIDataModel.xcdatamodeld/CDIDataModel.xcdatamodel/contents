@@ -45,6 +45,7 @@
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typeOrigin" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDIUser" inverseName="events" inverseEntity="CDIUser" syncable="YES"/>
     </entity>
@@ -97,6 +98,7 @@
         <attribute name="workInfoEn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="workStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="workType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workTypeOrigin" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDIUser" inverseName="work" inverseEntity="CDIUser" syncable="YES"/>
         <relationship name="involvedUser" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDIUser" inverseName="relatedWork" inverseEntity="CDIUser" syncable="YES"/>
     </entity>

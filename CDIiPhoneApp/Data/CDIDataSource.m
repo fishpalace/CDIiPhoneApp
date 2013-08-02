@@ -15,6 +15,7 @@
 #import "AppDelegate.h"
 #import "CDIEventDAO.h"
 #import "CDIWork.h"
+#import "CDINews.h"
 
 @interface CDIDataSource ()
 
@@ -28,6 +29,7 @@
 @property (nonatomic, strong) NSMutableArray *roomCtomorrowEvents;
 @property (nonatomic, strong) NSMutableArray *roomDtodayEvents;
 @property (nonatomic, strong) NSMutableArray *roomDtomorrowEvents;
+@property (nonatomic, strong) NSMutableArray *eventsExceptSchedules;
 @property (nonatomic, strong) NSTimer *eventTimer;
 @property (nonatomic, strong) NSTimer *roomInfoTimer;
 @property (nonatomic, strong) NSString *currentRoomName;
@@ -67,12 +69,65 @@ static CDIDataSource *sharedDataSource;
     [self.eventTimer fire];
     [self.roomInfoTimer fire];
     [NSNotificationCenter registerShouldChangeLocalDatasourceNotificationWithSelector:@selector(updateLocalEventsArray) target:self];
-    [self getProjects];
+    [self fetchEvents];
+    [self fetchNews];
+    [self fetchProjects];
   }
   return self;
 }
 
-- (void)getProjects
+#pragma mark - Main Panel Data
+- (void)fetchEvents
+{
+  NSString *fromDate = [[NSDate dateWithTimeIntervalSince1970:0] stringExpression];
+  NSString *toDate = [NSDate stringOfDateWithIntervalFromCurrentDate:3600 * 24 * 2];
+  CDINetClient *client = [CDINetClient client];
+  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+    if ([responseData isKindOfClass:[NSDictionary class]]) {
+      NSDictionary *dict = responseData;
+      NSDate *currentDate = [NSDate date];
+      if ([dict[@"data"] isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *eventDict in dict[@"data"]) {
+          [CDIEvent insertUserInfoWithDict:eventDict
+                                updateTime:currentDate
+                    inManagedObjectContext:self.managedObjectContext];
+        }
+      }
+      [CDIEvent removeEventsOlderThanUpdateDate:currentDate
+                         inManagedObjectContext:self.managedObjectContext];
+      [self.managedObjectContext processPendingChanges];
+      [self.fetchedResultsController performFetch:nil];
+      [self updateLocalEventsArray];
+      [NSNotificationCenter postDidFetchNewDataNotification];
+    }
+  };
+  
+  [client getEventListfromDate:fromDate
+                        toDate:toDate
+                          type:EventTypeNone
+                    completion:handleData];
+}
+
+- (void)fetchNews
+{
+  CDINetClient *client = [CDINetClient client];
+  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+    NSDictionary *rawDict = responseData;
+    if ([responseData isKindOfClass:[NSDictionary class]]) {
+      NSArray *peopleArray = rawDict[@"data"];
+      for (NSDictionary *dict in peopleArray) {
+        [CDINews insertNewsInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
+      }
+      [self.managedObjectContext processPendingChanges];
+      [self.fetchedResultsController performFetch:nil];
+      [NSNotificationCenter postDidFetchNewDataNotification];
+    }
+  };
+  
+  [client getNewsListWithCompletion:handleData];
+}
+
+- (void)fetchProjects
 {
   CDINetClient *client = [CDINetClient client];
   void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
@@ -82,6 +137,7 @@ static CDIDataSource *sharedDataSource;
       for (NSDictionary *dict in peopleArray) {
         [CDIWork insertWorkInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
       }
+      [NSNotificationCenter postDidFetchNewDataNotification];
     }
   };
   
@@ -261,6 +317,7 @@ static CDIDataSource *sharedDataSource;
   
   [client getEventListfromDate:fromDate
                         toDate:toDate
+                          type:EventTypeNone
                     completion:handleData];
   
   if (![CDIUser currentUserInContext:self.managedObjectContext]) {
@@ -513,6 +570,14 @@ static CDIDataSource *sharedDataSource;
   return _roomDtomorrowEvents;
 }
 
+- (NSMutableArray *)eventsExceptSchedules
+{
+  if (!_eventsExceptSchedules) {
+    _eventsExceptSchedules = [NSMutableArray array];
+  }
+  return _eventsExceptSchedules;
+}
+
 - (NSMutableDictionary *)roomNameDict
 {
   if (!_roomNameDict) {
@@ -586,10 +651,13 @@ static CDIDataSource *sharedDataSource;
   if (_fetchedResultsController == nil) {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     
+    NSDate *fromDate = [[NSDate date] dateWithoutTime];
+    NSDate *toDate = [fromDate dateByAddingTimeInterval:3600 * 24 * 2];
+    
     fetchRequest.entity = [NSEntityDescription entityForName:@"CDIEvent"
                                       inManagedObjectContext:self.managedObjectContext];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES];
-//    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"operatedBy == %@ && currentUserID == %@",self.coreDataIdentifier, self.currentUser.userID];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"startDate >= %@ && endDate <= %@", fromDate, toDate];
     fetchRequest.sortDescriptors = @[sortDescriptor];
         
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];

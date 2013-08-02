@@ -13,6 +13,7 @@
 #define kDidFetchNewEvents    @"kDidFetchNewEvents"
 #define kDidChangeCurrentUser @"kDidChangeCurrentUser"
 #define kShouldChangeLocalDatasource @"kShouldChangeLocalDatasource"
+#define kDidFetchNewDataNotification @"kDidFetchNewDataNotification"
 
 @implementation NSNotificationCenter (Addition)
 
@@ -39,6 +40,11 @@
 + (void)postShouldChangeLocalDatasourceNotification
 {
   [[NSNotificationCenter defaultCenter] postNotificationName:kShouldChangeLocalDatasource object:nil userInfo:nil];
+}
+
++ (void)postDidFetchNewDataNotification
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:kDidFetchNewDataNotification object:nil userInfo:nil];
 }
 
 + (void)registerShouldBounceDownNotificationWithSelector:(SEL)aSelector target:(id)aTarget
@@ -78,6 +84,14 @@
   NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
   [center addObserver:aTarget selector:aSelector
                  name:kShouldChangeLocalDatasource
+               object:nil];
+}
+
++ (void)registerDidFetchNewDataNotificationWithSelector:(SEL)aSelector target:(id)aTarget
+{
+  NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+  [center addObserver:aTarget selector:aSelector
+                 name:kDidFetchNewDataNotification
                object:nil];
 }
 

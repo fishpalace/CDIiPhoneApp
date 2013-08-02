@@ -36,6 +36,10 @@
 @property (nonatomic, retain) NSString * imageURL;
 @property (nonatomic, retain) NSString * previewImageURL;
 @property (nonatomic, retain) NSString * type;
+@property (nonatomic, retain) NSString * typeOrigin;
+
+
+@property (nonatomic, readwrite) EventType eventType;
 
 + (CDIEvent *)sharedNewEvent;
 + (id)eventInstanceWithTitle:(NSString *)title;

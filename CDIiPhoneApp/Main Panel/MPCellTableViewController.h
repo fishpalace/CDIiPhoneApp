@@ -13,16 +13,19 @@
 - (void)cellForRow:(NSInteger)row didMoveByOffset:(CGFloat)offset;
 - (void)registerCurrentActiveRow:(NSInteger)row;
 - (BOOL)isActiveForRow:(NSInteger)row;
+- (NSString *)imageURLForCellAtIndex:(NSInteger)index atRow:(NSInteger)row;
+- (NSInteger)numberOfRowsAtRow:(NSInteger)row;
 
 @end
 
-@interface MPCellTableViewController : UITableViewController <UIScrollViewDelegate>
+@interface MPCellTableViewController : UITableViewController <UIScrollViewDelegate, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, assign) NSInteger row;
 @property (nonatomic, weak) id<MPCellTableViewControllerDelegate> delegate;
 
 - (void)setUpWithRow:(NSInteger)row
             delegate:(id<MPCellTableViewControllerDelegate>)delegate;
+
 - (void)moveByOffset:(CGFloat)offset;
 
 @end

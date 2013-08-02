@@ -38,6 +38,9 @@ static CDIEvent *sharedNewEvent;
 @dynamic imageURL;
 @dynamic previewImageURL;
 @dynamic type;
+@dynamic typeOrigin;
+
+@synthesize eventType;
 
 + (CDIEvent *)sharedNewEvent
 {
@@ -170,8 +173,17 @@ static CDIEvent *sharedNewEvent;
   self.accessKey = [self stringForDict:dict key:@"accessKey"];
   self.imageURL = [self stringForDict:dict key:@"imageUrl"];
   self.previewImageURL = [self stringForDict:dict key:@"previewImageUrl"];
-  NSString *type = [self stringForDict:dict key:@"type"];
-  self.type = type;
+  self.typeOrigin = [self stringForDict:dict key:@"type"];
+  if ([self.typeOrigin isEqualToString:@"DISCUSSION"]) {
+    self.eventType = EventTypeDiscussion;
+    self.type = @"Discussion";
+  } else if ([self.typeOrigin isEqualToString:@"EXHIBITION"]) {
+    self.eventType = EventTypeExhibition;
+    self.type = @"Exhibition";
+  } else if ([self.typeOrigin isEqualToString:@"WORKSHOP"]) {
+    self.eventType = EventTypeWorkShop;
+    self.type = @"Workshop";
+  }
   NSNumber *start = dict[@"startDate"];
   NSNumber *end = dict[@"endDate"];
   self.startDate = [NSDate dateWithTimeIntervalSince1970:start.longLongValue / 1000];
@@ -215,6 +227,5 @@ static CDIEvent *sharedNewEvent;
   }
   return stringValue;
 }
-
 
 @end

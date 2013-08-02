@@ -10,7 +10,7 @@
 #import "MPCellTableViewController.h"
 #import "MPDragIndicatorView.h"
 
-@interface MainPanelViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,
+@interface MainPanelViewController : CoreDataViewController <UITableViewDelegate, UITableViewDataSource,
     MPCellTableViewControllerDelegate, MPDragIndicatorViewDelegate, UIScrollViewDelegate>
 
 @end

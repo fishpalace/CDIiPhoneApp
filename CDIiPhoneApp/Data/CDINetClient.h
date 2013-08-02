@@ -25,6 +25,7 @@
 
 - (void)getEventListfromDate:(NSString *)fromDate
                       toDate:(NSString *)toDate
+                        type:(EventType)type
                   completion:(void (^)(BOOL succeeded, id responseData))completion;
 
 - (void)getReservationListOfUserID:(NSString *)userID

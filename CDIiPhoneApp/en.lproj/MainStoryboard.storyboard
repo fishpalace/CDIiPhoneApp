@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4488.1" systemVersion="13A524d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4488.1" systemVersion="13A524d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vz7-5T-6ED">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <development version="5000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3715.3"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Osv-FZ-4UX">
+            <objects>
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="vz7-5T-6ED" sceneMemberID="viewController">
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Slu-H3-hEr">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="UW5-fg-sr4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ED7-7N-bWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-864" y="-616"/>
+        </scene>
         <!--Main Panel View Controller-->
         <scene sceneID="5">
             <objects>
@@ -58,6 +76,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="uiL-aH-9V5"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -957,25 +976,25 @@
         <scene sceneID="B33-bW-gwC">
             <objects>
                 <tableViewController storyboardIdentifier="MPCellTableViewController" id="qUL-zn-NPO" customClass="MPCellTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="202" sectionHeaderHeight="22" sectionFooterHeight="22" id="zC1-YK-1Xi">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="202" sectionHeaderHeight="22" sectionFooterHeight="22" id="zC1-YK-1Xi">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MPCellTableViewCell" rowHeight="200" id="2LO-4G-Iog" customClass="MPCellTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MPCellTableViewCell" rowHeight="200" id="2LO-4G-Iog" customClass="MPCellTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2LO-4G-Iog" id="LOl-un-qM5">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" image="mp_selection_proj1.png" translatesAutoresizingMaskIntoConstraints="NO" id="LL8-eI-Vsm">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="mp_selection_proj1.png" translatesAutoresizingMaskIntoConstraints="NO" id="LL8-eI-Vsm">
                                             <rect key="frame" x="15" y="7" width="170" height="170"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="center" image="mp_cell_cover.png" translatesAutoresizingMaskIntoConstraints="NO" id="zez-Ik-TWX">
                                             <rect key="frame" x="5" y="-2" width="190" height="190"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" image="mp_selection_cover.png" translatesAutoresizingMaskIntoConstraints="NO" id="LE8-cO-ral">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="mp_selection_cover.png" translatesAutoresizingMaskIntoConstraints="NO" id="LE8-cO-ral">
                                             <rect key="frame" x="15" y="7" width="170" height="170"/>
                                         </imageView>
                                     </subviews>

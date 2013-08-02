@@ -10,6 +10,10 @@
 #import "MPCellTableViewCell.h"
 #import "UIView+Resize.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
+#import "UIImageView+Addition.h"
+#import "UIView+Addition.h"
+#import "NSNotificationCenter+Addition.h"
 
 @interface MPCellTableViewController ()
 
@@ -31,6 +35,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  [NSNotificationCenter registerDidFetchNewDataNotificationWithSelector:@selector(refresh) target:self];
 }
 
 - (void)setUpWithRow:(NSInteger)row delegate:(id<MPCellTableViewControllerDelegate>)delegate
@@ -48,6 +53,11 @@
   [self.tableView setContentOffset:targetPoint];
 }
 
+- (void)refresh
+{
+  [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -57,27 +67,29 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return 4;
+  NSInteger numberOfRows = 0;
+  if ([self.delegate respondsToSelector:@selector(numberOfRowsAtRow:)]) {
+    numberOfRows = [self.delegate numberOfRowsAtRow:self.row];
+  }
+  return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   static NSString *CellIdentifier = @"MPCellTableViewCell";
   MPCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-  NSString *imageNameBase = nil;
-  if (self.row == 0) {
-    imageNameBase = @"test_proj_";
-  } else if (self.row == 1) {
-    imageNameBase = @"test_activity_";
-  } else {
-    imageNameBase = @"test_news_";
+  NSString *imageName = @"";
+  if ([self.delegate respondsToSelector:@selector(imageURLForCellAtIndex:atRow:)]) {
+    imageName = [self.delegate imageURLForCellAtIndex:self.row atRow:indexPath.row];
   }
-  
-  cell.contentImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%d", imageNameBase, indexPath.row + 1]];
-  
-//  cell.contentImageView.layer.cornerRadius = 5;
-//  cell.contentImageView.layer.masksToBounds = YES;
 
+  [cell.contentImageView loadImageFromURL:imageName completion:^(BOOL succeeded) {
+    [cell.contentImageView fadeIn];
+    cell.contentImageView.layer.masksToBounds = YES;
+    cell.contentImageView.layer.cornerRadius = 5;
+  }];
+//  cell.contentImageView.layer.cornerRadius = 5;
+  cell.contentImageView.layer.masksToBounds = YES;
   
   return cell;
 }

@@ -122,4 +122,11 @@
 
 #define kTopBarHeight 42
 
+typedef enum {
+  EventTypeDiscussion,
+  EventTypeExhibition,
+  EventTypeWorkShop,
+  EventTypeNone
+} EventType;
+
 #endif

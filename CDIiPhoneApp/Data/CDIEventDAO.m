@@ -51,6 +51,10 @@ static CDIEventDAO *sharedNewEvent;
   eventCopy.abandoned = event.abandoned;
   eventCopy.roomID = event.roomID;
   eventCopy.updateTime = event.updateTime;
+  eventCopy.imageURL = event.imageURL;
+  eventCopy.previewImageURL = event.previewImageURL;
+  eventCopy.type = event.type;
+  eventCopy.eventType = event.eventType;
   return eventCopy;
 }
 
@@ -71,6 +75,10 @@ static CDIEventDAO *sharedNewEvent;
   sharedEvent.abandoned = event.abandoned;
   sharedEvent.roomID = event.roomID;
   sharedEvent.updateTime = event.updateTime;
+  sharedEvent.imageURL = event.imageURL;
+  sharedEvent.previewImageURL = event.previewImageURL;
+  sharedEvent.type = event.type;
+  sharedEvent.eventType = event.eventType;
   
   sharedNewEvent.eventJustCreated = NO;
 }
@@ -93,6 +101,10 @@ static CDIEventDAO *sharedNewEvent;
   eventCopy.abandoned = self.abandoned;
   eventCopy.roomID = self.roomID;
   eventCopy.updateTime = self.updateTime;
+  eventCopy.imageURL = self.imageURL;
+  eventCopy.previewImageURL = self.previewImageURL;
+  eventCopy.type = self.type;
+  eventCopy.eventType = self.eventType;
   return eventCopy;
 }
 

@@ -15,6 +15,7 @@
 #import "UIView+Addition.h"
 #import "NSDate+Addition.h"
 #import "DeviceReservationViewController.h"
+#import "DeviceListViewController.h"
 
 @interface DeviceInfoViewController ()
 
@@ -68,10 +69,23 @@
     buttonTitle = @"Device Unavailable";
     self.reserveButton.enabled = NO;
   }
+  
   [self.reserveButton setTitle:buttonTitle forState:UIControlStateNormal];
   [self.reserveButton setTitle:buttonTitle forState:UIControlStateHighlighted];
   [self.reserveButton setTitle:buttonTitle forState:UIControlStateDisabled];
+  
   [self loadData];
+}
+
+- (void)updateViewContent
+{
+  [self.reserveButton setTitle:@"Reservation Pending" forState:UIControlStateNormal];
+  [self.reserveButton setTitle:@"Reservation Pending" forState:UIControlStateHighlighted];
+  [self.reserveButton setTitle:@"Reservation Pending" forState:UIControlStateDisabled];
+  self.reserveButton.enabled = NO;
+  
+  [self loadData];
+  [self.previousController loadApplicationData];
 }
 
 - (void)loadData

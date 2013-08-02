@@ -64,6 +64,8 @@
   _projectPicker.dataSource = self;
   _projectPicker.delegate = self;
   _reserveButton.enabled = NO;
+  [_deviceNameLabel setText:self.currentDevice.deviceName];
+  [_deviceTypeLabel setText:self.currentDevice.deviceType];
   [self.fetchedResultsController performFetch:nil];
 }
 
@@ -214,7 +216,7 @@
   CDINetClient *client = [CDINetClient client];
   void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
     if (succeeded) {
-      [self.prevDeviceInfoViewController loadData];
+      [self.prevDeviceInfoViewController updateViewContent];
       [self.navigationController popViewControllerAnimated:YES];
     } else {
       //TODO:  report error

@@ -206,6 +206,7 @@
 {
   DeviceInfoViewController *vc = segue.destinationViewController;
   vc.currentDevice = self.selectedDevice;
+  vc.previousController = self;
   vc.appliedDeviceStrings = [NSMutableArray array];
   for (CDIApplication *application in self.myApplicationFetchedResultsController.fetchedObjects) {
     [vc.appliedDeviceStrings addObject:application.deviceID];

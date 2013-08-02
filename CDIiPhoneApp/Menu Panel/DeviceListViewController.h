@@ -10,4 +10,6 @@
 
 @interface DeviceListViewController : CoreDataViewController <UITableViewDataSource, UITableViewDelegate>
 
+- (void)loadApplicationData;
+
 @end

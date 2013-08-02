@@ -16,6 +16,8 @@
 #import "NSDate+Addition.h"
 #import "LoginViewController.h"
 #import "NSNotificationCenter+Addition.h"
+#import "ScheduleEventDetailViewController.h"
+#import "CDICalendar.h"
 
 @interface ScheduleListViewController ()
 
@@ -28,6 +30,8 @@
 @property (nonatomic, strong) NSMutableArray  *todayArray;
 @property (nonatomic, strong) NSMutableArray  *tomorrowArray;
 @property (nonatomic, strong) NSTimer         *timer;
+
+@property (nonatomic, weak) CDIEventDAO *selectedEvent;
 
 @property (nonatomic, strong) ScheduleListTableViewController *tableViewController;
 
@@ -55,6 +59,20 @@
 - (void)slTableViewController:(ScheduleListTableViewController *)vc configureRequest:(NSFetchRequest *)request
 {
   [self configureRequest:request];
+}
+
+- (void)didSelectEvent:(CDIEventDAO *)event
+{
+  if (![event.typeOrigin isEqualToString:@"DISCUSSION"]) {
+    self.selectedEvent = event;
+    [self performSegueWithIdentifier:@"ScheduleDetailSegue" sender:self];
+  }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  ScheduleEventDetailViewController *vc = segue.destinationViewController;
+  vc.event = self.selectedEvent;
 }
 
 - (void)configureRequest:(NSFetchRequest *)request

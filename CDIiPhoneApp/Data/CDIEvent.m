@@ -184,15 +184,12 @@ static CDIEvent *sharedNewEvent;
   if ([self.typeOrigin isEqualToString:@"DISCUSSION"]) {
     self.eventType = EventTypeDiscussion;
     self.type = @"Discussion";
-    NSLog(@"%@, %@, %@", self.name, self.startDate, self.typeOrigin);
   } else if ([self.typeOrigin isEqualToString:@"EXHIBITION"]) {
     self.eventType = EventTypeExhibition;
     self.type = @"Exhibition";
-    NSLog(@"%@, %@, %@", self.name, self.startDate, self.typeOrigin);
   } else if ([self.typeOrigin isEqualToString:@"WORKSHOP"]) {
     self.eventType = EventTypeWorkShop;
     self.type = @"Workshop";
-    NSLog(@"%@, %@, %@", self.name, self.startDate, self.typeOrigin);
   }
   
   NSInteger startValue = [self.startDate integerValueForTimePanel];

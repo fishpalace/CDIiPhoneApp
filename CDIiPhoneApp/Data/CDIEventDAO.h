@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSString * imageURL;
 @property (nonatomic, strong) NSString * previewImageURL;
 @property (nonatomic, strong) NSString * type;
+@property (nonatomic, retain) NSString * typeOrigin;
 
 @property (nonatomic, readwrite) EventType eventType;
 

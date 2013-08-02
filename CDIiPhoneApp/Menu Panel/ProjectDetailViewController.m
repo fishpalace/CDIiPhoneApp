@@ -62,7 +62,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-  [self.scrollView setContentSize:CGSizeMake(320, self.projectInfoLabel.frame.origin.y + self.projectInfoLabel.frame.size.height)];
+  CGFloat height = self.projectInfoLabel.frame.origin.y + self.projectInfoLabel.frame.size.height;
+  height = height < self.scrollView.frame.size.height ? self.scrollView.frame.size.height + 1 : height;
+  [self.scrollView setContentSize:CGSizeMake(320, height)];
 }
 
 - (void)updateViewConstraints
@@ -80,7 +82,7 @@
   CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, textRange, NULL, CGSizeMake(290, CGFLOAT_MAX), &fitRange);
   
   CFRelease(framesetter);
-  return frameSize.height + 50;
+  return frameSize.height + 25;
 }
 
 

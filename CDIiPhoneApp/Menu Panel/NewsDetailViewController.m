@@ -67,12 +67,13 @@
   [super updateViewConstraints];
   self.titleContainerViewHeightConstraint.constant = [self heightForTitleContainerView];
   self.contentLabelHeightConstraint.constant = [self heightForContentLabel];
-  [_contentLabel setLeading:20.0];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-  [self.scrollView setContentSize:CGSizeMake(320, self.contentLabel.frame.origin.y + self.contentLabel.frame.size.height)];
+  CGFloat height = self.contentLabel.frame.origin.y + self.contentLabel.frame.size.height;
+  height = height < self.scrollView.frame.size.height ? self.scrollView.frame.size.height + 1 : height;
+  [self.scrollView setContentSize:CGSizeMake(320, height)];
 }
 
 - (CGFloat)heightForTitleContainerView
@@ -94,7 +95,7 @@
   CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, textRange, NULL, CGSizeMake(290, CGFLOAT_MAX), &fitRange);
   
   CFRelease(framesetter);
-  return frameSize.height + 50;
+  return frameSize.height + 25;
 }
 
 - (IBAction)didClickBackButton:(UIButton *)sender

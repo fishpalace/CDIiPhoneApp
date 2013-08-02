@@ -55,6 +55,7 @@ static CDIEventDAO *sharedNewEvent;
   eventCopy.previewImageURL = event.previewImageURL;
   eventCopy.type = event.type;
   eventCopy.eventType = event.eventType;
+  eventCopy.typeOrigin = event.typeOrigin;
   return eventCopy;
 }
 
@@ -79,6 +80,7 @@ static CDIEventDAO *sharedNewEvent;
   sharedEvent.previewImageURL = event.previewImageURL;
   sharedEvent.type = event.type;
   sharedEvent.eventType = event.eventType;
+  sharedEvent.typeOrigin = event.typeOrigin;
   
   sharedNewEvent.eventJustCreated = NO;
 }
@@ -105,6 +107,7 @@ static CDIEventDAO *sharedNewEvent;
   eventCopy.previewImageURL = self.previewImageURL;
   eventCopy.type = self.type;
   eventCopy.eventType = self.eventType;
+  eventCopy.typeOrigin = self.typeOrigin;
   return eventCopy;
 }
 

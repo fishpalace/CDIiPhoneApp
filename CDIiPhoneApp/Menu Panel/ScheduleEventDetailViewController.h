@@ -8,10 +8,10 @@
 
 #import "CoreDataViewController.h"
 
-@class CDIEvent;
+@class CDIEventDAO;
 
 @interface ScheduleEventDetailViewController : CoreDataViewController
 
-@property (nonatomic, weak) CDIEvent *event;
+@property (nonatomic, weak) CDIEventDAO *event;
 
 @end

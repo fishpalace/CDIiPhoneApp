@@ -33,12 +33,6 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-  NSLog(@"%@", NSStringFromCGRect(self.setupButton.frame));
-  NSLog(@"%f", self.bottomSpaceConstraint.constant);
-}
-
 - (void)updateViewConstraints
 {
   [super updateViewConstraints];

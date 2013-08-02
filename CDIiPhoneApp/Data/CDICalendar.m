@@ -84,15 +84,6 @@ static NSMutableArray *eventsArray = nil;
 
 + (BOOL)doesEventExistInStoreWithID:(NSString *)eventStoreID
 {
-//  NSLog(@"toCheck: %@", eventStoreID);
-//  BOOL result = NO;
-//  for (EKEvent *event in [CDICalendar eventsArray]) {
-//    if ([event.eventIdentifier isEqualToString:eventStoreID]) {
-//      NSLog(@"array: %@", event.eventIdentifier);
-//      result = YES;
-//      break;
-//    }
-//  }
   EKEvent *event = [[CDICalendar sharedEventStore] eventWithIdentifier:eventStoreID];
   return event != nil;
 }

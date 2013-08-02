@@ -195,11 +195,16 @@ static CDIEvent *sharedNewEvent;
     NSLog(@"%@, %@, %@", self.name, self.startDate, self.typeOrigin);
   }
   
+  NSInteger startValue = [self.startDate integerValueForTimePanel];
+  NSInteger endValue = [self.endDate integerValueForTimePanel];
+  self.startValue = [NSNumber numberWithInt:startValue];
+  self.endValue = [NSNumber numberWithInt:endValue];
+  
   NSString *status = dict[@"status"];
   NSDate *ensureEndDate = [self.startDate dateByAddingTimeInterval:30 * 60];
   BOOL passed = [self.endDate earilierThanDate:[NSDate date]];
   BOOL active = [status isEqualToString:@"ACTIVE"];
-  BOOL abandoned = !active && [ensureEndDate earilierThanDate:[NSDate date]];
+  BOOL abandoned = !active && [ensureEndDate earilierThanDate:[NSDate date]] && [self.typeOrigin isEqualToString:@"DISCUSSION"];
   self.passed = [NSNumber numberWithBool:passed];
   self.active = [NSNumber numberWithBool:active];
   self.abandoned = [NSNumber numberWithBool:abandoned];
@@ -216,11 +221,6 @@ static CDIEvent *sharedNewEvent;
     self.occupiedByC = @([roomListArray containsObject:@3]);
     self.occupiedByD = @([roomListArray containsObject:@4]);
   }
-
-  NSInteger startValue = [self.startDate integerValueForTimePanel];
-  NSInteger endValue = [self.endDate integerValueForTimePanel];
-  self.startValue = [NSNumber numberWithInt:startValue];
-  self.endValue = [NSNumber numberWithInt:endValue];
 }
 
 #pragma mark - Tool Methods

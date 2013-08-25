@@ -7,6 +7,7 @@
 //
 
 #import "SetupInfoViewController.h"
+#import "UIApplication+Addition.h"
 
 @interface SetupInfoViewController ()
 
@@ -28,9 +29,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *forwardButton;
 @property (weak, nonatomic) IBOutlet UIButton *hideKeyboardButton;
 
-
-
+@property (nonatomic, readwrite) CGFloat textfieldTop;
 @property (nonatomic, weak) UITextField *currentTextfield;
+@property (nonatomic, readwrite) NSInteger currentTag;
 
 @end
 
@@ -92,6 +93,28 @@
   
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+  self.currentTextfield = textField;
+  self.currentTag = textField.tag;
+  
+  [self adjustScrollViewPosition];
+}
+
+- (void)adjustScrollViewPosition
+{
+  CGPoint position = [self.view convertPoint:self.currentTextfield.frame.origin toView:self.view];
+  CGFloat offset = position.y - self.textfieldTop;
+  CGPoint targetOffset = self.scrollView.contentOffset;
+  targetOffset.y += offset;
+  self.scrollView.contentOffset = targetOffset;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+  
+}
+
 - (IBAction)didClickBackwardButton:(UIButton *)sender
 {
   
@@ -111,16 +134,19 @@
   NSDictionary *info = [notification userInfo];
   CGRect keyboardBounds = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
   
-  CGFloat keyboardHeight;
-  keyboardHeight = keyboardBounds.size.height;
-  self.textfieldBottomSpaceConstraint.constant = keyboardHeight;
+  CGFloat keyboardHeight = keyboardBounds.size.height;
+  self.textfieldTop = kCurrentScreenHeight - keyboardHeight;
+//  self.textfieldBottomSpaceConstraint.constant = keyboardHeight;
+  CGSize contentSize = self.scrollView.contentSize;
+  contentSize.height += keyboardHeight + 40;
   [UIView animateWithDuration:0.3 animations:^{
     [self.configView layoutIfNeeded];
+    self.scrollView.contentSize = contentSize;
   }];
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
-  self.textfieldBottomSpaceConstraint.constant = -200;
+//  self.textfieldBottomSpaceConstraint.constant = -200;
   [UIView animateWithDuration:0.3 animations:^{
     [self.configView layoutIfNeeded];
   }];

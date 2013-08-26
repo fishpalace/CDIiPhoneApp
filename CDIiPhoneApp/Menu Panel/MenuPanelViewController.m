@@ -298,6 +298,11 @@
   [self performSegueWithIdentifier:@"MenuReserveSegue" sender:self];
 }
 
+- (IBAction)didClickSettingsButton:(UIButton *)sender
+{
+  [self performSegueWithIdentifier:@"MenuSettingsSegue" sender:self];
+}
+
 #pragma mark - Properties
 - (MPDragIndicatorView *)dragIndicatorView
 {

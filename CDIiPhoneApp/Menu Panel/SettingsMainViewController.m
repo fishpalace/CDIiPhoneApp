@@ -1,20 +1,18 @@
 //
-//  SetupInfoViewController.m
+//  SettingsMainViewController.m
 //  CDIiPhoneApp
 //
-//  Created by Gabriel Yeah on 13-8-1.
+//  Created by Gabriel Yeah on 13-8-26.
 //  Copyright (c) 2013年 Gabriel Yeah. All rights reserved.
 //
 
-#import "SetupInfoViewController.h"
-#import "UIApplication+Addition.h"
+#import "SettingsMainViewController.h"
 #import "CDINetClient.h"
-#import "CDIUser.h"
 
 #define kTextfieldTagBase 100
 #define kTextfieldTagTop  106
 
-@interface SetupInfoViewController ()
+@interface SettingsMainViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *changePhotoButton;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextfield;
@@ -25,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *dribbleTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *homePageTextfield;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UIImageView *emailErrorImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *mobileErrorImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -41,7 +40,7 @@
 
 @end
 
-@implementation SetupInfoViewController
+@implementation SettingsMainViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -106,12 +105,12 @@
         NSDictionary *dict = responseData;
         NSLog(@"%@", dict);
       }
-//      [self dismissViewControllerAnimated:YES completion:nil];
+      //      [self dismissViewControllerAnimated:YES completion:nil];
     }
   };
   
   [client updateUserWithSessionKey:self.currentUser.sessionKey
-                          password:self.password
+                          password:@""
                              email:email ? email : @""
                             mobile:mobile ? mobile : @""
                              weibo:weibo ? weibo : @""
@@ -235,5 +234,4 @@
   }
   self.scrollView.contentSize = CGSizeMake(320, self.homePageTextfield.frame.origin.y + 50);
 }
-
 @end

@@ -83,6 +83,17 @@
                            deviceID:(NSString *)deviceID
                          completion:(void (^)(BOOL succeeded, id responseData))completion;
 
+- (void)updateUserWithSessionKey:(NSString *)sessionKey
+                        password:(NSString *)password
+                           email:(NSString *)email
+                          mobile:(NSString *)mobile
+                           weibo:(NSString *)weibo
+                         twitter:(NSString *)twitter
+                        linkedIn:(NSString *)linkedIn
+                         dribble:(NSString *)dribble
+                            home:(NSString *)home
+                      completion:(void (^)(BOOL succeeded, id responseData))completion;
+
 - (void)loginOutCurrentUserWithID:(NSString *)userID
                        completion:(void (^)(BOOL succeeded, id responseData))completion;
 

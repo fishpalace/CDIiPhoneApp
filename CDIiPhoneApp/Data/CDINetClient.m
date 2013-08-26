@@ -204,6 +204,30 @@ static CDINetClient *sharedClient;
   [self getPath:path completion:completion];
 }
 
+- (void)updateUserWithSessionKey:(NSString *)sessionKey
+                        password:(NSString *)password
+                           email:(NSString *)email
+                          mobile:(NSString *)mobile
+                           weibo:(NSString *)weibo
+                         twitter:(NSString *)twitter
+                        linkedIn:(NSString *)linkedIn
+                         dribble:(NSString *)dribble
+                            home:(NSString *)home
+                      completion:(void (^)(BOOL succeeded, id responseData))completion
+{
+  NSDictionary *dict = @{@"password" : [password md5],
+                         @"emailAddress" : email,
+                         @"mobilePhoneNumber" : mobile,
+                         @"weiboId" : weibo,
+                         @"twitterId" : twitter,
+                         @"linkedInId" : linkedIn,
+                         @"dribbbleId" : dribble,
+                         @"personalSite" : home};
+  NSString *path = [NSString stringWithFormat:@"user/updateUser/%@", sessionKey];
+  [self putPath:path dictionary:dict completion:completion];
+}
+
+
 - (void)reserveDeviceWithSessionKey:(NSString *)sessionKey
                          borrowDate:(NSDate *)borrowDate
                             dueDate:(NSDate *)dueDate

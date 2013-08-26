@@ -36,6 +36,8 @@ static CDIUser *currentUser;
 @dynamic news;
 @dynamic relatedWork;
 @dynamic work;
+@dynamic mobile;
+@dynamic email;
 
 + (CDIUser *)currentUserInContext:(NSManagedObjectContext *)context
 {
@@ -92,6 +94,8 @@ static CDIUser *currentUser;
   user.title = [NSString stringForDict:dict key:@"category"];
   user.twitterURL = [NSString stringForDict:dict key:@"twitterId"];
   user.weiboURL = [NSString stringForDict:dict key:@"weiboId"];
+  user.mobile = [NSString stringForDict:dict key:@"mobilePhoneNumber"];
+  user.email = [NSString stringForDict:dict key:@"emailAddress"];
   
   return user;
 }

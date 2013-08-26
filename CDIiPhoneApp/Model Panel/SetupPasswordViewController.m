@@ -11,6 +11,8 @@
 #import "SetupInfoViewController.h"
 #import "NSString+Encrypt.h"
 
+#define kTopConstraintForiPhone5 183
+
 @interface SetupPasswordViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *passwordNewTextfield;
@@ -19,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *passwordConfirmErrorImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textfieldBottomSpaceConstraint;
 @property (weak, nonatomic) IBOutlet UIView *configView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textfieldTopConstraint;
 
 @end
 
@@ -40,6 +43,16 @@
   _passwordNewTextfield.delegate = self;
   _passwordConfirmTextfield.delegate = self;
   [_passwordNewTextfield becomeFirstResponder];
+}
+
+- (void)updateViewConstraints
+{
+  [super updateViewConstraints];
+  if (kIsiPhone5) {
+    self.textfieldTopConstraint.constant = kTopConstraintForiPhone5;
+  } else {
+    self.textfieldTopConstraint.constant = kTopConstraintForiPhone5 - 35;
+  }
 }
 
 - (IBAction)didClickBackButton:(UIButton *)sender

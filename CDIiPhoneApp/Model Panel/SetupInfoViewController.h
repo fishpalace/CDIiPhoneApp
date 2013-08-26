@@ -8,7 +8,7 @@
 
 #import "CoreDataViewController.h"
 
-@interface SetupInfoViewController : CoreDataViewController <UITextFieldDelegate>
+@interface SetupInfoViewController : CoreDataViewController <UITextFieldDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSString *password;
 

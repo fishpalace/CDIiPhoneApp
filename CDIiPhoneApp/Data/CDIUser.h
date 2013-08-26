@@ -28,6 +28,8 @@
 @property (nonatomic, retain) NSString * twitterURL;
 @property (nonatomic, retain) NSString * weiboURL;
 @property (nonatomic, retain) NSString * userID;
+@property (nonatomic, retain) NSString * mobile;
+@property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSSet *events;
 @property (nonatomic, retain) NSSet *news;
 @property (nonatomic, retain) NSSet *relatedWork;

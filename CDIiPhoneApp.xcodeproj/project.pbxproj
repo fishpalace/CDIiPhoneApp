@@ -40,6 +40,7 @@
 		18256B56177055390079D24B /* menu_icon_people@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B4C177055390079D24B /* menu_icon_people@2x.png */; };
 		18256B57177055390079D24B /* menu_icon_proj.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B4D177055390079D24B /* menu_icon_proj.png */; };
 		18256B58177055390079D24B /* menu_icon_proj@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B4E177055390079D24B /* menu_icon_proj@2x.png */; };
+		1828FAD917CBDB0B00AEDB12 /* SettingsMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1828FAD817CBDB0B00AEDB12 /* SettingsMainViewController.m */; };
 		182B301D1771BC2B00EB6DFB /* tableview_now_indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B301B1771BC2B00EB6DFB /* tableview_now_indicator.png */; };
 		182B301E1771BC2B00EB6DFB /* tableview_now_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */; };
 		182F28CC17A36D7C0035C401 /* time_display_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F28CA17A36D7C0035C401 /* time_display_bg.png */; };
@@ -393,6 +394,8 @@
 		18256B4C177055390079D24B /* menu_icon_people@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_icon_people@2x.png"; sourceTree = "<group>"; };
 		18256B4D177055390079D24B /* menu_icon_proj.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon_proj.png; sourceTree = "<group>"; };
 		18256B4E177055390079D24B /* menu_icon_proj@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_icon_proj@2x.png"; sourceTree = "<group>"; };
+		1828FAD717CBDB0B00AEDB12 /* SettingsMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsMainViewController.h; path = "Menu Panel/SettingsMainViewController.h"; sourceTree = "<group>"; };
+		1828FAD817CBDB0B00AEDB12 /* SettingsMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsMainViewController.m; path = "Menu Panel/SettingsMainViewController.m"; sourceTree = "<group>"; };
 		182B301B1771BC2B00EB6DFB /* tableview_now_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_now_indicator.png; sourceTree = "<group>"; };
 		182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_now_indicator@2x.png"; sourceTree = "<group>"; };
 		182F28CA17A36D7C0035C401 /* time_display_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_display_bg.png; sourceTree = "<group>"; };
@@ -1460,6 +1463,8 @@
 				183A41E117A91E3200D9EAC7 /* DeviceInfoHistoryCell.m */,
 				183A41E317A9425800D9EAC7 /* DeviceReservationViewController.h */,
 				183A41E417A9425800D9EAC7 /* DeviceReservationViewController.m */,
+				1828FAD717CBDB0B00AEDB12 /* SettingsMainViewController.h */,
+				1828FAD817CBDB0B00AEDB12 /* SettingsMainViewController.m */,
 			);
 			name = "Menu Panel";
 			sourceTree = "<group>";
@@ -1807,6 +1812,7 @@
 				18E0EA8B173897CB006EFF51 /* MPDragIndicatorView.m in Sources */,
 				1864F5DA17775EE70013960C /* RPRoomViewController.m in Sources */,
 				18E0EA921738CDA8006EFF51 /* GYPositionBounceAnimation.m in Sources */,
+				1828FAD917CBDB0B00AEDB12 /* SettingsMainViewController.m in Sources */,
 				18E0EA961738DAE4006EFF51 /* MenuPanelViewController.m in Sources */,
 				1864F5D6177748B50013960C /* LoginViewController.m in Sources */,
 				183A41D117A8B5B400D9EAC7 /* CDIApplication.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFHTTPClient.h"
 
 @class CDIEventDAO;
 
@@ -86,6 +87,10 @@
 - (void)updateUserWithUser:(CDIUser *)user
                   password:(NSString *)password
                 completion:(void (^)(BOOL succeeded, id responseData))completion;
+
+- (void)updateUserAvatarWithImage:(UIImage *)image
+                       sessionKey:(NSString *)sessionKey
+                       completion:(void (^)(BOOL succeeded, id responseData))completion;
 
 - (void)loginOutCurrentUserWithID:(NSString *)userID
                        completion:(void (^)(BOOL succeeded, id responseData))completion;

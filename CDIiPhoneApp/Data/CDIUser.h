@@ -35,6 +35,7 @@
 @property (nonatomic, retain) NSString * departmentName;
 @property (nonatomic, retain) NSString * priority;
 @property (nonatomic, retain) NSString * category;
+@property (nonatomic, retain) NSString * password;
 @property (nonatomic, retain) NSSet *events;
 @property (nonatomic, retain) NSSet *news;
 @property (nonatomic, retain) NSSet *relatedWork;

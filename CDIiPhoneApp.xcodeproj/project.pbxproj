@@ -43,6 +43,7 @@
 		1828FAD917CBDB0B00AEDB12 /* SettingsMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1828FAD817CBDB0B00AEDB12 /* SettingsMainViewController.m */; };
 		1828FADC17CC291600AEDB12 /* schedule_preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 1828FADA17CC291600AEDB12 /* schedule_preview.png */; };
 		1828FADD17CC291600AEDB12 /* schedule_preview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1828FADB17CC291600AEDB12 /* schedule_preview@2x.png */; };
+		1828FAE017CC701B00AEDB12 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 1828FADF17CC701B00AEDB12 /* UIImage+ProportionalFill.m */; };
 		182B301D1771BC2B00EB6DFB /* tableview_now_indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B301B1771BC2B00EB6DFB /* tableview_now_indicator.png */; };
 		182B301E1771BC2B00EB6DFB /* tableview_now_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */; };
 		182F28CC17A36D7C0035C401 /* time_display_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F28CA17A36D7C0035C401 /* time_display_bg.png */; };
@@ -400,6 +401,8 @@
 		1828FAD817CBDB0B00AEDB12 /* SettingsMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsMainViewController.m; path = "Menu Panel/SettingsMainViewController.m"; sourceTree = "<group>"; };
 		1828FADA17CC291600AEDB12 /* schedule_preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule_preview.png; sourceTree = "<group>"; };
 		1828FADB17CC291600AEDB12 /* schedule_preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_preview@2x.png"; sourceTree = "<group>"; };
+		1828FADE17CC701500AEDB12 /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
+		1828FADF17CC701B00AEDB12 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
 		182B301B1771BC2B00EB6DFB /* tableview_now_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_now_indicator.png; sourceTree = "<group>"; };
 		182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_now_indicator@2x.png"; sourceTree = "<group>"; };
 		182F28CA17A36D7C0035C401 /* time_display_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_display_bg.png; sourceTree = "<group>"; };
@@ -1056,6 +1059,8 @@
 		187F50891734FC84006B46A3 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1828FADE17CC701500AEDB12 /* UIImage+ProportionalFill.h */,
+				1828FADF17CC701B00AEDB12 /* UIImage+ProportionalFill.m */,
 				1823263C17769350001E7B88 /* UIImageView+Addition.h */,
 				1823263D17769350001E7B88 /* UIImageView+Addition.m */,
 				18B74420175B109E00585CF5 /* NSString+Encrypt.h */,
@@ -1864,6 +1869,7 @@
 				18B7441F175B105100585CF5 /* UIImageView+AFNetworking.m in Sources */,
 				183A41DF17A8FF2900D9EAC7 /* DeviceInfoViewController.m in Sources */,
 				18B74422175B109E00585CF5 /* NSString+Encrypt.m in Sources */,
+				1828FAE017CC701B00AEDB12 /* UIImage+ProportionalFill.m in Sources */,
 				18BACD6B176EE8640058042D /* CDINews.m in Sources */,
 				1883D6B117A63F3800B44CA4 /* TTTAttributedLabel.m in Sources */,
 				18BACD62176EE6F80058042D /* CoreDataViewController.m in Sources */,

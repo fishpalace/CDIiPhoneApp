@@ -435,6 +435,19 @@ typedef enum {
        parameters:(NSDictionary *)parameters
           success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+- (void)postPath:(NSString *)path
+      parameters:(NSDictionary *)parameters
+            data:(NSData*)data
+         success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+- (void)putPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+           data:(NSData*)data
+        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
 @end
 
 ///----------------

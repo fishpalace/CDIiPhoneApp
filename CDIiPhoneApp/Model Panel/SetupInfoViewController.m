@@ -10,6 +10,8 @@
 #import "UIApplication+Addition.h"
 #import "CDINetClient.h"
 #import "CDIUser.h"
+#import "UIImage+ProportionalFill.h"
+#import "UIImageView+Addition.h"
 
 #define kTextfieldTagBase 100
 #define kTextfieldTagTop  106
@@ -72,6 +74,11 @@
   _dribbleTextfield.text = self.currentUser.dribbleURL;
   _homePageTextfield.text = self.currentUser.homePageURL;
   
+  [_changePhotoButton.imageView loadImageFromURL:self.currentUser.avatarSmallURL
+                                      completion:^(BOOL succeeded) {
+                                        
+                                      }];
+  
   NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
   [center addObserver:self
              selector:@selector(keyboardWillShow:)
@@ -91,6 +98,7 @@
 
 - (IBAction)didClickDoneButton:(UIButton *)sender
 {
+  self.currentUser.password = self.password;
   self.currentUser.email = self.emailTextfield.text;
   self.currentUser.mobile = self.mobileTextfield.text;
   self.currentUser.weiboURL = self.weiboTextfield.text;
@@ -160,7 +168,22 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
   UIImage *edittedImage = [info objectForKey:UIImagePickerControllerEditedImage];
-//  edittedImage = [edittedImage imageScaledToFitSize:CROP_AVATAR_SIZE];
+  edittedImage = [edittedImage imageScaledToFitSize:CGSizeMake(200, 200)];
+  self.changePhotoButton.imageView.image = edittedImage;
+  
+  CDINetClient *client = [CDINetClient client];
+  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+    if (succeeded) {
+      if ([responseData isKindOfClass:[NSString class]]) {
+        NSString *url = [NSString stringWithFormat:@"http://cdi.tongji.edu.cn/cdisoul/upload/user_avatars/%@", responseData];
+        self.currentUser.avatarSmallURL = url;
+      }
+    }
+  };
+  
+  [client updateUserAvatarWithImage:edittedImage
+                         sessionKey:self.currentUser.sessionKey
+                         completion:handleData];
   
   [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -171,7 +194,6 @@
   self.currentTag = textField.tag;
   
   [self updateConfigView];
-//  [self adjustScrollViewPosition];
 }
 
 - (void)updateConfigView

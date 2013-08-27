@@ -4428,7 +4428,7 @@
                                             <constraint firstAttribute="height" constant="45" id="95h-bM-8gQ"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6m-ZR-Ibh">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6m-ZR-Ibh">
                                         <rect key="frame" x="5" y="1" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
@@ -4443,7 +4443,7 @@
                                             <action selector="didClickBackwardButton:" destination="KQv-vh-uwy" eventType="touchUpInside" id="aV6-cE-k1B"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHF-dy-v2Z">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHF-dy-v2Z">
                                         <rect key="frame" x="49" y="1" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
@@ -4471,6 +4471,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="didClickCoverButton:" destination="tVm-Wm-2Hm" eventType="touchUpInside" id="inz-NG-Wdz"/>
                                             <action selector="didClickHideKeyboardButton:" destination="KQv-vh-uwy" eventType="touchUpInside" id="5LQ-9T-8Tn"/>
                                         </connections>
                                     </button>
@@ -4571,6 +4572,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <navigationItem key="navigationItem" id="FTX-eO-VIY"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="configViewBottomConstraint" destination="pH1-I4-6SR" id="7HW-qP-yR6"/>
                         <outlet property="coverButton" destination="Pus-Cs-m0A" id="i8Y-kE-Frs"/>
                         <outlet property="datePicker" destination="9w9-us-3Dc" id="jbR-jW-MaR"/>
                         <outlet property="datePickerBottomSpaceConstraint" destination="6qL-jH-hXN" id="V0G-FL-VaA"/>
@@ -5344,7 +5346,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjZ-mX-s53">
-                                <rect key="frame" x="0.0" y="45" width="320" height="523"/>
+                                <rect key="frame" x="0.0" y="42" width="320" height="526"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_login_textfield_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="t7P-oZ-wLT">
@@ -5476,7 +5478,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <rect key="frame" x="90" y="24" width="141" height="141"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0I-Rr-R4I">
+                                    <button clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0I-Rr-R4I">
                                         <rect key="frame" x="90" y="25" width="141" height="141"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -5504,7 +5506,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </state>
                                         <connections>
                                             <action selector="didClickDoneButton:" destination="INo-JT-ZL6" eventType="touchUpInside" id="Uwx-do-f78"/>
-                                            <action selector="didClickDoneButton:" destination="JZ0-N7-h9h" eventType="touchUpInside" id="ria-3y-tAq"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYc-gH-mMC">
@@ -5725,7 +5726,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <constraints>
                             <constraint firstItem="611-zP-nVJ" firstAttribute="leading" secondItem="dd9-S6-Rli" secondAttribute="leading" id="1Cq-FF-bIo"/>
                             <constraint firstItem="pjZ-mX-s53" firstAttribute="trailing" secondItem="611-zP-nVJ" secondAttribute="trailing" id="NrR-Tu-tTh"/>
-                            <constraint firstItem="pjZ-mX-s53" firstAttribute="top" secondItem="611-zP-nVJ" secondAttribute="bottom" constant="3" id="VS6-PK-9nT"/>
+                            <constraint firstItem="pjZ-mX-s53" firstAttribute="top" secondItem="611-zP-nVJ" secondAttribute="bottom" id="VS6-PK-9nT"/>
                             <constraint firstItem="3il-jM-xMj" firstAttribute="top" secondItem="yhZ-tJ-Gq2" secondAttribute="bottom" constant="261" id="Vfs-Cz-Q8C"/>
                             <constraint firstAttribute="centerX" secondItem="yhZ-tJ-Gq2" secondAttribute="centerX" id="oM2-ep-geh"/>
                             <constraint firstItem="3il-jM-xMj" firstAttribute="top" secondItem="pjZ-mX-s53" secondAttribute="bottom" id="smx-yM-JAO"/>

@@ -676,6 +676,66 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
     [self enqueueHTTPRequestOperation:operation];
 }
 
+
+
+- (void)postPath:(NSString *)path
+      parameters:(NSDictionary *)parameters
+            data:(NSData*)data
+         success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+  NSURLRequest *request = request = [self multipartFormRequestWithMethod:@"POST"
+                                                                    path:[NSString stringWithFormat:@"%@", path]
+                                                              parameters:parameters
+                                               constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                                                 if (data) {
+                                                   [formData appendPartWithFileData:data
+                                                                               name:@"file"
+                                                                           fileName:@"avatar.jpg"
+                                                                           mimeType:@"image/jpeg"];
+                                                 }
+                                               }];
+  AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
+  
+  [self enqueueHTTPRequestOperation:operation];
+}
+
+- (void)putPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+           data:(NSData*)data
+        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+  NSURLRequest *request = request = [self multipartFormRequestWithMethod:@"PUT"
+                                                                    path:[NSString stringWithFormat:@"%@", path]
+                                                              parameters:parameters
+                                               constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                                                 if (data) {
+                                                   [formData appendPartWithFileData:data
+                                                                               name:@"file"
+                                                                           fileName:@"avatar.jpg"
+                                                                           mimeType:@"image/jpeg"];
+                                                 }
+                                               }];
+  AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
+  
+  [self enqueueHTTPRequestOperation:operation];
+}
+
+-(NSMutableURLRequest*)requestWithMethod:(NSString *)method
+                                    path:(NSString *)path
+                              parameters:(NSDictionary *)parameters
+                                    data:(NSData*)data;
+{
+  NSMutableURLRequest* request = [self requestWithMethod:method
+                                                     path:path
+                                               parameters:parameters];
+  
+  [request setHTTPBody:data];
+  
+  return request;
+}
+
 #pragma mark - NSCoding
 
 - (id)initWithCoder:(NSCoder *)aDecoder {

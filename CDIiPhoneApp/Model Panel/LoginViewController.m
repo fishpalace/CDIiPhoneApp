@@ -145,6 +145,7 @@ static LoginViewController *sharedLoginViewController;
         CDIUser *user = [CDIUser insertUserInfoWithDict:dict
                                  inManagedObjectContext:self.managedObjectContext];
         user.sessionKey = [NSString stringForDict:responseData key:@"sessionKey"];
+        user.password = self.passwordTextfield.text;
         [CDIUser updateCurrentUserID:user.userID];
         [self.managedObjectContext processPendingChanges];
         [self hideWithCallBack:self.callBack];

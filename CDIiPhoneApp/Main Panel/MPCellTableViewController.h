@@ -16,6 +16,7 @@
 - (NSString *)imageURLForCellAtIndex:(NSInteger)index atRow:(NSInteger)row;
 - (NSInteger)numberOfRowsAtRow:(NSInteger)row;
 
+
 @end
 
 @interface MPCellTableViewController : UITableViewController <UIScrollViewDelegate, NSFetchedResultsControllerDelegate>

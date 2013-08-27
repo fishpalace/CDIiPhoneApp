@@ -43,6 +43,7 @@ static CDIUser *currentUser;
 @dynamic departmentName;
 @dynamic priority;
 @dynamic category;
+@dynamic password;
 
 + (CDIUser *)currentUserInContext:(NSManagedObjectContext *)context
 {

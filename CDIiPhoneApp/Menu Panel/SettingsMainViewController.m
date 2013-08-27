@@ -8,6 +8,8 @@
 
 #import "SettingsMainViewController.h"
 #import "CDINetClient.h"
+#import "UIImage+ProportionalFill.h"
+#import "UIImageView+Addition.h"
 
 #define kTextfieldTagBase 100
 #define kTextfieldTagTop  106
@@ -37,6 +39,8 @@
 @property (nonatomic, weak) UITextField *currentTextfield;
 @property (nonatomic, readwrite) NSInteger currentTag;
 @property (nonatomic, readwrite) CGFloat scrollViewContentHeight;
+
+@property (nonatomic, strong) UIImage *image;
 
 @end
 
@@ -71,6 +75,11 @@
   _dribbleTextfield.text = self.currentUser.dribbleURL;
   _homePageTextfield.text = self.currentUser.homePageURL;
   
+  [_changePhotoButton.imageView loadImageFromURL:self.currentUser.avatarSmallURL
+                                      completion:^(BOOL succeeded) {
+                                        
+                                      }];
+  
   _textfieldBottomSpaceConstraint.constant = -200;
   
   NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -86,8 +95,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-  self.scrollView.contentSize = CGSizeMake(320, self.logoutButton.frame.origin.y + 50);
-  self.scrollViewContentHeight = self.scrollView.contentSize.height;
+  self.scrollViewContentHeight = 730;
+  self.scrollView.contentSize = CGSizeMake(320, self.scrollViewContentHeight);
 }
 
 - (IBAction)didClickDoneButton:(UIButton *)sender
@@ -107,14 +116,13 @@
         NSDictionary *dict = responseData;
         NSLog(@"%@", dict);
       }
-      //      [self dismissViewControllerAnimated:YES completion:nil];
+      [self.navigationController popViewControllerAnimated:YES];
     }
   };
   
-  [client updateUserWithUser:self.currentUser password:@""
+  [client updateUserWithUser:self.currentUser password:self.currentUser.password
                   completion:handleData];
   
-  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)didClickBackButton:(UIButton *)sender
@@ -160,14 +168,30 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
   self.scrollView.scrollEnabled = YES;
-  self.scrollView.contentSize = CGSizeMake(320, self.logoutButton.frame.origin.y + 50);
+  self.scrollView.contentSize = CGSizeMake(320, self.scrollViewContentHeight);
 }
 
 #pragma mark - UIImagePickerController delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-  UIImage *edittedImage = [info objectForKey:UIImagePickerControllerEditedImage];
-  //  edittedImage = [edittedImage imageScaledToFitSize:CROP_AVATAR_SIZE];
+  self.image = [info objectForKey:UIImagePickerControllerEditedImage];
+  self.image = [self.image imageScaledToFitSize:CGSizeMake(200, 200)];
+  [self.changePhotoButton setImage:self.image forState:UIControlStateNormal];
+  [self.changePhotoButton setImage:self.image forState:UIControlStateHighlighted];
+  
+  CDINetClient *client = [CDINetClient client];
+  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+    if (succeeded) {
+      if ([responseData isKindOfClass:[NSString class]]) {
+        NSString *url = [NSString stringWithFormat:@"http://cdi.tongji.edu.cn/cdisoul/upload/user_avatars/%@", responseData];
+        self.currentUser.avatarSmallURL = url;
+      }
+    }
+  };
+  
+  [client updateUserAvatarWithImage:self.image
+                         sessionKey:self.currentUser.sessionKey
+                         completion:handleData];
   
   [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -266,6 +290,6 @@
       self.scrollView.contentOffset = offset;
     }];
   }
-  self.scrollView.contentSize = CGSizeMake(320, self.homePageTextfield.frame.origin.y + 50);
+  self.scrollView.contentSize = CGSizeMake(320, self.scrollViewContentHeight);
 }
 @end

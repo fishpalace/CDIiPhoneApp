@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CDIiPhoneApp/Data/CDINetClient.m"
-            timestampString = "399268763.15574"
+            filePath = "CDIiPhoneApp/Menu Panel/SettingsMainViewController.m"
+            timestampString = "399284646.411041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
-            landmarkName = "-deletePath:dictionary:completion:"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-didClickDoneButton:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CDIiPhoneApp/Data/CDINetClient.m"
-            timestampString = "399268763.977631"
+            filePath = "CDIiPhoneApp/Model Panel/SetupInfoViewController.m"
+            timestampString = "399286785.522282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
-            landmarkName = "-deletePath:dictionary:completion:"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

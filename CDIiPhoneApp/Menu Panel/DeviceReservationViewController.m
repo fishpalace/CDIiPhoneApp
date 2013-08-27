@@ -13,6 +13,8 @@
 #import "CDINetClient.h"
 #import "DeviceInfoViewController.h"
 
+#define kDatePickerTop 162
+
 @interface DeviceReservationViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *deviceNameLabel;
@@ -38,6 +40,8 @@
 @property (nonatomic, readwrite) BOOL endDateSelected;
 
 @property (nonatomic, weak) CDIWork *selectedProject;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *configViewBottomConstraint;
 
 @end
 
@@ -134,6 +138,7 @@
   self.isDatePicker = YES;
   self.projectSelected = YES;
   self.projectPickerBottomSpaceConstraint.constant = 0;
+  self.configViewBottomConstraint.constant = kDatePickerTop;
   [UIView animateWithDuration:0.5 animations:^{
     [self.view layoutIfNeeded];
     _coverButton.alpha = 1.0;
@@ -154,6 +159,7 @@
 {
   self.isDatePicker = NO;
   self.datePickerBottomSpaceConstraint.constant = 0;
+  self.configViewBottomConstraint.constant = kDatePickerTop;
   [UIView animateWithDuration:0.5 animations:^{
     [self.view layoutIfNeeded];
     _coverButton.alpha = 1.0;
@@ -163,6 +169,7 @@
 - (void)hideProjectPicker
 {
   self.projectPickerBottomSpaceConstraint.constant = -300;
+  self.configViewBottomConstraint.constant = -200;
   [UIView animateWithDuration:0.5 animations:^{
     [self.view layoutIfNeeded];
     _coverButton.alpha = 0.0;
@@ -172,6 +179,7 @@
 - (void)hideDatePicker
 {
   self.datePickerBottomSpaceConstraint.constant = -300;
+  self.configViewBottomConstraint.constant = -200;
   [UIView animateWithDuration:0.5 animations:^{
     [self.view layoutIfNeeded];
     _coverButton.alpha = 0.0;

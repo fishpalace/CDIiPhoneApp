@@ -13,7 +13,7 @@
 #import "CDINetClient.h"
 #import "DeviceInfoViewController.h"
 
-#define kDatePickerTop 162
+#define kDatePickerTop 162 + 55
 
 @interface DeviceReservationViewController ()
 
@@ -62,6 +62,7 @@
   _coverButton.alpha = 0;
   _datePickerBottomSpaceConstraint.constant = -300;
   _projectPickerBottomSpaceConstraint.constant = -300;
+  _configViewBottomConstraint.constant = -300;
   _datePicker.datePickerMode = UIDatePickerModeDate;
   _startDate = [NSDate date];
   _endDate = [self.startDate dateByAddingTimeInterval:3600 * 24];

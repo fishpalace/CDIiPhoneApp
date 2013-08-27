@@ -284,7 +284,14 @@
   [self updateTimeSpanLabel];
   self.nextButton.enabled = available;
   CGFloat percentage = self.isDraggingFromPuller ? startPercentage : endPercentage;
-  [self.timeDisplayLabel setText:[self stringForPercentage:percentage]];
+  self.timeFromToLabel.hidden = !available;
+  if (available) {
+    [self.timeDisplayLabel setText:[self stringForPercentage:percentage]];
+    self.timeDisplayLabel.textColor = [UIColor whiteColor];
+  } else {
+    [self.timeDisplayLabel setText:@"Unavailable"];
+    self.timeDisplayLabel.textColor = kColorTintRed;
+  }
   return available;
 }
 

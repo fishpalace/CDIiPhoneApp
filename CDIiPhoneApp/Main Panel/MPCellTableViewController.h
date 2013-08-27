@@ -16,6 +16,7 @@
 - (NSString *)imageURLForCellAtIndex:(NSInteger)index atRow:(NSInteger)row;
 - (NSInteger)numberOfRowsAtRow:(NSInteger)row;
 
+- (void)didSelectCellAtIndex:(NSInteger)index ofRow:(NSInteger)row;
 
 @end
 

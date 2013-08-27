@@ -10,6 +10,7 @@
 #import "CDINetClient.h"
 #import "UIImage+ProportionalFill.h"
 #import "UIImageView+Addition.h"
+#import "NSNotificationCenter+Addition.h"
 
 #define kTextfieldTagBase 100
 #define kTextfieldTagTop  106
@@ -113,8 +114,7 @@
   void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
     if (succeeded) {
       if ([responseData isKindOfClass:[NSDictionary class]]) {
-        NSDictionary *dict = responseData;
-        NSLog(@"%@", dict);
+        [NSNotificationCenter postDidChangeCurrentUserNotification];
       }
       [self.navigationController popViewControllerAnimated:YES];
     }

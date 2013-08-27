@@ -19,6 +19,9 @@
 #import "CDINews.h"
 #import "CDIWork.h"
 #import "CDIEvent.h"
+#import "ProjectDetailViewController.h"
+#import "NewsDetailViewController.h"
+#import "ScheduleEventDetailViewController.h"
 
 @interface MainPanelViewController ()
 
@@ -38,6 +41,10 @@
 @property (nonatomic, strong) NSFetchedResultsController *frProjectsController;
 @property (nonatomic, strong) NSFetchedResultsController *frNewsController;
 @property (nonatomic, strong) NSFetchedResultsController *frLabController;
+
+@property (nonatomic, readwrite) NSInteger selectedRow;
+@property (nonatomic, readwrite) NSInteger selectedIndex;
+@property (nonatomic, weak) NSFetchedResultsController *selectedFC;
 
 @end
 
@@ -164,6 +171,42 @@
     fc = self.frLabController;
   }
   return fc.fetchedObjects.count > 8 ? 8 : fc.fetchedObjects.count;
+}
+
+- (void)didSelectCellAtIndex:(NSInteger)index ofRow:(NSInteger)row
+{
+  NSString *segueID = @"";
+  self.selectedIndex = index;
+  self.selectedRow = row;
+  if (row == 0) {
+    self.selectedFC = self.frEventsController;
+    segueID = @"MainEventSegue";
+  } else if (row == 1) {
+    self.selectedFC = self.frProjectsController;
+    segueID = @"MainProjectSegue";
+  } else if (row == 2) {
+    self.selectedFC = self.frNewsController;
+    segueID = @"MainNewsSegue";
+  } else if (row == 3) {
+    self.selectedFC = self.frLabController;
+    segueID = @"MainProjectSegue";
+  }
+  [self performSegueWithIdentifier:segueID sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  UIViewController *vc = segue.destinationViewController;
+  if (self.selectedRow == 0) {
+    CDIEventDAO *event = self.selectedFC.fetchedObjects[self.selectedIndex];
+    ((ScheduleEventDetailViewController *)vc).event = event;
+  } else if (self.selectedRow == 1 || self.selectedRow == 3) {
+    CDIWork *work = self.selectedFC.fetchedObjects[self.selectedIndex];
+    ((ProjectDetailViewController *)vc).work = work;
+  } else {
+    CDINews *news = self.selectedFC.fetchedObjects[self.selectedIndex];
+    ((NewsDetailViewController *)vc).news = news;
+  }
 }
 
 #pragma mark - Drag View Delegate

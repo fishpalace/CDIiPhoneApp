@@ -13,6 +13,7 @@
 #import "UIImageView+Addition.h"
 #import "UIView+Addition.h"
 #import "ProjectDetailViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface ProjectListViewController ()
 
@@ -81,9 +82,10 @@
   cell.isPlaceHolder = self.fetchedResultsController.fetchedObjects.count == 0;
   if (!cell.isPlaceHolder) {
     CDIWork *work = self.fetchedResultsController.fetchedObjects[indexPath.row];
-    [cell.imageView loadImageFromURL:work.previewImageURL completion:^(BOOL succeeded) {
-//      [cell.imageView fadeIn];
-    }];
+//    [cell.imageView loadImageFromURL:work.previewImageURL completion:^(BOOL succeeded) {
+////      [cell.imageView fadeIn];
+//    }];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:work.previewImageURL]];
     [cell.projectNameLabel setText:work.name];
     [cell.projectStatusLabel setText:work.workStatus];
     [cell.projectTypeLabel setText:work.workType];

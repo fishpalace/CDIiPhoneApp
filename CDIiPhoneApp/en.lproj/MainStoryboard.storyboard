@@ -87,6 +87,9 @@
                         <outlet property="tableViewContainerView" destination="kZl-4e-gtJ" id="CuU-HH-eXR"/>
                         <outlet property="tableViewHeightConstraint" destination="9Ao-li-xvm" id="X89-qc-RGM"/>
                         <outlet property="tableViewTopSpaceConstraint" destination="NWp-zZ-jcQ" id="eA3-9u-LD7"/>
+                        <segue destination="q6x-uT-0uT" kind="push" identifier="MainNewsSegue" id="nOk-xQ-Tk6"/>
+                        <segue destination="Zpj-ij-Ek7" kind="push" identifier="MainProjectSegue" id="dwd-rp-T0V"/>
+                        <segue destination="jvQ-cj-eTf" kind="push" identifier="MainEventSegue" id="xn1-if-WU2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -976,12 +979,12 @@
         <scene sceneID="B33-bW-gwC">
             <objects>
                 <tableViewController storyboardIdentifier="MPCellTableViewController" id="qUL-zn-NPO" customClass="MPCellTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="202" sectionHeaderHeight="22" sectionFooterHeight="22" id="zC1-YK-1Xi">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="202" sectionHeaderHeight="22" sectionFooterHeight="22" id="zC1-YK-1Xi">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MPCellTableViewCell" rowHeight="200" id="2LO-4G-Iog" customClass="MPCellTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MPCellTableViewCell" rowHeight="200" id="2LO-4G-Iog" customClass="MPCellTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2LO-4G-Iog" id="LOl-un-qM5">
@@ -6033,7 +6036,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </constraints>
                                         <attributedString key="attributedText">
                                             <fragment>
-                                                <mutableString key="content">On July 5th, “2013 Tongji on Tracks Final Report cum 2014 Tongji on Tracks Brainstorming” was successfully held in SFC. Participated in the meeting were representatives from cooperative enterprise as Fuyu from East Training Planning Manager, Belle (Shanghai) Co., Ltd, Wu Mei, Services Promotion Manager of Central Community Development </mutableString>
+                                                <string key="content">On July 5th, “2013 Tongji on Tracks Final Report cum 2014 Tongji on Tracks Brainstorming” was successfully held in SFC. Participated in the meeting were representatives from cooperative enterprise as Fuyu from East Training Planning Manager, Belle (Shanghai) Co., Ltd, Wu Mei, Services Promotion Manager of Central Community Development </string>
                                                 <attributes>
                                                     <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <font key="NSFont" size="17" name="Helvetica-Light"/>
@@ -6164,5 +6167,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <segue reference="Rn9-Jj-U8D"/>
         <segue reference="8C6-30-9Bx"/>
         <segue reference="9z9-3K-Qwj"/>
+        <segue reference="nOk-xQ-Tk6"/>
+        <segue reference="dwd-rp-T0V"/>
+        <segue reference="xn1-if-WU2"/>
     </inferredMetricsTieBreakers>
 </document>

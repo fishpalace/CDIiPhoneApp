@@ -103,13 +103,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  // Navigation logic may go here. Create and push another view controller.
-  /*
-   <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-   // ...
-   // Pass the selected object to the new view controller.
-   [self.navigationController pushViewController:detailViewController animated:YES];
-   */
+  if ([self.delegate respondsToSelector:@selector(didSelectCellAtIndex:ofRow:)]) {
+    [self.delegate didSelectCellAtIndex:indexPath.row ofRow:self.row];
+  }
 }
 
 #pragma mark - Scroll View delegate

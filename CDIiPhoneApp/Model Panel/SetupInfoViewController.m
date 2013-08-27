@@ -12,6 +12,7 @@
 #import "CDIUser.h"
 #import "UIImage+ProportionalFill.h"
 #import "UIImageView+Addition.h"
+#import "NSNotificationCenter+Addition.h"
 
 #define kTextfieldTagBase 100
 #define kTextfieldTagTop  106
@@ -113,6 +114,7 @@
       if ([responseData isKindOfClass:[NSDictionary class]]) {
         NSDictionary *dict = responseData;
         NSLog(@"%@", dict);
+        [NSNotificationCenter postDidChangeCurrentUserNotification];
       }
       [self dismissViewControllerAnimated:YES completion:nil];
     }

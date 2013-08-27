@@ -94,17 +94,20 @@ static ModelPanelViewController *sharedModelPanelViewController;
   self.bottomSpaceConstraint.constant = -self.panelView.frame.size.height;
   void (^completion)(UIImage *bgImage) = ^(UIImage *bgImage) {
     self.modelBGImageView.image = bgImage;
-    [self addChildViewController:self.contentViewController];
-    [self.contentViewController.view setFrame:kContentViewControllerFrame];
-    [self.containerView addSubview:self.contentViewController.view];
-    [self.contentViewController didMoveToParentViewController:self];
-    [self.view fadeIn];
-    self.bottomSpaceConstraint.constant = 0;
-    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-      [self.panelView layoutIfNeeded];
-    } completion:nil];
+    [self.modelBGImageView fadeIn];
   };
   [self configureBGImageWithCompletion:completion];
+  
+  [self addChildViewController:self.contentViewController];
+  [self.contentViewController.view setFrame:kContentViewControllerFrame];
+  [self.containerView addSubview:self.contentViewController.view];
+  [self.contentViewController didMoveToParentViewController:self];
+  [self.view fadeIn];
+  self.bottomSpaceConstraint.constant = 0;
+  
+  [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+    [self.panelView layoutIfNeeded];
+  } completion:nil];
   
   self.titleName = titleName;
   self.functionButtonName = functionButtonName;

@@ -259,10 +259,11 @@ static CDINetClient *sharedClient;
   [self postPath:path parameters:dict data:UIImageJPEGRepresentation(image, 1) completion:completion];
 }
 
-- (void)loginOutCurrentUserWithID:(NSString *)userID
-                       completion:(void (^)(BOOL succeeded, id responseData))completion
+- (void)loginOutCurrentUserWithSessionKey:(NSString *)sessionKey
+                               completion:(void (^)(BOOL succeeded, id responseData))completion
 {
-  //TODO: !!
+  NSString *path = [NSString stringWithFormat:@"webservice/user/logout/%@", sessionKey];
+  [self getPath:path completion:completion];
 }
 
 #pragma mark - Basic Methods
@@ -344,16 +345,24 @@ static CDINetClient *sharedClient;
             withCompletion:(void (^)(BOOL succeeded, id responseData))completion
 {
   JSONDecoder *decoder = [JSONDecoder decoder];
-  self.responseData = [decoder objectWithData:responseData];
+  if (responseData) {
+    self.responseData = [decoder objectWithData:responseData];
+  }
+  
   if ([self.responseData isKindOfClass:[NSDictionary class]]) {
-//    NSString *errorCode = self.responseData[@"errorCode"];
+    NSString *errorCode = self.responseData[@"errorCode"];
     BOOL succeeded = [@"SUCCEED" isEqualToString:self.responseData[@"callStatus"]];
     if (completion) {
       completion(succeeded, self.responseData);
     }
     if (!succeeded) {
-//      NSString *errorMessage = [self errorMessageForErrorCode:errorCode];
-      //TODO 报错
+      NSString *errorMessage = [self errorMessageForErrorCode:errorCode];
+      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@""
+                                                          message:errorMessage
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+      [alertView show];
     }
   } else {
     NSString *responseString = [NSString stringWithUTF8String:[responseData bytes]];;

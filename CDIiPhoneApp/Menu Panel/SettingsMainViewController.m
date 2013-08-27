@@ -124,6 +124,17 @@
                   completion:handleData];
   
 }
+- (IBAction)didClickLogoutButton:(UIButton *)sender
+{
+  CDINetClient *client = [CDINetClient client];
+  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+    [CDIUser updateCurrentUserID:@""];
+    [NSNotificationCenter postDidChangeCurrentUserNotification];
+    [self.navigationController popViewControllerAnimated:YES];
+  };
+  
+  [client loginOutCurrentUserWithSessionKey:self.currentUser.sessionKey completion:handleData];
+}
 
 - (IBAction)didClickBackButton:(UIButton *)sender
 {
@@ -202,7 +213,6 @@
   self.currentTag = textField.tag;
   
   [self updateConfigView];
-  [self adjustScrollViewPosition];
 }
 
 - (void)updateConfigView
@@ -217,9 +227,7 @@
   CGFloat offset = originY - self.textfieldTop + 130;
   CGPoint targetOffset = self.scrollView.contentOffset;
   targetOffset.y += offset;
-  [UIView animateWithDuration:0.3 animations:^{
-    self.scrollView.contentOffset = targetOffset;
-  }];
+  [self.scrollView setContentOffset:targetOffset animated:YES];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -286,9 +294,8 @@
   if (self.scrollView.contentOffset.y >= self.scrollViewContentHeight - self.scrollView.frame.size.height) {
     CGPoint offset = self.scrollView.contentOffset;
     offset.y = self.scrollViewContentHeight - self.scrollView.frame.size.height;
-    [UIView animateWithDuration:0.3 animations:^{
-      self.scrollView.contentOffset = offset;
-    }];
+    
+    [self.scrollView setContentOffset:offset animated:YES];
   }
   self.scrollView.contentSize = CGSizeMake(320, self.scrollViewContentHeight);
 }

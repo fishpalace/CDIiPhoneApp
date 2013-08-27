@@ -38,6 +38,10 @@
 @property (nonatomic, strong) NSMutableArray *iconImageNameArray;
 @property (nonatomic, readwrite) NSInteger selectedRoomID;
 
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
+
+
 @end
 
 @implementation MenuPanelViewController
@@ -79,6 +83,10 @@
 {
   CDIUser *currentUser = [CDIUser currentUserInContext:self.managedObjectContext];
   self.doesCurrentUserExist = currentUser != nil;
+  
+  self.settingsButton.hidden = !self.doesCurrentUserExist;
+  self.loginButton.hidden = self.doesCurrentUserExist;
+  
   if (self.doesCurrentUserExist) {
     self.currentUserNameLabel.text = currentUser.realNameEn;
     [self.avatarImageView setImageWithURL:[NSURL URLWithString:currentUser.avatarSmallURL]];
@@ -288,8 +296,10 @@
 - (IBAction)didClickLoginButton:(UIButton *)sender
 {
   [LoginViewController displayLoginPanelWithCallBack:^{
-    [self performSegueWithIdentifier:@"MenuSetupSegue" sender:self];
-    [NSNotificationCenter postShouldChangeLocalDatasourceNotification];
+    if ([self.currentUser.password isEqualToString:@"123456"]) {
+      [self performSegueWithIdentifier:@"MenuSetupSegue" sender:self];
+      [NSNotificationCenter postShouldChangeLocalDatasourceNotification];
+    }
   }];
 }
 

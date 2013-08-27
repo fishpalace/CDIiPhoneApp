@@ -92,7 +92,7 @@
                        sessionKey:(NSString *)sessionKey
                        completion:(void (^)(BOOL succeeded, id responseData))completion;
 
-- (void)loginOutCurrentUserWithID:(NSString *)userID
-                       completion:(void (^)(BOOL succeeded, id responseData))completion;
+- (void)loginOutCurrentUserWithSessionKey:(NSString *)sessionKey
+                               completion:(void (^)(BOOL succeeded, id responseData))completion;
 
 @end

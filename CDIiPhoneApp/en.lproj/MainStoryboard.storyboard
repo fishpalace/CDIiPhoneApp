@@ -1423,6 +1423,8 @@
                     <connections>
                         <outlet property="avatarImageView" destination="iAZ-eW-3cV" id="YNC-x3-w5n"/>
                         <outlet property="currentUserNameLabel" destination="Xda-PW-VCT" id="FHy-rH-7D0"/>
+                        <outlet property="loginButton" destination="OZw-dr-M5I" id="crZ-nA-U4h"/>
+                        <outlet property="settingsButton" destination="Afc-RB-gGU" id="BFx-k4-bIX"/>
                         <outlet property="tableView" destination="MKW-QA-Dou" id="gMU-Bv-K0f"/>
                         <segue destination="J40-4n-nsT" kind="push" identifier="MenuScheduleSegue" id="NbZ-B2-GH4"/>
                         <segue destination="L8x-HJ-AD3" kind="push" identifier="MenuPeopleSegue" id="LA5-YL-ipb"/>
@@ -5527,6 +5529,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="didClickLogoutButton:" destination="INo-JT-ZL6" eventType="touchUpInside" id="f2v-yd-kIB"/>
                                             <action selector="didClickUndoButton:" destination="JZ0-N7-h9h" eventType="touchUpInside" id="3by-zz-4tt"/>
                                         </connections>
                                     </button>

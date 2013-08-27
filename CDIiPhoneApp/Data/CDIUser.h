@@ -25,11 +25,16 @@
 @property (nonatomic, retain) NSString * realNameEn;
 @property (nonatomic, retain) NSString * sessionKey;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * titleEn;
 @property (nonatomic, retain) NSString * twitterURL;
 @property (nonatomic, retain) NSString * weiboURL;
 @property (nonatomic, retain) NSString * userID;
 @property (nonatomic, retain) NSString * mobile;
 @property (nonatomic, retain) NSString * email;
+@property (nonatomic, retain) NSString * departmentID;
+@property (nonatomic, retain) NSString * departmentName;
+@property (nonatomic, retain) NSString * priority;
+@property (nonatomic, retain) NSString * category;
 @property (nonatomic, retain) NSSet *events;
 @property (nonatomic, retain) NSSet *news;
 @property (nonatomic, retain) NSSet *relatedWork;

@@ -71,8 +71,9 @@
   _userListTableView.delegate = self;
   _userListTableView.dataSource = self;
   [_userListTableView setContentInset:UIEdgeInsetsMake(8, 0, 8, 0)];
+  _userListTableView.contentOffset = CGPointMake(0.0, 0.5);
+
   [self loadData];
-  [self scrollViewDidEndDecelerating:self.userListTableView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -105,7 +106,7 @@
       [self.fetchedResultsController performFetch:nil];
       
       [self.userListTableView reloadData];
-      [self scrollViewDidEndDecelerating:self.userListTableView];
+      self.userListTableView.contentOffset = CGPointMake(0.0, 0.5);
     }
   };
   
@@ -142,7 +143,7 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-  CGFloat maxOffsetY = scrollView.contentSize.height - scrollView.frame.size.width;
+  CGFloat maxOffsetY = scrollView.contentSize.height - scrollView.frame.size.height;
   CGFloat minOffsetY = 0;
   if (scrollView.contentOffset.y == minOffsetY) {
     scrollView.contentOffset = CGPointMake(0.0, minOffsetY + 0.5);
@@ -160,6 +161,7 @@
   }];
   cell.userAvatarImageVIew.layer.masksToBounds = YES;
   cell.userAvatarImageVIew.layer.cornerRadius = 20;
+
   return cell;
 }
 

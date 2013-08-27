@@ -92,13 +92,13 @@
 
 - (IBAction)didClickDoneButton:(UIButton *)sender
 {
-  NSString *email = self.emailTextfield.text;
-  NSString *mobile = self.mobileTextfield.text;
-  NSString *weibo = self.weiboTextfield.text;
-  NSString *twitter = self.twitterTextfield.text;
-  NSString *linkedIn = self.linkedInTextfield.text;
-  NSString *dribble = self.dribbleTextfield.text;
-  NSString *home = self.homePageTextfield.text;
+  self.currentUser.email = self.emailTextfield.text;
+  self.currentUser.mobile = self.mobileTextfield.text;
+  self.currentUser.weiboURL = self.weiboTextfield.text;
+  self.currentUser.twitterURL = self.twitterTextfield.text;
+  self.currentUser.linkedInURL = self.linkedInTextfield.text;
+  self.currentUser.dribbleURL = self.dribbleTextfield.text;
+  self.currentUser.homePageURL = self.homePageTextfield.text;
   
   CDINetClient *client = [CDINetClient client];
   void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
@@ -111,16 +111,8 @@
     }
   };
   
-  [client updateUserWithSessionKey:self.currentUser.sessionKey
-                          password:@""
-                             email:email ? email : @""
-                            mobile:mobile ? mobile : @""
-                             weibo:weibo ? weibo : @""
-                           twitter:twitter ? twitter : @""
-                          linkedIn:linkedIn ? linkedIn : @""
-                           dribble:dribble ? dribble : @""
-                              home:home ? home : @""
-                        completion:handleData];
+  [client updateUserWithUser:self.currentUser password:@""
+                  completion:handleData];
   
   [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -137,7 +129,47 @@
 
 - (IBAction)didClickChangeInfoButton:(UIButton *)sender
 {
+  UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                initWithTitle:nil
+                                delegate:self
+                                cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                destructiveButtonTitle:nil
+                                otherButtonTitles:NSLocalizedString(@"Camera", nil), NSLocalizedString(@"Photo Album", nil), nil];
+  [actionSheet showInView:self.view];
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if(buttonIndex == actionSheet.cancelButtonIndex)
+    return;
   
+  UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+  ipc.delegate = self;
+  ipc.allowsEditing = YES;
+  
+  if(buttonIndex == 1) {
+    ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+  } else if(buttonIndex == 0) {
+    ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+  }
+  
+  [self presentViewController:ipc animated:YES completion:nil];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+  self.scrollView.scrollEnabled = YES;
+  self.scrollView.contentSize = CGSizeMake(320, self.logoutButton.frame.origin.y + 50);
+}
+
+#pragma mark - UIImagePickerController delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+  UIImage *edittedImage = [info objectForKey:UIImagePickerControllerEditedImage];
+  //  edittedImage = [edittedImage imageScaledToFitSize:CROP_AVATAR_SIZE];
+  
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField

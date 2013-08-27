@@ -151,7 +151,7 @@
 {
   if (!_layout) {
     _layout = [[UICollectionViewFlowLayout alloc] init];
-    [_layout setItemSize:CGSizeMake(154, 220)];
+    [_layout setItemSize:CGSizeMake(154, 204)];
     [_layout setMinimumInteritemSpacing:0];
     [_layout setScrollDirection:UICollectionViewScrollDirectionVertical];
   }

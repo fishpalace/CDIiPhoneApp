@@ -8,6 +8,6 @@
 
 #import "CoreDataViewController.h"
 
-@interface SettingsMainViewController : CoreDataViewController <UITextFieldDelegate, UIScrollViewDelegate>
+@interface SettingsMainViewController : CoreDataViewController <UITextFieldDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate>
 
 @end

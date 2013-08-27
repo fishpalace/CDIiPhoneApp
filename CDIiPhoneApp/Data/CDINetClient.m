@@ -204,29 +204,34 @@ static CDINetClient *sharedClient;
   [self getPath:path completion:completion];
 }
 
-- (void)updateUserWithSessionKey:(NSString *)sessionKey
-                        password:(NSString *)password
-                           email:(NSString *)email
-                          mobile:(NSString *)mobile
-                           weibo:(NSString *)weibo
-                         twitter:(NSString *)twitter
-                        linkedIn:(NSString *)linkedIn
-                         dribble:(NSString *)dribble
-                            home:(NSString *)home
-                      completion:(void (^)(BOOL succeeded, id responseData))completion
+- (void)updateUserWithUser:(CDIUser *)user
+                  password:(NSString *)password
+                completion:(void (^)(BOOL succeeded, id responseData))completion
 {
   NSDictionary *dict = @{@"password" : [password md5],
-                         @"emailAddress" : email,
-                         @"mobilePhoneNumber" : mobile,
-                         @"weiboId" : weibo,
-                         @"twitterId" : twitter,
-                         @"linkedInId" : linkedIn,
-                         @"dribbbleId" : dribble,
-                         @"personalSite" : home};
-  NSString *path = [NSString stringWithFormat:@"user/updateUser/%@", sessionKey];
+                         @"id" : user.userID,
+                         @"name" : user.name,
+                         @"avatarSmallUrl" : user.avatarSmallURL,
+                         @"avatarMiddleUrl" : user.avatarMidURL,
+                         @"avatarLargeUrl" : user.avatarLargeURL,
+                         @"realName" : user.realName,
+                         @"realName_en" : user.realNameEn,
+                         @"title" : user.title,
+                         @"title_en" : user.title,
+                         @"emailAddress" : user.email,
+                         @"mobilePhoneNumber" : user.mobile,
+                         @"category" : user.category,
+                         @"prority" : user.priority,
+                         @"weiboId" : user.weiboURL,
+                         @"twitterId" : user.twitterURL,
+                         @"linkedInId" : user.linkedInURL,
+                         @"dribbbleId" : user.dribbleURL,
+                         @"personalSite" : user.homePageURL,
+                         @"departmentId" : user.departmentID,
+                         @"departmentName" : user.departmentName};
+  NSString *path = [NSString stringWithFormat:@"user/updateUser/%@", user.sessionKey];
   [self putPath:path dictionary:dict completion:completion];
 }
-
 
 - (void)reserveDeviceWithSessionKey:(NSString *)sessionKey
                          borrowDate:(NSDate *)borrowDate

@@ -38,6 +38,11 @@ static CDIUser *currentUser;
 @dynamic work;
 @dynamic mobile;
 @dynamic email;
+@dynamic titleEn;
+@dynamic departmentID;
+@dynamic departmentName;
+@dynamic priority;
+@dynamic category;
 
 + (CDIUser *)currentUserInContext:(NSManagedObjectContext *)context
 {
@@ -96,6 +101,11 @@ static CDIUser *currentUser;
   user.weiboURL = [NSString stringForDict:dict key:@"weiboId"];
   user.mobile = [NSString stringForDict:dict key:@"mobilePhoneNumber"];
   user.email = [NSString stringForDict:dict key:@"emailAddress"];
+  user.titleEn = [NSString stringForDict:dict key:@"title_en"];
+  user.departmentName = [NSString stringForDict:dict key:@"departmentName"];
+  user.departmentID = [NSString stringForDict:dict key:@"departmentId"];
+  user.priority = [NSString stringForDict:dict key:@"prority"];
+  user.category = [NSString stringForDict:dict key:@"category"];
   
   return user;
 }

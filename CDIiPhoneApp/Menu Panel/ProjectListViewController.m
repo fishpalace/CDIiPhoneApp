@@ -82,7 +82,7 @@
   if (!cell.isPlaceHolder) {
     CDIWork *work = self.fetchedResultsController.fetchedObjects[indexPath.row];
     [cell.imageView loadImageFromURL:work.previewImageURL completion:^(BOOL succeeded) {
-      [cell.imageView fadeIn];
+//      [cell.imageView fadeIn];
     }];
     [cell.projectNameLabel setText:work.name];
     [cell.projectStatusLabel setText:work.workStatus];

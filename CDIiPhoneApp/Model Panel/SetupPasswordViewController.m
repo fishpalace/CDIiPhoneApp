@@ -91,7 +91,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
   SetupInfoViewController *vc = segue.destinationViewController;
-  vc.password = [self.passwordNewTextfield.text md5];
+  vc.password = self.passwordNewTextfield.text;
 }
 
 @end

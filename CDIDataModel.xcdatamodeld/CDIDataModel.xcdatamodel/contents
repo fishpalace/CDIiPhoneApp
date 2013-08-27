@@ -66,6 +66,9 @@
         <attribute name="avatarLargeURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="avatarMidURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="avatarSmallURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="departmentID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="departmentName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dribbleURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="homePageURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -73,10 +76,12 @@
         <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="priority" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="realName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="realNameEn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sessionKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titleEn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twitterURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weiboURL" optional="YES" attributeType="String" syncable="YES"/>

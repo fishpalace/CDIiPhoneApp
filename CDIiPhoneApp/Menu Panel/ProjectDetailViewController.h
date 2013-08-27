@@ -10,7 +10,7 @@
 
 @class CDIWork;
 
-@interface ProjectDetailViewController : CoreDataViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ProjectDetailViewController : CoreDataViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 @property (nonatomic, weak) CDIWork *work;
 

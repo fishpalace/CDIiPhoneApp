@@ -70,7 +70,9 @@
   
   _userListTableView.delegate = self;
   _userListTableView.dataSource = self;
+  [_userListTableView setContentInset:UIEdgeInsetsMake(8, 0, 8, 0)];
   [self loadData];
+  [self scrollViewDidEndDecelerating:self.userListTableView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -95,12 +97,15 @@
     if ([responseData isKindOfClass:[NSDictionary class]]) {
       NSArray *peopleArray = rawDict[@"data"];
       for (NSDictionary *dict in peopleArray) {
-        [CDIUser insertUserInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
+        CDIUser *user = [CDIUser insertUserInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
+        [self.work addInvolvedUserObject:user];
+        [user addRelatedWorkObject:self.work];
       }
       [self.managedObjectContext processPendingChanges];
       [self.fetchedResultsController performFetch:nil];
       
       [self.userListTableView reloadData];
+      [self scrollViewDidEndDecelerating:self.userListTableView];
     }
   };
   
@@ -118,20 +123,32 @@
   
   CFRelease(framesetter);
   return frameSize.height + 25;
-  return 100;
 }
 
 - (void)configureRequest:(NSFetchRequest *)request
 {
   request.entity = [NSEntityDescription entityForName:@"CDIUser"
                                inManagedObjectContext:self.managedObjectContext];
+  NSPredicate *predict = [NSPredicate predicateWithFormat:@"SELF IN %@", self.work.involvedUser];
   NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:NO];
   request.sortDescriptors = @[sortDescriptor];
+  request.predicate = predict;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
   return self.fetchedResultsController.fetchedObjects.count;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+  CGFloat maxOffsetY = scrollView.contentSize.height - scrollView.frame.size.width;
+  CGFloat minOffsetY = 0;
+  if (scrollView.contentOffset.y == minOffsetY) {
+    scrollView.contentOffset = CGPointMake(0.0, minOffsetY + 0.5);
+  } else if (scrollView.contentOffset.y == maxOffsetY) {
+    scrollView.contentOffset = CGPointMake(0.0, maxOffsetY - 0.5);
+  }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -71,6 +71,8 @@
   _dribbleTextfield.text = self.currentUser.dribbleURL;
   _homePageTextfield.text = self.currentUser.homePageURL;
   
+  _textfieldBottomSpaceConstraint.constant = -200;
+  
   NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
   [center addObserver:self
              selector:@selector(keyboardWillShow:)
@@ -84,7 +86,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-  self.scrollView.contentSize = CGSizeMake(320, self.homePageTextfield.frame.origin.y + 50);
+  self.scrollView.contentSize = CGSizeMake(320, self.logoutButton.frame.origin.y + 50);
   self.scrollViewContentHeight = self.scrollView.contentSize.height;
 }
 

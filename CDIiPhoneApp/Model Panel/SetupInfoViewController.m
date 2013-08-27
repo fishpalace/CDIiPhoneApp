@@ -106,7 +106,7 @@
         NSDictionary *dict = responseData;
         NSLog(@"%@", dict);
       }
-//      [self dismissViewControllerAnimated:YES completion:nil];
+      [self dismissViewControllerAnimated:YES completion:nil];
     }
   };
   
@@ -121,7 +121,7 @@
                               home:home ? home : @""
                         completion:handleData];
   
-  [self dismissViewControllerAnimated:YES completion:nil];
+//  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)didClickBackButton:(UIButton *)sender

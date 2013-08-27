@@ -41,6 +41,8 @@
 		18256B57177055390079D24B /* menu_icon_proj.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B4D177055390079D24B /* menu_icon_proj.png */; };
 		18256B58177055390079D24B /* menu_icon_proj@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18256B4E177055390079D24B /* menu_icon_proj@2x.png */; };
 		1828FAD917CBDB0B00AEDB12 /* SettingsMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1828FAD817CBDB0B00AEDB12 /* SettingsMainViewController.m */; };
+		1828FADC17CC291600AEDB12 /* schedule_preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 1828FADA17CC291600AEDB12 /* schedule_preview.png */; };
+		1828FADD17CC291600AEDB12 /* schedule_preview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1828FADB17CC291600AEDB12 /* schedule_preview@2x.png */; };
 		182B301D1771BC2B00EB6DFB /* tableview_now_indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B301B1771BC2B00EB6DFB /* tableview_now_indicator.png */; };
 		182B301E1771BC2B00EB6DFB /* tableview_now_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */; };
 		182F28CC17A36D7C0035C401 /* time_display_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 182F28CA17A36D7C0035C401 /* time_display_bg.png */; };
@@ -396,6 +398,8 @@
 		18256B4E177055390079D24B /* menu_icon_proj@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_icon_proj@2x.png"; sourceTree = "<group>"; };
 		1828FAD717CBDB0B00AEDB12 /* SettingsMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsMainViewController.h; path = "Menu Panel/SettingsMainViewController.h"; sourceTree = "<group>"; };
 		1828FAD817CBDB0B00AEDB12 /* SettingsMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsMainViewController.m; path = "Menu Panel/SettingsMainViewController.m"; sourceTree = "<group>"; };
+		1828FADA17CC291600AEDB12 /* schedule_preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule_preview.png; sourceTree = "<group>"; };
+		1828FADB17CC291600AEDB12 /* schedule_preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_preview@2x.png"; sourceTree = "<group>"; };
 		182B301B1771BC2B00EB6DFB /* tableview_now_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_now_indicator.png; sourceTree = "<group>"; };
 		182B301C1771BC2B00EB6DFB /* tableview_now_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableview_now_indicator@2x.png"; sourceTree = "<group>"; };
 		182F28CA17A36D7C0035C401 /* time_display_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_display_bg.png; sourceTree = "<group>"; };
@@ -1092,6 +1096,8 @@
 		18948CCE175CE088004E07EB /* test */ = {
 			isa = PBXGroup;
 			children = (
+				1828FADA17CC291600AEDB12 /* schedule_preview.png */,
+				1828FADB17CC291600AEDB12 /* schedule_preview@2x.png */,
 				183A41D917A8E0A700D9EAC7 /* devices_myapplications.png */,
 				183A41DA17A8E0A700D9EAC7 /* devices_myapplications@2x.png */,
 				183A41D517A8DF7600D9EAC7 /* devices.png */,
@@ -1658,6 +1664,7 @@
 				183AE76E175C38CD008310BF /* tableview_bg_back@2x.png in Resources */,
 				183AE76F175C38CD008310BF /* tableview_cell_bg.png in Resources */,
 				183AE770175C38CD008310BF /* tableview_cell_bg@2x.png in Resources */,
+				1828FADD17CC291600AEDB12 /* schedule_preview@2x.png in Resources */,
 				183A41D817A8DF7600D9EAC7 /* devices@2x.png in Resources */,
 				18256B371770441D0079D24B /* menu_avatar_bg@2x.png in Resources */,
 				183AE771175C38CD008310BF /* tableview_icon_calendar.png in Resources */,
@@ -1736,6 +1743,7 @@
 				189E4C90175F924A00E7BA21 /* test_activity_1@2x.png in Resources */,
 				189E4C91175F924A00E7BA21 /* test_activity_2.png in Resources */,
 				18256B4317704C5B0079D24B /* menu_status_yellow.png in Resources */,
+				1828FADC17CC291600AEDB12 /* schedule_preview.png in Resources */,
 				18CDE7B31774204000711E2A /* time_button_graph@2x.png in Resources */,
 				189E4C92175F924A00E7BA21 /* test_activity_2@2x.png in Resources */,
 				189E4C93175F924A00E7BA21 /* test_activity_3.png in Resources */,

@@ -19,6 +19,7 @@
 #import "PeopleInfoViewController.h"
 
 #define kLineSpacing 4
+#define kTableViewIntent 9
 
 @interface ProjectDetailViewController ()
 
@@ -70,8 +71,8 @@
   
   _userListTableView.delegate = self;
   _userListTableView.dataSource = self;
-  [_userListTableView setContentInset:UIEdgeInsetsMake(8, 0, 8, 0)];
-  _userListTableView.contentOffset = CGPointMake(0.0, 0.5);
+  [_userListTableView setContentInset:UIEdgeInsetsMake(kTableViewIntent, 0, kTableViewIntent, 0)];
+  _userListTableView.contentOffset = CGPointMake(0.0, -kTableViewIntent + 0.5);
 
   [self loadData];
 }
@@ -106,7 +107,7 @@
       [self.fetchedResultsController performFetch:nil];
       
       [self.userListTableView reloadData];
-      self.userListTableView.contentOffset = CGPointMake(0.0, 0.5);
+      self.userListTableView.contentOffset = CGPointMake(0.0, -kTableViewIntent + 0.5);
     }
   };
   
@@ -143,8 +144,9 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-  CGFloat maxOffsetY = scrollView.contentSize.height - scrollView.frame.size.height;
-  CGFloat minOffsetY = 0;
+  CGFloat maxOffsetY = scrollView.contentSize.width - scrollView.frame.size.height;
+  maxOffsetY = maxOffsetY < 320 ? 320 - kTableViewIntent : maxOffsetY - kTableViewIntent;
+  CGFloat minOffsetY = -kTableViewIntent;
   if (scrollView.contentOffset.y == minOffsetY) {
     scrollView.contentOffset = CGPointMake(0.0, minOffsetY + 0.5);
   } else if (scrollView.contentOffset.y == maxOffsetY) {

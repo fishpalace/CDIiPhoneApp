@@ -13,7 +13,7 @@
 #import "CDINetClient.h"
 #import "DeviceInfoViewController.h"
 
-#define kDatePickerTop 162 + 55
+#define kDatePickerTop 162 + 52
 
 @interface DeviceReservationViewController ()
 

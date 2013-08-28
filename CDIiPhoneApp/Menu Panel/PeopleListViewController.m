@@ -42,6 +42,7 @@
   _collectionView.delegate = self;
   _collectionView.dataSource = self;
   _collectionView.collectionViewLayout = self.layout;
+  [_collectionView setContentInset:UIEdgeInsetsMake(10, 0, 10, 0)];
   [self loadData];
 }
 
@@ -100,6 +101,9 @@
   cell.userPositionLabel.font = kFontPeopleInfoCellPositionLabel;
   cell.userTitleLabel.textColor = kColorPeopleInfoCellTitleLabel;
   cell.userTitleLabel.font = kFontPeopleInfoCellTitleLabel;
+  
+  cell.layer.borderColor = [UIColor redColor].CGColor;
+  cell.layer.borderWidth = 1;
   
   [cell.avatarImageView loadImageFromURL:user.avatarSmallURL completion:^(BOOL succeeded) {
     [cell.avatarImageView fadeIn];

@@ -48,7 +48,7 @@ static ModelPanelViewController *sharedModelPanelViewController;
   if (!sharedModelPanelViewController) {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
     sharedModelPanelViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ModelPanelViewController"];
-    [sharedModelPanelViewController.view flashOut];
+//    [sharedModelPanelViewController.view flashOut];
     [UIApplication insertViewUnderCover:sharedModelPanelViewController.view];
   }
   return sharedModelPanelViewController;
@@ -102,10 +102,10 @@ static ModelPanelViewController *sharedModelPanelViewController;
   [self.contentViewController.view setFrame:kContentViewControllerFrame];
   [self.containerView addSubview:self.contentViewController.view];
   [self.contentViewController didMoveToParentViewController:self];
-  [self.view fadeIn];
+  [self.view flashIn];
   self.bottomSpaceConstraint.constant = 0;
   
-  [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+  [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
     [self.panelView layoutIfNeeded];
   } completion:nil];
   
@@ -195,7 +195,7 @@ static ModelPanelViewController *sharedModelPanelViewController;
 - (void)hideWithCompletion:(MondelPanelFunctionCallback)completion
 {
   self.bottomSpaceConstraint.constant = -self.panelView.frame.size.height;
-  [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+  [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
     [self.panelView layoutIfNeeded];
   } completion:^(BOOL finished) {
     [self removeContentViewController];
@@ -204,7 +204,8 @@ static ModelPanelViewController *sharedModelPanelViewController;
     }
   }];
   
-  [self.view fadeOutWithDuration:0.5 completion:^{
+  [self.modelBGImageView fadeOutWithCompletion:^{
+    [self.view flashOut];
     self.modelBGImageView.image = nil;
   }];
 }

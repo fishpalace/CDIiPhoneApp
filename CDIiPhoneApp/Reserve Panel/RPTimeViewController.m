@@ -88,7 +88,6 @@
   [_pieChart setMinPieAngle:M_PI * 2 * 2  / (4 * 14)];
   [_pieChart setMaxPieAngle:M_PI * 2 * 8 / (4 * 14)];
   
-  _isToday = YES;
   _startingValue = 8;
   _totalValue = 4 * 14;
   [self setUpTimeZones];
@@ -99,7 +98,14 @@
 {
   _todayTimeZones = [NSMutableArray arrayWithArray:[CDIDataSource todayTimeZonesWithRoomID:self.roomID]];
   _tomorrowTimeZones = [NSMutableArray arrayWithArray:[CDIDataSource tomorrowTimeZonesWithRoomID:self.roomID]];
-  _currentTimeZones = _todayTimeZones;
+  _isToday = NO;
+  for (TimeZone *timeZone in _todayTimeZones) {
+    if (timeZone.length > 2 && timeZone.available) {
+      _isToday = YES;
+      break;
+    }
+  }
+  _currentTimeZones = _isToday ? _todayTimeZones : _tomorrowTimeZones;
 }
 
 - (void)configureWithDate:(BOOL)isToday

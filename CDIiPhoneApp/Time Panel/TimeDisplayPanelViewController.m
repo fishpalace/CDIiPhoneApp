@@ -105,7 +105,7 @@
   if (self.scheduleListDisplayed) {
     self.dateLabel.text = @"Today";
   } else {
-    self.dateLabel.text = isToday > 0 ? @"Today" : @"Tomorrow";
+    self.dateLabel.text = isToday ? @"Today" : @"Tomorrow";
   }
   self.dateLabel.textColor = kColorForNextEventTimeLabel;
   self.dateLabel.font = kFontForNextEventTimeLabel;

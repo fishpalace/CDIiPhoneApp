@@ -102,9 +102,6 @@
   cell.userTitleLabel.textColor = kColorPeopleInfoCellTitleLabel;
   cell.userTitleLabel.font = kFontPeopleInfoCellTitleLabel;
   
-  cell.layer.borderColor = [UIColor redColor].CGColor;
-  cell.layer.borderWidth = 1;
-  
   [cell.avatarImageView loadImageFromURL:user.avatarSmallURL completion:^(BOOL succeeded) {
     [cell.avatarImageView fadeIn];
   }];

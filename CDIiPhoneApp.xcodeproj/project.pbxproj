@@ -154,6 +154,8 @@
 		187F50881734FC80006B46A3 /* UIStoryboard+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F50871734FC80006B46A3 /* UIStoryboard+Addition.m */; };
 		187F508E1735068F006B46A3 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508B1735068F006B46A3 /* UIView+Addition.m */; };
 		187F508F1735068F006B46A3 /* UIView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 187F508D1735068F006B46A3 /* UIView+Resize.m */; };
+		1883B69817CFC6FB00D9684F /* people_info_preview.png in Resources */ = {isa = PBXBuildFile; fileRef = 1883B69617CFC6FB00D9684F /* people_info_preview.png */; };
+		1883B69917CFC6FB00D9684F /* people_info_preview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1883B69717CFC6FB00D9684F /* people_info_preview@2x.png */; };
 		1883D6B117A63F3800B44CA4 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1883D6B017A63F3800B44CA4 /* TTTAttributedLabel.m */; };
 		18948CB8175C521A004E07EB /* ScheduleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18948CB7175C521A004E07EB /* ScheduleListViewController.m */; };
 		18948CBE175C5FAC004E07EB /* SLDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18948CBD175C5FAC004E07EB /* SLDetailTableViewCell.m */; };
@@ -547,6 +549,8 @@
 		187F508B1735068F006B46A3 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Addition.m"; path = "Category/UIView+Addition.m"; sourceTree = "<group>"; };
 		187F508C1735068F006B46A3 /* UIView+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Resize.h"; path = "Category/UIView+Resize.h"; sourceTree = "<group>"; };
 		187F508D1735068F006B46A3 /* UIView+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Resize.m"; path = "Category/UIView+Resize.m"; sourceTree = "<group>"; };
+		1883B69617CFC6FB00D9684F /* people_info_preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = people_info_preview.png; sourceTree = "<group>"; };
+		1883B69717CFC6FB00D9684F /* people_info_preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people_info_preview@2x.png"; sourceTree = "<group>"; };
 		1883D6AF17A63F3800B44CA4 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTAttributedLabel.h; path = "Custom Control/TTTAttributedLabel.h"; sourceTree = "<group>"; };
 		1883D6B017A63F3800B44CA4 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTAttributedLabel.m; path = "Custom Control/TTTAttributedLabel.m"; sourceTree = "<group>"; };
 		18948CB6175C521A004E07EB /* ScheduleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleListViewController.h; path = "Menu Panel/ScheduleListViewController.h"; sourceTree = "<group>"; };
@@ -1101,6 +1105,8 @@
 		18948CCE175CE088004E07EB /* test */ = {
 			isa = PBXGroup;
 			children = (
+				1883B69617CFC6FB00D9684F /* people_info_preview.png */,
+				1883B69717CFC6FB00D9684F /* people_info_preview@2x.png */,
 				1828FADA17CC291600AEDB12 /* schedule_preview.png */,
 				1828FADB17CC291600AEDB12 /* schedule_preview@2x.png */,
 				183A41D917A8E0A700D9EAC7 /* devices_myapplications.png */,
@@ -1563,6 +1569,7 @@
 				183F9C681777F26D00409FE7 /* rp_time_puller_start@2x.png in Resources */,
 				18256B35177044070079D24B /* menu_preview@2x.png in Resources */,
 				18B995A31759EA190010B9D4 /* menu_room_unavailable@2x.png in Resources */,
+				1883B69917CFC6FB00D9684F /* people_info_preview@2x.png in Resources */,
 				18B995A41759EA190010B9D4 /* menu_schedule_indicator.png in Resources */,
 				18B995A51759EA190010B9D4 /* menu_schedule_indicator@2x.png in Resources */,
 				18B995A61759EA190010B9D4 /* menu_section_info.png in Resources */,
@@ -1659,6 +1666,7 @@
 				18B74438175B3EAA00585CF5 /* icon@2x.png in Resources */,
 				183AE76B175C38CD008310BF /* tableview_bg.png in Resources */,
 				18AC1A0817A75E17000F6755 /* icon_unavailable@2x.png in Resources */,
+				1883B69817CFC6FB00D9684F /* people_info_preview.png in Resources */,
 				18256B4017704C550079D24B /* menu_status_green@2x.png in Resources */,
 				183A41A417A81F3000D9EAC7 /* devices_detail_reserve_preview@2x.png in Resources */,
 				187963851777FD6B00EC9767 /* rp_accesscode_bg.png in Resources */,

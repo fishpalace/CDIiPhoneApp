@@ -31,6 +31,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    CDIUser *currentUser = [CDIUser currentUserInContext:self.managedObjectContext];
+    _titleLabel.text = currentUser.realNameEn;
 }
 
 - (void)updateViewConstraints

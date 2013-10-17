@@ -355,7 +355,6 @@
 		18E0EA991738DBE7006EFF51 /* UIApplication+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA981738DBE7006EFF51 /* UIApplication+Addition.m */; };
 		18F6FE1017A6657E00BD9E74 /* NSMutableAttributedString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6FE0F17A6657E00BD9E74 /* NSMutableAttributedString+Size.m */; };
 		18F6FE1317A6667C00BD9E74 /* NSAttributedString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6FE1217A6667C00BD9E74 /* NSAttributedString+Size.m */; };
-		51A4D7A2180EBF40008FCB84 /* main_room_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A4D7A1180EBF40008FCB84 /* main_room_4.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -799,7 +798,6 @@
 		18F6FE0F17A6657E00BD9E74 /* NSMutableAttributedString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableAttributedString+Size.m"; path = "Category/NSMutableAttributedString+Size.m"; sourceTree = "<group>"; };
 		18F6FE1117A6667C00BD9E74 /* NSAttributedString+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Size.h"; path = "Category/NSAttributedString+Size.h"; sourceTree = "<group>"; };
 		18F6FE1217A6667C00BD9E74 /* NSAttributedString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Size.m"; path = "Category/NSAttributedString+Size.m"; sourceTree = "<group>"; };
-		51A4D7A1180EBF40008FCB84 /* main_room_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = main_room_4.png; path = ../Remote/main_room_4.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -822,7 +820,6 @@
 		180BD08E17334D6D00BA2A98 = {
 			isa = PBXGroup;
 			children = (
-				51A4D7A1180EBF40008FCB84 /* main_room_4.png */,
 				180D9FF61769905300E7E4F2 /* Media.xcassets */,
 				18B74437175B3EAA00585CF5 /* icon@2x.png */,
 				18B74435175B3E9E00585CF5 /* icon.png */,
@@ -1681,7 +1678,6 @@
 				183AE76F175C38CD008310BF /* tableview_cell_bg.png in Resources */,
 				183AE770175C38CD008310BF /* tableview_cell_bg@2x.png in Resources */,
 				1828FADD17CC291600AEDB12 /* schedule_preview@2x.png in Resources */,
-				51A4D7A2180EBF40008FCB84 /* main_room_4.png in Resources */,
 				183A41D817A8DF7600D9EAC7 /* devices@2x.png in Resources */,
 				18256B371770441D0079D24B /* menu_avatar_bg@2x.png in Resources */,
 				183AE771175C38CD008310BF /* tableview_icon_calendar.png in Resources */,

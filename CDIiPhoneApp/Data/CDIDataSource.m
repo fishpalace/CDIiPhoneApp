@@ -355,7 +355,7 @@ static CDIDataSource *sharedDataSource;
   [self.roomDtomorrowEvents removeAllObjects];
   
   NSDate *todayDate = [NSDate todayDateStartingFromHour:0];
-  NSDate *tomorrowDate = [[NSDate todayDateStartingFromHour:0] dateByAddingTimeInterval:3600 * 24 * 2];
+  NSDate *tomorrowDate = [[NSDate todayDateStartingFromHour:0] dateByAddingTimeInterval:3600 * 24];
   for (CDIEvent *event in self.fetchedResultsController.fetchedObjects) {
     if (![event.typeOrigin isEqualToString:@"DISCUSSION"]) {
       if ([event.endDate earilierThanDate:todayDate] || [tomorrowDate earilierThanDate:event.startDate]) {
@@ -381,9 +381,9 @@ static CDIDataSource *sharedDataSource;
       default:
         break;
     }
-    if (isToday) {
+//    if (isToday) {
       [array addObject:eventDAO];
-    }
+//    }
   }
   [NSNotificationCenter postDidFetchNewEventsNotification];
 }
@@ -392,7 +392,6 @@ static CDIDataSource *sharedDataSource;
 {
   NSMutableArray *currentTimeZones = [NSMutableArray array];
   NSArray *todayEvents = [CDIDataSource todayEventsForRoomID:roomID];
-  
   NSInteger todayStartValue = [[NSDate todayDateStartingFromHour:8] integerValueForTimePanel];
   NSInteger currentValue = [[NSDate date] integerValueForTimePanel];
   

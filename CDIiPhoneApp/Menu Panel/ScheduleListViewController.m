@@ -50,104 +50,107 @@
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  
-  [self.timer fire];
-  self.tableViewController.delegate = self;
+    [super viewDidLoad];
+    
+    [self.timer fire];
+    self.tableViewController.delegate = self;
 }
 
 - (void)slTableViewController:(ScheduleListTableViewController *)vc configureRequest:(NSFetchRequest *)request
 {
-  [self configureRequest:request];
+    [self configureRequest:request];
 }
 
 - (void)didSelectEvent:(CDIEventDAO *)event
 {
-  if (![event.typeOrigin isEqualToString:@"DISCUSSION"]) {
-    self.selectedEvent = event;
-    [self performSegueWithIdentifier:@"ScheduleDetailSegue" sender:self];
-  }
+    if (![event.typeOrigin isEqualToString:@"DISCUSSION"]) {
+        self.selectedEvent = event;
+        [self performSegueWithIdentifier:@"ScheduleDetailSegue" sender:self];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  ScheduleEventDetailViewController *vc = segue.destinationViewController;
-  vc.event = self.selectedEvent;
+    if ([segue.identifier isEqualToString:@"EventListRoomListSegue"]) {
+        return;
+    }
+    ScheduleEventDetailViewController *vc = segue.destinationViewController;
+    vc.event = self.selectedEvent;
 }
 
 - (void)configureRequest:(NSFetchRequest *)request
 {
-  NSDate *fromDate = [[NSDate date] dateWithoutTime];
-  NSDate *toDate = [fromDate dateByAddingTimeInterval:3600 * 24 * 2];
-  
-  request.entity = [NSEntityDescription entityForName:@"CDIEvent"
-                               inManagedObjectContext:self.managedObjectContext];
-  request.predicate = [NSPredicate predicateWithFormat:@"(startDate >= %@ && startDate <= %@) || (startDate <= %@ && endDate >= %@)", fromDate, toDate, fromDate, toDate];
-  NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES];
-
-  request.sortDescriptors = @[sortDescriptor];
+    NSDate *fromDate = [[NSDate date] dateWithoutTime];
+    NSDate *toDate = [fromDate dateByAddingTimeInterval:3600 * 24 * 2];
+    
+    request.entity = [NSEntityDescription entityForName:@"CDIEvent"
+                                 inManagedObjectContext:self.managedObjectContext];
+    request.predicate = [NSPredicate predicateWithFormat:@"(startDate >= %@ && startDate <= %@) || (startDate <= %@ && endDate >= %@)", fromDate, toDate, fromDate, toDate];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES];
+    
+    request.sortDescriptors = @[sortDescriptor];
 }
 
 #pragma mark - UI Configurations
 
 - (void)updateTimeLabel:(NSTimer *)timer
 {
-  NSDate *currentDate = [NSDate date];
-  NSString *weekDayString = [NSDate weekdayStringForDate:currentDate];
-  NSString *dateString = [NSDate stringOfDate:currentDate includingYear:YES];
-  [self.dateLabel setText:[NSString stringWithFormat:@"%@ %@", weekDayString, dateString]];
-  [self.timeLabel setText:[NSDate stringOfTime:currentDate]];
-  [self.dateLabel setTextColor:kRSLDateLabelColor];
-  [self.dateLabel setFont:kRSLDateLabelFont];
-  [self.timeLabel setTextColor:kRSLTimeLabelColor];
-  [self.timeLabel setFont:kRSLTimeLabelFont];
+    NSDate *currentDate = [NSDate date];
+    NSString *weekDayString = [NSDate weekdayStringForDate:currentDate];
+    NSString *dateString = [NSDate stringOfDate:currentDate includingYear:YES];
+    [self.dateLabel setText:[NSString stringWithFormat:@"%@ %@", weekDayString, dateString]];
+    [self.timeLabel setText:[NSDate stringOfTime:currentDate]];
+    [self.dateLabel setTextColor:kRSLDateLabelColor];
+    [self.dateLabel setFont:kRSLDateLabelFont];
+    [self.timeLabel setTextColor:kRSLTimeLabelColor];
+    [self.timeLabel setFont:kRSLTimeLabelFont];
 }
 
 #pragma mark - IBActions
 
 - (IBAction)didClickBackButton:(id)sender
 {
-  [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)didClickReserveButton:(UIButton *)sender
 {
-  if ([CDIUser currentUserInContext:self.managedObjectContext]) {
-    [self performSegueWithIdentifier:@"EventListRoomListSegue" sender:self];
-  } else {
-    [LoginViewController displayLoginPanelWithCallBack:^{
-      [self performSegueWithIdentifier:@"EventListRoomListSegue" sender:self];
-      [NSNotificationCenter postShouldChangeLocalDatasourceNotification];
-    }];
-  }
+    if ([CDIUser currentUserInContext:self.managedObjectContext]) {
+        [self performSegueWithIdentifier:@"EventListRoomListSegue" sender:self];
+    } else {
+        [LoginViewController displayLoginPanelWithCallBack:^{
+            [self performSegueWithIdentifier:@"EventListRoomListSegue" sender:self];
+            [NSNotificationCenter postShouldChangeLocalDatasourceNotification];
+        }];
+    }
 }
 
 #pragma mark - Properties
 
 - (ScheduleListTableViewController *)tableViewController
 {
-  if (!_tableViewController) {
-    _tableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ScheduleListTableViewController"];
-    
-    [self addChildViewController:_tableViewController];
-    [_tableViewController.view resetSize:CGSizeMake(320, kCurrentScreenHeight - kTopBarHeight)];
-    [_tableViewController.view resetOrigin:CGPointMake(0, kTopBarHeight)];
-    [self.view addSubview:_tableViewController.view];
-    [_tableViewController didMoveToParentViewController:self];
-  }
-  return _tableViewController;
+    if (!_tableViewController) {
+        _tableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ScheduleListTableViewController"];
+        
+        [self addChildViewController:_tableViewController];
+        [_tableViewController.view resetSize:CGSizeMake(320, kCurrentScreenHeight - kTopBarHeight)];
+        [_tableViewController.view resetOrigin:CGPointMake(0, kTopBarHeight)];
+        [self.view addSubview:_tableViewController.view];
+        [_tableViewController didMoveToParentViewController:self];
+    }
+    return _tableViewController;
 }
 
 - (NSTimer *)timer
 {
-  if (!_timer) {
-    _timer = [NSTimer scheduledTimerWithTimeInterval:60.0
-                                              target:self
-                                            selector:@selector(updateTimeLabel:)
-                                            userInfo:nil
-                                             repeats:YES];
-  }
-  return _timer;
+    if (!_timer) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:60.0
+                                                  target:self
+                                                selector:@selector(updateTimeLabel:)
+                                                userInfo:nil
+                                                 repeats:YES];
+    }
+    return _timer;
 }
 
 @end

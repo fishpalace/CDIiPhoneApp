@@ -83,11 +83,18 @@
         imageName = [self.delegate imageURLForCellAtIndex:self.row atRow:indexPath.row];
     }
     
+//    cell.contentImageView.contentMode = UIViewContentModeScaleAspectFit;
+//    CGRect cellRect = cell.contentImageView.frame;
+//    cell.contentImageView.frame = CGRectMake(cellRect.origin.x, cellRect.origin.y, 170.0, 170.0);
     [cell.contentImageView loadImageFromURL:imageName completion:^(BOOL succeeded) {
         [cell.contentImageView fadeIn];
         cell.contentImageView.layer.masksToBounds = YES;
         cell.contentImageView.layer.cornerRadius = 5;
     }];
+//    NSLog(@"%f %f",cell.contentImageView.frame.size.width,cell.contentImageView.frame.size.height);
+//    NSLog(@"%f %f",cell.contentImageView.image.size.width,cell.contentImageView.image.size.width);
+//    NSLog(@"%d",cell.contentImageView.contentMode);
+    
 //    cell.contentImageView.layer.cornerRadius = 5;
 //    cell.contentImageView.layer.masksToBounds = YES;
     return cell;

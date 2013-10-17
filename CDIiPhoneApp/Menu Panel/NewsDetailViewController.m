@@ -35,72 +35,84 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-    // Custom initialization
-  }
-  return self;
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
 }
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  [_imageView loadImageFromURL:self.news.imageURL completion:^(BOOL succeeded) {
-    [_imageView fadeIn];
-  }];
-  [_titleLabel setText:self.news.title];
-  [_dateLabel setText:[NSDate stringOfDate:self.news.date includingYear:YES]];
-  [_contentLabel setText:self.news.content];
-  [_contentLabel setNumberOfLines:100000];
-  
-  NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithAttributedString:_contentLabel.attributedText];
-  NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-  [style setLineSpacing:kLineSpacing];
-  [string addAttribute:NSParagraphStyleAttributeName
-                 value:style
-                 range:NSMakeRange(0, string.length)];
-  [_contentLabel setAttributedText:string];
+    [super viewDidLoad];
+    self.scrollView.delegate = self;
+    
+    [_imageView loadImageFromURL:self.news.imageURL completion:^(BOOL succeeded) {
+        [_imageView fadeIn];
+    }];
+    [_titleLabel setText:self.news.title];
+    [_dateLabel setText:[NSDate stringOfDate:self.news.date includingYear:YES]];
+    [_contentLabel setText:self.news.content];
+    [_contentLabel setNumberOfLines:100000];
+    
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithAttributedString:_contentLabel.attributedText];
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    [style setLineSpacing:kLineSpacing];
+    [string addAttribute:NSParagraphStyleAttributeName
+                   value:style
+                   range:NSMakeRange(0, string.length)];
+    [_contentLabel setAttributedText:string];
 }
 
 - (void)updateViewConstraints
 {
-  [super updateViewConstraints];
-  self.titleContainerViewHeightConstraint.constant = [self heightForTitleContainerView];
-  self.contentLabelHeightConstraint.constant = [self heightForContentLabel];
+    [super updateViewConstraints];
+    self.titleContainerViewHeightConstraint.constant = [self heightForTitleContainerView];
+    self.contentLabelHeightConstraint.constant = [self heightForContentLabel];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [self setScrollVIewContentSize];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-  CGFloat height = self.contentLabel.frame.origin.y + self.contentLabel.frame.size.height;
-  height = height < self.scrollView.frame.size.height ? self.scrollView.frame.size.height + 1 : height;
-  [self.scrollView setContentSize:CGSizeMake(320, height)];
+    [self setScrollVIewContentSize];
+}
+
+- (void)setScrollVIewContentSize
+{
+    CGFloat height = self.contentLabel.frame.origin.y + self.contentLabel.frame.size.height;
+    height = height < self.scrollView.frame.size.height ? self.scrollView.frame.size.height + 1 : height;
+    [self.scrollView setContentSize:CGSizeMake(320, height)];
 }
 
 - (CGFloat)heightForTitleContainerView
 {
-  CGFloat height = kTitleContainerViewStandardHeight;
-  CGSize size = [self.news.title sizeWithFont:kRLightFontWithSize(14)
-                            constrainedToSize:CGSizeMake(290, 1000)
-                                lineBreakMode:NSLineBreakByCharWrapping];
-  height = kTitleContainerViewStandardHeight + size.height - kTitleContainerSingleLineHeight;
-  return height;
+    CGFloat height = kTitleContainerViewStandardHeight;
+    CGSize size = [self.news.title sizeWithFont:kRLightFontWithSize(14)
+                              constrainedToSize:CGSizeMake(290, 1000)
+                                  lineBreakMode:NSLineBreakByCharWrapping];
+    height = kTitleContainerViewStandardHeight + size.height - kTitleContainerSingleLineHeight;
+    return height;
 }
 
 - (CGFloat)heightForContentLabel
 {
-  CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFMutableAttributedStringRef)self.contentLabel.attributedText);
-  CFRange fitRange;
-  CFRange textRange = CFRangeMake(0, self.contentLabel.attributedText.length);
-  
-  CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, textRange, NULL, CGSizeMake(290, CGFLOAT_MAX), &fitRange);
-  
-  CFRelease(framesetter);
-  return frameSize.height + 25;
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFMutableAttributedStringRef)self.contentLabel.attributedText);
+    CFRange fitRange;
+    CFRange textRange = CFRangeMake(0, self.contentLabel.attributedText.length);
+    
+    CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, textRange, NULL, CGSizeMake(290, CGFLOAT_MAX), &fitRange);
+    
+    CFRelease(framesetter);
+    return frameSize.height + 25;
 }
 
 - (IBAction)didClickBackButton:(UIButton *)sender
 {
-  [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

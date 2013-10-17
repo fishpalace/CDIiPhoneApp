@@ -10,7 +10,7 @@
 
 @class CDINews;
 
-@interface NewsDetailViewController : CoreDataViewController
+@interface NewsDetailViewController : CoreDataViewController<UIScrollViewDelegate>
 
 @property (nonatomic, weak) CDINews *news;
 

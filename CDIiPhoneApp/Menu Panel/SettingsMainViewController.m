@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *backwardButton;
 @property (weak, nonatomic) IBOutlet UIButton *forwardButton;
 @property (weak, nonatomic) IBOutlet UIButton *hideKeyboardButton;
+@property (weak, nonatomic) IBOutlet UILabel * currentUserNameLabel;
 
 @property (nonatomic, readwrite) CGFloat textfieldTop;
 @property (nonatomic, weak) UITextField *currentTextfield;
@@ -62,6 +63,7 @@
     self.configView.translatesAutoresizingMaskIntoConstraints = YES;
     self.configView.userInteractionEnabled = NO;
     self.configView.alpha = 0.0;
+    [_currentUserNameLabel setText:self.currentUser.realNameEn];
     
     _emailTextfield.delegate = self;
     _mobileTextfield.delegate = self;

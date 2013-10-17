@@ -85,13 +85,37 @@
 //    [cell.imageView loadImageFromURL:work.previewImageURL completion:^(BOOL succeeded) {
 ////      [cell.imageView fadeIn];
 //    }];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:work.previewImageURL]];
+      
+      UIImageView * testView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, 90.0, 90.0)];
+      [testView setImageWithURL:[NSURL URLWithString:work.previewImageURL]];
+      testView.contentMode = UIViewContentModeScaleAspectFit;
+      [cell.contentView addSubview:testView];
+      
+//      [cell.imageView setImageWithURL:[NSURL URLWithString:work.previewImageURL]];
+//      cell.imageView.image = [UIImage imageNamed:@"main_room_4.png"];
+//      cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+//      cell.imageView.clipsToBounds = YES;
+//      NSLog(@"%f %f",cell.imageView.frame.size.width,cell.imageView.frame.size.height);
+      
     [cell.projectNameLabel setText:work.name];
     [cell.projectStatusLabel setText:work.workStatus];
     [cell.projectTypeLabel setText:work.workType];
   }
   return cell;
 }
+
+//-(UIImage *)getImageFromImage:(UIImage*) superImage subImageSize:(CGSize)subImageSize subImageRect:(CGRect)subImageRect {
+//    //    CGSize subImageSize = CGSizeMake(WIDTH, HEIGHT); //定义裁剪的区域相对于原图片的位置
+//    //    CGRect subImageRect = CGRectMake(START_X, START_Y, WIDTH, HEIGHT);
+//    CGImageRef imageRef = superImage.CGImage;
+//    CGImageRef subImageRef = CGImageCreateWithImageInRect(imageRef, subImageRect);
+//    UIGraphicsBeginImageContext(subImageSize);
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextDrawImage(context, subImageRect, subImageRef);
+//    UIImage* returnImage = [UIImage imageWithCGImage:subImageRef];
+//    UIGraphicsEndImageContext(); //返回裁剪的部分图像
+//    return returnImage;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

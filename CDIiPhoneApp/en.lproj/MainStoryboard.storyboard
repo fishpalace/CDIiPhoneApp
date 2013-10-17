@@ -1783,7 +1783,7 @@
                                                     <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="waB-Dp-uIY">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="waB-Dp-uIY">
                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
@@ -3058,7 +3058,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAa-rx-2JS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1395" y="-1347"/>
+            <point key="canvasLocation" x="1457" y="-1313"/>
         </scene>
         <!--News Detail View Controller-->
         <scene sceneID="Ead-sr-Mw8">
@@ -5626,7 +5626,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Alex Yan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6e-z5-NnV">
-                                        <rect key="frame" x="110" y="11" width="100" height="21"/>
+                                        <rect key="frame" x="79" y="11" width="150" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -5653,7 +5653,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhZ-tJ-Gq2">
-                                <rect key="frame" x="0.0" y="262" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="323" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="textfield_config_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="adR-Rl-7dp">
@@ -5736,7 +5736,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="611-zP-nVJ" firstAttribute="leading" secondItem="dd9-S6-Rli" secondAttribute="leading" id="1Cq-FF-bIo"/>
                             <constraint firstItem="pjZ-mX-s53" firstAttribute="trailing" secondItem="611-zP-nVJ" secondAttribute="trailing" id="NrR-Tu-tTh"/>
                             <constraint firstItem="pjZ-mX-s53" firstAttribute="top" secondItem="611-zP-nVJ" secondAttribute="bottom" id="VS6-PK-9nT"/>
-                            <constraint firstItem="3il-jM-xMj" firstAttribute="top" secondItem="yhZ-tJ-Gq2" secondAttribute="bottom" constant="261" id="Vfs-Cz-Q8C"/>
+                            <constraint firstItem="3il-jM-xMj" firstAttribute="top" secondItem="yhZ-tJ-Gq2" secondAttribute="bottom" constant="200" id="Vfs-Cz-Q8C"/>
                             <constraint firstAttribute="centerX" secondItem="yhZ-tJ-Gq2" secondAttribute="centerX" id="oM2-ep-geh"/>
                             <constraint firstItem="3il-jM-xMj" firstAttribute="top" secondItem="pjZ-mX-s53" secondAttribute="bottom" id="smx-yM-JAO"/>
                             <constraint firstItem="pjZ-mX-s53" firstAttribute="leading" secondItem="611-zP-nVJ" secondAttribute="leading" id="w61-Pf-Qrm"/>
@@ -5749,6 +5749,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="backwardButton" destination="aub-nG-eDh" id="ryl-kP-kjf"/>
                         <outlet property="changePhotoButton" destination="H0I-Rr-R4I" id="1S3-Y3-UnX"/>
                         <outlet property="configView" destination="yhZ-tJ-Gq2" id="zWa-gX-FE9"/>
+                        <outlet property="currentUserNameLabel" destination="I6e-z5-NnV" id="BUG-d9-UW1"/>
                         <outlet property="doneButton" destination="3J0-70-IFZ" id="VNW-0R-3cG"/>
                         <outlet property="dribbleTextfield" destination="CGe-em-rSS" id="p4b-rH-aBt"/>
                         <outlet property="emailErrorImageView" destination="VDx-sf-iwa" id="PAd-ZA-PEd"/>
@@ -6170,10 +6171,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Rn9-Jj-U8D"/>
-        <segue reference="8C6-30-9Bx"/>
-        <segue reference="9z9-3K-Qwj"/>
+        <segue reference="Ry5-cC-P8A"/>
+        <segue reference="BzR-H2-so3"/>
+        <segue reference="17S-8D-Tob"/>
+        <segue reference="JCw-Cp-ljk"/>
         <segue reference="nOk-xQ-Tk6"/>
-        <segue reference="dwd-rp-T0V"/>
-        <segue reference="xn1-if-WU2"/>
     </inferredMetricsTieBreakers>
 </document>

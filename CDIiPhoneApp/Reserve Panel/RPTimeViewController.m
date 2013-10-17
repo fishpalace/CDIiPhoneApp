@@ -326,6 +326,7 @@
 
 - (IBAction)didClickNextButton:(UIButton *)sender
 {
+    self.view.userInteractionEnabled = NO;
   CDIUser *currentUser = [CDIUser currentUserInContext:self.managedObjectContext];
   CDINetClient *client = [CDINetClient client];
   
@@ -334,6 +335,7 @@
   
   BlockARCWeakSelf weakSelf = self;
   void (^completion)(BOOL, id) = ^(BOOL succeeded, id responseData) {
+      self.view.userInteractionEnabled = YES;
     if (succeeded) {
       if ([responseData[@"data"] integerValue] != 0) {
         [weakSelf submitDate];

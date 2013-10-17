@@ -660,34 +660,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No projects" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-SD-ARl">
+                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No projects" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-SD-ARl">
                                                     <rect key="frame" x="0.0" y="38" width="320" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="XIW-Sv-uJd"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_avatar_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="9RY-Zh-yeR">
-                                                    <rect key="frame" x="10" y="25" width="38" height="38"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P2P-B2-BLQ">
-                                                    <rect key="frame" x="10" y="25" width="38" height="38"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="38" id="NnN-ak-gIR"/>
-                                                        <constraint firstAttribute="height" constant="38" id="hyy-8M-xRb"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smart Campus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="df6-bj-Cnu">
                                                     <rect key="frame" x="61" y="25" width="116" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="232" id="YWf-kY-RwA"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -703,28 +685,21 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="df6-bj-Cnu" firstAttribute="leading" secondItem="J05-KT-bhX" secondAttribute="leading" constant="61" id="EfY-FN-O8V"/>
+                                                <constraint firstItem="df6-bj-Cnu" firstAttribute="top" secondItem="J05-KT-bhX" secondAttribute="top" constant="25" id="Gyc-6x-wjj"/>
+                                                <constraint firstAttribute="trailing" secondItem="XRp-SD-ARl" secondAttribute="trailing" id="p1S-mB-mxW"/>
+                                                <constraint firstItem="XRp-SD-ARl" firstAttribute="leading" secondItem="J05-KT-bhX" secondAttribute="leading" id="xzJ-5z-Npk"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="P2P-B2-BLQ" firstAttribute="top" secondItem="9RY-Zh-yeR" secondAttribute="top" id="49r-UI-DK5"/>
-                                            <constraint firstItem="df6-bj-Cnu" firstAttribute="leading" secondItem="P2P-B2-BLQ" secondAttribute="trailing" constant="13" id="A27-Ky-JH3"/>
                                             <constraint firstAttribute="centerY" secondItem="XRp-SD-ARl" secondAttribute="centerY" id="CRg-W0-Zn7"/>
-                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="df6-bj-Cnu" secondAttribute="trailing" constant="20" id="DJV-Vi-kBl"/>
-                                            <constraint firstItem="P2P-B2-BLQ" firstAttribute="leading" secondItem="9RY-Zh-yeR" secondAttribute="leading" id="FsL-zb-H3W"/>
                                             <constraint firstItem="dJ0-eQ-lBU" firstAttribute="top" secondItem="df6-bj-Cnu" secondAttribute="bottom" constant="1" id="Gdg-9A-sZA"/>
                                             <constraint firstItem="dJ0-eQ-lBU" firstAttribute="leading" secondItem="df6-bj-Cnu" secondAttribute="leading" id="Ns5-GP-7UF"/>
-                                            <constraint firstItem="P2P-B2-BLQ" firstAttribute="leading" secondItem="pMp-kD-Sa3" secondAttribute="leading" constant="10" id="RSl-gv-966"/>
-                                            <constraint firstAttribute="trailing" secondItem="XRp-SD-ARl" secondAttribute="trailing" id="Xjg-Wr-aPH"/>
-                                            <constraint firstItem="P2P-B2-BLQ" firstAttribute="bottom" secondItem="9RY-Zh-yeR" secondAttribute="bottom" id="Xsw-F6-LFe"/>
-                                            <constraint firstItem="XRp-SD-ARl" firstAttribute="leading" secondItem="pMp-kD-Sa3" secondAttribute="leading" id="ajH-bh-wBD"/>
-                                            <constraint firstItem="P2P-B2-BLQ" firstAttribute="trailing" secondItem="9RY-Zh-yeR" secondAttribute="trailing" id="ko4-nG-80E"/>
-                                            <constraint firstAttribute="centerY" secondItem="P2P-B2-BLQ" secondAttribute="centerY" constant="5" id="nDI-le-uqA"/>
-                                            <constraint firstItem="df6-bj-Cnu" firstAttribute="top" secondItem="P2P-B2-BLQ" secondAttribute="top" id="tPa-PU-hfg"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="noItemIndicatorLabel" destination="XRp-SD-ARl" id="PBc-ug-aEf"/>
                                             <outlet property="workNameLabel" destination="df6-bj-Cnu" id="gL2-aH-Xoq"/>
-                                            <outlet property="workPicCoverImageView" destination="9RY-Zh-yeR" id="EGb-3j-AVe"/>
-                                            <outlet property="workPicImageView" destination="P2P-B2-BLQ" id="MnG-Mw-3J7"/>
                                             <outlet property="workTypeLabel" destination="dJ0-eQ-lBU" id="9Ye-RF-UQ0"/>
                                         </connections>
                                     </tableViewCell>

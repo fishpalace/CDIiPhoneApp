@@ -115,7 +115,7 @@
     if (!cell.isPlaceHolder) {
         CDIWork *work = self.fetchedResultsController.fetchedObjects[indexPath.row];
         
-        UIImageView * testView = [[UIImageView alloc]initWithFrame:CGRectMake(10.0, 16.0, 38.0, 38.0)];
+        UIImageView * testView = [[UIImageView alloc]initWithFrame:CGRectMake(10.0, 25.0, 38.0, 38.0)];
         [testView setImageWithURL:[NSURL URLWithString:work.imgURL]];
         testView.contentMode = UIViewContentModeScaleAspectFill;
         testView.layer.cornerRadius = 19;

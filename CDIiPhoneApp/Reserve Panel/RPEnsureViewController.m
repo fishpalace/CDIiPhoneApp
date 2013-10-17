@@ -14,6 +14,7 @@
 #import "CDICalendar.h"
 #import "CDIEvent.h"
 #import "NSNotificationCenter+Addition.h"
+#import "RPActivityIndictor.h"
 
 #define kUndoButtonGap 8
 #define kUndoButtonHeight 50
@@ -41,8 +42,8 @@
 
 @implementation RPEnsureViewController
 {
-    NSTimer * waitingTimer;
-    float waitingTime;
+//    NSTimer * waitingTimer;
+//    float waitingTime;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -59,7 +60,7 @@
     [super viewDidLoad];
     [self updateLabel];
     _accessKeyBGTopMarginConstraint.constant = kIsiPhone5 ? 105 : 85;
-    waitingTime = 0.0;
+//    waitingTime = 0.0;
 }
 
 - (void)updateViewConstraints
@@ -136,12 +137,13 @@
 
 - (IBAction)didClickUndoButton:(UIButton *)sender
 {
-    self.view.userInteractionEnabled = NO;
-
-    [self startWaitingAnimation];
-    [self setWaitingTimer];
-    [self performSelector:@selector(unregisterEvent) withObject:nil afterDelay:1.0];
-
+    UIActionSheet* mySheet = [[UIActionSheet alloc]
+                              initWithTitle:nil
+                              delegate:self
+                              cancelButtonTitle:@"Cancel"
+                              destructiveButtonTitle:@"Undo Reservation"
+                              otherButtonTitles:nil];
+    [mySheet showInView:self.view];
 }
 
 - (void)unregisterEvent
@@ -151,8 +153,10 @@
     
     void (^completion)(BOOL, id) = ^(BOOL succeeded, id responseData) {
         self.view.userInteractionEnabled = YES;
-        [_waitingView stopAnimating];
-        [waitingTimer invalidate];
+        RPActivityIndictor * activityIndictor = [RPActivityIndictor sharedRPActivityIndictor];
+        [activityIndictor stopWaitingTimer];
+//        [_waitingView stopAnimating];
+//        [waitingTimer invalidate];
         if (succeeded) {
             [CDIDataSource fetchDataWithCompletion:nil];
             [self.navigationController popToRootViewControllerAnimated:YES];
@@ -167,36 +171,36 @@
                             completion:completion];
 }
 
-- (void)startWaitingAnimation
-{
-    _waitingView = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake([[UIScreen mainScreen]bounds].size.width / 2 - 32.0,
-                                                                                [[UIScreen mainScreen]bounds].size.height / 2 - 32.0,
-                                                                                64.0,
-                                                                                64.0)];
-    _waitingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-    _waitingView.hidesWhenStopped = YES;
-    _waitingView.backgroundColor = [UIColor blackColor];
-    _waitingView.layer.cornerRadius = 6;
-    _waitingView.layer.masksToBounds = YES;
-    [self.view addSubview:_waitingView];
-    [_waitingView startAnimating];
-}
-
-- (void)setWaitingTimer
-{
-    waitingTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(overTime:) userInfo:nil repeats:YES];
-}
-
-- (void)overTime:(NSTimer*)timer
-{
-    waitingTime += 1.0;
-    if (waitingTime >= 10) {
-        waitingTime = 0.0;
-        [timer invalidate];
-        [_waitingView stopAnimating];
-        [self undoFailed];
-    }
-}
+//- (void)startWaitingAnimation
+//{
+//    _waitingView = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake([[UIScreen mainScreen]bounds].size.width / 2 - 32.0,
+//                                                                                [[UIScreen mainScreen]bounds].size.height / 2 - 32.0,
+//                                                                                64.0,
+//                                                                                64.0)];
+//    _waitingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+//    _waitingView.hidesWhenStopped = YES;
+//    _waitingView.backgroundColor = [UIColor blackColor];
+//    _waitingView.layer.cornerRadius = 6;
+//    _waitingView.layer.masksToBounds = YES;
+//    [self.view addSubview:_waitingView];
+//    [_waitingView startAnimating];
+//}
+//
+//- (void)setWaitingTimer
+//{
+//    waitingTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(overTime:) userInfo:nil repeats:YES];
+//}
+//
+//- (void)overTime:(NSTimer*)timer
+//{
+//    waitingTime += 1.0;
+//    if (waitingTime >= 10) {
+//        waitingTime = 0.0;
+//        [timer invalidate];
+//        [_waitingView stopAnimating];
+//        [self undoFailed];
+//    }
+//}
 
 - (void)undoFailed
 {
@@ -208,9 +212,19 @@
     self.view.userInteractionEnabled = YES;
 }
 
-
 - (IBAction)didClickDoneButton:(UIButton *)sender
 {
+    self.view.userInteractionEnabled = NO;
+    RPActivityIndictor * activityIndictor = [RPActivityIndictor sharedRPActivityIndictor];
+    [activityIndictor startWaitingAnimationInView:self.view];
+    [self performSelector:@selector(backToMenuPanel) withObject:nil afterDelay:1.0];
+}
+
+- (void)backToMenuPanel
+{
+    RPActivityIndictor * activityIndictor = [RPActivityIndictor sharedRPActivityIndictor];
+    [activityIndictor stopWaitingTimer];
+    
     if (self.eventJustCreated) {
         [self.navigationController popToRootViewControllerAnimated:YES];
         [NSNotificationCenter postShouldChangeLocalDatasourceNotification];
@@ -298,6 +312,34 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
     [alertView show];
+}
+
+- (void)someThingAfterActivityIndicatorOverTimer
+{
+    [self undoFailed];
+}
+
+
+#pragma -Mark Action Sheet Delegation
+
+- (void)actionSheetCancel:(UIActionSheet *)actionSheet{
+    self.view.userInteractionEnabled = YES;
+    //
+}
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //
+    if (buttonIndex == 0) {
+        self.view.userInteractionEnabled = NO;
+        
+        RPActivityIndictor * activityIndictor = [RPActivityIndictor sharedRPActivityIndictor];
+        activityIndictor.delegate = self;
+        [activityIndictor resetBasicData];
+        [activityIndictor startWaitingAnimationInView:self.view];
+        [activityIndictor setWaitingTimer];
+        //    [self startWaitingAnimation];
+        //    [self setWaitingTimer];
+        [self performSelector:@selector(unregisterEvent) withObject:nil afterDelay:1.0];
+    }
 }
 
 @end

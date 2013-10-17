@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RPActivityIndictor.h"
 
 typedef void (^LoginPanelCallback)(void);
 
-@interface LoginViewController : CoreDataViewController <UITextFieldDelegate>
+@interface LoginViewController : CoreDataViewController <UITextFieldDelegate,RPActivityIndictorDelegate>
 
 @property (nonatomic, strong) LoginPanelCallback callBack;
 

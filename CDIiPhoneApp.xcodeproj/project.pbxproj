@@ -355,6 +355,7 @@
 		18E0EA991738DBE7006EFF51 /* UIApplication+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA981738DBE7006EFF51 /* UIApplication+Addition.m */; };
 		18F6FE1017A6657E00BD9E74 /* NSMutableAttributedString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6FE0F17A6657E00BD9E74 /* NSMutableAttributedString+Size.m */; };
 		18F6FE1317A6667C00BD9E74 /* NSAttributedString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6FE1217A6667C00BD9E74 /* NSAttributedString+Size.m */; };
+		51484E70181078320003169E /* RPActivityIndictor.m in Sources */ = {isa = PBXBuildFile; fileRef = 51484E6F181078320003169E /* RPActivityIndictor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -798,6 +799,8 @@
 		18F6FE0F17A6657E00BD9E74 /* NSMutableAttributedString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableAttributedString+Size.m"; path = "Category/NSMutableAttributedString+Size.m"; sourceTree = "<group>"; };
 		18F6FE1117A6667C00BD9E74 /* NSAttributedString+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Size.h"; path = "Category/NSAttributedString+Size.h"; sourceTree = "<group>"; };
 		18F6FE1217A6667C00BD9E74 /* NSAttributedString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Size.m"; path = "Category/NSAttributedString+Size.m"; sourceTree = "<group>"; };
+		51484E6E181078320003169E /* RPActivityIndictor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPActivityIndictor.h; sourceTree = "<group>"; };
+		51484E6F181078320003169E /* RPActivityIndictor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPActivityIndictor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -969,6 +972,8 @@
 				1879638B1778028400EC9767 /* RPInfoViewController.m */,
 				1879638D177802A000EC9767 /* RPEnsureViewController.h */,
 				1879638E177802A000EC9767 /* RPEnsureViewController.m */,
+				51484E6E181078320003169E /* RPActivityIndictor.h */,
+				51484E6F181078320003169E /* RPActivityIndictor.m */,
 			);
 			name = "Reserve Panel";
 			sourceTree = "<group>";
@@ -1887,6 +1892,7 @@
 				18948CCD175CB465004E07EB /* PeopleListViewController.m in Sources */,
 				1823263E17769350001E7B88 /* UIImageView+Addition.m in Sources */,
 				1864F5DD17775F370013960C /* RPRoomCell.m in Sources */,
+				51484E70181078320003169E /* RPActivityIndictor.m in Sources */,
 				18DBB8A91776E2EE00419DE7 /* CDICalendar.m in Sources */,
 				186CD6B117ABFE59003DB974 /* ProjectDetailUserCell.m in Sources */,
 				18948CD5175CE2C8004E07EB /* PeopleListCollectionViewCell.m in Sources */,

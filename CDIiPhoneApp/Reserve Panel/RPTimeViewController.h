@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "GYPieChart.h"
+#import "RPActivityIndictor.h"
 
-@interface RPTimeViewController : CoreDataViewController <GYPieChartDelegate, XYPieChartDataSource>
+@interface RPTimeViewController : CoreDataViewController <GYPieChartDelegate, XYPieChartDataSource,RPActivityIndictorDelegate>
 
 @property (nonatomic, readwrite) NSInteger roomID;
 

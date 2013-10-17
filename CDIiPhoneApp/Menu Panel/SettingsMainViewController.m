@@ -12,6 +12,9 @@
 #import "UIImageView+Addition.h"
 #import "NSNotificationCenter+Addition.h"
 
+#define CameraActionSheet 1
+#define LogoutActionSheet 2
+
 #define kTextfieldTagBase 100
 #define kTextfieldTagTop  106
 
@@ -47,6 +50,9 @@
 @end
 
 @implementation SettingsMainViewController
+{
+    BOOL isLogoutButtonPressed;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,6 +66,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    isLogoutButtonPressed = NO;
+
     self.configView.translatesAutoresizingMaskIntoConstraints = YES;
     self.configView.userInteractionEnabled = NO;
     self.configView.alpha = 0.0;
@@ -106,6 +114,16 @@
 
 - (IBAction)didClickDoneButton:(UIButton *)sender
 {
+    self.view.userInteractionEnabled = NO;
+    RPActivityIndictor * activityIndiactor = [RPActivityIndictor sharedRPActivityIndictor];
+    activityIndiactor.delegate = self;
+    [activityIndiactor startWaitingAnimationInView:self.view];
+    [activityIndiactor setWaitingTimer];
+    [self performSelector:@selector(exuteAfterClickDoneButton) withObject:nil afterDelay:1.0];
+}
+
+- (void)exuteAfterClickDoneButton
+{
     self.currentUser.email = self.emailTextfield.text;
     self.currentUser.mobile = self.mobileTextfield.text;
     self.currentUser.weiboURL = self.weiboTextfield.text;
@@ -116,25 +134,55 @@
     
     CDINetClient *client = [CDINetClient client];
     void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+        self.view.userInteractionEnabled = YES;
+        RPActivityIndictor * activityIndictor = [RPActivityIndictor sharedRPActivityIndictor];
+        [activityIndictor stopWaitingTimer];
+        
         if (succeeded) {
             if ([responseData isKindOfClass:[NSDictionary class]]) {
                 [NSNotificationCenter postDidChangeCurrentUserNotification];
             }
             [self.navigationController popViewControllerAnimated:YES];
         }
+        else {
+            [self setUpInfoFailed];
+        }
     };
     
     [client updateUserWithUser:self.currentUser password:self.currentUser.password
                     completion:handleData];
-    
 }
+
 - (IBAction)didClickLogoutButton:(UIButton *)sender
+{
+    self.view.userInteractionEnabled = NO;
+    CDIUser *currentUser = [CDIUser currentUserInContext:self.managedObjectContext];
+    UIActionSheet* mySheet = [[UIActionSheet alloc]
+                              initWithTitle:currentUser.realNameEn
+                              delegate:self
+                              cancelButtonTitle:@"Cancel"
+                              destructiveButtonTitle:@"Logout"
+                              otherButtonTitles:nil];
+    mySheet.tag = LogoutActionSheet;
+    [mySheet showInView:self.view];
+}
+
+- (void)excuteAfterClickLogoutButton
 {
     CDINetClient *client = [CDINetClient client];
     void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
-        [CDIUser updateCurrentUserID:@""];
-        [NSNotificationCenter postDidChangeCurrentUserNotification];
-        [self.navigationController popViewControllerAnimated:YES];
+        self.view.userInteractionEnabled = YES;
+        RPActivityIndictor * activityIndictor = [RPActivityIndictor sharedRPActivityIndictor];
+        [activityIndictor stopWaitingTimer];
+        
+        if (succeeded) {
+            [CDIUser updateCurrentUserID:@""];
+            [NSNotificationCenter postDidChangeCurrentUserNotification];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else {
+            [self logoutFailed];
+        }
     };
     [client loginOutCurrentUserWithSessionKey:self.currentUser.sessionKey completion:handleData];
 }
@@ -157,30 +205,49 @@
                                   cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                                   destructiveButtonTitle:nil
                                   otherButtonTitles:NSLocalizedString(@"Camera", nil), NSLocalizedString(@"Photo Album", nil), nil];
+    actionSheet.tag = CameraActionSheet;
     [actionSheet showInView:self.view];
 }
 
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if(buttonIndex == actionSheet.cancelButtonIndex)
-        return;
-    
-    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
-    ipc.delegate = self;
-    ipc.allowsEditing = YES;
-    
-    if(buttonIndex == 1) {
-        ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    } else if(buttonIndex == 0) {
-        ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+    if (actionSheet.tag == CameraActionSheet) {
+        if(buttonIndex == actionSheet.cancelButtonIndex)
+            return;
+        
+        UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+        ipc.delegate = self;
+        ipc.allowsEditing = YES;
+        
+        if(buttonIndex == 1) {
+            ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        } else if(buttonIndex == 0) {
+            ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }
+        
+        [self presentViewController:ipc animated:YES completion:nil];
     }
     
-    [self presentViewController:ipc animated:YES completion:nil];
+    if (actionSheet.tag == LogoutActionSheet) {
+        if (buttonIndex == 0) {
+            self.view.userInteractionEnabled = NO;
+            
+            RPActivityIndictor * activityIndictor = [RPActivityIndictor sharedRPActivityIndictor];
+            activityIndictor.delegate = self;
+            [activityIndictor resetBasicData];
+            [activityIndictor startWaitingAnimationInView:self.view];
+            [activityIndictor setWaitingTimer];
+            //    [self startWaitingAnimation];
+            //    [self setWaitingTimer];
+            [self performSelector:@selector(excuteAfterClickLogoutButton) withObject:nil afterDelay:1.0];
+        }
+    }
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
+    self.view.userInteractionEnabled = YES;
     self.scrollView.scrollEnabled = YES;
     self.scrollView.contentSize = CGSizeMake(320, self.scrollViewContentHeight);
 }
@@ -310,4 +377,36 @@
 //    }
 //    self.scrollView.contentSize = CGSizeMake(320, self.scrollViewContentHeight);
 }
+
+- (void)logoutFailed
+{
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Logout Failed"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+    [alertView show];
+    self.view.userInteractionEnabled = YES;
+}
+
+- (void)setUpInfoFailed
+{
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Setup Info Failed"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+    [alertView show];
+    self.view.userInteractionEnabled = YES;
+}
+
+#pragma mark - RPActivity Delegate
+-(void)someThingAfterActivityIndicatorOverTimer
+{
+    if (isLogoutButtonPressed) {
+        [self logoutFailed];
+    }
+    else {
+        [self setUpInfoFailed];
+    }
+}
+
 @end

@@ -158,6 +158,11 @@ static LoginViewController *sharedLoginViewController;
 {
     CDINetClient *client = [CDINetClient client];
     void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+        self.view.userInteractionEnabled = YES;
+        self.view.superview.userInteractionEnabled = YES;
+        RPActivityIndictor * activityIndictor = [RPActivityIndictor sharedRPActivityIndictor];
+        [activityIndictor stopWaitingTimer];
+        
         if (succeeded) {
             if ([responseData isKindOfClass:[NSDictionary class]]) {
                 NSDictionary *dict = responseData[@"data"];
@@ -173,6 +178,7 @@ static LoginViewController *sharedLoginViewController;
             }
         } else {
             //TODO Report Error
+            [self loginFailed];
         }
     };
     
@@ -193,7 +199,14 @@ static LoginViewController *sharedLoginViewController;
     } else if ([textField isEqual:self.passwordTextfield]) {
         if (self.passwordTextfield.text.length > 0) {
             if (self.userNameTextfield.text.length > 0) {
-                [self login];
+                self.view.userInteractionEnabled = NO;
+                self.view.superview.userInteractionEnabled = NO;
+                RPActivityIndictor * activityIndictor = [RPActivityIndictor sharedRPActivityIndictor];
+                activityIndictor.delegate = self;
+                [activityIndictor resetBasicData];
+                [activityIndictor startWaitingAnimationInView:self.view];
+                [activityIndictor setWaitingTimer];
+                [self performSelector:@selector(login) withObject:nil afterDelay:1.0];
                 result = YES;
             } else {
                 [self.userNameTextfield becomeFirstResponder];
@@ -201,6 +214,23 @@ static LoginViewController *sharedLoginViewController;
         }
     }
     return result;
+}
+
+- (void)loginFailed
+{
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Login Failed"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+    [alertView show];
+    self.view.userInteractionEnabled = YES;
+    self.view.superview.userInteractionEnabled = YES;
+}
+
+#pragma mark - RPActivityView Delegate
+- (void)someThingAfterActivityIndicatorOverTimer
+{
+    [self loginFailed];
 }
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RPActivityIndictor.h"
 
-@interface RPEnsureViewController : CoreDataViewController
+@interface RPEnsureViewController : CoreDataViewController<RPActivityIndictorDelegate,UIActionSheetDelegate>
 
 @end

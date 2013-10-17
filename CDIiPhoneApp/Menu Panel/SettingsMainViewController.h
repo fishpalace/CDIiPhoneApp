@@ -7,7 +7,9 @@
 //
 
 #import "CoreDataViewController.h"
+#import "RPActivityIndictor.h"
 
-@interface SettingsMainViewController : CoreDataViewController <UITextFieldDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate>
+
+@interface SettingsMainViewController : CoreDataViewController <UITextFieldDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate,RPActivityIndictorDelegate>
 
 @end

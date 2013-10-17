@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RPActivityIndictor.h"
 
-@interface RPInfoViewController : CoreDataViewController <UITextFieldDelegate>
+@interface RPInfoViewController : CoreDataViewController <UITextFieldDelegate,RPActivityIndictorDelegate>
 
 @end

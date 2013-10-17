@@ -60,7 +60,6 @@
     [super viewDidLoad];
     
     self.configView.translatesAutoresizingMaskIntoConstraints = YES;
-
     
     _emailTextfield.delegate = self;
     _mobileTextfield.delegate = self;
@@ -105,6 +104,16 @@
 
 - (IBAction)didClickDoneButton:(UIButton *)sender
 {
+    self.view.userInteractionEnabled = NO;
+    RPActivityIndictor * activityIndiactor = [RPActivityIndictor sharedRPActivityIndictor];
+    activityIndiactor.delegate = self;
+    [activityIndiactor startWaitingAnimationInView:self.view];
+    [activityIndiactor setWaitingTimer];
+    [self performSelector:@selector(exuteAfterClickDoneButton) withObject:nil afterDelay:1.0];
+}
+
+- (void)exuteAfterClickDoneButton
+{
     self.currentUser.password = self.password;
     self.currentUser.email = self.emailTextfield.text;
     self.currentUser.mobile = self.mobileTextfield.text;
@@ -116,6 +125,10 @@
     
     CDINetClient *client = [CDINetClient client];
     void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+        self.view.userInteractionEnabled = YES;
+        RPActivityIndictor * activityIndictor = [RPActivityIndictor sharedRPActivityIndictor];
+        [activityIndictor stopWaitingTimer];
+        
         if (succeeded) {
             if ([responseData isKindOfClass:[NSDictionary class]]) {
                 NSDictionary *dict = responseData;
@@ -124,12 +137,14 @@
             }
             [self dismissViewControllerAnimated:YES completion:nil];
         }
+        else {
+            [self setUpInfoFailed];
+        }
     };
     
     [client updateUserWithUser:self.currentUser
                       password:self.password
                     completion:handleData];
-    
 }
 
 - (IBAction)didClickBackButton:(UIButton *)sender
@@ -300,5 +315,19 @@
     self.scrollView.contentSize = CGSizeMake(320, self.homePageTextfield.frame.origin.y + 50);
 }
 
+- (void)setUpInfoFailed
+{
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Setup Info Failed"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+    [alertView show];
+    self.view.userInteractionEnabled = YES;
+}
 
+#pragma mark - RPActivity Delegate
+-(void)someThingAfterActivityIndicatorOverTimer
+{
+    [self setUpInfoFailed];
+}
 @end

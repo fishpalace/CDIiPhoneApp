@@ -7,8 +7,9 @@
 //
 
 #import "CoreDataViewController.h"
+#import "RPActivityIndictor.h"
 
-@interface SetupInfoViewController : CoreDataViewController <UITextFieldDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate>
+@interface SetupInfoViewController : CoreDataViewController <UITextFieldDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate,RPActivityIndictorDelegate>
 
 @property (nonatomic, strong) NSString *password;
 

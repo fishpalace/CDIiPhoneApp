@@ -72,6 +72,13 @@ static CDINetClient *sharedClient;
     [self getPath:path completion:completion];
 }
 
+- (void)getDepartmentListByRoomID:(NSInteger)roomID
+                           completion:(void(^)(BOOL succeeded, id responseData))completion
+{
+    NSString *path = [NSString stringWithFormat:@"webservice/department/getDepartmentListByRoomId/%d", roomID];
+    [self getPath:path completion:completion];
+}
+
 - (void)getReservationListOfUserID:(NSString *)userID withCompletion:(void (^)(BOOL succeeded, id responseData))completion
 {
     NSString *fromDate = [NSDate stringOfDateWithIntervalFromCurrentDate:0];

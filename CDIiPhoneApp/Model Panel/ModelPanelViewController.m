@@ -39,6 +39,8 @@ static ModelPanelViewController *sharedModelPanelViewController;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpaceConstraint;
 
 
+@property (strong,nonatomic) UIView * bgGloomView;
+
 @end
 
 @implementation ModelPanelViewController
@@ -50,6 +52,7 @@ static ModelPanelViewController *sharedModelPanelViewController;
         sharedModelPanelViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ModelPanelViewController"];
         //    [sharedModelPanelViewController.view flashOut];
         [UIApplication insertViewUnderCover:sharedModelPanelViewController.view];
+        [sharedModelPanelViewController hideWithFirstTimeWithDuration:0.3];
     }
     return sharedModelPanelViewController;
 }
@@ -74,6 +77,14 @@ static ModelPanelViewController *sharedModelPanelViewController;
     [super viewDidLoad];
     _titleImageView.layer.cornerRadius = 19;
     _titleImageView.layer.masksToBounds = YES;
+    
+    _bgGloomView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    [_bgGloomView setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8]];
+    [self.view insertSubview:_bgGloomView aboveSubview:_modelBGImageView];
+    [_bgGloomView setAlpha:0.0];
+    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [_bgGloomView setAlpha:1.0];
+    }completion:nil];
 }
 
 - (void)updateViewConstraints
@@ -90,6 +101,11 @@ static ModelPanelViewController *sharedModelPanelViewController;
                                        type:(ModelPanelType)type
                                    callBack:(MondelPanelFunctionCallback)callback
 {
+    [_bgGloomView setAlpha:0.0];
+    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [_bgGloomView setAlpha:1.0];
+    }completion:nil];
+    
     self.contentViewController = vc;
     self.bottomSpaceConstraint.constant = -self.panelView.frame.size.height;
     void (^completion)(UIImage *bgImage) = ^(UIImage *bgImage) {
@@ -105,7 +121,7 @@ static ModelPanelViewController *sharedModelPanelViewController;
     [self.view flashIn];
     self.bottomSpaceConstraint.constant = 0;
     
-    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self.panelView layoutIfNeeded];
     } completion:nil];
     
@@ -162,11 +178,11 @@ static ModelPanelViewController *sharedModelPanelViewController;
 - (void)configureBGImageWithCompletion:(void (^)(UIImage *bgImage))completion
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImage *resultImage = [[UIImage screenShoot] stackBlur:10];
+//        UIImage *resultImage = [[UIImage screenShoot] stackBlur:10];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (completion) {
-                completion(resultImage);
-            }
+//            if (completion) {
+//                completion(resultImage);
+//            }
         });
     });
 }
@@ -174,12 +190,12 @@ static ModelPanelViewController *sharedModelPanelViewController;
 #pragma mark - IBActions
 - (IBAction)didClickCloseButton:(UIButton *)sender
 {
-    [self hideWithCompletion:nil];
+    [self hideWithCompletion:nil andDuration:0.4];
 }
 
 - (IBAction)didClickFunctionButton:(UIButton *)sender
 {
-    [self hideWithCompletion:self.callback];
+    [self hideWithCompletion:self.callback andDuration:0.4];
 }
 
 
@@ -192,10 +208,14 @@ static ModelPanelViewController *sharedModelPanelViewController;
 }
 
 #pragma mark - View Hierarchy Methods
-- (void)hideWithCompletion:(MondelPanelFunctionCallback)completion
+- (void)hideWithCompletion:(MondelPanelFunctionCallback)completion andDuration:(float)duration
 {
+    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [_bgGloomView setAlpha:0.0];
+    }completion:nil];
+    
     self.bottomSpaceConstraint.constant = -self.panelView.frame.size.height;
-    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self.panelView layoutIfNeeded];
     } completion:^(BOOL finished) {
         [self removeContentViewController];
@@ -208,6 +228,14 @@ static ModelPanelViewController *sharedModelPanelViewController;
         [self.view flashOut];
         self.modelBGImageView.image = nil;
     }];
+}
+
+- (void)hideWithFirstTimeWithDuration:(float)duration
+{
+    self.bottomSpaceConstraint.constant = -self.panelView.frame.size.height;
+    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [self.panelView layoutIfNeeded];
+    } completion:nil];
 }
 
 @end

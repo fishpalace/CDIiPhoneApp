@@ -87,8 +87,11 @@
 //    }];
       
       UIImageView * testView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, 90.0, 90.0)];
+      UIView * maskView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, 90.0, 90.0)];
+      [maskView setBackgroundColor:[UIColor whiteColor]];
       [testView setImageWithURL:[NSURL URLWithString:work.previewImageURL]];
-      testView.contentMode = UIViewContentModeScaleAspectFit;
+      testView.contentMode = UIViewContentModeScaleAspectFill;
+      [testView.layer setMask:maskView.layer];
       [cell.contentView addSubview:testView];
       
 //      [cell.imageView setImageWithURL:[NSURL URLWithString:work.previewImageURL]];

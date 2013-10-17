@@ -251,6 +251,7 @@
     NSString *buttonBGImageName = @"";
     UIColor *color = nil;
     if (percentage == 0) {
+        percentageString = [percentageString stringByAppendingString:@"%"];
         buttonBGImageName = @"menu_status_red";
         color = kRRoomStatusUnvailableColor;
     } else if (percentage < 50) {

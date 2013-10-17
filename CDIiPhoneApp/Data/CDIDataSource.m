@@ -287,6 +287,13 @@ static CDIDataSource *sharedDataSource;
   [[CDIDataSource sharedDataSource] fetchDataWithCompletion:completion];
 }
 
+- (void)fetchDepartmentListByRoomID:(NSInteger)roomID
+:(void (^)(BOOL succeeded, id responseData))completion
+{
+    CDINetClient *client = [CDINetClient client];
+    [client getDepartmentListByRoomID:roomID completion:completion];
+}
+
 - (void)fetchDataWithCompletion:(void (^)(BOOL succeeded, id responseData))completion
 {
   NSString *fromDate = [NSDate stringOfDateWithIntervalFromCurrentDate:0];

@@ -32,6 +32,9 @@
                         type:(EventType)type
                   completion:(void (^)(BOOL succeeded, id responseData))completion;
 
+- (void)getDepartmentListByRoomID:(NSInteger)roomID
+                       completion:(void(^)(BOOL succeeded, id responseData))completion;
+
 - (void)getReservationListOfUserID:(NSString *)userID
                     withCompletion:(void (^)(BOOL succeeded, id responseData))completion;
 

@@ -111,9 +111,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OuJ-dZ-jUO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="model_bg_gloom.png" translatesAutoresizingMaskIntoConstraints="NO" id="1L8-xt-yNx">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPq-hM-RDE">
                                 <rect key="frame" x="0.0" y="38" width="320" height="530"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -218,12 +215,9 @@
                             <constraint firstItem="fPq-hM-RDE" firstAttribute="bottom" secondItem="wD4-OO-TO1" secondAttribute="bottom" id="6Oe-n8-v8L"/>
                             <constraint firstItem="fPq-hM-RDE" firstAttribute="leading" secondItem="wD4-OO-TO1" secondAttribute="leading" id="8KZ-PG-Gv5"/>
                             <constraint firstAttribute="trailing" secondItem="OuJ-dZ-jUO" secondAttribute="trailing" id="G4R-tK-HoT"/>
-                            <constraint firstItem="1L8-xt-yNx" firstAttribute="bottom" secondItem="wD4-OO-TO1" secondAttribute="bottom" id="Z0D-df-ReW"/>
-                            <constraint firstItem="1L8-xt-yNx" firstAttribute="leading" secondItem="wD4-OO-TO1" secondAttribute="leading" id="bGl-7z-8st"/>
                             <constraint firstItem="fPq-hM-RDE" firstAttribute="trailing" secondItem="wD4-OO-TO1" secondAttribute="trailing" id="fvK-aK-hat"/>
                             <constraint firstItem="OuJ-dZ-jUO" firstAttribute="leading" secondItem="wD4-OO-TO1" secondAttribute="leading" id="oov-FM-KPP"/>
                             <constraint firstItem="OuJ-dZ-jUO" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" id="pRc-Qu-7en"/>
-                            <constraint firstItem="1L8-xt-yNx" firstAttribute="top" secondItem="wD4-OO-TO1" secondAttribute="top" id="rbt-Dk-mSR"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -235,7 +229,6 @@
                         <outlet property="closeButton" destination="UqX-00-vYs" id="Wni-mr-C78"/>
                         <outlet property="containerView" destination="njb-ht-eJx" id="xCI-JT-3qw"/>
                         <outlet property="containerViewHeightConstraint" destination="e4e-tG-upJ" id="r63-4M-Tcb"/>
-                        <outlet property="coverImageVIew" destination="1L8-xt-yNx" id="Ser-je-NWy"/>
                         <outlet property="functionButton" destination="weq-hI-PlL" id="D7K-9a-Edg"/>
                         <outlet property="modelBGImageView" destination="OuJ-dZ-jUO" id="gil-0h-vla"/>
                         <outlet property="panelView" destination="fPq-hM-RDE" id="C6Q-9E-JRS"/>
@@ -420,9 +413,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBJ-vA-zU7">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="model_bg_gloom.png" translatesAutoresizingMaskIntoConstraints="NO" id="wzX-c8-Dgz">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_login_textfield_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="ICi-al-R8z">
                                 <rect key="frame" x="10" y="70" width="301" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -440,6 +430,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                <connections>
+                                    <action selector="beginPasswordInput:" destination="Na1-Md-fSJ" eventType="editingDidEndOnExit" id="oSz-T7-HaI"/>
+                                </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_login_textfield_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="tSZ-aN-YGd">
                                 <rect key="frame" x="10" y="133" width="301" height="51"/>
@@ -499,22 +492,18 @@
                             <constraint firstItem="jBJ-vA-zU7" firstAttribute="leading" secondItem="oTk-sJ-5uk" secondAttribute="leading" id="3EP-dy-QBw"/>
                             <constraint firstItem="tSZ-aN-YGd" firstAttribute="top" secondItem="ICi-al-R8z" secondAttribute="bottom" constant="12" id="4fY-kv-6ia"/>
                             <constraint firstItem="ICi-al-R8z" firstAttribute="top" secondItem="fyL-2r-9hN" secondAttribute="bottom" constant="4" id="5nv-pa-ppF"/>
-                            <constraint firstItem="wzX-c8-Dgz" firstAttribute="top" secondItem="oTk-sJ-5uk" secondAttribute="top" id="6PM-7K-abF"/>
                             <constraint firstItem="DFE-Mo-g34" firstAttribute="centerX" secondItem="ICi-al-R8z" secondAttribute="centerX" id="6l6-gd-uDq"/>
                             <constraint firstAttribute="centerX" secondItem="ICi-al-R8z" secondAttribute="centerX" id="8Ok-Rh-Hdb"/>
                             <constraint firstItem="jBJ-vA-zU7" firstAttribute="top" secondItem="oTk-sJ-5uk" secondAttribute="top" id="Aau-YL-XV4"/>
                             <constraint firstItem="tSZ-aN-YGd" firstAttribute="centerX" secondItem="ICi-al-R8z" secondAttribute="centerX" id="JKe-YA-tgx"/>
                             <constraint firstItem="ICi-al-R8z" firstAttribute="top" secondItem="oTk-sJ-5uk" secondAttribute="top" constant="70" id="NQI-z0-cYt"/>
-                            <constraint firstItem="wzX-c8-Dgz" firstAttribute="leading" secondItem="oTk-sJ-5uk" secondAttribute="leading" id="PdP-Pr-5g1"/>
                             <constraint firstAttribute="bottom" secondItem="jBJ-vA-zU7" secondAttribute="bottom" id="bSz-3S-Q5U"/>
                             <constraint firstItem="fyL-2r-9hN" firstAttribute="centerY" secondItem="jUa-1O-B6S" secondAttribute="centerY" id="gRH-fU-K3P"/>
                             <constraint firstAttribute="centerX" secondItem="jUa-1O-B6S" secondAttribute="centerX" id="jjf-q3-MIP"/>
                             <constraint firstItem="DFE-Mo-g34" firstAttribute="centerY" secondItem="ICi-al-R8z" secondAttribute="centerY" id="lwf-Ha-Co2"/>
                             <constraint firstAttribute="trailing" secondItem="jBJ-vA-zU7" secondAttribute="trailing" id="o4q-3i-XId"/>
-                            <constraint firstAttribute="bottom" secondItem="wzX-c8-Dgz" secondAttribute="bottom" id="q76-FV-A3k"/>
                             <constraint firstItem="8Ll-Q7-BcG" firstAttribute="centerX" secondItem="tSZ-aN-YGd" secondAttribute="centerX" id="x4Y-QJ-9ct"/>
                             <constraint firstItem="fyL-2r-9hN" firstAttribute="leading" secondItem="ICi-al-R8z" secondAttribute="leading" constant="-8" id="y20-FC-oey"/>
-                            <constraint firstAttribute="trailing" secondItem="wzX-c8-Dgz" secondAttribute="trailing" id="zhL-od-oTl"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -524,7 +513,6 @@
                     <connections>
                         <outlet property="bgImageView" destination="jBJ-vA-zU7" id="j62-ZT-0DQ"/>
                         <outlet property="closeButton" destination="fyL-2r-9hN" id="ddy-ND-NEf"/>
-                        <outlet property="coverImageView" destination="wzX-c8-Dgz" id="9nJ-xf-fdn"/>
                         <outlet property="passwordTextfield" destination="8Ll-Q7-BcG" id="0jP-xH-8jQ"/>
                         <outlet property="textfieldTopMarginConstraint" destination="NQI-z0-cYt" id="FPS-B2-jzT"/>
                         <outlet property="userNameTextfield" destination="DFE-Mo-g34" id="Meg-6x-Mkw"/>
@@ -6127,7 +6115,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="menu_login_textfield_bg.png" width="301" height="51"/>
         <image name="menu_schedule_indicator.png" width="44" height="44"/>
         <image name="menu_status_green.png" width="58" height="58"/>
-        <image name="model_bg_gloom.png" width="320" height="568"/>
         <image name="model_button_close.png" width="25" height="25"/>
         <image name="model_button_schedule.png" width="60" height="50"/>
         <image name="mp_cell_cover.png" width="190" height="190"/>

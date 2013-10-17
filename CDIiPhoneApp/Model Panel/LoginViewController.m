@@ -38,8 +38,9 @@ static LoginViewController *sharedLoginViewController;
     if (!sharedLoginViewController) {
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:NULL];
         sharedLoginViewController = [storyBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        [sharedLoginViewController.view flashOut];
+//        [sharedLoginViewController.view flashOut];
         [UIApplication insertViewUnderCover:sharedLoginViewController.view];
+        [sharedLoginViewController hideWithCallBack:nil andDuration:0.0];
     }
     return sharedLoginViewController;
 }
@@ -61,10 +62,23 @@ static LoginViewController *sharedLoginViewController;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _userNameTextfield.text = @"";
+    _passwordTextfield.text = @"";
     _userNameTextfield.delegate = self;
     _passwordTextfield.delegate = self;
     
+    _userNameTextfield.keyboardAppearance = UIKeyboardAppearanceDark;
+    _passwordTextfield.keyboardAppearance = UIKeyboardAppearanceDark;
+    _passwordTextfield.returnKeyType = UIReturnKeyDone;
+    
     _textfieldTopMarginConstraint.constant = kTextfieldHiddenConstraint;
+    
+    UIView * bgGloomView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    [bgGloomView setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8]];
+    [self.view insertSubview:bgGloomView aboveSubview:_bgImageView];
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [bgGloomView setAlpha:1.0];
+    }completion:nil];
     
 }
 
@@ -75,16 +89,16 @@ static LoginViewController *sharedLoginViewController;
     void (^completion)(UIImage *bgImage) = ^(UIImage *bgImage) {
         self.bgImageView.image = bgImage;
         [self.bgImageView fadeIn];
-        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             
         } completion:nil];
     };
     
     [self configureBGImageWithCompletion:completion];
     self.textfieldTopMarginConstraint.constant = kTextfieldShowConstraint;
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self.view layoutIfNeeded];
-    }];
+    } completion:nil];
     
     [self.view flashIn];
     [self.userNameTextfield becomeFirstResponder];
@@ -98,21 +112,26 @@ static LoginViewController *sharedLoginViewController;
 - (void)configureBGImageWithCompletion:(void (^)(UIImage *bgImage))completion
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImage *resultImage = [[UIImage screenShoot] stackBlur:10];
+//        UIImage *resultImage = [[UIImage screenShoot] stackBlur:10];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (completion) {
-                completion(resultImage);
-            }
+//            if (completion) {
+//                completion(resultImage);
+//            }
         });
     });
 }
 
-- (IBAction)didClickCloseButton:(UIButton *)sender
+-(IBAction)beginPasswordInput:(id)sender
 {
-    [self hideWithCallBack:nil];
+    [_passwordTextfield becomeFirstResponder];
 }
 
-- (void)hideWithCallBack:(LoginPanelCallback)callBack
+- (IBAction)didClickCloseButton:(UIButton *)sender
+{
+    [self hideWithCallBack:nil andDuration:0.3];
+}
+
+- (void)hideWithCallBack:(LoginPanelCallback)callBack andDuration:(float) duration
 {
     //  self.textfieldTopMarginConstraint.constant = 0;
     [self.userNameTextfield resignFirstResponder];
@@ -120,11 +139,11 @@ static LoginViewController *sharedLoginViewController;
     
     self.textfieldTopMarginConstraint.constant = kTextfieldHiddenConstraint;
     
-    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self.view layoutIfNeeded];
     } completion:nil];
     
-    [self.view fadeOutWithDuration:0.5 completion:^{
+    [self.view fadeOutWithDuration:duration completion:^{
         self.bgImageView.image = nil;
         self.userNameTextfield.text = @"";
         self.passwordTextfield.text = @"";
@@ -148,7 +167,7 @@ static LoginViewController *sharedLoginViewController;
                 user.password = self.passwordTextfield.text;
                 [CDIUser updateCurrentUserID:user.userID];
                 [self.managedObjectContext processPendingChanges];
-                [self hideWithCallBack:self.callBack];
+                [self hideWithCallBack:self.callBack andDuration:0.3];
                 
                 [NSNotificationCenter postDidChangeCurrentUserNotification];
             }

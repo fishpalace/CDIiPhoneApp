@@ -95,7 +95,49 @@
 #pragma mark - Table View Data Source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 3;
+}
+
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    switch (section) {
+//        case 0:
+//            return @"Events";
+//            break;
+//        case 1:
+//            return @"Projects";
+//            break;
+//        case 2:
+//            return @"News";
+//            break;
+//        default:
+//            return @"";
+//            break;
+//    }
+//}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 29.0)];
+    UILabel *sectionTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, 5.0, tableView.frame.size.width, 18.0)];
+    [sectionTitleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
+    switch (section) {
+        case 0:
+            [sectionTitleLabel setText:@"Events"];
+            break;
+        case 1:
+            [sectionTitleLabel setText:@"Projects"];
+            break;
+        case 2:
+            [sectionTitleLabel setText:@"News"];
+            break;
+        default:
+            [sectionTitleLabel setText:@""];
+            break;
+    }
+    [view addSubview:sectionTitleLabel];
+    [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:0.0]];
+    return view;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

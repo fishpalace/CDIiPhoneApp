@@ -303,8 +303,6 @@
 		18B74427175B11FE00585CF5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B74426175B11FE00585CF5 /* SystemConfiguration.framework */; };
 		18B74429175B121800585CF5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B74428175B121800585CF5 /* MobileCoreServices.framework */; };
 		18B7442C175B15CC00585CF5 /* CDIViewControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7442B175B15CC00585CF5 /* CDIViewControllerFactory.m */; };
-		18B74436175B3E9E00585CF5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B74435175B3E9E00585CF5 /* icon.png */; };
-		18B74438175B3EAA00585CF5 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B74437175B3EAA00585CF5 /* icon@2x.png */; };
 		18B995841759CB7A0010B9D4 /* NSNotificationCenter+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B995831759CB7A0010B9D4 /* NSNotificationCenter+Addition.m */; };
 		18B995981759EA190010B9D4 /* menu_button_schedule.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B995861759EA190010B9D4 /* menu_button_schedule.png */; };
 		18B995991759EA190010B9D4 /* menu_button_schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B995871759EA190010B9D4 /* menu_button_schedule@2x.png */; };
@@ -731,8 +729,6 @@
 		18B74428175B121800585CF5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		18B7442A175B15CC00585CF5 /* CDIViewControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDIViewControllerFactory.h; sourceTree = "<group>"; };
 		18B7442B175B15CC00585CF5 /* CDIViewControllerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDIViewControllerFactory.m; sourceTree = "<group>"; };
-		18B74435175B3E9E00585CF5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		18B74437175B3EAA00585CF5 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		18B995821759CB7A0010B9D4 /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+Addition.h"; path = "Category/NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
 		18B995831759CB7A0010B9D4 /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNotificationCenter+Addition.m"; path = "Category/NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
 		18B995861759EA190010B9D4 /* menu_button_schedule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button_schedule.png; sourceTree = "<group>"; };
@@ -799,6 +795,10 @@
 		18F6FE0F17A6657E00BD9E74 /* NSMutableAttributedString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableAttributedString+Size.m"; path = "Category/NSMutableAttributedString+Size.m"; sourceTree = "<group>"; };
 		18F6FE1117A6667C00BD9E74 /* NSAttributedString+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Size.h"; path = "Category/NSAttributedString+Size.h"; sourceTree = "<group>"; };
 		18F6FE1217A6667C00BD9E74 /* NSAttributedString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Size.m"; path = "Category/NSAttributedString+Size.m"; sourceTree = "<group>"; };
+		2B05B2D61810D5A900B131DA /* icon_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_60@2x.png"; sourceTree = "<group>"; };
+		2B05B2D71810D5C400B131DA /* icon_29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_29@2x.png"; sourceTree = "<group>"; };
+		2B05B2D81810D5D800B131DA /* icon_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_40@2x.png"; sourceTree = "<group>"; };
+		2B05B2D91810D61900B131DA /* icon_57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_57@2x.png"; sourceTree = "<group>"; };
 		51484E6E181078320003169E /* RPActivityIndictor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPActivityIndictor.h; sourceTree = "<group>"; };
 		51484E6F181078320003169E /* RPActivityIndictor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPActivityIndictor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -823,9 +823,11 @@
 		180BD08E17334D6D00BA2A98 = {
 			isa = PBXGroup;
 			children = (
+				2B05B2D91810D61900B131DA /* icon_57@2x.png */,
+				2B05B2D81810D5D800B131DA /* icon_40@2x.png */,
+				2B05B2D71810D5C400B131DA /* icon_29@2x.png */,
+				2B05B2D61810D5A900B131DA /* icon_60@2x.png */,
 				180D9FF61769905300E7E4F2 /* Media.xcassets */,
-				18B74437175B3EAA00585CF5 /* icon@2x.png */,
-				18B74435175B3E9E00585CF5 /* icon.png */,
 				180BD0A017334D6E00BA2A98 /* CDIiPhoneApp */,
 				180BD0BD17334DC300BA2A98 /* Resource */,
 				180BD09917334D6E00BA2A98 /* Frameworks */,
@@ -1667,8 +1669,6 @@
 				18B743E8175B096C00585CF5 /* time_panel_bg.png in Resources */,
 				18B743E9175B096C00585CF5 /* time_panel_bg@2x.png in Resources */,
 				183A41C117A8266F00D9EAC7 /* profile_launch_2.png in Resources */,
-				18B74436175B3E9E00585CF5 /* icon.png in Resources */,
-				18B74438175B3EAA00585CF5 /* icon@2x.png in Resources */,
 				183AE76B175C38CD008310BF /* tableview_bg.png in Resources */,
 				18AC1A0817A75E17000F6755 /* icon_unavailable@2x.png in Resources */,
 				1883B69817CFC6FB00D9684F /* people_info_preview.png in Resources */,
@@ -1988,6 +1988,8 @@
 		180BD0BB17334D6E00BA2A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2004,6 +2006,8 @@
 		180BD0BC17334D6E00BA2A98 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

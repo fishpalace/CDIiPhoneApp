@@ -39,6 +39,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingBigRangeButton;
 
 
 @end
@@ -84,6 +85,7 @@
     self.doesCurrentUserExist = currentUser != nil;
     
     self.settingsButton.hidden = !self.doesCurrentUserExist;
+    self.settingBigRangeButton.hidden = !self.doesCurrentUserExist;
     self.loginButton.hidden = self.doesCurrentUserExist;
     
     if (self.doesCurrentUserExist) {
@@ -315,6 +317,10 @@
     [self performSegueWithIdentifier:@"MenuSettingsSegue" sender:self];
 }
 
+- (IBAction)didClickSettingBigRangeButton:(id)sender
+{
+    [self performSegueWithIdentifier:@"MenuSettingsSegue" sender:self];
+}
 #pragma mark - Properties
 - (MPDragIndicatorView *)dragIndicatorView
 {

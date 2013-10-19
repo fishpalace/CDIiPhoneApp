@@ -28,9 +28,28 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge
+                                                                           |UIRemoteNotificationTypeSound
+                                                                           |UIRemoteNotificationTypeAlert)];
     [UIApplication showCover];
     [CDIDataSource fetchDataWithCompletion:nil];
     return YES;
+}
+
+-(void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
+    NSLog(@"我的设备ID: %@", deviceToken);
+}
+
+-(void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+    NSLog(@"注册失败，无法获取设备ID, 具体错误: %@", error);
+}
+
+- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
+{
+	NSLog(@"Received notification: %@", userInfo);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

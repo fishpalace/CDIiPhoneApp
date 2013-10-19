@@ -90,6 +90,8 @@
                         <segue destination="q6x-uT-0uT" kind="push" identifier="MainNewsSegue" id="nOk-xQ-Tk6"/>
                         <segue destination="Zpj-ij-Ek7" kind="push" identifier="MainProjectSegue" id="dwd-rp-T0V"/>
                         <segue destination="jvQ-cj-eTf" kind="push" identifier="MainEventSegue" id="xn1-if-WU2"/>
+                        <segue destination="Ig5-VZ-NcK" kind="push" identifier="MainSeeAllNewsSegue" id="FPV-De-gKY"/>
+                        <segue destination="rfX-Kb-Ie8" kind="push" identifier="MainSeeAllProjectsSegue" id="Dge-u6-d6f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -952,7 +954,14 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CDI Soul System" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpo-0x-bfU">
                                             <rect key="frame" x="13" y="123" width="132" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="See All" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQP-vM-Q4J">
+                                            <rect key="frame" x="55" y="68" width="49" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -977,6 +986,7 @@
                                     <outlet property="contentImageView" destination="LL8-eI-Vsm" id="fko-m6-PPT"/>
                                     <outlet property="contentLabel" destination="hpo-0x-bfU" id="ft6-pe-v2q"/>
                                     <outlet property="coverImageView" destination="LE8-cO-ral" id="pKW-lI-twI"/>
+                                    <outlet property="seeAllLabel" destination="bQP-vM-Q4J" id="Ngi-kQ-0el"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -994,7 +1004,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mfy-ee-PPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-107" y="-610"/>
+            <point key="canvasLocation" x="-97" y="-616"/>
         </scene>
         <!--Menu Panel View Controller-->
         <scene sceneID="F0S-XL-Xah">
@@ -1054,6 +1064,16 @@
                                             <action selector="didClickLoginButton:" destination="X8Q-6Y-pVX" eventType="touchUpInside" id="y1c-6o-WeE"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYn-6E-gZV">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didClickSettingBigRangeButton:" destination="X8Q-6Y-pVX" eventType="touchUpInside" id="tlB-qH-V3q"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afc-RB-gGU">
                                         <rect key="frame" x="265" y="14" width="50" height="37"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -1065,7 +1085,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="didClickSettingsButton:" destination="X8Q-6Y-pVX" eventType="touchUpInside" id="CMw-nU-HTz"/>
+                                            <action selector="didClickSettingsButton:" destination="X8Q-6Y-pVX" eventType="touchUpInside" id="Ov7-Z1-j2O"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1079,6 +1099,8 @@
                                     <constraint firstAttribute="bottom" secondItem="OZw-dr-M5I" secondAttribute="bottom" id="Bgl-lb-0Pz"/>
                                     <constraint firstItem="iAZ-eW-3cV" firstAttribute="height" secondItem="Ha5-eo-sxA" secondAttribute="height" constant="4" id="E4r-OJ-Snn"/>
                                     <constraint firstItem="IOS-Lf-k8d" firstAttribute="top" secondItem="YKU-Sk-jdG" secondAttribute="top" id="GTp-t0-P3i"/>
+                                    <constraint firstItem="nYn-6E-gZV" firstAttribute="top" secondItem="OZw-dr-M5I" secondAttribute="top" id="GxE-kx-3OW"/>
+                                    <constraint firstItem="nYn-6E-gZV" firstAttribute="trailing" secondItem="OZw-dr-M5I" secondAttribute="trailing" id="ShU-0J-Uv3"/>
                                     <constraint firstAttribute="centerY" secondItem="Ha5-eo-sxA" secondAttribute="centerY" id="UWQ-fk-xLt"/>
                                     <constraint firstItem="OZw-dr-M5I" firstAttribute="leading" secondItem="YKU-Sk-jdG" secondAttribute="leading" id="a1F-Ex-T8c"/>
                                     <constraint firstItem="Afc-RB-gGU" firstAttribute="top" secondItem="Ha5-eo-sxA" secondAttribute="top" id="bV7-GH-dcI"/>
@@ -1086,6 +1108,8 @@
                                     <constraint firstItem="Afc-RB-gGU" firstAttribute="leading" secondItem="Ha5-eo-sxA" secondAttribute="trailing" constant="87" id="ene-pR-sQ8"/>
                                     <constraint firstAttribute="trailing" secondItem="Afc-RB-gGU" secondAttribute="trailing" constant="5" id="fki-JL-72x"/>
                                     <constraint firstItem="Xda-PW-VCT" firstAttribute="centerY" secondItem="IOS-Lf-k8d" secondAttribute="centerY" id="k2U-3A-pzT"/>
+                                    <constraint firstItem="nYn-6E-gZV" firstAttribute="bottom" secondItem="IOS-Lf-k8d" secondAttribute="bottom" id="oK5-1V-qA0"/>
+                                    <constraint firstItem="nYn-6E-gZV" firstAttribute="leading" secondItem="OZw-dr-M5I" secondAttribute="leading" id="pcl-9V-Xwx"/>
                                     <constraint firstAttribute="trailing" secondItem="OZw-dr-M5I" secondAttribute="trailing" id="qp7-t2-rBo"/>
                                     <constraint firstAttribute="centerY" secondItem="Afc-RB-gGU" secondAttribute="centerY" id="qpH-kM-ODT"/>
                                     <constraint firstItem="Xda-PW-VCT" firstAttribute="leading" secondItem="YKU-Sk-jdG" secondAttribute="leading" constant="18" id="s9E-FD-MWu"/>
@@ -1386,6 +1410,7 @@
                         <outlet property="avatarImageView" destination="iAZ-eW-3cV" id="YNC-x3-w5n"/>
                         <outlet property="currentUserNameLabel" destination="Xda-PW-VCT" id="FHy-rH-7D0"/>
                         <outlet property="loginButton" destination="OZw-dr-M5I" id="crZ-nA-U4h"/>
+                        <outlet property="settingBigRangeButton" destination="nYn-6E-gZV" id="lbW-9c-3wy"/>
                         <outlet property="settingsButton" destination="Afc-RB-gGU" id="BFx-k4-bIX"/>
                         <outlet property="tableView" destination="MKW-QA-Dou" id="gMU-Bv-K0f"/>
                         <segue destination="J40-4n-nsT" kind="push" identifier="MenuScheduleSegue" id="NbZ-B2-GH4"/>
@@ -1950,7 +1975,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SIM-LV-Gz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="287" y="891"/>
+            <point key="canvasLocation" x="271" y="1227"/>
         </scene>
         <!--People List View Controller-->
         <scene sceneID="Y58-aI-fKS">
@@ -4561,6 +4586,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <scene sceneID="b2m-ry-zS3">
             <objects>
                 <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="a6Q-DB-zxm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Btb-6r-E1j"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -5221,7 +5247,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efB-Bq-4iO">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="efB-Bq-4iO">
                                         <rect key="frame" x="0.0" y="42" width="320" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.74901960779999999" green="0.74901960779999999" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -5243,7 +5269,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <action selector="didClickBackButton:" destination="KQv-vh-uwy" eventType="touchUpInside" id="RuG-zy-1wa"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Contact Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4de-0Z-IQT">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Contact Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4de-0Z-IQT">
                                         <rect key="frame" x="110" y="11" width="100" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
@@ -6078,28 +6104,89 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="button_back.png" width="44" height="44"/>
+        <image name="button_back.png" width="44" height="44"/>
+        <image name="button_back.png" width="44" height="44"/>
+        <image name="button_forward.png" width="44" height="44"/>
+        <image name="button_forward.png" width="44" height="44"/>
         <image name="button_forward.png" width="44" height="44"/>
         <image name="button_info.png" width="44" height="44"/>
         <image name="button_photo.png" width="141" height="141"/>
+        <image name="button_photo.png" width="141" height="141"/>
         <image name="button_segmentcontrol_bg.png" width="320" height="39"/>
         <image name="button_segmentcontrol_hl.png" width="160" height="38"/>
+        <image name="button_segmentcontrol_hl.png" width="160" height="38"/>
+        <image name="button_segmentcontrol_hl.png" width="160" height="38"/>
+        <image name="button_segmentcontrol_hl.png" width="160" height="38"/>
+        <image name="button_select_dark.png" width="301" height="51"/>
+        <image name="button_select_dark.png" width="301" height="51"/>
         <image name="button_select_dark.png" width="301" height="51"/>
         <image name="button_work_more.png" width="22" height="22"/>
         <image name="button_work_play.png" width="22" height="22"/>
         <image name="devices_detail_reserve_preview.png" width="320" height="568"/>
         <image name="icon_approved.png" width="22" height="22"/>
         <image name="icon_available.png" width="22" height="22"/>
+        <image name="icon_available.png" width="22" height="22"/>
+        <image name="icon_unavailable.png" width="22" height="22"/>
+        <image name="icon_unavailable.png" width="22" height="22"/>
+        <image name="icon_unavailable.png" width="22" height="22"/>
+        <image name="icon_unavailable.png" width="22" height="22"/>
+        <image name="icon_unavailable.png" width="22" height="22"/>
+        <image name="icon_unavailable.png" width="22" height="22"/>
         <image name="icon_unavailable.png" width="22" height="22"/>
         <image name="logo_icon.png" width="110" height="110"/>
         <image name="menu_avatar_bg.png" width="38" height="38"/>
+        <image name="menu_avatar_bg.png" width="38" height="38"/>
+        <image name="menu_avatar_bg.png" width="38" height="38"/>
         <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_schedule.png" width="20" height="20"/>
         <image name="menu_button_schedule.png" width="20" height="20"/>
         <image name="menu_button_setting.png" width="21" height="21"/>
         <image name="menu_icon_cal.png" width="23" height="23"/>
         <image name="menu_login_bg.png" width="320" height="64"/>
         <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
         <image name="menu_schedule_indicator.png" width="44" height="44"/>
         <image name="menu_status_green.png" width="58" height="58"/>
+        <image name="menu_status_green.png" width="58" height="58"/>
+        <image name="menu_status_green.png" width="58" height="58"/>
+        <image name="menu_status_green.png" width="58" height="58"/>
+        <image name="menu_status_green.png" width="58" height="58"/>
+        <image name="model_button_close.png" width="25" height="25"/>
         <image name="model_button_close.png" width="25" height="25"/>
         <image name="model_button_schedule.png" width="60" height="50"/>
         <image name="mp_selection_activity2.png" width="170" height="170"/>
@@ -6116,23 +6203,49 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="profile_launch_3.png" width="320" height="568"/>
         <image name="rp_accesscode_bg.png" width="321" height="71"/>
         <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
         <image name="rp_ensure_icon_key.png" width="22" height="22"/>
         <image name="rp_textfield_bg.png" width="301" height="51"/>
+        <image name="rp_textfield_bg.png" width="301" height="51"/>
+        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
+        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
+        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
+        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
+        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
         <image name="rp_textfield_error_bg.png" width="300" height="50"/>
         <image name="rp_time_button_center.png" width="104" height="104"/>
         <image name="settings.png" width="320" height="568"/>
         <image name="tableview_banner.png" width="320" height="30"/>
+        <image name="tableview_banner.png" width="320" height="30"/>
+        <image name="tableview_icon_calendar.png" width="19" height="19"/>
+        <image name="tableview_icon_calendar.png" width="19" height="19"/>
         <image name="tableview_icon_calendar.png" width="19" height="19"/>
         <image name="tableview_icon_calendar_hl.png" width="18" height="18"/>
+        <image name="tableview_icon_calendar_hl.png" width="18" height="18"/>
+        <image name="tableview_icon_calendar_hl.png" width="18" height="18"/>
+        <image name="tableview_now_indicator.png" width="44" height="22"/>
         <image name="tableview_now_indicator.png" width="44" height="22"/>
         <image name="test_avatar_3.png" width="140" height="140"/>
+        <image name="textfield_config_bg.png" width="320" height="45"/>
+        <image name="textfield_config_bg.png" width="320" height="45"/>
         <image name="textfield_config_bg.png" width="320" height="45"/>
         <image name="time_button_graph.png" width="25" height="25"/>
         <image name="time_center_cover.png" width="104" height="104"/>
         <image name="time_display_bg.png" width="277" height="95"/>
         <image name="time_panel_bg.png" width="232" height="232"/>
+        <image name="time_panel_bg.png" width="232" height="232"/>
+        <image name="time_panel_cover.png" width="230" height="136"/>
         <image name="time_panel_cover.png" width="230" height="136"/>
         <image name="time_schedule_list.png" width="21" height="15"/>
+        <image name="time_schedule_list_hl.png" width="21" height="15"/>
         <image name="time_schedule_list_hl.png" width="21" height="15"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -6143,9 +6256,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <inferredMetricsTieBreakers>
         <segue reference="Rn9-Jj-U8D"/>
         <segue reference="8C6-30-9Bx"/>
+        <segue reference="rlZ-ff-eJE"/>
         <segue reference="9z9-3K-Qwj"/>
-        <segue reference="xn1-if-WU2"/>
-        <segue reference="dwd-rp-T0V"/>
+        <segue reference="Dge-u6-d6f"/>
         <segue reference="nOk-xQ-Tk6"/>
+        <segue reference="dwd-rp-T0V"/>
+        <segue reference="xn1-if-WU2"/>
     </inferredMetricsTieBreakers>
 </document>

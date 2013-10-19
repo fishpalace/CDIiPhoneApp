@@ -873,6 +873,7 @@
 		180BD0A017334D6E00BA2A98 /* CDIiPhoneApp */ = {
 			isa = PBXGroup;
 			children = (
+				511385291812747000F5F1CB /* RemotePushNotification View */,
 				187F4FF91734E977006B46A3 /* Basic */,
 				18B743DF175B081600585CF5 /* Custom Control */,
 				187F50891734FC84006B46A3 /* Category */,
@@ -1512,6 +1513,13 @@
 				1828FAD817CBDB0B00AEDB12 /* SettingsMainViewController.m */,
 			);
 			name = "Menu Panel";
+			sourceTree = "<group>";
+		};
+		511385291812747000F5F1CB /* RemotePushNotification View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "RemotePushNotification View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

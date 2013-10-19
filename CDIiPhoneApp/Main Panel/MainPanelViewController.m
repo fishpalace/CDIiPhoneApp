@@ -292,8 +292,6 @@
         fc = self.frProjectsController;
     } else if (row == 2) {
         fc = self.frNewsController;
-    } else if (row == 3) {
-        fc = self.frLabController;
     }
     return fc.fetchedObjects.count > 8 ? 8 : fc.fetchedObjects.count;
 }
@@ -306,15 +304,16 @@
     if (row == 0) {
         self.selectedFC = self.frEventsController;
         segueID = @"MainEventSegue";
-    } else if (row == 1) {
+    } else if (row == 1 && index != [self numberOfRowsAtRow:row]) {
         self.selectedFC = self.frProjectsController;
         segueID = @"MainProjectSegue";
-    } else if (row == 2) {
+    } else if (row == 1 && index == [self numberOfRowsAtRow:row]) {
+        segueID = @"MainSeeAllProjectsSegue";
+    } else if (row == 2 && index != [self numberOfRowsAtRow:row]) {
         self.selectedFC = self.frNewsController;
         segueID = @"MainNewsSegue";
-    } else if (row == 3) {
-        self.selectedFC = self.frLabController;
-        segueID = @"MainProjectSegue";
+    } else if (row == 2 && index == [self numberOfRowsAtRow:row]) {
+        segueID = @"MainSeeAllNewsSegue";
     }
     [self performSegueWithIdentifier:segueID sender:self];
 }
@@ -325,10 +324,10 @@
     if (self.selectedRow == 0) {
         CDIEventDAO *event = self.selectedFC.fetchedObjects[self.selectedIndex];
         ((ScheduleEventDetailViewController *)vc).event = event;
-    } else if (self.selectedRow == 1 || self.selectedRow == 3) {
+    } else if (self.selectedRow == 1 && self.selectedIndex != [self numberOfRowsAtRow:self.selectedRow]) {
         CDIWork *work = self.selectedFC.fetchedObjects[self.selectedIndex];
         ((ProjectDetailViewController *)vc).work = work;
-    } else {
+    } else if (self.selectedRow == 2 && self.selectedIndex != [self numberOfRowsAtRow:self.selectedRow]){
         CDINews *news = self.selectedFC.fetchedObjects[self.selectedIndex];
         ((NewsDetailViewController *)vc).news = news;
     }

@@ -15,6 +15,8 @@
 #import "UIView+Addition.h"
 #import "NSNotificationCenter+Addition.h"
 
+#define SeeAllTableCellNumber 1
+
 @interface MPCellTableViewController ()
 
 @property (nonatomic, assign) CGFloat prevOffset;
@@ -66,6 +68,11 @@
     if ([self.delegate respondsToSelector:@selector(numberOfRowsAtRow:)]) {
         numberOfRows = [self.delegate numberOfRowsAtRow:self.row];
     }
+    
+    if (self.row != 0) {
+        numberOfRows = numberOfRows + SeeAllTableCellNumber;
+    }
+    
     return numberOfRows;
 }
 
@@ -73,51 +80,77 @@
 {
     static NSString *CellIdentifier = @"MPCellTableViewCell";
     MPCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    NSString *imageName = @"";
-    if ([self.delegate respondsToSelector:@selector(imageURLForCellAtIndex:atRow:)]) {
-        imageName = [self.delegate imageURLForCellAtIndex:self.row atRow:indexPath.row];
+    cell.seeAllLabel.hidden = YES;
+    
+    if (indexPath.row == [self.delegate numberOfRowsAtRow:self.row] && self.row != 0) {
+        cell.seeAllLabel.hidden = NO;
+        cell.isSeeAllCell = YES;
+        if (self.row == 1) {
+            cell.isCDIProjectsCell = YES;
+        }
+        else if (self.row == 2) {
+            cell.isCDIProjectsCell = NO;
+        }
     }
+    else
+        cell.isSeeAllCell = NO;
     
-    if ([self.delegate respondsToSelector:@selector(contentNameForCellAtIndex:atRow:)]) {
-        cell.contentLabel.text = [self.delegate contentNameForCellAtIndex:self.row atRow:indexPath.row];
-        cell.contentLabel.numberOfLines = 2;
-        cell.contentLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-//        cell.contentLabel.numberOfLines = 0;
-//        cell.contentLabel.frame = CGRectMake(cell.contentLabel.frame.origin.x,
-//                                             cell.contentLabel.frame.origin.y,
-//                                             cell.contentLabel.frame.size.width,
-//                                             labelSize.height);
-//        NSLog(@"cell contentLabel text is %@",cell.contentLabel.text);
+    
+    if (cell.isSeeAllCell) {
+        cell.isSeeAllCell = YES;
+        cell.contentLabel.text = @"";
+        cell.contentImageView.image = nil;
+        cell.coverImageView.image = nil;
     }
-    
-    switch (self.row) {
-        case 0:
-            cell.coverImageView.image = [UIImage imageNamed:@"green_gloom.png"];
-            break;
-        case 1:
-            cell.coverImageView.image = [UIImage imageNamed:@"blue_gloom.png"];
-            break;
-        case 2:
-            cell.coverImageView.image = [UIImage imageNamed:@"purple_gloom.png"];
-            break;
-        default:
-            break;
+    else {
+        NSString *imageName = @"";
+        if ([self.delegate respondsToSelector:@selector(imageURLForCellAtIndex:atRow:)]) {
+            imageName = [self.delegate imageURLForCellAtIndex:self.row atRow:indexPath.row];
+        }
+        
+        if ([self.delegate respondsToSelector:@selector(contentNameForCellAtIndex:atRow:)]) {
+            cell.contentLabel.text = [self.delegate contentNameForCellAtIndex:self.row atRow:indexPath.row];
+            cell.contentLabel.numberOfLines = 2;
+            cell.contentLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+            //        cell.contentLabel.numberOfLines = 0;
+            //        cell.contentLabel.frame = CGRectMake(cell.contentLabel.frame.origin.x,
+            //                                             cell.contentLabel.frame.origin.y,
+            //                                             cell.contentLabel.frame.size.width,
+            //                                             labelSize.height);
+            //        NSLog(@"cell contentLabel text is %@",cell.contentLabel.text);
+        }
+        
+        switch (self.row) {
+            case 0:
+                cell.coverImageView.image = [UIImage imageNamed:@"green_gloom.png"];
+                break;
+            case 1:
+                cell.coverImageView.image = [UIImage imageNamed:@"blue_gloom.png"];
+                break;
+            case 2:
+                cell.coverImageView.image = [UIImage imageNamed:@"purple_gloom.png"];
+                break;
+            default:
+                break;
+        }
+        
+        //    CGRect cellRect = cell.contentImageView.frame;
+        //    cell.contentImageView.frame = CGRectMake(cellRect.origin.x, cellRect.origin.y, 170.0, 170.0);
+        
+        cell.contentImageView.contentMode = UIViewContentModeScaleAspectFill;
+        [cell.contentImageView loadImageFromURL:imageName completion:^(BOOL succeeded) {
+            [cell.contentImageView fadeIn];
+            cell.contentImageView.layer.masksToBounds = YES;
+        }];
+        
+        //    NSLog(@"%f %f",cell.contentImageView.frame.size.width,cell.contentImageView.frame.size.height);
+        //    NSLog(@"%f %f",cell.contentImageView.image.size.width,cell.contentImageView.image.size.width);
+        //    NSLog(@"%d",cell.contentImageView.contentMode);
+        
+        //    cell.contentImageView.layer.cornerRadius = 5;
+        //    cell.contentImageView.layer.masksToBounds = YES;
     }
-    
-    cell.contentImageView.contentMode = UIViewContentModeScaleAspectFill;
-//    CGRect cellRect = cell.contentImageView.frame;
-//    cell.contentImageView.frame = CGRectMake(cellRect.origin.x, cellRect.origin.y, 170.0, 170.0);
-    [cell.contentImageView loadImageFromURL:imageName completion:^(BOOL succeeded) {
-        [cell.contentImageView fadeIn];
-        cell.contentImageView.layer.masksToBounds = YES;
-//        cell.contentImageView.layer.cornerRadius = 5;
-    }];
-//    NSLog(@"%f %f",cell.contentImageView.frame.size.width,cell.contentImageView.frame.size.height);
-//    NSLog(@"%f %f",cell.contentImageView.image.size.width,cell.contentImageView.image.size.width);
-//    NSLog(@"%d",cell.contentImageView.contentMode);
-    
-//    cell.contentImageView.layer.cornerRadius = 5;
-//    cell.contentImageView.layer.masksToBounds = YES;
+    [cell setNeedsDisplay];
     return cell;
 }
 

@@ -43,4 +43,19 @@
     // Configure the view for the selected state
 }
 
+- (void)drawRect:(CGRect)rect
+{
+    if (self.isSeeAllCell) {
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGRect colorRect = CGRectMake(0.0, 0.0, 157.0, 157.0);
+        if (self.isCDIProjectsCell) {
+            CGContextSetRGBFillColor(context, 0.0/255.0, 175.0/255.0, 255.0/255.0, 1.0);
+        }
+        else {
+            CGContextSetRGBFillColor(context, 192.0/255.0, 83.0/255.0, 255.0/255.0, 1.0);
+        }
+        CGContextFillRect(context, colorRect);
+    }
+}
+
 @end

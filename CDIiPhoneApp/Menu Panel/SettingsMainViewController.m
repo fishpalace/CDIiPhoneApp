@@ -101,8 +101,11 @@
     
     [_changePhotoButton.imageView loadImageFromURL:self.currentUser.avatarSmallURL
                                         completion:^(BOOL succeeded) {
-                                            
                                         }];
+    _changePhotoButton.imageView.image = [_changePhotoButton.imageView.image imageScaledToFitSize:CGSizeMake(141, 141)];
+    [_changePhotoButton setImage:_changePhotoButton.imageView.image forState:UIControlStateNormal];
+    [_changePhotoButton setImage:_changePhotoButton.imageView.image forState:UIControlStateHighlighted];
+    
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self
@@ -276,6 +279,7 @@
         [[UIApplication sharedApplication] setStatusBarHidden:YES];
     }
     
+
     self.image = [info objectForKey:UIImagePickerControllerEditedImage];
     self.image = [self.image imageScaledToFitSize:CGSizeMake(141, 141)];
     [self.changePhotoButton setImage:self.image forState:UIControlStateNormal];

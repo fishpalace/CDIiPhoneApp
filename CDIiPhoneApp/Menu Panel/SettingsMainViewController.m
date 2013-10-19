@@ -77,8 +77,9 @@
     [super viewDidLoad];
     isLogoutButtonPressed = NO;
     
-    self.configView.translatesAutoresizingMaskIntoConstraints = YES;
+    self.configView.translatesAutoresizingMaskIntoConstraints = NO;
     self.configView.userInteractionEnabled = NO;
+    self.textfieldBottomSpaceConstraint.constant = 0;
     self.configView.alpha = 0.0;
     [_currentUserNameLabel setText:self.currentUser.realNameEn];
     
@@ -103,6 +104,7 @@
                                         completion:^(BOOL succeeded) {
                                         }];
     _changePhotoButton.imageView.image = [_changePhotoButton.imageView.image imageScaledToFitSize:CGSizeMake(141, 141)];
+    _changePhotoButton.imageView.layer.cornerRadius = 5;
     [_changePhotoButton setImage:_changePhotoButton.imageView.image forState:UIControlStateNormal];
     [_changePhotoButton setImage:_changePhotoButton.imageView.image forState:UIControlStateHighlighted];
     
@@ -120,7 +122,13 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.scrollViewContentHeight = 730;
+    self.scrollViewContentHeight = 680;
+    self.scrollView.contentSize = CGSizeMake(320, self.scrollViewContentHeight);
+}
+
+- (void)viewDidLayoutSubviews
+{
+    self.scrollViewContentHeight = 680;
     self.scrollView.contentSize = CGSizeMake(320, self.scrollViewContentHeight);
 }
 
@@ -131,10 +139,10 @@
     activityIndiactor.delegate = self;
     [activityIndiactor startWaitingAnimationInView:self.view];
     [activityIndiactor setWaitingTimer];
-    [self performSelector:@selector(exuteAfterClickDoneButton) withObject:nil afterDelay:1.0];
+    [self performSelector:@selector(excuteAfterClickDoneButton:) withObject:nil afterDelay:1.0];
 }
 
-- (void)exuteAfterClickDoneButton
+- (void)excuteAfterClickDoneButton:(void (^)(void))completion
 {
     self.currentUser.email = self.emailTextfield.text;
     self.currentUser.mobile = self.mobileTextfield.text;
@@ -154,7 +162,10 @@
             if ([responseData isKindOfClass:[NSDictionary class]]) {
                 [NSNotificationCenter postDidChangeCurrentUserNotification];
             }
-            [self.navigationController popViewControllerAnimated:YES];
+            if (completion) {
+                completion();
+            }
+//            [self.navigationController popViewControllerAnimated:YES];
         }
         else {
             [self setUpInfoFailed];
@@ -201,7 +212,15 @@
 
 - (IBAction)didClickBackButton:(UIButton *)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    void(^completion)(void) = ^(void){
+        [self.navigationController popViewControllerAnimated:YES];
+    };
+    self.view.userInteractionEnabled = NO;
+    RPActivityIndictor * activityIndiactor = [RPActivityIndictor sharedRPActivityIndictor];
+    activityIndiactor.delegate = self;
+    [activityIndiactor startWaitingAnimationInView:self.view];
+    [activityIndiactor setWaitingTimer];
+    [self performSelector:@selector(excuteAfterClickDoneButton:) withObject:completion afterDelay:1.0];
 }
 
 - (IBAction)didCoverButton:(UIButton *)sender
@@ -294,6 +313,7 @@
             if ([responseData isKindOfClass:[NSString class]]) {
                 NSString *url = [NSString stringWithFormat:@"http://cdi.tongji.edu.cn/cdisoul/upload/user_avatars/%@", responseData];
                 self.currentUser.avatarSmallURL = url;
+                NSLog(@"self current user avatorSmallUlr is %@",self.currentUser.avatarSmallURL);
             }
         }
     };
@@ -331,6 +351,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [self excuteAfterClickDoneButton:nil];
     [self hideKeyboard];
     return YES;
 }
@@ -359,6 +380,7 @@
 
 - (IBAction)didClickHideKeyboardButton:(UIButton *)sender
 {
+    [self excuteAfterClickDoneButton:nil];
     [self hideKeyboard];
 }
 
@@ -369,7 +391,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"contentOffset y is %f",self.scrollView.contentOffset.y);
+//    NSLog(@"contentOffset y is %f",self.scrollView.contentOffset.y);
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -380,9 +402,21 @@
     self.textfieldTop = kCurrentScreenHeight - keyboardHeight;
     
     self.configView.userInteractionEnabled = YES;
-    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.configView.frame = CGRectMake(0.0, self.textfieldTop - 45.0, 320.0, 45.0);
-        self.configView.alpha = 1.0;
+    self.configView.alpha = 1.0;
+    self.textfieldBottomSpaceConstraint.constant = keyboardHeight;
+    
+    double animationDuration;
+    animationDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+//    NSLog(@"%f",animationDuration);
+//    NSLog(@"%@",[[notification userInfo]objectForKey:UIKeyboardAnimationCurveUserInfoKey]);
+    
+    NSDictionary *userInfo = notification.userInfo;
+    NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
+    UIViewAnimationCurve animationCurve = curveValue.intValue;
+    [UIView animateWithDuration:animationDuration delay:0.0 options:(animationCurve << 16) animations:^{
+//        self.configView.frame = CGRectMake(0.0, self.textfieldTop - 45.0, 320.0, 45.0);
+//        self.configView.alpha = 1.0;
+        [self.view layoutIfNeeded];
     }completion:^(BOOL finished){
     }];
     
@@ -390,21 +424,34 @@
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
-    NSLog(@"contentSize is %f frame is %f",self.scrollView.contentSize.height,self.scrollView.frame.size.height);
-    self.configView.userInteractionEnabled = NO;
+    self.textfieldBottomSpaceConstraint.constant = 0;
     self.configView.alpha = 0.0;
+    double animationDuration;
+    animationDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+//    NSLog(@"%@",[[notification userInfo]objectForKey:UIKeyboardAnimationCurveUserInfoKey]);
+    NSDictionary *userInfo = notification.userInfo;
+    NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
+    UIViewAnimationCurve animationCurve = curveValue.intValue;
+    [UIView animateWithDuration:animationDuration delay:0.0 options:animationCurve << 16 animations:^{
+        [self.view layoutIfNeeded];
+    }completion:^(BOOL finished){
+    }];
+    
+//    self.configView.userInteractionEnabled = NO;
+//    self.configView.alpha = 0.0;
 }
 
 - (void)hideKeyboard
 {
     [self.view endEditing:YES];
-    //    if (self.scrollView.contentOffset.y >= self.scrollViewContentHeight - self.scrollView.frame.size.height) {
-    //        CGPoint offset = self.scrollView.contentOffset;
-    //        offset.y = self.scrollViewContentHeight - self.scrollView.frame.size.height;
-    //
-    //        [self.scrollView setContentOffset:offset animated:YES];
-    //    }
-    //    self.scrollView.contentSize = CGSizeMake(320, self.scrollViewContentHeight);
+    if (self.scrollView.contentOffset.y >= self.scrollViewContentHeight - self.scrollView.frame.size.height) {
+            CGPoint offset = self.scrollView.contentOffset;
+            offset.y = self.scrollViewContentHeight - self.scrollView.frame.size.height;
+    
+            [self.scrollView setContentOffset:offset animated:YES];
+        }
+        self.scrollView.contentSize = CGSizeMake(320, self.scrollViewContentHeight);
 }
 
 - (void)logoutFailed

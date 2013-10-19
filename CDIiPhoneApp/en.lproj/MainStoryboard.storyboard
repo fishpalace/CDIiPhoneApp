@@ -1026,7 +1026,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_avatar_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ha5-eo-sxA">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ha5-eo-sxA">
                                         <rect key="frame" x="142" y="14" width="36" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -5109,7 +5109,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstItem="OBS-pb-rtN" firstAttribute="centerX" secondItem="4WF-mc-fh3" secondAttribute="centerX" constant="0.5" id="YAI-Y2-oMX"/>
                                     <constraint firstItem="qjv-9x-aQb" firstAttribute="centerX" secondItem="CXI-GA-2gA" secondAttribute="centerX" constant="0.5" id="afZ-dM-FJi"/>
                                     <constraint firstItem="CXI-GA-2gA" firstAttribute="trailing" secondItem="aP5-Fz-x9G" secondAttribute="trailing" id="fWn-H7-ZLo"/>
-                                    <constraint firstAttribute="bottom" secondItem="MuH-xT-7ty" secondAttribute="bottom" constant="196" id="g8f-Oe-1c7"/>
+                                    <constraint firstAttribute="bottom" secondItem="MuH-xT-7ty" secondAttribute="bottom" constant="448" id="g8f-Oe-1c7"/>
                                     <constraint firstItem="qjv-9x-aQb" firstAttribute="top" secondItem="CXI-GA-2gA" secondAttribute="bottom" constant="-40" id="g9b-sg-Tus"/>
                                     <constraint firstItem="qjv-9x-aQb" firstAttribute="leading" secondItem="CXI-GA-2gA" secondAttribute="trailing" constant="-285" id="ghr-Sc-RcZ"/>
                                     <constraint firstItem="G1D-0u-HHR" firstAttribute="centerY" secondItem="JzW-mL-8vv" secondAttribute="centerY" constant="0.5" id="hlJ-0n-um3"/>
@@ -5328,6 +5328,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="mobileErrorImageView" destination="pQK-Qt-H8a" id="BRd-9r-3h3"/>
                         <outlet property="mobileTextfield" destination="hVk-BT-GyF" id="pUx-gZ-OPI"/>
                         <outlet property="scrollView" destination="LO0-FC-Fvp" id="62J-Mb-3ca"/>
+                        <outlet property="textfieldBottomSpaceConstraint" destination="Fe8-vw-2uj" id="bQv-l8-9U9"/>
                         <outlet property="twitterTextfield" destination="bnz-U9-IYV" id="NUh-6I-jfS"/>
                         <outlet property="weiboTextfield" destination="59R-bH-U0D" id="GvX-hv-cbh"/>
                     </connections>
@@ -5489,34 +5490,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <rect key="frame" x="90" y="25" width="141" height="141"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" image="button_photo.png">
+                                        <state key="normal" backgroundImage="button_photo.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="didClickChangeInfoButton:" destination="INo-JT-ZL6" eventType="touchUpInside" id="HFt-xv-qjO"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3J0-70-IFZ">
-                                        <rect key="frame" x="11" y="613" width="301" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="9Zj-9J-c9V"/>
-                                            <constraint firstAttribute="width" constant="301" id="KaL-R3-Z4r"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
-                                        <state key="normal" title="Done" backgroundImage="rp_button_bottom.png">
-                                            <color key="titleColor" red="0.0" green="0.58823529409999997" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="didClickDoneButton:" destination="INo-JT-ZL6" eventType="touchUpInside" id="Uwx-do-f78"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYc-gH-mMC">
-                                        <rect key="frame" x="11" y="671" width="301" height="50"/>
+                                        <rect key="frame" x="11" y="613" width="301" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="301" id="AOD-3X-Tho"/>
@@ -5548,7 +5530,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstItem="8wa-HI-Rou" firstAttribute="centerX" secondItem="Is3-Hq-LHP" secondAttribute="centerX" id="Als-F0-kw1"/>
                                     <constraint firstItem="8wa-HI-Rou" firstAttribute="centerX" secondItem="Y1B-zj-0GQ" secondAttribute="centerX" id="C1r-7g-ETc"/>
                                     <constraint firstItem="8wa-HI-Rou" firstAttribute="top" secondItem="Y1B-zj-0GQ" secondAttribute="bottom" constant="8" id="CEJ-cu-IOc"/>
-                                    <constraint firstItem="3J0-70-IFZ" firstAttribute="top" secondItem="mX5-be-5Co" secondAttribute="bottom" constant="8" id="DGm-wg-OVa"/>
                                     <constraint firstItem="H0I-Rr-R4I" firstAttribute="centerX" secondItem="pjZ-mX-s53" secondAttribute="centerX" id="DdU-lo-lg2"/>
                                     <constraint firstItem="CEI-6b-u6X" firstAttribute="leading" secondItem="Okl-YG-2Ji" secondAttribute="trailing" constant="-32" id="DmB-Ut-Qcc"/>
                                     <constraint firstItem="Y1B-zj-0GQ" firstAttribute="centerX" secondItem="SAx-aV-Har" secondAttribute="centerX" id="Enz-pR-vj6"/>
@@ -5572,9 +5553,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstItem="ICf-Zn-cSe" firstAttribute="leading" secondItem="t7P-oZ-wLT" secondAttribute="trailing" constant="-32" id="Vt1-VK-LF7"/>
                                     <constraint firstItem="t7P-oZ-wLT" firstAttribute="leading" secondItem="VDx-sf-iwa" secondAttribute="leading" id="WW3-RH-Xj9"/>
                                     <constraint firstItem="t7P-oZ-wLT" firstAttribute="top" secondItem="pjZ-mX-s53" secondAttribute="top" constant="200" id="ZAu-gX-BTg"/>
-                                    <constraint firstItem="mX5-be-5Co" firstAttribute="centerX" secondItem="3J0-70-IFZ" secondAttribute="centerX" id="ZPQ-do-v1d"/>
                                     <constraint firstItem="t7P-oZ-wLT" firstAttribute="centerY" secondItem="ICf-Zn-cSe" secondAttribute="centerY" id="Zvh-Je-vXf"/>
                                     <constraint firstItem="Okl-YG-2Ji" firstAttribute="centerY" secondItem="CEI-6b-u6X" secondAttribute="centerY" id="ade-6Z-4Tt"/>
+                                    <constraint firstItem="IYc-gH-mMC" firstAttribute="top" secondItem="mX5-be-5Co" secondAttribute="bottom" constant="8" id="dTA-4g-mAA"/>
                                     <constraint firstItem="sqo-jP-gBk" firstAttribute="centerX" secondItem="t7P-oZ-wLT" secondAttribute="centerX" constant="0.5" id="e3u-xR-Wng"/>
                                     <constraint firstItem="KYT-zJ-tZA" firstAttribute="centerX" secondItem="mX5-be-5Co" secondAttribute="centerX" constant="0.5" id="exC-eL-sbW"/>
                                     <constraint firstItem="KYT-zJ-tZA" firstAttribute="centerY" secondItem="mX5-be-5Co" secondAttribute="centerY" constant="0.5" id="fNN-QI-SKa"/>
@@ -5582,18 +5563,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstItem="GNz-ai-4sC" firstAttribute="centerX" secondItem="8wa-HI-Rou" secondAttribute="centerX" constant="0.5" id="fsW-Ci-88i"/>
                                     <constraint firstItem="Y1B-zj-0GQ" firstAttribute="top" secondItem="SAx-aV-Har" secondAttribute="bottom" constant="8" id="fwC-Mk-LIG"/>
                                     <constraint firstItem="CGe-em-rSS" firstAttribute="centerX" secondItem="Is3-Hq-LHP" secondAttribute="centerX" constant="0.5" id="gOf-6K-s0s"/>
+                                    <constraint firstItem="IYc-gH-mMC" firstAttribute="leading" secondItem="mX5-be-5Co" secondAttribute="leading" id="gez-AG-WKA"/>
                                     <constraint firstItem="Fzx-gf-6mc" firstAttribute="leading" secondItem="SAx-aV-Har" secondAttribute="trailing" constant="-285" id="gk3-fu-7g9"/>
                                     <constraint firstItem="Fzx-gf-6mc" firstAttribute="top" secondItem="SAx-aV-Har" secondAttribute="bottom" constant="-40" id="gtY-27-Fy8"/>
                                     <constraint firstItem="z9j-oB-HYm" firstAttribute="centerX" secondItem="Okl-YG-2Ji" secondAttribute="centerX" constant="0.5" id="hVF-DL-ZKu"/>
-                                    <constraint firstItem="IYc-gH-mMC" firstAttribute="top" secondItem="3J0-70-IFZ" secondAttribute="bottom" constant="8" id="ikD-aD-Pkk"/>
                                     <constraint firstItem="H0I-Rr-R4I" firstAttribute="top" secondItem="pjZ-mX-s53" secondAttribute="top" constant="25" id="jMA-ae-hBY"/>
                                     <constraint firstItem="CGe-em-rSS" firstAttribute="centerY" secondItem="Is3-Hq-LHP" secondAttribute="centerY" constant="0.5" id="k2A-Gn-azt"/>
                                     <constraint firstItem="t7P-oZ-wLT" firstAttribute="leading" secondItem="pjZ-mX-s53" secondAttribute="leading" constant="11" id="mg7-q2-nkg"/>
                                     <constraint firstItem="sqo-jP-gBk" firstAttribute="centerY" secondItem="t7P-oZ-wLT" secondAttribute="centerY" constant="0.5" id="nVw-5o-sKh"/>
                                     <constraint firstItem="sqo-jP-gBk" firstAttribute="top" secondItem="t7P-oZ-wLT" secondAttribute="bottom" constant="-40" id="nWO-fe-vd3"/>
-                                    <constraint firstAttribute="bottom" secondItem="H0I-Rr-R4I" secondAttribute="bottom" constant="564" id="nez-UP-p4d"/>
+                                    <constraint firstAttribute="bottom" secondItem="H0I-Rr-R4I" secondAttribute="bottom" constant="514" id="nez-UP-p4d"/>
                                     <constraint firstItem="vNT-w7-E3A" firstAttribute="centerY" secondItem="Y1B-zj-0GQ" secondAttribute="centerY" constant="0.5" id="omD-tT-5fV"/>
-                                    <constraint firstItem="IYc-gH-mMC" firstAttribute="centerX" secondItem="3J0-70-IFZ" secondAttribute="centerX" id="pfB-Vs-T48"/>
                                     <constraint firstItem="CGe-em-rSS" firstAttribute="leading" secondItem="Is3-Hq-LHP" secondAttribute="trailing" constant="-285" id="qcv-tH-yzV"/>
                                     <constraint firstItem="vNT-w7-E3A" firstAttribute="centerX" secondItem="Y1B-zj-0GQ" secondAttribute="centerX" constant="0.5" id="qrt-CT-TaC"/>
                                     <constraint firstItem="z9j-oB-HYm" firstAttribute="centerY" secondItem="Okl-YG-2Ji" secondAttribute="centerY" constant="0.5" id="r1P-ET-oaD"/>
@@ -5733,9 +5713,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="611-zP-nVJ" firstAttribute="leading" secondItem="dd9-S6-Rli" secondAttribute="leading" id="1Cq-FF-bIo"/>
+                            <constraint firstItem="3il-jM-xMj" firstAttribute="top" secondItem="yhZ-tJ-Gq2" secondAttribute="bottom" constant="200" id="Mc6-NT-Kzq"/>
                             <constraint firstItem="pjZ-mX-s53" firstAttribute="trailing" secondItem="611-zP-nVJ" secondAttribute="trailing" id="NrR-Tu-tTh"/>
                             <constraint firstItem="pjZ-mX-s53" firstAttribute="top" secondItem="611-zP-nVJ" secondAttribute="bottom" id="VS6-PK-9nT"/>
-                            <constraint firstItem="3il-jM-xMj" firstAttribute="top" secondItem="yhZ-tJ-Gq2" secondAttribute="bottom" constant="200" id="Vfs-Cz-Q8C"/>
                             <constraint firstAttribute="centerX" secondItem="yhZ-tJ-Gq2" secondAttribute="centerX" id="oM2-ep-geh"/>
                             <constraint firstItem="3il-jM-xMj" firstAttribute="top" secondItem="pjZ-mX-s53" secondAttribute="bottom" id="smx-yM-JAO"/>
                             <constraint firstItem="pjZ-mX-s53" firstAttribute="leading" secondItem="611-zP-nVJ" secondAttribute="leading" id="w61-Pf-Qrm"/>
@@ -5749,7 +5729,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="changePhotoButton" destination="H0I-Rr-R4I" id="1S3-Y3-UnX"/>
                         <outlet property="configView" destination="yhZ-tJ-Gq2" id="zWa-gX-FE9"/>
                         <outlet property="currentUserNameLabel" destination="I6e-z5-NnV" id="BUG-d9-UW1"/>
-                        <outlet property="doneButton" destination="3J0-70-IFZ" id="VNW-0R-3cG"/>
                         <outlet property="dribbleTextfield" destination="CGe-em-rSS" id="p4b-rH-aBt"/>
                         <outlet property="emailErrorImageView" destination="VDx-sf-iwa" id="PAd-ZA-PEd"/>
                         <outlet property="emailTextfield" destination="sqo-jP-gBk" id="GlP-l8-xnC"/>
@@ -5761,6 +5740,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="mobileErrorImageView" destination="Eqy-LA-OvM" id="1uc-zj-OmT"/>
                         <outlet property="mobileTextfield" destination="z9j-oB-HYm" id="QHF-Xl-9NS"/>
                         <outlet property="scrollView" destination="pjZ-mX-s53" id="VU9-3x-VGm"/>
+                        <outlet property="textfieldBottomSpaceConstraint" destination="Mc6-NT-Kzq" id="jvN-PP-KIK"/>
                         <outlet property="twitterTextfield" destination="vNT-w7-E3A" id="oNa-0k-PHS"/>
                         <outlet property="weiboTextfield" destination="Fzx-gf-6mc" id="Ioq-sY-Yx3"/>
                     </connections>
@@ -6104,89 +6084,28 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="button_back.png" width="44" height="44"/>
-        <image name="button_back.png" width="44" height="44"/>
-        <image name="button_back.png" width="44" height="44"/>
-        <image name="button_forward.png" width="44" height="44"/>
-        <image name="button_forward.png" width="44" height="44"/>
         <image name="button_forward.png" width="44" height="44"/>
         <image name="button_info.png" width="44" height="44"/>
         <image name="button_photo.png" width="141" height="141"/>
-        <image name="button_photo.png" width="141" height="141"/>
         <image name="button_segmentcontrol_bg.png" width="320" height="39"/>
         <image name="button_segmentcontrol_hl.png" width="160" height="38"/>
-        <image name="button_segmentcontrol_hl.png" width="160" height="38"/>
-        <image name="button_segmentcontrol_hl.png" width="160" height="38"/>
-        <image name="button_segmentcontrol_hl.png" width="160" height="38"/>
-        <image name="button_select_dark.png" width="301" height="51"/>
-        <image name="button_select_dark.png" width="301" height="51"/>
         <image name="button_select_dark.png" width="301" height="51"/>
         <image name="button_work_more.png" width="22" height="22"/>
         <image name="button_work_play.png" width="22" height="22"/>
         <image name="devices_detail_reserve_preview.png" width="320" height="568"/>
         <image name="icon_approved.png" width="22" height="22"/>
         <image name="icon_available.png" width="22" height="22"/>
-        <image name="icon_available.png" width="22" height="22"/>
-        <image name="icon_unavailable.png" width="22" height="22"/>
-        <image name="icon_unavailable.png" width="22" height="22"/>
-        <image name="icon_unavailable.png" width="22" height="22"/>
-        <image name="icon_unavailable.png" width="22" height="22"/>
-        <image name="icon_unavailable.png" width="22" height="22"/>
-        <image name="icon_unavailable.png" width="22" height="22"/>
         <image name="icon_unavailable.png" width="22" height="22"/>
         <image name="logo_icon.png" width="110" height="110"/>
         <image name="menu_avatar_bg.png" width="38" height="38"/>
-        <image name="menu_avatar_bg.png" width="38" height="38"/>
-        <image name="menu_avatar_bg.png" width="38" height="38"/>
         <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_navi_back.png" width="11" height="18"/>
-        <image name="menu_button_schedule.png" width="20" height="20"/>
         <image name="menu_button_schedule.png" width="20" height="20"/>
         <image name="menu_button_setting.png" width="21" height="21"/>
         <image name="menu_icon_cal.png" width="23" height="23"/>
         <image name="menu_login_bg.png" width="320" height="64"/>
         <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
-        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
         <image name="menu_schedule_indicator.png" width="44" height="44"/>
         <image name="menu_status_green.png" width="58" height="58"/>
-        <image name="menu_status_green.png" width="58" height="58"/>
-        <image name="menu_status_green.png" width="58" height="58"/>
-        <image name="menu_status_green.png" width="58" height="58"/>
-        <image name="menu_status_green.png" width="58" height="58"/>
-        <image name="model_button_close.png" width="25" height="25"/>
         <image name="model_button_close.png" width="25" height="25"/>
         <image name="model_button_schedule.png" width="60" height="50"/>
         <image name="mp_selection_activity2.png" width="170" height="170"/>
@@ -6203,49 +6122,23 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="profile_launch_3.png" width="320" height="568"/>
         <image name="rp_accesscode_bg.png" width="321" height="71"/>
         <image name="rp_button_bottom.png" width="301" height="51"/>
-        <image name="rp_button_bottom.png" width="301" height="51"/>
-        <image name="rp_button_bottom.png" width="301" height="51"/>
-        <image name="rp_button_bottom.png" width="301" height="51"/>
-        <image name="rp_button_bottom.png" width="301" height="51"/>
-        <image name="rp_button_bottom.png" width="301" height="51"/>
-        <image name="rp_button_bottom.png" width="301" height="51"/>
-        <image name="rp_button_bottom.png" width="301" height="51"/>
-        <image name="rp_button_bottom.png" width="301" height="51"/>
-        <image name="rp_button_bottom.png" width="301" height="51"/>
         <image name="rp_ensure_icon_key.png" width="22" height="22"/>
         <image name="rp_textfield_bg.png" width="301" height="51"/>
-        <image name="rp_textfield_bg.png" width="301" height="51"/>
-        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
-        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
-        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
-        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
-        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
         <image name="rp_textfield_error_bg.png" width="300" height="50"/>
         <image name="rp_time_button_center.png" width="104" height="104"/>
         <image name="settings.png" width="320" height="568"/>
         <image name="tableview_banner.png" width="320" height="30"/>
-        <image name="tableview_banner.png" width="320" height="30"/>
-        <image name="tableview_icon_calendar.png" width="19" height="19"/>
-        <image name="tableview_icon_calendar.png" width="19" height="19"/>
         <image name="tableview_icon_calendar.png" width="19" height="19"/>
         <image name="tableview_icon_calendar_hl.png" width="18" height="18"/>
-        <image name="tableview_icon_calendar_hl.png" width="18" height="18"/>
-        <image name="tableview_icon_calendar_hl.png" width="18" height="18"/>
-        <image name="tableview_now_indicator.png" width="44" height="22"/>
         <image name="tableview_now_indicator.png" width="44" height="22"/>
         <image name="test_avatar_3.png" width="140" height="140"/>
-        <image name="textfield_config_bg.png" width="320" height="45"/>
-        <image name="textfield_config_bg.png" width="320" height="45"/>
         <image name="textfield_config_bg.png" width="320" height="45"/>
         <image name="time_button_graph.png" width="25" height="25"/>
         <image name="time_center_cover.png" width="104" height="104"/>
         <image name="time_display_bg.png" width="277" height="95"/>
         <image name="time_panel_bg.png" width="232" height="232"/>
-        <image name="time_panel_bg.png" width="232" height="232"/>
-        <image name="time_panel_cover.png" width="230" height="136"/>
         <image name="time_panel_cover.png" width="230" height="136"/>
         <image name="time_schedule_list.png" width="21" height="15"/>
-        <image name="time_schedule_list_hl.png" width="21" height="15"/>
         <image name="time_schedule_list_hl.png" width="21" height="15"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -6254,11 +6147,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="a5R-k4-SgG"/>
         <segue reference="Rn9-Jj-U8D"/>
         <segue reference="8C6-30-9Bx"/>
         <segue reference="rlZ-ff-eJE"/>
         <segue reference="9z9-3K-Qwj"/>
-        <segue reference="Dge-u6-d6f"/>
         <segue reference="nOk-xQ-Tk6"/>
         <segue reference="dwd-rp-T0V"/>
         <segue reference="xn1-if-WU2"/>

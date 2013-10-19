@@ -348,13 +348,12 @@
         self.view.userInteractionEnabled = YES;
         RPActivityIndictor * activityIndictor = [RPActivityIndictor sharedRPActivityIndictor];
         [activityIndictor stopWaitingTimer];
-        
         if (succeeded) {
             if ([responseData[@"data"] integerValue] != 0) {
                 [weakSelf submitDate];
             } else {
                 //TODO Report Error
-                [self nextFailed];
+                [self reservationNumberLimitedFailed];
             }
         }
         else {
@@ -392,6 +391,16 @@
 {
     UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Time Chosen Unavailable"
                                                         message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+    [alertView show];
+    self.view.userInteractionEnabled = YES;
+}
+
+- (void)reservationNumberLimitedFailed
+{
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Reserve Failed"
+                                                        message:@"Only one reservation can be made in one day. To make a new reservation, please undo the current one."
                                                        delegate:self
                                               cancelButtonTitle:@"Close" otherButtonTitles:nil];
     [alertView show];

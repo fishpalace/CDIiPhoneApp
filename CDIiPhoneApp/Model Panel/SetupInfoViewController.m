@@ -45,6 +45,9 @@
 @end
 
 @implementation SetupInfoViewController
+{
+    BOOL isFirstTimeAddIn;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,7 +67,12 @@
 {
     [super viewDidLoad];
     
-    self.configView.translatesAutoresizingMaskIntoConstraints = YES;
+    self.configView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.configView.userInteractionEnabled = NO;
+    self.textfieldBottomSpaceConstraint.constant = 0;
+    self.configView.alpha = 0.0;
+    
+    isFirstTimeAddIn = YES;
     
     _emailTextfield.delegate = self;
     _mobileTextfield.delegate = self;
@@ -87,6 +95,7 @@
                                         completion:^(BOOL succeeded) {
                                         }];
     _changePhotoButton.imageView.image = [_changePhotoButton.imageView.image imageScaledToFitSize:CGSizeMake(141, 141)];
+    _changePhotoButton.imageView.layer.cornerRadius = 5;
     [_changePhotoButton setImage:_changePhotoButton.imageView.image forState:UIControlStateNormal];
     [_changePhotoButton setImage:_changePhotoButton.imageView.image forState:UIControlStateHighlighted];
     
@@ -106,7 +115,8 @@
     [super viewDidAppear:animated];
     self.scrollView.contentSize = CGSizeMake(320, self.homePageTextfield.frame.origin.y + 50);
     self.scrollViewContentHeight = self.scrollView.contentSize.height;
-    
+    NSLog(@"!!!contentSize is %f frame is %f",self.scrollView.contentSize.height,self.scrollView.frame.size.height);
+
 }
 
 - (IBAction)didClickDoneButton:(UIButton *)sender
@@ -247,14 +257,28 @@
 
 - (void)adjustScrollViewPosition
 {
-    CGFloat originY = self.currentTextfield.frame.origin.y;
-    NSLog(@"orginY currentTextField is %f",self.currentTextfield.frame.origin.y);
-    NSLog(@"the textfield top is %f",self.textfieldTop);
+    
+    CGFloat originY = self.currentTextfield.frame.origin.y - self.scrollView.contentOffset.y;
     CGFloat offset = originY - self.textfieldTop + 130;
     CGPoint targetOffset = self.scrollView.contentOffset;
-    targetOffset.y = offset;
+    
+//    NSLog(@"orginY currentTextField is %f",originY);
+//    NSLog(@"the textfield top is %f",self.textfieldTop);
+//    NSLog(@"targetOffset is %f",self.scrollView.contentOffset.y);
+    targetOffset.y += offset;
+    if (isFirstTimeAddIn) {
+        targetOffset.y = 0.0;
+        isFirstTimeAddIn = NO;
+    }
+    
     [self.scrollView setContentOffset:targetOffset animated:YES];
-    NSLog(@"after + targetoffset x is %f y is %f",self.scrollView.contentOffset.x,self.scrollView.contentOffset.y);
+    
+//    CGFloat originY = self.currentTextfield.frame.origin.y;
+
+//    CGFloat offset = originY - self.textfieldTop + 130;
+//    CGPoint targetOffset = self.scrollView.contentOffset;
+//    targetOffset.y = offset;
+//    [self.scrollView setContentOffset:targetOffset animated:YES];
     
 }
 
@@ -304,21 +328,41 @@
 - (void)keyboardWillShow:(NSNotification *)notification {
     NSDictionary *info = [notification userInfo];
     CGRect keyboardBounds = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
     CGFloat keyboardHeight = keyboardBounds.size.height;
     self.textfieldTop = kCurrentScreenHeight - keyboardHeight;
+    
     self.configView.userInteractionEnabled = YES;
-    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.configView.frame = CGRectMake(0.0, self.textfieldTop - 45.0, 320.0, 45.0);
-        self.configView.alpha = 1.0;
+    self.configView.alpha = 1.0;
+    self.textfieldBottomSpaceConstraint.constant = keyboardHeight;
+    
+    double animationDuration;
+    animationDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    NSDictionary *userInfo = notification.userInfo;
+    NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
+    UIViewAnimationCurve animationCurve = curveValue.intValue;
+    [UIView animateWithDuration:animationDuration delay:0.0 options:(animationCurve << 16) animations:^{
+        [self.view layoutIfNeeded];
     }completion:^(BOOL finished){
     }];
-
+    
     [self adjustScrollViewPosition];
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
-    self.configView.userInteractionEnabled = NO;
+    self.textfieldBottomSpaceConstraint.constant = 0;
     self.configView.alpha = 0.0;
+    double animationDuration;
+    animationDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    //    NSLog(@"%@",[[notification userInfo]objectForKey:UIKeyboardAnimationCurveUserInfoKey]);
+    NSDictionary *userInfo = notification.userInfo;
+    NSNumber *curveValue = userInfo[UIKeyboardAnimationCurveUserInfoKey];
+    UIViewAnimationCurve animationCurve = curveValue.intValue;
+    [UIView animateWithDuration:animationDuration delay:0.0 options:animationCurve << 16 animations:^{
+        [self.view layoutIfNeeded];
+    }completion:^(BOOL finished){
+    }];
 }
 
 - (void)hideKeyboard

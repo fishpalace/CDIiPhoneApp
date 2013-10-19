@@ -10,6 +10,8 @@
 
 @interface MPCellTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView;
+@property (weak, nonatomic) IBOutlet UILabel * contentLabel;
 
 @end

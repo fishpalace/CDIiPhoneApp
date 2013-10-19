@@ -14,6 +14,7 @@
 - (void)registerCurrentActiveRow:(NSInteger)row;
 - (BOOL)isActiveForRow:(NSInteger)row;
 - (NSString *)imageURLForCellAtIndex:(NSInteger)index atRow:(NSInteger)row;
+- (NSString *)contentNameForCellAtIndex:(NSInteger)index atRow:(NSInteger)row;
 - (NSInteger)numberOfRowsAtRow:(NSInteger)row;
 
 - (void)didSelectCellAtIndex:(NSInteger)index ofRow:(NSInteger)row;

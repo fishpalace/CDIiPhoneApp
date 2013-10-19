@@ -23,7 +23,6 @@
 
 @interface MenuPanelViewController ()
 
-@property (nonatomic, strong) MPDragIndicatorView *dragIndicatorView;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 
 @property (weak, nonatomic) IBOutlet UIButton *checkRoomA;
@@ -141,6 +140,7 @@
 
 - (void)dragIndicatorViewDidStrecth:(MPDragIndicatorView *)view
 {
+    self.dragIndicatorView.hidden = YES;
     [NSNotificationCenter postShouldBounceUpNotification];
 }
 

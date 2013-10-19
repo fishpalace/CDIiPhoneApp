@@ -12,7 +12,6 @@
 
 @interface MPCellTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @end

@@ -11,6 +11,8 @@
 
 @interface MenuPanelViewController : CoreDataViewController <UITableViewDataSource, UITableViewDelegate, MPDragIndicatorViewDelegate>
 
+@property (nonatomic, strong) MPDragIndicatorView *dragIndicatorView;
+
 - (void)setUp;
 - (void)refresh;
 

@@ -78,13 +78,39 @@
         imageName = [self.delegate imageURLForCellAtIndex:self.row atRow:indexPath.row];
     }
     
-//    cell.contentImageView.contentMode = UIViewContentModeScaleAspectFit;
+    if ([self.delegate respondsToSelector:@selector(contentNameForCellAtIndex:atRow:)]) {
+        cell.contentLabel.text = [self.delegate contentNameForCellAtIndex:self.row atRow:indexPath.row];
+        cell.contentLabel.numberOfLines = 2;
+        cell.contentLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+//        cell.contentLabel.numberOfLines = 0;
+//        cell.contentLabel.frame = CGRectMake(cell.contentLabel.frame.origin.x,
+//                                             cell.contentLabel.frame.origin.y,
+//                                             cell.contentLabel.frame.size.width,
+//                                             labelSize.height);
+//        NSLog(@"cell contentLabel text is %@",cell.contentLabel.text);
+    }
+    
+    switch (self.row) {
+        case 0:
+            cell.coverImageView.image = [UIImage imageNamed:@"green_gloom.png"];
+            break;
+        case 1:
+            cell.coverImageView.image = [UIImage imageNamed:@"blue_gloom.png"];
+            break;
+        case 2:
+            cell.coverImageView.image = [UIImage imageNamed:@"purple_gloom.png"];
+            break;
+        default:
+            break;
+    }
+    
+    cell.contentImageView.contentMode = UIViewContentModeScaleAspectFill;
 //    CGRect cellRect = cell.contentImageView.frame;
 //    cell.contentImageView.frame = CGRectMake(cellRect.origin.x, cellRect.origin.y, 170.0, 170.0);
     [cell.contentImageView loadImageFromURL:imageName completion:^(BOOL succeeded) {
         [cell.contentImageView fadeIn];
         cell.contentImageView.layer.masksToBounds = YES;
-        cell.contentImageView.layer.cornerRadius = 5;
+//        cell.contentImageView.layer.cornerRadius = 5;
     }];
 //    NSLog(@"%f %f",cell.contentImageView.frame.size.width,cell.contentImageView.frame.size.height);
 //    NSLog(@"%f %f",cell.contentImageView.image.size.width,cell.contentImageView.image.size.width);
@@ -97,7 +123,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
+    return 158;
 }
 
 #pragma mark - Table view delegate

@@ -32,7 +32,7 @@
   if (!_contentTableViewController) {
     _contentTableViewController = [UIStoryboard instantiateViewControllerWithIdentifier:@"MPCellTableViewController"];
     [_contentTableViewController.view resetOrigin:CGPointZero];
-    [_contentTableViewController.view resetSize:CGSizeMake(200, 320)];
+    [_contentTableViewController.view resetSize:CGSizeMake(157, 320)];
     _contentTableViewController.view.transform = CGAffineTransformMakeRotation(-M_PI_2);
     [self addSubview:_contentTableViewController.view];
   }

@@ -49,6 +49,9 @@
 @end
 
 @implementation MainPanelViewController
+{
+    BOOL isScrolling;
+}
 
 - (void)viewDidLoad
 {
@@ -58,6 +61,28 @@
     [NSNotificationCenter registerShouldBounceUpNotificationWithSelector:@selector(bounceUp) target:self];
     [NSNotificationCenter registerDidFetchNewDataNotificationWithSelector:@selector(refresh) target:self];
 }
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    isScrolling = YES;
+    [self resetSectionHeaderHeight];
+//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+//     withRowAnimation:UITableViewRowAnimationNone];
+}
+//
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+//{
+//    isScrolling = NO;
+//    [self performSelector:@selector(resetSectionHeaderHeight) withObject:nil afterDelay:0.5];
+////    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+////                  withRowAnimation:UITableViewRowAnimationNone];
+//}
+//
+- (void)resetSectionHeaderHeight
+{
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+}
+
 
 #pragma mark - View Setup Methods
 - (void)configureBasicViews
@@ -68,12 +93,21 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView setTableHeaderView:self.dragIndicatorView];
+//    [self.dragIndicatorView setFrame:CGRectMake(0.0, 0.0, 320.0, 38.0)];
+    
     self.dragIndicatorView.stretchLimitHeight = 100;
     self.dragIndicatorView.delegate = self;
     [self.dragIndicatorView configureScrollView:self.tableView];
+//    [self.view addSubview:self.dragIndicatorView];
     
     [self.menuPanelViewController setUp];
 }
+
+//- (void)viewDidLayoutSubviews
+//{
+//    CGRect tableViewFrame = self.tableViewContainerView.frame;
+//    [self.tableViewContainerView setFrame:CGRectMake(0.0, 28.0, tableViewFrame.size.width, tableViewFrame.size.height)];
+//}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -98,6 +132,20 @@
     return 3;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+//    if (section == 0) {
+//        if (!isScrolling) {
+//            return 20;
+//        }
+//        else {
+//            return 42;
+//        }
+//    }
+//    else
+        return 42;
+}
+
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 //{
 //    switch (section) {
@@ -118,57 +166,76 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 29.0)];
-    UILabel *sectionTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, 5.0, tableView.frame.size.width, 18.0)];
-    [sectionTitleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
+    NSInteger sectionTitleHeight;
+    NSString * sectionTitleString;
+    NSInteger sectionTitle_Y_point;
     switch (section) {
         case 0:
-            [sectionTitleLabel setText:@"Events"];
+            sectionTitleString = @"Events";
+            sectionTitle_Y_point = 20.0;
             break;
         case 1:
-            [sectionTitleLabel setText:@"Projects"];
+            sectionTitleString = @"Projects";
+            sectionTitle_Y_point = 20.0;
             break;
         case 2:
-            [sectionTitleLabel setText:@"News"];
+            sectionTitleString = @"News";
+            sectionTitle_Y_point = 20.0;
             break;
         default:
-            [sectionTitleLabel setText:@""];
+            sectionTitleHeight = 0.0;
+            sectionTitle_Y_point = 0.0;
+            sectionTitleString = @"";
             break;
     }
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 42.0)];
+    
+    UILabel *sectionTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, sectionTitle_Y_point, tableView.frame.size.width, 14.0)];
+    [sectionTitleLabel setText:sectionTitleString];
+//    [sectionTitleLabel setBackgroundColor:[UIColor redColor]];
+    [sectionTitleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
+    [sectionTitleLabel setTextColor:[UIColor colorWithRed:144.0 / 255.0 green:144.0 / 255.0 blue:144.0 / 255.0 alpha:1.0]];
     [view addSubview:sectionTitleLabel];
-    [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:0.0]];
+    
+    [view setBackgroundColor:[UIColor colorWithRed:234.0 /255.0 green:234.0 /255.0 blue:234.0 /255.0 alpha:1.0]];
+    
+    UIImageView * menuLine = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"menu_line.png"]];
+    menuLine.frame = CGRectMake(0.0, 41.0, menuLine.bounds.size.width, menuLine.bounds.size.height);
+    [view addSubview:menuLine];
+    
     return view;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger sectionNumber = indexPath.section;
     static NSString *CellIdentifier = @"MPTableViewCell";
     MPTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    [cell.contentTableViewController setUpWithRow:indexPath.row delegate:self];
+    [cell.contentTableViewController setUpWithRow:indexPath.row + sectionNumber delegate:self];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
+    return 158;
 }
 
 #pragma mark - MPCell Table View Delegate
 - (void)cellForRow:(NSInteger)row didMoveByOffset:(CGFloat)offset
 {
-    NSArray *visibleCells = self.tableView.visibleCells;
-    for (MPTableViewCell *cell in visibleCells) {
-        MPCellTableViewController *cellTableViewController = cell.contentTableViewController;
-        NSInteger gap = abs(cellTableViewController.row - row);
-        if (gap != 0) {
-            [cellTableViewController moveByOffset:offset / ((CGFloat)gap + 1.0)];
+        NSArray *visibleCells = self.tableView.visibleCells;
+        for (MPTableViewCell *cell in visibleCells) {
+            MPCellTableViewController *cellTableViewController = cell.contentTableViewController;
+            NSInteger gap = abs(cellTableViewController.row - row);
+            if (gap != 0) {
+                [cellTableViewController moveByOffset:offset / ((CGFloat)gap + 1.0)];
+            }
         }
-    }
 }
 
 - (void)registerCurrentActiveRow:(NSInteger)row
@@ -198,6 +265,22 @@
         imageURL = work.previewImageURL;
     }
     return imageURL;
+}
+
+- (NSString *)contentNameForCellAtIndex:(NSInteger)index atRow:(NSInteger)row
+{
+    NSString *contentName = @"";
+    if (index == 0) {
+        CDIEvent *event = self.frEventsController.fetchedObjects[row];
+        contentName = event.name;
+    } else if (index == 1) {
+        CDIWork *work = self.frProjectsController.fetchedObjects[row];
+        contentName = work.nameEn;
+    } else if (index == 2) {
+        CDINews *news = self.frNewsController.fetchedObjects[row];
+        contentName = news.title;
+    }
+    return contentName;
 }
 
 - (NSInteger)numberOfRowsAtRow:(NSInteger)row
@@ -274,7 +357,9 @@
 
 - (void)bounceUp
 {
-    [self playAnimationWithDirectionUp:YES completion:nil];
+    [self playAnimationWithDirectionUp:YES completion:^(BOOL finished){
+        self.menuPanelViewController.dragIndicatorView.hidden = NO;
+    }];
 }
 
 - (void)playAnimationWithDirectionUp:(BOOL)isDirectionUp completion:(void (^)(BOOL finished))completion
@@ -284,6 +369,7 @@
     GYPositionBounceAnimation *animation = [GYPositionBounceAnimation animationWithKeyPath:@"position.y"];
     animation.duration = 2.0;
     animation.delegate = self;
+    [self performSelector:@selector(showMenuDragIndicator) withObject:nil afterDelay:2.0];
     
     [animation setValueArrayForStartValue:startingValue endValue:value];
     [self.tableViewContainerView.layer setValue:[NSNumber numberWithFloat:value] forKeyPath:animation.keyPath];
@@ -293,6 +379,11 @@
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     [self.tableView resetOriginY:kCurrentScreenHeight];
+}
+
+- (void)showMenuDragIndicator
+{
+    self.menuPanelViewController.dragIndicatorView.hidden = NO;
 }
 
 #pragma mark - Property
@@ -393,7 +484,7 @@
         fetchRequest.entity = [NSEntityDescription entityForName:@"CDIWork"
                                           inManagedObjectContext:self.managedObjectContext];
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
-        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"workTypeOrigin != %@", @"TANGIBLE_INTERACTIVE_OBJECTS"];
+//        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"workTypeOrigin != %@", @"TANGIBLE_INTERACTIVE_OBJECTS"];
         fetchRequest.sortDescriptors = @[sortDescriptor];
         
         _frProjectsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];

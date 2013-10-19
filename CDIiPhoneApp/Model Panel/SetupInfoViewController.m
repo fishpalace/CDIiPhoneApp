@@ -55,6 +55,11 @@
     return self;
 }
 
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -188,10 +193,23 @@
 }
 
 #pragma mark - UIImagePickerController delegate
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    }
+    
     UIImage *edittedImage = [info objectForKey:UIImagePickerControllerEditedImage];
-    edittedImage = [edittedImage imageScaledToFitSize:CGSizeMake(200, 200)];
+    edittedImage = [edittedImage imageScaledToFitSize:CGSizeMake(141, 141)];
     self.changePhotoButton.imageView.image = edittedImage;
     
     CDINetClient *client = [CDINetClient client];

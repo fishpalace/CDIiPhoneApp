@@ -63,11 +63,20 @@
     return self;
 }
 
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+}
+//- (BOOL)prefersStatusBarHidden
+//{
+//    return YES;
+//}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     isLogoutButtonPressed = NO;
-
+    
     self.configView.translatesAutoresizingMaskIntoConstraints = YES;
     self.configView.userInteractionEnabled = NO;
     self.configView.alpha = 0.0;
@@ -94,7 +103,7 @@
                                         completion:^(BOOL succeeded) {
                                             
                                         }];
-        
+    
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self
                selector:@selector(keyboardWillShow:)
@@ -253,15 +262,30 @@
 }
 
 #pragma mark - UIImagePickerController delegate
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    }
+    
     self.image = [info objectForKey:UIImagePickerControllerEditedImage];
-    self.image = [self.image imageScaledToFitSize:CGSizeMake(200, 200)];
+    self.image = [self.image imageScaledToFitSize:CGSizeMake(141, 141)];
     [self.changePhotoButton setImage:self.image forState:UIControlStateNormal];
     [self.changePhotoButton setImage:self.image forState:UIControlStateHighlighted];
     
     CDINetClient *client = [CDINetClient client];
     void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+        //        if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+        //            [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        //        }
         if (succeeded) {
             if ([responseData isKindOfClass:[NSString class]]) {
                 NSString *url = [NSString stringWithFormat:@"http://cdi.tongji.edu.cn/cdisoul/upload/user_avatars/%@", responseData];
@@ -274,7 +298,8 @@
                            sessionKey:self.currentUser.sessionKey
                            completion:handleData];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
@@ -356,7 +381,7 @@
         self.configView.alpha = 1.0;
     }completion:^(BOOL finished){
     }];
-
+    
     [self adjustScrollViewPosition];
 }
 
@@ -369,13 +394,13 @@
 - (void)hideKeyboard
 {
     [self.view endEditing:YES];
-//    if (self.scrollView.contentOffset.y >= self.scrollViewContentHeight - self.scrollView.frame.size.height) {
-//        CGPoint offset = self.scrollView.contentOffset;
-//        offset.y = self.scrollViewContentHeight - self.scrollView.frame.size.height;
-//        
-//        [self.scrollView setContentOffset:offset animated:YES];
-//    }
-//    self.scrollView.contentSize = CGSizeMake(320, self.scrollViewContentHeight);
+    //    if (self.scrollView.contentOffset.y >= self.scrollViewContentHeight - self.scrollView.frame.size.height) {
+    //        CGPoint offset = self.scrollView.contentOffset;
+    //        offset.y = self.scrollViewContentHeight - self.scrollView.frame.size.height;
+    //
+    //        [self.scrollView setContentOffset:offset animated:YES];
+    //    }
+    //    self.scrollView.contentSize = CGSizeMake(320, self.scrollViewContentHeight);
 }
 
 - (void)logoutFailed

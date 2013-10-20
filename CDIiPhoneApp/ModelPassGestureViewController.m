@@ -20,7 +20,7 @@ static ModelPassGestureViewController *sharedPassGestureViewController;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *passGestureButtonBottomSpaceConstraint;
 @property (strong, nonatomic) UIViewController *contentViewController;
 @property (weak, nonatomic) IBOutlet UIImageView * passGestureView;
-
+@property (nonatomic) NSInteger numberOfPasscodeGesture;
 @end
 
 @implementation ModelPassGestureViewController
@@ -32,6 +32,39 @@ static ModelPassGestureViewController *sharedPassGestureViewController;
         sharedPassGestureViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ModelPassGestureViewController"];
     }
     return sharedPassGestureViewController;
+}
+
++ (NSInteger)numberOfPasscodeGesture
+{
+    NSString *pathStr = [[ModelPassGestureViewController sharedPassGestureViewController] dataFilePath];
+    NSMutableArray *data = [[NSMutableArray alloc]initWithContentsOfFile:pathStr];
+    if ([data count] == 1) {
+        [ModelPassGestureViewController sharedPassGestureViewController].numberOfPasscodeGesture = [[data objectAtIndex:0]integerValue];
+    }
+    return [ModelPassGestureViewController sharedPassGestureViewController].numberOfPasscodeGesture;
+}
+
+- (void)addDataToPlist:(NSInteger)number
+{
+    NSString *pathStr = [self dataFilePath];
+    NSMutableArray *data = [[NSMutableArray alloc]init];
+    NSString * dataString = [NSString stringWithFormat:@"%d",number];
+    [data addObject:dataString];
+    [data writeToFile:pathStr atomically:YES];
+}
+
+- (NSString*)dataFilePath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath = [paths objectAtIndex:0];
+    NSString *fileName = [documentPath stringByAppendingPathComponent:@"data.plist"];
+    
+    return fileName;
+}
+
++ (void)setNumberOfPasscodeGesture:(NSInteger)number
+{
+    [[ModelPassGestureViewController sharedPassGestureViewController] addDataToPlist:number];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -84,7 +117,7 @@ static ModelPassGestureViewController *sharedPassGestureViewController;
         _passGestureImageBottomSpaceConstraint.constant = 56;
         _passGestureButtonBottomSpaceConstraint.constant = 61;
     }
-    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.3 delay:0.0 options:7 << 16 animations:^{
         [self.view layoutIfNeeded];
         [_bgGloomView setAlpha:1.0];
     }completion:nil];
@@ -95,7 +128,7 @@ static ModelPassGestureViewController *sharedPassGestureViewController;
 {
     _passGestureImageBottomSpaceConstraint.constant = -369;
     _passGestureButtonBottomSpaceConstraint.constant = -369;
-    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.3 delay:0.0 options:7 << 16 animations:^{
         [self.view layoutIfNeeded];
         [_bgGloomView setAlpha:0.0];
     }completion:^(BOOL finished){

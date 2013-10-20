@@ -76,7 +76,7 @@ static LoginViewController *sharedLoginViewController;
     UIView * bgGloomView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     [bgGloomView setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8]];
     [self.view insertSubview:bgGloomView aboveSubview:_bgImageView];
-    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.3 delay:0.0 options:7 << 16 animations:^{
         [bgGloomView setAlpha:1.0];
     }completion:nil];
     
@@ -89,14 +89,14 @@ static LoginViewController *sharedLoginViewController;
     void (^completion)(UIImage *bgImage) = ^(UIImage *bgImage) {
         self.bgImageView.image = bgImage;
         [self.bgImageView fadeIn];
-        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [UIView animateWithDuration:0.3 delay:0 options:7 << 16 animations:^{
             
         } completion:nil];
     };
     
     [self configureBGImageWithCompletion:completion];
     self.textfieldTopMarginConstraint.constant = kTextfieldShowConstraint;
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.3 delay:0 options:7 << 16 animations:^{
         [self.view layoutIfNeeded];
     } completion:nil];
     
@@ -139,7 +139,7 @@ static LoginViewController *sharedLoginViewController;
     
     self.textfieldTopMarginConstraint.constant = kTextfieldHiddenConstraint;
     
-    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:duration delay:0 options:7 << 16 animations:^{
         [self.view layoutIfNeeded];
     } completion:nil];
     

@@ -12,5 +12,7 @@
 
 + (void)displayModelPanelWithViewController:(UIViewController *)vc;
 
++ (NSInteger)numberOfPasscodeGesture;
++ (void)setNumberOfPasscodeGesture:(NSInteger)number;
 
 @end

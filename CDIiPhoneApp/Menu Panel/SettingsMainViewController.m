@@ -212,15 +212,15 @@
 
 - (IBAction)didClickBackButton:(UIButton *)sender
 {
-    void(^completion)(void) = ^(void){
+//    void(^completion)(void) = ^(void){
         [self.navigationController popViewControllerAnimated:YES];
-    };
-    self.view.userInteractionEnabled = NO;
-    RPActivityIndictor * activityIndiactor = [RPActivityIndictor sharedRPActivityIndictor];
-    activityIndiactor.delegate = self;
-    [activityIndiactor startWaitingAnimationInView:self.view];
-    [activityIndiactor setWaitingTimer];
-    [self performSelector:@selector(excuteAfterClickDoneButton:) withObject:completion afterDelay:1.0];
+//    };
+//    self.view.userInteractionEnabled = NO;
+//    RPActivityIndictor * activityIndiactor = [RPActivityIndictor sharedRPActivityIndictor];
+//    activityIndiactor.delegate = self;
+//    [activityIndiactor startWaitingAnimationInView:self.view];
+//    [activityIndiactor setWaitingTimer];
+//    [self performSelector:@selector(excuteAfterClickDoneButton:) withObject:completion afterDelay:1.0];
 }
 
 - (IBAction)didCoverButton:(UIButton *)sender

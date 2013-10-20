@@ -47,9 +47,11 @@
     [super viewDidLoad];
     self.scrollView.delegate = self;
     
+    _imageView.contentMode = UIViewContentModeScaleAspectFill;
     [_imageView loadImageFromURL:self.news.imageURL completion:^(BOOL succeeded) {
         [_imageView fadeIn];
     }];
+    _titleLabel.numberOfLines = 0;
     [_titleLabel setText:self.news.title];
     [_dateLabel setText:[NSDate stringOfDate:self.news.date includingYear:YES]];
     [_contentLabel setText:self.news.content];

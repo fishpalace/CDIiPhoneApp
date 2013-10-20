@@ -12,6 +12,7 @@
 #import "MainPanelViewController.h"
 #import "MenuPanelViewController.h"
 #import "ModelPassGestureViewController.h"
+#import "NSNotificationCenter+Addition.h"
 
 @import CoreData;
 
@@ -31,12 +32,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge
                                                                            |UIRemoteNotificationTypeSound
                                                                            |UIRemoteNotificationTypeAlert)];
     [UIApplication showCover];
     [CDIDataSource fetchDataWithCompletion:nil];
+    if (launchOptions != nil) {
+        NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        NSLog(@"The remote Notification is %@",userInfo);
+    }
     return YES;
 }
 
@@ -77,12 +81,14 @@
 //        vc = vc.navigationController;
 //    }
 //    vc.navigationController.navigationBarHidden = YES;
-    
+    NSInteger numberOfPasscode = [ModelPassGestureViewController numberOfPasscodeGesture];
+//    [ModelPassGestureViewController setNumberOfPasscodeGesture:(++ numberOfPasscode)];
+    [ModelPassGestureViewController setNumberOfPasscodeGesture:(numberOfPasscode)];
+    [NSNotificationCenter postShouldChangeLocalDatasourceNotification];
     [ModelPassGestureViewController displayModelPanelWithViewController:vc];
     
-    
-    
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -105,6 +111,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[UIApplication sharedApplication ] setApplicationIconBadgeNumber:0];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

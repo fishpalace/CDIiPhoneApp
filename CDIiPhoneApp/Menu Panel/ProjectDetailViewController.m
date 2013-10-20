@@ -52,6 +52,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+    _projectImageView.contentMode = UIViewContentModeScaleAspectFill;
   [_projectImageView loadImageFromURL:self.work.imgURL completion:^(BOOL succeeded) {
     [_projectImageView fadeIn];
   }];

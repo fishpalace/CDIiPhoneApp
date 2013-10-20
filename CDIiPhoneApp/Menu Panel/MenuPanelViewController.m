@@ -41,6 +41,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet UIButton *settingBigRangeButton;
+@property (weak, nonatomic) IBOutlet UIButton *infoButton;
 
 
 @end
@@ -86,6 +87,7 @@
     self.doesCurrentUserExist = currentUser != nil;
     
     self.settingsButton.hidden = !self.doesCurrentUserExist;
+    self.infoButton.hidden = self.doesCurrentUserExist;
     self.settingBigRangeButton.hidden = !self.doesCurrentUserExist;
     self.loginButton.hidden = self.doesCurrentUserExist;
     
@@ -206,9 +208,16 @@
         detailCell.titleLabel.text = self.titleArray[index];
         detailCell.titleLabel.textColor = kColorItemTitle;
         detailCell.titleLabel.font = kFontItemTitle;
-        detailCell.functionButton.hidden = indexPath.row != 0 || indexPath.section == 1;
+        
+        if (!self.doesCurrentUserExist) {
+            detailCell.functionButton.hidden = YES;
+        }
+        else {
+            detailCell.functionButton.hidden = (indexPath.row != 0 || indexPath.section == 1);
+        }
         detailCell.displayButton.hidden = indexPath.row != 1 || indexPath.section == 1;
-        if (indexPath.section == 0 && indexPath.row == 1) {
+        
+        if (indexPath.section == 0 && indexPath.row == 1 && self.doesCurrentUserExist) {
             NSInteger reservationCount = [CDIDataSource currentReservationCount];
             if (reservationCount == 0) {
                 detailCell.displayButton.hidden = YES;
@@ -216,6 +225,29 @@
                 [detailCell.displayButton.titleLabel setText:[NSString stringWithFormat:@"%d", reservationCount]];
             }
         }
+        
+        if (indexPath.section == 0 && indexPath.row == 1 && !self.doesCurrentUserExist) {
+            if ([ModelPassGestureViewController numberOfPasscodeGesture] == 0) {
+                detailCell.displayButton.hidden = YES;
+            }
+            else {
+                detailCell.displayButton.hidden = NO;
+                [detailCell.displayButton.titleLabel setText:[NSString stringWithFormat:@"%d",
+                                                              [ModelPassGestureViewController numberOfPasscodeGesture]]];
+            }
+        }
+        
+        if (indexPath.section == 0 && indexPath.row == 3 && self.doesCurrentUserExist) {
+            if ([ModelPassGestureViewController numberOfPasscodeGesture] == 0) {
+                detailCell.displayButton.hidden = YES;
+            }
+            else {
+                detailCell.displayButton.hidden = NO;
+                [detailCell.displayButton.titleLabel setText:[NSString stringWithFormat:@"%d",
+                                                              [ModelPassGestureViewController numberOfPasscodeGesture]]];
+            }
+        }
+        
         cell = detailCell;
     }
     
@@ -232,14 +264,14 @@
             segueID = @"MenuReservationSegue";
         } else if (indexPath.row == 2) {
             segueID = @"MenuDeviceSegue";
-        } else if (indexPath.row == 3) {
+        } else if (indexPath.row == 3 && [ModelPassGestureViewController numberOfPasscodeGesture] > 0) {
             //MY PASSCODE
             [ModelPassGestureViewController displayModelPanelWithViewController:self];
         }
     }else if (indexPath.section == 0 && !self.doesCurrentUserExist){
         if (indexPath.row == 0) {
             segueID = @"MenuScheduleSegue";
-        } else if (indexPath.row == 1) {
+        } else if (indexPath.row == 1 && [ModelPassGestureViewController numberOfPasscodeGesture] > 0) {
             //MY PASSCODE
             [ModelPassGestureViewController displayModelPanelWithViewController:self];
         }

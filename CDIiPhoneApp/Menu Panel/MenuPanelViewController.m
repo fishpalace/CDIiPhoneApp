@@ -20,6 +20,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "LoginViewController.h"
 #import "RPTimeViewController.h"
+#import "ModelPassGestureViewController.h"
 
 @interface MenuPanelViewController ()
 
@@ -221,18 +222,29 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *segueID = @"";
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
+    if (indexPath.section == 0 && self.doesCurrentUserExist) {
+        if (indexPath.row == 0 ) {
             segueID = @"MenuScheduleSegue";
         } else if (indexPath.row == 1) {
             segueID = @"MenuReservationSegue";
         } else if (indexPath.row == 2) {
             segueID = @"MenuDeviceSegue";
+        } else if (indexPath.row == 3) {
+            //MY PASSCODE
+            [ModelPassGestureViewController displayModelPanelWithViewController:self];
         }
-    } else {
+    }else if (indexPath.section == 0 && !self.doesCurrentUserExist){
+        if (indexPath.row == 0) {
+            segueID = @"MenuScheduleSegue";
+        } else if (indexPath.row == 1) {
+            //MY PASSCODE
+            [ModelPassGestureViewController displayModelPanelWithViewController:self];
+        }
+    }
+    else {
         if (indexPath.row == 0) {
             segueID = @"MenuNewsSegue";
         } else if (indexPath.row == 1) {
@@ -245,6 +257,32 @@
         [self performSegueWithIdentifier:segueID sender:self];
     }
 }
+
+//- (void)addPasswordGesture
+//{
+//    UIImageView * passGestureImageview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"pass_gesture.png"]];
+//    passGestureImageview.frame = CGRectMake(28.0, [UIScreen mainScreen].bounds.size.height, 264, 369);
+//    float passGestureHeight;
+//    if (kIsiPhone5) {
+//        passGestureHeight = 100;
+//    }
+//    else {
+//        passGestureHeight = 56;
+//    }
+//    [self.view addSubview:passGestureImageview];
+//    
+//    UIView * bgGloomView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+//    [bgGloomView setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8]];
+//    [self.view insertSubview:bgGloomView belowSubview:passGestureImageview];
+//    [bgGloomView setAlpha:0.0];
+//    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+//        [bgGloomView setAlpha:1.0];
+//    }completion:nil];
+//    
+//    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+//        passGestureImageview.frame = CGRectMake(28.0, passGestureHeight, 264, 369);
+//    }completion:nil];
+//}
 
 - (void)configureRoomButton:(UIButton *)button label:(UILabel *)label roomID:(NSInteger)roomID
 {
@@ -339,9 +377,9 @@
     if (!_iconImageNameArray) {
         if (self.doesCurrentUserExist) {
             _iconImageNameArray = [NSMutableArray arrayWithObjects:@"menu_icon_cal", @"menu_icon_key",
-                                   @"menu_icon_device", @"menu_icon_news", @"menu_icon_proj", @"menu_icon_people", nil];
+                                   @"menu_icon_device",@"menu_icon_passcode", @"menu_icon_news", @"menu_icon_proj", @"menu_icon_people", nil];
         } else {
-            _iconImageNameArray = [NSMutableArray arrayWithObjects:@"menu_icon_cal", @"menu_icon_news",
+            _iconImageNameArray = [NSMutableArray arrayWithObjects:@"menu_icon_cal", @"menu_icon_passcode",@"menu_icon_news",
                                    @"menu_icon_proj", @"menu_icon_people", nil];
         }
     }
@@ -352,10 +390,10 @@
 {
     if (!_titleArray) {
         if (self.doesCurrentUserExist) {
-            _titleArray = [NSMutableArray arrayWithObjects:@"Schedule", @"My Reservations", @"Devices",
+            _titleArray = [NSMutableArray arrayWithObjects:@"Schedule", @"My Reservations", @"Devices",@"My Passcode",
                            @"News", @"Projects", @"People", nil];
         } else {
-            _titleArray = [NSMutableArray arrayWithObjects:@"Schedule",
+            _titleArray = [NSMutableArray arrayWithObjects:@"Schedule",@"My Passcode",
                            @"News", @"Projects", @"People", nil];
         }
     }
@@ -366,7 +404,7 @@
 {
     NSInteger numberOfRows = 0;
     if (section == 0) {
-        numberOfRows = self.doesCurrentUserExist ? 3 : 1;
+        numberOfRows = self.doesCurrentUserExist ? 4 : 2;
     } else {
         numberOfRows = 4;
     }

@@ -89,7 +89,7 @@ static LoginViewController *sharedLoginViewController;
     void (^completion)(UIImage *bgImage) = ^(UIImage *bgImage) {
         self.bgImageView.image = bgImage;
         [self.bgImageView fadeIn];
-        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             
         } completion:nil];
     };

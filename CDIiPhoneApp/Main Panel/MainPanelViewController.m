@@ -22,13 +22,14 @@
 #import "ProjectDetailViewController.h"
 #import "NewsDetailViewController.h"
 #import "ScheduleEventDetailViewController.h"
+#import "ModelPassGestureViewController.h"
 
 @interface MainPanelViewController ()
 
 //@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) MPDragIndicatorView *dragIndicatorView;
-@property (strong, nonatomic) MenuPanelViewController *menuPanelViewController;
+
 @property (assign, nonatomic) NSInteger currentActiveRow;
 @property (strong, nonatomic) UINavigationController *menuPanelContainerViewController;
 @property (weak, nonatomic) IBOutlet UIView *tableViewContainerView;
@@ -53,13 +54,17 @@
     BOOL isScrolling;
 }
 
+
 - (void)viewDidLoad
 {
+
     [super viewDidLoad];
+
     [self configureBasicViews];
     [NSNotificationCenter registerShouldBounceDownNotificationWithSelector:@selector(bounceDown) target:self];
     [NSNotificationCenter registerShouldBounceUpNotificationWithSelector:@selector(bounceUp) target:self];
     [NSNotificationCenter registerDidFetchNewDataNotificationWithSelector:@selector(refresh) target:self];
+    self.isMainPanel = YES;
 }
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -347,11 +352,12 @@
     [self.menuPanelViewController refresh];
     
     [self playAnimationWithDirectionUp:NO completion:nil];
+    self.isMainPanel = NO;
 }
 
 - (void)bounceDown
 {
-    //  [self playAnimationWithDirectionUp:NO completion:nil];
+
 }
 
 - (void)bounceUp
@@ -359,10 +365,14 @@
     [self playAnimationWithDirectionUp:YES completion:^(BOOL finished){
         self.menuPanelViewController.dragIndicatorView.hidden = NO;
     }];
+    
+    self.isMainPanel = YES;
 }
 
 - (void)playAnimationWithDirectionUp:(BOOL)isDirectionUp completion:(void (^)(BOOL finished))completion
 {
+
+    
     CGFloat startingValue = self.tableViewContainerView.frame.origin.y + kCurrentScreenHeight;
     CGFloat value = isDirectionUp ? 0 : kCurrentScreenHeight;
     GYPositionBounceAnimation *animation = [GYPositionBounceAnimation animationWithKeyPath:@"position.y"];
@@ -493,5 +503,6 @@
     }
     return _frProjectsController;
 }
+
 
 @end

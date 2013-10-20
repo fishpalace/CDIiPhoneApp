@@ -241,7 +241,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gze-R4-w8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-97" y="147"/>
+            <point key="canvasLocation" x="-371" y="175"/>
+        </scene>
+        <!--Model Pass Gesture View Controller-->
+        <scene sceneID="I7m-An-L8B">
+            <objects>
+                <viewController storyboardIdentifier="ModelPassGestureViewController" id="iiA-9y-GLb" customClass="ModelPassGestureViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KjS-iG-1N9"/>
+                        <viewControllerLayoutGuide type="bottom" id="dXF-Pb-LrL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vR5-B5-6Ux">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pass_gesture.png" translatesAutoresizingMaskIntoConstraints="NO" id="7D9-CI-T7d">
+                                <rect key="frame" x="28" y="568" width="264" height="369"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="369" id="FGO-eV-Jxi"/>
+                                    <constraint firstAttribute="width" constant="264" id="PLg-mI-uBL"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1AG-ne-s7V">
+                                <rect key="frame" x="33" y="886" width="255" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="254" id="5cG-QB-RUQ"/>
+                                    <constraint firstAttribute="height" constant="51" id="ex0-Dj-Df0"/>
+                                </constraints>
+                                <state key="normal" image="pass_gesture_button.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="removePassGestureView:" destination="iiA-9y-GLb" eventType="touchUpInside" id="fOH-27-zGo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dXF-Pb-LrL" firstAttribute="top" secondItem="1AG-ne-s7V" secondAttribute="bottom" constant="-369" id="8T9-wK-qJ9"/>
+                            <constraint firstItem="dXF-Pb-LrL" firstAttribute="top" secondItem="7D9-CI-T7d" secondAttribute="bottom" constant="-369" id="HqN-MY-gRX"/>
+                            <constraint firstItem="7D9-CI-T7d" firstAttribute="leading" secondItem="vR5-B5-6Ux" secondAttribute="leading" constant="28" id="Lyg-Ga-YR2"/>
+                            <constraint firstItem="1AG-ne-s7V" firstAttribute="leading" secondItem="vR5-B5-6Ux" secondAttribute="leading" constant="33" id="hyi-Wd-kPd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="passGestureButtonBottomSpaceConstraint" destination="8T9-wK-qJ9" id="K1m-p8-iyx"/>
+                        <outlet property="passGestureImageBottomSpaceConstraint" destination="HqN-MY-gRX" id="IlI-kf-n93"/>
+                        <outlet property="passGestureView" destination="7D9-CI-T7d" id="GgE-7N-ooX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HPl-lJ-1Q3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5" y="175"/>
         </scene>
         <!--Time Display Panel View Controller-->
         <scene sceneID="JsA-Mc-fkM">
@@ -522,7 +575,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rx9-vY-tYS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-454" y="147"/>
+            <point key="canvasLocation" x="-730" y="175"/>
         </scene>
         <!--People Info View Controller-->
         <scene sceneID="1DC-lT-bnv">
@@ -1554,12 +1607,7 @@
                             <constraint firstItem="IXE-z6-we4" firstAttribute="top" secondItem="Qr7-8T-6OU" secondAttribute="top" id="ZjC-cD-V9F"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="dzS-QS-1eb"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="fv0-HR-H0Y" id="Co4-No-XaC"/>
                         <outlet property="dateLabel" destination="7Q4-nS-wgs" id="eiP-CD-gG6"/>
@@ -1646,10 +1694,8 @@
                             <constraint firstItem="79P-bt-mct" firstAttribute="top" secondItem="GmW-UJ-Qyt" secondAttribute="top" id="iHb-aV-ha6"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="xOm-Gu-ns4"/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
@@ -3041,11 +3087,7 @@
                             <constraint firstItem="EM5-bX-YRw" firstAttribute="leading" secondItem="VdE-7f-iNM" secondAttribute="leading" id="dGC-h0-oUr"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="0df-cb-sG7"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="baa-FM-4EB" id="SA9-s2-hiO"/>
@@ -3214,7 +3256,6 @@
                             <constraint firstAttribute="bottom" secondItem="Qjv-YT-ZDn" secondAttribute="bottom" id="uo7-8Z-g0Y"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="lzJ-It-ic5"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -3425,7 +3466,6 @@
                             <constraint firstItem="hgq-Zk-HYg" firstAttribute="top" secondItem="J8b-dI-g9M" secondAttribute="top" id="Vb1-Ma-R3C"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="TPE-8I-Jgq"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -3697,7 +3737,6 @@
                             <constraint firstItem="e6y-Aw-qsg" firstAttribute="leading" secondItem="dNl-ll-8Qr" secondAttribute="leading" id="z6p-TO-jXX"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="y8m-d2-2T2"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -3889,7 +3928,6 @@
                             <constraint firstItem="4oN-EP-4aT" firstAttribute="centerY" secondItem="Y1s-AW-e8E" secondAttribute="centerY" id="zlQ-0H-wql"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="fxM-UR-glH"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -4156,7 +4194,6 @@
                             <constraint firstAttribute="trailing" secondItem="5bS-2o-zL4" secondAttribute="trailing" constant="20" id="zat-ep-oxv"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="8Y2-QY-iYf"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -4927,7 +4964,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <rect key="frame" x="90" y="116" width="141" height="141"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" image="button_photo.png">
+                                        <state key="normal" backgroundImage="button_photo.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -6111,6 +6148,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="mp_selection_activity2.png" width="170" height="170"/>
         <image name="mp_selection_cover.png" width="170" height="170"/>
         <image name="mp_selection_proj1.png" width="170" height="170"/>
+        <image name="pass_gesture.png" width="264" height="369"/>
+        <image name="pass_gesture_button.png" width="255" height="51"/>
         <image name="people_cell_bg.png" width="143" height="203"/>
         <image name="people_info_dribble.png" width="44" height="44"/>
         <image name="people_info_homepage.png" width="44" height="44"/>
@@ -6147,13 +6186,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="a5R-k4-SgG"/>
-        <segue reference="Rn9-Jj-U8D"/>
-        <segue reference="8C6-30-9Bx"/>
-        <segue reference="rlZ-ff-eJE"/>
-        <segue reference="9z9-3K-Qwj"/>
-        <segue reference="nOk-xQ-Tk6"/>
+        <segue reference="17S-8D-Tob"/>
+        <segue reference="Ry5-cC-P8A"/>
+        <segue reference="BzR-H2-so3"/>
+        <segue reference="HH4-MM-nLv"/>
+        <segue reference="Dge-u6-d6f"/>
         <segue reference="dwd-rp-T0V"/>
-        <segue reference="xn1-if-WU2"/>
+        <segue reference="FPV-De-gKY"/>
+        <segue reference="2xN-vJ-HIb"/>
     </inferredMetricsTieBreakers>
 </document>

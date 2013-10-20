@@ -222,7 +222,8 @@
     
     UIImage *edittedImage = [info objectForKey:UIImagePickerControllerEditedImage];
     edittedImage = [edittedImage imageScaledToFitSize:CGSizeMake(141, 141)];
-    self.changePhotoButton.imageView.image = edittedImage;
+    [self.changePhotoButton setImage:edittedImage forState:UIControlStateNormal];
+    [self.changePhotoButton setImage:edittedImage forState:UIControlStateHighlighted];
     
     CDINetClient *client = [CDINetClient client];
     void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){

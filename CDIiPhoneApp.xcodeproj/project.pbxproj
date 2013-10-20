@@ -353,6 +353,13 @@
 		18E0EA991738DBE7006EFF51 /* UIApplication+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0EA981738DBE7006EFF51 /* UIApplication+Addition.m */; };
 		18F6FE1017A6657E00BD9E74 /* NSMutableAttributedString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6FE0F17A6657E00BD9E74 /* NSMutableAttributedString+Size.m */; };
 		18F6FE1317A6667C00BD9E74 /* NSAttributedString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6FE1217A6667C00BD9E74 /* NSAttributedString+Size.m */; };
+		5113855D18131BB400F5F1CB /* ModelPassGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5113855C18131BB400F5F1CB /* ModelPassGestureViewController.m */; };
+		511385601813347A00F5F1CB /* pass_gesture.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113855E1813347A00F5F1CB /* pass_gesture.png */; };
+		511385611813347A00F5F1CB /* pass_gesture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113855F1813347A00F5F1CB /* pass_gesture@2x.png */; };
+		511385641813641D00F5F1CB /* menu_icon_passcode.png in Resources */ = {isa = PBXBuildFile; fileRef = 511385621813641D00F5F1CB /* menu_icon_passcode.png */; };
+		511385651813641D00F5F1CB /* menu_icon_passcode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511385631813641D00F5F1CB /* menu_icon_passcode@2x.png */; };
+		5113856B1813F28200F5F1CB /* pass_gesture_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 511385691813F28200F5F1CB /* pass_gesture_button.png */; };
+		5113856C1813F28200F5F1CB /* pass_gesture_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113856A1813F28200F5F1CB /* pass_gesture_button@2x.png */; };
 		51484E70181078320003169E /* RPActivityIndictor.m in Sources */ = {isa = PBXBuildFile; fileRef = 51484E6F181078320003169E /* RPActivityIndictor.m */; };
 		51B470121810F0A600534653 /* blue_gloom.png in Resources */ = {isa = PBXBuildFile; fileRef = 51B4700C1810F0A600534653 /* blue_gloom.png */; };
 		51B470131810F0A600534653 /* blue_gloom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51B4700D1810F0A600534653 /* blue_gloom@2x.png */; };
@@ -806,6 +813,14 @@
 		2B05B2D71810D5C400B131DA /* icon_29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_29@2x.png"; sourceTree = "<group>"; };
 		2B05B2D81810D5D800B131DA /* icon_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_40@2x.png"; sourceTree = "<group>"; };
 		2B05B2D91810D61900B131DA /* icon_57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_57@2x.png"; sourceTree = "<group>"; };
+		5113855B18131BB400F5F1CB /* ModelPassGestureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelPassGestureViewController.h; sourceTree = "<group>"; };
+		5113855C18131BB400F5F1CB /* ModelPassGestureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelPassGestureViewController.m; sourceTree = "<group>"; };
+		5113855E1813347A00F5F1CB /* pass_gesture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pass_gesture.png; path = "Image Resource/Model Panel/pass_gesture.png"; sourceTree = SOURCE_ROOT; };
+		5113855F1813347A00F5F1CB /* pass_gesture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pass_gesture@2x.png"; path = "Image Resource/Model Panel/pass_gesture@2x.png"; sourceTree = SOURCE_ROOT; };
+		511385621813641D00F5F1CB /* menu_icon_passcode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon_passcode.png; sourceTree = "<group>"; };
+		511385631813641D00F5F1CB /* menu_icon_passcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_icon_passcode@2x.png"; sourceTree = "<group>"; };
+		511385691813F28200F5F1CB /* pass_gesture_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pass_gesture_button.png; path = "Image Resource/Model Panel/pass_gesture_button.png"; sourceTree = SOURCE_ROOT; };
+		5113856A1813F28200F5F1CB /* pass_gesture_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pass_gesture_button@2x.png"; path = "Image Resource/Model Panel/pass_gesture_button@2x.png"; sourceTree = SOURCE_ROOT; };
 		51484E6E181078320003169E /* RPActivityIndictor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPActivityIndictor.h; sourceTree = "<group>"; };
 		51484E6F181078320003169E /* RPActivityIndictor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPActivityIndictor.m; sourceTree = "<group>"; };
 		51B4700C1810F0A600534653 /* blue_gloom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blue_gloom.png; path = "Image Resource/Main Panel/blue_gloom.png"; sourceTree = SOURCE_ROOT; };
@@ -1207,6 +1222,8 @@
 				183A422817AA023500D9EAC7 /* SetupPasswordViewController.m */,
 				183A422A17AA025800D9EAC7 /* SetupInfoViewController.h */,
 				183A422B17AA025800D9EAC7 /* SetupInfoViewController.m */,
+				5113855B18131BB400F5F1CB /* ModelPassGestureViewController.h */,
+				5113855C18131BB400F5F1CB /* ModelPassGestureViewController.m */,
 			);
 			name = "Model Panel";
 			sourceTree = "<group>";
@@ -1214,6 +1231,10 @@
 		18B74384175AEAA900585CF5 /* Model Panel */ = {
 			isa = PBXGroup;
 			children = (
+				511385691813F28200F5F1CB /* pass_gesture_button.png */,
+				5113856A1813F28200F5F1CB /* pass_gesture_button@2x.png */,
+				5113855E1813347A00F5F1CB /* pass_gesture.png */,
+				5113855F1813347A00F5F1CB /* pass_gesture@2x.png */,
 				18CDE7BA17742A9D00711E2A /* time_schedule_list_hl.png */,
 				18CDE7BB17742A9D00711E2A /* time_schedule_list_hl@2x.png */,
 				1872230E17732F78000B5F17 /* model_button_schedule.png */,
@@ -1343,6 +1364,8 @@
 		18B995851759EA190010B9D4 /* Menu Panel */ = {
 			isa = PBXGroup;
 			children = (
+				511385621813641D00F5F1CB /* menu_icon_passcode.png */,
+				511385631813641D00F5F1CB /* menu_icon_passcode@2x.png */,
 				51F0326618122E4F00667143 /* menu_line.png */,
 				18B2322F17AC1584005121FC /* button_back_disabled.png */,
 				18B2323017AC1584005121FC /* button_back_disabled@2x.png */,
@@ -1585,6 +1608,7 @@
 				18256B3F17704C530079D24B /* menu_status_green.png in Resources */,
 				18E0EA8D1738981C006EFF51 /* MPDragIndicatorView.xib in Resources */,
 				18B995981759EA190010B9D4 /* menu_button_schedule.png in Resources */,
+				5113856C1813F28200F5F1CB /* pass_gesture_button@2x.png in Resources */,
 				183F9C5E1777F26D00409FE7 /* rp_button_bottom@2x.png in Resources */,
 				18B995991759EA190010B9D4 /* menu_button_schedule@2x.png in Resources */,
 				18B2323E17AC1584005121FC /* button_forward_disabled@2x.png in Resources */,
@@ -1695,6 +1719,7 @@
 				18B743D7175B04FB00585CF5 /* time_topbar_bg.png in Resources */,
 				18DD855B17A6C10C002077F8 /* button_work_play@2x.png in Resources */,
 				183A41CE17A8A97400D9EAC7 /* button_info@2x.png in Resources */,
+				511385601813347A00F5F1CB /* pass_gesture.png in Resources */,
 				1864F5D2177745490013960C /* menu_login_textfield_bg.png in Resources */,
 				18B743E8175B096C00585CF5 /* time_panel_bg.png in Resources */,
 				18B743E9175B096C00585CF5 /* time_panel_bg@2x.png in Resources */,
@@ -1725,6 +1750,7 @@
 				18416B361775D792005C7803 /* menu_icon_device@2x.png in Resources */,
 				18256B4417704C5D0079D24B /* menu_status_yellow@2x.png in Resources */,
 				183AE773175C38CD008310BF /* tableview_icon_calendar_hl.png in Resources */,
+				5113856B1813F28200F5F1CB /* pass_gesture_button.png in Resources */,
 				183AE774175C38CD008310BF /* tableview_icon_calendar_hl@2x.png in Resources */,
 				18194CFF1775A75C00F99149 /* mp_cell_cover.png in Resources */,
 				183AE779175C38DA008310BF /* menu_button_navi_back.png in Resources */,
@@ -1735,9 +1761,11 @@
 				51B470161810F0A600534653 /* purple_gloom.png in Resources */,
 				183A41A617A81FCC00D9EAC7 /* devices_detail_reserve_preview.png in Resources */,
 				183AE77B175C38DA008310BF /* menu_button_schedule_dark.png in Resources */,
+				511385641813641D00F5F1CB /* menu_icon_passcode.png in Resources */,
 				183AE77C175C38DA008310BF /* menu_button_schedule_dark@2x.png in Resources */,
 				18948CC3175CABD6004E07EB /* people_cell_bg.png in Resources */,
 				183A41C617A8266F00D9EAC7 /* profile_launch@2x.png in Resources */,
+				511385611813347A00F5F1CB /* pass_gesture@2x.png in Resources */,
 				187963861777FD6B00EC9767 /* rp_accesscode_bg@2x.png in Resources */,
 				18B2323C17AC1584005121FC /* button_back@2x.png in Resources */,
 				183A41DC17A8E0A700D9EAC7 /* devices_myapplications@2x.png in Resources */,
@@ -1761,6 +1789,7 @@
 				183A41C217A8266F00D9EAC7 /* profile_launch_2@2x.png in Resources */,
 				18948CE5175CF83D004E07EB /* test_avatar_2@2x.png in Resources */,
 				51B470131810F0A600534653 /* blue_gloom@2x.png in Resources */,
+				511385651813641D00F5F1CB /* menu_icon_passcode@2x.png in Resources */,
 				18948CE6175CF83D004E07EB /* test_avatar_3.png in Resources */,
 				18948CE7175CF83D004E07EB /* test_avatar_3@2x.png in Resources */,
 				18948CE8175CF83D004E07EB /* test_avatar_4.png in Resources */,
@@ -1926,6 +1955,7 @@
 				18948CB8175C521A004E07EB /* ScheduleListViewController.m in Sources */,
 				18948CBE175C5FAC004E07EB /* SLDetailTableViewCell.m in Sources */,
 				18948CCD175CB465004E07EB /* PeopleListViewController.m in Sources */,
+				5113855D18131BB400F5F1CB /* ModelPassGestureViewController.m in Sources */,
 				1823263E17769350001E7B88 /* UIImageView+Addition.m in Sources */,
 				1864F5DD17775F370013960C /* RPRoomCell.m in Sources */,
 				51484E70181078320003169E /* RPActivityIndictor.m in Sources */,

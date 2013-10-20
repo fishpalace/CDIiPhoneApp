@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "UIApplication+Addition.h"
 #import "CDIDataSource.h"
+#import "MainPanelViewController.h"
+#import "MenuPanelViewController.h"
+#import "ModelPassGestureViewController.h"
 
 @import CoreData;
 
@@ -50,6 +53,35 @@
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
 	NSLog(@"Received notification: %@", userInfo);
+    
+    UIViewController* vc = self.window.rootViewController;
+    while (vc.childViewControllers.count)
+    {
+        vc = [vc.childViewControllers lastObject];
+    }
+    if ([vc isKindOfClass:[MainPanelViewController class]])
+    {
+        MainPanelViewController* mainVc = (MainPanelViewController*)vc;
+        if (!mainVc.isMainPanel)
+        {
+            vc = mainVc.menuPanelViewController.navigationController;
+            while (vc.childViewControllers.count)
+            {
+                vc = [vc.childViewControllers lastObject];
+            }
+        }
+    }
+    NSLog(@"%f %f %f %f",vc.view.frame.origin.x,vc.view.frame.origin.y,vc.view.frame.size.width,vc.view.frame.size.height);
+    NSLog(@"%u",vc.edgesForExtendedLayout);
+//    if (vc.navigationController) {
+//        vc = vc.navigationController;
+//    }
+//    vc.navigationController.navigationBarHidden = YES;
+    
+    [ModelPassGestureViewController displayModelPanelWithViewController:vc];
+    
+    
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

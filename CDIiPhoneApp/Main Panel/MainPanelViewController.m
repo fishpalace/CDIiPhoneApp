@@ -384,41 +384,6 @@
     self.isMainPanel = YES;
 }
 
-- (void)reloadProjectsInfos
-{
-    CDINetClient *client = [CDINetClient client];
-    void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
-        NSDictionary *rawDict = responseData;
-        if ([responseData isKindOfClass:[NSDictionary class]]) {
-            NSArray *peopleArray = rawDict[@"data"];
-            for (NSDictionary *dict in peopleArray) {
-                [CDIWork insertWorkInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
-            }
-            [self.managedObjectContext processPendingChanges];
-            [self refresh];
-        }
-    };
-    [client getProjectListWithCompletion:handleData];
-}
-
-- (void)reloadNewsInfos
-{
-    CDINetClient *client = [CDINetClient client];
-    void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
-        NSDictionary *rawDict = responseData;
-        if ([responseData isKindOfClass:[NSDictionary class]]) {
-            NSArray *peopleArray = rawDict[@"data"];
-            for (NSDictionary *dict in peopleArray) {
-                [CDINews insertNewsInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
-            }
-            [self.managedObjectContext processPendingChanges];
-            [self refresh];
-        }
-    };
-    
-    [client getNewsListWithCompletion:handleData];
-}
-
 
 - (void)playAnimationWithDirectionUp:(BOOL)isDirectionUp completion:(void (^)(BOOL finished))completion
 {
@@ -427,7 +392,7 @@
     GYPositionBounceAnimation *animation = [GYPositionBounceAnimation animationWithKeyPath:@"position.y"];
     animation.duration = 2.0;
     animation.delegate = self;
-    [self performSelector:@selector(showMenuDragIndicator) withObject:nil afterDelay:2.0];
+    [self performSelector:@selector(showMenuDragIndicator) withObject:nil afterDelay:1.0];
     
     [animation setValueArrayForStartValue:startingValue endValue:value];
     [self.tableViewContainerView.layer setValue:[NSNumber numberWithFloat:value] forKeyPath:animation.keyPath];

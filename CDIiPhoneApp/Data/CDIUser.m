@@ -96,7 +96,14 @@ static CDIUser *currentUser;
   user.dribbleURL = [NSString stringForDict:dict key:@"dribbbleId"];
   user.homePageURL = [NSString stringForDict:dict key:@"personalSite"];
   user.linkedInURL = [NSString stringForDict:dict key:@"linkedInId"];
-  user.position = [NSString stringForDict:dict key:@"title"];
+    NSString * positionString;
+    if (kIsChinese) {
+        positionString = @"title";
+    }
+    else {
+        positionString = @"title_en";
+    }
+  user.position = [NSString stringForDict:dict key:positionString];
   user.title = [NSString stringForDict:dict key:@"category"];
   user.twitterURL = [NSString stringForDict:dict key:@"twitterId"];
   user.weiboURL = [NSString stringForDict:dict key:@"weiboId"];

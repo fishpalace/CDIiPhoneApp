@@ -5532,10 +5532,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Hi-Ij-wbG">
-                                        <rect key="frame" x="90" y="24" width="141" height="141"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <button clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0I-Rr-R4I">
                                         <rect key="frame" x="90" y="25" width="141" height="141"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -5547,6 +5543,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <action selector="didClickChangeInfoButton:" destination="INo-JT-ZL6" eventType="touchUpInside" id="HFt-xv-qjO"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Hi-Ij-wbG">
+                                        <rect key="frame" x="90" y="25" width="141" height="140"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="140" id="6lq-PW-sLs"/>
+                                            <constraint firstAttribute="width" constant="141" id="qlm-B9-6Kc"/>
+                                        </constraints>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYc-gH-mMC">
                                         <rect key="frame" x="11" y="613" width="301" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -5587,6 +5591,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstItem="z9j-oB-HYm" firstAttribute="leading" secondItem="Okl-YG-2Ji" secondAttribute="trailing" constant="-285" id="H6v-ZF-ZkV"/>
                                     <constraint firstAttribute="trailing" secondItem="H0I-Rr-R4I" secondAttribute="trailing" constant="89" id="HXN-Ys-pk7"/>
                                     <constraint firstItem="GNz-ai-4sC" firstAttribute="top" secondItem="8wa-HI-Rou" secondAttribute="bottom" constant="-40" id="HYU-fp-qk3"/>
+                                    <constraint firstItem="6Hi-Ij-wbG" firstAttribute="top" secondItem="pjZ-mX-s53" secondAttribute="top" constant="25" id="Hpn-jq-eGX"/>
                                     <constraint firstItem="Eqy-LA-OvM" firstAttribute="top" secondItem="Okl-YG-2Ji" secondAttribute="top" id="MBB-bp-RhO"/>
                                     <constraint firstItem="t7P-oZ-wLT" firstAttribute="top" secondItem="VDx-sf-iwa" secondAttribute="top" id="N3g-8F-531"/>
                                     <constraint firstItem="CGe-em-rSS" firstAttribute="top" secondItem="Is3-Hq-LHP" secondAttribute="bottom" constant="-40" id="NUF-Zk-g6V"/>
@@ -5628,6 +5633,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <constraint firstItem="vNT-w7-E3A" firstAttribute="centerX" secondItem="Y1B-zj-0GQ" secondAttribute="centerX" constant="0.5" id="qrt-CT-TaC"/>
                                     <constraint firstItem="z9j-oB-HYm" firstAttribute="centerY" secondItem="Okl-YG-2Ji" secondAttribute="centerY" constant="0.5" id="r1P-ET-oaD"/>
                                     <constraint firstItem="KYT-zJ-tZA" firstAttribute="leading" secondItem="mX5-be-5Co" secondAttribute="trailing" constant="-285" id="sCs-KH-Mwq"/>
+                                    <constraint firstItem="6Hi-Ij-wbG" firstAttribute="leading" secondItem="pjZ-mX-s53" secondAttribute="leading" constant="90" id="wTl-Hn-ht7"/>
                                     <constraint firstItem="vNT-w7-E3A" firstAttribute="leading" secondItem="Y1B-zj-0GQ" secondAttribute="trailing" constant="-285" id="yT9-BB-sLo"/>
                                 </constraints>
                             </scrollView>
@@ -5671,6 +5677,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <state key="normal" image="button_info.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Qut-1z-Fcg" kind="push" id="GAp-70-bp6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -5775,6 +5784,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <navigationItem key="navigationItem" id="0cN-8K-B2Z"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="avatorImageView" destination="6Hi-Ij-wbG" id="Se6-Ia-bzV"/>
                         <outlet property="backwardButton" destination="aub-nG-eDh" id="ryl-kP-kjf"/>
                         <outlet property="changePhotoButton" destination="H0I-Rr-R4I" id="1S3-Y3-UnX"/>
                         <outlet property="configView" destination="yhZ-tJ-Gq2" id="zWa-gX-FE9"/>
@@ -6061,6 +6071,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didClickMoreButton:" destination="Zpj-ij-Ek7" eventType="touchUpInside" id="UHl-wE-Ee0"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="10000" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="w2C-Ye-5Ps" customClass="TTTAttributedLabel">
                                         <rect key="frame" x="15" y="327" width="290" height="200"/>
@@ -6229,7 +6242,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oH0-Vy-yZs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1335" y="-642"/>
+            <point key="canvasLocation" x="1003" y="-2020"/>
         </scene>
     </scenes>
     <resources>
@@ -6302,6 +6315,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <segue reference="a5R-k4-SgG"/>
         <segue reference="rlZ-ff-eJE"/>
         <segue reference="HH4-MM-nLv"/>
+        <segue reference="GAp-70-bp6"/>
         <segue reference="Ry5-cC-P8A"/>
         <segue reference="2xN-vJ-HIb"/>
         <segue reference="xn1-if-WU2"/>

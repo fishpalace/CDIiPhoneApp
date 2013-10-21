@@ -52,6 +52,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _playButton.hidden = YES;
+    if ([self.work.linkURL isEqualToString:@""]) {
+        _moreButton.hidden = YES;
+    }
+    
+    
     UIView * maskView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, 320.0, 182.0)];
     [maskView setBackgroundColor:[UIColor whiteColor]];
     _projectImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -194,6 +201,13 @@
                                                          imageURL:vc.user.avatarSmallURL
                                                              type:ModelPanelTypePeopleInfo
                                                          callBack:nil];
+}
+
+- (IBAction)didClickMoreButton:(UIButton *)sender
+{
+    NSURL *url = [NSURL URLWithString:self.work.linkURL];
+    if (![[UIApplication sharedApplication] openURL:url])
+        NSLog(@"%@%@",@"Failed to open url:",[url description]);
 }
 
 - (IBAction)didClickBackButton:(UIButton *)sender

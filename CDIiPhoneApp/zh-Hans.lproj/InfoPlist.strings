@@ -1,0 +1,15 @@
+/* Localized versions of Info.plist keys */
+
+"Camera" = "拍摄";
+"Photo Album" = "选取照片";
+"Cancel" = "取消";
+"Events" = "活动";
+"Projects" = "项目";
+"News" = "新闻";
+"Login" = "登录";
+"Today" = "今日";
+"Tomorrow" = "明日";
+"Professor" = "教授";
+"Student" = "学生";
+"Alumni" = "校友";
+"Pick the Image Failed" = "上传头像失败";

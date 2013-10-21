@@ -103,9 +103,9 @@
   BOOL isToday = self.scrollView.contentOffset.x == 0;
   self.pageControl.currentPage = isToday ? 0 : 1;
   if (self.scheduleListDisplayed) {
-    self.dateLabel.text = @"Today";
+    self.dateLabel.text = NSLocalizedStringFromTable(@"Today", @"InfoPlist", nil);
   } else {
-    self.dateLabel.text = isToday ? @"Today" : @"Tomorrow";
+    self.dateLabel.text = isToday ? NSLocalizedStringFromTable(@"Today", @"InfoPlist", nil) : NSLocalizedStringFromTable(@"Tomorrow", @"InfoPlist", nil);
   }
   self.dateLabel.textColor = kColorForNextEventTimeLabel;
   self.dateLabel.font = kFontForNextEventTimeLabel;

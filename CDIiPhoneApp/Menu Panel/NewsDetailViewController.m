@@ -47,19 +47,24 @@
     [super viewDidLoad];
     self.scrollView.delegate = self;
     
+    UIView * maskView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, 320.0, 182.0)];
+    [maskView setBackgroundColor:[UIColor whiteColor]];
     _imageView.contentMode = UIViewContentModeScaleAspectFill;
+    [_imageView.layer setMask:maskView.layer];
     [_imageView loadImageFromURL:self.news.imageURL completion:^(BOOL succeeded) {
         [_imageView fadeIn];
     }];
     _titleLabel.numberOfLines = 0;
     [_titleLabel setText:self.news.title];
     [_dateLabel setText:[NSDate stringOfDate:self.news.date includingYear:YES]];
+
     [_contentLabel setText:self.news.content];
     [_contentLabel setNumberOfLines:100000];
     
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithAttributedString:_contentLabel.attributedText];
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     [style setLineSpacing:kLineSpacing];
+    [style setLineBreakMode:NSLineBreakByWordWrapping];
     [string addAttribute:NSParagraphStyleAttributeName
                    value:style
                    range:NSMakeRange(0, string.length)];
@@ -95,7 +100,7 @@
     CGFloat height = kTitleContainerViewStandardHeight;
     CGSize size = [self.news.title sizeWithFont:kRLightFontWithSize(14)
                               constrainedToSize:CGSizeMake(290, 1000)
-                                  lineBreakMode:NSLineBreakByCharWrapping];
+                                  lineBreakMode:NSLineBreakByWordWrapping];
     height = kTitleContainerViewStandardHeight + size.height - kTitleContainerSingleLineHeight;
     return height;
 }

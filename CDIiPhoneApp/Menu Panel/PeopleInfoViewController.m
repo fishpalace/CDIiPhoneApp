@@ -41,7 +41,8 @@
 {
     [super viewDidLoad];
     NSString *positionString = [NSString stringWithFormat:@"  %@", self.user.position];
-    NSString *titleString = self.user.title;
+    NSString *titleString;
+    titleString = NSLocalizedStringFromTable(self.user.title, @"InfoPlist", nil);
     _userPositionLabel.text = positionString;
     _userTitleLabel.text = [titleString uppercaseString];
     
@@ -126,7 +127,13 @@
 //        cell.workPicCoverImageView.layer.cornerRadius = 19;
 //        cell.workPicCoverImageView.layer.masksToBounds = YES;
         
-        cell.workNameLabel.text = work.nameEn;
+        if (kIsChinese) {
+            cell.workNameLabel.text = work.name;
+        }
+        else {
+            cell.workNameLabel.text = work.nameEn;
+        }
+        
         cell.workTypeLabel.text = work.workType;
         
         cell.workNameLabel.textColor = kColorPeopleInfoWorkNameLabel;

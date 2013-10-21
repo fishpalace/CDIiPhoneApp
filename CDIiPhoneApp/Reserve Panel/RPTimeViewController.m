@@ -134,7 +134,7 @@
     NSDate *date = self.isToday ? [NSDate date] : [NSDate tomorrowDate];
     NSString *dateString = [NSDate stringOfDate:date includingYear:NO];
     NSString *weekDayString = [NSDate weekdayStringForDate:date];
-    NSString *todayOrTomorrowString = self.isToday ? @"Today" : @"Tomorrow";
+    NSString *todayOrTomorrowString = self.isToday ? NSLocalizedStringFromTable(@"Today", @"InfoPlist", nil) : NSLocalizedStringFromTable(@"Tomorrow", @"InfoPlist", nil);
     NSString *dateDisplayString = [NSString stringWithFormat:@"%@ %@",dateString, weekDayString];
     [self.todayOrTomorrowLabel setText:todayOrTomorrowString];
     [self.todayOrTomorrowLabel setTextColor:kColorRPTodayOrTomorrowLabel];

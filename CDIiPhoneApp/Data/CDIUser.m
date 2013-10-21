@@ -82,7 +82,7 @@ static CDIUser *currentUser;
   }
   
   CDIUser *user = [CDIUser userWithName:userName inManagedObjectContext:context];
-  if (!user) {
+    if (!user) {
     user = [NSEntityDescription insertNewObjectForEntityForName:@"CDIUser" inManagedObjectContext:context];
   }
   
@@ -96,7 +96,7 @@ static CDIUser *currentUser;
   user.dribbleURL = [NSString stringForDict:dict key:@"dribbbleId"];
   user.homePageURL = [NSString stringForDict:dict key:@"personalSite"];
   user.linkedInURL = [NSString stringForDict:dict key:@"linkedInId"];
-  user.position = [NSString stringForDict:dict key:@"title_en"];
+  user.position = [NSString stringForDict:dict key:@"title"];
   user.title = [NSString stringForDict:dict key:@"category"];
   user.twitterURL = [NSString stringForDict:dict key:@"twitterId"];
   user.weiboURL = [NSString stringForDict:dict key:@"weiboId"];

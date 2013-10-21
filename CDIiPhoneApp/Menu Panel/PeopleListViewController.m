@@ -38,125 +38,140 @@
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  _collectionView.delegate = self;
-  _collectionView.dataSource = self;
-  _collectionView.collectionViewLayout = self.layout;
-  [_collectionView setContentInset:UIEdgeInsetsMake(10, 0, 10, 0)];
-  [self loadData];
+    [super viewDidLoad];
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    _collectionView.collectionViewLayout = self.layout;
+    [_collectionView setContentInset:UIEdgeInsetsMake(10, 0, 10, 0)];
+    [self loadData];
 }
 
 - (void)loadData
 {
-  CDINetClient *client = [CDINetClient client];
-  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
-    NSDictionary *rawDict = responseData;
-    if ([responseData isKindOfClass:[NSDictionary class]]) {
-      NSArray *peopleArray = rawDict[@"data"];
-      for (NSDictionary *dict in peopleArray) {
-        [CDIUser insertUserInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
-      }
-      [self.managedObjectContext processPendingChanges];
-      [self.fetchedResultsController performFetch:nil];
-      
-      [self.collectionView reloadData];
-    }
-  };
-  
-  [client getUserListWithCompletion:handleData];
+    CDINetClient *client = [CDINetClient client];
+    void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+        NSDictionary *rawDict = responseData;
+        NSLog(@"%@",responseData);
+        if ([responseData isKindOfClass:[NSDictionary class]]) {
+            NSArray *peopleArray = rawDict[@"data"];
+            for (NSDictionary *dict in peopleArray) {
+                [CDIUser insertUserInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
+            }
+            [self.managedObjectContext processPendingChanges];
+            [self.fetchedResultsController performFetch:nil];
+            
+            [self.collectionView reloadData];
+        }
+    };
+    
+    [client getUserListWithCompletion:handleData];
 }
 
 - (void)configureRequest:(NSFetchRequest *)request
 {
-  request.entity = [NSEntityDescription entityForName:@"CDIUser"
-                               inManagedObjectContext:self.managedObjectContext];
-  NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-  request.sortDescriptors = @[sortDescriptor];
+    request.entity = [NSEntityDescription entityForName:@"CDIUser"
+                                 inManagedObjectContext:self.managedObjectContext];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    request.sortDescriptors = @[sortDescriptor];
 }
 
 - (IBAction)didClickBackButton:(UIButton *)sender
 {
-  [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-  return self.fetchedResultsController.fetchedObjects.count;
+    return self.fetchedResultsController.fetchedObjects.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  static NSString *cellIdentifier = @"PeopleListCollectionViewCell";
-  
-  PeopleListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-  
-  CDIUser *user = self.fetchedResultsController.fetchedObjects[indexPath.row];
-  cell.userNameLabel.text = user.realNameEn;
-  cell.userPositionLabel.text = user.position;
-  cell.userTitleLabel.text = user.title;
-  
-  cell.userNameLabel.textColor = kColorPeopleInfoCellNameLabel;
-  cell.userNameLabel.font = kFontPeopleInfoCellNameLabel;
-  cell.userPositionLabel.textColor = kColorPeopleInfoCellPositionLabel;
-  cell.userPositionLabel.font = kFontPeopleInfoCellPositionLabel;
-  cell.userTitleLabel.textColor = kColorPeopleInfoCellTitleLabel;
-  cell.userTitleLabel.font = kFontPeopleInfoCellTitleLabel;
-  
-  [cell.avatarImageView loadImageFromURL:user.avatarSmallURL completion:^(BOOL succeeded) {
-    [cell.avatarImageView fadeIn];
-  }];
-
-  return cell;
+    static NSString *cellIdentifier = @"PeopleListCollectionViewCell";
+    
+    PeopleListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    CDIUser *user = self.fetchedResultsController.fetchedObjects[indexPath.row];
+    if (kIsChinese) {
+        cell.userNameLabel.text = user.realName;
+        cell.userPositionLabel.text = user.position;
+    }
+    else {
+        cell.userNameLabel.text = user.realNameEn;
+        cell.userPositionLabel.text = user.position;
+    }
+    
+    cell.userTitleLabel.text = NSLocalizedStringFromTable(user.title, @"InfoPlist", nil);
+    
+    cell.userNameLabel.textColor = kColorPeopleInfoCellNameLabel;
+    cell.userNameLabel.font = kFontPeopleInfoCellNameLabel;
+    cell.userPositionLabel.textColor = kColorPeopleInfoCellPositionLabel;
+    cell.userPositionLabel.font = kFontPeopleInfoCellPositionLabel;
+    cell.userTitleLabel.textColor = kColorPeopleInfoCellTitleLabel;
+    cell.userTitleLabel.font = kFontPeopleInfoCellTitleLabel;
+    
+    [cell.avatarImageView loadImageFromURL:user.avatarSmallURL completion:^(BOOL succeeded) {
+        [cell.avatarImageView fadeIn];
+    }];
+    
+    return cell;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-  return UIEdgeInsetsMake(2, 6, 0, 6);
+    return UIEdgeInsetsMake(2, 6, 0, 6);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  PeopleInfoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleInfoViewController"];
-  vc.user = self.fetchedResultsController.fetchedObjects[indexPath.row];
-  vc.index = indexPath.row;
-  [ModelPanelViewController displayModelPanelWithViewController:vc
-                                                  withTitleName:vc.user.name
-                                             functionButtonName:@"Write"
-                                                       imageURL:vc.user.avatarSmallURL
-                                                           type:ModelPanelTypePeopleInfo
-                                                       callBack:nil];
+    PeopleInfoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleInfoViewController"];
+    vc.user = self.fetchedResultsController.fetchedObjects[indexPath.row];
+    vc.index = indexPath.row;
+    NSString * titleName;
+    if (kIsChinese) {
+        titleName = vc.user.realName;
+    }
+    else {
+        titleName = vc.user.realNameEn;
+    }
+    [ModelPanelViewController displayModelPanelWithViewController:vc
+                                                    withTitleName:titleName
+                                               functionButtonName:@"Write"
+                                                         imageURL:vc.user.avatarSmallURL
+                                                             type:ModelPanelTypePeopleInfo
+                                                         callBack:nil];
 }
- 
+
 - (NSMutableArray *)userArray
 {
-  if (!_userArray) {
-    _userArray = [NSMutableArray array];
-    CDIUser *user1 = [[CDIUser alloc] initWithName:@"Xiaohua Sun" title:@"Professor" position:@"Director of CDI"];
-    CDIUser *user2 = [[CDIUser alloc] initWithName:@"Evan Fung" title:@"Student" position:@"Project Manager"];
-    CDIUser *user3 = [[CDIUser alloc] initWithName:@"Alex Yan" title:@"Student" position:@"Web Engineer"];
-    CDIUser *user4 = [[CDIUser alloc] initWithName:@"Gabriel Yeah" title:@"Student" position:@"iOS Engineer"];
-    CDIUser *user5 = [[CDIUser alloc] initWithName:@"Zexi Feng" title:@"Student" position:@"Designer"];
-    CDIUser *user6 = [[CDIUser alloc] initWithName:@"Yayi Tang" title:@"Student" position:@"Designer"];
-    
-    [_userArray addObject:user1];
-    [_userArray addObject:user2];
-    [_userArray addObject:user3];
-    [_userArray addObject:user4];
-    [_userArray addObject:user5];
-    [_userArray addObject:user6];
-  }
-  return _userArray;
+    if (!_userArray) {
+        _userArray = [NSMutableArray array];
+        CDIUser *user1 = [[CDIUser alloc] initWithName:@"Xiaohua Sun" title:@"Professor" position:@"Director of CDI"];
+        CDIUser *user2 = [[CDIUser alloc] initWithName:@"Evan Fung" title:@"Student" position:@"Project Manager"];
+        CDIUser *user3 = [[CDIUser alloc] initWithName:@"Alex Yan" title:@"Student" position:@"Web Engineer"];
+        CDIUser *user4 = [[CDIUser alloc] initWithName:@"Gabriel Yeah" title:@"Student" position:@"iOS Engineer"];
+        CDIUser *user5 = [[CDIUser alloc] initWithName:@"Zexi Feng" title:@"Student" position:@"Designer"];
+        CDIUser *user6 = [[CDIUser alloc] initWithName:@"Yayi Tang" title:@"Student" position:@"Designer"];
+        
+        [_userArray addObject:user1];
+        [_userArray addObject:user2];
+        [_userArray addObject:user3];
+        [_userArray addObject:user4];
+        [_userArray addObject:user5];
+        [_userArray addObject:user6];
+    }
+    return _userArray;
 }
 
 - (UICollectionViewFlowLayout *)layout
 {
-  if (!_layout) {
-    _layout = [[UICollectionViewFlowLayout alloc] init];
-    [_layout setItemSize:CGSizeMake(154, 204)];
-    [_layout setMinimumInteritemSpacing:0];
-    [_layout setScrollDirection:UICollectionViewScrollDirectionVertical];
-  }
-  return _layout;
+    if (!_layout) {
+        _layout = [[UICollectionViewFlowLayout alloc] init];
+        [_layout setItemSize:CGSizeMake(154, 204)];
+        [_layout setMinimumInteritemSpacing:0];
+        [_layout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    }
+    return _layout;
 }
 
 @end

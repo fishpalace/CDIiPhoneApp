@@ -16,6 +16,8 @@
 #import "GYPositionBounceAnimation.h"
 #import "NSNotificationCenter+Addition.h"
 #import "AppDelegate.h"
+#import "CDINetClient.h"
+#import "CDIDataSource.h"
 #import "CDINews.h"
 #import "CDIWork.h"
 #import "CDIEvent.h"
@@ -54,10 +56,8 @@
     BOOL isScrolling;
 }
 
-
 - (void)viewDidLoad
 {
-
     [super viewDidLoad];
 
     [self configureBasicViews];
@@ -65,6 +65,8 @@
     [NSNotificationCenter registerShouldBounceUpNotificationWithSelector:@selector(bounceUp) target:self];
     [NSNotificationCenter registerDidFetchNewDataNotificationWithSelector:@selector(refresh) target:self];
     self.isMainPanel = YES;
+//    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(test) userInfo:nil repeats:YES];
+
 }
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -86,6 +88,12 @@
 {
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
+}
+
+- (void)test
+{
+    NSLog(@"test");
+
 }
 
 
@@ -176,21 +184,21 @@
     NSInteger sectionTitle_Y_point;
     switch (section) {
         case 0:
-            sectionTitleString = @"Events";
+            sectionTitleString = NSLocalizedStringFromTable(@"Events", @"InfoPlist", nil);
             sectionTitle_Y_point = 20.0;
             break;
         case 1:
-            sectionTitleString = @"Projects";
+            sectionTitleString = NSLocalizedStringFromTable(@"Projects", @"InfoPlist", nil);
             sectionTitle_Y_point = 20.0;
             break;
         case 2:
-            sectionTitleString = @"News";
+            sectionTitleString = NSLocalizedStringFromTable(@"News", @"InfoPlist", nil);
             sectionTitle_Y_point = 20.0;
             break;
         default:
             sectionTitleHeight = 0.0;
             sectionTitle_Y_point = 0.0;
-            sectionTitleString = @"";
+            sectionTitleString = NSLocalizedStringFromTable(@"Events", @"InfoPlist", nil);
             break;
     }
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 42.0)];
@@ -280,7 +288,12 @@
         contentName = event.name;
     } else if (index == 1) {
         CDIWork *work = self.frProjectsController.fetchedObjects[row];
-        contentName = work.nameEn;
+        if (kIsChinese) {
+            contentName = work.name;
+        }
+        else{
+            contentName = work.nameEn;
+        }
     } else if (index == 2) {
         CDINews *news = self.frNewsController.fetchedObjects[row];
         contentName = news.title;
@@ -362,6 +375,8 @@
 
 - (void)bounceUp
 {
+    [CDIDataSource reFetchAllDataInMainPanel];
+
     [self playAnimationWithDirectionUp:YES completion:^(BOOL finished){
         self.menuPanelViewController.dragIndicatorView.hidden = NO;
     }];
@@ -369,10 +384,44 @@
     self.isMainPanel = YES;
 }
 
+- (void)reloadProjectsInfos
+{
+    CDINetClient *client = [CDINetClient client];
+    void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+        NSDictionary *rawDict = responseData;
+        if ([responseData isKindOfClass:[NSDictionary class]]) {
+            NSArray *peopleArray = rawDict[@"data"];
+            for (NSDictionary *dict in peopleArray) {
+                [CDIWork insertWorkInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
+            }
+            [self.managedObjectContext processPendingChanges];
+            [self refresh];
+        }
+    };
+    [client getProjectListWithCompletion:handleData];
+}
+
+- (void)reloadNewsInfos
+{
+    CDINetClient *client = [CDINetClient client];
+    void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+        NSDictionary *rawDict = responseData;
+        if ([responseData isKindOfClass:[NSDictionary class]]) {
+            NSArray *peopleArray = rawDict[@"data"];
+            for (NSDictionary *dict in peopleArray) {
+                [CDINews insertNewsInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
+            }
+            [self.managedObjectContext processPendingChanges];
+            [self refresh];
+        }
+    };
+    
+    [client getNewsListWithCompletion:handleData];
+}
+
+
 - (void)playAnimationWithDirectionUp:(BOOL)isDirectionUp completion:(void (^)(BOOL finished))completion
 {
-
-    
     CGFloat startingValue = self.tableViewContainerView.frame.origin.y + kCurrentScreenHeight;
     CGFloat value = isDirectionUp ? 0 : kCurrentScreenHeight;
     GYPositionBounceAnimation *animation = [GYPositionBounceAnimation animationWithKeyPath:@"position.y"];

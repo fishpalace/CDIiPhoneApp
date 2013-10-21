@@ -170,9 +170,9 @@
     NSString *todayOrTomorrowString = nil;
     NSDate *todayDate = [[NSDate date] dateWithoutTime];
     if ([todayDate isEqualToDate:[self dateWithoutTime]]) {
-        todayOrTomorrowString = @"Today";
+        todayOrTomorrowString = NSLocalizedStringFromTable(@"Today", @"InfoPlist", nil);
     } else {
-        todayOrTomorrowString = @"Tomorrow";
+        todayOrTomorrowString = NSLocalizedStringFromTable(@"Tomorrow", @"InfoPlist", nil);
     }
     return todayOrTomorrowString;
 }

@@ -24,8 +24,16 @@
 {
   NSRange r;
   NSString *s = [self copy];
+    BOOL isFirstLine = YES;
   while ((r = [s rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
-    s = [s stringByReplacingCharactersInRange:r withString:@""];
+  {
+      if(isFirstLine) {
+          isFirstLine = NO;
+          s = [s stringByReplacingCharactersInRange:r withString:@""];
+      } else {
+          s = [s stringByReplacingCharactersInRange:r withString:@"\n"];
+      }
+  }
   return s;
 }
 

@@ -33,6 +33,7 @@
 
 + (CDIWork *)insertWorkInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context;
 + (CDIWork *)workWithWorkID:(NSString *)workID inManagedObjectContext:(NSManagedObjectContext *)context;
++ (void)removeAllWorksInManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end
 

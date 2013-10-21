@@ -118,7 +118,7 @@ static CDINetClient *sharedClient;
          completion:(void (^)(BOOL succeeded, id responseData))completion
 {
     NSDictionary *dict = @{@"title" : event.name,
-                           @"relatedInfo" : event.relatedInfo,
+                           @"description" : event.relatedInfo,
                            @"type" : @"DISCUSSION",
                            @"status" : @"INACTIVE",
                            @"startDate" : @(event.startDate.timeIntervalSince1970 * 1000),
@@ -179,6 +179,12 @@ static CDINetClient *sharedClient;
     [self getPath:path completion:completion];
 }
 
+- (void)getWorkListcompletion:(void (^)(BOOL succeeded, id responseData))completion
+{
+    NSString *path = [NSString stringWithFormat:@"webservice/work/getWorkListByUserIdAndStatusAndType/*/*/100/1"];
+    [self getPath:path completion:completion];
+}
+
 - (void)getNewsListWithCompletion:(void (^)(BOOL succeeded, id responseData))completion
 {
     NSString *path = [NSString stringWithFormat:@"webservice/news/getNewsList/*/*/1000/1"];
@@ -224,7 +230,7 @@ static CDINetClient *sharedClient;
                            @"realName" : user.realName,
                            @"realName_en" : user.realNameEn,
                            @"title" : user.title,
-                           @"title_en" : user.title,
+                           @"title_en" : user.titleEn,
                            @"emailAddress" : user.email,
                            @"mobilePhoneNumber" : user.mobile,
                            @"category" : user.category,

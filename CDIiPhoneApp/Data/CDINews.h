@@ -21,5 +21,5 @@
 @property (nonatomic, retain) CDIUser *creator;
 
 + (CDINews *)insertNewsInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context;
-
++ (void)removeAllNewsInManagedObjectContext:(NSManagedObjectContext *)context;
 @end

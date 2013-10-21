@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MPCellTableViewController.h"
 #import "MPDragIndicatorView.h"
+
 @class MenuPanelViewController;
 
 @interface MainPanelViewController : CoreDataViewController <UITableViewDelegate, UITableViewDataSource,

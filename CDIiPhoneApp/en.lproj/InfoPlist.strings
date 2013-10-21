@@ -1,2 +1,15 @@
 /* Localized versions of Info.plist keys */
 
+"Camera" = "Camera";
+"Photo Album" = "Photo Album";
+"Cancel" = "Cancel";
+"Events" = "Events";
+"Projects" = "Projects";
+"News" = "News";
+"Login" = "Login";
+"Today" = "Today";
+"Tomorrow" = "Tomorrow";
+"Professor" = "Professor";
+"Student" = "Student";
+"Alumni" = "Alumni";
+"Pick the Image Failed" = "Pick the Image Failed";

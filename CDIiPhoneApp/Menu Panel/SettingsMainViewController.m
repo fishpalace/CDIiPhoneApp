@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UIImageView *emailErrorImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *mobileErrorImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *avatorImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textfieldBottomSpaceConstraint;
 @property (weak, nonatomic) IBOutlet UIView *configView;
@@ -81,7 +82,12 @@
     self.configView.userInteractionEnabled = NO;
     self.textfieldBottomSpaceConstraint.constant = 0;
     self.configView.alpha = 0.0;
-    [_currentUserNameLabel setText:self.currentUser.realNameEn];
+    if (kIsiPhone5) {
+        [_currentUserNameLabel setText:self.currentUser.realName];
+    }
+    else {
+        [_currentUserNameLabel setText:self.currentUser.realNameEn];
+    }
     
     _emailTextfield.delegate = self;
     _mobileTextfield.delegate = self;
@@ -100,13 +106,26 @@
     _dribbleTextfield.text = self.currentUser.dribbleURL;
     _homePageTextfield.text = self.currentUser.homePageURL;
     
-    [_changePhotoButton.imageView loadImageFromURL:self.currentUser.avatarSmallURL
-                                        completion:^(BOOL succeeded) {
-                                        }];
-    _changePhotoButton.imageView.image = [_changePhotoButton.imageView.image imageScaledToFitSize:CGSizeMake(141, 141)];
-    _changePhotoButton.imageView.layer.cornerRadius = 5;
-    [_changePhotoButton setImage:_changePhotoButton.imageView.image forState:UIControlStateNormal];
-    [_changePhotoButton setImage:_changePhotoButton.imageView.image forState:UIControlStateHighlighted];
+//    _changePhotoButton.layer.cornerRadius = 5;
+//    [_changePhotoButton.imageView loadImageFromURL:self.currentUser.avatarSmallURL
+//                                        completion:^(BOOL succeeded) {
+//                                        }];
+
+    UIView * maskView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, 141.0, 140.0)];
+    [maskView setBackgroundColor:[UIColor whiteColor]];
+    maskView.layer.cornerRadius = 5;
+//
+    
+    [_avatorImageView loadImageFromURL:self.currentUser.avatarSmallURL
+                            completion:^(BOOL succeeded) {
+    }];
+//    _avatorImageView.image = [_avatorImageView.image imageScaledToFitSize:CGSizeMake(141, 139)];
+    [_avatorImageView.layer setMask:maskView.layer];
+//    [_avatorImageView setImage:_avatorImageView.image];
+    
+//    _changePhotoButton.imageView.image = [_changePhotoButton.imageView.image imageScaledToFitSize:CGSizeMake(139, 139)];
+//    [_changePhotoButton setImage:_changePhotoButton.imageView.image forState:UIControlStateNormal];
+//    [_changePhotoButton setImage:_changePhotoButton.imageView.image forState:UIControlStateHighlighted];
     
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -180,8 +199,15 @@
 {
     self.view.userInteractionEnabled = NO;
     CDIUser *currentUser = [CDIUser currentUserInContext:self.managedObjectContext];
+    NSString * logoutName;
+    if (kIsiPhone5) {
+        logoutName = currentUser.realName;
+    }
+    else {
+        logoutName = currentUser.realNameEn;
+    }
     UIActionSheet* mySheet = [[UIActionSheet alloc]
-                              initWithTitle:currentUser.realNameEn
+                              initWithTitle:logoutName
                               delegate:self
                               cancelButtonTitle:@"Cancel"
                               destructiveButtonTitle:@"Logout"
@@ -233,9 +259,10 @@
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                   initWithTitle:nil
                                   delegate:self
-                                  cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                  cancelButtonTitle:NSLocalizedStringFromTable(@"Cancel",@"InfoPlist" ,nil)
                                   destructiveButtonTitle:nil
-                                  otherButtonTitles:NSLocalizedString(@"Camera", nil), NSLocalizedString(@"Photo Album", nil), nil];
+                                  otherButtonTitles:NSLocalizedStringFromTable(@"Camera",@"InfoPlist", nil),
+                                  NSLocalizedStringFromTable(@"Photo Album",@"InfoPlist", nil), nil];
     actionSheet.tag = CameraActionSheet;
     [actionSheet showInView:self.view];
 }
@@ -293,37 +320,73 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
+    self.view.userInteractionEnabled = NO;
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
         [[UIApplication sharedApplication] setStatusBarHidden:YES];
     }
     
-
     self.image = [info objectForKey:UIImagePickerControllerEditedImage];
-    self.image = [self.image imageScaledToFitSize:CGSizeMake(141, 141)];
-    [self.changePhotoButton setImage:self.image forState:UIControlStateNormal];
-    [self.changePhotoButton setImage:self.image forState:UIControlStateHighlighted];
+    self.image = [self.image imageScaledToFitSize:CGSizeMake(141, 140)];
+    
+    UIView * maskView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, 141.0, 140.0)];
+    [maskView setBackgroundColor:[UIColor whiteColor]];
+    maskView.layer.cornerRadius = 5;
+    
+    _avatorImageView.image = [self.image imageScaledToFitSize:CGSizeMake(141, 140)];
+    [_avatorImageView.layer setMask:maskView.layer];
+    
+//    [self.changePhotoButton setImage:self.image forState:UIControlStateNormal];
+//    [self.changePhotoButton setImage:self.image forState:UIControlStateHighlighted];
     
     CDINetClient *client = [CDINetClient client];
     void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
-        //        if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
-        //            [[UIApplication sharedApplication] setStatusBarHidden:YES];
-        //        }
         if (succeeded) {
             if ([responseData isKindOfClass:[NSString class]]) {
                 NSString *url = [NSString stringWithFormat:@"http://cdi.tongji.edu.cn/cdisoul/upload/user_avatars/%@", responseData];
                 self.currentUser.avatarSmallURL = url;
                 NSLog(@"self current user avatorSmallUlr is %@",self.currentUser.avatarSmallURL);
+                [NSNotificationCenter postDidChangeCurrentUserNotification];
             }
         }
+        else {
+            [self pickImageFailed];
+        }
     };
-    
     [client updateUserAvatarWithImage:self.image
                            sessionKey:self.currentUser.sessionKey
                            completion:handleData];
     
     [self dismissViewControllerAnimated:YES completion:^{
+        RPActivityIndictor * activityIndiactor = [RPActivityIndictor sharedRPActivityIndictor];
+        activityIndiactor.delegate = self;
+        [activityIndiactor startWaitingAnimationInView:self.view];
+        [activityIndiactor setWaitingTimer];
+        [self performSelector:@selector(excuteAfterClickPickImageButton:) withObject:nil afterDelay:1.0];
     }];
+}
+
+- (void)excuteAfterClickPickImageButton:(void (^)(void))completion
+{
+    CDINetClient *client = [CDINetClient client];
+    void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+        self.view.userInteractionEnabled = YES;
+        RPActivityIndictor * activityIndictor = [RPActivityIndictor sharedRPActivityIndictor];
+        [activityIndictor stopWaitingTimer];
+        
+        if (succeeded) {
+            if ([responseData isKindOfClass:[NSDictionary class]]) {
+                [NSNotificationCenter postDidChangeCurrentUserNotification];
+            }
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        else {
+            [self pickImageFailed];
+        }
+    };
+    
+    [client updateUserWithUser:self.currentUser
+                      password:self.currentUser.password
+                    completion:handleData];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
@@ -386,7 +449,7 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    [self hideKeyboard];
+    [self.view endEditing:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -467,6 +530,16 @@
 - (void)setUpInfoFailed
 {
     UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Setup Info Failed"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+    [alertView show];
+    self.view.userInteractionEnabled = YES;
+}
+
+- (void)pickImageFailed
+{
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Pick the Image Failed", @"InfoPlist", nil)
                                                         message:nil
                                                        delegate:self
                                               cancelButtonTitle:@"Close" otherButtonTitles:nil];

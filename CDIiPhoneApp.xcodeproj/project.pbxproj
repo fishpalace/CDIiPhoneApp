@@ -361,6 +361,7 @@
 		5113856B1813F28200F5F1CB /* pass_gesture_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 511385691813F28200F5F1CB /* pass_gesture_button.png */; };
 		5113856C1813F28200F5F1CB /* pass_gesture_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5113856A1813F28200F5F1CB /* pass_gesture_button@2x.png */; };
 		51484E70181078320003169E /* RPActivityIndictor.m in Sources */ = {isa = PBXBuildFile; fileRef = 51484E6F181078320003169E /* RPActivityIndictor.m */; };
+		5174BC001815322E00BFFF58 /* SystemInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5174BBFF1815322E00BFFF58 /* SystemInfoViewController.m */; };
 		51B470121810F0A600534653 /* blue_gloom.png in Resources */ = {isa = PBXBuildFile; fileRef = 51B4700C1810F0A600534653 /* blue_gloom.png */; };
 		51B470131810F0A600534653 /* blue_gloom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51B4700D1810F0A600534653 /* blue_gloom@2x.png */; };
 		51B470141810F0A600534653 /* green_gloom.png in Resources */ = {isa = PBXBuildFile; fileRef = 51B4700E1810F0A600534653 /* green_gloom.png */; };
@@ -821,8 +822,12 @@
 		511385631813641D00F5F1CB /* menu_icon_passcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_icon_passcode@2x.png"; sourceTree = "<group>"; };
 		511385691813F28200F5F1CB /* pass_gesture_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pass_gesture_button.png; path = "Image Resource/Model Panel/pass_gesture_button.png"; sourceTree = SOURCE_ROOT; };
 		5113856A1813F28200F5F1CB /* pass_gesture_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pass_gesture_button@2x.png"; path = "Image Resource/Model Panel/pass_gesture_button@2x.png"; sourceTree = SOURCE_ROOT; };
+		5142BE391814FC27005BAAF6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		5142BE3A1814FC27005BAAF6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
 		51484E6E181078320003169E /* RPActivityIndictor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPActivityIndictor.h; sourceTree = "<group>"; };
 		51484E6F181078320003169E /* RPActivityIndictor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPActivityIndictor.m; sourceTree = "<group>"; };
+		5174BBFE1815322E00BFFF58 /* SystemInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemInfoViewController.h; sourceTree = "<group>"; };
+		5174BBFF1815322E00BFFF58 /* SystemInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemInfoViewController.m; sourceTree = "<group>"; };
 		51B4700C1810F0A600534653 /* blue_gloom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blue_gloom.png; path = "Image Resource/Main Panel/blue_gloom.png"; sourceTree = SOURCE_ROOT; };
 		51B4700D1810F0A600534653 /* blue_gloom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blue_gloom@2x.png"; path = "Image Resource/Main Panel/blue_gloom@2x.png"; sourceTree = SOURCE_ROOT; };
 		51B4700E1810F0A600534653 /* green_gloom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = green_gloom.png; path = "Image Resource/Main Panel/green_gloom.png"; sourceTree = SOURCE_ROOT; };
@@ -1534,6 +1539,8 @@
 				183A41E417A9425800D9EAC7 /* DeviceReservationViewController.m */,
 				1828FAD717CBDB0B00AEDB12 /* SettingsMainViewController.h */,
 				1828FAD817CBDB0B00AEDB12 /* SettingsMainViewController.m */,
+				5174BBFE1815322E00BFFF58 /* SystemInfoViewController.h */,
+				5174BBFF1815322E00BFFF58 /* SystemInfoViewController.m */,
 			);
 			name = "Menu Panel";
 			sourceTree = "<group>";
@@ -1585,6 +1592,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
+				"zh-Hans-CN",
 			);
 			mainGroup = 180BD08E17334D6D00BA2A98;
 			productRefGroup = 180BD09817334D6E00BA2A98 /* Products */;
@@ -1964,6 +1973,7 @@
 				18948CD5175CE2C8004E07EB /* PeopleListCollectionViewCell.m in Sources */,
 				18948D08175D06AA004E07EB /* PeopleInfoViewController.m in Sources */,
 				18AF039D175DB9E600FA1F17 /* CDIDataModel.xcdatamodeld in Sources */,
+				5174BC001815322E00BFFF58 /* SystemInfoViewController.m in Sources */,
 				183A41E217A91E3200D9EAC7 /* DeviceInfoHistoryCell.m in Sources */,
 				1830DDFF17A562EF0029FA90 /* NewsListViewController.m in Sources */,
 			);
@@ -1976,6 +1986,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				180BD0A417334D6E00BA2A98 /* en */,
+				5142BE391814FC27005BAAF6 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1984,6 +1995,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				180BD0B317334D6E00BA2A98 /* en */,
+				5142BE3A1814FC27005BAAF6 /* zh-Hans */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";

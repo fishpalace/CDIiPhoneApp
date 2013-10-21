@@ -148,8 +148,8 @@
         
         if (succeeded) {
             if ([responseData isKindOfClass:[NSDictionary class]]) {
-                NSDictionary *dict = responseData;
-                NSLog(@"%@", dict);
+//                NSDictionary *dict = responseData;
+//                NSLog(@"%@", dict);
                 [NSNotificationCenter postDidChangeCurrentUserNotification];
             }
             [self dismissViewControllerAnimated:YES completion:nil];
@@ -179,9 +179,9 @@
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                   initWithTitle:nil
                                   delegate:self
-                                  cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                  cancelButtonTitle:NSLocalizedStringFromTable(@"Cancel",@"InfoPlist",nil)
                                   destructiveButtonTitle:nil
-                                  otherButtonTitles:NSLocalizedString(@"Camera", nil), NSLocalizedString(@"Photo Album", nil), nil];
+                                  otherButtonTitles:NSLocalizedStringFromTable(@"Camera",@"InfoPlist", nil), NSLocalizedStringFromTable(@"Photo Album", @"InfoPlist",nil), nil];
     [actionSheet showInView:self.view];
 }
 

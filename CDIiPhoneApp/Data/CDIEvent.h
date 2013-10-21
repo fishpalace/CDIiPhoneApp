@@ -56,4 +56,6 @@
 + (void)removeEventsOlderThanUpdateDate:(NSDate *)updateDate
                  inManagedObjectContext:(NSManagedObjectContext *)context;
 
++ (void)removeAllEventInManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end

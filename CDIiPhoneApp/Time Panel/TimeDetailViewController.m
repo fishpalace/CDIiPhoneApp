@@ -34,139 +34,144 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-    // Custom initialization
-  }
-  return self;
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
 }
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  [self configurePieChart];
-  [self setUpTimeZones];
-  [self updateLabels];
+    [super viewDidLoad];
+    [self configurePieChart];
+    [self setUpTimeZones];
+    [self updateLabels];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-  [_pieChart reloadData];
+    [_pieChart reloadData];
 }
 
 #pragma mark - Data Configuration
 
 - (void)configurePieChart
 {
-  [_pieChart setDataSource:self];
-  [_pieChart setStartPieAngle:M_PI * 3 / 2];
-  [_pieChart setAnimationSpeed:1.0];
-  [_pieChart setPieRadius:115];
-  [_pieChart setPieCenter:CGPointMake(116, 116)];
-  [_pieChart setUserInteractionEnabled:NO];
-  [_pieChart setMinPieAngle:M_PI * 2 * 2  / (4 * 14)];
-  [_pieChart setMaxPieAngle:M_PI * 2 * 8 / (4 * 14)];
-  _startingValue = 8;
-  _totalValue = 4 * 14;
+    [_pieChart setDataSource:self];
+    [_pieChart setStartPieAngle:M_PI * 3 / 2];
+    [_pieChart setAnimationSpeed:1.0];
+    [_pieChart setPieRadius:115];
+    [_pieChart setPieCenter:CGPointMake(116, 116)];
+    [_pieChart setUserInteractionEnabled:NO];
+    [_pieChart setMinPieAngle:M_PI * 2 * 2  / (4 * 14)];
+    [_pieChart setMaxPieAngle:M_PI * 2 * 8 / (4 * 14)];
+    _startingValue = 8;
+    _totalValue = 4 * 14;
 }
 
 - (void)setUpTimeZones
 {
-  if (self.isToday) {
-    _currentTimeZones = [NSMutableArray arrayWithArray:[CDIDataSource todayTimeZonesWithRoomID:self.roomID]];
-  } else {
-    _currentTimeZones = [NSMutableArray arrayWithArray:[CDIDataSource tomorrowTimeZonesWithRoomID:self.roomID]];
-  }
+    if (self.isToday) {
+        _currentTimeZones = [NSMutableArray arrayWithArray:[CDIDataSource todayTimeZonesWithRoomID:self.roomID]];
+    } else {
+        _currentTimeZones = [NSMutableArray arrayWithArray:[CDIDataSource tomorrowTimeZonesWithRoomID:self.roomID]];
+    }
 }
 
 - (void)configureWithDate:(BOOL)isToday
 {
-  //TODO 
+    //TODO
 }
 
 - (void)updateLabels
 {
-  NSInteger eventNumber = [self eventNumber];
-  NSString *eventNumberString = [NSString stringWithFormat:@"%d Event", [self eventNumber]];
-  if (eventNumber > 1) {
-    eventNumberString = [eventNumberString stringByAppendingString:@"s"];
-  }
-  self.eventNumberLabel.text = eventNumberString;
-  self.eventNumberLabel.textColor = kColorTimePanelTitle;
-  self.eventNumberLabel.font = kFontTimePanelTitleEvent;
-  self.eventNumberLabel.shadowColor = kColorTimePanelTitleShadow;
-  self.eventNumberLabel.shadowOffset = CGSizeMake(0, 1);
-  self.eventNumberLabel.textAlignment = NSTextAlignmentCenter;
-  
-  NSInteger percentageNumber = [CDIDataSource availablePercentageWithRoomID:self.roomID isToday:self.isToday];
-  NSString *percentageString = [NSString stringWithFormat:@"%d%%", percentageNumber];
-  self.percentageLabel.text = percentageString;
-  self.percentageLabel.textColor = kColorTimePanelTitle;
-  self.percentageLabel.font = kFontTimePanelTitlePercentage;
-  self.percentageLabel.shadowColor = kColorTimePanelTitleShadow;
-  self.percentageLabel.shadowOffset = CGSizeMake(0, 1);
-  self.percentageLabel.textAlignment = NSTextAlignmentCenter;
+    NSInteger eventNumber = [self eventNumber];
+    NSString *eventNumberString;
+    if (kIsChinese) {
+        eventNumberString = [NSString stringWithFormat:@"%d 活动", [self eventNumber]];
+    } else {
+        eventNumberString = [NSString stringWithFormat:@"%d Event", [self eventNumber]];
+    }
+    if (eventNumber > 1) {
+        eventNumberString = [eventNumberString stringByAppendingString:@"s"];
+    }
+    self.eventNumberLabel.text = eventNumberString;
+    self.eventNumberLabel.textColor = kColorTimePanelTitle;
+    self.eventNumberLabel.font = kFontTimePanelTitleEvent;
+    self.eventNumberLabel.shadowColor = kColorTimePanelTitleShadow;
+    self.eventNumberLabel.shadowOffset = CGSizeMake(0, 1);
+    self.eventNumberLabel.textAlignment = NSTextAlignmentCenter;
+    
+    NSInteger percentageNumber = [CDIDataSource availablePercentageWithRoomID:self.roomID isToday:self.isToday];
+    NSString *percentageString = [NSString stringWithFormat:@"%d%%", percentageNumber];
+    self.percentageLabel.text = percentageString;
+    self.percentageLabel.textColor = kColorTimePanelTitle;
+    self.percentageLabel.font = kFontTimePanelTitlePercentage;
+    self.percentageLabel.shadowColor = kColorTimePanelTitleShadow;
+    self.percentageLabel.shadowOffset = CGSizeMake(0, 1);
+    self.percentageLabel.textAlignment = NSTextAlignmentCenter;
 }
 
 - (NSInteger)eventNumber
 {
-  NSInteger result = 0;
-  NSArray *events = nil;
-  if (self.isToday) {
-    events = [CDIDataSource todayEventsForRoomID:self.roomID];
-    for (CDIEvent *event in events) {
-      if (!event.passed.boolValue) {
-        result++;
-      }
+    NSInteger result = 0;
+    NSArray *events = nil;
+    if (self.isToday) {
+        events = [CDIDataSource todayEventsForRoomID:self.roomID];
+        for (CDIEvent *event in events) {
+            if (!event.passed.boolValue) {
+                result++;
+            }
+        }
+    } else {
+        events = [CDIDataSource tomorrowEventsForRoomID:self.roomID];
+        result = events.count;
     }
-  } else {
-    events = [CDIDataSource tomorrowEventsForRoomID:self.roomID];
-    result = events.count;
-  }
-  return result;
+    return result;
 }
 
 #pragma mark - Pie Chart Delegate Methods
 
 - (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart
 {
-  return self.currentTimeZones.count;
+    return self.currentTimeZones.count;
 }
 
 - (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index
 {
-  TimeZone *timeZone = self.currentTimeZones[index];
-  return timeZone.length;
+    TimeZone *timeZone = self.currentTimeZones[index];
+    return timeZone.length;
 }
 
 - (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
 {
-  UIColor *fillColor = nil;
-  TimeZone *timeZone = self.currentTimeZones[index];
-  if (timeZone.available) {
-    fillColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
-  } else {
-    fillColor = [UIColor clearColor];
-  }
-  return fillColor;
+    UIColor *fillColor = nil;
+    TimeZone *timeZone = self.currentTimeZones[index];
+    if (timeZone.available) {
+        fillColor = [UIColor colorWithRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0];
+    } else {
+        fillColor = [UIColor clearColor];
+    }
+    return fillColor;
 }
 
 - (UIColor *)pieChart:(XYPieChart *)pieChart colorForShadowAtIndex:(NSUInteger)index
 {
-  UIColor *shadowColor = nil;
-  TimeZone *timeZone = self.currentTimeZones[index];
-  if (timeZone.available) {
-    shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2];
-  } else {
-    shadowColor = [UIColor clearColor];
-  }
-  return shadowColor;
+    UIColor *shadowColor = nil;
+    TimeZone *timeZone = self.currentTimeZones[index];
+    if (timeZone.available) {
+        shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2];
+    } else {
+        shadowColor = [UIColor clearColor];
+    }
+    return shadowColor;
 }
 
 - (BOOL)pieChart:(XYPieChart *)pieChart shouldHaveShadowAtIndex:(NSUInteger)index
 {
-  TimeZone *timeZone = self.currentTimeZones[index];
-  return timeZone.available;
+    TimeZone *timeZone = self.currentTimeZones[index];
+    return timeZone.available;
 }
 
 @end

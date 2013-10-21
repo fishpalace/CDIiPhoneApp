@@ -92,10 +92,15 @@
     self.loginButton.hidden = self.doesCurrentUserExist;
     
     if (self.doesCurrentUserExist) {
-        self.currentUserNameLabel.text = currentUser.realNameEn;
+        if (kIsChinese) {
+            self.currentUserNameLabel.text = currentUser.realName;
+        }
+        else {
+            self.currentUserNameLabel.text = currentUser.realNameEn;
+        }
         [self.avatarImageView setImageWithURL:[NSURL URLWithString:currentUser.avatarSmallURL]];
     } else {
-        self.currentUserNameLabel.text = @"Login";
+        self.currentUserNameLabel.text = NSLocalizedStringFromTable(@"Login", @"InfoPlist", nil);
         self.avatarImageView.image = [UIImage imageNamed:@"menu_avatar_login"];
     }
     self.currentUserNameLabel.textColor = kColorCurrentUserNameLabel;
@@ -302,7 +307,7 @@
 //        passGestureHeight = 56;
 //    }
 //    [self.view addSubview:passGestureImageview];
-//    
+//
 //    UIView * bgGloomView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
 //    [bgGloomView setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8]];
 //    [self.view insertSubview:bgGloomView belowSubview:passGestureImageview];
@@ -310,7 +315,7 @@
 //    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 //        [bgGloomView setAlpha:1.0];
 //    }completion:nil];
-//    
+//
 //    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 //        passGestureImageview.frame = CGRectMake(28.0, passGestureHeight, 264, 369);
 //    }completion:nil];
@@ -355,11 +360,17 @@
     
     char title = 'A' + roomID - 1;
     NSString *roomTitle = [NSString stringWithFormat:@"%c %@", title, [CDIDataSource nameForRoomID:roomID]];
-    
+    NSString * reserveString;
+    if (kIsChinese) {
+        reserveString = @"预约";
+    }
+    else {
+        reserveString = @"Reserve";
+    }
     CDIUser * user = [CDIUser currentUserInContext:self.managedObjectContext];
     [ModelPanelViewController displayModelPanelWithViewController:vc
                                                     withTitleName:roomTitle
-                                               functionButtonName:@"Reserve"
+                                               functionButtonName:reserveString
                                                          imageURL:user.avatarSmallURL
                                                              type:ModelPanelTypeRoomInfo
                                                          callBack:^{
@@ -422,11 +433,23 @@
 {
     if (!_titleArray) {
         if (self.doesCurrentUserExist) {
-            _titleArray = [NSMutableArray arrayWithObjects:@"Schedule", @"My Reservations", @"Devices",@"My Passcode",
-                           @"News", @"Projects", @"People", nil];
+            if (kIsChinese) {
+                _titleArray = [NSMutableArray arrayWithObjects:@"活动时间表",@"我的预约",@"设备",@"我的密钥",
+                               @"新闻",@"项目",@"实验室成员",nil];
+            }
+            else {
+                _titleArray = [NSMutableArray arrayWithObjects:@"Schedule", @"My Reservations", @"Devices",@"My Passcode",
+                               @"News", @"Projects", @"People", nil];
+            }
         } else {
-            _titleArray = [NSMutableArray arrayWithObjects:@"Schedule",@"My Passcode",
-                           @"News", @"Projects", @"People", nil];
+            if (kIsChinese) {
+                _titleArray = [NSMutableArray arrayWithObjects:@"活动时间表",@"我的密钥",
+                               @"新闻",@"项目",@"实验室成员",nil];
+            }
+            else {
+                _titleArray = [NSMutableArray arrayWithObjects:@"Schedule",@"My Passcode",
+                               @"News", @"Projects", @"People", nil];
+            }
         }
     }
     return _titleArray;

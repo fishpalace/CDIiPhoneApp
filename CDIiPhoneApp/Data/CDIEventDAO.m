@@ -124,7 +124,7 @@ static CDIEventDAO *sharedNewEvent;
 {
   self.eventID = [self stringForDict:dict key:@"id"];
   self.name = [self stringForDict:dict key:@"title"];
-  self.relatedInfo = [self stringForDict:dict key:@"relatedInfo"];
+  self.relatedInfo = [self stringForDict:dict key:@"description"];
   self.accessKey = [self stringForDict:dict key:@"accessKey"];
   NSNumber *start = dict[@"startDate"];
   NSNumber *end = dict[@"endDate"];

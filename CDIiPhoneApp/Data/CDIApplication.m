@@ -71,14 +71,14 @@
   }
   
   NSNumber *borrowDate = dict[@"borrowDate"];
-  application.borrowDate = [NSDate dateWithTimeIntervalSince1970:borrowDate.longLongValue / 1000];
+  application.borrowDate = [NSDate dateWithTimeIntervalSince1970:borrowDate.longValue / 1000];
   
   NSNumber *dueDate = dict[@"shouldReturnDate"];
-  application.dueDate = [NSDate dateWithTimeIntervalSince1970:dueDate.longLongValue / 1000];
+  application.dueDate = [NSDate dateWithTimeIntervalSince1970:dueDate.longValue / 1000];
   
   NSNumber *returnDate = dict[@"returnDate"];
   if (![returnDate isKindOfClass:[NSNull class]]) {
-    application.returnDate = [NSDate dateWithTimeIntervalSince1970:returnDate.longLongValue / 1000];
+    application.returnDate = [NSDate dateWithTimeIntervalSince1970:returnDate.longValue / 1000];
   }
   
   return application;

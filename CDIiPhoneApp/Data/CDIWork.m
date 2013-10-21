@@ -56,18 +56,34 @@
             work = [NSEntityDescription insertNewObjectForEntityForName:@"CDIWork" inManagedObjectContext:context];
         }
         work.workID = workID;
-        NSNumber *endDate = dict[@"endDate"];
-        NSNumber *startDate = dict[@"startDate"];
+        NSNumber *endDate;
+        NSNumber *startDate;
+        if ((NSNull *)dict[@"startDate"] == [NSNull null]) {
+            startDate = [NSNumber numberWithLong:0];
+        }
+        else
+        {
+            startDate = dict[@"startDate"];
+        }
+        
+        if ((NSNull *)dict[@"endDate"] == [NSNull null]) {
+            endDate = [NSNumber numberWithLong:0];
+        }
+        else
+        {
+            endDate = dict[@"endDate"];
+        }
+        
         NSNumber *estimatedEndDate = dict[@"estimatedEndDate"];
         
         if (![endDate isKindOfClass:[NSNull class]]) {
-            work.endDate = [NSDate dateWithTimeIntervalSince1970:endDate.longLongValue / 1000];
+            work.endDate = [NSDate dateWithTimeIntervalSince1970:endDate.longValue / 1000];
         }
         if (![estimatedEndDate isKindOfClass:[NSNull class]]) {
-            work.estimatedEndDate = [NSDate dateWithTimeIntervalSince1970:estimatedEndDate.longLongValue / 1000];
+            work.estimatedEndDate = [NSDate dateWithTimeIntervalSince1970:estimatedEndDate.longValue / 1000];
         }
         if (![startDate isKindOfClass:[NSNull class]]) {
-            work.startDate = [NSDate dateWithTimeIntervalSince1970:startDate.longLongValue / 1000];
+            work.startDate = [NSDate dateWithTimeIntervalSince1970:startDate.longValue / 1000];
         }
         work.imgURL = [NSString stringForDict:dict key:@"imageUrl"];
         work.linkURL = [NSString stringForDict:dict key:@"linkUrl"];

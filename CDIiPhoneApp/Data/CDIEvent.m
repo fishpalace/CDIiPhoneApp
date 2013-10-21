@@ -197,11 +197,27 @@ static CDIEvent *sharedNewEvent;
     self.accessKey = [self stringForDict:dict key:@"accessKey"];
     self.imageURL = [self stringForDict:dict key:@"imageUrl"];
     self.previewImageURL = [self stringForDict:dict key:@"previewImageUrl"];
+
+    NSNumber *start;
+    NSNumber *end;
+    if ((NSNull *)dict[@"startDate"] == [NSNull null]) {
+        start = [NSNumber numberWithLong:0];
+    }
+    else
+    {
+        start = dict[@"startDate"];
+    }
     
-    NSNumber *start = dict[@"startDate"];
-    NSNumber *end = dict[@"endDate"];
-    self.startDate = [NSDate dateWithTimeIntervalSince1970:start.longLongValue / 1000];
-    self.endDate = [NSDate dateWithTimeIntervalSince1970:end.longLongValue  / 1000];
+    if ((NSNull *)dict[@"endDate"] == [NSNull null]) {
+        end = [NSNumber numberWithLong:0];
+    }
+    else
+    {
+        end = dict[@"endDate"];
+    }
+    
+    self.startDate = [NSDate dateWithTimeIntervalSince1970:start.longValue / 1000];
+    self.endDate = [NSDate dateWithTimeIntervalSince1970:end.longValue  / 1000];
     
     self.typeOrigin = [self stringForDict:dict key:@"type"];
     if ([self.typeOrigin isEqualToString:@"DISCUSSION"]) {

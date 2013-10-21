@@ -54,7 +54,7 @@
     news.imageURL = [NSString stringForDict:dict key:@"imageUrl"];
     news.title = [NSString stringForDict:dict key:@"title"];
     NSNumber *date = dict[@"postTimestamp"];
-    news.date = [NSDate dateWithTimeIntervalSince1970:date.longValue / 1000];
+    news.date = [NSDate dateWithTimeIntervalSince1970:date.longLongValue / 1000];
     
     return news;
 }

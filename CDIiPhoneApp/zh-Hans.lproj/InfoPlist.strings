@@ -14,3 +14,5 @@
 "Alumni" = "校友";
 "Pick the Image Failed" = "上传头像失败";
 "Undo Reservation" = "取消预约";
+"Setup Info Failed" = "设置信息失败";
+"Logout Failed" = "登出失败";

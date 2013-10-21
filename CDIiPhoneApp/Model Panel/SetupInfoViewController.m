@@ -382,7 +382,7 @@
 
 - (void)setUpInfoFailed
 {
-    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Setup Info Failed"
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Setup Info Failed", @"InfoPlist", nil)
                                                         message:nil
                                                        delegate:self
                                               cancelButtonTitle:@"Close" otherButtonTitles:nil];

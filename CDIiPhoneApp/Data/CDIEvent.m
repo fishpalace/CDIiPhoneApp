@@ -216,8 +216,8 @@ static CDIEvent *sharedNewEvent;
         end = dict[@"endDate"];
     }
     
-    self.startDate = [NSDate dateWithTimeIntervalSince1970:start.longValue / 1000];
-    self.endDate = [NSDate dateWithTimeIntervalSince1970:end.longValue  / 1000];
+    self.startDate = [NSDate dateWithTimeIntervalSince1970:start.longLongValue / 1000];
+    self.endDate = [NSDate dateWithTimeIntervalSince1970:end.longLongValue  / 1000];
     
     self.typeOrigin = [self stringForDict:dict key:@"type"];
     if ([self.typeOrigin isEqualToString:@"DISCUSSION"]) {

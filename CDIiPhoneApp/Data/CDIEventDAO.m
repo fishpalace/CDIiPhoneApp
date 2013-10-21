@@ -132,8 +132,8 @@ static CDIEventDAO *sharedNewEvent;
     self.accessKey = [self stringForDict:dict key:@"accessKey"];
     NSNumber *start = dict[@"startDate"];
     NSNumber *end = dict[@"endDate"];
-    self.startDate = [NSDate dateWithTimeIntervalSince1970:start.longValue / 1000];
-    self.endDate = [NSDate dateWithTimeIntervalSince1970:end.longValue  / 1000];
+    self.startDate = [NSDate dateWithTimeIntervalSince1970:start.longLongValue / 1000];
+    self.endDate = [NSDate dateWithTimeIntervalSince1970:end.longLongValue  / 1000];
     
     NSString *status = dict[@"status"];
     NSDate *ensureEndDate = [self.startDate dateByAddingTimeInterval:30 * 60];

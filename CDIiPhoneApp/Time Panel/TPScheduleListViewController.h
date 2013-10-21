@@ -11,9 +11,17 @@
 
 #define kTPScheduleListViewSize CGSizeMake(320, 330)
 
+@protocol TPScheduleListViewControllerDelegate <NSObject>
+
+- (void)didClickPanelButton;
+
+@end
+
 @interface TPScheduleListViewController : CoreDataViewController <ScheduleListTableViewDelegate>
 
 @property (nonatomic, readwrite) NSInteger roomID;
+
+@property (nonatomic, weak) id<TPScheduleListViewControllerDelegate> delegate;
 
 + (CGSize)sizeAccordingToDevice;
 

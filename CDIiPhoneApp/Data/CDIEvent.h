@@ -24,6 +24,7 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * passed;
 @property (nonatomic, retain) NSString * relatedInfo;
+@property (nonatomic, retain) NSString * relatedDescription;
 @property (nonatomic, retain) NSNumber * roomID;
 @property (nonatomic, retain) NSDate * startDate;
 @property (nonatomic, retain) NSNumber * startValue;

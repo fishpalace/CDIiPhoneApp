@@ -951,6 +951,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didClickPanelButton:" destination="TrP-oS-R9t" eventType="touchUpInside" id="jU8-zN-qu9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -4091,8 +4094,8 @@
                                     <constraint firstAttribute="height" constant="50" id="8br-Ym-CJx"/>
                                     <constraint firstAttribute="width" constant="301" id="e1h-qF-LTA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
-                                <state key="normal" title="Done" backgroundImage="rp_button_bottom.png">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="完成" backgroundImage="rp_button_bottom.png">
                                     <color key="titleColor" red="0.0" green="0.58823529409999997" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -4110,8 +4113,8 @@
                                     <constraint firstAttribute="height" constant="50" id="3EW-xg-Ims"/>
                                     <constraint firstAttribute="width" constant="301" id="ihT-nN-fcV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
-                                <state key="normal" title="Undo Reservation" backgroundImage="rp_button_bottom.png">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="取消预约" backgroundImage="rp_button_bottom.png">
                                     <color key="titleColor" red="0.91764705882352937" green="0.32156862745098036" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

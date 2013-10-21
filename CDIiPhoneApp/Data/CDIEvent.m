@@ -27,6 +27,7 @@ static CDIEvent *sharedNewEvent;
 @dynamic name;
 @dynamic passed;
 @dynamic relatedInfo;
+@dynamic relatedDescription;
 @dynamic roomID;
 @dynamic startDate;
 @dynamic startValue;
@@ -76,6 +77,7 @@ static CDIEvent *sharedNewEvent;
     sharedEvent.accessKey = event.accessKey;
     sharedEvent.abandoned = event.abandoned;
     sharedEvent.roomID = event.roomID;
+    sharedEvent.relatedDescription = event.relatedDescription;
 }
 
 - (id)eventCopy
@@ -94,6 +96,7 @@ static CDIEvent *sharedNewEvent;
     eventCopy.accessKey = self.accessKey;
     eventCopy.abandoned = self.abandoned;
     eventCopy.roomID = self.roomID;
+    eventCopy.relatedDescription = self.relatedDescription;
     return eventCopy;
 }
 
@@ -182,10 +185,15 @@ static CDIEvent *sharedNewEvent;
 
 - (void)configureWithDictionary:(NSDictionary *)dict
 {
+    
     self.eventID = [self stringForDict:dict key:@"id"];
     self.name = [self stringForDict:dict key:@"title"];
     NSString * relatedInfo = [self stringForDict:dict key:@"description"];
     self.relatedInfo = [relatedInfo strippedHTMLString];
+    //
+    self.relatedDescription = [self stringForDict:dict key:@"relatedInfo"];
+    NSLog(@"self.related is %@",self.relatedDescription);
+    //
     self.accessKey = [self stringForDict:dict key:@"accessKey"];
     self.imageURL = [self stringForDict:dict key:@"imageUrl"];
     self.previewImageURL = [self stringForDict:dict key:@"previewImageUrl"];

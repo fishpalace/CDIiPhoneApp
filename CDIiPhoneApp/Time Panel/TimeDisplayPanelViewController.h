@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TPScheduleListViewController.h"
 
-@interface TimeDisplayPanelViewController : UIViewController <UIScrollViewDelegate>
+@interface TimeDisplayPanelViewController : UIViewController <UIScrollViewDelegate,TPScheduleListViewControllerDelegate>
 
 @property (nonatomic, assign) NSInteger roomID;
 @property (nonatomic, strong) NSString *roomTitle;

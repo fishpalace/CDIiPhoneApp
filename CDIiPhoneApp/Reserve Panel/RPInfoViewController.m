@@ -93,7 +93,8 @@
 {
     CDIEventDAO *sharedNewEvent = [CDIEventDAO sharedNewEvent];
     sharedNewEvent.name = self.eventTitleTextfield.text;
-    sharedNewEvent.relatedInfo = self.eventRelatedinfoTextfield.text;
+    sharedNewEvent.relatedInfo = @"";
+    sharedNewEvent.relatedDescription = self.eventRelatedinfoTextfield.text;
     
     CDINetClient *client = [CDINetClient client];
     

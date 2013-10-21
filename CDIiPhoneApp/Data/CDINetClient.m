@@ -119,6 +119,7 @@ static CDINetClient *sharedClient;
 {
     NSDictionary *dict = @{@"title" : event.name,
                            @"description" : event.relatedInfo,
+                           @"relatedInfo" : event.relatedDescription,
                            @"type" : @"DISCUSSION",
                            @"status" : @"INACTIVE",
                            @"startDate" : @(event.startDate.timeIntervalSince1970 * 1000),

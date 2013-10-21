@@ -97,9 +97,10 @@
     cell.isPlaceHolder = eventArray.count == 0;
     if (!cell.isPlaceHolder) {
         CDIEventDAO *eventDAO = eventArray[indexPath.row];
+//        NSLog(@"%@",eventDAO.relatedDescription);
         cell.eventName.text = eventDAO.name;
         cell.roomName.text = [CDIDataSource nameForRoomID:eventDAO.roomID.integerValue];
-        cell.eventRelatedInfo.text = eventDAO.relatedInfo;
+        cell.eventRelatedInfo.text = eventDAO.relatedDescription;
         cell.startingTime.text = [NSDate stringOfTime:eventDAO.startDate];
         
         if (eventDAO.relatedInfo.length > 0) {

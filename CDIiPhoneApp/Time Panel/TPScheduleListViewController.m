@@ -137,5 +137,10 @@
   return _timer;
 }
 
+# pragma - mark IBAction
+- (IBAction)didClickPanelButton:(UIButton *)sender
+{
+    [self.delegate didClickPanelButton];
+}
 
 @end

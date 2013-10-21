@@ -231,6 +231,7 @@ static ModelPanelViewController *sharedModelPanelViewController;
     [self.functionButton setBackgroundImage:functionButtonBGImage forState:UIControlStateNormal];
     [self.functionButton setTitleShadowColor:kCModelTitleShadow forState:UIControlStateNormal];
     [self.functionButton.titleLabel setShadowOffset:CGSizeMake(0, 1)];
+    self.functionButton.hidden = YES;
 }
 
 - (void)configureBGImageWithCompletion:(void (^)(UIImage *bgImage))completion
@@ -253,7 +254,9 @@ static ModelPanelViewController *sharedModelPanelViewController;
 
 - (IBAction)didClickFunctionButton:(UIButton *)sender
 {
-    [self hideWithCompletion:self.callback andDuration:0.4];
+    if (self.panelType == ModelPanelTypeRoomInfo) {
+        [self hideWithCompletion:self.callback andDuration:0.4];
+    }
 }
 
 

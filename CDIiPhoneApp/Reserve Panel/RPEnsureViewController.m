@@ -90,7 +90,7 @@
     self.eventTitleLabel.textColor = kColorRPEventNameLabel;
     self.eventTitleLabel.font = kFontRPEventNameLabel;
     
-    self.eventRelatedInfoLabel.text = sharedNewEvent.relatedInfo;
+    self.eventRelatedInfoLabel.text = sharedNewEvent.relatedDescription;
     self.eventRelatedInfoLabel.textColor = kColorRPEventRelatedinfoLabel;
     self.eventRelatedInfoLabel.font = kFontRPEventRelatedinfoLabel;
     
@@ -140,8 +140,8 @@
     UIActionSheet* mySheet = [[UIActionSheet alloc]
                               initWithTitle:nil
                               delegate:self
-                              cancelButtonTitle:@"Cancel"
-                              destructiveButtonTitle:@"Undo Reservation"
+                              cancelButtonTitle:NSLocalizedStringFromTable(@"Cancel", @"InfoPlist", nil)
+                              destructiveButtonTitle:NSLocalizedStringFromTable(@"Undo Reservation", @"InfoPlist", nil)
                               otherButtonTitles:nil];
     [mySheet showInView:self.view];
 }

@@ -218,7 +218,7 @@ static LoginViewController *sharedLoginViewController;
 
 - (void)loginFailed
 {
-    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Login Failed"
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Login Failed", @"InfoPlist", nil)
                                                         message:nil
                                                        delegate:self
                                               cancelButtonTitle:@"Close" otherButtonTitles:nil];

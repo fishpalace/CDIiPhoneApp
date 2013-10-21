@@ -83,6 +83,9 @@
 //    vc.navigationController.navigationBarHidden = YES;
     NSInteger numberOfPasscode = [ModelPassGestureViewController numberOfPasscodeGesture];
 //    [ModelPassGestureViewController setNumberOfPasscodeGesture:(++ numberOfPasscode)];
+    if (numberOfPasscode == 0) {
+        numberOfPasscode ++;
+    }
     [ModelPassGestureViewController setNumberOfPasscodeGesture:(numberOfPasscode)];
     [NSNotificationCenter postShouldChangeLocalDatasourceNotification];
     [ModelPassGestureViewController displayModelPanelWithViewController:vc];

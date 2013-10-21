@@ -192,7 +192,6 @@ static CDIEvent *sharedNewEvent;
     self.relatedInfo = [relatedInfo strippedHTMLString];
     //
     self.relatedDescription = [self stringForDict:dict key:@"relatedInfo"];
-    NSLog(@"self.related is %@",self.relatedDescription);
     //
     self.accessKey = [self stringForDict:dict key:@"accessKey"];
     self.imageURL = [self stringForDict:dict key:@"imageUrl"];

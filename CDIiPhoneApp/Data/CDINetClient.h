@@ -100,4 +100,7 @@
 - (void)loginOutCurrentUserWithSessionKey:(NSString *)sessionKey
                                completion:(void (^)(BOOL succeeded, id responseData))completion;
 
+- (void)registIosDeviceTokenWithToken:(NSString *)token
+                           completion:(void(^)(BOOL succeeded, id responseDate))completion;
+
 @end

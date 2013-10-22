@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "UIApplication+Addition.h"
 #import "CDIDataSource.h"
+#import "CDINetClient.h"
+#import "NSString+Dictionary.h"
 #import "MainPanelViewController.h"
 #import "MenuPanelViewController.h"
 #import "ModelPassGestureViewController.h"
@@ -17,6 +19,8 @@
 @import CoreData;
 
 @interface AppDelegate () {
+    NSString * deviceTokenString;
+    BOOL isTokenSendFinished;
     NSManagedObjectContext  *_managedObjectContext;
     NSManagedObjectModel    *_managedObjectModel;
     NSPersistentStoreCoordinator  *_persistentStoreCoordinator;
@@ -37,6 +41,7 @@
                                                                            |UIRemoteNotificationTypeAlert)];
     [UIApplication showCover];
     [CDIDataSource fetchDataWithCompletion:nil];
+    isTokenSendFinished = NO;
     if (launchOptions != nil) {
         NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
         NSLog(@"The remote Notification is %@",userInfo);
@@ -46,7 +51,38 @@
 
 -(void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
-    NSLog(@"我的设备ID: %@", deviceToken);
+    NSLog(@"MY Token is %@",deviceToken);
+    deviceTokenString = [[NSString stringWithFormat:@"%@",deviceToken]strippedIosToken];
+    NSLog(@"MY Token String is %@",deviceTokenString);
+    [self sendTokenToServerWithTokenString];
+    [NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(sendTokenToServeTimer:) userInfo:nil repeats:YES];
+}
+
+- (void)sendTokenToServeTimer:(NSTimer *)timer
+{
+    if (isTokenSendFinished) {
+        [timer invalidate];
+    }
+    else {
+        [self sendTokenToServerWithTokenString];
+    }
+}
+
+- (void)sendTokenToServerWithTokenString
+{
+    CDINetClient * client = [CDINetClient client];
+    void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+        if (succeeded) {
+            if ([responseData isKindOfClass:[NSDictionary class]]) {
+                NSLog(@"remote Notification responseData is %@",responseData );
+                isTokenSendFinished = YES;
+            }
+        }
+        else {
+            NSLog(@"Retry Send Token To Server");
+        }
+    };
+    [client registIosDeviceTokenWithToken:deviceTokenString completion:handleData];
 }
 
 -(void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
@@ -77,12 +113,12 @@
     }
     NSLog(@"%f %f %f %f",vc.view.frame.origin.x,vc.view.frame.origin.y,vc.view.frame.size.width,vc.view.frame.size.height);
     NSLog(@"%u",vc.edgesForExtendedLayout);
-//    if (vc.navigationController) {
-//        vc = vc.navigationController;
-//    }
-//    vc.navigationController.navigationBarHidden = YES;
+    //    if (vc.navigationController) {
+    //        vc = vc.navigationController;
+    //    }
+    //    vc.navigationController.navigationBarHidden = YES;
     NSInteger numberOfPasscode = [ModelPassGestureViewController numberOfPasscodeGesture];
-//    [ModelPassGestureViewController setNumberOfPasscodeGesture:(++ numberOfPasscode)];
+    //    [ModelPassGestureViewController setNumberOfPasscodeGesture:(++ numberOfPasscode)];
     if (numberOfPasscode == 0) {
         numberOfPasscode ++;
     }

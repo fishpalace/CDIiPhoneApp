@@ -121,7 +121,8 @@
             [self performSegueWithIdentifier:@"InfoEnsureSegue" sender:self];
         } else {
             //TODO: Alert
-            [self createEventFailed];
+//            [self createEventFailed];
+            [[RPActivityIndictor sharedRPActivityIndictor]excuteFailedinNotOverTimeStiution];
         }
     };
     
@@ -142,10 +143,11 @@
 
 - (void)createEventFailed
 {
-    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Create Event Failed"
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:
+                               NSLocalizedStringFromTable(@"Create Event Failed", @"InfoPlist", nil)
                                                         message:nil
                                                        delegate:self
-                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+                                              cancelButtonTitle:NSLocalizedStringFromTable(@"Close", @"InfoPlist", nil) otherButtonTitles:nil];
     [alertView show];
     self.view.userInteractionEnabled = YES;
 }

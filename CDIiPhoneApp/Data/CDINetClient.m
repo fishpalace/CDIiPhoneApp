@@ -280,6 +280,13 @@ static CDINetClient *sharedClient;
     [self getPath:path completion:completion];
 }
 
+- (void)registIosDeviceTokenWithToken:(NSString *)token
+                           completion:(void (^)(BOOL, id))completion
+{
+    NSString *path = [NSString stringWithFormat:@"webservice/other/registIosDeviceToken/%@",token];
+    [self getPath:path completion:completion];
+}
+
 #pragma mark - Basic Methods
 - (void)getPath:(NSString *)path
      completion:(void (^)(BOOL succeeded, id responseData))completion

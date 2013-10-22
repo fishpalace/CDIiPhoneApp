@@ -157,6 +157,7 @@
     RPActivityIndictor * activityIndiactor = [RPActivityIndictor sharedRPActivityIndictor];
     activityIndiactor.delegate = self;
     [activityIndiactor startWaitingAnimationInView:self.view];
+    [activityIndiactor resetBasicData];
     [activityIndiactor setWaitingTimer];
     [self performSelector:@selector(excuteAfterClickDoneButton:) withObject:nil afterDelay:1.0];
 }
@@ -187,7 +188,8 @@
 //            [self.navigationController popViewControllerAnimated:YES];
         }
         else {
-            [self setUpInfoFailed];
+//            [self setUpInfoFailed];
+            [[RPActivityIndictor sharedRPActivityIndictor]excuteFailedinNotOverTimeStiution];
         }
     };
     
@@ -230,7 +232,8 @@
             [self.navigationController popViewControllerAnimated:YES];
         }
         else {
-            [self logoutFailed];
+//            [self logoutFailed];
+            [[RPActivityIndictor sharedRPActivityIndictor]excuteFailedinNotOverTimeStiution];
         }
     };
     [client loginOutCurrentUserWithSessionKey:self.currentUser.sessionKey completion:handleData];
@@ -522,7 +525,7 @@
     UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Logout Failed", @"InfoPlist", nil)
                                                         message:nil
                                                        delegate:self
-                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+                                              cancelButtonTitle:NSLocalizedStringFromTable(@"Close", @"InfoPlist", nil) otherButtonTitles:nil];
     [alertView show];
     self.view.userInteractionEnabled = YES;
 }
@@ -532,7 +535,7 @@
     UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Setup Info Failed", @"InfoPlist", nil)
                                                         message:nil
                                                        delegate:self
-                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+                                              cancelButtonTitle:NSLocalizedStringFromTable(@"Close", @"InfoPlist", nil) otherButtonTitles:nil];
     [alertView show];
     self.view.userInteractionEnabled = YES;
 }
@@ -542,7 +545,7 @@
     UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Pick the Image Failed", @"InfoPlist", nil)
                                                         message:nil
                                                        delegate:self
-                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+                                              cancelButtonTitle:NSLocalizedStringFromTable(@"Close", @"InfoPlist", nil) otherButtonTitles:nil];
     [alertView show];
     self.view.userInteractionEnabled = YES;
 }

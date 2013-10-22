@@ -14,4 +14,6 @@
 
 - (NSString *)strippedHTMLString;
 
+- (NSString *)strippedIosToken;
+
 @end

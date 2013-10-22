@@ -37,4 +37,13 @@
   return s;
 }
 
+- (NSString *)strippedIosToken
+{
+    NSString *s = [self copy];
+    return [[[s stringByReplacingOccurrencesOfString:@" " withString:@""]
+             stringByReplacingOccurrencesOfString:@"<" withString:@""]
+            stringByReplacingOccurrencesOfString:@">" withString:@""];
+}
+
+
 @end

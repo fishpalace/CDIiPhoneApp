@@ -330,8 +330,8 @@
     RPActivityIndictor * activityIndiactor = [RPActivityIndictor sharedRPActivityIndictor];
     activityIndiactor.delegate = self;
     [activityIndiactor startWaitingAnimationInView:self.view];
+    [activityIndiactor resetBasicData];
     [activityIndiactor setWaitingTimer];
-    
     [self performSelector:@selector(excuteAfterClickNextButton) withObject:nil afterDelay:1.0];
 }
 
@@ -357,7 +357,8 @@
             }
         }
         else {
-            [self nextFailed];
+//            [self nextFailed];
+            [[RPActivityIndictor sharedRPActivityIndictor]excuteFailedinNotOverTimeStiution];
         }
     };
     [client checkEventCreationLegalWithSessionKey:currentUser.sessionKey
@@ -389,20 +390,20 @@
 
 - (void)nextFailed
 {
-    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Time Chosen Unavailable"
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Time Chosen Unavailable", @"InfoPlist", nil)
                                                         message:nil
                                                        delegate:self
-                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+                                              cancelButtonTitle:NSLocalizedStringFromTable(@"Close", @"InfoPlist", nil) otherButtonTitles:nil];
     [alertView show];
     self.view.userInteractionEnabled = YES;
 }
 
 - (void)reservationNumberLimitedFailed
 {
-    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Reserve Failed"
-                                                        message:@"Only one reservation can be made in one day. To make a new reservation, please undo the current one."
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Reserve Failed", @"InfoPlist", nil)
+                                                        message:NSLocalizedStringFromTable(@"Only One Reservation", @"InfoPlist", nil)
                                                        delegate:self
-                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+                                              cancelButtonTitle:NSLocalizedStringFromTable(@"Close", @"InfoPlist", nil) otherButtonTitles:nil];
     [alertView show];
     self.view.userInteractionEnabled = YES;
 }

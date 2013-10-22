@@ -14,6 +14,12 @@
 "Alumni" = "Alumni";
 "Pick the Image Failed" = "Pick the Image Failed";
 "Undo Reservation" = "Undo Reservation";
+"Undo Reservation Failed" = "Undo Reservation Failed";
 "Setup Info Failed" = "Setup Info Failed";
 "Logout Failed" = "Logout Failed";
 "Login Failed" = "Login Failed";
+"Create Event Failed" = "Create Event Failed";
+"Close" = "Close";
+"Time Chosen Unavailable" = "Time Chosen Unavailable";
+"Reserve Failed" = "Reserve Failed";
+"Only One Reservation" = "Only one reservation can be made in one day. To make a new reservation, please undo the current one.";

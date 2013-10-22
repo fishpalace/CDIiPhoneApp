@@ -14,6 +14,7 @@ static RPActivityIndictor *sharedRPActivityIndictor;
 {
     NSTimer * waitingTimer;
     float waitingTime;
+    BOOL isOverTime;
 }
 
 + (RPActivityIndictor *)sharedRPActivityIndictor
@@ -27,7 +28,7 @@ static RPActivityIndictor *sharedRPActivityIndictor;
 - (void)resetBasicData
 {
     waitingTime = 0.0;
-    
+    isOverTime = NO;
 }
 
 - (void)startWaitingAnimationInView:(UIView *)view
@@ -61,11 +62,18 @@ static RPActivityIndictor *sharedRPActivityIndictor;
     waitingTime += 1.0;
     if (waitingTime >= 10) {
         waitingTime = 0.0;
+        isOverTime = YES;
         [timer invalidate];
         [_waitingView stopAnimating];
         [self.delegate someThingAfterActivityIndicatorOverTimer];
     }
 }
 
+- (void)excuteFailedinNotOverTimeStiution
+{
+    if (!isOverTime) {
+        [self.delegate someThingAfterActivityIndicatorOverTimer];
+    }
+}
 
 @end

@@ -25,4 +25,5 @@
 - (void)setWaitingTimer;
 - (void)stopWaitingTimer;
 - (void)overTime:(NSTimer*)timer;
+- (void)excuteFailedinNotOverTimeStiution;
 @end

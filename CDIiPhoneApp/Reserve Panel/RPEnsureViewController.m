@@ -163,7 +163,8 @@
             [NSNotificationCenter postShouldChangeLocalDatasourceNotification];
         } else {
             //TODO: Alert
-            [self undoFailed];
+//            [self undoFailed];
+            [[RPActivityIndictor sharedRPActivityIndictor]excuteFailedinNotOverTimeStiution];
         }
     };
     [client unregisterEventWithEventID:sharedNewEvent.eventID
@@ -204,10 +205,11 @@
 
 - (void)undoFailed
 {
-    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Undo Reservation Failed"
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:
+                               NSLocalizedStringFromTable(@"Undo Reservation Failed", @"InfoPlist", nil)
                                                         message:nil
                                                        delegate:self
-                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+                                              cancelButtonTitle:NSLocalizedStringFromTable(@"Close", @"InfoPlist", nil) otherButtonTitles:nil];
     [alertView show];
     self.view.userInteractionEnabled = YES;
 }

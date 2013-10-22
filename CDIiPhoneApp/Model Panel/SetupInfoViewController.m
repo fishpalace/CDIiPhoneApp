@@ -385,7 +385,7 @@
     UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Setup Info Failed", @"InfoPlist", nil)
                                                         message:nil
                                                        delegate:self
-                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+                                              cancelButtonTitle:NSLocalizedStringFromTable(@"Close", @"InfoPlist", nil) otherButtonTitles:nil];
     [alertView show];
     self.view.userInteractionEnabled = YES;
 }

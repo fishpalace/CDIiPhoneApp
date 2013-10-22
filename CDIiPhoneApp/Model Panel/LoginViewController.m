@@ -178,7 +178,7 @@ static LoginViewController *sharedLoginViewController;
             }
         } else {
             //TODO Report Error
-            [self loginFailed];
+            [[RPActivityIndictor sharedRPActivityIndictor]excuteFailedinNotOverTimeStiution];
         }
     };
     
@@ -221,7 +221,7 @@ static LoginViewController *sharedLoginViewController;
     UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedStringFromTable(@"Login Failed", @"InfoPlist", nil)
                                                         message:nil
                                                        delegate:self
-                                              cancelButtonTitle:@"Close" otherButtonTitles:nil];
+                                              cancelButtonTitle:NSLocalizedStringFromTable(@"Close", @"InfoPlist", nil) otherButtonTitles:nil];
     [alertView show];
     self.view.userInteractionEnabled = YES;
     self.view.superview.userInteractionEnabled = YES;

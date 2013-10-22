@@ -195,8 +195,15 @@
     PeopleInfoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleInfoViewController"];
     vc.user = self.fetchedResultsController.fetchedObjects[indexPath.row];
     vc.index = indexPath.row;
+    NSString * userRealName;
+    if (kIsChinese) {
+        userRealName = vc.user.realName;
+    }
+    else {
+        userRealName = vc.user.realNameEn;
+    }
     [ModelPanelViewController displayModelPanelWithViewController:vc
-                                                    withTitleName:vc.user.name
+                                                    withTitleName:userRealName
                                                functionButtonName:@"Write"
                                                          imageURL:vc.user.avatarSmallURL
                                                              type:ModelPanelTypePeopleInfo

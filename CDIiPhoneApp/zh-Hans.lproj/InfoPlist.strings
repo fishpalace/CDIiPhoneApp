@@ -16,6 +16,7 @@
 "Undo Reservation" = "取消预约";
 "Undo Reservation Failed" = "取消预约失败";
 "Setup Info Failed" = "设置信息失败";
+"Logout" = "登出";
 "Logout Failed" = "登出失败";
 "Login Failed" = "登录失败";
 "Close" = "关闭";
@@ -23,3 +24,6 @@
 "Time Chosen Unavailable" = "选择的时间不可用";
 "Reserve Failed" = "预约失败";
 "Only One Reservation" = "一人每天只能预约一项活动";
+"Event added to calendar." = "活动添加到日历。";
+"Event removed to calendar." = "活动从日历删除。";
+"OK" = "确定";

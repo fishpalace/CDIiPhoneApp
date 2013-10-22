@@ -3676,8 +3676,8 @@
                                     <constraint firstAttribute="width" constant="301" id="ad3-9L-wYP"/>
                                     <constraint firstAttribute="height" constant="50" id="fGn-T4-1Lm"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
-                                <state key="normal" title="Next" backgroundImage="rp_button_bottom.png">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="下一步" backgroundImage="rp_button_bottom.png">
                                     <color key="titleColor" red="0.0" green="0.58823529409999997" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -5554,7 +5554,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <constraint firstAttribute="height" constant="50" id="YB3-gm-e1K"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
-                                        <state key="normal" title="Logout" backgroundImage="rp_button_bottom.png">
+                                        <state key="normal" title="登出" backgroundImage="rp_button_bottom.png">
                                             <color key="titleColor" red="0.91764705879999997" green="0.32156862749999998" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -6255,7 +6255,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T3Y-GA-020" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1284" y="-1164"/>
+            <point key="canvasLocation" x="1282" y="-828"/>
         </scene>
     </scenes>
     <resources>
@@ -6324,14 +6324,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Dge-u6-d6f"/>
-        <segue reference="JCw-Cp-ljk"/>
-        <segue reference="Ry5-cC-P8A"/>
-        <segue reference="Rn9-Jj-U8D"/>
-        <segue reference="8C6-30-9Bx"/>
         <segue reference="rlZ-ff-eJE"/>
-        <segue reference="17S-8D-Tob"/>
+        <segue reference="Ry5-cC-P8A"/>
         <segue reference="CWP-R6-Zdf"/>
         <segue reference="2xN-vJ-HIb"/>
+        <segue reference="BzR-H2-so3"/>
+        <segue reference="17S-8D-Tob"/>
+        <segue reference="HH4-MM-nLv"/>
+        <segue reference="JCw-Cp-ljk"/>
+        <segue reference="Dge-u6-d6f"/>
     </inferredMetricsTieBreakers>
 </document>

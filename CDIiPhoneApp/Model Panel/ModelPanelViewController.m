@@ -45,9 +45,9 @@ static ModelPanelViewController *sharedModelPanelViewController;
 
 @implementation ModelPanelViewController
 {
-    float modelViewMovingFirstPosition;
-    float modelViewMovingFinalPosition;
-    NSInteger timesHasExcuted;
+//    float modelViewMovingFirstPosition;
+//    float modelViewMovingFinalPosition;
+//    NSInteger timesHasExcuted;
 }
 
 + (ModelPanelViewController *)sharedModelPanelViewController
@@ -126,20 +126,20 @@ static ModelPanelViewController *sharedModelPanelViewController;
     [self.contentViewController didMoveToParentViewController:self];
     [self.view flashIn];
     
-//    self.bottomSpaceConstraint.constant = 0;
-//    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-//        [self.panelView layoutIfNeeded];
-//    } completion:nil];
-    
+    self.bottomSpaceConstraint.constant = 0;
+    [UIView animateWithDuration:0.3 delay:0 options:7 << 16 animations:^{
+        [self.panelView layoutIfNeeded];
+    } completion:nil];
+
 //    [UIView animateWithDuration:0.1 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
 //        self.bottomSpaceConstraint.constant = self.bottomSpaceConstraint.constant - 20.0;
 //        [self.panelView layoutIfNeeded];
 //    } completion:nil];
     
-    timesHasExcuted = 0;
-    modelViewMovingFirstPosition = -self.panelView.frame.size.height;
-    modelViewMovingFinalPosition = self.panelView.frame.size.height;
-    [NSTimer scheduledTimerWithTimeInterval:0.006 target:self selector:@selector(displayModelViewTimer:) userInfo:nil repeats:YES];
+//    timesHasExcuted = 0;
+//    modelViewMovingFirstPosition = -self.panelView.frame.size.height;
+//    modelViewMovingFinalPosition = self.panelView.frame.size.height;
+//    [NSTimer scheduledTimerWithTimeInterval:0.006 target:self selector:@selector(displayModelViewTimer:) userInfo:nil repeats:YES];
     
     self.titleName = titleName;
     self.functionButtonName = functionButtonName;
@@ -150,47 +150,47 @@ static ModelPanelViewController *sharedModelPanelViewController;
     [self updateTitleSection];
 }
 
-- (void)movingModelViewMaxDistance
-{
-    self.bottomSpaceConstraint.constant = [self getEaseOutPositionWithFirstPosition:modelViewMovingFirstPosition
-                                                                      finalPosition:modelViewMovingFinalPosition
-                                                                    timesHasExcuted:timesHasExcuted
-                                                                     allExcutedTime:80];
-//    NSLog(@"constant position is %f",self.bottomSpaceConstraint.constant);
-    [UIView animateWithDuration:0.0 animations:^{
-        [self.panelView layoutIfNeeded];
-    }];
-}
-
-- (float)getEaseOutPositionWithFirstPosition:(float)firstPosition
-                              finalPosition:(float)finalPosition
-                            timesHasExcuted:(float)times
-                             allExcutedTime:(float)allTimes
-{
-    times = times / allTimes - 1;
-    return -finalPosition * (times * times * times * times - 1) + firstPosition;
-}
-
-- (void)displayModelViewTimer:(NSTimer *)timer
-{
-    ++ timesHasExcuted;
-    [self movingModelViewMaxDistance];
-    if (fabsf(self.bottomSpaceConstraint.constant - 0.0) < 0.1) {
-        [timer invalidate];
-        timesHasExcuted = 0;
-    }
-}
-
-- (void)hideModelViewTimer:(NSTimer *)timer
-{
-    ++ timesHasExcuted;
-    [self movingModelViewMaxDistance];
-    if (fabsf(self.bottomSpaceConstraint.constant - modelViewMovingFinalPosition) < 0.1) {
-        [self removeContentViewController];
-        timesHasExcuted = 0;
-        [timer invalidate];
-    }
-}
+//- (void)movingModelViewMaxDistance
+//{
+//    self.bottomSpaceConstraint.constant = [self getEaseOutPositionWithFirstPosition:modelViewMovingFirstPosition
+//                                                                      finalPosition:modelViewMovingFinalPosition
+//                                                                    timesHasExcuted:timesHasExcuted
+//                                                                     allExcutedTime:80];
+////    NSLog(@"constant position is %f",self.bottomSpaceConstraint.constant);
+//    [UIView animateWithDuration:0.0 animations:^{
+//        [self.panelView layoutIfNeeded];
+//    }];
+//}
+//
+//- (float)getEaseOutPositionWithFirstPosition:(float)firstPosition
+//                              finalPosition:(float)finalPosition
+//                            timesHasExcuted:(float)times
+//                             allExcutedTime:(float)allTimes
+//{
+//    times = times / allTimes - 1;
+//    return -finalPosition * (times * times * times * times - 1) + firstPosition;
+//}
+//
+//- (void)displayModelViewTimer:(NSTimer *)timer
+//{
+//    ++ timesHasExcuted;
+//    [self movingModelViewMaxDistance];
+//    if (fabsf(self.bottomSpaceConstraint.constant - 0.0) < 0.1) {
+//        [timer invalidate];
+//        timesHasExcuted = 0;
+//    }
+//}
+//
+//- (void)hideModelViewTimer:(NSTimer *)timer
+//{
+//    ++ timesHasExcuted;
+//    [self movingModelViewMaxDistance];
+//    if (fabsf(self.bottomSpaceConstraint.constant - modelViewMovingFinalPosition) < 0.1) {
+//        [self removeContentViewController];
+//        timesHasExcuted = 0;
+//        [timer invalidate];
+//    }
+//}
 
 - (void)updateTitleSection
 {
@@ -275,21 +275,21 @@ static ModelPanelViewController *sharedModelPanelViewController;
         [_bgGloomView setAlpha:0.0];
     }completion:nil];
     
-//    self.bottomSpaceConstraint.constant = -self.panelView.frame.size.height;
+    self.bottomSpaceConstraint.constant = -self.panelView.frame.size.height;
     
-    timesHasExcuted = 0;
-    modelViewMovingFirstPosition = self.bottomSpaceConstraint.constant;
-    modelViewMovingFinalPosition = -self.panelView.frame.size.height;
-    [NSTimer scheduledTimerWithTimeInterval:0.006 target:self selector:@selector(hideModelViewTimer:) userInfo:nil repeats:YES];
+//    timesHasExcuted = 0;
+//    modelViewMovingFirstPosition = self.bottomSpaceConstraint.constant;
+//    modelViewMovingFinalPosition = -self.panelView.frame.size.height;
+//    [NSTimer scheduledTimerWithTimeInterval:0.006 target:self selector:@selector(hideModelViewTimer:) userInfo:nil repeats:YES];
     
-//    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-//        [self.panelView layoutIfNeeded];
-//    } completion:^(BOOL finished) {
-//        [self removeContentViewController];
-//        if (completion) {
-//            completion();
-//        }
-//    }];
+    [UIView animateWithDuration:duration delay:0 options:7 << 16 animations:^{
+        [self.panelView layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        [self removeContentViewController];
+        if (completion) {
+            completion();
+        }
+    }];
     
     [self.modelBGImageView fadeOutWithCompletion:^{
         [self.view flashOut];

@@ -211,8 +211,8 @@
     UIActionSheet* mySheet = [[UIActionSheet alloc]
                               initWithTitle:logoutName
                               delegate:self
-                              cancelButtonTitle:@"Cancel"
-                              destructiveButtonTitle:@"Logout"
+                              cancelButtonTitle:NSLocalizedStringFromTable(@"Cancel", @"InfoPlist", nil)
+                              destructiveButtonTitle:NSLocalizedStringFromTable(@"Logout", @"InfoPlist", nil)
                               otherButtonTitles:nil];
     mySheet.tag = LogoutActionSheet;
     [mySheet showInView:self.view];

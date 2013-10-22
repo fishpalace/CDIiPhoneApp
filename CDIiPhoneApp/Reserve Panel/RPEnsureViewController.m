@@ -298,9 +298,9 @@
 {
     [self.calendarButton setSelected:YES];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:eventDAO.name
-                                                        message:@"Event added to calendar."
+                                                        message:NSLocalizedStringFromTable(@"Event added to calendar.", @"InfoPlist", nil)
                                                        delegate:nil
-                                              cancelButtonTitle:@"OK"
+                                              cancelButtonTitle:NSLocalizedStringFromTable(@"OK", @"InfoPlist", nil)
                                               otherButtonTitles:nil];
     [alertView show];
 }
@@ -309,9 +309,9 @@
 {
     [self.calendarButton setSelected:NO];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:eventDAO.name
-                                                        message:@"Event removed to calendar."
+                                                        message:NSLocalizedStringFromTable(@"Event removed to calendar.", @"InfoPlist", nil)
                                                        delegate:nil
-                                              cancelButtonTitle:@"OK"
+                                              cancelButtonTitle:NSLocalizedStringFromTable(@"OK", @"InfoPlist", nil)
                                               otherButtonTitles:nil];
     [alertView show];
 }

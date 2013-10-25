@@ -422,6 +422,7 @@
         _dragIndicatorView = [nibs objectAtIndex:0];
         _dragIndicatorView.isReversed = YES;
     }
+    [_dragIndicatorView hideMenuAndRefreshButtonLabel];
     return _dragIndicatorView;
 }
 

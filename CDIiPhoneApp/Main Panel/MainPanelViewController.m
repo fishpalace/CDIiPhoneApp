@@ -422,8 +422,8 @@
         _dragIndicatorView.isReversed = NO;
         [_dragIndicatorView addMenuAndRefresheLabel];
         [_dragIndicatorView drawLineOnTableCellView];
-        [_dragIndicatorView showMenuAndRefreshButton];
     }
+    [_dragIndicatorView showMenuAndRefreshButtonLabel];
     return _dragIndicatorView;
 }
 

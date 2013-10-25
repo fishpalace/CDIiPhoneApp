@@ -202,13 +202,13 @@
     
     NSString *weekdayString = nil;
     switch ([components weekday]) {
-        case 1: weekdayString = @"Sunday"; break;
-        case 2: weekdayString = @"Monday"; break;
-        case 3: weekdayString = @"Tuesday"; break;
-        case 4: weekdayString = @"Wednesday"; break;
-        case 5: weekdayString = @"Thursday"; break;
-        case 6: weekdayString = @"Friday"; break;
-        case 7: weekdayString = @"Saturday"; break;
+        case 1: weekdayString = NSLocalizedStringFromTable(@"Sunday", @"InfoPlist", nil); break;
+        case 2: weekdayString = NSLocalizedStringFromTable(@"Monday", @"InfoPlist", nil); break;
+        case 3: weekdayString = NSLocalizedStringFromTable(@"Tuesday", @"InfoPlist", nil); break;
+        case 4: weekdayString = NSLocalizedStringFromTable(@"Wednesday", @"InfoPlist", nil); break;
+        case 5: weekdayString = NSLocalizedStringFromTable(@"Thursday", @"InfoPlist", nil); break;
+        case 6: weekdayString = NSLocalizedStringFromTable(@"Friday", @"InfoPlist", nil); break;
+        case 7: weekdayString = NSLocalizedStringFromTable(@"Saturday", @"InfoPlist", nil); break;
         default:
             break;
     }

@@ -49,6 +49,8 @@
   if (self) {
       _menuButton.hidden = YES;
       _refreshButton.hidden = YES;
+      _menuLabel.hidden = YES;
+      _refreshLabel.hidden = YES;
   }
   return self;
 }
@@ -78,10 +80,20 @@
 //                                       , [self heightOfString:_refreshLabel.text withFont:_refreshLabel.font])];
 }
 
-- (void)showMenuAndRefreshButton
+- (void)hideMenuAndRefreshButtonLabel
+{
+    _menuButton.hidden = YES;
+    _refreshButton.hidden = YES;
+    _menuLabel.hidden = YES;
+    _refreshLabel.hidden = YES;
+}
+
+- (void)showMenuAndRefreshButtonLabel
 {
     _menuButton.hidden = NO;
     _refreshButton.hidden = NO;
+    _refreshLabel.hidden = NO;
+    _menuLabel.hidden = NO;
 }
 
 - (void)configureScrollView:(UIScrollView *)scrollView

@@ -34,7 +34,8 @@
 
 - (void)addMenuAndRefresheLabel;
 - (void)drawLineOnTableCellView;
-- (void)showMenuAndRefreshButton;
+- (void)showMenuAndRefreshButtonLabel;
+- (void)hideMenuAndRefreshButtonLabel;
 - (void)configureScrollView:(UIScrollView *)scrollView;
 - (void)resetPositions;
 @end

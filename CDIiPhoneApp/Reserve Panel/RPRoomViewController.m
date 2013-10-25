@@ -55,11 +55,26 @@
     NSInteger eventNumber = [self eventNumberForRoom:roomID];
     NSString *eventNumberString = @"";
     if (eventNumber == 0) {
-        eventNumberString = [NSString stringWithFormat:@"No Event"];
+        if (kIsChinese) {
+            eventNumberString = [NSString stringWithFormat:@"无活动"];
+        }
+        else {
+            eventNumberString = [NSString stringWithFormat:@"No Event"];
+        }
     } else if (eventNumber == 1) {
-        eventNumberString = [NSString stringWithFormat:@"%d Event", [self eventNumberForRoom:roomID]];
+        if (kIsChinese) {
+                    eventNumberString = [NSString stringWithFormat:@"%d活动", [self eventNumberForRoom:roomID]];
+        }
+        else {
+                    eventNumberString = [NSString stringWithFormat:@"%d Event", [self eventNumberForRoom:roomID]];
+        }
     } else if (eventNumber > 1) {
+        if (kIsChinese) {
+                    eventNumberString = [NSString stringWithFormat:@"%d活动", [self eventNumberForRoom:roomID]];
+        }
+        else {
         eventNumberString = [NSString stringWithFormat:@"%d Events", [self eventNumberForRoom:roomID]];
+        }
     }
     [cell.eventCountLabel setText:eventNumberString];
     [cell.eventCountLabel setTextColor:kColorRPEventCountLabel];

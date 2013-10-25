@@ -1923,7 +1923,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ka4-my-lhb">
+                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无活动" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ka4-my-lhb">
                                             <rect key="frame" x="0.0" y="30" width="320" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1961,7 +1961,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PSA HMI Demo Day" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" preferredMaxLayoutWidth="205" translatesAutoresizingMaskIntoConstraints="NO" id="LbC-4t-7c8">
-                                            <rect key="frame" x="60" y="9" width="205" height="27"/>
+                                            <rect key="frame" x="60" y="9" width="205" height="24"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                             <color key="textColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1969,9 +1969,9 @@
                                             <size key="shadowOffset" width="0.0" height="1"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="CDI PSA Team" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="GGu-7o-eBs">
-                                            <rect key="frame" x="60" y="38" width="205" height="12"/>
+                                            <rect key="frame" x="60" y="35" width="205" height="15"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="12" id="vsn-pH-8hf"/>
+                                                <constraint firstAttribute="height" constant="15" id="vsn-pH-8hf"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.58823529409999997" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -5301,7 +5301,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="efB-Bq-4iO">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efB-Bq-4iO">
                                         <rect key="frame" x="0.0" y="42" width="320" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.74901960779999999" green="0.74901960779999999" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -5323,7 +5323,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <action selector="didClickBackButton:" destination="KQv-vh-uwy" eventType="touchUpInside" id="RuG-zy-1wa"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="联络信息" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4de-0Z-IQT">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="联络信息" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4de-0Z-IQT">
                                         <rect key="frame" x="110" y="11" width="100" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
@@ -6261,28 +6261,90 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="button_back.png" width="44" height="44"/>
+        <image name="button_back.png" width="44" height="44"/>
+        <image name="button_back.png" width="44" height="44"/>
+        <image name="button_forward.png" width="44" height="44"/>
+        <image name="button_forward.png" width="44" height="44"/>
         <image name="button_forward.png" width="44" height="44"/>
         <image name="button_info.png" width="44" height="44"/>
+        <image name="button_info.png" width="44" height="44"/>
+        <image name="button_photo.png" width="141" height="141"/>
         <image name="button_photo.png" width="141" height="141"/>
         <image name="button_segmentcontrol_bg.png" width="320" height="39"/>
         <image name="button_segmentcontrol_hl.png" width="160" height="38"/>
+        <image name="button_segmentcontrol_hl.png" width="160" height="38"/>
+        <image name="button_segmentcontrol_hl.png" width="160" height="38"/>
+        <image name="button_segmentcontrol_hl.png" width="160" height="38"/>
+        <image name="button_select_dark.png" width="301" height="51"/>
+        <image name="button_select_dark.png" width="301" height="51"/>
         <image name="button_select_dark.png" width="301" height="51"/>
         <image name="button_work_more.png" width="22" height="22"/>
         <image name="button_work_play.png" width="22" height="22"/>
         <image name="devices_detail_reserve_preview.png" width="320" height="568"/>
         <image name="icon_approved.png" width="22" height="22"/>
         <image name="icon_available.png" width="22" height="22"/>
+        <image name="icon_available.png" width="22" height="22"/>
         <image name="icon_unavailable.png" width="22" height="22"/>
+        <image name="icon_unavailable.png" width="22" height="22"/>
+        <image name="icon_unavailable.png" width="22" height="22"/>
+        <image name="icon_unavailable.png" width="22" height="22"/>
+        <image name="icon_unavailable.png" width="22" height="22"/>
+        <image name="icon_unavailable.png" width="22" height="22"/>
+        <image name="icon_unavailable.png" width="22" height="22"/>
+        <image name="logo_icon.png" width="110" height="110"/>
         <image name="logo_icon.png" width="110" height="110"/>
         <image name="menu_avatar_bg.png" width="38" height="38"/>
         <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_navi_back.png" width="11" height="18"/>
+        <image name="menu_button_schedule.png" width="20" height="20"/>
         <image name="menu_button_schedule.png" width="20" height="20"/>
         <image name="menu_button_setting.png" width="21" height="21"/>
         <image name="menu_icon_cal.png" width="23" height="23"/>
         <image name="menu_login_bg.png" width="320" height="64"/>
         <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
+        <image name="menu_login_textfield_bg.png" width="301" height="51"/>
         <image name="menu_schedule_indicator.png" width="44" height="44"/>
         <image name="menu_status_green.png" width="58" height="58"/>
+        <image name="menu_status_green.png" width="58" height="58"/>
+        <image name="menu_status_green.png" width="58" height="58"/>
+        <image name="menu_status_green.png" width="58" height="58"/>
+        <image name="menu_status_green.png" width="58" height="58"/>
+        <image name="model_button_close.png" width="25" height="25"/>
         <image name="model_button_close.png" width="25" height="25"/>
         <image name="model_button_schedule.png" width="60" height="50"/>
         <image name="mp_selection_activity2.png" width="170" height="170"/>
@@ -6300,23 +6362,49 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="profile_launch_3.png" width="320" height="568"/>
         <image name="rp_accesscode_bg.png" width="321" height="71"/>
         <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
+        <image name="rp_button_bottom.png" width="301" height="51"/>
         <image name="rp_ensure_icon_key.png" width="22" height="22"/>
         <image name="rp_textfield_bg.png" width="301" height="51"/>
+        <image name="rp_textfield_bg.png" width="301" height="51"/>
+        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
+        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
+        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
+        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
+        <image name="rp_textfield_error_bg.png" width="300" height="50"/>
         <image name="rp_textfield_error_bg.png" width="300" height="50"/>
         <image name="rp_time_button_center.png" width="104" height="104"/>
         <image name="settings.png" width="320" height="568"/>
         <image name="tableview_banner.png" width="320" height="30"/>
+        <image name="tableview_banner.png" width="320" height="30"/>
+        <image name="tableview_icon_calendar.png" width="19" height="19"/>
+        <image name="tableview_icon_calendar.png" width="19" height="19"/>
         <image name="tableview_icon_calendar.png" width="19" height="19"/>
         <image name="tableview_icon_calendar_hl.png" width="18" height="18"/>
+        <image name="tableview_icon_calendar_hl.png" width="18" height="18"/>
+        <image name="tableview_icon_calendar_hl.png" width="18" height="18"/>
+        <image name="tableview_now_indicator.png" width="44" height="22"/>
         <image name="tableview_now_indicator.png" width="44" height="22"/>
         <image name="test_avatar_3.png" width="140" height="140"/>
+        <image name="textfield_config_bg.png" width="320" height="45"/>
+        <image name="textfield_config_bg.png" width="320" height="45"/>
         <image name="textfield_config_bg.png" width="320" height="45"/>
         <image name="time_button_graph.png" width="25" height="25"/>
         <image name="time_center_cover.png" width="104" height="104"/>
         <image name="time_display_bg.png" width="277" height="95"/>
         <image name="time_panel_bg.png" width="232" height="232"/>
+        <image name="time_panel_bg.png" width="232" height="232"/>
+        <image name="time_panel_cover.png" width="230" height="136"/>
         <image name="time_panel_cover.png" width="230" height="136"/>
         <image name="time_schedule_list.png" width="21" height="15"/>
+        <image name="time_schedule_list_hl.png" width="21" height="15"/>
         <image name="time_schedule_list_hl.png" width="21" height="15"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -39,7 +39,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZl-4e-gtJ">
                                 <rect key="frame" x="0.0" y="-568" width="320" height="1136"/>
                                 <subviews>
-                                    <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="158" sectionHeaderHeight="42" sectionFooterHeight="42" translatesAutoresizingMaskIntoConstraints="NO" id="DZN-xk-0Gm">
+                                    <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="157" sectionHeaderHeight="40" sectionFooterHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="DZN-xk-0Gm">
                                         <rect key="frame" x="0.0" y="568" width="320" height="568"/>
                                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -47,7 +47,7 @@
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MPTableViewCell" rowHeight="158" id="3j4-3y-Hod" customClass="MPTableViewCell">
-                                                <rect key="frame" x="0.0" y="42" width="320" height="158"/>
+                                                <rect key="frame" x="0.0" y="40" width="320" height="158"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3j4-3y-Hod" id="cr0-D6-qAF">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="158"/>
@@ -6315,13 +6315,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="8C6-30-9Bx"/>
-        <segue reference="a5R-k4-SgG"/>
-        <segue reference="rlZ-ff-eJE"/>
-        <segue reference="HH4-MM-nLv"/>
-        <segue reference="GAp-70-bp6"/>
         <segue reference="Ry5-cC-P8A"/>
-        <segue reference="2xN-vJ-HIb"/>
-        <segue reference="xn1-if-WU2"/>
+        <segue reference="GAp-70-bp6"/>
+        <segue reference="HH4-MM-nLv"/>
+        <segue reference="FPV-De-gKY"/>
+        <segue reference="Dge-u6-d6f"/>
         <segue reference="dwd-rp-T0V"/>
+        <segue reference="xn1-if-WU2"/>
+        <segue reference="nOk-xQ-Tk6"/>
     </inferredMetricsTieBreakers>
 </document>

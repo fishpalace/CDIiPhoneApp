@@ -27,3 +27,8 @@
 "Event added to calendar." = "Event added to calendar.";
 "Event removed to calendar." = "Event removed to calendar.";
 "OK" = "OK";
+"DB_OP_Error" = "Server inside Error";
+"Session_Do_Not_Exist" = "Please Login again";
+"UserName or Password Error" = "Wrong userName or Password";
+"Server Error" = "Server Error";
+"Connect Server Failed" = "Connect Server Failed";

@@ -10,7 +10,7 @@
 
 @interface ModelPassGestureViewController : UIViewController
 
-+ (void)displayModelPanelWithViewController:(UIViewController *)vc;
++ (void)displayModelPanel;
 
 + (NSInteger)numberOfPasscodeGesture;
 + (void)setNumberOfPasscodeGesture:(NSInteger)number;

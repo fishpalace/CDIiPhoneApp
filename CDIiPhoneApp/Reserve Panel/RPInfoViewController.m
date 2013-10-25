@@ -68,10 +68,10 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    BOOL result = NO;
+//    BOOL result = NO;
     if ([textField isEqual:self.eventTitleTextfield]) {
         [self.eventRelatedinfoTextfield becomeFirstResponder];
-        result = YES;
+//        result = YES;
     } else if ([textField isEqual:self.eventRelatedinfoTextfield]) {
         if (self.eventTitleTextfield.text.length > 0) {
             self.view.userInteractionEnabled = NO;

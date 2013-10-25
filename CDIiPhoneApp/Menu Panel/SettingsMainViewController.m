@@ -82,7 +82,7 @@
     self.configView.userInteractionEnabled = NO;
     self.textfieldBottomSpaceConstraint.constant = 0;
     self.configView.alpha = 0.0;
-    if (kIsiPhone5) {
+    if (kIsChinese) {
         [_currentUserNameLabel setText:self.currentUser.realName];
     }
     else {
@@ -151,17 +151,6 @@
     self.scrollView.contentSize = CGSizeMake(320, self.scrollViewContentHeight);
 }
 
-- (IBAction)didClickDoneButton:(UIButton *)sender
-{
-    self.view.userInteractionEnabled = NO;
-    RPActivityIndictor * activityIndiactor = [RPActivityIndictor sharedRPActivityIndictor];
-    activityIndiactor.delegate = self;
-    [activityIndiactor startWaitingAnimationInView:self.view];
-    [activityIndiactor resetBasicData];
-    [activityIndiactor setWaitingTimer];
-    [self performSelector:@selector(excuteAfterClickDoneButton:) withObject:nil afterDelay:1.0];
-}
-
 - (void)excuteAfterClickDoneButton:(void (^)(void))completion
 {
     self.currentUser.email = self.emailTextfield.text;
@@ -185,24 +174,24 @@
             if (completion) {
                 completion();
             }
-//            [self.navigationController popViewControllerAnimated:YES];
         }
         else {
-//            [self setUpInfoFailed];
             [[RPActivityIndictor sharedRPActivityIndictor]excuteFailedinNotOverTimeStiution];
         }
     };
     
-    [client updateUserWithUser:self.currentUser password:self.currentUser.password
+    [client updateUserWithUser:self.currentUser
+                      password:self.currentUser.password
                     completion:handleData];
 }
 
 - (IBAction)didClickLogoutButton:(UIButton *)sender
 {
     self.view.userInteractionEnabled = NO;
+    isLogoutButtonPressed = YES;
     CDIUser *currentUser = [CDIUser currentUserInContext:self.managedObjectContext];
     NSString * logoutName;
-    if (kIsiPhone5) {
+    if (kIsChinese) {
         logoutName = currentUser.realName;
     }
     else {
@@ -232,7 +221,6 @@
             [self.navigationController popViewControllerAnimated:YES];
         }
         else {
-//            [self logoutFailed];
             [[RPActivityIndictor sharedRPActivityIndictor]excuteFailedinNotOverTimeStiution];
         }
     };
@@ -241,15 +229,7 @@
 
 - (IBAction)didClickBackButton:(UIButton *)sender
 {
-//    void(^completion)(void) = ^(void){
         [self.navigationController popViewControllerAnimated:YES];
-//    };
-//    self.view.userInteractionEnabled = NO;
-//    RPActivityIndictor * activityIndiactor = [RPActivityIndictor sharedRPActivityIndictor];
-//    activityIndiactor.delegate = self;
-//    [activityIndiactor startWaitingAnimationInView:self.view];
-//    [activityIndiactor setWaitingTimer];
-//    [self performSelector:@selector(excuteAfterClickDoneButton:) withObject:completion afterDelay:1.0];
 }
 
 - (IBAction)didCoverButton:(UIButton *)sender
@@ -338,8 +318,6 @@
     _avatorImageView.image = [self.image imageScaledToFitSize:CGSizeMake(141, 140)];
     [_avatorImageView.layer setMask:maskView.layer];
     
-//    [self.changePhotoButton setImage:self.image forState:UIControlStateNormal];
-//    [self.changePhotoButton setImage:self.image forState:UIControlStateHighlighted];
     
     CDINetClient *client = [CDINetClient client];
     void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
@@ -349,6 +327,7 @@
                 self.currentUser.avatarSmallURL = url;
                 NSLog(@"self current user avatorSmallUlr is %@",self.currentUser.avatarSmallURL);
                 [NSNotificationCenter postDidChangeCurrentUserNotification];
+                [self performSelector:@selector(excuteAfterClickPickImageButton:) withObject:nil afterDelay:1.0];
             }
         }
         else {
@@ -364,7 +343,6 @@
         activityIndiactor.delegate = self;
         [activityIndiactor startWaitingAnimationInView:self.view];
         [activityIndiactor setWaitingTimer];
-        [self performSelector:@selector(excuteAfterClickPickImageButton:) withObject:nil afterDelay:1.0];
     }];
 }
 

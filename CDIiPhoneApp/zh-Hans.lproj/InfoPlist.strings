@@ -27,3 +27,8 @@
 "Event added to calendar." = "活动添加到日历。";
 "Event removed to calendar." = "活动从日历删除。";
 "OK" = "确定";
+"DB_OP_Error" = "服务器内部错误";
+"Session_Do_Not_Exist" = "请重新登录";
+"UserName or Password Error" = "用户名或密码错误";
+"Server Error" = "服务器错误";
+"Connect Server Failed" = "网络连接错误";

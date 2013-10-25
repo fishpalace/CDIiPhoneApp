@@ -65,16 +65,14 @@
     [NSNotificationCenter registerShouldBounceUpNotificationWithSelector:@selector(bounceUp) target:self];
     [NSNotificationCenter registerDidFetchNewDataNotificationWithSelector:@selector(refresh) target:self];
     self.isMainPanel = YES;
-//    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(test) userInfo:nil repeats:YES];
+}
 
-}
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    isScrolling = YES;
-    [self resetSectionHeaderHeight];
-//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
-//     withRowAnimation:UITableViewRowAnimationNone];
-}
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+//{
+//    isScrolling = YES;
+//    [self resetSectionHeaderHeight];
+//}
+
 //
 //- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 //{
@@ -84,34 +82,22 @@
 ////                  withRowAnimation:UITableViewRowAnimationNone];
 //}
 //
-- (void)resetSectionHeaderHeight
-{
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-}
-
-- (void)test
-{
-    NSLog(@"test");
-
-}
-
+//- (void)resetSectionHeaderHeight
+//{
+//    [self.tableView beginUpdates];
+//    [self.tableView endUpdates];
+//}
 
 #pragma mark - View Setup Methods
 - (void)configureBasicViews
 {
-    //  UIImage *backgroundImage = [[UIImage imageNamed:@"mp_bg"] resizableImageWithCapInsets:UIEdgeInsetsZero];
-    //  [self.backgroundImageView setImage:backgroundImage];
-    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView setTableHeaderView:self.dragIndicatorView];
-//    [self.dragIndicatorView setFrame:CGRectMake(0.0, 0.0, 320.0, 38.0)];
     
     self.dragIndicatorView.stretchLimitHeight = 100;
     self.dragIndicatorView.delegate = self;
     [self.dragIndicatorView configureScrollView:self.tableView];
-//    [self.view addSubview:self.dragIndicatorView];
     
     [self.menuPanelViewController setUp];
 }
@@ -152,11 +138,11 @@
 //            return 20;
 //        }
 //        else {
-//            return 42;
+//            return 40;
 //        }
 //    }
 //    else
-        return 42;
+        return 40;
 }
 
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -179,7 +165,6 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSInteger sectionTitleHeight;
     NSString * sectionTitleString;
     NSInteger sectionTitle_Y_point;
     switch (section) {
@@ -196,24 +181,23 @@
             sectionTitle_Y_point = 20.0;
             break;
         default:
-            sectionTitleHeight = 0.0;
             sectionTitle_Y_point = 0.0;
             sectionTitleString = NSLocalizedStringFromTable(@"Events", @"InfoPlist", nil);
             break;
     }
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 42.0)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 40.0)];
     
     UILabel *sectionTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, sectionTitle_Y_point, tableView.frame.size.width, 14.0)];
     [sectionTitleLabel setText:sectionTitleString];
-//    [sectionTitleLabel setBackgroundColor:[UIColor redColor]];
     [sectionTitleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
     [sectionTitleLabel setTextColor:[UIColor colorWithRed:144.0 / 255.0 green:144.0 / 255.0 blue:144.0 / 255.0 alpha:1.0]];
+    [sectionTitleLabel setBackgroundColor:[UIColor colorWithRed:234.0 /255.0 green:234.0 /255.0 blue:234.0 /255.0 alpha:1.0]];
     [view addSubview:sectionTitleLabel];
     
     [view setBackgroundColor:[UIColor colorWithRed:234.0 /255.0 green:234.0 /255.0 blue:234.0 /255.0 alpha:1.0]];
     
     UIImageView * menuLine = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"menu_line.png"]];
-    menuLine.frame = CGRectMake(0.0, 41.0, menuLine.bounds.size.width, menuLine.bounds.size.height);
+    menuLine.frame = CGRectMake(0.0, 39.0, menuLine.bounds.size.width, menuLine.bounds.size.height);
     [view addSubview:menuLine];
     
     return view;
@@ -235,7 +219,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 158;
+    return 157;
 }
 
 #pragma mark - MPCell Table View Delegate

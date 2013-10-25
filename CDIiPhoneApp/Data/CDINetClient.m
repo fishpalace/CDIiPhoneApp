@@ -405,15 +405,15 @@ static CDINetClient *sharedClient;
     NSString *errorMessage = nil;
     
     if ([errorCode isEqualToString:@"DB_OP_Error"]) {
-        errorMessage = @"服务器内部错误";
+        errorMessage = NSLocalizedStringFromTable(@"DB_OP_Error", @"InfoPlist", nil);
     } else if ([errorCode isEqualToString:@"Session_Do_Not_Exist"]) {
-        errorMessage = @"请重新登录";
+        errorMessage = NSLocalizedStringFromTable(@"Session_Do_Not_Exist", @"InfoPlist", nil);
     } else if ([errorCode isEqualToString:@"UserName_Do_Not_Exist"]) {
-        errorMessage = @"用户名或密码错误";
+        errorMessage = NSLocalizedStringFromTable(@"UserName or Password Error", @"InfoPlist", nil);
     } else if ([errorCode isEqualToString:@"Password_Not_Correct"]) {
-        errorMessage = @"用户名或密码错误";
+        errorMessage = NSLocalizedStringFromTable(@"UserName or Password Error", @"InfoPlist", nil);
     } else {
-        errorMessage = @"服务器错误";
+        errorMessage = NSLocalizedStringFromTable(@"Server Error",@"InfoPlist", nil);
     }
     
     return errorMessage;

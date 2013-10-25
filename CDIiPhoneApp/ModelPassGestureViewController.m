@@ -76,9 +76,9 @@ static ModelPassGestureViewController *sharedPassGestureViewController;
     return self;
 }
 
-+ (void)displayModelPanelWithViewController:(UIViewController *)vc
++ (void)displayModelPanel
 {
-    [[ModelPassGestureViewController sharedPassGestureViewController]displayModelPanelWithViewController:vc];
+    [[ModelPassGestureViewController sharedPassGestureViewController]displayModelPanel];
 }
 
 - (void)viewDidLoad
@@ -93,7 +93,7 @@ static ModelPassGestureViewController *sharedPassGestureViewController;
 //                                       [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
 }
 
-- (void)displayModelPanelWithViewController:(UIViewController *)vc
+- (void)displayModelPanel
 {
     [self.view setFrame:CGRectMake(0.0,0.0,
                                    [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];

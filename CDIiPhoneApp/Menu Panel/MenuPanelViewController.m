@@ -271,14 +271,14 @@
             segueID = @"MenuDeviceSegue";
         } else if (indexPath.row == 3 && [ModelPassGestureViewController numberOfPasscodeGesture] > 0) {
             //MY PASSCODE
-            [ModelPassGestureViewController displayModelPanelWithViewController:self];
+            [ModelPassGestureViewController displayModelPanel];
         }
     }else if (indexPath.section == 0 && !self.doesCurrentUserExist){
         if (indexPath.row == 0) {
             segueID = @"MenuScheduleSegue";
         } else if (indexPath.row == 1 && [ModelPassGestureViewController numberOfPasscodeGesture] > 0) {
             //MY PASSCODE
-            [ModelPassGestureViewController displayModelPanelWithViewController:self];
+            [ModelPassGestureViewController displayModelPanel];
         }
     }
     else {

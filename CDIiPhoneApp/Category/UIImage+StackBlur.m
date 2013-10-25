@@ -306,12 +306,11 @@ either expressed or implied, of the FreeBSD Project.
     
     CGColorSpaceRef genericColorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef thumbBitmapCtxt = CGBitmapContextCreate(NULL,
-                                                         
                                                          self.size.width,
                                                          self.size.height,
                                                          8, (4 * self.size.width),
                                                          genericColorSpace,
-                                                         kCGImageAlphaPremultipliedLast);
+                                                         kCGBitmapAlphaInfoMask);
     CGColorSpaceRelease(genericColorSpace);
     CGContextSetInterpolationQuality(thumbBitmapCtxt, kCGInterpolationDefault);
     CGRect destRect = CGRectMake(0, 0, self.size.width, self.size.height);

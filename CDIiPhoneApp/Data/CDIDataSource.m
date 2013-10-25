@@ -32,10 +32,15 @@
 @property (nonatomic, strong) NSMutableArray *eventsExceptSchedules;
 @property (nonatomic, strong) NSTimer *eventTimer;
 @property (nonatomic, strong) NSTimer *roomInfoTimer;
+@property (nonatomic, strong) NSTimer *allRoomInfoTimer;
 @property (nonatomic, strong) NSString *currentRoomName;
 @property (nonatomic, assign) NSInteger currentRoomID;
 @property (nonatomic, assign) NSInteger totalValue;
 @property (nonatomic, strong) NSMutableDictionary *roomNameDict;
+
+@property (nonatomic) NSInteger fetchOneRoomInfoCounter;
+@property (nonatomic) NSInteger fetchAllRoomInfoCounter;
+@property (nonatomic) BOOL isConnectFailedAlertShowed;
 
 @end
 
@@ -66,14 +71,24 @@ static CDIDataSource *sharedDataSource;
 {
     self = [super init];
     if (self) {
+        [self setBasicCounter];
         [self.eventTimer fire];
         [self.roomInfoTimer fire];
+        [self.allRoomInfoTimer fire];
         [NSNotificationCenter registerShouldChangeLocalDatasourceNotificationWithSelector:@selector(updateLocalEventsArray) target:self];
         [self fetchEvents];
         [self fetchNews];
         [self fetchProjects];
     }
     return self;
+}
+
+- (void)setBasicCounter
+{
+    _isConnectFailedAlertShowed = NO;
+    _fetchOneRoomInfoCounter = 0;
+    _fetchAllRoomInfoCounter = 0;
+    
 }
 
 #pragma mark - Main Panel Data
@@ -265,13 +280,24 @@ static CDIDataSource *sharedDataSource;
                 weakSelf.currentRoomName = dataDict[@"name"];
             }
         } else {
-            [weakSelf fetchRoomInfo:nil];
+            _fetchOneRoomInfoCounter ++;
+            if (_fetchOneRoomInfoCounter > 10) {
+                [self connectFailed];
+            }
+            else {
+                [weakSelf fetchRoomInfo:nil];
+            }
         }
     };
     
     [client getRoomInfoByRoomId:[CDIDataSource currentRoomID]
                      completion:handleData];
-    
+}
+
+- (void)fetchAllRoomInfo:(NSTimer *)timer
+{
+    CDINetClient *client = [CDINetClient client];
+    __weak CDIDataSource *weakSelf = self;
     void (^handleData2)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
         if ([responseData isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dict = responseData;
@@ -285,10 +311,15 @@ static CDIDataSource *sharedDataSource;
                 }
             }
         } else {
-            [weakSelf fetchRoomInfo:nil];
+            _fetchAllRoomInfoCounter ++;
+            if (_fetchAllRoomInfoCounter > 10) {
+                [self connectFailed];
+            }
+            else {
+                [weakSelf fetchAllRoomInfo:nil];
+            }
         }
     };
-    
     [client getAllRoomInfoCompletion:handleData2];
 }
 
@@ -628,6 +659,17 @@ static CDIDataSource *sharedDataSource;
     return _roomInfoTimer;
 }
 
+- (NSTimer *)allRoomInfoTimer
+{
+    if (!_allRoomInfoTimer) {
+        _allRoomInfoTimer = [NSTimer scheduledTimerWithTimeInterval:3600 * 24
+                                                             target:self
+                                                           selector:@selector(fetchAllRoomInfo:)
+                                                           userInfo:nil repeats:YES];
+    }
+    return _allRoomInfoTimer;
+}
+
 - (NSString *)currentRoomName
 {
     if (!_currentRoomName) {
@@ -684,6 +726,19 @@ static CDIDataSource *sharedDataSource;
         [_fetchedResultsController performFetch:nil];
     }
     return _fetchedResultsController;
+}
+
+- (void)connectFailed
+{
+    if (!_isConnectFailedAlertShowed) {
+        UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:
+                                   NSLocalizedStringFromTable(@"Connect Server Failed", @"InfoPlist", nil)
+                                                            message:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:NSLocalizedStringFromTable(@"Close", @"InfoPlist", nil) otherButtonTitles:nil];
+        [alertView show];
+        _isConnectFailedAlertShowed = YES;
+    }
 }
 
 @end

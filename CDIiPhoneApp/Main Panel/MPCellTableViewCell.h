@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel * contentLabel;
 @property (weak, nonatomic) IBOutlet UILabel * seeAllLabel;
 @property (nonatomic) BOOL isSeeAllCell;
+@property (nonatomic) BOOL isCDIEventsCell;
 @property (nonatomic) BOOL isCDIProjectsCell;
 
 @end

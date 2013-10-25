@@ -148,6 +148,16 @@
     return imageName;
 }
 
+- (void)excuteAfterClickDragIndicatorMenuButton
+{
+    
+}
+
+- (void)excuteAfterClickDragIndicatorRefreshButton
+{
+    
+}
+
 - (void)dragIndicatorViewDidStrecth:(MPDragIndicatorView *)view
 {
     self.dragIndicatorView.hidden = YES;

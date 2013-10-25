@@ -99,6 +99,13 @@ static CDIDataSource *sharedDataSource;
     [[CDIDataSource sharedDataSource]fetchEvents];
 }
 
++ (void)reFetchRoomInfoInMainPanelwithCompletion:(void(^)(void))completion
+{
+    [[CDIDataSource sharedDataSource]fetchRoomInfo];
+    [[CDIDataSource sharedDataSource]fetchAllRoomInfowithCompletion:completion];
+    [[CDIDataSource sharedDataSource]setBasicCounter];
+}
+
 - (void)fetchEvents
 {
     CDINetClient *client = [CDINetClient client];
@@ -270,6 +277,11 @@ static CDIDataSource *sharedDataSource;
 
 - (void)fetchRoomInfo:(NSTimer *)timer
 {
+    [self fetchRoomInfo];
+}
+
+- (void)fetchRoomInfo
+{
     CDINetClient *client = [CDINetClient client];
     __weak CDIDataSource *weakSelf = self;
     void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
@@ -296,9 +308,18 @@ static CDIDataSource *sharedDataSource;
 
 - (void)fetchAllRoomInfo:(NSTimer *)timer
 {
+    [self fetchAllRoomInfowithCompletion:nil];
+}
+
+- (void)fetchAllRoomInfowithCompletion:(void(^)(void))completion
+{
     CDINetClient *client = [CDINetClient client];
     __weak CDIDataSource *weakSelf = self;
     void (^handleData2)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+        if (completion) {
+            completion();
+        }
+        
         if ([responseData isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dict = responseData;
             if ([dict[@"data"] isKindOfClass:[NSArray class]]) {

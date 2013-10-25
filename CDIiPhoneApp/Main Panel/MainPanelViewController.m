@@ -167,31 +167,29 @@
 {
     NSString * sectionTitleString;
     NSInteger sectionTitle_Y_point;
+    sectionTitle_Y_point = 14.5;
     switch (section) {
         case 0:
             sectionTitleString = NSLocalizedStringFromTable(@"Events", @"InfoPlist", nil);
-            sectionTitle_Y_point = 20.0;
             break;
         case 1:
             sectionTitleString = NSLocalizedStringFromTable(@"Projects", @"InfoPlist", nil);
-            sectionTitle_Y_point = 20.0;
             break;
         case 2:
             sectionTitleString = NSLocalizedStringFromTable(@"News", @"InfoPlist", nil);
-            sectionTitle_Y_point = 20.0;
             break;
         default:
-            sectionTitle_Y_point = 0.0;
             sectionTitleString = NSLocalizedStringFromTable(@"Events", @"InfoPlist", nil);
             break;
     }
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 40.0)];
     
-    UILabel *sectionTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, sectionTitle_Y_point, tableView.frame.size.width, 14.0)];
+    UILabel *sectionTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, sectionTitle_Y_point, tableView.frame.size.width, 15.5)];
     [sectionTitleLabel setText:sectionTitleString];
     [sectionTitleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
     [sectionTitleLabel setTextColor:[UIColor colorWithRed:144.0 / 255.0 green:144.0 / 255.0 blue:144.0 / 255.0 alpha:1.0]];
     [sectionTitleLabel setBackgroundColor:[UIColor colorWithRed:234.0 /255.0 green:234.0 /255.0 blue:234.0 /255.0 alpha:1.0]];
+    
     [view addSubview:sectionTitleLabel];
     
     [view setBackgroundColor:[UIColor colorWithRed:234.0 /255.0 green:234.0 /255.0 blue:234.0 /255.0 alpha:1.0]];
@@ -303,10 +301,15 @@
     NSString *segueID = @"";
     self.selectedIndex = index;
     self.selectedRow = row;
-    if (row == 0) {
+    if (row == 0 && index != [self numberOfRowsAtRow:row] ) {
         self.selectedFC = self.frEventsController;
         segueID = @"MainEventSegue";
-    } else if (row == 1 && index != [self numberOfRowsAtRow:row]) {
+    }
+    else if (row == 0 && index == [self numberOfRowsAtRow:row]) {
+        self.selectedFC = self.frEventsController;
+        segueID = @"MainSeeAllEventsSegue";
+    }
+    else if (row == 1 && index != [self numberOfRowsAtRow:row]) {
         self.selectedFC = self.frProjectsController;
         segueID = @"MainProjectSegue";
     } else if (row == 1 && index == [self numberOfRowsAtRow:row]) {
@@ -323,7 +326,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     UIViewController *vc = segue.destinationViewController;
-    if (self.selectedRow == 0) {
+    if (self.selectedRow == 0 && self.selectedIndex != [self numberOfRowsAtRow:self.selectedRow]) {
         CDIEventDAO *event = self.selectedFC.fetchedObjects[self.selectedIndex];
         ((ScheduleEventDetailViewController *)vc).event = event;
     } else if (self.selectedRow == 1 && self.selectedIndex != [self numberOfRowsAtRow:self.selectedRow]) {
@@ -336,6 +339,21 @@
 }
 
 #pragma mark - Drag View Delegate
+- (void)excuteAfterClickDragIndicatorMenuButton
+{
+    [self showMenuPanel];
+}
+
+- (void)excuteAfterClickDragIndicatorRefreshButton
+{
+    [CDIDataSource reFetchAllDataInMainPanel];
+    [CDIDataSource reFetchRoomInfoInMainPanelwithCompletion:^{
+        [_dragIndicatorView.waitingView stopAnimating];
+        _dragIndicatorView.refreshLabel.hidden = NO;
+    }];
+    
+}
+
 - (void)dragIndicatorViewDidStrecth:(MPDragIndicatorView *)view
 {
     [self showMenuPanel];
@@ -402,6 +420,9 @@
                                                     options:nil];
         _dragIndicatorView = [nibs objectAtIndex:0];
         _dragIndicatorView.isReversed = NO;
+        [_dragIndicatorView addMenuAndRefresheLabel];
+        [_dragIndicatorView drawLineOnTableCellView];
+        [_dragIndicatorView showMenuAndRefreshButton];
     }
     return _dragIndicatorView;
 }

@@ -12,6 +12,7 @@
 #import "GYPositionBounceAnimation.h"
 #import "UIApplication+Addition.h"
 
+#define refreshLabel_X_Point 263.0
 #define kBarBaseOffset    15
 #define kUpperBarOriginY  kBarBaseOffset
 #define kMiddleBarOriginY kBarBaseOffset + 6
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *middleBarImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *lowerBarImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *arrowImageView;
+
 
 @property (weak, nonatomic) UIScrollView *scrollView;
 @property (assign, nonatomic) BOOL animationPlayed;
@@ -45,9 +47,41 @@
 {
   self = [super initWithCoder:aDecoder];
   if (self) {
-    
+      _menuButton.hidden = YES;
+      _refreshButton.hidden = YES;
   }
   return self;
+}
+
+- (CGFloat)widthOfString:(NSString *)string withFont:(UIFont *)font {
+    return [string sizeWithAttributes:[NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName]].width;
+}
+
+- (CGFloat)heightOfString:(NSString *)string withFont:(UIFont *)font {
+    return [string sizeWithAttributes:[NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName]].height;
+}
+
+- (void)addMenuAndRefresheLabel
+{
+    NSString * menuString = NSLocalizedStringFromTable(@"Menu", @"InfoPlist", nil);
+    [_menuLabel setBackgroundColor:[UIColor colorWithRed:234.0 / 255.0 green:234.0 / 255.0 blue:234.0 / 255.0 alpha:1.0]];
+    [_menuLabel setText:menuString];
+    
+    NSString * refreshLabelString = NSLocalizedStringFromTable(@"Refresh", @"InfoPlist", nil);
+    [_refreshLabel setBackgroundColor:[UIColor colorWithRed:234.0 / 255.0 green:234.0 / 255.0 blue:234.0 / 255.0 alpha:1.0]];
+    [_refreshLabel setText:refreshLabelString];
+//    [_refreshLabel setBackgroundColor:[UIColor redColor]];
+//    CGRect refreshLabelFrame = _refreshLabel.frame;
+//    [_refreshLabel setFrame:CGRectMake(refreshLabelFrame.origin.x
+//                                       , refreshLabelFrame.origin.y
+//                                       , [self widthOfString:_refreshLabel.text withFont:_refreshLabel.font]
+//                                       , [self heightOfString:_refreshLabel.text withFont:_refreshLabel.font])];
+}
+
+- (void)showMenuAndRefreshButton
+{
+    _menuButton.hidden = NO;
+    _refreshButton.hidden = NO;
 }
 
 - (void)configureScrollView:(UIScrollView *)scrollView
@@ -132,6 +166,39 @@
 - (void)refreshStatus
 {
   self.readyForStretch = YES;
+}
+
+-(void)drawLineOnTableCellView
+{
+    
+    UIGraphicsBeginImageContext(CGSizeMake(1.0, 34.0));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:150.0/255.0 green:150.0/255.0 blue:150.0/255.0 alpha:1.0] CGColor]);
+    CGContextMoveToPoint(context, 1.0, 0.0);
+    CGContextAddLineToPoint(context, 1.0, 34.0);
+    CGContextStrokePath(context);
+    UIImage * newPic = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    UIImageView * nnView = [[UIImageView alloc]initWithImage:newPic];
+    [nnView setFrame:CGRectMake(240.0, 8.0, 1.0, 34.0)];
+    [self addSubview:nnView];
+}
+
+- (IBAction)didClickMenuButton:(id)sender {
+    [self.delegate excuteAfterClickDragIndicatorMenuButton];
+}
+
+- (IBAction)didClickReFreshButton:(id)sender {
+    _refreshLabel.hidden = YES;
+    
+    _waitingView = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(refreshLabel_X_Point + 16.0 / 2 ,16.0,16.0,16.0)];
+    _waitingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    _waitingView.hidesWhenStopped = YES;
+    [self addSubview:_waitingView];
+    [_waitingView startAnimating];
+    
+    [self.delegate excuteAfterClickDragIndicatorRefreshButton];
 }
 
 @end

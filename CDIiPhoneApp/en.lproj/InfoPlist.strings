@@ -32,3 +32,5 @@
 "UserName or Password Error" = "Wrong userName or Password";
 "Server Error" = "Server Error";
 "Connect Server Failed" = "Connect Server Failed";
+"Menu" = "Menu";
+"Refresh" = "Refresh";

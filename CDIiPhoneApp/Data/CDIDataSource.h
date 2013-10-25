@@ -43,4 +43,6 @@ typedef enum {
 + (CDIEventDAO *)nextEventForRoomID:(NSInteger)roomID;
 
 + (void)reFetchAllDataInMainPanel;
+
++ (void)reFetchRoomInfoInMainPanelwithCompletion:(void(^)(void))completion;
 @end

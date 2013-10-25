@@ -68,10 +68,7 @@
     if ([self.delegate respondsToSelector:@selector(numberOfRowsAtRow:)]) {
         numberOfRows = [self.delegate numberOfRowsAtRow:self.row];
     }
-    
-    if (self.row != 0) {
-        numberOfRows = numberOfRows + SeeAllTableCellNumber;
-    }
+    numberOfRows = numberOfRows + SeeAllTableCellNumber;
     
     return numberOfRows;
 }
@@ -82,10 +79,13 @@
     MPCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.seeAllLabel.hidden = YES;
     
-    if (indexPath.row == [self.delegate numberOfRowsAtRow:self.row] && self.row != 0) {
+    if (indexPath.row == [self.delegate numberOfRowsAtRow:self.row]) {
         cell.seeAllLabel.hidden = NO;
         cell.isSeeAllCell = YES;
-        if (self.row == 1) {
+        if (self.row == 0) {
+            cell.isCDIEventsCell = YES;
+        }
+        else if (self.row == 1) {
             cell.isCDIProjectsCell = YES;
         }
         else if (self.row == 2) {

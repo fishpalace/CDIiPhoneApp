@@ -48,7 +48,10 @@
     if (self.isSeeAllCell) {
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGRect colorRect = CGRectMake(0.0, 0.0, 157.0, 157.0);
-        if (self.isCDIProjectsCell) {
+        if (self.isCDIEventsCell) {
+            CGContextSetRGBFillColor(context, 0.0/100.0, 255.0/255.0, 0.0/255.0, 1.0);
+        }
+        else if (self.isCDIProjectsCell) {
             CGContextSetRGBFillColor(context, 0.0/255.0, 175.0/255.0, 255.0/255.0, 1.0);
         }
         else {

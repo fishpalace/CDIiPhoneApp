@@ -147,7 +147,7 @@
     tomorrowLabel.textColor = [UIColor colorWithRed:186.0/255.0 green:186.0/255.0 blue:186.0/255.0 alpha:1.0];
     tomorrowLabel.font = [UIFont systemFontOfSize:12];
     tomorrowLabel.backgroundColor = [UIColor clearColor];
-    tomorrowLabel.text = @"Tomorrow";
+    tomorrowLabel.text = NSLocalizedStringFromTable(@"Tomorrow", @"InfoPlist", nil);
     
     [headerView addSubview:tomorrowLabel];
     

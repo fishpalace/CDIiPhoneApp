@@ -692,7 +692,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Rzw-8p-26e"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related Projects" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7L-7h-PuB">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相关项目" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7L-7h-PuB">
                                 <rect key="frame" x="10" y="95" width="120" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -716,7 +716,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No projects" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-SD-ARl">
+                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无项目" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-SD-ARl">
                                                     <rect key="frame" x="0.0" y="38" width="320" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -745,6 +745,7 @@
                                                 <constraint firstItem="df6-bj-Cnu" firstAttribute="leading" secondItem="J05-KT-bhX" secondAttribute="leading" constant="61" id="EfY-FN-O8V"/>
                                                 <constraint firstItem="df6-bj-Cnu" firstAttribute="top" secondItem="J05-KT-bhX" secondAttribute="top" constant="25" id="Gyc-6x-wjj"/>
                                                 <constraint firstAttribute="trailing" secondItem="XRp-SD-ARl" secondAttribute="trailing" id="p1S-mB-mxW"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="df6-bj-Cnu" secondAttribute="trailing" constant="20" id="u8y-ks-ucA"/>
                                                 <constraint firstItem="XRp-SD-ARl" firstAttribute="leading" secondItem="J05-KT-bhX" secondAttribute="leading" id="xzJ-5z-Npk"/>
                                             </constraints>
                                         </tableViewCellContentView>

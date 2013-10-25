@@ -39,7 +39,7 @@
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge
                                                                            |UIRemoteNotificationTypeSound
                                                                            |UIRemoteNotificationTypeAlert)];
-    [UIApplication showCover];
+//    [UIApplication showCover];
     [CDIDataSource fetchDataWithCompletion:nil];
     isTokenSendFinished = NO;
     if (launchOptions != nil) {

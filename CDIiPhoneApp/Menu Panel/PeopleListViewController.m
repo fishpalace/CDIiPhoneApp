@@ -114,6 +114,12 @@
         [cell.avatarImageView fadeIn];
     }];
     
+    UIView * maskView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, 140.0, 160)];
+    [maskView setBackgroundColor:[UIColor whiteColor]];
+    maskView.layer.cornerRadius = 5;
+    [cell.avatarImageView.layer setMask:maskView.layer];
+    
+    
     return cell;
 }
 

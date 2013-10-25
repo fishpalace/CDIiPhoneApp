@@ -744,6 +744,7 @@
                                             <constraints>
                                                 <constraint firstItem="df6-bj-Cnu" firstAttribute="leading" secondItem="J05-KT-bhX" secondAttribute="leading" constant="61" id="EfY-FN-O8V"/>
                                                 <constraint firstItem="df6-bj-Cnu" firstAttribute="top" secondItem="J05-KT-bhX" secondAttribute="top" constant="25" id="Gyc-6x-wjj"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="df6-bj-Cnu" secondAttribute="trailing" constant="20" id="jB9-9c-NBt"/>
                                                 <constraint firstAttribute="trailing" secondItem="XRp-SD-ARl" secondAttribute="trailing" id="p1S-mB-mxW"/>
                                                 <constraint firstItem="XRp-SD-ARl" firstAttribute="leading" secondItem="J05-KT-bhX" secondAttribute="leading" id="xzJ-5z-Npk"/>
                                             </constraints>

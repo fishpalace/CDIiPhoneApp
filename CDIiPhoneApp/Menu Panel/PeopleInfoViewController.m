@@ -127,6 +127,8 @@
 //        cell.workPicCoverImageView.layer.cornerRadius = 19;
 //        cell.workPicCoverImageView.layer.masksToBounds = YES;
         
+        cell.workNameLabel.numberOfLines = 1;
+        cell.workNameLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         if (kIsChinese) {
             cell.workNameLabel.text = work.name;
         }
@@ -135,7 +137,6 @@
         }
         
         cell.workTypeLabel.text = work.workType;
-        
         cell.workNameLabel.textColor = kColorPeopleInfoWorkNameLabel;
         cell.workNameLabel.font = kFontPeopleInfoWorkNameLabel;
         cell.workTypeLabel.textColor = kColorPeopleInfoWorkTypeLabel;

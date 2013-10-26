@@ -155,21 +155,39 @@
 {
     NSString *startTime = [self stringForPercentage:(CGFloat)self.selectionStartValue / (CGFloat)self.totalValue];
     NSString *endTime = [self stringForPercentage:(CGFloat)self.selectionEndValue / (CGFloat)self.totalValue];
-    NSString *spanString = [NSString stringWithFormat:@"From %@ to %@", startTime, endTime];
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:spanString];
-    [attributedString addAttribute:NSFontAttributeName
-                             value:kFontRPTimeSpanLabel
-                             range:NSMakeRange(0, attributedString.length)];
-    [attributedString addAttribute:NSForegroundColorAttributeName
-                             value:kColorRPTimeSpanLabelGray
-                             range:NSMakeRange(0, attributedString.length)];
-    [attributedString addAttribute:NSForegroundColorAttributeName
-                             value:kColorRPTimeSpanLabelBlue
-                             range:NSMakeRange(5, startTime.length)];
-    [attributedString addAttribute:NSForegroundColorAttributeName
-                             value:kColorRPTimeSpanLabelBlue
-                             range:NSMakeRange(9 + startTime.length, endTime.length)];
-    self.timeSpanLabel.attributedText = attributedString;
+    NSString *spanString;
+    if (kIsChinese) {
+        spanString = [NSString stringWithFormat:@"从 %@ 到 %@",startTime,endTime];
+    } else {
+        spanString = [NSString stringWithFormat:@"From %@ to %@", startTime, endTime];
+    }
+    
+    NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:spanString];
+    
+    if (kIsChinese) {
+        [attriString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"Helvetica-Light" size:14]
+                            range:NSMakeRange(0, attriString.length)];
+        [attriString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"Helvetica-Bold" size:14]
+                            range:NSMakeRange(2, startTime.length)];
+        [attriString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"Helvetica-Bold" size:14]
+                            range:NSMakeRange(5 + startTime.length, endTime.length)];
+    }
+    else {
+        [attriString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"Helvetica-Light" size:14]
+                            range:NSMakeRange(0, attriString.length)];
+        [attriString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"Helvetica-Bold" size:14]
+                            range:NSMakeRange(5, startTime.length)];
+        [attriString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"Helvetica-Bold" size:14]
+                            range:NSMakeRange(9 + startTime.length, endTime.length)];
+    }
+
+    self.timeSpanLabel.attributedText = attriString;
 }
 
 - (NSInteger)eventNumber
@@ -295,7 +313,7 @@
         [self.timeDisplayLabel setText:[self stringForPercentage:percentage]];
         self.timeDisplayLabel.textColor = [UIColor whiteColor];
     } else {
-        [self.timeDisplayLabel setText:@"Unavailable"];
+        [self.timeDisplayLabel setText:NSLocalizedStringFromTable(@"Unavailable", @"InfoPlist", nil)];
         self.timeDisplayLabel.textColor = kColorTintRed;
     }
     return available;
@@ -306,7 +324,13 @@
     [self.timeSpanDisplayView fadeIn];
     self.isDraggingFromPuller = isDraggingFrom;
     UIColor *fromToColor = isDraggingFrom ? kColorTintBlue : kColorTintRed;
-    NSString *fromToString = isDraggingFrom ? @"From" : @"To";
+    NSString *fromToString;
+    if (kIsChinese) {
+        fromToString = isDraggingFrom ? @"从" : @"到";
+    }
+    else {
+        fromToString = isDraggingFrom ? @"From" : @"To";
+    }
     [self.timeFromToLabel setTextColor:fromToColor];
     [self.timeFromToLabel setText:fromToString];
 }

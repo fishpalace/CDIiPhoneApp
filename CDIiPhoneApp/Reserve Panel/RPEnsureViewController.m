@@ -80,8 +80,14 @@
     
     NSString *period = [NSDate stringFromDate:sharedNewEvent.startDate
                                        toDate:sharedNewEvent.endDate
-                                    inChinese:NO];
-    NSString *periodString = [NSString stringWithFormat:@"From %@", period];
+                                    inChinese:kIsChinese];
+    NSString *periodString;
+    if (kIsChinese) {
+        periodString = [NSString stringWithFormat:@"从 %@", period];
+    }
+    else {
+    periodString = [NSString stringWithFormat:@"From %@", period];
+    }
     [self.dateLabel setText:periodString];
     [self.dateLabel setTextColor:kColorRPTimeSpanLabelBlue];
     [self.dateLabel setFont:kFontRPTimeSpanLabel];
@@ -99,9 +105,9 @@
     self.accessKeyLabel.font = kFontRPEventAccessKeyLabel;
     
     NSString *roomName = [CDIDataSource nameForRoomID:sharedNewEvent.roomID.integerValue];
-    NSString *partOne = @"Enter the code during ";
-    NSString *partTwo = @" on the iPad panel in ";
-    NSString *partThree = @" to confirm the event.";
+    NSString *partOne = NSLocalizedStringFromTable(@"Enter the code during ", @"InfoPlist", nil);
+    NSString *partTwo = NSLocalizedStringFromTable(@" on the iPad panel in ", @"InfoPlist", nil);
+    NSString *partThree = NSLocalizedStringFromTable(@" to confirm the event.", @"InfoPlist", nil);
     NSString *instruction = [NSString stringWithFormat:@"%@%@%@%@%@",partOne, period, partTwo, roomName, partThree];
     
     NSInteger location1 = partOne.length;

@@ -59,23 +59,36 @@
     NSString *startDateString = [NSDate stringOfDate:self.event.startDate includingYear:YES];
     NSString *endDateString = [NSDate stringOfDate:self.event.endDate includingYear:YES];
     NSString *dateString;
-//    if (kIsChinese) {
-//        dateString = [NSString stringWithFormat:@"从%@到%@",startDateString,endDateString];
-//    } else {
+    if (kIsChinese) {
+        dateString = [NSString stringWithFormat:@"从 %@ 到 %@",startDateString,endDateString];
+    } else {
         dateString = [NSString stringWithFormat:@"From %@ to %@", startDateString, endDateString];
-//    }
+    }
     
     NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:dateString];
     
-    [attriString addAttribute:NSFontAttributeName
-                        value:[UIFont fontWithName:@"Helvetica-Light" size:14]
-                        range:NSMakeRange(0, attriString.length)];
-    [attriString addAttribute:NSFontAttributeName
-                        value:[UIFont fontWithName:@"Helvetica-Bold" size:14]
-                        range:NSMakeRange(5, startDateString.length)];
-    [attriString addAttribute:NSFontAttributeName
-                        value:[UIFont fontWithName:@"Helvetica-Bold" size:14]
-                        range:NSMakeRange(9 + startDateString.length, endDateString.length)];
+    if (kIsChinese) {
+        [attriString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"Helvetica-Light" size:14]
+                            range:NSMakeRange(0, attriString.length)];
+        [attriString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"Helvetica-Bold" size:14]
+                            range:NSMakeRange(2, startDateString.length)];
+        [attriString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"Helvetica-Bold" size:14]
+                            range:NSMakeRange(5 + startDateString.length, endDateString.length)];
+    }
+    else {
+        [attriString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"Helvetica-Light" size:14]
+                            range:NSMakeRange(0, attriString.length)];
+        [attriString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"Helvetica-Bold" size:14]
+                            range:NSMakeRange(5, startDateString.length)];
+        [attriString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"Helvetica-Bold" size:14]
+                            range:NSMakeRange(9 + startDateString.length, endDateString.length)];
+    }
     
     _dateLabel.attributedText = attriString;
     

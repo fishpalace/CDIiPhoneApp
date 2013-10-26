@@ -6183,8 +6183,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <rect key="frame" x="10" y="507" width="301" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="301" id="H6e-Pr-dAq"/>
-                                    <constraint firstAttribute="height" constant="50" id="RAA-c1-5hr"/>
+                                    <constraint firstAttribute="height" constant="50" id="Led-tN-sKK"/>
+                                    <constraint firstAttribute="width" constant="301" id="npD-ak-JOs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
                                 <state key="normal" title="CDI Official Site" backgroundImage="rp_button_bottom.png">
@@ -6208,7 +6208,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <rect key="frame" x="101" y="102" width="110" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1.0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="vwk-yl-jef">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1.1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="vwk-yl-jef">
                                 <rect key="frame" x="60" y="287" width="200" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
@@ -6236,9 +6236,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="wyq-II-bRl" secondAttribute="centerX" id="NVa-DD-wh0"/>
-                            <constraint firstItem="YbW-LW-G3c" firstAttribute="top" secondItem="wyq-II-bRl" secondAttribute="bottom" constant="11" id="TFm-Nw-4yK"/>
+                            <constraint firstItem="YbW-LW-G3c" firstAttribute="top" secondItem="wyq-II-bRl" secondAttribute="bottom" constant="11" id="Tk2-90-llM"/>
                             <constraint firstItem="fQO-Yi-Oue" firstAttribute="top" secondItem="Kak-GP-DdQ" secondAttribute="bottom" id="aqP-7W-8q7"/>
+                            <constraint firstItem="wyq-II-bRl" firstAttribute="leading" secondItem="mGw-ie-JrQ" secondAttribute="leading" constant="10" id="i7h-fz-iDT"/>
                             <constraint firstItem="fQO-Yi-Oue" firstAttribute="leading" secondItem="mGw-ie-JrQ" secondAttribute="leading" id="mT3-ZW-RPx"/>
                         </constraints>
                     </view>

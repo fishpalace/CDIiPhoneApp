@@ -55,7 +55,12 @@
     NSString *periodString = [NSDate stringFromDate:sharedNewEvent.startDate
                                              toDate:sharedNewEvent.endDate
                                           inChinese:NO];
+    if (kIsChinese) {
+        periodString = [NSString stringWithFormat:@"从 %@", periodString];
+    }
+    else {
     periodString = [NSString stringWithFormat:@"From %@", periodString];
+    }
     [self.dateLabel setText:periodString];
     [self.dateLabel setTextColor:kColorRPTimeSpanLabelBlue];
     [self.dateLabel setFont:kFontRPTimeSpanLabel];

@@ -359,6 +359,16 @@
     [self showMenuPanel];
 }
 
+- (void)closeUserInteractionEnabled
+{
+    self.view.userInteractionEnabled = NO;
+}
+
+- (void)openUserInteractionEnabled
+{
+    self.view.userInteractionEnabled = YES;
+}
+
 - (void)showMenuPanel
 {
     [self.tableView resetOriginY:kCurrentScreenHeight - self.tableView.contentOffset.y];

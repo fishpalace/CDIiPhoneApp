@@ -938,23 +938,18 @@
                                 <color key="textColor" red="0.0" green="0.58823529409999997" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxU-w4-wfN">
-                                <rect key="frame" x="269" y="280" width="44" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l43-ua-AP0">
+                                <rect key="frame" x="262" y="272" width="58" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="L31-Rc-7HL"/>
-                                    <constraint firstAttribute="height" constant="44" id="ifW-Bq-ClH"/>
+                                    <constraint firstAttribute="width" constant="58" id="Crd-ai-Y7I"/>
+                                    <constraint firstAttribute="height" constant="58" id="cL4-ja-pK7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="time_button_graph.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                                 <connections>
-                                    <action selector="didClickPanelButton:" destination="TrP-oS-R9t" eventType="touchUpInside" id="K1k-Oh-MvJ"/>
+                                    <action selector="didClickPanelButton:" destination="TrP-oS-R9t" eventType="touchUpInside" id="fGN-FI-teF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -962,12 +957,12 @@
                         <constraints>
                             <constraint firstItem="gmV-W0-hxX" firstAttribute="top" secondItem="f6U-b9-SsE" secondAttribute="bottom" constant="30" id="AAq-Vf-lmk"/>
                             <constraint firstAttribute="centerX" secondItem="gmV-W0-hxX" secondAttribute="centerX" id="ArN-U4-mnT"/>
-                            <constraint firstAttribute="bottom" secondItem="xxU-w4-wfN" secondAttribute="bottom" constant="6" id="BTf-1S-IOY"/>
+                            <constraint firstItem="rba-me-4gD" firstAttribute="top" secondItem="l43-ua-AP0" secondAttribute="bottom" id="Fle-8G-gvr"/>
                             <constraint firstItem="fFB-qb-rtp" firstAttribute="centerX" secondItem="gmV-W0-hxX" secondAttribute="centerX" id="IFn-p3-eO3"/>
-                            <constraint firstAttribute="trailing" secondItem="xxU-w4-wfN" secondAttribute="trailing" constant="7" id="LAo-Fa-88V"/>
                             <constraint firstItem="f6U-b9-SsE" firstAttribute="leading" secondItem="ZYA-uP-2vs" secondAttribute="leading" id="MAQ-OE-svs"/>
                             <constraint firstAttribute="trailing" secondItem="f6U-b9-SsE" secondAttribute="trailing" id="MCA-69-CNB"/>
                             <constraint firstAttribute="bottom" secondItem="gmV-W0-hxX" secondAttribute="bottom" constant="7" id="Pge-bk-q6j"/>
+                            <constraint firstAttribute="trailing" secondItem="l43-ua-AP0" secondAttribute="trailing" id="g3R-NR-fjW"/>
                             <constraint firstItem="gmV-W0-hxX" firstAttribute="top" secondItem="fFB-qb-rtp" secondAttribute="bottom" id="pRf-yR-pRp"/>
                         </constraints>
                     </view>
@@ -979,7 +974,6 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="dateLabel" destination="gmV-W0-hxX" id="Aip-qA-0sh"/>
-                        <outlet property="showGraphButton" destination="xxU-w4-wfN" id="wxW-8r-lke"/>
                         <outlet property="timeLabel" destination="fFB-qb-rtp" id="bN8-rq-jrH"/>
                     </connections>
                 </viewController>

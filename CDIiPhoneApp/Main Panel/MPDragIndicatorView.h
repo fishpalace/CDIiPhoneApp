@@ -15,6 +15,8 @@
 @protocol MPDragIndicatorViewDelegate <NSObject>
 
 - (void)dragIndicatorViewDidStrecth:(MPDragIndicatorView *)view;
+- (void)closeUserInteractionEnabled;
+- (void)openUserInteractionEnabled;
 - (void)excuteAfterClickDragIndicatorMenuButton;
 - (void)excuteAfterClickDragIndicatorRefreshButton;
 

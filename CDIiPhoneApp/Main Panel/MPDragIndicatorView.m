@@ -66,12 +66,31 @@
 - (void)addMenuAndRefresheLabel
 {
     NSString * menuString = NSLocalizedStringFromTable(@"Menu", @"InfoPlist", nil);
-    [_menuLabel setBackgroundColor:[UIColor colorWithRed:234.0 / 255.0 green:234.0 / 255.0 blue:234.0 / 255.0 alpha:1.0]];
+    [_menuLabel setBackgroundColor:[UIColor clearColor]];
     [_menuLabel setText:menuString];
     
     NSString * refreshLabelString = NSLocalizedStringFromTable(@"Refresh", @"InfoPlist", nil);
-    [_refreshLabel setBackgroundColor:[UIColor colorWithRed:234.0 / 255.0 green:234.0 / 255.0 blue:234.0 / 255.0 alpha:1.0]];
+    [_refreshLabel setBackgroundColor:[UIColor clearColor]];
     [_refreshLabel setText:refreshLabelString];
+    
+    UIGraphicsBeginImageContext(CGSizeMake(240, 44.0));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGRect grayRect = CGRectMake(0.0, 0.0, 240.0, 44.0);
+    CGContextSetRGBFillColor(context,100.0/255.0, 100.0/255.0, 100.0/255.0, 1.0);
+    CGContextFillRect(context, grayRect);
+    UIImage * newPic = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [_menuButton setBackgroundImage:newPic forState:UIControlStateHighlighted];
+    
+    UIGraphicsBeginImageContext(CGSizeMake(80, 44.0));
+    CGContextRef refreshContext = UIGraphicsGetCurrentContext();
+    CGRect grayRect2 = CGRectMake(0.0, 0.0, 80, 44.0);
+    CGContextSetRGBFillColor(refreshContext,100.0/255.0, 100.0/255.0, 100.0/255.0, 1.0);
+    CGContextFillRect(refreshContext, grayRect2);
+    UIImage * newPic2 = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [_refreshButton setBackgroundImage:newPic2 forState:UIControlStateHighlighted];
+    
 //    [_refreshLabel setBackgroundColor:[UIColor redColor]];
 //    CGRect refreshLabelFrame = _refreshLabel.frame;
 //    [_refreshLabel setFrame:CGRectMake(refreshLabelFrame.origin.x
@@ -193,7 +212,7 @@
     UIGraphicsEndImageContext();
     
     UIImageView * nnView = [[UIImageView alloc]initWithImage:newPic];
-    [nnView setFrame:CGRectMake(240.0, 8.0, 1.0, 34.0)];
+    [nnView setFrame:CGRectMake(240.0, 5.0, 1.0, 34.0)];
     [self addSubview:nnView];
 }
 
@@ -203,14 +222,18 @@
 
 - (IBAction)didClickReFreshButton:(id)sender {
     _refreshLabel.hidden = YES;
-    
+//    [self.delegate closeUserInteractionEnabled];
     _waitingView = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(refreshLabel_X_Point + 16.0 / 2 ,16.0,16.0,16.0)];
     _waitingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     _waitingView.hidesWhenStopped = YES;
     [self addSubview:_waitingView];
     [_waitingView startAnimating];
-    
-    [self.delegate excuteAfterClickDragIndicatorRefreshButton];
+    [self performSelector:@selector(delegateMethods) withObject:nil afterDelay:2.0];
 }
 
+- (void)delegateMethods
+{
+    self.userInteractionEnabled = YES;
+    [self.delegate excuteAfterClickDragIndicatorRefreshButton];
+}
 @end

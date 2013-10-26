@@ -148,6 +148,16 @@
     return imageName;
 }
 
+- (void)closeUserInteractionEnabled
+{
+    self.view.userInteractionEnabled = NO;
+}
+
+- (void)openUserInteractionEnabled
+{
+    self.view.userInteractionEnabled = YES;
+}
+
 - (void)excuteAfterClickDragIndicatorMenuButton
 {
     

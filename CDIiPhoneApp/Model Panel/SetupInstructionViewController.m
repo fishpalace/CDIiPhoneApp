@@ -32,13 +32,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     CDIUser *currentUser = [CDIUser currentUserInContext:self.managedObjectContext];
-    _titleLabel.text = currentUser.realNameEn;
+    if (kIsChinese) {
+        _titleLabel.text = currentUser.realName;
+    }
+    else {
+        _titleLabel.text = currentUser.realNameEn;
+    }
 }
 
 - (void)updateViewConstraints
 {
-  [super updateViewConstraints];
-  self.bottomSpaceConstraint.constant = 11;
+    [super updateViewConstraints];
+    self.bottomSpaceConstraint.constant = 11;
 }
 
 - (void)didReceiveMemoryWarning

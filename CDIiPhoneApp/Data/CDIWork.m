@@ -93,7 +93,8 @@
         work.videoURL = [NSString stringForDict:dict key:@"videoUrl"];
         NSString *info = [NSString stringForDict:dict key:@"description"];
         work.workInfo = [info strippedHTMLString];
-        work.workInfoEn = [NSString stringForDict:dict key:@"description_en"];
+        NSString *infoEn = [NSString stringForDict:dict key:@"description_en"];
+        work.workInfoEn =[infoEn strippedHTMLString];
         work.workStatus = [NSString stringForDict:dict key:@"status"];
         if ([work.workStatus isEqualToString:@"IN_PLAN"]) {
             if (kIsChinese) {

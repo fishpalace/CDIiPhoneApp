@@ -101,6 +101,13 @@
     [self.scrollView setContentSize:CGSizeMake(320, height)];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    CGFloat height = self.projectInfoLabel.frame.origin.y + self.projectInfoLabel.frame.size.height;
+    height = height < self.scrollView.frame.size.height ? self.scrollView.frame.size.height + 1 : height;
+    [self.scrollView setContentSize:CGSizeMake(320, height)];
+}
+
 - (void)updateViewConstraints
 {
     [super updateViewConstraints];

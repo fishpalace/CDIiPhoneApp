@@ -350,6 +350,7 @@
     [CDIDataSource reFetchRoomInfoInMainPanelwithCompletion:^{
         [_dragIndicatorView.waitingView stopAnimating];
         _dragIndicatorView.refreshLabel.hidden = NO;
+        _dragIndicatorView.refreshButton.userInteractionEnabled = YES;
     }];
     
 }

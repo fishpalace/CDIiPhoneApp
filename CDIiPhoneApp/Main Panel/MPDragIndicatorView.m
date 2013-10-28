@@ -222,6 +222,7 @@
 
 - (IBAction)didClickReFreshButton:(id)sender {
     _refreshLabel.hidden = YES;
+    self.refreshButton.userInteractionEnabled = NO;
 //    [self.delegate closeUserInteractionEnabled];
     _waitingView = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(refreshLabel_X_Point + 16.0 / 2 ,16.0,16.0,16.0)];
     _waitingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
@@ -233,7 +234,7 @@
 
 - (void)delegateMethods
 {
-    self.userInteractionEnabled = YES;
+//    self.userInteractionEnabled = YES;
     [self.delegate excuteAfterClickDragIndicatorRefreshButton];
 }
 @end

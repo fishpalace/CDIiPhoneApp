@@ -36,75 +36,83 @@
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  _tableView.delegate = self;
-  _tableView.dataSource = self;
-  [self loadData];
+    [super viewDidLoad];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self loadData];
 }
 
 - (void)loadData
 {
-  CDINetClient *client = [CDINetClient client];
-  void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
-    NSDictionary *rawDict = responseData;
-    if ([responseData isKindOfClass:[NSDictionary class]]) {
-      NSArray *peopleArray = rawDict[@"data"];
-      for (NSDictionary *dict in peopleArray) {
-        [CDIWork insertWorkInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
-      }
-      [self.managedObjectContext processPendingChanges];
-      [self.fetchedResultsController performFetch:nil];
-      
-      [self.tableView reloadData];
-    }
-  };
-  
-  [client getProjectListWithCompletion:handleData];
+    CDINetClient *client = [CDINetClient client];
+    void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
+        NSDictionary *rawDict = responseData;
+        if ([responseData isKindOfClass:[NSDictionary class]]) {
+            NSArray *peopleArray = rawDict[@"data"];
+            for (NSDictionary *dict in peopleArray) {
+                [CDIWork insertWorkInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];
+            }
+            [self.managedObjectContext processPendingChanges];
+            [self.fetchedResultsController performFetch:nil];
+            
+            [self.tableView reloadData];
+        }
+    };
+    
+    [client getProjectListWithCompletion:handleData];
 }
 
 - (void)configureRequest:(NSFetchRequest *)request
 {
-  request.entity = [NSEntityDescription entityForName:@"CDIWork"
-                               inManagedObjectContext:self.managedObjectContext];
-  NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"workID" ascending:NO];
-  request.sortDescriptors = @[sortDescriptor];
+    request.entity = [NSEntityDescription entityForName:@"CDIWork"
+                                 inManagedObjectContext:self.managedObjectContext];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"workID" ascending:NO];
+    request.sortDescriptors = @[sortDescriptor];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
-  NSInteger count = self.fetchedResultsController.fetchedObjects.count;
-  return count == 0 ? 1 : count;
+    NSInteger count = self.fetchedResultsController.fetchedObjects.count;
+    return count == 0 ? 1 : count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  ProjectListTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ProjectListTableViewCell"];
-  cell.isPlaceHolder = self.fetchedResultsController.fetchedObjects.count == 0;
-  if (!cell.isPlaceHolder) {
-    CDIWork *work = self.fetchedResultsController.fetchedObjects[indexPath.row];
-//    [cell.imageView loadImageFromURL:work.previewImageURL completion:^(BOOL succeeded) {
-////      [cell.imageView fadeIn];
-//    }];
-      
-      UIImageView * testView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, 90.0, 90.0)];
-      UIView * maskView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, 90.0, 90.0)];
-      [maskView setBackgroundColor:[UIColor whiteColor]];
-      [testView setImageWithURL:[NSURL URLWithString:work.previewImageURL]];
-      testView.contentMode = UIViewContentModeScaleAspectFill;
-      [testView.layer setMask:maskView.layer];
-      [cell.contentView addSubview:testView];
-      
-//      [cell.imageView setImageWithURL:[NSURL URLWithString:work.previewImageURL]];
-//      cell.imageView.image = [UIImage imageNamed:@"main_room_4.png"];
-//      cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
-//      cell.imageView.clipsToBounds = YES;
-//      NSLog(@"%f %f",cell.imageView.frame.size.width,cell.imageView.frame.size.height);
-      
-    [cell.projectNameLabel setText:work.name];
-    [cell.projectStatusLabel setText:work.workStatus];
-    [cell.projectTypeLabel setText:work.workType];
-  }
-  return cell;
+    ProjectListTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ProjectListTableViewCell"];
+    cell.isPlaceHolder = self.fetchedResultsController.fetchedObjects.count == 0;
+    
+    for (UIView * subview in cell.contentView.subviews) {
+        if ([subview isKindOfClass:[UIImageView class]]) {
+            [subview removeFromSuperview];
+        }
+    }
+    
+    if (!cell.isPlaceHolder) {
+        
+        CDIWork *work = self.fetchedResultsController.fetchedObjects[indexPath.row];
+//        [cell.imageView loadImageFromURL:work.previewImageURL completion:^(BOOL succeeded) {
+//        [cell.imageView fadeIn];
+//        }];
+        
+        UIImageView * preivewImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, 90.0, 90.0)];
+        UIView * maskView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, 90.0, 90.0)];
+        [maskView setBackgroundColor:[UIColor whiteColor]];
+        [preivewImageView setImageWithURL:[NSURL URLWithString:work.previewImageURL]];
+        preivewImageView.contentMode = UIViewContentModeScaleAspectFill;
+        [preivewImageView.layer setMask:maskView.layer];
+        [cell.contentView addSubview:preivewImageView];
+        
+        //      [cell.imageView setImageWithURL:[NSURL URLWithString:work.previewImageURL]];
+        //      cell.imageView.image = [UIImage imageNamed:@"main_room_4.png"];
+        //      cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        //      cell.imageView.clipsToBounds = YES;
+        //      NSLog(@"%f %f",cell.imageView.frame.size.width,cell.imageView.frame.size.height);
+        
+        [cell.projectNameLabel setText:work.name];
+        [cell.projectStatusLabel setText:work.workStatus];
+        [cell.projectTypeLabel setText:work.workType];
+    }
+    return cell;
 }
 
 //-(UIImage *)getImageFromImage:(UIImage*) superImage subImageSize:(CGSize)subImageSize subImageRect:(CGRect)subImageRect {
@@ -122,25 +130,25 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  return 90;
+    return 90;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  self.selectedWork = self.fetchedResultsController.fetchedObjects[indexPath.row];
-  [self performSegueWithIdentifier:@"ProjectDetailSegue" sender:self];
+    self.selectedWork = self.fetchedResultsController.fetchedObjects[indexPath.row];
+    [self performSegueWithIdentifier:@"ProjectDetailSegue" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  ProjectDetailViewController *vc = segue.destinationViewController;
-  vc.work = self.selectedWork;
+    ProjectDetailViewController *vc = segue.destinationViewController;
+    vc.work = self.selectedWork;
 }
 
 #pragma mark - IBActions
 - (IBAction)didClickBackButton:(UIButton *)sender
 {
-  [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

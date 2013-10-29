@@ -53,6 +53,7 @@
         NSDictionary *rawDict = responseData;
         NSLog(@"%@",responseData);
         if ([responseData isKindOfClass:[NSDictionary class]]) {
+            [CDIUser removeAllPeopleInManagedObjectContext:self.managedObjectContext];
             NSArray *peopleArray = rawDict[@"data"];
             for (NSDictionary *dict in peopleArray) {
                 [CDIUser insertUserInfoWithDict:dict inManagedObjectContext:self.managedObjectContext];

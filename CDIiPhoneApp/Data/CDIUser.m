@@ -69,6 +69,18 @@ static CDIUser *currentUser;
   return self;
 }
 
++ (void)removeAllPeopleInManagedObjectContext:(NSManagedObjectContext *)context;
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    [request setEntity:[NSEntityDescription entityForName:@"CDIUser" inManagedObjectContext:context]];
+    NSArray *items = [context executeFetchRequest:request error:NULL];
+    for (CDIUser *user in items) {
+        [context deleteObject:user];
+    }
+    [context processPendingChanges];
+}
+
 + (CDIUser *)insertUserInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context
 {
   if (!dict || ![dict isKindOfClass:[NSDictionary class]]) {

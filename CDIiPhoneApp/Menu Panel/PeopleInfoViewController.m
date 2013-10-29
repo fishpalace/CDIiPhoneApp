@@ -69,6 +69,7 @@
     CDINetClient *client = [CDINetClient client];
     void (^handleData)(BOOL succeeded, id responseData) = ^(BOOL succeeded, id responseData){
         if ([responseData isKindOfClass:[NSDictionary class]]) {
+            
             NSDictionary *dict = responseData;
             NSArray *dataArray = dict[@"data"];
             for (NSDictionary *workDict in dataArray) {
@@ -112,10 +113,15 @@
 {
     PeopleInfoWorkListCell *cell = [self.tableview dequeueReusableCellWithIdentifier:@"PeopleInfoWorkListCell"];
     
+    for (UIView * subview in cell.contentView.subviews) {
+        if ([subview isKindOfClass:[UIImageView class]]) {
+            [subview removeFromSuperview];
+        }
+    }
+
     cell.isPlaceHolder = self.fetchedResultsController.fetchedObjects.count == 0;
     if (!cell.isPlaceHolder) {
         CDIWork *work = self.fetchedResultsController.fetchedObjects[indexPath.row];
-        
         UIImageView * testView = [[UIImageView alloc]initWithFrame:CGRectMake(10.0, 25.0, 38.0, 38.0)];
         [testView setImageWithURL:[NSURL URLWithString:work.imgURL]];
         testView.contentMode = UIViewContentModeScaleAspectFill;

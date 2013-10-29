@@ -12,29 +12,25 @@
 
 + (NSString *)stringForDict:(NSDictionary *)dict key:(NSString *)key
 {
-  NSObject *result = [dict[key] isKindOfClass:[NSNull class]] ? @"" : dict[key];
-  NSString *stringValue = (NSString *)result;
-  if ([result isKindOfClass:[NSNumber class]]) {
-    stringValue = ((NSNumber *)result).stringValue;
-  }
-  return stringValue;
+    NSObject *result = [dict[key] isKindOfClass:[NSNull class]] ? @"" : dict[key];
+    NSString *stringValue = (NSString *)result;
+    if ([result isKindOfClass:[NSNumber class]]) {
+        stringValue = ((NSNumber *)result).stringValue;
+    }
+    return stringValue;
 }
 
 - (NSString *)strippedHTMLString
 {
-  NSRange r;
-  NSString *s = [self copy];
-    BOOL isFirstLine = YES;
-  while ((r = [s rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
-  {
-      if(isFirstLine) {
-          isFirstLine = NO;
-          s = [s stringByReplacingCharactersInRange:r withString:@""];
-      } else {
-          s = [s stringByReplacingCharactersInRange:r withString:@"\n"];
-      }
-  }
-  return s;
+    NSRange r;
+    NSString *s = [self copy];
+    while ((r = [s rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
+    {
+        s = [s stringByReplacingCharactersInRange:r withString:@""];
+    }
+    s = [s stringByReplacingOccurrencesOfString:@"\n" withString:@"\n\n"];
+    
+    return s;
 }
 
 - (NSString *)strippedIosToken

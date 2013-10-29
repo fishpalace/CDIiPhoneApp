@@ -45,6 +45,7 @@
 + (void)updateCurrentUserID:(NSString *)userID;
 - (id)initWithName:(NSString *)name title:(NSString *)title position:(NSString *)position;
 + (CDIUser *)insertUserInfoWithDict:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)context;
++ (void)removeAllPeopleInManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end
 

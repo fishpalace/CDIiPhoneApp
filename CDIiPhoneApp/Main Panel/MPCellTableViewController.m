@@ -78,6 +78,7 @@
     static NSString *CellIdentifier = @"MPCellTableViewCell";
     MPCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.seeAllLabel.hidden = YES;
+
     
     if (indexPath.row == [self.delegate numberOfRowsAtRow:self.row]) {
         cell.seeAllLabel.hidden = NO;

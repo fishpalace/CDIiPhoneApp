@@ -59,7 +59,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     [self configureBasicViews];
     [NSNotificationCenter registerShouldBounceDownNotificationWithSelector:@selector(bounceDown) target:self];
     [NSNotificationCenter registerShouldBounceUpNotificationWithSelector:@selector(bounceUp) target:self];
@@ -133,35 +133,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-//    if (section == 0) {
-//        if (!isScrolling) {
-//            return 20;
-//        }
-//        else {
-//            return 40;
-//        }
-//    }
-//    else
-        return 40;
+    return 40;
 }
-
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    switch (section) {
-//        case 0:
-//            return @"Events";
-//            break;
-//        case 1:
-//            return @"Projects";
-//            break;
-//        case 2:
-//            return @"News";
-//            break;
-//        default:
-//            return @"";
-//            break;
-//    }
-//}
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -223,14 +196,14 @@
 #pragma mark - MPCell Table View Delegate
 - (void)cellForRow:(NSInteger)row didMoveByOffset:(CGFloat)offset
 {
-        NSArray *visibleCells = self.tableView.visibleCells;
-        for (MPTableViewCell *cell in visibleCells) {
-            MPCellTableViewController *cellTableViewController = cell.contentTableViewController;
-            NSInteger gap = abs(cellTableViewController.row - row);
-            if (gap != 0) {
-                [cellTableViewController moveByOffset:offset / ((CGFloat)gap + 1.0)];
-            }
+    NSArray *visibleCells = self.tableView.visibleCells;
+    for (MPTableViewCell *cell in visibleCells) {
+        MPCellTableViewController *cellTableViewController = cell.contentTableViewController;
+        NSInteger gap = abs(cellTableViewController.row - row);
+        if (gap != 0) {
+            [cellTableViewController moveByOffset:offset / ((CGFloat)gap + 1.0)];
         }
+    }
 }
 
 - (void)registerCurrentActiveRow:(NSInteger)row
@@ -383,13 +356,13 @@
 
 - (void)bounceDown
 {
-
+    
 }
 
 - (void)bounceUp
 {
     [CDIDataSource reFetchAllDataInMainPanel];
-
+    
     [self playAnimationWithDirectionUp:YES completion:^(BOOL finished){
         self.menuPanelViewController.dragIndicatorView.hidden = NO;
     }];
@@ -523,7 +496,7 @@
         fetchRequest.entity = [NSEntityDescription entityForName:@"CDIWork"
                                           inManagedObjectContext:self.managedObjectContext];
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
-//        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"workTypeOrigin != %@", @"TANGIBLE_INTERACTIVE_OBJECTS"];
+        //        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"workTypeOrigin != %@", @"TANGIBLE_INTERACTIVE_OBJECTS"];
         fetchRequest.sortDescriptors = @[sortDescriptor];
         
         _frProjectsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
